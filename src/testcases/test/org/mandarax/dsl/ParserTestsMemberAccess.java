@@ -21,6 +21,10 @@ import org.mandarax.dsl.parser.ExpressionReader;
 import org.junit.Test;
 import org.mandarax.dsl.*;
 
+/**
+ * Test cases for method and field access expressions.
+ * @author jens dietrich
+ */
 
 public class ParserTestsMemberAccess extends AbstractTests {
 	

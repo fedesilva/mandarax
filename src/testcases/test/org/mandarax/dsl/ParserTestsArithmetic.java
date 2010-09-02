@@ -10,18 +10,16 @@
  */
 
 package test.org.mandarax.dsl;
-/**
-
- * @license
- */
-
 
 import static org.junit.Assert.*;
 import org.mandarax.dsl.parser.ExpressionReader;
 import org.junit.Test;
 import org.mandarax.dsl.*;
 
-
+/**
+ * Test cases for arithmetic expressions.
+ * @author jens dietrich
+ */
 public class ParserTestsArithmetic extends AbstractTests {
 	
 	@Test

@@ -17,7 +17,10 @@ import org.mandarax.dsl.parser.ExpressionReader;
 import org.junit.Test;
 import org.mandarax.dsl.*;
 
-
+/**
+ * Test cases for relational expressions.
+ * @author jens dietrich
+ */
 public class ParserTestsRelationalExpressions extends AbstractTests{
 	
 	private void testVarOpInt(Expression x,String varName,BinOp op,int intValue) throws Exception {

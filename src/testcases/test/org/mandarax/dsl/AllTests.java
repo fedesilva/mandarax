@@ -14,6 +14,11 @@ import org.junit.runner.RunWith;
 
 import org.junit.runners.*;
 
+/**
+ * Test suite. Used to run all tests in this package.
+ * @author jens dietrich
+ */
+
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	ParserTestsArithmetic.class,
@@ -21,7 +26,8 @@ import org.junit.runners.*;
 	ParserTestsFlatExpressions.class,
 	ParserTestsMemberAccess.class,
 	ParserTestsMiscExpressions.class,
-	ParserTestsComplexExpressions.class
+	ParserTestsComplexExpressions.class,
+	TypeReasonerTests.class
 })
 public class AllTests {
 

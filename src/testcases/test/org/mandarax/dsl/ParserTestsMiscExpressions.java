@@ -16,7 +16,10 @@ import org.mandarax.dsl.parser.ExpressionReader;
 import org.junit.Test;
 import org.mandarax.dsl.*;
 
-
+/**
+ * Test cases for misc expressions.
+ * @author jens dietrich
+ */
 public class ParserTestsMiscExpressions extends AbstractTests{
 	
 	@Test

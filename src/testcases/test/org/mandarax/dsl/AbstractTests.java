@@ -16,7 +16,10 @@ import org.mandarax.dsl.util.ExpressionPrinter;
 import org.mandarax.dsl.util.ExpressionStructurePrinter;
 
 
-
+/**
+ * Abstract superclass for test cases.
+ * @author jens dietrich
+ */
 abstract class AbstractTests {
 	
 	private boolean DEBUG_MODE = true;

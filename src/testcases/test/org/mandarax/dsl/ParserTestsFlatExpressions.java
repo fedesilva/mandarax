@@ -17,6 +17,10 @@ import org.mandarax.dsl.parser.ExpressionReader;
 import org.junit.Test;
 import org.mandarax.dsl.*;
 
+/**
+ * Test cases for flat expressions (variables and literals).
+ * @author jens dietrich
+ */
 
 public class ParserTestsFlatExpressions extends AbstractTests {
 	
