@@ -16,7 +16,6 @@ import java.util.Map;
 import org.junit.Test;
 import org.mandarax.dsl.Expression;
 import org.mandarax.dsl.Variable;
-import org.mandarax.dsl.parser.ExpressionReader;
 import org.mandarax.dsl.util.AbstractTypeReasoner;
 import org.mandarax.dsl.util.AbstractResolver;
 import org.mandarax.dsl.util.Resolver;
@@ -24,6 +23,7 @@ import org.mandarax.dsl.util.ResolverException;
 import org.mandarax.dsl.util.TypeReasoner;
 import org.mandarax.dsl.util.TypeReasoningException;
 import static org.junit.Assert.*;
+import static test.org.mandarax.dsl.TestUtils.*;
 
 public class TypeReasonerTests {
 	
@@ -48,7 +48,7 @@ public class TypeReasonerTests {
 	}
 	
 	private void testType(String expressionDef,Class expectedType,Map<String,Class> varTypes) throws Exception {
-		Expression expression = new ExpressionReader().readExpression(expressionDef);
+		Expression expression = readExpression(expressionDef);
 		TypeReasoner typeReasoner = new TestTypeReasoner(varTypes);
 		Resolver resolver = new TestResolver();
 		Class computedType = typeReasoner.getType(expression, resolver);

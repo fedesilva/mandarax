@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g 2010-09-03 10:04:02
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g 2010-09-03 11:03:34
  
 /*
  * Copyright 2010 Jens Dietrich 
@@ -29,6 +29,7 @@ public class MandaraxLexer extends Lexer {
     public static final int T__29=29;
     public static final int T__28=28;
     public static final int T__27=27;
+    public static final int T__62=62;
     public static final int T__26=26;
     public static final int T__25=25;
     public static final int FloatTypeSuffix=12;
@@ -37,6 +38,8 @@ public class MandaraxLexer extends Lexer {
     public static final int T__23=23;
     public static final int CharacterLiteral=15;
     public static final int Exponent=11;
+    public static final int T__61=61;
+    public static final int T__60=60;
     public static final int EOF=-1;
     public static final int HexDigit=9;
     public static final int Identifier=4;
@@ -52,8 +55,8 @@ public class MandaraxLexer extends Lexer {
     public static final int COMMENT=21;
     public static final int T__50=50;
     public static final int T__42=42;
-    public static final int T__43=43;
     public static final int HexLiteral=6;
+    public static final int T__43=43;
     public static final int T__40=40;
     public static final int T__41=41;
     public static final int T__46=46;
@@ -106,10 +109,11 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__23;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:28:7: ( '[' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:28:9: '['
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:28:7: ( 'import' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:28:9: 'import'
             {
-            match('['); 
+            match("import"); 
+
 
             }
 
@@ -126,10 +130,11 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__24;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:29:7: ( ']' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:29:9: ']'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:29:7: ( 'static' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:29:9: 'static'
             {
-            match(']'); 
+            match("static"); 
+
 
             }
 
@@ -166,11 +171,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__26;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:31:7: ( 'boolean' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:31:9: 'boolean'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:31:7: ( '*' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:31:9: '*'
             {
-            match("boolean"); 
-
+            match('*'); 
 
             }
 
@@ -187,11 +191,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__27;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:32:7: ( 'char' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:32:9: 'char'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:32:7: ( ';' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:32:9: ';'
             {
-            match("char"); 
-
+            match(';'); 
 
             }
 
@@ -208,11 +211,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__28;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:33:7: ( 'byte' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:33:9: 'byte'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:33:7: ( '[' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:33:9: '['
             {
-            match("byte"); 
-
+            match('['); 
 
             }
 
@@ -229,11 +231,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__29;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:34:7: ( 'short' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:34:9: 'short'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:34:7: ( ']' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:34:9: ']'
             {
-            match("short"); 
-
+            match(']'); 
 
             }
 
@@ -250,10 +251,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__30;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:35:7: ( 'int' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:35:9: 'int'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:35:7: ( 'boolean' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:35:9: 'boolean'
             {
-            match("int"); 
+            match("boolean"); 
 
 
             }
@@ -271,10 +272,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__31;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:36:7: ( 'long' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:36:9: 'long'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:36:7: ( 'char' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:36:9: 'char'
             {
-            match("long"); 
+            match("char"); 
 
 
             }
@@ -292,10 +293,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__32;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:37:7: ( 'float' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:37:9: 'float'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:37:7: ( 'byte' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:37:9: 'byte'
             {
-            match("float"); 
+            match("byte"); 
 
 
             }
@@ -313,10 +314,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__33;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:38:7: ( 'double' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:38:9: 'double'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:38:7: ( 'short' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:38:9: 'short'
             {
-            match("double"); 
+            match("short"); 
 
 
             }
@@ -334,10 +335,11 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__34;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:39:7: ( ',' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:39:9: ','
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:39:7: ( 'int' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:39:9: 'int'
             {
-            match(','); 
+            match("int"); 
+
 
             }
 
@@ -354,10 +356,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__35;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:40:7: ( 'true' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:40:9: 'true'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:40:7: ( 'long' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:40:9: 'long'
             {
-            match("true"); 
+            match("long"); 
 
 
             }
@@ -375,10 +377,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__36;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:41:7: ( 'false' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:41:9: 'false'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:41:7: ( 'float' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:41:9: 'float'
             {
-            match("false"); 
+            match("float"); 
 
 
             }
@@ -396,10 +398,11 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__37;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:42:7: ( '=' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:42:9: '='
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:42:7: ( 'double' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:42:9: 'double'
             {
-            match('='); 
+            match("double"); 
+
 
             }
 
@@ -416,10 +419,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__38;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:43:7: ( '{' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:43:9: '{'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:43:7: ( ',' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:43:9: ','
             {
-            match('{'); 
+            match(','); 
 
             }
 
@@ -436,10 +439,11 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__39;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:44:7: ( '}' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:44:9: '}'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:44:7: ( 'true' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:44:9: 'true'
             {
-            match('}'); 
+            match("true"); 
+
 
             }
 
@@ -456,10 +460,11 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__40;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:45:7: ( '(' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:45:9: '('
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:45:7: ( 'false' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:45:9: 'false'
             {
-            match('('); 
+            match("false"); 
+
 
             }
 
@@ -476,10 +481,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__41;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:46:7: ( ')' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:46:9: ')'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:46:7: ( '=' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:46:9: '='
             {
-            match(')'); 
+            match('='); 
 
             }
 
@@ -496,10 +501,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__42;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:47:7: ( '?' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:47:9: '?'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:47:7: ( '{' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:47:9: '{'
             {
-            match('?'); 
+            match('{'); 
 
             }
 
@@ -516,10 +521,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__43;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:48:7: ( ':' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:48:9: ':'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:48:7: ( '}' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:48:9: '}'
             {
-            match(':'); 
+            match('}'); 
 
             }
 
@@ -536,10 +541,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__44;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:49:7: ( '|' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:49:9: '|'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:49:7: ( '(' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:49:9: '('
             {
-            match('|'); 
+            match('('); 
 
             }
 
@@ -556,10 +561,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__45;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:50:7: ( '&' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:50:9: '&'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:50:7: ( ')' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:50:9: ')'
             {
-            match('&'); 
+            match(')'); 
 
             }
 
@@ -576,11 +581,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__46;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:51:7: ( '==' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:51:9: '=='
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:51:7: ( '?' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:51:9: '?'
             {
-            match("=="); 
-
+            match('?'); 
 
             }
 
@@ -597,11 +601,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__47;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:52:7: ( '!=' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:52:9: '!='
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:52:7: ( ':' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:52:9: ':'
             {
-            match("!="); 
-
+            match(':'); 
 
             }
 
@@ -618,11 +621,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__48;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:53:7: ( 'instanceof' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:53:9: 'instanceof'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:53:7: ( '|' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:53:9: '|'
             {
-            match("instanceof"); 
-
+            match('|'); 
 
             }
 
@@ -639,11 +641,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__49;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:54:7: ( '<=' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:54:9: '<='
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:54:7: ( '&' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:54:9: '&'
             {
-            match("<="); 
-
+            match('&'); 
 
             }
 
@@ -660,10 +661,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__50;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:55:7: ( '>=' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:55:9: '>='
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:55:7: ( '==' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:55:9: '=='
             {
-            match(">="); 
+            match("=="); 
 
 
             }
@@ -681,10 +682,11 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__51;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:56:7: ( '<' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:56:9: '<'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:56:7: ( '!=' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:56:9: '!='
             {
-            match('<'); 
+            match("!="); 
+
 
             }
 
@@ -701,10 +703,11 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__52;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:57:7: ( '>' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:57:9: '>'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:57:7: ( 'instanceof' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:57:9: 'instanceof'
             {
-            match('>'); 
+            match("instanceof"); 
+
 
             }
 
@@ -721,10 +724,11 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__53;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:58:7: ( '+' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:58:9: '+'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:58:7: ( '<=' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:58:9: '<='
             {
-            match('+'); 
+            match("<="); 
+
 
             }
 
@@ -741,10 +745,11 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__54;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:59:7: ( '-' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:59:9: '-'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:59:7: ( '>=' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:59:9: '>='
             {
-            match('-'); 
+            match(">="); 
+
 
             }
 
@@ -761,10 +766,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__55;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:60:7: ( '*' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:60:9: '*'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:60:7: ( '<' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:60:9: '<'
             {
-            match('*'); 
+            match('<'); 
 
             }
 
@@ -781,10 +786,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__56;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:61:7: ( '/' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:61:9: '/'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:61:7: ( '>' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:61:9: '>'
             {
-            match('/'); 
+            match('>'); 
 
             }
 
@@ -801,10 +806,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__57;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:62:7: ( '%' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:62:9: '%'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:62:7: ( '+' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:62:9: '+'
             {
-            match('%'); 
+            match('+'); 
 
             }
 
@@ -821,10 +826,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__58;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:63:7: ( '~' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:63:9: '~'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:63:7: ( '-' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:63:9: '-'
             {
-            match('~'); 
+            match('-'); 
 
             }
 
@@ -841,10 +846,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__59;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:64:7: ( '!' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:64:9: '!'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:64:7: ( '/' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:64:9: '/'
             {
-            match('!'); 
+            match('/'); 
 
             }
 
@@ -856,13 +861,73 @@ public class MandaraxLexer extends Lexer {
     }
     // $ANTLR end "T__59"
 
+    // $ANTLR start "T__60"
+    public final void mT__60() throws RecognitionException {
+        try {
+            int _type = T__60;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:65:7: ( '%' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:65:9: '%'
+            {
+            match('%'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__60"
+
+    // $ANTLR start "T__61"
+    public final void mT__61() throws RecognitionException {
+        try {
+            int _type = T__61;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:66:7: ( '~' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:66:9: '~'
+            {
+            match('~'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__61"
+
+    // $ANTLR start "T__62"
+    public final void mT__62() throws RecognitionException {
+        try {
+            int _type = T__62;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:67:7: ( '!' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:67:9: '!'
+            {
+            match('!'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__62"
+
     // $ANTLR start "HexLiteral"
     public final void mHexLiteral() throws RecognitionException {
         try {
             int _type = HexLiteral;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:270:12: ( '0' ( 'x' | 'X' ) ( HexDigit )+ ( IntegerTypeSuffix )? )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:270:14: '0' ( 'x' | 'X' ) ( HexDigit )+ ( IntegerTypeSuffix )?
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:279:12: ( '0' ( 'x' | 'X' ) ( HexDigit )+ ( IntegerTypeSuffix )? )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:279:14: '0' ( 'x' | 'X' ) ( HexDigit )+ ( IntegerTypeSuffix )?
             {
             match('0'); 
             if ( input.LA(1)=='X'||input.LA(1)=='x' ) {
@@ -874,7 +939,7 @@ public class MandaraxLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:270:28: ( HexDigit )+
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:279:28: ( HexDigit )+
             int cnt1=0;
             loop1:
             do {
@@ -888,7 +953,7 @@ public class MandaraxLexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:270:28: HexDigit
+            	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:279:28: HexDigit
             	    {
             	    mHexDigit(); 
 
@@ -904,7 +969,7 @@ public class MandaraxLexer extends Lexer {
                 cnt1++;
             } while (true);
 
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:270:38: ( IntegerTypeSuffix )?
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:279:38: ( IntegerTypeSuffix )?
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -913,7 +978,7 @@ public class MandaraxLexer extends Lexer {
             }
             switch (alt2) {
                 case 1 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:270:38: IntegerTypeSuffix
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:279:38: IntegerTypeSuffix
                     {
                     mIntegerTypeSuffix(); 
 
@@ -938,10 +1003,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = DecimalLiteral;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:272:16: ( ( '0' | '1' .. '9' ( '0' .. '9' )* ) ( IntegerTypeSuffix )? )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:272:18: ( '0' | '1' .. '9' ( '0' .. '9' )* ) ( IntegerTypeSuffix )?
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:281:16: ( ( '0' | '1' .. '9' ( '0' .. '9' )* ) ( IntegerTypeSuffix )? )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:281:18: ( '0' | '1' .. '9' ( '0' .. '9' )* ) ( IntegerTypeSuffix )?
             {
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:272:18: ( '0' | '1' .. '9' ( '0' .. '9' )* )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:281:18: ( '0' | '1' .. '9' ( '0' .. '9' )* )
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -959,17 +1024,17 @@ public class MandaraxLexer extends Lexer {
             }
             switch (alt4) {
                 case 1 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:272:19: '0'
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:281:19: '0'
                     {
                     match('0'); 
 
                     }
                     break;
                 case 2 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:272:25: '1' .. '9' ( '0' .. '9' )*
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:281:25: '1' .. '9' ( '0' .. '9' )*
                     {
                     matchRange('1','9'); 
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:272:34: ( '0' .. '9' )*
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:281:34: ( '0' .. '9' )*
                     loop3:
                     do {
                         int alt3=2;
@@ -982,7 +1047,7 @@ public class MandaraxLexer extends Lexer {
 
                         switch (alt3) {
                     	case 1 :
-                    	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:272:34: '0' .. '9'
+                    	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:281:34: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -1000,7 +1065,7 @@ public class MandaraxLexer extends Lexer {
 
             }
 
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:272:45: ( IntegerTypeSuffix )?
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:281:45: ( IntegerTypeSuffix )?
             int alt5=2;
             int LA5_0 = input.LA(1);
 
@@ -1009,7 +1074,7 @@ public class MandaraxLexer extends Lexer {
             }
             switch (alt5) {
                 case 1 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:272:45: IntegerTypeSuffix
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:281:45: IntegerTypeSuffix
                     {
                     mIntegerTypeSuffix(); 
 
@@ -1034,11 +1099,11 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = OctalLiteral;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:274:14: ( '0' ( '0' .. '7' )+ ( IntegerTypeSuffix )? )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:274:16: '0' ( '0' .. '7' )+ ( IntegerTypeSuffix )?
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:283:14: ( '0' ( '0' .. '7' )+ ( IntegerTypeSuffix )? )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:283:16: '0' ( '0' .. '7' )+ ( IntegerTypeSuffix )?
             {
             match('0'); 
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:274:20: ( '0' .. '7' )+
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:283:20: ( '0' .. '7' )+
             int cnt6=0;
             loop6:
             do {
@@ -1052,7 +1117,7 @@ public class MandaraxLexer extends Lexer {
 
                 switch (alt6) {
             	case 1 :
-            	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:274:21: '0' .. '7'
+            	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:283:21: '0' .. '7'
             	    {
             	    matchRange('0','7'); 
 
@@ -1068,7 +1133,7 @@ public class MandaraxLexer extends Lexer {
                 cnt6++;
             } while (true);
 
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:274:32: ( IntegerTypeSuffix )?
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:283:32: ( IntegerTypeSuffix )?
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -1077,7 +1142,7 @@ public class MandaraxLexer extends Lexer {
             }
             switch (alt7) {
                 case 1 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:274:32: IntegerTypeSuffix
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:283:32: IntegerTypeSuffix
                     {
                     mIntegerTypeSuffix(); 
 
@@ -1100,8 +1165,8 @@ public class MandaraxLexer extends Lexer {
     // $ANTLR start "HexDigit"
     public final void mHexDigit() throws RecognitionException {
         try {
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:277:10: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:277:12: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:286:10: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:286:12: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )
             {
             if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='F')||(input.LA(1)>='a' && input.LA(1)<='f') ) {
                 input.consume();
@@ -1124,8 +1189,8 @@ public class MandaraxLexer extends Lexer {
     // $ANTLR start "IntegerTypeSuffix"
     public final void mIntegerTypeSuffix() throws RecognitionException {
         try {
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:280:19: ( ( 'l' | 'L' ) )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:280:21: ( 'l' | 'L' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:289:19: ( ( 'l' | 'L' ) )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:289:21: ( 'l' | 'L' )
             {
             if ( input.LA(1)=='L'||input.LA(1)=='l' ) {
                 input.consume();
@@ -1150,14 +1215,14 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = FloatingPointLiteral;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:283:5: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( Exponent )? ( FloatTypeSuffix )? | '.' ( '0' .. '9' )+ ( Exponent )? ( FloatTypeSuffix )? | ( '0' .. '9' )+ Exponent ( FloatTypeSuffix )? | ( '0' .. '9' )+ FloatTypeSuffix )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:292:5: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( Exponent )? ( FloatTypeSuffix )? | '.' ( '0' .. '9' )+ ( Exponent )? ( FloatTypeSuffix )? | ( '0' .. '9' )+ Exponent ( FloatTypeSuffix )? | ( '0' .. '9' )+ FloatTypeSuffix )
             int alt18=4;
             alt18 = dfa18.predict(input);
             switch (alt18) {
                 case 1 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:283:9: ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( Exponent )? ( FloatTypeSuffix )?
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:292:9: ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( Exponent )? ( FloatTypeSuffix )?
                     {
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:283:9: ( '0' .. '9' )+
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:292:9: ( '0' .. '9' )+
                     int cnt8=0;
                     loop8:
                     do {
@@ -1171,7 +1236,7 @@ public class MandaraxLexer extends Lexer {
 
                         switch (alt8) {
                     	case 1 :
-                    	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:283:10: '0' .. '9'
+                    	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:292:10: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -1188,7 +1253,7 @@ public class MandaraxLexer extends Lexer {
                     } while (true);
 
                     match('.'); 
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:283:25: ( '0' .. '9' )*
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:292:25: ( '0' .. '9' )*
                     loop9:
                     do {
                         int alt9=2;
@@ -1201,7 +1266,7 @@ public class MandaraxLexer extends Lexer {
 
                         switch (alt9) {
                     	case 1 :
-                    	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:283:26: '0' .. '9'
+                    	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:292:26: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -1213,7 +1278,7 @@ public class MandaraxLexer extends Lexer {
                         }
                     } while (true);
 
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:283:37: ( Exponent )?
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:292:37: ( Exponent )?
                     int alt10=2;
                     int LA10_0 = input.LA(1);
 
@@ -1222,7 +1287,7 @@ public class MandaraxLexer extends Lexer {
                     }
                     switch (alt10) {
                         case 1 :
-                            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:283:37: Exponent
+                            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:292:37: Exponent
                             {
                             mExponent(); 
 
@@ -1231,7 +1296,7 @@ public class MandaraxLexer extends Lexer {
 
                     }
 
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:283:47: ( FloatTypeSuffix )?
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:292:47: ( FloatTypeSuffix )?
                     int alt11=2;
                     int LA11_0 = input.LA(1);
 
@@ -1240,7 +1305,7 @@ public class MandaraxLexer extends Lexer {
                     }
                     switch (alt11) {
                         case 1 :
-                            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:283:47: FloatTypeSuffix
+                            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:292:47: FloatTypeSuffix
                             {
                             mFloatTypeSuffix(); 
 
@@ -1253,10 +1318,10 @@ public class MandaraxLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:284:9: '.' ( '0' .. '9' )+ ( Exponent )? ( FloatTypeSuffix )?
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:293:9: '.' ( '0' .. '9' )+ ( Exponent )? ( FloatTypeSuffix )?
                     {
                     match('.'); 
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:284:13: ( '0' .. '9' )+
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:293:13: ( '0' .. '9' )+
                     int cnt12=0;
                     loop12:
                     do {
@@ -1270,7 +1335,7 @@ public class MandaraxLexer extends Lexer {
 
                         switch (alt12) {
                     	case 1 :
-                    	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:284:14: '0' .. '9'
+                    	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:293:14: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -1286,7 +1351,7 @@ public class MandaraxLexer extends Lexer {
                         cnt12++;
                     } while (true);
 
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:284:25: ( Exponent )?
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:293:25: ( Exponent )?
                     int alt13=2;
                     int LA13_0 = input.LA(1);
 
@@ -1295,7 +1360,7 @@ public class MandaraxLexer extends Lexer {
                     }
                     switch (alt13) {
                         case 1 :
-                            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:284:25: Exponent
+                            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:293:25: Exponent
                             {
                             mExponent(); 
 
@@ -1304,7 +1369,7 @@ public class MandaraxLexer extends Lexer {
 
                     }
 
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:284:35: ( FloatTypeSuffix )?
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:293:35: ( FloatTypeSuffix )?
                     int alt14=2;
                     int LA14_0 = input.LA(1);
 
@@ -1313,7 +1378,7 @@ public class MandaraxLexer extends Lexer {
                     }
                     switch (alt14) {
                         case 1 :
-                            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:284:35: FloatTypeSuffix
+                            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:293:35: FloatTypeSuffix
                             {
                             mFloatTypeSuffix(); 
 
@@ -1326,9 +1391,9 @@ public class MandaraxLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:285:9: ( '0' .. '9' )+ Exponent ( FloatTypeSuffix )?
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:294:9: ( '0' .. '9' )+ Exponent ( FloatTypeSuffix )?
                     {
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:285:9: ( '0' .. '9' )+
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:294:9: ( '0' .. '9' )+
                     int cnt15=0;
                     loop15:
                     do {
@@ -1342,7 +1407,7 @@ public class MandaraxLexer extends Lexer {
 
                         switch (alt15) {
                     	case 1 :
-                    	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:285:10: '0' .. '9'
+                    	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:294:10: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -1359,7 +1424,7 @@ public class MandaraxLexer extends Lexer {
                     } while (true);
 
                     mExponent(); 
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:285:30: ( FloatTypeSuffix )?
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:294:30: ( FloatTypeSuffix )?
                     int alt16=2;
                     int LA16_0 = input.LA(1);
 
@@ -1368,7 +1433,7 @@ public class MandaraxLexer extends Lexer {
                     }
                     switch (alt16) {
                         case 1 :
-                            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:285:30: FloatTypeSuffix
+                            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:294:30: FloatTypeSuffix
                             {
                             mFloatTypeSuffix(); 
 
@@ -1381,9 +1446,9 @@ public class MandaraxLexer extends Lexer {
                     }
                     break;
                 case 4 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:286:9: ( '0' .. '9' )+ FloatTypeSuffix
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:295:9: ( '0' .. '9' )+ FloatTypeSuffix
                     {
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:286:9: ( '0' .. '9' )+
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:295:9: ( '0' .. '9' )+
                     int cnt17=0;
                     loop17:
                     do {
@@ -1397,7 +1462,7 @@ public class MandaraxLexer extends Lexer {
 
                         switch (alt17) {
                     	case 1 :
-                    	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:286:10: '0' .. '9'
+                    	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:295:10: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -1430,8 +1495,8 @@ public class MandaraxLexer extends Lexer {
     // $ANTLR start "Exponent"
     public final void mExponent() throws RecognitionException {
         try {
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:290:10: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:290:12: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:299:10: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:299:12: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
             {
             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                 input.consume();
@@ -1442,7 +1507,7 @@ public class MandaraxLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:290:22: ( '+' | '-' )?
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:299:22: ( '+' | '-' )?
             int alt19=2;
             int LA19_0 = input.LA(1);
 
@@ -1468,7 +1533,7 @@ public class MandaraxLexer extends Lexer {
 
             }
 
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:290:33: ( '0' .. '9' )+
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:299:33: ( '0' .. '9' )+
             int cnt20=0;
             loop20:
             do {
@@ -1482,7 +1547,7 @@ public class MandaraxLexer extends Lexer {
 
                 switch (alt20) {
             	case 1 :
-            	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:290:34: '0' .. '9'
+            	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:299:34: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1510,8 +1575,8 @@ public class MandaraxLexer extends Lexer {
     // $ANTLR start "FloatTypeSuffix"
     public final void mFloatTypeSuffix() throws RecognitionException {
         try {
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:293:17: ( ( 'f' | 'F' | 'd' | 'D' ) )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:293:19: ( 'f' | 'F' | 'd' | 'D' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:302:17: ( ( 'f' | 'F' | 'd' | 'D' ) )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:302:19: ( 'f' | 'F' | 'd' | 'D' )
             {
             if ( input.LA(1)=='D'||input.LA(1)=='F'||input.LA(1)=='d'||input.LA(1)=='f' ) {
                 input.consume();
@@ -1536,11 +1601,11 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = CharacterLiteral;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:296:5: ( '\\'' ( EscapeSequence | ~ ( '\\'' | '\\\\' ) ) '\\'' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:296:9: '\\'' ( EscapeSequence | ~ ( '\\'' | '\\\\' ) ) '\\''
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:305:5: ( '\\'' ( EscapeSequence | ~ ( '\\'' | '\\\\' ) ) '\\'' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:305:9: '\\'' ( EscapeSequence | ~ ( '\\'' | '\\\\' ) ) '\\''
             {
             match('\''); 
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:296:14: ( EscapeSequence | ~ ( '\\'' | '\\\\' ) )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:305:14: ( EscapeSequence | ~ ( '\\'' | '\\\\' ) )
             int alt21=2;
             int LA21_0 = input.LA(1);
 
@@ -1558,14 +1623,14 @@ public class MandaraxLexer extends Lexer {
             }
             switch (alt21) {
                 case 1 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:296:16: EscapeSequence
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:305:16: EscapeSequence
                     {
                     mEscapeSequence(); 
 
                     }
                     break;
                 case 2 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:296:33: ~ ( '\\'' | '\\\\' )
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:305:33: ~ ( '\\'' | '\\\\' )
                     {
                     if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                         input.consume();
@@ -1599,11 +1664,11 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = StringLiteral;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:300:5: ( '\"' ( EscapeSequence | ~ ( '\\\\' | '\"' ) )* '\"' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:300:8: '\"' ( EscapeSequence | ~ ( '\\\\' | '\"' ) )* '\"'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:309:5: ( '\"' ( EscapeSequence | ~ ( '\\\\' | '\"' ) )* '\"' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:309:8: '\"' ( EscapeSequence | ~ ( '\\\\' | '\"' ) )* '\"'
             {
             match('\"'); 
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:300:12: ( EscapeSequence | ~ ( '\\\\' | '\"' ) )*
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:309:12: ( EscapeSequence | ~ ( '\\\\' | '\"' ) )*
             loop22:
             do {
                 int alt22=3;
@@ -1619,14 +1684,14 @@ public class MandaraxLexer extends Lexer {
 
                 switch (alt22) {
             	case 1 :
-            	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:300:14: EscapeSequence
+            	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:309:14: EscapeSequence
             	    {
             	    mEscapeSequence(); 
 
             	    }
             	    break;
             	case 2 :
-            	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:300:31: ~ ( '\\\\' | '\"' )
+            	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:309:31: ~ ( '\\\\' | '\"' )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1661,7 +1726,7 @@ public class MandaraxLexer extends Lexer {
     // $ANTLR start "EscapeSequence"
     public final void mEscapeSequence() throws RecognitionException {
         try {
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:305:5: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UnicodeEscape | OctalEscape )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:314:5: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UnicodeEscape | OctalEscape )
             int alt23=3;
             int LA23_0 = input.LA(1);
 
@@ -1712,7 +1777,7 @@ public class MandaraxLexer extends Lexer {
             }
             switch (alt23) {
                 case 1 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:305:9: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:314:9: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
                     {
                     match('\\'); 
                     if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||input.LA(1)=='t' ) {
@@ -1728,14 +1793,14 @@ public class MandaraxLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:306:9: UnicodeEscape
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:315:9: UnicodeEscape
                     {
                     mUnicodeEscape(); 
 
                     }
                     break;
                 case 3 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:307:9: OctalEscape
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:316:9: OctalEscape
                     {
                     mOctalEscape(); 
 
@@ -1752,7 +1817,7 @@ public class MandaraxLexer extends Lexer {
     // $ANTLR start "OctalEscape"
     public final void mOctalEscape() throws RecognitionException {
         try {
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:312:5: ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:321:5: ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) )
             int alt24=3;
             int LA24_0 = input.LA(1);
 
@@ -1763,9 +1828,9 @@ public class MandaraxLexer extends Lexer {
                     int LA24_2 = input.LA(3);
 
                     if ( ((LA24_2>='0' && LA24_2<='7')) ) {
-                        int LA24_5 = input.LA(4);
+                        int LA24_4 = input.LA(4);
 
-                        if ( ((LA24_5>='0' && LA24_5<='7')) ) {
+                        if ( ((LA24_4>='0' && LA24_4<='7')) ) {
                             alt24=1;
                         }
                         else {
@@ -1798,25 +1863,25 @@ public class MandaraxLexer extends Lexer {
             }
             switch (alt24) {
                 case 1 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:312:9: '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' )
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:321:9: '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' )
                     {
                     match('\\'); 
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:312:14: ( '0' .. '3' )
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:312:15: '0' .. '3'
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:321:14: ( '0' .. '3' )
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:321:15: '0' .. '3'
                     {
                     matchRange('0','3'); 
 
                     }
 
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:312:25: ( '0' .. '7' )
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:312:26: '0' .. '7'
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:321:25: ( '0' .. '7' )
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:321:26: '0' .. '7'
                     {
                     matchRange('0','7'); 
 
                     }
 
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:312:36: ( '0' .. '7' )
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:312:37: '0' .. '7'
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:321:36: ( '0' .. '7' )
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:321:37: '0' .. '7'
                     {
                     matchRange('0','7'); 
 
@@ -1826,18 +1891,18 @@ public class MandaraxLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:313:9: '\\\\' ( '0' .. '7' ) ( '0' .. '7' )
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:322:9: '\\\\' ( '0' .. '7' ) ( '0' .. '7' )
                     {
                     match('\\'); 
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:313:14: ( '0' .. '7' )
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:313:15: '0' .. '7'
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:322:14: ( '0' .. '7' )
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:322:15: '0' .. '7'
                     {
                     matchRange('0','7'); 
 
                     }
 
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:313:25: ( '0' .. '7' )
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:313:26: '0' .. '7'
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:322:25: ( '0' .. '7' )
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:322:26: '0' .. '7'
                     {
                     matchRange('0','7'); 
 
@@ -1847,11 +1912,11 @@ public class MandaraxLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:314:9: '\\\\' ( '0' .. '7' )
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:323:9: '\\\\' ( '0' .. '7' )
                     {
                     match('\\'); 
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:314:14: ( '0' .. '7' )
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:314:15: '0' .. '7'
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:323:14: ( '0' .. '7' )
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:323:15: '0' .. '7'
                     {
                     matchRange('0','7'); 
 
@@ -1871,8 +1936,8 @@ public class MandaraxLexer extends Lexer {
     // $ANTLR start "UnicodeEscape"
     public final void mUnicodeEscape() throws RecognitionException {
         try {
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:319:5: ( '\\\\' 'u' HexDigit HexDigit HexDigit HexDigit )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:319:9: '\\\\' 'u' HexDigit HexDigit HexDigit HexDigit
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:328:5: ( '\\\\' 'u' HexDigit HexDigit HexDigit HexDigit )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:328:9: '\\\\' 'u' HexDigit HexDigit HexDigit HexDigit
             {
             match('\\'); 
             match('u'); 
@@ -1894,11 +1959,11 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = Identifier;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:324:5: ( Letter ( Letter | JavaIDDigit )* )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:324:9: Letter ( Letter | JavaIDDigit )*
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:333:5: ( Letter ( Letter | JavaIDDigit )* )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:333:9: Letter ( Letter | JavaIDDigit )*
             {
             mLetter(); 
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:324:16: ( Letter | JavaIDDigit )*
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:333:16: ( Letter | JavaIDDigit )*
             loop25:
             do {
                 int alt25=2;
@@ -1945,7 +2010,7 @@ public class MandaraxLexer extends Lexer {
     // $ANTLR start "Letter"
     public final void mLetter() throws RecognitionException {
         try {
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:332:5: ( '\\u0024' | '\\u0041' .. '\\u005a' | '\\u005f' | '\\u0061' .. '\\u007a' | '\\u00c0' .. '\\u00d6' | '\\u00d8' .. '\\u00f6' | '\\u00f8' .. '\\u00ff' | '\\u0100' .. '\\u1fff' | '\\u3040' .. '\\u318f' | '\\u3300' .. '\\u337f' | '\\u3400' .. '\\u3d2d' | '\\u4e00' .. '\\u9fff' | '\\uf900' .. '\\ufaff' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:341:5: ( '\\u0024' | '\\u0041' .. '\\u005a' | '\\u005f' | '\\u0061' .. '\\u007a' | '\\u00c0' .. '\\u00d6' | '\\u00d8' .. '\\u00f6' | '\\u00f8' .. '\\u00ff' | '\\u0100' .. '\\u1fff' | '\\u3040' .. '\\u318f' | '\\u3300' .. '\\u337f' | '\\u3400' .. '\\u3d2d' | '\\u4e00' .. '\\u9fff' | '\\uf900' .. '\\ufaff' )
             // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:
             {
             if ( input.LA(1)=='$'||(input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z')||(input.LA(1)>='\u00C0' && input.LA(1)<='\u00D6')||(input.LA(1)>='\u00D8' && input.LA(1)<='\u00F6')||(input.LA(1)>='\u00F8' && input.LA(1)<='\u1FFF')||(input.LA(1)>='\u3040' && input.LA(1)<='\u318F')||(input.LA(1)>='\u3300' && input.LA(1)<='\u337F')||(input.LA(1)>='\u3400' && input.LA(1)<='\u3D2D')||(input.LA(1)>='\u4E00' && input.LA(1)<='\u9FFF')||(input.LA(1)>='\uF900' && input.LA(1)<='\uFAFF') ) {
@@ -1969,7 +2034,7 @@ public class MandaraxLexer extends Lexer {
     // $ANTLR start "JavaIDDigit"
     public final void mJavaIDDigit() throws RecognitionException {
         try {
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:349:5: ( '\\u0030' .. '\\u0039' | '\\u0660' .. '\\u0669' | '\\u06f0' .. '\\u06f9' | '\\u0966' .. '\\u096f' | '\\u09e6' .. '\\u09ef' | '\\u0a66' .. '\\u0a6f' | '\\u0ae6' .. '\\u0aef' | '\\u0b66' .. '\\u0b6f' | '\\u0be7' .. '\\u0bef' | '\\u0c66' .. '\\u0c6f' | '\\u0ce6' .. '\\u0cef' | '\\u0d66' .. '\\u0d6f' | '\\u0e50' .. '\\u0e59' | '\\u0ed0' .. '\\u0ed9' | '\\u1040' .. '\\u1049' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:358:5: ( '\\u0030' .. '\\u0039' | '\\u0660' .. '\\u0669' | '\\u06f0' .. '\\u06f9' | '\\u0966' .. '\\u096f' | '\\u09e6' .. '\\u09ef' | '\\u0a66' .. '\\u0a6f' | '\\u0ae6' .. '\\u0aef' | '\\u0b66' .. '\\u0b6f' | '\\u0be7' .. '\\u0bef' | '\\u0c66' .. '\\u0c6f' | '\\u0ce6' .. '\\u0cef' | '\\u0d66' .. '\\u0d6f' | '\\u0e50' .. '\\u0e59' | '\\u0ed0' .. '\\u0ed9' | '\\u1040' .. '\\u1049' )
             // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:
             {
             if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='\u0660' && input.LA(1)<='\u0669')||(input.LA(1)>='\u06F0' && input.LA(1)<='\u06F9')||(input.LA(1)>='\u0966' && input.LA(1)<='\u096F')||(input.LA(1)>='\u09E6' && input.LA(1)<='\u09EF')||(input.LA(1)>='\u0A66' && input.LA(1)<='\u0A6F')||(input.LA(1)>='\u0AE6' && input.LA(1)<='\u0AEF')||(input.LA(1)>='\u0B66' && input.LA(1)<='\u0B6F')||(input.LA(1)>='\u0BE7' && input.LA(1)<='\u0BEF')||(input.LA(1)>='\u0C66' && input.LA(1)<='\u0C6F')||(input.LA(1)>='\u0CE6' && input.LA(1)<='\u0CEF')||(input.LA(1)>='\u0D66' && input.LA(1)<='\u0D6F')||(input.LA(1)>='\u0E50' && input.LA(1)<='\u0E59')||(input.LA(1)>='\u0ED0' && input.LA(1)<='\u0ED9')||(input.LA(1)>='\u1040' && input.LA(1)<='\u1049') ) {
@@ -1995,8 +2060,8 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:366:5: ( ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' ) )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:366:8: ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:375:5: ( ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' ) )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:375:8: ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' )
             {
             if ( (input.LA(1)>='\t' && input.LA(1)<='\n')||(input.LA(1)>='\f' && input.LA(1)<='\r')||input.LA(1)==' ' ) {
                 input.consume();
@@ -2024,12 +2089,12 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:370:5: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:370:9: '/*' ( options {greedy=false; } : . )* '*/'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:379:5: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:379:9: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:370:14: ( options {greedy=false; } : . )*
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:379:14: ( options {greedy=false; } : . )*
             loop26:
             do {
                 int alt26=2;
@@ -2054,7 +2119,7 @@ public class MandaraxLexer extends Lexer {
 
                 switch (alt26) {
             	case 1 :
-            	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:370:42: .
+            	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:379:42: .
             	    {
             	    matchAny(); 
 
@@ -2085,12 +2150,12 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = LINE_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:374:5: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:374:7: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:383:5: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:383:7: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
             {
             match("//"); 
 
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:374:12: (~ ( '\\n' | '\\r' ) )*
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:383:12: (~ ( '\\n' | '\\r' ) )*
             loop27:
             do {
                 int alt27=2;
@@ -2103,7 +2168,7 @@ public class MandaraxLexer extends Lexer {
 
                 switch (alt27) {
             	case 1 :
-            	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:374:12: ~ ( '\\n' | '\\r' )
+            	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:383:12: ~ ( '\\n' | '\\r' )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -2123,7 +2188,7 @@ public class MandaraxLexer extends Lexer {
                 }
             } while (true);
 
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:374:26: ( '\\r' )?
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:383:26: ( '\\r' )?
             int alt28=2;
             int LA28_0 = input.LA(1);
 
@@ -2132,7 +2197,7 @@ public class MandaraxLexer extends Lexer {
             }
             switch (alt28) {
                 case 1 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:374:26: '\\r'
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:383:26: '\\r'
                     {
                     match('\r'); 
 
@@ -2155,8 +2220,8 @@ public class MandaraxLexer extends Lexer {
     // $ANTLR end "LINE_COMMENT"
 
     public void mTokens() throws RecognitionException {
-        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:8: ( T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | HexLiteral | DecimalLiteral | OctalLiteral | FloatingPointLiteral | CharacterLiteral | StringLiteral | Identifier | WS | COMMENT | LINE_COMMENT )
-        int alt29=47;
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:8: ( T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | HexLiteral | DecimalLiteral | OctalLiteral | FloatingPointLiteral | CharacterLiteral | StringLiteral | Identifier | WS | COMMENT | LINE_COMMENT )
+        int alt29=50;
         alt29 = dfa29.predict(input);
         switch (alt29) {
             case 1 :
@@ -2419,70 +2484,91 @@ public class MandaraxLexer extends Lexer {
                 }
                 break;
             case 38 :
-                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:232: HexLiteral
+                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:232: T__60
+                {
+                mT__60(); 
+
+                }
+                break;
+            case 39 :
+                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:238: T__61
+                {
+                mT__61(); 
+
+                }
+                break;
+            case 40 :
+                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:244: T__62
+                {
+                mT__62(); 
+
+                }
+                break;
+            case 41 :
+                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:250: HexLiteral
                 {
                 mHexLiteral(); 
 
                 }
                 break;
-            case 39 :
-                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:243: DecimalLiteral
+            case 42 :
+                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:261: DecimalLiteral
                 {
                 mDecimalLiteral(); 
 
                 }
                 break;
-            case 40 :
-                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:258: OctalLiteral
+            case 43 :
+                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:276: OctalLiteral
                 {
                 mOctalLiteral(); 
 
                 }
                 break;
-            case 41 :
-                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:271: FloatingPointLiteral
+            case 44 :
+                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:289: FloatingPointLiteral
                 {
                 mFloatingPointLiteral(); 
 
                 }
                 break;
-            case 42 :
-                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:292: CharacterLiteral
+            case 45 :
+                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:310: CharacterLiteral
                 {
                 mCharacterLiteral(); 
 
                 }
                 break;
-            case 43 :
-                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:309: StringLiteral
+            case 46 :
+                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:327: StringLiteral
                 {
                 mStringLiteral(); 
 
                 }
                 break;
-            case 44 :
-                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:323: Identifier
+            case 47 :
+                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:341: Identifier
                 {
                 mIdentifier(); 
 
                 }
                 break;
-            case 45 :
-                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:334: WS
+            case 48 :
+                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:352: WS
                 {
                 mWS(); 
 
                 }
                 break;
-            case 46 :
-                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:337: COMMENT
+            case 49 :
+                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:355: COMMENT
                 {
                 mCOMMENT(); 
 
                 }
                 break;
-            case 47 :
-                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:345: LINE_COMMENT
+            case 50 :
+                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:363: LINE_COMMENT
                 {
                 mLINE_COMMENT(); 
 
@@ -2505,12 +2591,12 @@ public class MandaraxLexer extends Lexer {
     static final String DFA18_maxS =
         "\1\71\1\146\4\uffff";
     static final String DFA18_acceptS =
-        "\2\uffff\1\2\1\3\1\4\1\1";
+        "\2\uffff\1\2\1\4\1\3\1\1";
     static final String DFA18_specialS =
         "\6\uffff}>";
     static final String[] DFA18_transitionS = {
             "\1\2\1\uffff\12\1",
-            "\1\5\1\uffff\12\1\12\uffff\1\4\1\3\1\4\35\uffff\1\4\1\3\1\4",
+            "\1\5\1\uffff\12\1\12\uffff\1\3\1\4\1\3\35\uffff\1\3\1\4\1\3",
             "",
             "",
             "",
@@ -2547,197 +2633,219 @@ public class MandaraxLexer extends Lexer {
             this.transition = DFA18_transition;
         }
         public String getDescription() {
-            return "282:1: FloatingPointLiteral : ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( Exponent )? ( FloatTypeSuffix )? | '.' ( '0' .. '9' )+ ( Exponent )? ( FloatTypeSuffix )? | ( '0' .. '9' )+ Exponent ( FloatTypeSuffix )? | ( '0' .. '9' )+ FloatTypeSuffix );";
+            return "291:1: FloatingPointLiteral : ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( Exponent )? ( FloatTypeSuffix )? | '.' ( '0' .. '9' )+ ( Exponent )? ( FloatTypeSuffix )? | ( '0' .. '9' )+ Exponent ( FloatTypeSuffix )? | ( '0' .. '9' )+ FloatTypeSuffix );";
         }
     }
     static final String DFA29_eotS =
-        "\3\uffff\1\46\7\43\1\uffff\1\43\1\62\10\uffff\1\64\1\66\1\70\3\uffff"+
-        "\1\73\2\uffff\2\76\6\uffff\12\43\14\uffff\1\113\1\uffff\1\76\4\43"+
-        "\1\120\6\43\1\uffff\1\43\1\130\1\131\1\43\1\uffff\1\43\1\134\3\43"+
-        "\1\140\1\43\2\uffff\1\142\1\43\1\uffff\1\144\1\145\1\43\1\uffff"+
-        "\1\43\1\uffff\1\43\2\uffff\1\151\1\152\1\43\2\uffff\2\43\1\156\1"+
-        "\uffff";
+        "\1\uffff\2\44\1\53\4\uffff\5\44\1\uffff\1\44\1\65\10\uffff\1\67"+
+        "\1\71\1\73\2\uffff\1\76\2\uffff\2\101\4\uffff\4\44\2\uffff\10\44"+
+        "\14\uffff\1\120\1\uffff\1\101\1\44\1\122\13\44\1\uffff\1\44\1\uffff"+
+        "\4\44\1\143\1\144\1\145\3\44\1\151\3\44\1\155\1\44\3\uffff\1\157"+
+        "\1\160\1\44\1\uffff\1\162\1\44\1\164\1\uffff\1\44\2\uffff\1\166"+
+        "\1\uffff\1\44\1\uffff\1\170\1\uffff\1\44\1\uffff\1\44\1\173\1\uffff";
     static final String DFA29_eofS =
-        "\157\uffff";
+        "\174\uffff";
     static final String DFA29_minS =
-        "\1\11\2\uffff\1\60\1\157\2\150\1\156\1\157\1\141\1\157\1\uffff\1"+
-        "\162\1\75\10\uffff\3\75\3\uffff\1\52\2\uffff\2\56\6\uffff\1\157"+
-        "\1\164\1\141\1\157\1\163\1\156\1\157\1\154\2\165\14\uffff\1\56\1"+
-        "\uffff\1\56\1\154\1\145\2\162\1\44\1\164\1\147\1\141\1\163\1\142"+
-        "\1\145\1\uffff\1\145\2\44\1\164\1\uffff\1\141\1\44\1\164\1\145\1"+
-        "\154\1\44\1\141\2\uffff\1\44\1\156\1\uffff\2\44\1\145\1\uffff\1"+
-        "\156\1\uffff\1\143\2\uffff\2\44\1\145\2\uffff\1\157\1\146\1\44\1"+
-        "\uffff";
+        "\1\11\1\155\1\150\1\60\4\uffff\1\157\1\150\1\157\1\141\1\157\1\uffff"+
+        "\1\162\1\75\10\uffff\3\75\2\uffff\1\52\2\uffff\2\56\4\uffff\1\160"+
+        "\1\163\1\141\1\157\2\uffff\1\157\1\164\1\141\1\156\1\157\1\154\2"+
+        "\165\14\uffff\1\56\1\uffff\1\56\1\157\1\44\2\164\1\162\1\154\1\145"+
+        "\1\162\1\147\1\141\1\163\1\142\1\145\1\uffff\1\162\1\uffff\1\141"+
+        "\1\151\1\164\1\145\3\44\1\164\1\145\1\154\1\44\1\164\1\156\1\143"+
+        "\1\44\1\141\3\uffff\2\44\1\145\1\uffff\1\44\1\143\1\44\1\uffff\1"+
+        "\156\2\uffff\1\44\1\uffff\1\145\1\uffff\1\44\1\uffff\1\157\1\uffff"+
+        "\1\146\1\44\1\uffff";
     static final String DFA29_maxS =
-        "\1\ufaff\2\uffff\1\71\1\171\2\150\1\156\1\157\1\154\1\157\1\uffff"+
-        "\1\162\1\75\10\uffff\3\75\3\uffff\1\57\2\uffff\1\170\1\146\6\uffff"+
-        "\1\157\1\164\1\141\1\157\1\164\1\156\1\157\1\154\2\165\14\uffff"+
-        "\1\146\1\uffff\1\146\1\154\1\145\2\162\1\ufaff\1\164\1\147\1\141"+
-        "\1\163\1\142\1\145\1\uffff\1\145\2\ufaff\1\164\1\uffff\1\141\1\ufaff"+
-        "\1\164\1\145\1\154\1\ufaff\1\141\2\uffff\1\ufaff\1\156\1\uffff\2"+
-        "\ufaff\1\145\1\uffff\1\156\1\uffff\1\143\2\uffff\2\ufaff\1\145\2"+
-        "\uffff\1\157\1\146\1\ufaff\1\uffff";
+        "\1\ufaff\1\156\1\164\1\71\4\uffff\1\171\1\150\1\157\1\154\1\157"+
+        "\1\uffff\1\162\1\75\10\uffff\3\75\2\uffff\1\57\2\uffff\1\170\1\146"+
+        "\4\uffff\1\160\1\164\1\141\1\157\2\uffff\1\157\1\164\1\141\1\156"+
+        "\1\157\1\154\2\165\14\uffff\1\146\1\uffff\1\146\1\157\1\ufaff\2"+
+        "\164\1\162\1\154\1\145\1\162\1\147\1\141\1\163\1\142\1\145\1\uffff"+
+        "\1\162\1\uffff\1\141\1\151\1\164\1\145\3\ufaff\1\164\1\145\1\154"+
+        "\1\ufaff\1\164\1\156\1\143\1\ufaff\1\141\3\uffff\2\ufaff\1\145\1"+
+        "\uffff\1\ufaff\1\143\1\ufaff\1\uffff\1\156\2\uffff\1\ufaff\1\uffff"+
+        "\1\145\1\uffff\1\ufaff\1\uffff\1\157\1\uffff\1\146\1\ufaff\1\uffff";
     static final String DFA29_acceptS =
-        "\1\uffff\1\1\1\2\10\uffff\1\14\2\uffff\1\20\1\21\1\22\1\23\1\24"+
-        "\1\25\1\26\1\27\3\uffff\1\37\1\40\1\41\1\uffff\1\43\1\44\2\uffff"+
-        "\1\52\1\53\1\54\1\55\1\51\1\3\12\uffff\1\30\1\17\1\31\1\45\1\33"+
-        "\1\35\1\34\1\36\1\56\1\57\1\42\1\46\1\uffff\1\47\14\uffff\1\50\4"+
-        "\uffff\1\10\7\uffff\1\6\1\5\2\uffff\1\11\3\uffff\1\15\1\uffff\1"+
-        "\7\1\uffff\1\12\1\16\3\uffff\1\13\1\4\3\uffff\1\32";
+        "\4\uffff\1\4\1\5\1\6\1\7\5\uffff\1\20\2\uffff\1\24\1\25\1\26\1\27"+
+        "\1\30\1\31\1\32\1\33\3\uffff\1\43\1\44\1\uffff\1\46\1\47\2\uffff"+
+        "\1\55\1\56\1\57\1\60\4\uffff\1\54\1\3\10\uffff\1\34\1\23\1\35\1"+
+        "\50\1\37\1\41\1\40\1\42\1\61\1\62\1\45\1\51\1\uffff\1\52\16\uffff"+
+        "\1\53\1\uffff\1\14\20\uffff\1\12\1\11\1\15\3\uffff\1\21\3\uffff"+
+        "\1\13\1\uffff\1\16\1\22\1\uffff\1\1\1\uffff\1\2\1\uffff\1\17\1\uffff"+
+        "\1\10\2\uffff\1\36";
     static final String DFA29_specialS =
-        "\157\uffff}>";
+        "\174\uffff}>";
     static final String[] DFA29_transitionS = {
-            "\2\44\1\uffff\2\44\22\uffff\1\44\1\26\1\42\1\uffff\1\43\1\35"+
-            "\1\25\1\41\1\20\1\21\1\33\1\31\1\13\1\32\1\3\1\34\1\37\11\40"+
-            "\1\23\1\uffff\1\27\1\15\1\30\1\22\1\uffff\32\43\1\1\1\uffff"+
-            "\1\2\1\uffff\1\43\1\uffff\1\43\1\4\1\5\1\12\1\43\1\11\2\43\1"+
-            "\7\2\43\1\10\6\43\1\6\1\14\6\43\1\16\1\24\1\17\1\36\101\uffff"+
-            "\27\43\1\uffff\37\43\1\uffff\u1f08\43\u1040\uffff\u0150\43\u0170"+
-            "\uffff\u0080\43\u0080\uffff\u092e\43\u10d2\uffff\u5200\43\u5900"+
-            "\uffff\u0200\43",
+            "\2\45\1\uffff\2\45\22\uffff\1\45\1\30\1\43\1\uffff\1\44\1\36"+
+            "\1\27\1\42\1\22\1\23\1\4\1\33\1\15\1\34\1\3\1\35\1\40\11\41"+
+            "\1\25\1\5\1\31\1\17\1\32\1\24\1\uffff\32\44\1\6\1\uffff\1\7"+
+            "\1\uffff\1\44\1\uffff\1\44\1\10\1\11\1\14\1\44\1\13\2\44\1\1"+
+            "\2\44\1\12\6\44\1\2\1\16\6\44\1\20\1\26\1\21\1\37\101\uffff"+
+            "\27\44\1\uffff\37\44\1\uffff\u1f08\44\u1040\uffff\u0150\44\u0170"+
+            "\uffff\u0080\44\u0080\uffff\u092e\44\u10d2\uffff\u5200\44\u5900"+
+            "\uffff\u0200\44",
+            "\1\46\1\47",
+            "\1\51\13\uffff\1\50",
+            "\12\52",
             "",
             "",
-            "\12\45",
-            "\1\47\11\uffff\1\50",
-            "\1\51",
-            "\1\52",
-            "\1\53",
-            "\1\54",
-            "\1\56\12\uffff\1\55",
+            "",
+            "",
+            "\1\54\11\uffff\1\55",
+            "\1\56",
             "\1\57",
-            "",
-            "\1\60",
-            "\1\61",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
+            "\1\61\12\uffff\1\60",
+            "\1\62",
             "",
             "\1\63",
-            "\1\65",
-            "\1\67",
-            "",
-            "",
-            "",
-            "\1\71\4\uffff\1\72",
-            "",
-            "",
-            "\1\45\1\uffff\10\75\2\45\12\uffff\3\45\21\uffff\1\74\13\uffff"+
-            "\3\45\21\uffff\1\74",
-            "\1\45\1\uffff\12\77\12\uffff\3\45\35\uffff\3\45",
+            "\1\64",
             "",
             "",
             "",
             "",
             "",
             "",
-            "\1\100",
-            "\1\101",
-            "\1\102",
+            "",
+            "",
+            "\1\66",
+            "\1\70",
+            "\1\72",
+            "",
+            "",
+            "\1\74\4\uffff\1\75",
+            "",
+            "",
+            "\1\52\1\uffff\10\100\2\52\12\uffff\3\52\21\uffff\1\77\13\uffff"+
+            "\3\52\21\uffff\1\77",
+            "\1\52\1\uffff\12\102\12\uffff\3\52\35\uffff\3\52",
+            "",
+            "",
+            "",
+            "",
             "\1\103",
             "\1\105\1\104",
             "\1\106",
             "\1\107",
+            "",
+            "",
             "\1\110",
             "\1\111",
             "\1\112",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "\1\45\1\uffff\10\75\2\45\12\uffff\3\45\35\uffff\3\45",
-            "",
-            "\1\45\1\uffff\12\77\12\uffff\3\45\35\uffff\3\45",
+            "\1\113",
             "\1\114",
             "\1\115",
             "\1\116",
             "\1\117",
-            "\1\43\13\uffff\12\43\7\uffff\32\43\4\uffff\1\43\1\uffff\32"+
-            "\43\105\uffff\27\43\1\uffff\37\43\1\uffff\u1f08\43\u1040\uffff"+
-            "\u0150\43\u0170\uffff\u0080\43\u0080\uffff\u092e\43\u10d2\uffff"+
-            "\u5200\43\u5900\uffff\u0200\43",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "\1\52\1\uffff\10\100\2\52\12\uffff\3\52\35\uffff\3\52",
+            "",
+            "\1\52\1\uffff\12\102\12\uffff\3\52\35\uffff\3\52",
             "\1\121",
-            "\1\122",
+            "\1\44\13\uffff\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32"+
+            "\44\105\uffff\27\44\1\uffff\37\44\1\uffff\u1f08\44\u1040\uffff"+
+            "\u0150\44\u0170\uffff\u0080\44\u0080\uffff\u092e\44\u10d2\uffff"+
+            "\u5200\44\u5900\uffff\u0200\44",
             "\1\123",
             "\1\124",
             "\1\125",
             "\1\126",
-            "",
             "\1\127",
-            "\1\43\13\uffff\12\43\7\uffff\32\43\4\uffff\1\43\1\uffff\32"+
-            "\43\105\uffff\27\43\1\uffff\37\43\1\uffff\u1f08\43\u1040\uffff"+
-            "\u0150\43\u0170\uffff\u0080\43\u0080\uffff\u092e\43\u10d2\uffff"+
-            "\u5200\43\u5900\uffff\u0200\43",
-            "\1\43\13\uffff\12\43\7\uffff\32\43\4\uffff\1\43\1\uffff\32"+
-            "\43\105\uffff\27\43\1\uffff\37\43\1\uffff\u1f08\43\u1040\uffff"+
-            "\u0150\43\u0170\uffff\u0080\43\u0080\uffff\u092e\43\u10d2\uffff"+
-            "\u5200\43\u5900\uffff\u0200\43",
+            "\1\130",
+            "\1\131",
             "\1\132",
-            "",
             "\1\133",
-            "\1\43\13\uffff\12\43\7\uffff\32\43\4\uffff\1\43\1\uffff\32"+
-            "\43\105\uffff\27\43\1\uffff\37\43\1\uffff\u1f08\43\u1040\uffff"+
-            "\u0150\43\u0170\uffff\u0080\43\u0080\uffff\u092e\43\u10d2\uffff"+
-            "\u5200\43\u5900\uffff\u0200\43",
+            "\1\134",
             "\1\135",
+            "",
             "\1\136",
+            "",
             "\1\137",
-            "\1\43\13\uffff\12\43\7\uffff\32\43\4\uffff\1\43\1\uffff\32"+
-            "\43\105\uffff\27\43\1\uffff\37\43\1\uffff\u1f08\43\u1040\uffff"+
-            "\u0150\43\u0170\uffff\u0080\43\u0080\uffff\u092e\43\u10d2\uffff"+
-            "\u5200\43\u5900\uffff\u0200\43",
+            "\1\140",
             "\1\141",
-            "",
-            "",
-            "\1\43\13\uffff\12\43\7\uffff\32\43\4\uffff\1\43\1\uffff\32"+
-            "\43\105\uffff\27\43\1\uffff\37\43\1\uffff\u1f08\43\u1040\uffff"+
-            "\u0150\43\u0170\uffff\u0080\43\u0080\uffff\u092e\43\u10d2\uffff"+
-            "\u5200\43\u5900\uffff\u0200\43",
-            "\1\143",
-            "",
-            "\1\43\13\uffff\12\43\7\uffff\32\43\4\uffff\1\43\1\uffff\32"+
-            "\43\105\uffff\27\43\1\uffff\37\43\1\uffff\u1f08\43\u1040\uffff"+
-            "\u0150\43\u0170\uffff\u0080\43\u0080\uffff\u092e\43\u10d2\uffff"+
-            "\u5200\43\u5900\uffff\u0200\43",
-            "\1\43\13\uffff\12\43\7\uffff\32\43\4\uffff\1\43\1\uffff\32"+
-            "\43\105\uffff\27\43\1\uffff\37\43\1\uffff\u1f08\43\u1040\uffff"+
-            "\u0150\43\u0170\uffff\u0080\43\u0080\uffff\u092e\43\u10d2\uffff"+
-            "\u5200\43\u5900\uffff\u0200\43",
+            "\1\142",
+            "\1\44\13\uffff\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32"+
+            "\44\105\uffff\27\44\1\uffff\37\44\1\uffff\u1f08\44\u1040\uffff"+
+            "\u0150\44\u0170\uffff\u0080\44\u0080\uffff\u092e\44\u10d2\uffff"+
+            "\u5200\44\u5900\uffff\u0200\44",
+            "\1\44\13\uffff\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32"+
+            "\44\105\uffff\27\44\1\uffff\37\44\1\uffff\u1f08\44\u1040\uffff"+
+            "\u0150\44\u0170\uffff\u0080\44\u0080\uffff\u092e\44\u10d2\uffff"+
+            "\u5200\44\u5900\uffff\u0200\44",
+            "\1\44\13\uffff\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32"+
+            "\44\105\uffff\27\44\1\uffff\37\44\1\uffff\u1f08\44\u1040\uffff"+
+            "\u0150\44\u0170\uffff\u0080\44\u0080\uffff\u092e\44\u10d2\uffff"+
+            "\u5200\44\u5900\uffff\u0200\44",
             "\1\146",
-            "",
             "\1\147",
-            "",
             "\1\150",
-            "",
-            "",
-            "\1\43\13\uffff\12\43\7\uffff\32\43\4\uffff\1\43\1\uffff\32"+
-            "\43\105\uffff\27\43\1\uffff\37\43\1\uffff\u1f08\43\u1040\uffff"+
-            "\u0150\43\u0170\uffff\u0080\43\u0080\uffff\u092e\43\u10d2\uffff"+
-            "\u5200\43\u5900\uffff\u0200\43",
-            "\1\43\13\uffff\12\43\7\uffff\32\43\4\uffff\1\43\1\uffff\32"+
-            "\43\105\uffff\27\43\1\uffff\37\43\1\uffff\u1f08\43\u1040\uffff"+
-            "\u0150\43\u0170\uffff\u0080\43\u0080\uffff\u092e\43\u10d2\uffff"+
-            "\u5200\43\u5900\uffff\u0200\43",
+            "\1\44\13\uffff\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32"+
+            "\44\105\uffff\27\44\1\uffff\37\44\1\uffff\u1f08\44\u1040\uffff"+
+            "\u0150\44\u0170\uffff\u0080\44\u0080\uffff\u092e\44\u10d2\uffff"+
+            "\u5200\44\u5900\uffff\u0200\44",
+            "\1\152",
             "\1\153",
-            "",
-            "",
             "\1\154",
-            "\1\155",
-            "\1\43\13\uffff\12\43\7\uffff\32\43\4\uffff\1\43\1\uffff\32"+
-            "\43\105\uffff\27\43\1\uffff\37\43\1\uffff\u1f08\43\u1040\uffff"+
-            "\u0150\43\u0170\uffff\u0080\43\u0080\uffff\u092e\43\u10d2\uffff"+
-            "\u5200\43\u5900\uffff\u0200\43",
+            "\1\44\13\uffff\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32"+
+            "\44\105\uffff\27\44\1\uffff\37\44\1\uffff\u1f08\44\u1040\uffff"+
+            "\u0150\44\u0170\uffff\u0080\44\u0080\uffff\u092e\44\u10d2\uffff"+
+            "\u5200\44\u5900\uffff\u0200\44",
+            "\1\156",
+            "",
+            "",
+            "",
+            "\1\44\13\uffff\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32"+
+            "\44\105\uffff\27\44\1\uffff\37\44\1\uffff\u1f08\44\u1040\uffff"+
+            "\u0150\44\u0170\uffff\u0080\44\u0080\uffff\u092e\44\u10d2\uffff"+
+            "\u5200\44\u5900\uffff\u0200\44",
+            "\1\44\13\uffff\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32"+
+            "\44\105\uffff\27\44\1\uffff\37\44\1\uffff\u1f08\44\u1040\uffff"+
+            "\u0150\44\u0170\uffff\u0080\44\u0080\uffff\u092e\44\u10d2\uffff"+
+            "\u5200\44\u5900\uffff\u0200\44",
+            "\1\161",
+            "",
+            "\1\44\13\uffff\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32"+
+            "\44\105\uffff\27\44\1\uffff\37\44\1\uffff\u1f08\44\u1040\uffff"+
+            "\u0150\44\u0170\uffff\u0080\44\u0080\uffff\u092e\44\u10d2\uffff"+
+            "\u5200\44\u5900\uffff\u0200\44",
+            "\1\163",
+            "\1\44\13\uffff\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32"+
+            "\44\105\uffff\27\44\1\uffff\37\44\1\uffff\u1f08\44\u1040\uffff"+
+            "\u0150\44\u0170\uffff\u0080\44\u0080\uffff\u092e\44\u10d2\uffff"+
+            "\u5200\44\u5900\uffff\u0200\44",
+            "",
+            "\1\165",
+            "",
+            "",
+            "\1\44\13\uffff\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32"+
+            "\44\105\uffff\27\44\1\uffff\37\44\1\uffff\u1f08\44\u1040\uffff"+
+            "\u0150\44\u0170\uffff\u0080\44\u0080\uffff\u092e\44\u10d2\uffff"+
+            "\u5200\44\u5900\uffff\u0200\44",
+            "",
+            "\1\167",
+            "",
+            "\1\44\13\uffff\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32"+
+            "\44\105\uffff\27\44\1\uffff\37\44\1\uffff\u1f08\44\u1040\uffff"+
+            "\u0150\44\u0170\uffff\u0080\44\u0080\uffff\u092e\44\u10d2\uffff"+
+            "\u5200\44\u5900\uffff\u0200\44",
+            "",
+            "\1\171",
+            "",
+            "\1\172",
+            "\1\44\13\uffff\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32"+
+            "\44\105\uffff\27\44\1\uffff\37\44\1\uffff\u1f08\44\u1040\uffff"+
+            "\u0150\44\u0170\uffff\u0080\44\u0080\uffff\u092e\44\u10d2\uffff"+
+            "\u5200\44\u5900\uffff\u0200\44",
             ""
     };
 
@@ -2771,7 +2879,7 @@ public class MandaraxLexer extends Lexer {
             this.transition = DFA29_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | HexLiteral | DecimalLiteral | OctalLiteral | FloatingPointLiteral | CharacterLiteral | StringLiteral | Identifier | WS | COMMENT | LINE_COMMENT );";
+            return "1:1: Tokens : ( T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | HexLiteral | DecimalLiteral | OctalLiteral | FloatingPointLiteral | CharacterLiteral | StringLiteral | Identifier | WS | COMMENT | LINE_COMMENT );";
         }
     }
  

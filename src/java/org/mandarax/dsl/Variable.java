@@ -32,7 +32,7 @@ public class Variable extends Expression {
 		return "Variable("+name+')';
 	}
 	
-	public void accept(Visitor visitor) {
+	public void accept(ExpressionVisitor visitor) {
 		visitor.visit(this);
 		visitor.endVisit(this);
 	}

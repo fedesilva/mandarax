@@ -28,7 +28,7 @@ public class IntLiteral extends Literal<Integer> {
 		return value;
 	}
 
-	public void accept(Visitor visitor) {
+	public void accept(ExpressionVisitor visitor) {
 		visitor.visit(this);
 		visitor.endVisit(this);
 	}

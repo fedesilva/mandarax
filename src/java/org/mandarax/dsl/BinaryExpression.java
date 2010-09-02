@@ -37,7 +37,7 @@ public class BinaryExpression extends Expression {
 		return right;
 	}
 	
-	public void accept(Visitor visitor) {
+	public void accept(ExpressionVisitor visitor) {
 		if (visitor.visit(this)) {
 			left.accept(visitor);
 			right.accept(visitor);

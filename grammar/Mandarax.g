@@ -60,6 +60,11 @@ package org.mandarax.dsl.parser;
   }
 }
 
+importDeclaration returns [ImportDeclaration value]
+    :   i='import' (s = 'static'?) (n=qualifiedName2) (w='.' '*')? ';' {$value = new ImportDeclaration(pos(i),context,n.value,s!=null,w!=null);} 
+    ;
+
+
 // starting point for parsing java style expressions
 // use the expression() method in parser to access it
 
@@ -102,6 +107,10 @@ qualifiedNameList
 
 qualifiedName returns [Expression value]
 	:	i = Identifier {$value=new Variable(pos(i),context,i.getText());} ('.' j = Identifier {$value=new MemberAccess(pos(i),context,$value,j.getText());})*
+	;
+	
+qualifiedName2 returns [String value]
+	:	i = Identifier {$value=i.getText();} ('.' j = Identifier {$value=$value+'.'+j.getText();})*
 	;
     
 literal returns [Expression value]

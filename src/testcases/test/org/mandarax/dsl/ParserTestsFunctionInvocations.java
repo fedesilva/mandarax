@@ -13,9 +13,9 @@ package test.org.mandarax.dsl;
 
 
 import static org.junit.Assert.*;
-import org.mandarax.dsl.parser.ExpressionReader;
 import org.junit.Test;
 import org.mandarax.dsl.*;
+import static test.org.mandarax.dsl.TestUtils.*;
 
 /**
  * Test cases for function invocations.
@@ -26,7 +26,7 @@ public class ParserTestsFunctionInvocations extends AbstractTests {
 	
 	@Test
 	public void testFunctionInvocation1() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("f(x)");
+		Expression expression = readExpression("f(x)");
 		print(expression);
 		assertTrue(expression instanceof FunctionInvocation);
 		FunctionInvocation fi = (FunctionInvocation)expression;
@@ -37,7 +37,7 @@ public class ParserTestsFunctionInvocations extends AbstractTests {
 	
 	@Test
 	public void testFunctionInvocation2() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("f(x,y)");
+		Expression expression = readExpression("f(x,y)");
 		print(expression);
 		assertTrue(expression instanceof FunctionInvocation);
 		FunctionInvocation fi = (FunctionInvocation)expression;
@@ -49,7 +49,7 @@ public class ParserTestsFunctionInvocations extends AbstractTests {
 	
 	@Test
 	public void testFunctionInvocation3() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("function1(x,function2(y))");
+		Expression expression = readExpression("function1(x,function2(y))");
 		print(expression);
 		assertTrue(expression instanceof FunctionInvocation);
 		FunctionInvocation fi = (FunctionInvocation)expression;

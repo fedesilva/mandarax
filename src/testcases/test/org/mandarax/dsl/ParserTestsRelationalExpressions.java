@@ -11,11 +11,11 @@
 
 package test.org.mandarax.dsl;
 
-
 import static org.junit.Assert.*;
-import org.mandarax.dsl.parser.ExpressionReader;
+import org.mandarax.dsl.parser.ScriptReader;
 import org.junit.Test;
 import org.mandarax.dsl.*;
+import static test.org.mandarax.dsl.TestUtils.*;
 
 /**
  * Test cases for relational expressions.
@@ -36,35 +36,35 @@ public class ParserTestsRelationalExpressions extends AbstractTests{
 	
 	@Test
 	public void testEQ() throws Exception {
-		Expression x = new ExpressionReader().readExpression("x==2");
+		Expression x = readExpression("x==2");
 		print(x);
 		testVarOpInt(x,"x",BinOp.EQ,2);
 	}
 	
 	@Test
 	public void testNEQ() throws Exception {
-		Expression x = new ExpressionReader().readExpression("x!=2");
+		Expression x = readExpression("x!=2");
 		print(x);
 		testVarOpInt(x,"x",BinOp.NEQ,2);
 	}
 	
 	@Test
 	public void testLT() throws Exception {
-		Expression x = new ExpressionReader().readExpression("x<2");
+		Expression x = readExpression("x<2");
 		print(x);
 		testVarOpInt(x,"x",BinOp.LT,2);
 	}
 	
 	@Test
 	public void testGT() throws Exception {
-		Expression x = new ExpressionReader().readExpression("x>2");
+		Expression x = readExpression("x>2");
 		print(x);
 		testVarOpInt(x,"x",BinOp.GT,2);
 	}
 	
 	@Test
 	public void testLTE() throws Exception {
-		Expression x = new ExpressionReader().readExpression("x<=2");
+		Expression x = readExpression("x<=2");
 		print(x);
 		testVarOpInt(x,"x",BinOp.LTE,2);
 	}
@@ -72,7 +72,7 @@ public class ParserTestsRelationalExpressions extends AbstractTests{
 	
 	@Test
 	public void testGTE() throws Exception {
-		Expression x = new ExpressionReader().readExpression("x>=2");
+		Expression x = readExpression("x>=2");
 		print(x);
 		testVarOpInt(x,"x",BinOp.GTE,2);
 	}

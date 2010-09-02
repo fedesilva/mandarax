@@ -12,9 +12,9 @@
 package test.org.mandarax.dsl;
 
 import static org.junit.Assert.*;
-import org.mandarax.dsl.parser.ExpressionReader;
 import org.junit.Test;
 import org.mandarax.dsl.*;
+import static test.org.mandarax.dsl.TestUtils.*;
 
 /**
  * Test cases for misc expressions.
@@ -24,7 +24,7 @@ public class ParserTestsMiscExpressions extends AbstractTests{
 	
 	@Test
 	public void testCastExpression() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("((String)x).length");
+		Expression expression = readExpression("((String)x).length");
 		print(expression);
 		assertTrue(expression instanceof MemberAccess);
 		MemberAccess x = (MemberAccess)expression;
@@ -38,7 +38,7 @@ public class ParserTestsMiscExpressions extends AbstractTests{
 	
 	@Test
 	public void testInstanceOfExpression() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("!(x instanceof String)");
+		Expression expression = readExpression("!(x instanceof String)");
 		print(expression);
 		assertTrue(expression instanceof UnaryExpression);
 		UnaryExpression x = (UnaryExpression)expression;

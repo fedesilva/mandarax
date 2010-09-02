@@ -20,7 +20,7 @@ import org.mandarax.dsl.*;
  * @author jens dietrich
  */
 
-public class ExpressionStructurePrinter implements Visitor {
+public class ExpressionStructurePrinter implements ExpressionVisitor {
 
 	private PrintStream out = System.out;
 	private int indent = 0; 

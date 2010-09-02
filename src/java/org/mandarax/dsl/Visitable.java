@@ -17,5 +17,5 @@ package org.mandarax.dsl;
  */
 
 public interface Visitable {
-	public void accept(Visitor visitor);
+	public void accept(ExpressionVisitor visitor);
 }

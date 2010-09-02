@@ -48,7 +48,7 @@ public class ConditionalExpression extends Expression {
 		this.ifFalse = ifFalse;
 	}
 	
-	public void accept(Visitor visitor) {
+	public void accept(ExpressionVisitor visitor) {
 		if (visitor.visit(this)) {
 			condition.accept(visitor);
 			ifTrue.accept(visitor);

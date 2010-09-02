@@ -15,7 +15,7 @@ package org.mandarax.dsl;
  * @author jens dietrich
  */
 
-public interface Visitor {
+public interface ExpressionVisitor {
 	public boolean visit(BinaryExpression x);
 	public boolean visit(BooleanLiteral x);
 	public boolean visit(CastExpression x);

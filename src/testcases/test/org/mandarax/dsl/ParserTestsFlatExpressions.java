@@ -11,11 +11,10 @@
 
 package test.org.mandarax.dsl;
 
-
 import static org.junit.Assert.*;
-import org.mandarax.dsl.parser.ExpressionReader;
 import org.junit.Test;
 import org.mandarax.dsl.*;
+import static test.org.mandarax.dsl.TestUtils.*;
 
 /**
  * Test cases for flat expressions (variables and literals).
@@ -26,7 +25,7 @@ public class ParserTestsFlatExpressions extends AbstractTests {
 	
 	@Test
 	public void testStringLiteral1() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("\"test\"");
+		Expression expression = readExpression("\"test\"");
 		print(expression);
 		assertTrue(expression instanceof StringLiteral);
 		StringLiteral x = (StringLiteral)expression;
@@ -36,7 +35,7 @@ public class ParserTestsFlatExpressions extends AbstractTests {
 	
 	@Test
 	public void testIntLiteralDec1() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("42");
+		Expression expression = readExpression("42");
 		print(expression);
 		assertTrue(expression instanceof IntLiteral);
 		IntLiteral x = (IntLiteral)expression;
@@ -44,7 +43,7 @@ public class ParserTestsFlatExpressions extends AbstractTests {
 	}
 	@Test
 	public void testIntLiteralHex1() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("0xB");
+		Expression expression = readExpression("0xB");
 		print(expression);
 		assertTrue(expression instanceof IntLiteral);
 		IntLiteral x = (IntLiteral)expression;
@@ -54,7 +53,7 @@ public class ParserTestsFlatExpressions extends AbstractTests {
 	
 	@Test
 	public void testIntLiteralOct1() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("012");
+		Expression expression = readExpression("012");
 		print(expression);
 		assertTrue(expression instanceof IntLiteral);
 		IntLiteral x = (IntLiteral)expression;
@@ -63,7 +62,7 @@ public class ParserTestsFlatExpressions extends AbstractTests {
 	
 	@Test
 	public void testBooleanLiteral1() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("true");
+		Expression expression = readExpression("true");
 		print(expression);
 		assertTrue(expression instanceof BooleanLiteral);
 		BooleanLiteral x = (BooleanLiteral)expression;
@@ -72,7 +71,7 @@ public class ParserTestsFlatExpressions extends AbstractTests {
 	
 	@Test
 	public void testBooleanLiteral2() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("false");
+		Expression expression = readExpression("false");
 		print(expression);
 		assertTrue(expression instanceof BooleanLiteral);
 		BooleanLiteral x = (BooleanLiteral)expression;
@@ -81,7 +80,7 @@ public class ParserTestsFlatExpressions extends AbstractTests {
 	
 	@Test
 	public void testVariable1() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("myvar");
+		Expression expression = readExpression("myvar");
 		print(expression);
 		assertTrue(expression instanceof Variable);
 		Variable x = (Variable)expression;

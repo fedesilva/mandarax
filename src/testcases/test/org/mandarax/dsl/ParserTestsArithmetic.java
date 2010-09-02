@@ -12,9 +12,9 @@
 package test.org.mandarax.dsl;
 
 import static org.junit.Assert.*;
-import org.mandarax.dsl.parser.ExpressionReader;
 import org.junit.Test;
 import org.mandarax.dsl.*;
+import static test.org.mandarax.dsl.TestUtils.*;
 
 /**
  * Test cases for arithmetic expressions.
@@ -24,7 +24,7 @@ public class ParserTestsArithmetic extends AbstractTests {
 	
 	@Test
 	public void testUnaryExpression1() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("-42");
+		Expression expression = readExpression("-42");
 		print(expression);
 		assertTrue(expression instanceof UnaryExpression);
 		UnaryExpression x = (UnaryExpression)expression;
@@ -35,7 +35,7 @@ public class ParserTestsArithmetic extends AbstractTests {
 	
 	@Test
 	public void testUnaryExpression2() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("~42");
+		Expression expression = readExpression("~42");
 		print(expression);
 		assertTrue(expression instanceof UnaryExpression);
 		UnaryExpression x = (UnaryExpression)expression;
@@ -46,7 +46,7 @@ public class ParserTestsArithmetic extends AbstractTests {
 	
 	@Test
 	public void testUnaryExpression3() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("!42");
+		Expression expression = readExpression("!42");
 		print(expression);
 		assertTrue(expression instanceof UnaryExpression);
 		UnaryExpression x = (UnaryExpression)expression;
@@ -57,7 +57,7 @@ public class ParserTestsArithmetic extends AbstractTests {
 	
 	@Test
 	public void testArithmeticOperators1() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("x+42");
+		Expression expression = readExpression("x+42");
 		print(expression);
 		assertTrue(expression instanceof BinaryExpression);
 		BinaryExpression x = (BinaryExpression)expression;
@@ -69,7 +69,7 @@ public class ParserTestsArithmetic extends AbstractTests {
 	
 	@Test
 	public void testArithmeticOperators2() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("x*42");
+		Expression expression = readExpression("x*42");
 		print(expression);
 		assertTrue(expression instanceof BinaryExpression);
 		BinaryExpression x = (BinaryExpression)expression;
@@ -81,7 +81,7 @@ public class ParserTestsArithmetic extends AbstractTests {
 	
 	@Test
 	public void testArithmeticOperators3() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("x%42");
+		Expression expression = readExpression("x%42");
 		print(expression);
 		assertTrue(expression instanceof BinaryExpression);
 		BinaryExpression x = (BinaryExpression)expression;
@@ -93,7 +93,7 @@ public class ParserTestsArithmetic extends AbstractTests {
 	
 	@Test
 	public void testArithmeticOperators4() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("x-42");
+		Expression expression = readExpression("x-42");
 		print(expression);
 		assertTrue(expression instanceof BinaryExpression);
 		BinaryExpression x = (BinaryExpression)expression;
@@ -105,7 +105,7 @@ public class ParserTestsArithmetic extends AbstractTests {
 	
 	@Test
 	public void testArithmeticOperators5() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("x/42");
+		Expression expression = readExpression("x/42");
 		print(expression);
 		assertTrue(expression instanceof BinaryExpression);
 		BinaryExpression x = (BinaryExpression)expression;
@@ -117,7 +117,7 @@ public class ParserTestsArithmetic extends AbstractTests {
 	
 	@Test
 	public void testArithmeticOperators6() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("x >> 42");
+		Expression expression = readExpression("x >> 42");
 		print(expression);
 		assertTrue(expression instanceof BinaryExpression);
 		BinaryExpression x = (BinaryExpression)expression;
@@ -129,7 +129,7 @@ public class ParserTestsArithmetic extends AbstractTests {
 	
 	@Test
 	public void testArithmeticOperators7() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("x >>> 42");
+		Expression expression = readExpression("x >>> 42");
 		print(expression);
 		assertTrue(expression instanceof BinaryExpression);
 		BinaryExpression x = (BinaryExpression)expression;
@@ -141,7 +141,7 @@ public class ParserTestsArithmetic extends AbstractTests {
 	
 	@Test
 	public void testArithmeticOperators8() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("x << 42");
+		Expression expression = readExpression("x << 42");
 		print(expression);
 		assertTrue(expression instanceof BinaryExpression);
 		BinaryExpression x = (BinaryExpression)expression;
@@ -154,7 +154,7 @@ public class ParserTestsArithmetic extends AbstractTests {
 	
 	@Test
 	public void testArithmeticOperators9() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("x+y-z");
+		Expression expression = readExpression("x+y-z");
 		print(expression);
 		assertTrue(expression instanceof BinaryExpression);
 		BinaryExpression x = (BinaryExpression)expression;
@@ -177,7 +177,7 @@ public class ParserTestsArithmetic extends AbstractTests {
 	
 	@Test
 	public void testArithmeticOperators10() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("x*y/z");
+		Expression expression = readExpression("x*y/z");
 		print(expression);
 		assertTrue(expression instanceof BinaryExpression);
 		BinaryExpression x = (BinaryExpression)expression;
@@ -201,7 +201,7 @@ public class ParserTestsArithmetic extends AbstractTests {
 	@Test
 	// precedense rules
 	public void testArithmeticOperators11() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("x*y+z");
+		Expression expression = readExpression("x*y+z");
 		print(expression);
 		assertTrue(expression instanceof BinaryExpression);
 		BinaryExpression x = (BinaryExpression)expression;
@@ -225,7 +225,7 @@ public class ParserTestsArithmetic extends AbstractTests {
 	@Test
 	// precedense rules
 	public void testArithmeticOperators12() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("x+y*z");
+		Expression expression = readExpression("x+y*z");
 		print(expression);
 		assertTrue(expression instanceof BinaryExpression);
 		BinaryExpression x = (BinaryExpression)expression;
@@ -249,7 +249,7 @@ public class ParserTestsArithmetic extends AbstractTests {
 	@Test
 	// override precedense rules with brackets
 	public void testArithmeticOperators13() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("(x+y)*z");
+		Expression expression = readExpression("(x+y)*z");
 		print(expression);
 		assertTrue(expression instanceof BinaryExpression);
 		BinaryExpression x = (BinaryExpression)expression;

@@ -11,12 +11,10 @@
 
 package test.org.mandarax.dsl;
 
-
-
 import static org.junit.Assert.*;
-import org.mandarax.dsl.parser.ExpressionReader;
 import org.junit.Test;
 import org.mandarax.dsl.*;
+import static test.org.mandarax.dsl.TestUtils.*;
 
 /**
  * Test cases for complex expressions.
@@ -36,7 +34,7 @@ public class ParserTestsComplexExpressions extends AbstractTests{
 	
 	@Test
 	public void testDisjunction1() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("(x==2)|(y!=3)");
+		Expression expression = readExpression("(x==2)|(y!=3)");
 		print(expression);
 		assertTrue(expression instanceof BinaryExpression);
 		BinaryExpression x = (BinaryExpression)expression;
@@ -47,7 +45,7 @@ public class ParserTestsComplexExpressions extends AbstractTests{
 	
 	@Test
 	public void testDisjunction2() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("x==2|y!=3");
+		Expression expression = readExpression("x==2|y!=3");
 		print(expression);
 		assertTrue(expression instanceof BinaryExpression);
 		BinaryExpression x = (BinaryExpression)expression;
@@ -58,7 +56,7 @@ public class ParserTestsComplexExpressions extends AbstractTests{
 	
 	@Test
 	public void testDisjunction3() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("x<2|y>3");
+		Expression expression = readExpression("x<2|y>3");
 		print(expression);
 		assertTrue(expression instanceof BinaryExpression);
 		BinaryExpression x = (BinaryExpression)expression;
@@ -69,7 +67,7 @@ public class ParserTestsComplexExpressions extends AbstractTests{
 	
 	@Test
 	public void testConjunction1() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("(x==2)&(y!=3)");
+		Expression expression = readExpression("(x==2)&(y!=3)");
 		print(expression);
 		assertTrue(expression instanceof BinaryExpression);
 		BinaryExpression x = (BinaryExpression)expression;
@@ -80,7 +78,7 @@ public class ParserTestsComplexExpressions extends AbstractTests{
 	
 	@Test
 	public void testConjunction2() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("x==2&y!=3");
+		Expression expression = readExpression("x==2&y!=3");
 		print(expression);
 		assertTrue(expression instanceof BinaryExpression);
 		BinaryExpression x = (BinaryExpression)expression;
@@ -91,7 +89,7 @@ public class ParserTestsComplexExpressions extends AbstractTests{
 	
 	@Test
 	public void testConjunction3() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("x<2&y>3");
+		Expression expression = readExpression("x<2&y>3");
 		print(expression);
 		assertTrue(expression instanceof BinaryExpression);
 		BinaryExpression x = (BinaryExpression)expression;
@@ -102,7 +100,7 @@ public class ParserTestsComplexExpressions extends AbstractTests{
 	
 	@Test
 	public void testLong1() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("x==2 | y>3 | z<4");
+		Expression expression = readExpression("x==2 | y>3 | z<4");
 		print(expression);
 		assertTrue(expression instanceof BinaryExpression);
 		BinaryExpression x = (BinaryExpression)expression;
@@ -118,7 +116,7 @@ public class ParserTestsComplexExpressions extends AbstractTests{
 
 	@Test
 	public void testLong2() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("x==2 & y>3 & z<4");
+		Expression expression = readExpression("x==2 & y>3 & z<4");
 		print(expression);
 		assertTrue(expression instanceof BinaryExpression);
 		BinaryExpression x = (BinaryExpression)expression;
@@ -134,7 +132,7 @@ public class ParserTestsComplexExpressions extends AbstractTests{
 	
 	@Test
 	public void testMixed1() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("x==2 & y>3 | z<4");
+		Expression expression = readExpression("x==2 & y>3 | z<4");
 		print(expression);
 		assertTrue(expression instanceof BinaryExpression);
 		BinaryExpression x = (BinaryExpression)expression;
@@ -150,7 +148,7 @@ public class ParserTestsComplexExpressions extends AbstractTests{
 	// | has precedense over & 
 	@Test
 	public void testMixed2() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("x==2 | y>3 & z<4");
+		Expression expression = readExpression("x==2 | y>3 & z<4");
 		print(expression);
 		assertTrue(expression instanceof BinaryExpression);
 		BinaryExpression x = (BinaryExpression)expression;
@@ -166,7 +164,7 @@ public class ParserTestsComplexExpressions extends AbstractTests{
 	
 	@Test
 	public void testMixed3() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("x==2 & (y>3 | z<4)");
+		Expression expression = readExpression("x==2 & (y>3 | z<4)");
 		print(expression);
 		assertTrue(expression instanceof BinaryExpression);
 		BinaryExpression x = (BinaryExpression)expression;

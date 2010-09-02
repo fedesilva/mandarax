@@ -12,9 +12,9 @@
 package test.org.mandarax.dsl;
 
 import static org.junit.Assert.*;
-import org.mandarax.dsl.parser.ExpressionReader;
 import org.junit.Test;
 import org.mandarax.dsl.*;
+import static test.org.mandarax.dsl.TestUtils.*;
 
 /**
  * Test cases for method and field access expressions.
@@ -25,7 +25,7 @@ public class ParserTestsMemberAccess extends AbstractTests {
 	
 	@Test
 	public void testPropertyAccess1() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("myvar.prop1");
+		Expression expression = readExpression("myvar.prop1");
 		print(expression);
 		assertTrue(expression instanceof MemberAccess);
 		MemberAccess pa = (MemberAccess)expression;
@@ -35,7 +35,7 @@ public class ParserTestsMemberAccess extends AbstractTests {
 	}
 	@Test
 	public void testPropertyAccess2() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("myvar.prop1.prop2");
+		Expression expression = readExpression("myvar.prop1.prop2");
 		print(expression);
 		assertTrue(expression instanceof MemberAccess);
 		MemberAccess pa = (MemberAccess)expression;
@@ -50,7 +50,7 @@ public class ParserTestsMemberAccess extends AbstractTests {
 	
 	@Test
 	public void testMethodInvocation1() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("myvar.meth1()");
+		Expression expression = readExpression("myvar.meth1()");
 		print(expression);
 		assertTrue(expression instanceof MemberAccess);
 		MemberAccess mi = (MemberAccess)expression;
@@ -62,7 +62,7 @@ public class ParserTestsMemberAccess extends AbstractTests {
 	
 	@Test
 	public void testMethodInvocation2() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("\"test\".length()");
+		Expression expression = readExpression("\"test\".length()");
 		print(expression);
 		assertTrue(expression instanceof MemberAccess);
 		MemberAccess mi = (MemberAccess)expression;
@@ -74,7 +74,7 @@ public class ParserTestsMemberAccess extends AbstractTests {
 	
 	@Test
 	public void testMethodInvocation3() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("myvar.meth1(\"param1\")");
+		Expression expression = readExpression("myvar.meth1(\"param1\")");
 		print(expression);
 		assertTrue(expression instanceof MemberAccess);
 		MemberAccess mi = (MemberAccess)expression;
@@ -87,7 +87,7 @@ public class ParserTestsMemberAccess extends AbstractTests {
 	
 	@Test
 	public void testMethodInvocation4() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("myvar.meth1(\"param1\",42)");
+		Expression expression = readExpression("myvar.meth1(\"param1\",42)");
 		print(expression);
 		assertTrue(expression instanceof MemberAccess);
 		MemberAccess mi = (MemberAccess)expression;
@@ -103,7 +103,7 @@ public class ParserTestsMemberAccess extends AbstractTests {
 
 	@Test
 	public void testMethodInvocation5() throws Exception {
-		Expression expression = new ExpressionReader().readExpression("myvar.meth1(\"param1\".length())");
+		Expression expression = readExpression("myvar.meth1(\"param1\".length())");
 		print(expression);
 		assertTrue(expression instanceof MemberAccess);
 		MemberAccess mi = (MemberAccess)expression;

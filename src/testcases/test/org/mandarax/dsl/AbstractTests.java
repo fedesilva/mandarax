@@ -14,7 +14,7 @@ package test.org.mandarax.dsl;
 import org.mandarax.dsl.Expression;
 import org.mandarax.dsl.util.ExpressionPrinter;
 import org.mandarax.dsl.util.ExpressionStructurePrinter;
-
+import static test.org.mandarax.dsl.TestUtils.*;
 
 /**
  * Abstract superclass for test cases.
