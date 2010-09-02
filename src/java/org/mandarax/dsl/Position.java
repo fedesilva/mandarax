@@ -40,4 +40,14 @@ public class Position {
 	public Position clone() {
 		return new Position (this.getLine(),this.getCharPosInLine());
 	}
+	
+	public String toString() {
+		return new StringBuffer() 
+			.append('(')
+			.append(line)
+			.append(',')
+			.append(charPosInLine)
+			.append(')')
+			.toString();
+	}
 }
