@@ -11,12 +11,27 @@
 
 package org.mandarax.dsl.util;
 
-import java.lang.reflect.Method;
+import java.lang.reflect.Member;
 /**
  * Utility to map names used in scripts to classes and types that can be analysed and invoked using reflection.
  * @author jens dietrich
  */
 public interface Resolver {
-	Method getMethod(String name,String className,String... paramTypeNames);
-	Class getType(String name);
+	/**
+	 * Get the member for the given name. 
+	 * postcondition: The member should be either a Method or a Field. 
+	 * The reason to have a general method covering both fields and methods is to treat properties transparently: 
+	 * a property used field syntax, but is represented by a getter method.
+	 * @param name
+	 * @param className
+	 * @param paramTypeNames the array is null if this is a field reference!
+	 * @return
+	 */
+	Member getMember(String name,String className,String... paramTypeNames) throws ResolverException ;
+	/**
+	 * Get the class for the given name. 
+	 * @param name
+	 * @return
+	 */
+	Class getType(String name) throws ResolverException ;
 }	

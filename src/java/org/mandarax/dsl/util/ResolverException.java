@@ -11,13 +11,26 @@
 
 package org.mandarax.dsl.util;
 
-import org.mandarax.dsl.Expression;
-
 /**
- * Utility to associate type information with expressions.
+ * Exception thrown when resolving types.
  * @author jens dietrich
  */
 
-public interface TypeReasoner {
-	Class getType(Expression expression,Resolver resolver) throws TypeReasoningException;
+public class ResolverException extends Exception {
+
+	public ResolverException() {
+	}
+
+	public ResolverException(String message) {
+		super(message);
+	}
+
+	public ResolverException(Throwable cause) {
+		super(cause);
+	}
+
+	public ResolverException(String message, Throwable cause) {
+		super(message, cause);
+	}
+
 }
