@@ -15,8 +15,8 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Member;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-
 import org.mandarax.dsl.*;
 
 /**
@@ -26,16 +26,19 @@ import org.mandarax.dsl.*;
 public abstract class AbstractTypeReasoner implements TypeReasoner {
 
 	@Override
-	public Class getType(Expression expression,Resolver resolver) throws TypeReasoningException {
-		try {
-			Class clazz = expression.getClass();
-			Method printer = this.getClass().getMethod("getType",new Class[]{clazz,Resolver.class});
-			return (Class) printer.invoke(this,new Object[]{expression,resolver});
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
+	public Class getType(Expression x,Resolver r) throws TypeReasoningException {
+		if (x instanceof BinaryExpression) return getType((BinaryExpression)x,r);
+		else if (x instanceof BooleanLiteral) return getType((BooleanLiteral)x,r);
+		else if (x instanceof CastExpression) return getType((CastExpression)x,r);
+		else if (x instanceof ConditionalExpression) return getType((ConditionalExpression)x,r);
+		else if (x instanceof InstanceOfExpression) return getType((InstanceOfExpression)x,r);
+		else if (x instanceof IntLiteral) return getType((IntLiteral)x,r);
+		else if (x instanceof MemberAccess) return getType((MemberAccess)x,r);
+		else if (x instanceof StringLiteral) return getType((StringLiteral)x,r);
+		else if (x instanceof UnaryExpression) return getType((UnaryExpression)x,r);
+		else if (x instanceof Variable) return getType((Variable)x,r);
+		
+		else throw new TypeReasoningException("Unsupported expression type " + x.getClass().getName());
 	}
 	
 	private void exception(Object... tokens) throws TypeReasoningException {
@@ -75,12 +78,21 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 			if (type2!=Boolean.class) mismatch(expression.getRight(),Boolean.class,type2);
 			return Boolean.class;
 		}
+		// comparison 
+		else if (op==BinOp.EQ || op==BinOp.NEQ) {
+			return Boolean.class;
+		}
+		// operators can be used with comparables
+		// it is sufficient if one of the two types is comparable
+		else if (isComparison(op) && (Comparable.class.isAssignableFrom(type1) || Comparable.class.isAssignableFrom(type2))) {
+			return Boolean.class;
+		}
 		// string concat, convert second argument to string using toString()
-		if (op==BinOp.PLUS && type1==String.class) {
+		else if (op==BinOp.PLUS && type1==String.class) {
 			return String.class;
 		} 
-		// arithmentic
-		if (op==BinOp.PLUS || op==BinOp.TIMES || op==BinOp.DIV || op==BinOp.MOD) {
+		// arithmetic
+		else if (op==BinOp.PLUS || op==BinOp.TIMES || op==BinOp.DIV || op==BinOp.MOD) {
 			if (isNumType(type1) && isNumType(type2)) {
 				return getNumericCompositionType(type1,type2);
 			}
@@ -120,10 +132,10 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 		}
 		
 	}
-	public Class getType (InstanceOfExpression expression,Resolver resolver) {
+	public Class getType (InstanceOfExpression expression,Resolver resolver)  throws TypeReasoningException {
 		return Boolean.class;
 	}
-	public Class getType (IntLiteral expression,Resolver resolver) {
+	public Class getType (IntLiteral expression,Resolver resolver)  throws TypeReasoningException {
 		return Integer.class;
 	}
 	public Class getType (MemberAccess expression,Resolver resolver) throws TypeReasoningException {
@@ -154,7 +166,7 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 		return null; // will never reach this
 		
 	}
-	public Class getType (StringLiteral expression,Resolver resolver) {
+	public Class getType (StringLiteral expression,Resolver resolver)  throws TypeReasoningException {
 		return String.class;
 	}
 	public Class getType (UnaryExpression expression,Resolver resolver) throws TypeReasoningException{
@@ -185,6 +197,11 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 	private boolean isNumType(Class type) {
 		return type==Integer.class || type==Long.class || type==Short.class || type==Character.class || type==Byte.class || type==Double.class || type==Float.class;
 	} 
+	
+	private boolean isComparison(BinOp op) {
+		return op==BinOp.LT || op==BinOp.GT || op==BinOp.LTE || op==BinOp.GTE;
+	} 
+	
 	private Class getNumericCompositionType(Class type1,Class type2) {
 		assert (isNumType(type1));
 		assert (isNumType(type2));
@@ -204,6 +221,6 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 		}
 	}
 
-	public abstract Class getType (Variable expression,Resolver resolver) ;
+	public abstract Class getType (Variable expression,Resolver resolver) throws TypeReasoningException ;
 	
 }
