@@ -10,11 +10,6 @@
  */
 
 package test.org.mandarax.dsl;
-/**
-
- * @license
- */
-
 
 import static org.junit.Assert.*;
 import org.mandarax.dsl.parser.ExpressionReader;

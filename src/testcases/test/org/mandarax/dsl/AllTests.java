@@ -25,6 +25,7 @@ import org.junit.runners.*;
 	ParserTestsRelationalExpressions.class,
 	ParserTestsFlatExpressions.class,
 	ParserTestsMemberAccess.class,
+	ParserTestsFunctionInvocations.class,
 	ParserTestsMiscExpressions.class,
 	ParserTestsComplexExpressions.class,
 	TypeReasonerTests.class

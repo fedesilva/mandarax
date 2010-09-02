@@ -229,6 +229,7 @@ unaryExpressionNotPlusMinus returns [Expression value]
     :   '~' r1 = unaryExpression {$value = new UnaryExpression(pos(r1.value),UnOp.COMPL,r1.value);}
     |   '!' r2 = unaryExpression {$value = new UnaryExpression(pos(r2.value),UnOp.NOT,r2.value);}
     |   r3 = castExpression {$value = r3.value;}
+    |   r9 = functionInvocation {$value = r9.value;}
     |   r8 = methodInvocation {$value = r8.value;}
     |   r7 = propertyAccess {$value = r7.value;}
     |   r4 = objectref {$value = r4.value;}
