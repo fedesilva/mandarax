@@ -18,8 +18,8 @@ package org.mandarax.dsl;
  */
 
 public class BinaryExpression extends Expression {
-	public BinaryExpression(Position position,BinOp operator, Expression left, Expression right) {
-		super(position);
+	public BinaryExpression(Position position,Context context,BinOp operator, Expression left, Expression right) {
+		super(position,context);
 		this.operator = operator;
 		this.left = left;
 		this.right = right;

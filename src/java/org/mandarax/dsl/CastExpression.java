@@ -20,8 +20,8 @@ package org.mandarax.dsl;
 public class CastExpression extends Expression {
 	private Expression objectReference = null;
 	private String type = null;
-	public CastExpression(Position position,Expression child, String type) {
-		super(position);
+	public CastExpression(Position position,Context context,Expression child, String type) {
+		super(position,context);
 		this.objectReference = child;
 		this.type = type;
 	}

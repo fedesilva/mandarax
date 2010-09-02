@@ -12,25 +12,10 @@
 package org.mandarax.dsl;
 
 /**
- * Integer literal.
+ * Used to keep track of contextual information such as namespace definitions and annotations.
  * @author jens dietrich
  */
 
-public class IntLiteral extends Literal<Integer> {
-	private int value = 0;
+public class Context {
 
-	public IntLiteral(Position position,Context context,int value) {
-		super(position,context);
-		this.value = value;
-	}
-
-	public Integer getValue() {
-		return value;
-	}
-
-	public void accept(Visitor visitor) {
-		visitor.visit(this);
-		visitor.endVisit(this);
-	}
-	
 }

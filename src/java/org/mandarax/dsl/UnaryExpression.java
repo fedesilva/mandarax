@@ -21,8 +21,8 @@ public class UnaryExpression extends Expression {
 	private UnOp operator = null;
 	private Expression part = null;
 	
-	public UnaryExpression(Position position,UnOp operator, Expression part) {
-		super(position);
+	public UnaryExpression(Position position,Context context,UnOp operator, Expression part) {
+		super(position,context);
 		this.operator = operator;
 		this.part = part;
 	}

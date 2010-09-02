@@ -23,8 +23,8 @@ public class FunctionInvocation extends Expression {
 	private String function = null;
 	private List<Expression> parameters = new ArrayList<Expression>();
 	
-	public FunctionInvocation(Position position,String function,List<Expression> parameters) {
-		super(position);
+	public FunctionInvocation(Position position,Context context,String function,List<Expression> parameters) {
+		super(position,context);
 		this.function = function;
 		this.parameters = parameters;
 	}

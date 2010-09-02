@@ -19,8 +19,8 @@ public class InstanceOfExpression extends Expression{
 	private Expression objectReference = null;
 	private String type = null;
 	
-	public InstanceOfExpression(Position position,Expression objectReference, String type) {
-		super(position);
+	public InstanceOfExpression(Position position,Context context,Expression objectReference, String type) {
+		super(position,context);
 		this.objectReference = objectReference;
 		this.type = type;
 	}

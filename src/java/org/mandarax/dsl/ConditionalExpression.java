@@ -23,8 +23,8 @@ public class ConditionalExpression extends Expression {
 	private Expression ifTrue = null;
 	private Expression ifFalse = null;
 	
-	public ConditionalExpression(Position position,Expression condition, Expression ifTrue,Expression ifFalse) {
-		super(position);
+	public ConditionalExpression(Position position,Context context,Expression condition, Expression ifTrue,Expression ifFalse) {
+		super(position,context);
 		this.condition = condition;
 		this.ifTrue = ifTrue;
 		this.ifFalse = ifFalse;

@@ -17,13 +17,16 @@ package org.mandarax.dsl;
  */
 
 public abstract class ASTNode  implements Visitable {
-	public ASTNode(Position position) {
+	public ASTNode(Position position,Context context) {
 		super();
 		this.position = position;
+		this.context = context;
 	}
 
 	// the position of this artefact in the script defining it
 	private Position position = null;
+	// contextual information
+	private Context context = null;
 
 	public void setPosition(Position position) {
 		this.position = position;
@@ -31,6 +34,14 @@ public abstract class ASTNode  implements Visitable {
 
 	public Position getPosition() {
 		return position;
+	}
+
+	public Context getContext() {
+		return context;
+	}
+
+	public void setContext(Context context) {
+		this.context = context;
 	}
 
 }

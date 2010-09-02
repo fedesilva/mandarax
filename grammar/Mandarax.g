@@ -51,6 +51,7 @@ package org.mandarax.dsl.parser;
   protected boolean assertIsKeyword = true;
 }
 @parser::members {
+  private Context context = new Context(); 
   private Position pos(Token token) {
   	return new Position(token.getLine(),token.getCharPositionInLine());
   }
@@ -100,27 +101,27 @@ qualifiedNameList
     ;
 
 qualifiedName returns [Expression value]
-	:	i = Identifier {$value=new Variable(pos(i),i.getText());} ('.' j = Identifier {$value=new MemberAccess(pos(i),$value,j.getText());})*
+	:	i = Identifier {$value=new Variable(pos(i),context,i.getText());} ('.' j = Identifier {$value=new MemberAccess(pos(i),context,$value,j.getText());})*
 	;
     
 literal returns [Expression value]
     :   l1 = integerLiteral {$value = l1.value;}
 //    |   l2 = FloatingPointLiteral {$value = l2.value;}
 //    |   l3 = CharacterLiteral {$value = l3.value;}
-    |   l4 = StringLiteral {$value = new StringLiteral(pos(l4),l4.getText().substring(1,l4.getText().length()-1));}
+    |   l4 = StringLiteral {$value = new StringLiteral(pos(l4),context,l4.getText().substring(1,l4.getText().length()-1));}
     |   l5 = booleanLiteral {$value = l5.value;}
 //    |   l6 = 'null' {$value = l6.value;}
     ;
 
 integerLiteral returns [Expression value]
-    :   hex = HexLiteral {$value = new IntLiteral(pos(hex),Integer.parseInt(hex.getText().substring(2),16));}
-    |   oct = OctalLiteral {$value = new IntLiteral(pos(oct),Integer.parseInt(oct.getText(),8));}
-    |   dec = DecimalLiteral {$value = new IntLiteral(pos(dec),Integer.parseInt(dec.getText()));}
+    :   hex = HexLiteral {$value = new IntLiteral(pos(hex),context,Integer.parseInt(hex.getText().substring(2),16));}
+    |   oct = OctalLiteral {$value = new IntLiteral(pos(oct),context,Integer.parseInt(oct.getText(),8));}
+    |   dec = DecimalLiteral {$value = new IntLiteral(pos(dec),context,Integer.parseInt(dec.getText()));}
     ;
 
 booleanLiteral returns [Expression value]
-    :   t = 'true' {$value = new BooleanLiteral(pos(t),true);}
-    |   f = 'false' {$value = new BooleanLiteral(pos(f),false);}
+    :   t = 'true' {$value = new BooleanLiteral(pos(t),context,true);}
+    |   f = 'false' {$value = new BooleanLiteral(pos(f),context,false);}
     ;
 
 
@@ -161,27 +162,27 @@ expressionList returns [List<Expression> values]
 //    ;
 
 conditionalExpression returns [Expression value]
-    :   r1 = disjunction ( '?' r2 = expression ':' r3 = expression )? {$value=(r2==null)?r1.value:new ConditionalExpression(pos(r1.value),r1.value,r2.value,r3.value);}
+    :   r1 = disjunction ( '?' r2 = expression ':' r3 = expression )? {$value=(r2==null)?r1.value:new ConditionalExpression(pos(r1.value),context,r1.value,r2.value,r3.value);}
     ;
  
 disjunction returns [Expression value]
-    :   part1 = conjunction {$value = part1.value;} ( '|' part = conjunction {$value = new BinaryExpression(pos(part1.value),BinOp.OR,$value,part.value);})* 
+    :   part1 = conjunction {$value = part1.value;} ( '|' part = conjunction {$value = new BinaryExpression(pos(part1.value),context,BinOp.OR,$value,part.value);})* 
     ;
 
 conjunction returns [Expression value]
-    :   part1 = equalityExpression {$value = part1.value;} ( '&' part =  equalityExpression {$value = new BinaryExpression(pos(part1.value),BinOp.AND,$value,part.value);})* 
+    :   part1 = equalityExpression {$value = part1.value;} ( '&' part =  equalityExpression {$value = new BinaryExpression(pos(part1.value),context,BinOp.AND,$value,part.value);})* 
     ;
 
 equalityExpression returns [Expression value]
-    :   part1 = instanceOfExpression {$value=part1.value;} ( op = ('==' | '!=') part2 = instanceOfExpression {$value=new BinaryExpression(pos(part1.value),binOpForName(op.getText()),$value,part2.value);})* 
+    :   part1 = instanceOfExpression {$value=part1.value;} ( op = ('==' | '!=') part2 = instanceOfExpression {$value=new BinaryExpression(pos(part1.value),context,binOpForName(op.getText()),$value,part2.value);})* 
     ;
 
 instanceOfExpression returns [Expression value]
-    :   part = relationalExpression ('instanceof' t = type)? {$value = (t==null)?part.value:new InstanceOfExpression(pos(part.value),part.value,t.value);}
+    :   part = relationalExpression ('instanceof' t = type)? {$value = (t==null)?part.value:new InstanceOfExpression(pos(part.value),context,part.value,t.value);}
     ;
 
 relationalExpression  returns [Expression value]
-    :   part1 = shiftExpression {$value=part1.value;} ( op = relationalOp part2 = shiftExpression {$value = new BinaryExpression(pos(part1.value),op.value,$value,part2.value);})* 
+    :   part1 = shiftExpression {$value=part1.value;} ( op = relationalOp part2 = shiftExpression {$value = new BinaryExpression(pos(part1.value),context,op.value,$value,part2.value);})* 
     ;
     
 
@@ -194,7 +195,7 @@ relationalOp  returns [BinOp value]
 
 // note: only supports binary shift expressions
 shiftExpression returns [Expression value]
-    :   part1 = additiveExpression {$value = part1.value;} ( op = shiftOp part = additiveExpression {$value = new BinaryExpression(pos(part1.value),op.value,$value,part.value);})? 
+    :   part1 = additiveExpression {$value = part1.value;} ( op = shiftOp part = additiveExpression {$value = new BinaryExpression(pos(part1.value),context,op.value,$value,part.value);})? 
     ;
 
 shiftOp returns [BinOp value]
@@ -213,21 +214,21 @@ shiftOp returns [BinOp value]
 
 
 additiveExpression returns [Expression value]
-    :  part1 = multiplicativeExpression {$value = part1.value;}( op = ('+' | '-') part = multiplicativeExpression {$value = new BinaryExpression(pos(part1.value),binOpForName(op.getText()),$value,part.value);})* 
+    :  part1 = multiplicativeExpression {$value = part1.value;}( op = ('+' | '-') part = multiplicativeExpression {$value = new BinaryExpression(pos(part1.value),context,binOpForName(op.getText()),$value,part.value);})* 
     ;
 
 multiplicativeExpression returns [Expression value]
-    :  part1 = unaryExpression {$value = part1.value;} ( op =( '*' | '/' | '%' ) part = unaryExpression {$value = new BinaryExpression(pos(part1.value),binOpForName(op.getText()),$value,part.value);})* 
+    :  part1 = unaryExpression {$value = part1.value;} ( op =( '*' | '/' | '%' ) part = unaryExpression {$value = new BinaryExpression(pos(part1.value),context,binOpForName(op.getText()),$value,part.value);})* 
     ;
     
 unaryExpression returns [Expression value]
-    :   '-' part1 = unaryExpression {$value = new UnaryExpression(pos(part1.value),UnOp.MINUS,part1.value);}
+    :   '-' part1 = unaryExpression {$value = new UnaryExpression(pos(part1.value),context,UnOp.MINUS,part1.value);}
     |   part2 = unaryExpressionNotPlusMinus {$value = part2.value;}
     ;
 
 unaryExpressionNotPlusMinus returns [Expression value]
-    :   '~' r1 = unaryExpression {$value = new UnaryExpression(pos(r1.value),UnOp.COMPL,r1.value);}
-    |   '!' r2 = unaryExpression {$value = new UnaryExpression(pos(r2.value),UnOp.NOT,r2.value);}
+    :   '~' r1 = unaryExpression {$value = new UnaryExpression(pos(r1.value),context,UnOp.COMPL,r1.value);}
+    |   '!' r2 = unaryExpression {$value = new UnaryExpression(pos(r2.value),context,UnOp.NOT,r2.value);}
     |   r3 = castExpression {$value = r3.value;}
     |   r9 = functionInvocation {$value = r9.value;}
     |   r8 = methodInvocation {$value = r8.value;}
@@ -238,26 +239,26 @@ unaryExpressionNotPlusMinus returns [Expression value]
     ;
     
 propertyAccess returns [Expression value]
-    :   o = objectref {$value = o.value;} ('.' i= Identifier  {$value = new MemberAccess(pos(o.value),$value,i.getText());})* 
+    :   o = objectref {$value = o.value;} ('.' i= Identifier  {$value = new MemberAccess(pos(o.value),context,$value,i.getText());})* 
     ;
 
 methodInvocation returns [Expression value]
-    :   o = objectref {$value = o.value;} ('.' i = Identifier '('(p = expressionList)? ')' {$value = new MemberAccess(pos(o.value),$value,i.getText(),p==null?new ArrayList<Expression>():p.values);})* 
+    :   o = objectref {$value = o.value;} ('.' i = Identifier '('(p = expressionList)? ')' {$value = new MemberAccess(pos(o.value),context,$value,i.getText(),p==null?new ArrayList<Expression>():p.values);})* 
     ;
     
 functionInvocation returns [Expression value] 
-    :   f = Identifier  '(' (p = expressionList)? ')' {$value = new FunctionInvocation(pos(f),f.getText(),p==null?new ArrayList<Expression>():p.values);}     
+    :   f = Identifier  '(' (p = expressionList)? ')' {$value = new FunctionInvocation(pos(f),context,f.getText(),p==null?new ArrayList<Expression>():p.values);}     
     ;
     
 objectref returns [Expression value]
-    	: r1 = Identifier {$value = new Variable(pos(r1),r1.getText());}
+    	: r1 = Identifier {$value = new Variable(pos(r1),context,r1.getText());}
     	| r2 = literal {$value = r2.value;}
     	| r3 = parExpression {$value = r3.value;}
     	;	       
 
 castExpression returns [Expression value]
-    :  '(' t1 = primitiveType ')' exp1 = unaryExpression {$value = new CastExpression(pos(t1.start),exp1.value,t1.value);}
-    |  '(' t2 = type ')' exp2 = unaryExpressionNotPlusMinus  {$value = new CastExpression(pos(t2.start),exp2.value,t2.value);}
+    :  '(' t1 = primitiveType ')' exp1 = unaryExpression {$value = new CastExpression(pos(t1.start),context,exp1.value,t1.value);}
+    |  '(' t2 = type ')' exp2 = unaryExpressionNotPlusMinus  {$value = new CastExpression(pos(t2.start),context,exp2.value,t2.value);}
     ;
 
 arguments

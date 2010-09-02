@@ -19,8 +19,8 @@ package org.mandarax.dsl;
 public class BooleanLiteral extends Literal<Boolean> {
 	private boolean value = false;
 
-	public BooleanLiteral(Position position,boolean value) {
-		super(position);
+	public BooleanLiteral(Position position,Context context,boolean value) {
+		super(position,context);
 		this.value = value;
 	}
 

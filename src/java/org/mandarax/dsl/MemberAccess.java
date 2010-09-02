@@ -25,15 +25,15 @@ public class MemberAccess extends Expression {
 	private List<Expression> parameters = new ArrayList<Expression>();
 	private boolean isMethod = false;
 	
-	public MemberAccess(Position position,Expression objectReference,String member,List<Expression> parameters) {
-		super(position);
+	public MemberAccess(Position position,Context context,Expression objectReference,String member,List<Expression> parameters) {
+		super(position,context);
 		this.member = member;
 		this.objectReference = objectReference;
 		this.parameters = parameters;
 		this.isMethod = true;
 	}
-	public MemberAccess(Position position,Expression objectReference,String member) {
-		super(position);
+	public MemberAccess(Position position,Context context,Expression objectReference,String member) {
+		super(position,context);
 		this.member = member;
 		this.objectReference = objectReference;
 		this.isMethod = false;

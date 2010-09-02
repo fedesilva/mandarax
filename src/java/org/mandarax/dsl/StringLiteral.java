@@ -19,8 +19,8 @@ package org.mandarax.dsl;
 public class StringLiteral extends Literal<String> {
 	private String value = null;
 
-	public StringLiteral(Position position,String value) {
-		super(position);
+	public StringLiteral(Position position,Context context,String value) {
+		super(position,context);
 		this.value = value;
 	}
 

@@ -18,8 +18,8 @@ package org.mandarax.dsl;
  */
 
 public abstract class Expression extends ASTNode {
-	public Expression(Position position) {
-		super(position);
+	public Expression(Position position,Context context) {
+		super(position,context);
 	}
 
 	

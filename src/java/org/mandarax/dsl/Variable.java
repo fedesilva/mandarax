@@ -19,8 +19,8 @@ package org.mandarax.dsl;
 public class Variable extends Expression {
 	private String name = null;
 
-	public Variable(Position position,String name) {
-		super(position);
+	public Variable(Position position,Context context,String name) {
+		super(position,context);
 		this.name = name;
 	}
 

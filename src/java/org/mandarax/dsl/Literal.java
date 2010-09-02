@@ -18,8 +18,8 @@ package org.mandarax.dsl;
 
 public abstract class Literal<T> extends Expression {
 	
-	public Literal(Position position) {
-		super(position);
+	public Literal(Position position,Context context) {
+		super(position,context);
 	}
 
 	public abstract T getValue();
