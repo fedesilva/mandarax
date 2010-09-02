@@ -26,6 +26,7 @@ public interface Visitor {
 	public boolean visit(StringLiteral x);
 	public boolean visit(UnaryExpression x);
 	public boolean visit(Variable x);	
+	public boolean visit(FunctionInvocation x);
 	public void endVisit(BinaryExpression x);
 	public void endVisit(BooleanLiteral x);
 	public void endVisit(CastExpression x);
@@ -36,4 +37,5 @@ public interface Visitor {
 	public void endVisit(StringLiteral x);
 	public void endVisit(UnaryExpression x);
 	public void endVisit(Variable x);
+	public void endVisit(FunctionInvocation x);
 }

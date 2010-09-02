@@ -244,6 +244,10 @@ methodInvocation returns [Expression value]
     :   o = objectref {$value = o.value;} ('.' i = Identifier '('(p = expressionList)? ')' {$value = new MemberAccess(pos(o.value),$value,i.getText(),p==null?new ArrayList<Expression>():p.values);})* 
     ;
     
+functionInvocation returns [Expression value] 
+    :   f = Identifier  '(' (p = expressionList)? ')' {$value = new FunctionInvocation(pos(f),f.getText(),p==null?new ArrayList<Expression>():p.values);}     
+    ;
+    
 objectref returns [Expression value]
     	: r1 = Identifier {$value = new Variable(pos(r1),r1.getText());}
     	| r2 = literal {$value = r2.value;}

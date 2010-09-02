@@ -14,6 +14,7 @@ package org.mandarax.dsl.util;
 import java.lang.reflect.Field;
 import java.lang.reflect.Member;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -37,6 +38,7 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 		else if (x instanceof StringLiteral) return getType((StringLiteral)x,r);
 		else if (x instanceof UnaryExpression) return getType((UnaryExpression)x,r);
 		else if (x instanceof Variable) return getType((Variable)x,r);
+		else if (x instanceof FunctionInvocation) return getType((FunctionInvocation)x,r);
 		
 		else throw new TypeReasoningException("Unsupported expression type " + x.getClass().getName());
 	}
@@ -166,6 +168,31 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 		return null; // will never reach this
 		
 	}
+	
+	public Class getType (FunctionInvocation expression,Resolver resolver) throws TypeReasoningException {
+		String name = expression.getFunction();
+		List<String> paramTypes = new ArrayList<String>();
+		for (Expression param:expression.getParameters()) {
+			paramTypes.add(getType(param,resolver).getName());
+		}
+		String[] paramNames = paramTypes.toArray(new String[paramTypes.size()]);
+		
+		try {
+			Method method = resolver.getFunction(name,paramNames);
+			// enforce post condition
+			if (!Modifier.isStatic(method.getModifiers())) {
+				exception("Functions can only be defined by static methods, this method is not static: ",method);
+			}
+			else return method.getReturnType();
+		} catch (ResolverException e) {
+			failed(expression,null,e);
+		}
+		
+		failed(expression);
+		return null; // will never reach this
+		
+	}
+	
 	public Class getType (StringLiteral expression,Resolver resolver)  throws TypeReasoningException {
 		return String.class;
 	}

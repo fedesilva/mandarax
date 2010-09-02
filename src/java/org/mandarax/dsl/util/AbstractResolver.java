@@ -25,15 +25,15 @@ import java.lang.reflect.Modifier;
  * @author jens dietrich
  */
 
-public class DefaultResolver implements Resolver {
+public abstract class AbstractResolver implements Resolver {
 	
 	private ClassLoader classloader = null;
 
-	public DefaultResolver(ClassLoader classloader) {
+	public AbstractResolver(ClassLoader classloader) {
 		super();
 		this.classloader = classloader;
 	}
-	public DefaultResolver() {
+	public AbstractResolver() {
 		super();
 	}
 

@@ -108,6 +108,15 @@ public class ExpressionStructurePrinter implements Visitor {
 		d();
 		return true;
 	}
+	
+	@Override
+	public boolean visit(FunctionInvocation x) {
+		i();
+		out.print(x.getFunction());
+		annotate(x);
+		d();
+		return true;
+	}
 
 
 	@Override
@@ -166,6 +175,10 @@ public class ExpressionStructurePrinter implements Visitor {
 		u();
 	}
 
+	@Override
+	public void endVisit(FunctionInvocation x) {
+		u();
+	}
 
 	@Override
 	public void endVisit(StringLiteral x) {}

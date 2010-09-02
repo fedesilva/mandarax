@@ -90,6 +90,18 @@ public class ExpressionPrinter {
 			out.print(')');
 		}
 	}
+	
+	public void print(FunctionInvocation x) {
+		out.print(x.getFunction());
+		out.print('(');
+		boolean f = true;
+		for (Expression p:x.getParameters()) {
+			if (f) f = false;
+			else out.print(',');
+			printPart(p);
+		}
+		out.print(')');
+	}
 
 	public void print(StringLiteral x) {
 		out.print("\"");
