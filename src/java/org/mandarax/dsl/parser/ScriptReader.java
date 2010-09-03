@@ -16,6 +16,7 @@ import org.antlr.runtime.ANTLRInputStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.mandarax.dsl.Expression;
 import org.mandarax.dsl.ImportDeclaration;
+import org.mandarax.dsl.Query;
 
 /**
  * Utility to read artefacts from scripts.
@@ -33,5 +34,9 @@ public class ScriptReader {
 	public ImportDeclaration readImportDeclaration(InputStream in) throws Exception {
 		return getParser(in).importDeclaration().value;
 	}
+	public Query readQuery(InputStream in) throws Exception {
+		return getParser(in).query().value;
+	}
+	
 	
 }

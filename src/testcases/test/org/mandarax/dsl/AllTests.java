@@ -29,8 +29,9 @@ import org.junit.runners.*;
 	ParserTestsFunctionInvocations.class,
 	ParserTestsMiscExpressions.class,
 	ParserTestsComplexExpressions.class,
-	// other syntax
+	// other syntax elements
 	ParserTestsImportDeclarations.class,
+	ParserTestsQuery.class,
 	// type reasoner
 	TypeReasonerTests.class
 })
