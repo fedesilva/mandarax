@@ -64,9 +64,8 @@ importDeclaration returns [ImportDeclaration value]
     :   i='import' (s = 'static'?) (n=qualifiedName2) (w='.' '*')? ';' {$value = new ImportDeclaration(pos(i),context,n.value,s!=null,w!=null);} 
     ;
 
-//query PremiumDiscount(Car car,Discount discount) getPremiumDiscount(Car car)
-query returns [Query value]
-    :	q='query' ti=Identifier '(' tp = variableDeclarationList ')' mi=Identifier '(' (mp = nameList)? ')' {$value = new Query(pos(q),context,ti.getText(),tp.value,mi.getText(),mp==null?new ArrayList<String>():mp.value);}
+relationshipDefinition returns [RelationshipDefinition value]
+    :	q=('relationship'|'rel') ti=Identifier '(' tp = variableDeclarationList ')' queries = functionDeclarationList {$value = new RelationshipDefinition(pos(q),context,ti.getText(),tp.value,queries.value);}
     ;
     
     
@@ -79,10 +78,21 @@ variableDeclarationList returns [List<VariableDeclaration> value]
     :	part1 = variableDeclaration {$value.add(part1.value);} (',' part2 = variableDeclaration {$value.add(part2.value);})*
     ;     
     
-
-// starting point for parsing java style expressions
-// use the expression() method in parser to access it
-
+functionDeclaration returns [FunctionDeclaration value]
+    :	v = visibility n = Identifier '(' p = nameList ')'{$value = new FunctionDeclaration(pos(n),context,v.value,n.getText(),p.value);}
+    ;    
+    
+functionDeclarationList returns [List<FunctionDeclaration> value]
+@init {$value = new ArrayList<FunctionDeclaration>();}
+    :	part1 = functionDeclaration {$value.add(part1.value);} (',' part2 = functionDeclaration {$value.add(part2.value);})*
+    ;
+    
+visibility returns [Visibility value]
+@init {$value = Visibility.PUBLIC;}
+    	: ('public' | ('private'  {$value = Visibility.PRIVATE;}) )?
+    	//| 'private' {$value = Visibility.PRIVATE;)
+    	;	  
+    	
 expression returns [Expression value]
     :   r=conditionalExpression {$value=r.value;}
     ;
@@ -128,9 +138,10 @@ qualifiedName2 returns [String value]
 	:	i = Identifier {$value=i.getText();} ('.' j = Identifier {$value=$value+'.'+j.getText();})*
 	;
     
+// list can be empty!    
 nameList returns [List<String> value]
 @init {$value = new ArrayList<String>();}
-	:	i = Identifier {$value.add(i.getText());} (',' j = Identifier {$value.add(j.getText());})*
+	:	(i = Identifier {$value.add(i.getText());} (',' j = Identifier {$value.add(j.getText());})*)?
 	;
 	
 literal returns [Expression value]

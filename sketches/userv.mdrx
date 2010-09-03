@@ -13,7 +13,17 @@ ref java.util.Collection HighTheftProbabilityAutoList
 ref int CurrentYear,NextYear
 
 // queries
-query PotentialTheftRating(Car car,Rating rating) getPotenialTheftRating(car)
+rel PotentialTheftRating(Car car,Rating rating) getPotenialTheftRating(car) {
+	@description("If the car is a convertible, then the car's potential theft rating is high")
+	@id("AE_PTC01")
+	car.isConvertible -> PotentialTheftRating(car,"high")
+	
+	@description("If the car's price is greater than $45,000, then the car's potential theft rating is high.")
+	@id("AE_PTC02")
+	car.price>45000 -> PotentialTheftRating(car,"high")
+}
+
+
 query PotentialOccupantInjuryRating(Car car,Rating rating) getPotentialOccupantInjuryRating(car)
 query AutoEligibility(Car car,? value) getAutoEligibility(car)
 query DriverCategory(Car car,String category) getDriverCategory(car)
@@ -34,11 +44,9 @@ aggregation eligibilityScore = sum x policyEligibilityScore[car,driver,x]
 
 @category("Auto Eligibility Rule Set")
 group autoeligibility {
-	@description("If the car is a convertible, then the car's potential theft rating is high")
-	AE_PTC01: car.isConvertible -> PotentialTheftRating(car,"high")
+
 	
-	@description("If the car's price is greater than $45,000, then the car's potential theft rating is high.")
-	AE_PTC02: car.price>45000 -> PotentialTheftRating(car,"high")
+
 
 	@description=If the car model is on the list of 'High Theft Probability Auto', then the car's potential theft rating is high.
 	AE_PTC03: HighTheftProbabilityAutoList.contains(car.type) -> PotentialTheftRating(car,"high")

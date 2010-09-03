@@ -16,40 +16,36 @@ import com.google.common.base.Function;
 import com.google.common.collect.Collections2;
 
 /**
- * Represents queries. 
+ * Represents relationship definitions. 
  * @author jens dietrich
  */
-public class Query extends ASTNode {
+public class RelationshipDefinition extends ASTNode {
 	/**
 	 * Constructor.
-	 * @param position
-	 * @param context
-	 * @param predicateName
-	 * @param slotDeclarations
-	 * @param methodName
-	 * @param methodParamNames
 	 * @throws InternalScriptException thrown if method parameter names do not occur in slot definitions
 	 */
-	public Query(Position position, Context context, String predicateName,List<VariableDeclaration> slotDeclarations,String methodName, List<String> methodParamNames) throws InternalScriptException {
+	public RelationshipDefinition(Position position, Context context, String name,List<VariableDeclaration> slotDeclarations,List<FunctionDeclaration> queries) throws InternalScriptException {
 		super(position, context);
-		this.predicateName = predicateName;
-		this.methodName = methodName;
-		this.methodParamNames = methodParamNames;
+		this.name = name;
 		this.slotDeclarations = slotDeclarations;
+		this.queries = queries;
 		
 		// consistency check: all methodParamNames must occur in the slot declarations
 		Collection<String> definedNames = Collections2.transform(slotDeclarations,new Function<VariableDeclaration,String>(){
 			@Override
 			public String apply(VariableDeclaration v) {return v.getName();}});
 		
-		for (String name:methodParamNames) {
-			if (!definedNames.contains(name)) throw new InternalScriptException("Exception in query definition at " + getPosition() + " the following method parameter is not defined as predicate slot: " + name);
+		
+		for (FunctionDeclaration query:queries) {
+			for (String refedName:query.getParameterNames()) {
+				if (!definedNames.contains(refedName)) 
+					throw new InternalScriptException("Exception in query definition at " + query.getPosition() + " the following method parameter is not defined as predicate slot: " + name);
+			}
 		}
 	}
 
-	private String predicateName = null;
-	private String methodName = null;
-	private List<String> methodParamNames = null;
+	private String name = null;
+	private List<FunctionDeclaration> queries = null;
 	private List<VariableDeclaration> slotDeclarations = null;
 
 	
@@ -58,20 +54,16 @@ public class Query extends ASTNode {
 		
 	}
 
-	public String getPredicateName() {
-		return predicateName;
-	}
-
-	public String getMethodName() {
-		return methodName;
-	}
-
-	public List<String> getMethodParamNames() {
-		return methodParamNames;
+	public String getName() {
+		return name;
 	}
 
 	public List<VariableDeclaration> getSlotDeclarations() {
 		return slotDeclarations;
+	}
+
+	public List<FunctionDeclaration> getQueries() {
+		return queries;
 	}
 
 }

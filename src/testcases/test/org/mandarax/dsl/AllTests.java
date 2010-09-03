@@ -31,7 +31,7 @@ import org.junit.runners.*;
 	ParserTestsComplexExpressions.class,
 	// other syntax elements
 	ParserTestsImportDeclarations.class,
-	ParserTestsQuery.class,
+	ParserTestsRelationshipDefinitions.class,
 	// type reasoner
 	TypeReasonerTests.class
 })

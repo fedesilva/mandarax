@@ -18,7 +18,7 @@ import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
 import org.mandarax.dsl.Expression;
 import org.mandarax.dsl.ImportDeclaration;
-import org.mandarax.dsl.Query;
+import org.mandarax.dsl.RelationshipDefinition;
 
 /**
  * Utility to read artefacts from scripts.
@@ -49,9 +49,9 @@ public class ScriptReader {
 			throw new ScriptException(e);
 		}
 	}
-	public Query readQuery(InputStream in) throws ScriptException {
+	public RelationshipDefinition readRelationshipDefinition(InputStream in) throws ScriptException {
 		try {
-			return getParser(in).query().value;
+			return getParser(in).relationshipDefinition().value;
 		} catch (Exception e) {
 			throw new ScriptException(e);
 		}
