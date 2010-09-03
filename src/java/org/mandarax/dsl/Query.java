@@ -12,7 +12,6 @@ package org.mandarax.dsl;
 
 import java.util.Collection;
 import java.util.List;
-
 import com.google.common.base.Function;
 import com.google.common.collect.Collections2;
 
@@ -21,7 +20,17 @@ import com.google.common.collect.Collections2;
  * @author jens dietrich
  */
 public class Query extends ASTNode {
-	public Query(Position position, Context context, String predicateName,List<VariableDeclaration> slotDeclarations,String methodName, List<String> methodParamNames) throws IllegalArgumentException {
+	/**
+	 * Constructor.
+	 * @param position
+	 * @param context
+	 * @param predicateName
+	 * @param slotDeclarations
+	 * @param methodName
+	 * @param methodParamNames
+	 * @throws InternalScriptException thrown if method parameter names do not occur in slot definitions
+	 */
+	public Query(Position position, Context context, String predicateName,List<VariableDeclaration> slotDeclarations,String methodName, List<String> methodParamNames) throws InternalScriptException {
 		super(position, context);
 		this.predicateName = predicateName;
 		this.methodName = methodName;
@@ -34,7 +43,7 @@ public class Query extends ASTNode {
 			public String apply(VariableDeclaration v) {return v.getName();}});
 		
 		for (String name:methodParamNames) {
-			if (!definedNames.contains(name)) throw new IllegalArgumentException("Exception in query definition at " + getPosition() + " the following method parameter is not defined as predicate slot: " + name);
+			if (!definedNames.contains(name)) throw new InternalScriptException("Exception in query definition at " + getPosition() + " the following method parameter is not defined as predicate slot: " + name);
 		}
 	}
 

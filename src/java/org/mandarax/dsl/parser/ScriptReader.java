@@ -11,9 +11,11 @@
 
 package org.mandarax.dsl.parser;
 
+import java.io.IOException;
 import java.io.InputStream;
 import org.antlr.runtime.ANTLRInputStream;
 import org.antlr.runtime.CommonTokenStream;
+import org.antlr.runtime.RecognitionException;
 import org.mandarax.dsl.Expression;
 import org.mandarax.dsl.ImportDeclaration;
 import org.mandarax.dsl.Query;
@@ -23,19 +25,36 @@ import org.mandarax.dsl.Query;
  * @author jens dietrich
  */
 public class ScriptReader {
-	private MandaraxParser getParser(InputStream in) throws Exception {
-		MandaraxLexer lexer = new MandaraxLexer(new ANTLRInputStream(in));
+	private MandaraxParser getParser(InputStream in) throws ScriptException {
+		MandaraxLexer lexer = null;
+		try {
+			lexer = new MandaraxLexer(new ANTLRInputStream(in));
+		} catch (IOException e) {
+			throw new ScriptException(e);
+		}
 		CommonTokenStream tokens = new CommonTokenStream(lexer);
 		return new MandaraxParser(tokens);		
 	}
-	public Expression readExpression(InputStream in) throws Exception {
-		return getParser(in).expression().value;
+	public Expression readExpression(InputStream in) throws ScriptException {
+		try {
+			return getParser(in).expression().value;
+		} catch (Exception e) {
+			throw new ScriptException(e);
+		}
 	}
-	public ImportDeclaration readImportDeclaration(InputStream in) throws Exception {
-		return getParser(in).importDeclaration().value;
+	public ImportDeclaration readImportDeclaration(InputStream in) throws ScriptException {
+		try {
+			return getParser(in).importDeclaration().value;
+		} catch (Exception e) {
+			throw new ScriptException(e);
+		}
 	}
-	public Query readQuery(InputStream in) throws Exception {
-		return getParser(in).query().value;
+	public Query readQuery(InputStream in) throws ScriptException {
+		try {
+			return getParser(in).query().value;
+		} catch (Exception e) {
+			throw new ScriptException(e);
+		}
 	}
 	
 	

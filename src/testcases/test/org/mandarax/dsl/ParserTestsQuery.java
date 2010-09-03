@@ -15,6 +15,8 @@ import static org.junit.Assert.*;
 import java.util.List;
 import org.junit.Test;
 import org.mandarax.dsl.*;
+import org.mandarax.dsl.parser.ScriptException;
+
 import static test.org.mandarax.dsl.TestUtils.*;
 
 /**
@@ -77,7 +79,7 @@ public class ParserTestsQuery extends AbstractTests {
 		assertEquals(0,paramNames.size());
 	}
 	// p1 is not defined
-	@Test(expected=IllegalArgumentException.class)
+	@Test(expected=ScriptException.class)
 	public void testQuery4() throws Exception {
 		readQuery("query Height(com.example.Person p,int value) getHeight(p1);");
 	}
