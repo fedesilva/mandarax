@@ -1,0 +1,10 @@
+package org.mandarax.dsl.sketches.inheritance;
+
+rel Parent(Person parent,Person child) queries: getParent(child),getChild(parent),isParent(parent,child) {
+	// some rules here
+	// extends in Father will add rule:  Father(father,child) -> Parent(parent,child)
+}
+
+rel Father(MalePerson father,Person child) extends Parent queries: getFather(child),isFather(father,child) {
+	// some rules here	
+}

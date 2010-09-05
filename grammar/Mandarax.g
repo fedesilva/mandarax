@@ -65,7 +65,7 @@ importDeclaration returns [ImportDeclaration value]
     ;
 
 relationshipDefinition returns [RelationshipDefinition value]
-    :	q=('relationship'|'rel') ti=Identifier '(' tp = variableDeclarationList ')' queries = functionDeclarationList {$value = new RelationshipDefinition(pos(q),context,ti.getText(),tp.value,queries.value);}
+    :	q=('relationship'|'rel') ti=Identifier '(' tp = variableDeclarationList ')' ('extends' supers = qualifiedNameList2)? queries = functionDeclarationList {$value = new RelationshipDefinition(pos(q),context,ti.getText(),tp.value,supers==null?new ArrayList<String>():supers.value,queries.value);}
     ;
     
     
@@ -133,11 +133,16 @@ qualifiedNameList
 qualifiedName returns [Expression value]
 	:	i = Identifier {$value=new Variable(pos(i),context,i.getText());} ('.' j = Identifier {$value=new MemberAccess(pos(i),context,$value,j.getText());})*
 	;
+
+qualifiedNameList2 returns [List<String> value]
+@init {$value = new ArrayList<String>();}
+    :   i = qualifiedName2 {$value.add(i.value);} (',' j = qualifiedName2 {$value.add(j.value);})*
+    ;
 	
 qualifiedName2 returns [String value]
 	:	i = Identifier {$value=i.getText();} ('.' j = Identifier {$value=$value+'.'+j.getText();})*
 	;
-    
+ 
 // list can be empty!    
 nameList returns [List<String> value]
 @init {$value = new ArrayList<String>();}

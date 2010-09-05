@@ -24,15 +24,17 @@ public class RelationshipDefinition extends ASTNode {
 	private String name = null;
 	private List<FunctionDeclaration> queries = null;
 	private List<VariableDeclaration> slotDeclarations = null;
+	private List<String> superTypes = null;
 	
 	/**
 	 * Constructor.
 	 * @throws InternalScriptException thrown if method parameter names do not occur in slot definitions
 	 */
-	public RelationshipDefinition(Position position, Context context, String name,List<VariableDeclaration> slotDeclarations,List<FunctionDeclaration> queries) throws InternalScriptException {
+	public RelationshipDefinition(Position position, Context context, String name,List<VariableDeclaration> slotDeclarations,List<String> superTypes,List<FunctionDeclaration> queries) throws InternalScriptException {
 		super(position, context);
 		this.name = name;
 		this.slotDeclarations = slotDeclarations;
+		this.superTypes = superTypes;
 		this.queries = queries;
 		
 		// consistency check: all methodParamNames must occur in the slot declarations
@@ -67,12 +69,19 @@ public class RelationshipDefinition extends ASTNode {
 	public List<FunctionDeclaration> getQueries() {
 		return queries;
 	}
-	
+
+	public List<String> getSuperTypes() {
+		return superTypes;
+	}
+
 	protected void appendTo(StringBuffer b) {
 		b.append(name);
 		appendListOfNodes(slotDeclarations, b,true);
+		if (superTypes!=null && !superTypes.isEmpty()) {
+			b.append("extends ");
+			this.appendListOfStrings(superTypes, b,false);
+		}
 		b.append(' ');
 		appendListOfNodes(queries, b,false);
 	}
-
 }

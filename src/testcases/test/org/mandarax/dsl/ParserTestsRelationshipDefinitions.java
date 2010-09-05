@@ -43,11 +43,14 @@ public class ParserTestsRelationshipDefinitions extends AbstractTests {
 		assertEquals("getHeight",queries.get(0).getName());
 		assertEquals(1,queries.get(0).getParameterNames().size());
 		assertEquals("p",queries.get(0).getParameterNames().get(0));
+		
+		List<String> superRels = rel.getSuperTypes();
+		assertEquals(0,superRels.size());
 	}
 	
 	@Test
 	public void testQuery2() throws Exception {
-		RelationshipDefinition rel = readRelationshipDefinition("relationship Height(com.example.Person p,int value) private getHeight(p);");
+		RelationshipDefinition rel = readRelationshipDefinition("relationship Height(com.example.Person p,int value) extends Size private getHeight(p);");
 		assertEquals("Height",rel.getName());
 		
 		List<VariableDeclaration> slots = rel.getSlotDeclarations();
@@ -63,12 +66,16 @@ public class ParserTestsRelationshipDefinitions extends AbstractTests {
 		assertEquals("getHeight",queries.get(0).getName());
 		assertEquals(1,queries.get(0).getParameterNames().size());
 		assertEquals("p",queries.get(0).getParameterNames().get(0));
+		
+		List<String> superRels = rel.getSuperTypes();
+		assertEquals(1,superRels.size());
+		assertEquals("Size",superRels.get(0));
 	}
 	
 	
 	@Test
 	public void testQuery3() throws Exception {
-		RelationshipDefinition rel = readRelationshipDefinition("rel Height(com.example.Person p,int value) private getHeight(p,value), public getHeightForPerson(p), getHeights() ;");
+		RelationshipDefinition rel = readRelationshipDefinition("rel Height(com.example.Person p,int value) extends com.example.Size,com.example.Size2 private getHeight(p,value), public getHeightForPerson(p), getHeights() ;");
 		assertEquals("Height",rel.getName());
 		
 		List<VariableDeclaration> slots = rel.getSlotDeclarations();
@@ -96,7 +103,10 @@ public class ParserTestsRelationshipDefinitions extends AbstractTests {
 		assertEquals("getHeights",queries.get(2).getName());
 		assertEquals(0,queries.get(2).getParameterNames().size());
 		
-		
+		List<String> superRels = rel.getSuperTypes();
+		assertEquals(2,superRels.size());
+		assertEquals("com.example.Size",superRels.get(0));
+		assertEquals("com.example.Size2",superRels.get(1));
 	}
 
 	// p1 is not defined
