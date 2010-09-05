@@ -38,4 +38,10 @@ public class InstanceOfExpression extends Expression{
 		}
 		visitor.endVisit(this);
 	}
+	
+	protected void appendTo(StringBuffer b) {
+		objectReference.appendTo(b);
+		b.append(" instanceof ");
+		b.append(type);
+	}
 }

@@ -42,5 +42,16 @@ public class ImportDeclaration extends ASTNode {
 	public String getName() {
 		return name;
 	}
+	
+	protected void appendTo(StringBuffer b) {
+		b.append("import ");
+		if (this.staticImport) {
+			b.append("static ");
+		}
+		b.append(name);
+		if (this.usesWildcard) {
+			b.append(".*");
+		}
+	}
 
 }

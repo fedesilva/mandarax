@@ -48,5 +48,10 @@ public class FunctionInvocation extends Expression {
 		}
 		visitor.endVisit(this);
 	}
+	
+	protected void appendTo(StringBuffer b) {
+		b.append(function);
+		appendListOfNodes(parameters, b,true);
+	}
 
 }

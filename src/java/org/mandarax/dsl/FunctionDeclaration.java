@@ -33,4 +33,11 @@ public class FunctionDeclaration extends ASTNode {
 	public String getName() {
 		return name;
 	}
+	
+	protected void appendTo(StringBuffer b) {
+		b.append(visibility.name());
+		b.append(' ');
+		b.append(name);
+		appendListOfStrings(parameterNames,b,true);
+	}
 }

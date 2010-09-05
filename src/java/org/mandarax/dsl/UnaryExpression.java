@@ -11,6 +11,8 @@
 
 package org.mandarax.dsl;
 
+import static org.mandarax.dsl.Utils.nameForUnOp;
+
 /**
  * Expression using an unary operator such as ! or -.
  * @author jens dietrich
@@ -40,6 +42,13 @@ public class UnaryExpression extends Expression {
 			part.accept(visitor);
 		}
 		visitor.endVisit(this);
+	}
+	
+	protected void appendTo(StringBuffer b) {
+		b.append(nameForUnOp(operator));
+		if (!part.isFlat()) b.append('(');
+		part.appendTo(b);
+		if (!part.isFlat()) b.append(')');
 	}
 	
 }

@@ -11,6 +11,7 @@
 
 package org.mandarax.dsl;
 
+
 /**
  * Boolean literal.
  * @author jens dietrich
@@ -31,5 +32,9 @@ public class BooleanLiteral extends Literal<Boolean> {
 	public void accept(ExpressionVisitor visitor) {
 		visitor.visit(this);
 		visitor.endVisit(this);
+	}
+	
+	protected void appendTo(StringBuffer b) {
+		b.append(value);
 	}
 }

@@ -20,6 +20,11 @@ import com.google.common.collect.Collections2;
  * @author jens dietrich
  */
 public class RelationshipDefinition extends ASTNode {
+	
+	private String name = null;
+	private List<FunctionDeclaration> queries = null;
+	private List<VariableDeclaration> slotDeclarations = null;
+	
 	/**
 	 * Constructor.
 	 * @throws InternalScriptException thrown if method parameter names do not occur in slot definitions
@@ -44,9 +49,6 @@ public class RelationshipDefinition extends ASTNode {
 		}
 	}
 
-	private String name = null;
-	private List<FunctionDeclaration> queries = null;
-	private List<VariableDeclaration> slotDeclarations = null;
 
 	
 	@Override
@@ -64,6 +66,13 @@ public class RelationshipDefinition extends ASTNode {
 
 	public List<FunctionDeclaration> getQueries() {
 		return queries;
+	}
+	
+	protected void appendTo(StringBuffer b) {
+		b.append(name);
+		appendListOfNodes(slotDeclarations, b,true);
+		b.append(' ');
+		appendListOfNodes(queries, b,false);
 	}
 
 }

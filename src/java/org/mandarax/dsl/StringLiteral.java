@@ -29,12 +29,14 @@ public class StringLiteral extends Literal<String> {
 	}
 
 	
-	public String toString() {
-		return "StringLiteral("+value+')';
-	}
-	
 	public void accept(ExpressionVisitor visitor) {
 		visitor.visit(this);
 		visitor.endVisit(this);
+	}
+	// TODO - must escape chars in string
+	protected void appendTo(StringBuffer b) {
+		b.append('\"');
+		b.append(value);
+		b.append('\"');
 	}
 }

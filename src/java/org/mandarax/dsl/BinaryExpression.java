@@ -11,6 +11,8 @@
 
 package org.mandarax.dsl;
 
+import static org.mandarax.dsl.Utils.nameForBinOp;
+
 
 /**
  * Represents binary expressions having two children connected by boolean or arithmetic operators.
@@ -43,6 +45,18 @@ public class BinaryExpression extends Expression {
 			right.accept(visitor);
 		}
 		visitor.endVisit(this);
+	}
+	
+	protected void appendTo(StringBuffer b) {
+		if (!left.isFlat()) b.append('(');
+		left.appendTo(b);
+		if (!left.isFlat()) b.append(')');
+		
+		b.append(nameForBinOp(operator));
+		
+		if (!right.isFlat()) b.append('(');
+		right.appendTo(b);
+		if (!right.isFlat()) b.append(')');
 	}
 	
 }

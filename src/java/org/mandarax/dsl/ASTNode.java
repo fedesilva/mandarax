@@ -11,6 +11,8 @@
 
 package org.mandarax.dsl;
 
+import java.util.List;
+
 /**
  * Superclass for all AST nodes.
  * @author jens dietrich
@@ -43,5 +45,39 @@ public abstract class ASTNode  implements Visitable {
 	public void setContext(Context context) {
 		this.context = context;
 	}
+	// method used for toString conversion
+	protected abstract void appendTo(StringBuffer b);
+	
+	// useful utility for printing: print a list in brackets, items separated by commas
+	protected void appendListOfNodes(List<? extends ASTNode> list, StringBuffer b,boolean brackets) {
+		if (brackets) b.append('(');
+		boolean f = true;
+		for (ASTNode n:list) {
+			if (f) f=false;
+			else b.append(',');
+			n.appendTo(b);
+		}
+		if (brackets) b.append(')');
+	}
+	
+	// useful utility for printing: print a list in brackets, items separated by commas
+	protected void appendListOfStrings(List<String> list, StringBuffer b,boolean brackets) {
+		if (brackets) b.append('(');
+		boolean f = true;
+		for (String n:list) {
+			if (f) f=false;
+			else b.append(',');
+			b.append(n);
+		}
+		if (brackets) b.append(')');
+	}
+	
+	public String toString() {
+		StringBuffer b = new StringBuffer();
+		this.appendTo(b);
+		return b.toString();
+	}
+	
+	
 
 }

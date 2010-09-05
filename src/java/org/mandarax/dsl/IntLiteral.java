@@ -33,4 +33,8 @@ public class IntLiteral extends Literal<Integer> {
 		visitor.endVisit(this);
 	}
 	
+	protected void appendTo(StringBuffer b) {
+		b.append(Integer.toString(value));
+	}
+	
 }

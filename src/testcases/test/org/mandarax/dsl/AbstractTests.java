@@ -27,12 +27,10 @@ abstract class AbstractTests {
 	protected void print(Expression expression) {
 		if (DEBUG_MODE) {
 			System.out.println("-- starts --");
-			ExpressionPrinter printer1 = new ExpressionPrinter();
-			printer1.print(expression); 
-			//System.out.println();
+			System.out.println(expression);
 			ExpressionStructurePrinter printer = new ExpressionStructurePrinter();
 			printer.println();
-			expression.accept(printer);
+			//expression.accept(printer);
 			System.out.println("-- ends --");
 			System.out.println();
 		}

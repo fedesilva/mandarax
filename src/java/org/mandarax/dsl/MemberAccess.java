@@ -60,6 +60,15 @@ public class MemberAccess extends Expression {
 		}
 		visitor.endVisit(this);
 	}
+	
+	protected void appendTo(StringBuffer b) {
+		this.objectReference.appendTo(b);
+		b.append('.');
+		b.append(member);
+		if (this.isMethod) {
+			this.appendListOfNodes(parameters, b,true);
+		}
+	}
 
 
 }

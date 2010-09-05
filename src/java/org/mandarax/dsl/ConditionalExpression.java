@@ -56,4 +56,18 @@ public class ConditionalExpression extends Expression {
 		}
 		visitor.endVisit(this);
 	}
+	
+	protected void appendTo(StringBuffer b) {
+		b.append('(');
+		condition.appendTo(b);
+		b.append(')');
+		b.append('?');
+		b.append('(');
+		ifTrue.appendTo(b);
+		b.append(')');
+		b.append(':');
+		b.append('(');
+		ifFalse.appendTo(b);
+		b.append(')');
+	}
 }

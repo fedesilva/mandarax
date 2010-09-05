@@ -10,6 +10,8 @@
  */
 package org.mandarax.dsl;
 
+import static org.mandarax.dsl.Utils.nameForUnOp;
+
 /**
  * Represents variable declarations consisting of a type (name) and a variable name.
  * @author jens dietrich
@@ -34,6 +36,12 @@ public class VariableDeclaration extends ASTNode {
 
 	public String getName() {
 		return name;
+	}
+	
+	protected void appendTo(StringBuffer b) {
+		b.append(type);
+		b.append(' ');
+		b.append(name);
 	}
 
 }

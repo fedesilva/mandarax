@@ -38,4 +38,12 @@ public class CastExpression extends Expression {
 		}
 		visitor.endVisit(this);
 	}
+	
+	protected void appendTo(StringBuffer b) {
+		b.append('(');
+		b.append(type);
+		b.append(')');
+		objectReference.appendTo(b);
+	}
+	
 }

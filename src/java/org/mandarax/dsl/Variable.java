@@ -11,6 +11,8 @@
 
 package org.mandarax.dsl;
 
+import static org.mandarax.dsl.Utils.nameForUnOp;
+
 /**
  * Variable/object references by name.
  * @author jens dietrich
@@ -27,10 +29,6 @@ public class Variable extends Expression {
 	public String getName() {
 		return name;
 	}
-
-	public String toString() {
-		return "Variable("+name+')';
-	}
 	
 	public void accept(ExpressionVisitor visitor) {
 		visitor.visit(this);
@@ -39,5 +37,9 @@ public class Variable extends Expression {
 	
 	public boolean isFlat() {
 		return true;
+	}
+	
+	protected void appendTo(StringBuffer b) {
+		b.append(name);
 	}
 }
