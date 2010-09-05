@@ -65,7 +65,7 @@ importDeclaration returns [ImportDeclaration value]
     ;
 
 relationshipDefinition returns [RelationshipDefinition value]
-    :	q=('relationship'|'rel') ti=Identifier '(' tp = variableDeclarationList ')' ('extends' supers = qualifiedNameList2)? queries = functionDeclarationList {$value = new RelationshipDefinition(pos(q),context,ti.getText(),tp.value,supers==null?new ArrayList<String>():supers.value,queries.value);}
+    :	q=('relationship'|'rel') ti=Identifier '(' tp = variableDeclarationList ')' ('extends' supers = qualifiedNameList2)? 'queries' queries = functionDeclarationList {$value = new RelationshipDefinition(pos(q),context,ti.getText(),tp.value,supers==null?new ArrayList<String>():supers.value,queries.value);}
     ;
     
     

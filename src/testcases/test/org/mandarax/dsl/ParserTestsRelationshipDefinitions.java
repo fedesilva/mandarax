@@ -27,7 +27,7 @@ public class ParserTestsRelationshipDefinitions extends AbstractTests {
 	
 	@Test
 	public void testQuery1() throws Exception {
-		RelationshipDefinition rel = readRelationshipDefinition("rel Height(com.example.Person p,int value) getHeight(p);");
+		RelationshipDefinition rel = readRelationshipDefinition("rel Height(com.example.Person p,int value) queries getHeight(p);");
 		assertEquals("Height",rel.getName());
 		
 		List<VariableDeclaration> slots = rel.getSlotDeclarations();
@@ -50,7 +50,7 @@ public class ParserTestsRelationshipDefinitions extends AbstractTests {
 	
 	@Test
 	public void testQuery2() throws Exception {
-		RelationshipDefinition rel = readRelationshipDefinition("relationship Height(com.example.Person p,int value) extends Size private getHeight(p);");
+		RelationshipDefinition rel = readRelationshipDefinition("relationship Height(com.example.Person p,int value) extends Size queries private getHeight(p);");
 		assertEquals("Height",rel.getName());
 		
 		List<VariableDeclaration> slots = rel.getSlotDeclarations();
@@ -75,7 +75,7 @@ public class ParserTestsRelationshipDefinitions extends AbstractTests {
 	
 	@Test
 	public void testQuery3() throws Exception {
-		RelationshipDefinition rel = readRelationshipDefinition("rel Height(com.example.Person p,int value) extends com.example.Size,com.example.Size2 private getHeight(p,value), public getHeightForPerson(p), getHeights() ;");
+		RelationshipDefinition rel = readRelationshipDefinition("rel Height(com.example.Person p,int value) extends com.example.Size,com.example.Size2 queries private getHeight(p,value), public getHeightForPerson(p), getHeights() ;");
 		assertEquals("Height",rel.getName());
 		
 		List<VariableDeclaration> slots = rel.getSlotDeclarations();
@@ -112,7 +112,7 @@ public class ParserTestsRelationshipDefinitions extends AbstractTests {
 	// p1 is not defined
 	@Test(expected=ScriptException.class)
 	public void testQuery4() throws Exception {
-		readRelationshipDefinition("rel Height(com.example.Person p,int value) getHeight(p1);");
+		readRelationshipDefinition("rel Height(com.example.Person p,int value) queries getHeight(p1);");
 	}
 	
 	
