@@ -49,15 +49,28 @@ package org.mandarax.dsl.parser;
 @lexer::members {
   protected boolean enumIsKeyword = true;
   protected boolean assertIsKeyword = true;
+  protected ErrorReporter errorHandler = new ErrorReporter();
+  
+  public void displayRecognitionError(String[] tokenNames,RecognitionException e) {
+  	String msg = getErrorMessage(e, tokenNames);
+  	errorHandler.handleError(msg,e);
+  }
 }
 @parser::members {
   private Context context = new Context(); 
+  protected ErrorReporter errorHandler = new ErrorReporter();
+  
   private Position pos(Token token) {
   	return new Position(token.getLine(),token.getCharPositionInLine());
   }
   private Position pos(Expression expression) {
   	return expression.getPosition().clone();
   }
+  public void displayRecognitionError(String[] tokenNames,RecognitionException e) {
+  	String msg = getErrorMessage(e, tokenNames);
+  	errorHandler.handleError(msg,e);
+  }
+
 }
 
 importDeclaration returns [ImportDeclaration value]
@@ -65,7 +78,7 @@ importDeclaration returns [ImportDeclaration value]
     ;
 
 relationshipDefinition returns [RelationshipDefinition value]
-    :	q=('relationship'|'rel') ti=Identifier '(' tp = variableDeclarationList ')' ('extends' supers = qualifiedNameList2)? 'queries' queries = functionDeclarationList {$value = new RelationshipDefinition(pos(q),context,ti.getText(),tp.value,supers==null?new ArrayList<String>():supers.value,queries.value);}
+    :	q=('relationship'|'rel') ti=Identifier '(' tp = variableDeclarationList ')' ('extends' supers = qualifiedNameList2)? 'queries' queries = functionDeclarationList ';' {$value = new RelationshipDefinition(pos(q),context,ti.getText(),tp.value,supers==null?new ArrayList<String>():supers.value,queries.value);}
     ;
     
     
