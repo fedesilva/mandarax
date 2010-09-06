@@ -11,47 +11,30 @@
 
 package org.mandarax.dsl;
 /**
- * Import declaration.
+ * Package declaration.
  * @author jens dietrich
  */
-public class ImportDeclaration extends ASTNode {
+public class PackageDeclaration extends ASTNode {
 	
-	private boolean staticImport = false;
-	private boolean usesWildcard = false;
 	private String name = null;
 
-	public ImportDeclaration(Position position, Context context,String name,boolean isStatic,boolean usesWildcard) {
+	public PackageDeclaration(Position position, Context context,String name) {
 		super(position, context);
 		this.name = name;
-		this.staticImport = isStatic;
-		this.usesWildcard = usesWildcard;
 	}
 
 	@Override
 	public void accept(ExpressionVisitor visitor) {
 	}
 
-	public boolean isStaticImport() {
-		return staticImport;
-	}
-
-	public boolean isUsingWildcard() {
-		return usesWildcard;
-	}
 
 	public String getName() {
 		return name;
 	}
 	
 	protected void appendTo(StringBuffer b) {
-		b.append("import ");
-		if (this.staticImport) {
-			b.append("static ");
-		}
+		b.append("package ");
 		b.append(name);
-		if (this.usesWildcard) {
-			b.append(".*");
-		}
 		b.append(';');
 	}
 

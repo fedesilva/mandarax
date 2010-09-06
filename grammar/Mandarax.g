@@ -76,6 +76,10 @@ package org.mandarax.dsl.parser;
 importDeclaration returns [ImportDeclaration value]
     :   i='import' (s = 'static'?) (n=qualifiedName2) (w='.' '*')? ';' {$value = new ImportDeclaration(pos(i),context,n.value,s!=null,w!=null);} 
     ;
+    
+packageDeclaration returns [PackageDeclaration value] 
+    : 	p='package' (n=qualifiedName2) {$value = new PackageDeclaration(pos(p),context,n.value);}
+    ;	    
 
 relationshipDefinition returns [RelationshipDefinition value]
     :	q=('relationship'|'rel') ti=Identifier '(' tp = variableDeclarationList ')' ('extends' supers = qualifiedNameList2)? 'queries' queries = functionDeclarationList ';' {$value = new RelationshipDefinition(pos(q),context,ti.getText(),tp.value,supers==null?new ArrayList<String>():supers.value,queries.value);}

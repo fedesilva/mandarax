@@ -15,10 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import org.antlr.runtime.ANTLRInputStream;
 import org.antlr.runtime.CommonTokenStream;
-import org.antlr.runtime.RecognitionException;
-import org.mandarax.dsl.Expression;
-import org.mandarax.dsl.ImportDeclaration;
-import org.mandarax.dsl.RelationshipDefinition;
+import org.mandarax.dsl.*;
 
 /**
  * Utility to read artefacts from scripts.
@@ -52,6 +49,14 @@ public class ScriptReader {
 	public RelationshipDefinition readRelationshipDefinition(InputStream in) throws ScriptException {
 		try {
 			return getParser(in).relationshipDefinition().value;
+		} catch (Exception e) {
+			throw new ScriptException(e);
+		}
+	}
+	
+	public PackageDeclaration readPackageDeclaration(InputStream in) throws ScriptException {
+		try {
+			return getParser(in).packageDeclaration().value;
 		} catch (Exception e) {
 			throw new ScriptException(e);
 		}

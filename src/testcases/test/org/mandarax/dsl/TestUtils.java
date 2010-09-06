@@ -13,9 +13,7 @@ package test.org.mandarax.dsl;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import org.mandarax.dsl.Expression;
-import org.mandarax.dsl.ImportDeclaration;
-import org.mandarax.dsl.RelationshipDefinition;
+import org.mandarax.dsl.*;
 import org.mandarax.dsl.parser.ScriptReader;
 
 /**
@@ -36,4 +34,10 @@ public class TestUtils {
 		InputStream in = new ByteArrayInputStream(imp.getBytes("UTF-8"));
 		return new ScriptReader().readRelationshipDefinition(in);
 	}
+	
+	public static PackageDeclaration readPackageDeclaration(String imp) throws Exception {
+		InputStream in = new ByteArrayInputStream(imp.getBytes("UTF-8"));
+		return new ScriptReader().readPackageDeclaration(in);
+	}
+	
 }

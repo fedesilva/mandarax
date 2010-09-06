@@ -10,33 +10,23 @@
  */
 
 package test.org.mandarax.dsl;
-import org.junit.runner.RunWith;
 
-import org.junit.runners.*;
+import static org.junit.Assert.*;
+import org.junit.Test;
+import org.mandarax.dsl.*;
+import static test.org.mandarax.dsl.TestUtils.*;
 
 /**
- * Test suite. Used to run all tests in this package.
+ * Test cases for package declarations.
  * @author jens dietrich
  */
+public class ParserTestsPackageDeclarations extends AbstractTests {
+	
+	@Test
+	public void testPackageDeclaration1() throws Exception {
+		PackageDeclaration pck = readPackageDeclaration("package org.mandarax.dsl;");
+		assertEquals(pck.getName(),"org.mandarax.dsl");
+	}
 
-@RunWith(Suite.class)
-@Suite.SuiteClasses({
-	// expressions
-	ParserTestsArithmetic.class,
-	ParserTestsRelationalExpressions.class,
-	ParserTestsFlatExpressions.class,
-	ParserTestsMemberAccess.class,
-	ParserTestsFunctionInvocations.class,
-	ParserTestsMiscExpressions.class,
-	ParserTestsComplexExpressions.class,
-	// other syntax elements
-	ParserTestsImportDeclarations.class,
-	ParserTestsPackageDeclarations.class,
-	ParserTestsRelationshipDefinitions.class,
-	// type reasoner
-	TypeReasonerTests.class
-})
-public class AllTests {
-
+	
 }
-
