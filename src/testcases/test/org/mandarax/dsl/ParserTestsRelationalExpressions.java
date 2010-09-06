@@ -11,8 +11,6 @@
 
 package test.org.mandarax.dsl;
 
-import static org.junit.Assert.*;
-import org.mandarax.dsl.parser.ScriptReader;
 import org.junit.Test;
 import org.mandarax.dsl.*;
 import static test.org.mandarax.dsl.TestUtils.*;
@@ -22,17 +20,6 @@ import static test.org.mandarax.dsl.TestUtils.*;
  * @author jens dietrich
  */
 public class ParserTestsRelationalExpressions extends AbstractTests{
-	
-	private void testVarOpInt(Expression x,String varName,BinOp op,int intValue) throws Exception {
-		assertTrue(x instanceof BinaryExpression);
-		BinaryExpression bx = (BinaryExpression)x;
-		assertTrue(bx.getLeft() instanceof Variable);
-		assertTrue(bx.getRight() instanceof IntLiteral);
-		assertEquals(op,bx.getOperator());
-		assertEquals(varName,((Variable)bx.getLeft()).getName());
-		assertEquals(intValue,(int)((IntLiteral)bx.getRight()).getValue());
-	}
-	
 	
 	@Test
 	public void testEQ() throws Exception {

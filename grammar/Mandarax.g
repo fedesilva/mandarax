@@ -81,10 +81,13 @@ packageDeclaration returns [PackageDeclaration value]
     : 	p='package' (n=qualifiedName2) {$value = new PackageDeclaration(pos(p),context,n.value);}
     ;	    
 
+rule returns [Rule value]
+    :   id = Identifier ':' (body = conjunction )? '->' concl = functionInvocation {$value = new Rule(pos(id),context,id.getText(),body.value,(FunctionInvocation)concl.value);}';'
+    ;
+     
 relationshipDefinition returns [RelationshipDefinition value]
     :	q=('relationship'|'rel') ti=Identifier '(' tp = variableDeclarationList ')' ('extends' supers = qualifiedNameList2)? 'queries' queries = functionDeclarationList ';' {$value = new RelationshipDefinition(pos(q),context,ti.getText(),tp.value,supers==null?new ArrayList<String>():supers.value,queries.value);}
-    ;
-    
+    ;    
     
 variableDeclaration returns [VariableDeclaration value]
     :	t = type n = Identifier {$value = new VariableDeclaration(pos(t.start),context,t.value,n.getText());}
@@ -103,7 +106,7 @@ functionDeclarationList returns [List<FunctionDeclaration> value]
 @init {$value = new ArrayList<FunctionDeclaration>();}
     :	part1 = functionDeclaration {$value.add(part1.value);} (',' part2 = functionDeclaration {$value.add(part2.value);})*
     ;
-    
+
 visibility returns [Visibility value]
 @init {$value = Visibility.PUBLIC;}
     	: ('public' | ('private'  {$value = Visibility.PRIVATE;}) )?
@@ -210,18 +213,15 @@ parExpression returns [Expression value]
     :   '(' expr = expression ')' {$value = expr.value;}
     ;
     
-expressionList returns [List<Expression> values]
+commaSeparatedExpressionList returns [List<Expression> values]
 @init {$values = new ArrayList<Expression>();}
     :   e1 = expression {$values.add(e1.value);} (',' e2 = expression {$values.add(e2.value);} )*
     ;
 
-//statementExpression
-//    :   expression
-//    ;
-    
-//constantExpression
-//    :   expression
-//    ;
+andSeparatedExpressionList returns [List<Expression> values]
+@init {$values = new ArrayList<Expression>();}
+    :   e1 = expression {$values.add(e1.value);} ('&' e2 = expression {$values.add(e2.value);} )*
+    ;
 
 conditionalExpression returns [Expression value]
     :   r1 = disjunction ( '?' r2 = expression ':' r3 = expression )? {$value=(r2==null)?r1.value:new ConditionalExpression(pos(r1.value),context,r1.value,r2.value,r3.value);}
@@ -305,11 +305,11 @@ propertyAccess returns [Expression value]
     ;
 
 methodInvocation returns [Expression value]
-    :   o = objectref {$value = o.value;} ('.' i = Identifier '('(p = expressionList)? ')' {$value = new MemberAccess(pos(o.value),context,$value,i.getText(),p==null?new ArrayList<Expression>():p.values);})* 
+    :   o = objectref {$value = o.value;} ('.' i = Identifier '('(p = commaSeparatedExpressionList)? ')' {$value = new MemberAccess(pos(o.value),context,$value,i.getText(),p==null?new ArrayList<Expression>():p.values);})* 
     ;
     
 functionInvocation returns [Expression value] 
-    :   f = Identifier  '(' (p = expressionList)? ')' {$value = new FunctionInvocation(pos(f),context,f.getText(),p==null?new ArrayList<Expression>():p.values);}     
+    :   f = Identifier  '(' (p = commaSeparatedExpressionList)? ')' {$value = new FunctionInvocation(pos(f),context,f.getText(),p==null?new ArrayList<Expression>():p.values);}     
     ;
     
 objectref returns [Expression value]
@@ -324,7 +324,7 @@ castExpression returns [Expression value]
     ;
 
 arguments
-    :   '(' expressionList? ')'
+    :   '(' commaSeparatedExpressionList? ')'
     ;
 
 // LEXER

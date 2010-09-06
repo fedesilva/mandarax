@@ -12,9 +12,8 @@
 package test.org.mandarax.dsl;
 
 import org.mandarax.dsl.Expression;
-import org.mandarax.dsl.util.ExpressionPrinter;
+import org.mandarax.dsl.Rule;
 import org.mandarax.dsl.util.ExpressionStructurePrinter;
-import static test.org.mandarax.dsl.TestUtils.*;
 
 /**
  * Abstract superclass for test cases.
@@ -34,6 +33,12 @@ abstract class AbstractTests {
 			System.out.println("-- ends --");
 			System.out.println();
 		}
+	}
+	
+	protected void print(Rule rule) {
+		if (DEBUG_MODE) {
+			System.out.println(rule);
+		}		
 	}
 
 }

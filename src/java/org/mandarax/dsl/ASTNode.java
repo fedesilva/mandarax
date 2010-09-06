@@ -50,26 +50,35 @@ public abstract class ASTNode  implements Visitable {
 	
 	// useful utility for printing: print a list in brackets, items separated by commas
 	protected void appendListOfNodes(List<? extends ASTNode> list, StringBuffer b,boolean brackets) {
+		appendListOfNodes(list,b,brackets,",");
+	}
+	
+	protected void appendListOfNodes(List<? extends ASTNode> list, StringBuffer b,boolean brackets,String sep) {
 		if (brackets) b.append('(');
 		boolean f = true;
 		for (ASTNode n:list) {
 			if (f) f=false;
-			else b.append(',');
+			else b.append(sep);
 			n.appendTo(b);
 		}
 		if (brackets) b.append(')');
 	}
 	
 	// useful utility for printing: print a list in brackets, items separated by commas
-	protected void appendListOfStrings(List<String> list, StringBuffer b,boolean brackets) {
+	protected void appendListOfStrings(List<String> list, StringBuffer b,boolean brackets,String sep) {
 		if (brackets) b.append('(');
 		boolean f = true;
 		for (String n:list) {
 			if (f) f=false;
-			else b.append(',');
+			else b.append(sep);
 			b.append(n);
 		}
 		if (brackets) b.append(')');
+	}
+	
+	// useful utility for printing: print a list in brackets, items separated by commas
+	protected void appendListOfStrings(List<String> list, StringBuffer b,boolean brackets) {
+		appendListOfStrings(list,b,brackets,",");
 	}
 	
 	public String toString() {

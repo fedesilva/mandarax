@@ -62,5 +62,13 @@ public class ScriptReader {
 		}
 	}
 	
+	public Rule readRule(InputStream in) throws ScriptException {
+		try {
+			return getParser(in).rule().value;
+		} catch (Exception e) {
+			throw new ScriptException(e);
+		}
+	}
+	
 	
 }
