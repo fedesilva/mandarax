@@ -18,7 +18,7 @@ import org.mandarax.dsl.*;
 import static test.org.mandarax.dsl.TestUtils.*;
 
 /**
- * Test cases for complex expressions.
+ * Test cases for rules.
  * @author jens dietrich
  */ 
 public class ParserTestsRules extends AbstractTests{

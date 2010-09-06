@@ -11,6 +11,7 @@
 
 package test.org.mandarax.dsl;
 
+import org.mandarax.dsl.ASTNode;
 import org.mandarax.dsl.Expression;
 import org.mandarax.dsl.Rule;
 import org.mandarax.dsl.util.ExpressionStructurePrinter;
@@ -35,9 +36,9 @@ abstract class AbstractTests {
 		}
 	}
 	
-	protected void print(Rule rule) {
+	protected void print(ASTNode n) {
 		if (DEBUG_MODE) {
-			System.out.println(rule);
+			System.out.println(n);
 		}		
 	}
 

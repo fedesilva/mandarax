@@ -70,5 +70,13 @@ public class ScriptReader {
 		}
 	}
 	
+	public Annotation readAnnotation(InputStream in) throws ScriptException {
+		try {
+			return getParser(in).annotation().value;
+		} catch (Exception e) {
+			throw new ScriptException(e);
+		}
+	}
+	
 	
 }

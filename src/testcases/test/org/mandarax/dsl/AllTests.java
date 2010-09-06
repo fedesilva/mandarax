@@ -33,6 +33,8 @@ import org.junit.runners.*;
 	ParserTestsImportDeclarations.class,
 	ParserTestsPackageDeclarations.class,
 	ParserTestsRelationshipDefinitions.class,
+	ParserTestsAnnotations.class,
+	ParserTestsRules.class,
 	// type reasoner
 	TypeReasonerTests.class
 })

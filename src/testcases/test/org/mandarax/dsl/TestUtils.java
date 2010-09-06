@@ -83,4 +83,9 @@ public class TestUtils {
 		InputStream in = getStream(s);
 		return new ScriptReader().readRule(in);
 	}
+	
+	public static Annotation readAnnotation(String s) throws Exception {
+		InputStream in = getStream(s);
+		return new ScriptReader().readAnnotation(in);
+	}
 }

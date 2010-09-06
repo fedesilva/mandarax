@@ -63,7 +63,7 @@ package org.mandarax.dsl.parser;
   private Position pos(Token token) {
   	return new Position(token.getLine(),token.getCharPositionInLine());
   }
-  private Position pos(Expression expression) {
+  private Position pos(ASTNode expression) {
   	return expression.getPosition().clone();
   }
   public void displayRecognitionError(String[] tokenNames,RecognitionException e) {
@@ -84,6 +84,10 @@ packageDeclaration returns [PackageDeclaration value]
 rule returns [Rule value]
     :   id = Identifier ':' (body = conjunction )? '->' concl = functionInvocation {$value = new Rule(pos(id),context,id.getText(),body.value,(FunctionInvocation)concl.value);}';'
     ;
+    
+annotation returns [Annotation value]
+: '@' key = qualifiedName2 '=' val = StringLiteral {$value = new Annotation(pos(key.start),context,key.value,val.getText().substring(1,val.getText().length()-1));}
+	;     
      
 relationshipDefinition returns [RelationshipDefinition value]
     :	q=('relationship'|'rel') ti=Identifier '(' tp = variableDeclarationList ')' ('extends' supers = qualifiedNameList2)? 'queries' queries = functionDeclarationList ';' {$value = new RelationshipDefinition(pos(q),context,ti.getText(),tp.value,supers==null?new ArrayList<String>():supers.value,queries.value);}

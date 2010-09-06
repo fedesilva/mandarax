@@ -7,4 +7,13 @@ rel Parent(Person parent,Person child) queries getParent(child),getChild(parent)
 
 rel Father(MalePerson father,Person child) extends Parent queries getFather(child),isFather(father,child) {
 	// some rules here	
+	@id="rule1"
+	rule Son(x,y) -> Father(y,x)
+	facts importedFatherRelationships 
+}
+rel GradFather(MalePerson gfather,Person child)  queries getGrandFather(child),isGrandFather(gfather,child) {
+	// some rules here
+	@id="rule2"	
+	@author="Jens"
+	rule1 Son(x,y) & Son(y,z) -> GrandFather(x,z)
 }
