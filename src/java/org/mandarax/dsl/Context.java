@@ -11,11 +11,35 @@
 
 package org.mandarax.dsl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Used to keep track of contextual information such as namespace definitions and annotations.
  * @author jens dietrich
  */
 
 public class Context {
-
+	private PackageDeclaration packageDeclaration = null;
+	private List<ImportDeclaration> imports = new ArrayList<ImportDeclaration>();
+	private List<ImportDeclaration> staticImports = new ArrayList<ImportDeclaration>();
+	public List<ImportDeclaration> getImports() {
+		return imports;
+	}
+	public void setImports(List<ImportDeclaration> imports) {
+		this.imports = imports;
+	}
+	public PackageDeclaration getPackageDeclaration() {
+		return packageDeclaration;
+	}
+	public List<ImportDeclaration> getStaticImports() {
+		return staticImports;
+	}
+	public void add(ImportDeclaration imp) {
+		if (imp.isStaticImport()) this.staticImports.add(imp);
+		else this.imports.add(imp);
+	}
+	public void setPackageDeclaration(PackageDeclaration packageDeclaration) {
+		this.packageDeclaration = packageDeclaration;
+	}
 }

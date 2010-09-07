@@ -25,6 +25,7 @@ public class ImportDeclaration extends ASTNode {
 		this.name = name;
 		this.staticImport = isStatic;
 		this.usesWildcard = usesWildcard;
+		context.add(this);
 	}
 
 	@Override

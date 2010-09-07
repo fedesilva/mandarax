@@ -21,6 +21,8 @@ public class PackageDeclaration extends ASTNode {
 	public PackageDeclaration(Position position, Context context,String name) {
 		super(position, context);
 		this.name = name;
+		
+		context.setPackageDeclaration(this);
 	}
 
 	@Override
