@@ -82,7 +82,7 @@ packageDeclaration returns [PackageDeclaration value]
     ;	    
 
 rule returns [Rule value]
-    :   id = Identifier ':' (body = conjunction )? '->' concl = functionInvocation {$value = new Rule(pos(id),context,id.getText(),body.value,(FunctionInvocation)concl.value);}';'
+    :   (a = annotationList)? id = Identifier ':' (body = conjunction )? '->' concl = functionInvocation {$value = new Rule(pos(id),context,id.getText(),body.value,(FunctionInvocation)concl.value);$value.addAnnotations(a==null?new ArrayList<Annotation>():a.values);}';'
     ;
     
 annotation returns [Annotation value]
@@ -91,7 +91,7 @@ annotation returns [Annotation value]
 	
 annotationList returns [List<Annotation> values]
 @init {$values = new ArrayList<Annotation>();}
-: (a = annotation '\r'? '\n' {$values.add(a.value);})*
+: (a = annotation {$values.add(a.value);} ('\r'? '\n')+ )*
 ;    
      
 relationshipDefinition returns [RelationshipDefinition value]

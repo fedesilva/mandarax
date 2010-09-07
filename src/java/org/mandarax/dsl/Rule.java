@@ -18,7 +18,7 @@ import java.util.List;
  * Represents a rule.
  * @author jens dietrich
  */
-public class Rule extends ASTNode {
+public class Rule extends AnnotatableNode {
 	
 	private String id = null;
 	private List<Expression> body = null;

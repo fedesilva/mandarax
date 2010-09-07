@@ -12,9 +12,11 @@
 package test.org.mandarax.dsl;
 
 import static org.junit.Assert.*;
+
 import java.util.List;
 import org.junit.Test;
 import org.mandarax.dsl.*;
+
 import static test.org.mandarax.dsl.TestUtils.*;
 
 /**
@@ -51,6 +53,72 @@ public class ParserTestsRules extends AbstractTests{
 	public void testRule2() throws Exception {
 		Rule rule = readRule("rule_2: x>2 & x<=100-> special(x,42);");
 		print(rule);
+		assertEquals("rule_2",rule.getId());
+		
+		List<Expression> body = rule.getBody();
+		assertEquals(2,body.size());
+		
+		Expression prereq1 = body.get(0);
+		testVarOpInt(prereq1,"x",BinOp.GT,2);
+		
+		Expression prereq2 = body.get(1);
+		testVarOpInt(prereq2,"x",BinOp.LTE,100);
+		
+		Expression head = rule.getHead();
+		assertTrue(head instanceof FunctionInvocation);
+		FunctionInvocation f = (FunctionInvocation)head;
+		
+		assertEquals("special",f.getFunction());
+		List<Expression> terms = f.getParameters();
+		assertEquals(2,terms.size());
+		assertVariable(terms.get(0),"x");
+		assertIntLiteral(terms.get(1),42);
+	}
+	
+	@Test
+	public void testRule3() throws Exception {
+		Rule rule = readRule("@id=\"rel42\" \n rule_2: x>2 & x<=100-> special(x,42);");
+		print(rule);
+		
+		List<Annotation> annotations = rule.getAnnotations();
+		assertEquals(1,annotations.size());
+		assertEquals("id",annotations.get(0).getKey());
+		assertEquals("rel42",annotations.get(0).getValue());
+		
+		assertEquals("rule_2",rule.getId());
+		
+		List<Expression> body = rule.getBody();
+		assertEquals(2,body.size());
+		
+		Expression prereq1 = body.get(0);
+		testVarOpInt(prereq1,"x",BinOp.GT,2);
+		
+		Expression prereq2 = body.get(1);
+		testVarOpInt(prereq2,"x",BinOp.LTE,100);
+		
+		Expression head = rule.getHead();
+		assertTrue(head instanceof FunctionInvocation);
+		FunctionInvocation f = (FunctionInvocation)head;
+		
+		assertEquals("special",f.getFunction());
+		List<Expression> terms = f.getParameters();
+		assertEquals(2,terms.size());
+		assertVariable(terms.get(0),"x");
+		assertIntLiteral(terms.get(1),42);
+	}
+	
+	@Test
+	public void testRule4() throws Exception {
+		Rule rule = readRule("@id=\"rel42\" \n @author = \"jens\"\r\n\nrule_2: x>2 & x<=100-> special(x,42);");
+		print(rule);
+		
+		List<Annotation> annotations = rule.getAnnotations();
+		assertEquals(2,annotations.size());
+		assertEquals("id",annotations.get(0).getKey());
+		assertEquals("rel42",annotations.get(0).getValue());
+		assertEquals("author",annotations.get(1).getKey());
+		assertEquals("jens",annotations.get(1).getValue());
+		
 		assertEquals("rule_2",rule.getId());
 		
 		List<Expression> body = rule.getBody();
