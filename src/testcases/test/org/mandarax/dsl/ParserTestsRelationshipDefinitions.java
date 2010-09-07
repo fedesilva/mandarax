@@ -27,7 +27,7 @@ public class ParserTestsRelationshipDefinitions extends AbstractTests {
 	
 	@Test
 	public void testQuery1() throws Exception {
-		RelationshipDefinition rel = readRelationshipDefinition("rel Height(com.example.Person p,int value) queries getHeight(p);");
+		RelationshipDefinition rel = readRelationshipDefinition("rel Height(com.example.Person p,int value) queries getHeight(p)  {\nrule1: Giant(p)-> Height(p,200);\n}");
 		assertEquals("Height",rel.getName());
 		
 		List<VariableDeclaration> slots = rel.getSlotDeclarations();
@@ -46,11 +46,15 @@ public class ParserTestsRelationshipDefinitions extends AbstractTests {
 		
 		List<String> superRels = rel.getSuperTypes();
 		assertEquals(0,superRels.size());
+		
+		List<Rule> rules = rel.getRules();
+		assertEquals(1,rules.size());
+		assertEquals("rule1",rules.get(0).getId());
 	}
 	
 	@Test
 	public void testQuery2() throws Exception {
-		RelationshipDefinition rel = readRelationshipDefinition("relationship Height(com.example.Person p,int value) extends Size queries private getHeight(p);");
+		RelationshipDefinition rel = readRelationshipDefinition("relationship Height(com.example.Person p,int value) extends Size queries private getHeight(p) {\nrule1: Giant(p)-> Height(p,200);\n}");
 		assertEquals("Height",rel.getName());
 		
 		List<VariableDeclaration> slots = rel.getSlotDeclarations();
@@ -70,12 +74,16 @@ public class ParserTestsRelationshipDefinitions extends AbstractTests {
 		List<String> superRels = rel.getSuperTypes();
 		assertEquals(1,superRels.size());
 		assertEquals("Size",superRels.get(0));
+		
+		List<Rule> rules = rel.getRules();
+		assertEquals(1,rules.size());
+		assertEquals("rule1",rules.get(0).getId());
 	}
 	
 	
 	@Test
 	public void testQuery3() throws Exception {
-		RelationshipDefinition rel = readRelationshipDefinition("rel Height(com.example.Person p,int value) extends com.example.Size,com.example.Size2 queries private getHeight(p,value), public getHeightForPerson(p), getHeights() ;");
+		RelationshipDefinition rel = readRelationshipDefinition("rel Height(com.example.Person p,int value) extends com.example.Size,com.example.Size2 queries private getHeight(p,value), public getHeightForPerson(p), getHeights()\n{\nrule1: Giant(p)-> Height(p,200);\n}");
 		assertEquals("Height",rel.getName());
 		
 		List<VariableDeclaration> slots = rel.getSlotDeclarations();
@@ -107,19 +115,23 @@ public class ParserTestsRelationshipDefinitions extends AbstractTests {
 		assertEquals(2,superRels.size());
 		assertEquals("com.example.Size",superRels.get(0));
 		assertEquals("com.example.Size2",superRels.get(1));
+		
+		List<Rule> rules = rel.getRules();
+		assertEquals(1,rules.size());
+		assertEquals("rule1",rules.get(0).getId());
 	}
 
 	// p1 is not defined
 	@Test(expected=ScriptException.class)
 	public void testQuery4() throws Exception {
-		readRelationshipDefinition("rel Height(com.example.Person p,int value) queries getHeight(p1);");
+		readRelationshipDefinition("rel Height(com.example.Person p,int value) queries getHeight(p1) {\nrule1: Giant(p)-> Height(p,200);\n}");
 	}
 	
 	
 	
 	@Test
 	public void testQuery5() throws Exception {
-		RelationshipDefinition rel = readRelationshipDefinition("@id=\"rel42\" \n rel Height(com.example.Person p,int value) queries getHeight(p);");
+		RelationshipDefinition rel = readRelationshipDefinition("@id=\"rel42\" \n rel Height(com.example.Person p,int value) queries getHeight(p)   {\nrule1: Giant(p)-> Height(p,200);\n}");
 		
 		List<Annotation> annotations = rel.getAnnotations();
 		assertEquals(1,annotations.size());
@@ -144,12 +156,16 @@ public class ParserTestsRelationshipDefinitions extends AbstractTests {
 		
 		List<String> superRels = rel.getSuperTypes();
 		assertEquals(0,superRels.size());
+		
+		List<Rule> rules = rel.getRules();
+		assertEquals(1,rules.size());
+		assertEquals("rule1",rules.get(0).getId());
 	}
 	
 	
 	@Test
 	public void testQuery6() throws Exception {
-		RelationshipDefinition rel = readRelationshipDefinition("@id=\"rel42\" \n @author = \"jens\"\r\nrel Height(com.example.Person p,int value) queries getHeight(p);");
+		RelationshipDefinition rel = readRelationshipDefinition("@id=\"rel42\" \n @author = \"jens\"\r\nrel Height(com.example.Person p,int value) queries getHeight(p)   {\nrule1: Giant(p)-> Height(p,200);\n\r\nrule2: OtherGiant(p)-> Height(p,200);\n}");
 		
 		List<Annotation> annotations = rel.getAnnotations();
 		assertEquals(2,annotations.size());
@@ -176,5 +192,10 @@ public class ParserTestsRelationshipDefinitions extends AbstractTests {
 		
 		List<String> superRels = rel.getSuperTypes();
 		assertEquals(0,superRels.size());
+		
+		List<Rule> rules = rel.getRules();
+		assertEquals(2,rules.size());
+		assertEquals("rule1",rules.get(0).getId());
+		assertEquals("rule2",rules.get(1).getId());
 	}
 }

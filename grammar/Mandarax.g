@@ -82,7 +82,9 @@ packageDeclaration returns [PackageDeclaration value]
     ;	    
 
 rule returns [Rule value]
-    :   (a = annotationList)? id = Identifier ':' (body = conjunction )? '->' concl = functionInvocation {$value = new Rule(pos(id),context,id.getText(),body.value,(FunctionInvocation)concl.value);$value.addAnnotations(a==null?new ArrayList<Annotation>():a.values);}';'
+    :   (a = annotationList)? id = Identifier ':' (body = conjunction )? '->' concl = functionInvocation 
+    {$value = new Rule(pos(id),context,id.getText(),body.value,(FunctionInvocation)concl.value);}
+    {$value.addAnnotations(a==null?new ArrayList<Annotation>():a.values);}';'
     ;
     
 annotation returns [Annotation value]
@@ -95,7 +97,11 @@ annotationList returns [List<Annotation> values]
 ;    
      
 relationshipDefinition returns [RelationshipDefinition value]
-    :	(a = annotationList)? q=('relationship'|'rel') ti=Identifier '(' tp = variableDeclarationList ')' ('extends' supers = qualifiedNameList2)? 'queries' queries = functionDeclarationList ';' {$value = new RelationshipDefinition(pos(q),context,ti.getText(),tp.value,supers==null?new ArrayList<String>():supers.value,queries.values);$value.addAnnotations(a==null?new ArrayList<Annotation>():a.values);}
+    :	(a = annotationList)? q=('relationship'|'rel') ti=Identifier '(' tp = variableDeclarationList ')' ('extends' supers = qualifiedNameList2)? 
+    'queries' queries = functionDeclarationList
+    {$value = new RelationshipDefinition(pos(q),context,ti.getText(),tp.value,supers==null?new ArrayList<String>():supers.value,queries.values);}
+    {$value.addAnnotations(a==null?new ArrayList<Annotation>():a.values);}
+    ('\r'? '\n')* '{' (('\r'? '\n') |r = rule{$value.addRule(r.value);})+ '}'
     ;    
     
 variableDeclaration returns [VariableDeclaration value]

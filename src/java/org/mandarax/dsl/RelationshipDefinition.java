@@ -10,6 +10,7 @@
  */
 package org.mandarax.dsl;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import com.google.common.base.Function;
@@ -25,6 +26,7 @@ public class RelationshipDefinition extends AnnotatableNode {
 	private List<FunctionDeclaration> queries = null;
 	private List<VariableDeclaration> slotDeclarations = null;
 	private List<String> superTypes = null;
+	private List<Rule> rules = new ArrayList<Rule>();
 	
 	/**
 	 * Constructor.
@@ -36,6 +38,7 @@ public class RelationshipDefinition extends AnnotatableNode {
 		this.slotDeclarations = slotDeclarations;
 		this.superTypes = superTypes;
 		this.queries = queries;
+		
 		
 		// consistency check: all methodParamNames must occur in the slot declarations
 		Collection<String> definedNames = Collections2.transform(slotDeclarations,new Function<VariableDeclaration,String>(){
@@ -83,5 +86,13 @@ public class RelationshipDefinition extends AnnotatableNode {
 		}
 		b.append(' ');
 		appendListOfNodes(queries, b,false);
+	}
+
+	public List<Rule> getRules() {
+		return rules;
+	}
+	
+	public void addRule(Rule r) {
+		rules.add(r);
 	}
 }
