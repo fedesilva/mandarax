@@ -19,7 +19,7 @@ import com.google.common.collect.Collections2;
  * Represents relationship definitions. 
  * @author jens dietrich
  */
-public class RelationshipDefinition extends ASTNode {
+public class RelationshipDefinition extends AnnotatableNode {
 	
 	private String name = null;
 	private List<FunctionDeclaration> queries = null;

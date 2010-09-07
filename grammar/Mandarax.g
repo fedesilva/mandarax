@@ -87,10 +87,15 @@ rule returns [Rule value]
     
 annotation returns [Annotation value]
 : '@' key = qualifiedName2 '=' val = StringLiteral {$value = new Annotation(pos(key.start),context,key.value,val.getText().substring(1,val.getText().length()-1));}
-	;     
+	;  
+	
+annotationList returns [List<Annotation> values]
+@init {$values = new ArrayList<Annotation>();}
+: (a = annotation '\r'? '\n' {$values.add(a.value);})*
+;    
      
 relationshipDefinition returns [RelationshipDefinition value]
-    :	q=('relationship'|'rel') ti=Identifier '(' tp = variableDeclarationList ')' ('extends' supers = qualifiedNameList2)? 'queries' queries = functionDeclarationList ';' {$value = new RelationshipDefinition(pos(q),context,ti.getText(),tp.value,supers==null?new ArrayList<String>():supers.value,queries.value);}
+    :	(a = annotationList)? q=('relationship'|'rel') ti=Identifier '(' tp = variableDeclarationList ')' ('extends' supers = qualifiedNameList2)? 'queries' queries = functionDeclarationList ';' {$value = new RelationshipDefinition(pos(q),context,ti.getText(),tp.value,supers==null?new ArrayList<String>():supers.value,queries.values);$value.addAnnotations(a==null?new ArrayList<Annotation>():a.values);}
     ;    
     
 variableDeclaration returns [VariableDeclaration value]
@@ -106,9 +111,9 @@ functionDeclaration returns [FunctionDeclaration value]
     :	v = visibility n = Identifier '(' p = nameList ')'{$value = new FunctionDeclaration(pos(n),context,v.value,n.getText(),p.value);}
     ;    
     
-functionDeclarationList returns [List<FunctionDeclaration> value]
-@init {$value = new ArrayList<FunctionDeclaration>();}
-    :	part1 = functionDeclaration {$value.add(part1.value);} (',' part2 = functionDeclaration {$value.add(part2.value);})*
+functionDeclarationList returns [List<FunctionDeclaration> values]
+@init {$values = new ArrayList<FunctionDeclaration>();}
+    :	part1 = functionDeclaration {$values.add(part1.value);} (',' part2 = functionDeclaration {$values.add(part2.value);})*
     ;
 
 visibility returns [Visibility value]

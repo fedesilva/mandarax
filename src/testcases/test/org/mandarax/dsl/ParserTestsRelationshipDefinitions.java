@@ -117,4 +117,64 @@ public class ParserTestsRelationshipDefinitions extends AbstractTests {
 	
 	
 	
+	@Test
+	public void testQuery5() throws Exception {
+		RelationshipDefinition rel = readRelationshipDefinition("@id=\"rel42\" \n rel Height(com.example.Person p,int value) queries getHeight(p);");
+		
+		List<Annotation> annotations = rel.getAnnotations();
+		assertEquals(1,annotations.size());
+		assertEquals("id",annotations.get(0).getKey());
+		assertEquals("rel42",annotations.get(0).getValue());
+		
+		assertEquals("Height",rel.getName());
+		
+		List<VariableDeclaration> slots = rel.getSlotDeclarations();
+		assertEquals(2,slots.size());
+		assertEquals("com.example.Person",slots.get(0).getType());
+		assertEquals("p",slots.get(0).getName());
+		assertEquals("int",slots.get(1).getType());
+		assertEquals("value",slots.get(1).getName());
+		
+		List<FunctionDeclaration> queries = rel.getQueries();
+		assertEquals(1,queries.size());
+		assertEquals(Visibility.PUBLIC,queries.get(0).getVisibility());
+		assertEquals("getHeight",queries.get(0).getName());
+		assertEquals(1,queries.get(0).getParameterNames().size());
+		assertEquals("p",queries.get(0).getParameterNames().get(0));
+		
+		List<String> superRels = rel.getSuperTypes();
+		assertEquals(0,superRels.size());
+	}
+	
+	
+	@Test
+	public void testQuery6() throws Exception {
+		RelationshipDefinition rel = readRelationshipDefinition("@id=\"rel42\" \n @author = \"jens\"\r\nrel Height(com.example.Person p,int value) queries getHeight(p);");
+		
+		List<Annotation> annotations = rel.getAnnotations();
+		assertEquals(2,annotations.size());
+		assertEquals("id",annotations.get(0).getKey());
+		assertEquals("rel42",annotations.get(0).getValue());
+		assertEquals("author",annotations.get(1).getKey());
+		assertEquals("jens",annotations.get(1).getValue());
+		
+		assertEquals("Height",rel.getName());
+		
+		List<VariableDeclaration> slots = rel.getSlotDeclarations();
+		assertEquals(2,slots.size());
+		assertEquals("com.example.Person",slots.get(0).getType());
+		assertEquals("p",slots.get(0).getName());
+		assertEquals("int",slots.get(1).getType());
+		assertEquals("value",slots.get(1).getName());
+		
+		List<FunctionDeclaration> queries = rel.getQueries();
+		assertEquals(1,queries.size());
+		assertEquals(Visibility.PUBLIC,queries.get(0).getVisibility());
+		assertEquals("getHeight",queries.get(0).getName());
+		assertEquals(1,queries.get(0).getParameterNames().size());
+		assertEquals("p",queries.get(0).getParameterNames().get(0));
+		
+		List<String> superRels = rel.getSuperTypes();
+		assertEquals(0,superRels.size());
+	}
 }
