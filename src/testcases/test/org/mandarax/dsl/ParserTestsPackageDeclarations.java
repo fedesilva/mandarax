@@ -26,6 +26,7 @@ public class ParserTestsPackageDeclarations extends AbstractTests {
 	public void testPackageDeclaration1() throws Exception {
 		PackageDeclaration pck = readPackageDeclaration("package org.mandarax.dsl;");
 		assertEquals(pck.getName(),"org.mandarax.dsl");
+		assertEquals(pck.getContext().getPackageDeclaration(),pck);
 	}
 
 	

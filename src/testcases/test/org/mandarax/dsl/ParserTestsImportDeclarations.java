@@ -28,6 +28,10 @@ public class ParserTestsImportDeclarations extends AbstractTests {
 		assertEquals(imp.getName(),"java.util.Date");
 		assertFalse(imp.isUsingWildcard());
 		assertFalse(imp.isStaticImport());
+		
+		assertEquals(1,imp.getContext().getImports().size());
+		assertTrue(imp.getContext().getImports().contains(imp));
+		assertEquals(0,imp.getContext().getStaticImports().size());
 	}
 	
 	@Test
@@ -36,6 +40,10 @@ public class ParserTestsImportDeclarations extends AbstractTests {
 		assertEquals(imp.getName(),"java.util");
 		assertTrue(imp.isUsingWildcard());
 		assertFalse(imp.isStaticImport());
+		
+		assertEquals(1,imp.getContext().getImports().size());
+		assertTrue(imp.getContext().getImports().contains(imp));
+		assertEquals(0,imp.getContext().getStaticImports().size());
 	}
 	
 	@Test
@@ -44,6 +52,10 @@ public class ParserTestsImportDeclarations extends AbstractTests {
 		assertEquals(imp.getName(),"java.lang.System.currentTimeMillis");
 		assertFalse(imp.isUsingWildcard());
 		assertTrue(imp.isStaticImport());
+		
+		assertEquals(0,imp.getContext().getImports().size());
+		assertEquals(1,imp.getContext().getStaticImports().size());
+		assertTrue(imp.getContext().getStaticImports().contains(imp));
 	}
 	
 	@Test
@@ -52,6 +64,10 @@ public class ParserTestsImportDeclarations extends AbstractTests {
 		assertEquals(imp.getName(),"java.lang.System");
 		assertTrue(imp.isUsingWildcard());
 		assertTrue(imp.isStaticImport());
+		
+		assertEquals(0,imp.getContext().getImports().size());
+		assertEquals(1,imp.getContext().getStaticImports().size());
+		assertTrue(imp.getContext().getStaticImports().contains(imp));
 	}
 	
 }
