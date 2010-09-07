@@ -11,6 +11,9 @@
 
 package org.mandarax.dsl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * Superclass for expression AST nodes.
@@ -26,4 +29,23 @@ public abstract class Expression extends ASTNode {
 	public boolean isFlat() {
 		return false;
 	}
+	/**
+	 * Get all variables contained in this expression.
+	 * @return
+	 */
+	public List<Variable> getVariables() {
+		class VariableCollector extends AbstractExpressionVisitor {
+			List<Variable> variables = new ArrayList<Variable>();
+			@Override
+			public boolean visit(Variable x) {
+				variables.add(x);
+				return super.visit(x);
+			}
+		}
+		VariableCollector collector = new VariableCollector();
+		this.accept(collector);
+		return collector.variables;
+		
+	}
+	
 }

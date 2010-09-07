@@ -21,7 +21,7 @@ import org.junit.runners.*;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	// expressions
+	// syntax - expressions
 	ParserTestsArithmetic.class,
 	ParserTestsRelationalExpressions.class,
 	ParserTestsFlatExpressions.class,
@@ -29,14 +29,15 @@ import org.junit.runners.*;
 	ParserTestsFunctionInvocations.class,
 	ParserTestsMiscExpressions.class,
 	ParserTestsComplexExpressions.class,
-	// other syntax elements
+	// syntax - other elements
 	ParserTestsImportDeclarations.class,
 	ParserTestsPackageDeclarations.class,
 	ParserTestsRelationshipDefinitions.class,
 	ParserTestsAnnotations.class,
 	ParserTestsRules.class,
-	// type reasoner
-	TypeReasonerTests.class
+	// other
+	TypeReasonerTests.class,
+	UtilTestsExtractVariables.class
 })
 public class AllTests {
 
