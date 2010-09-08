@@ -73,12 +73,17 @@ package org.mandarax.dsl.parser;
 
 }
 
+compilationUnit returns [CompilationUnit value]
+    :	p = packageDeclaration ('\r'? '\n')+ (importDeclaration ('\r'? '\n')+)* {$value = new CompilationUnit(pos(p.value),context);} (rel = relationshipDefinition {$value.add(rel.value);} ('\r'? '\n')+ )+ 
+    ;
+    
+
 importDeclaration returns [ImportDeclaration value]
     :   i='import' (s = 'static'?) (n=qualifiedName2) (w='.' '*')? ';' {$value = new ImportDeclaration(pos(i),context,n.value,s!=null,w!=null);} 
     ;
     
 packageDeclaration returns [PackageDeclaration value] 
-    : 	p='package' (n=qualifiedName2) {$value = new PackageDeclaration(pos(p),context,n.value);}
+    : 	p='package' (n=qualifiedName2) ';'  {$value = new PackageDeclaration(pos(p),context,n.value);}
     ;	    
 
 rule returns [Rule value]

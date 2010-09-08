@@ -88,4 +88,9 @@ public class TestUtils {
 		InputStream in = getStream(s);
 		return new ScriptReader().readAnnotation(in);
 	}
+	
+	public static CompilationUnit readCompilationUnit(String s) throws Exception {
+		InputStream in = getStream(s);
+		return new ScriptReader().readCompilationUnit(in);
+	}
 }

@@ -78,5 +78,13 @@ public class ScriptReader {
 		}
 	}
 	
+	public CompilationUnit readCompilationUnit(InputStream in) throws ScriptException {
+		try {
+			return getParser(in).compilationUnit().value;
+		} catch (Exception e) {
+			throw new ScriptException(e);
+		}
+	}
+	
 	
 }
