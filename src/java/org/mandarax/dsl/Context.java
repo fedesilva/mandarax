@@ -23,16 +23,13 @@ public class Context {
 	private PackageDeclaration packageDeclaration = null;
 	private List<ImportDeclaration> imports = new ArrayList<ImportDeclaration>();
 	private List<ImportDeclaration> staticImports = new ArrayList<ImportDeclaration>();
-	public List<ImportDeclaration> getImports() {
+	public List<ImportDeclaration> getImportDeclarations() {
 		return imports;
-	}
-	public void setImports(List<ImportDeclaration> imports) {
-		this.imports = imports;
 	}
 	public PackageDeclaration getPackageDeclaration() {
 		return packageDeclaration;
 	}
-	public List<ImportDeclaration> getStaticImports() {
+	public List<ImportDeclaration> getStaticImportDeclarations() {
 		return staticImports;
 	}
 	public void add(ImportDeclaration imp) {

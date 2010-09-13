@@ -14,6 +14,7 @@ package test.org.mandarax.dsl;
 import static org.junit.Assert.*;
 
 import java.io.InputStream;
+import java.util.List;
 
 import org.junit.Test;
 import org.mandarax.dsl.*;
@@ -37,6 +38,15 @@ public class ParserIntegrationTests extends AbstractTests{
 	@Test
 	public void testCompilationUnit1() throws Exception {
 		CompilationUnit cu = readCUFromFile("rules1.rel");
+		
+		assertEquals("test.org.mandarax.dsl",cu.getContext().getPackageDeclaration().getName()); 
+		assertEquals(1,cu.getContext().getImportDeclarations().size());
+		assertEquals("java.util.Date",cu.getContext().getImportDeclarations().get(0).getName()); 
+		assertEquals(1,cu.getRelationshipDefinitions().size());
+		assertEquals("Father",cu.getRelationshipDefinitions().get(0).getName());
+		List<Rule> rules1 = cu.getRelationshipDefinitions().get(0).getRules();
+		assertEquals(1,rules1.size());
+		assertEquals("rule1",rules1.get(0).getId());
 	}
 	
 

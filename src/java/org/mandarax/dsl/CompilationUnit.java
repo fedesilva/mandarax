@@ -28,5 +28,19 @@ public class CompilationUnit extends ASTNode {
 	public void add(RelationshipDefinition relDef) {
 		this.relationshipDefinitions.add(relDef);
 	}
+	// deep access methods
+	public PackageDeclaration getPackageDeclaration() {
+		return this.getContext().getPackageDeclaration(); 
+	}
+	
+	public List<ImportDeclaration> getImportDeclarations() {
+		return this.getContext().getImportDeclarations(); 
+	}
+	
+	public List<ImportDeclaration> getStaticImportDeclarations() {
+		return this.getContext().getStaticImportDeclarations(); 
+	}
+	
+	
 
 }

@@ -29,9 +29,9 @@ public class ParserTestsImportDeclarations extends AbstractTests {
 		assertFalse(imp.isUsingWildcard());
 		assertFalse(imp.isStaticImport());
 		
-		assertEquals(1,imp.getContext().getImports().size());
-		assertTrue(imp.getContext().getImports().contains(imp));
-		assertEquals(0,imp.getContext().getStaticImports().size());
+		assertEquals(1,imp.getContext().getImportDeclarations().size());
+		assertTrue(imp.getContext().getImportDeclarations().contains(imp));
+		assertEquals(0,imp.getContext().getStaticImportDeclarations().size());
 	}
 	
 	@Test
@@ -41,9 +41,9 @@ public class ParserTestsImportDeclarations extends AbstractTests {
 		assertTrue(imp.isUsingWildcard());
 		assertFalse(imp.isStaticImport());
 		
-		assertEquals(1,imp.getContext().getImports().size());
-		assertTrue(imp.getContext().getImports().contains(imp));
-		assertEquals(0,imp.getContext().getStaticImports().size());
+		assertEquals(1,imp.getContext().getImportDeclarations().size());
+		assertTrue(imp.getContext().getImportDeclarations().contains(imp));
+		assertEquals(0,imp.getContext().getStaticImportDeclarations().size());
 	}
 	
 	@Test
@@ -53,9 +53,9 @@ public class ParserTestsImportDeclarations extends AbstractTests {
 		assertFalse(imp.isUsingWildcard());
 		assertTrue(imp.isStaticImport());
 		
-		assertEquals(0,imp.getContext().getImports().size());
-		assertEquals(1,imp.getContext().getStaticImports().size());
-		assertTrue(imp.getContext().getStaticImports().contains(imp));
+		assertEquals(0,imp.getContext().getImportDeclarations().size());
+		assertEquals(1,imp.getContext().getStaticImportDeclarations().size());
+		assertTrue(imp.getContext().getStaticImportDeclarations().contains(imp));
 	}
 	
 	@Test
@@ -65,9 +65,9 @@ public class ParserTestsImportDeclarations extends AbstractTests {
 		assertTrue(imp.isUsingWildcard());
 		assertTrue(imp.isStaticImport());
 		
-		assertEquals(0,imp.getContext().getImports().size());
-		assertEquals(1,imp.getContext().getStaticImports().size());
-		assertTrue(imp.getContext().getStaticImports().contains(imp));
+		assertEquals(0,imp.getContext().getImportDeclarations().size());
+		assertEquals(1,imp.getContext().getStaticImportDeclarations().size());
+		assertTrue(imp.getContext().getStaticImportDeclarations().contains(imp));
 	}
 	
 }

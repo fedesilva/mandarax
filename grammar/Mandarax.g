@@ -74,7 +74,7 @@ package org.mandarax.dsl.parser;
 }
 
 compilationUnit returns [CompilationUnit value]
-    :	p = packageDeclaration ('\r'? '\n')+ (importDeclaration ('\r'? '\n')+)* {$value = new CompilationUnit(pos(p.value),context);} (rel = relationshipDefinition {$value.add(rel.value);} ('\r'? '\n')+ )+ 
+    :	NEWLINE* p = packageDeclaration NEWLINE (NEWLINE|importDeclaration)* {$value = new CompilationUnit(pos(p.value),context);} (NEWLINE | (rel = relationshipDefinition {$value.add(rel.value);})  )+ 
     ;
     
 
@@ -98,15 +98,16 @@ annotation returns [Annotation value]
 	
 annotationList returns [List<Annotation> values]
 @init {$values = new ArrayList<Annotation>();}
-: (a = annotation {$values.add(a.value);} ('\r'? '\n')+ )*
+: (NEWLINE|(a = annotation {$values.add(a.value);}))* 
 ;    
+
      
 relationshipDefinition returns [RelationshipDefinition value]
     :	(a = annotationList)? q=('relationship'|'rel') ti=Identifier '(' tp = variableDeclarationList ')' ('extends' supers = qualifiedNameList2)? 
     'queries' queries = functionDeclarationList
     {$value = new RelationshipDefinition(pos(q),context,ti.getText(),tp.value,supers==null?new ArrayList<String>():supers.value,queries.values);}
     {$value.addAnnotations(a==null?new ArrayList<Annotation>():a.values);}
-    ('\r'? '\n')* '{' (('\r'? '\n') |r = rule{$value.addRule(r.value);})+ '}'
+    NEWLINE* '{' (NEWLINE |r = rule{$value.addRule(r.value);})+ '}'
     ;    
     
 variableDeclaration returns [VariableDeclaration value]
@@ -444,6 +445,8 @@ JavaIDDigit
        '\u0ed0'..'\u0ed9' |
        '\u1040'..'\u1049'
    ;
+
+NEWLINE:'\r'? '\n' ;
 
 WS  :  (' '|'\r'|'\t'|'\u000C'|'\n') {$channel=HIDDEN;}
     ;

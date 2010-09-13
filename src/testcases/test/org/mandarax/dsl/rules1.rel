@@ -1,25 +1,5 @@
-// complex script for integration testing
 package test.org.mandarax.dsl;
-
 import java.util.Date;
-
-
-@author="jens"
-rel Parent(Person parent,Person child) queries getParent(child),getChild(parent),isParent(parent,child) {
-	// some rules here
-	// extends in Father will add rule:  Father(father,child) -> Parent(parent,child)
-}
-
-@author="jens"
 rel Father(MalePerson father,Person child) extends Parent queries getFather(child),isFather(father,child) {
-	// some rules here	
-	@id="rule1"
 	rule1: Son(x,y) -> Father(y,x);
-}
-
-@author="jens"
-rel GradFather(MalePerson gfather,Person child)  queries getGrandFather(child),isGrandFather(gfather,child) {
-	// some rules here
-	@id="rule2"
-	rule2: Son(x,y) & Son(y,z) -> GrandFather(x,z);
 }
