@@ -92,7 +92,19 @@ public class RelationshipDefinition extends AnnotatableNode {
 		return rules;
 	}
 	
-	public void addRule(Rule r) {
+	public void addRule(Rule r) throws InternalScriptException {
+		FunctionInvocation f = r.getHead();
+		
+		// check - predicate name in rule head must match name of relationship
+		if (!f.getFunction().equals(name)) {
+			throw new InternalScriptException("Error at " + r.getPosition() + ", the rule defines a predicate " + f.getFunction() + " but this does not match the name of the relationship that is to be defined (" + this.getName() + ")" );
+		}
+		
+		// check - number of parameters must match
+		if (f.getParameters().size()!=this.getSlotDeclarations().size()) {
+			throw new InternalScriptException("Error at " + r.getPosition() + ", the rule defines a predicate with " + f.getParameters().size() + " slots but this does not match the number of slots of the relationship that is to be defined (" + this.getSlotDeclarations().size() + ")" );
+		}
+		
 		rules.add(r);
 	}
 }

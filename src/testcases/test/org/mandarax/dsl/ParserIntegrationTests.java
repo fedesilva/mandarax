@@ -39,14 +39,36 @@ public class ParserIntegrationTests extends AbstractTests{
 	public void testCompilationUnit1() throws Exception {
 		CompilationUnit cu = readCUFromFile("rules1.rel");
 		
-		assertEquals("test.org.mandarax.dsl",cu.getContext().getPackageDeclaration().getName()); 
-		assertEquals(1,cu.getContext().getImportDeclarations().size());
-		assertEquals("java.util.Date",cu.getContext().getImportDeclarations().get(0).getName()); 
+		assertEquals("test.org.mandarax.dsl",cu.getPackageDeclaration().getName()); 
+		assertEquals(1,cu.getImportDeclarations().size());
+		assertEquals("java.util.Date",cu.getImportDeclarations().get(0).getName()); 
 		assertEquals(1,cu.getRelationshipDefinitions().size());
 		assertEquals("Father",cu.getRelationshipDefinitions().get(0).getName());
 		List<Rule> rules1 = cu.getRelationshipDefinitions().get(0).getRules();
 		assertEquals(1,rules1.size());
 		assertEquals("rule1",rules1.get(0).getId());
+	}
+	
+	@Test
+	public void testCompilationUnit2() throws Exception {
+		CompilationUnit cu = readCUFromFile("rules2.rel");
+		
+		assertEquals("test.org.mandarax.dsl",cu.getPackageDeclaration().getName()); 
+		
+		assertEquals(1,cu.getContext().getImportDeclarations().size());
+		assertEquals("java.util.Date",cu.getImportDeclarations().get(0).getName());
+		assertEquals(1,cu.getStaticImportDeclarations().size());
+		assertEquals("java.lang.System",cu.getStaticImportDeclarations().get(0).getName());
+		
+		assertEquals(3,cu.getRelationshipDefinitions().size());
+		assertEquals("Parent",cu.getRelationshipDefinitions().get(0).getName());
+		assertEquals("Father",cu.getRelationshipDefinitions().get(1).getName());
+		assertEquals("GrandFather",cu.getRelationshipDefinitions().get(2).getName());
+		
+		assertEquals(2,cu.getRelationshipDefinitions().get(0).getAnnotations().size());
+		assertEquals(1,cu.getRelationshipDefinitions().get(1).getAnnotations().size());
+		assertEquals(1,cu.getRelationshipDefinitions().get(2).getAnnotations().size());
+		
 	}
 	
 

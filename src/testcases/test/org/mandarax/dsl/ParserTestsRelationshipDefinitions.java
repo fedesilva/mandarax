@@ -198,4 +198,17 @@ public class ParserTestsRelationshipDefinitions extends AbstractTests {
 		assertEquals("rule1",rules.get(0).getId());
 		assertEquals("rule2",rules.get(1).getId());
 	}
+	
+	// names of relationship and rule head do not match
+	@Test(expected=ScriptException.class)
+	public void testQuery7() throws Exception {
+		readRelationshipDefinition("rel Height(com.example.Person p,int value) queries getHeight(p)  {\nrule1: Giant(p)-> Height2(p,200);\n}");
+	}
+	
+	// number of params of relationship and rule head do not match
+	@Test//(expected=ScriptException.class)
+	public void testQuery8() throws Exception {
+		readRelationshipDefinition("rel Height(com.example.Person p,int value) queries getHeight(p)  {\nrule1: Giant(p)-> Height(200);\n}");
+	}
+		
 }
