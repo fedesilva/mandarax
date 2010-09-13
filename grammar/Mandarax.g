@@ -74,7 +74,8 @@ package org.mandarax.dsl.parser;
 }
 
 compilationUnit returns [CompilationUnit value]
-    :	NEWLINE* p = packageDeclaration NEWLINE (NEWLINE|importDeclaration)* {$value = new CompilationUnit(pos(p.value),context);} (NEWLINE | (rel = relationshipDefinition {$value.add(rel.value);})  )+ 
+    :	NEWLINE* p = packageDeclaration NEWLINE (NEWLINE|importDeclaration)* {$value = new CompilationUnit(pos(p.value),context);} 
+    (NEWLINE | (obj = objectDeclaration {$value.add(obj.value);}) | (rel = relationshipDefinition {$value.add(rel.value);})  )+ 
     ;
     
 
@@ -93,9 +94,14 @@ rule returns [Rule value]
     ;
     
 annotation returns [Annotation value]
-: '@' key = qualifiedName2 '=' val = StringLiteral {$value = new Annotation(pos(key.start),context,key.value,val.getText().substring(1,val.getText().length()-1));}
-	;  
+    : '@' key = qualifiedName2 '=' val = StringLiteral {$value = new Annotation(pos(key.start),context,key.value,val.getText().substring(1,val.getText().length()-1));}
+    ;  
 	
+objectDeclaration returns [ObjectDeclaration value] 
+    : ob='object' t=type i=Identifier '=' x = expression {$value = new ObjectDeclaration(pos(ob),context,t.value,i.getText(),x.value);}';'
+    ;
+     
+     
 annotationList returns [List<Annotation> values]
 @init {$values = new ArrayList<Annotation>();}
 : (NEWLINE|(a = annotation {$values.add(a.value);}))* 
@@ -313,14 +319,20 @@ unaryExpressionNotPlusMinus returns [Expression value]
     :   '~' r1 = unaryExpression {$value = new UnaryExpression(pos(r1.value),context,UnOp.COMPL,r1.value);}
     |   '!' r2 = unaryExpression {$value = new UnaryExpression(pos(r2.value),context,UnOp.NOT,r2.value);}
     |   r3 = castExpression {$value = r3.value;}
+    |   r11 = constructorInvocation {$value = r11.value;}
     |   r9 = functionInvocation {$value = r9.value;}
     |   r8 = methodInvocation {$value = r8.value;}
     |   r7 = propertyAccess {$value = r7.value;}
     |   r4 = objectref {$value = r4.value;}
     |   r5 = qualifiedName {$value = r5.value;}
     |   r6 = parExpression {$value = r6.value;}
+    |   r10 = nullValue {$value = r10.value;}
     ;
-    
+
+nullValue returns [NullValue value] 
+    : 	n = 'null' {$value = new NullValue(pos(n),context);}	
+    ;
+    	 
 propertyAccess returns [Expression value]
     :   o = objectref {$value = o.value;} ('.' i= Identifier  {$value = new MemberAccess(pos(o.value),context,$value,i.getText());})* 
     ;
@@ -331,6 +343,10 @@ methodInvocation returns [Expression value]
     
 functionInvocation returns [Expression value] 
     :   f = Identifier  '(' (p = commaSeparatedExpressionList)? ')' {$value = new FunctionInvocation(pos(f),context,f.getText(),p==null?new ArrayList<Expression>():p.values);}     
+    ;
+    
+constructorInvocation returns [Expression value] 
+    :   n = 'new' f = qualifiedName2  '(' (p = commaSeparatedExpressionList)? ')' {$value = new ConstructorInvocation(pos(n),context,f.value,p==null?new ArrayList<Expression>():p.values);}     
     ;
     
 objectref returns [Expression value]

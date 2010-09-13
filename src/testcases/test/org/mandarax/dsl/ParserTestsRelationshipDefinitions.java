@@ -206,7 +206,7 @@ public class ParserTestsRelationshipDefinitions extends AbstractTests {
 	}
 	
 	// number of params of relationship and rule head do not match
-	@Test//(expected=ScriptException.class)
+	@Test(expected=ScriptException.class)
 	public void testQuery8() throws Exception {
 		readRelationshipDefinition("rel Height(com.example.Person p,int value) queries getHeight(p)  {\nrule1: Giant(p)-> Height(200);\n}");
 	}

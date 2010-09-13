@@ -71,6 +71,16 @@ public class AbstractExpressionVisitor implements ExpressionVisitor {
 	public boolean visit(FunctionInvocation x) {
 		return true;
 	}
+	
+	@Override
+	public boolean visit(ConstructorInvocation x) {
+		return true;
+	}
+
+	@Override
+	public boolean visit(NullValue x) {
+		return true;
+	}
 
 	@Override
 	public void endVisit(BinaryExpression x) {}
@@ -104,5 +114,11 @@ public class AbstractExpressionVisitor implements ExpressionVisitor {
 
 	@Override
 	public void endVisit(FunctionInvocation x) {}
+
+	@Override
+	public void endVisit(ConstructorInvocation x) {}
+
+	@Override
+	public void endVisit(NullValue x) {}
 	
 }

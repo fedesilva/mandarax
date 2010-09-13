@@ -78,6 +78,14 @@ public class ScriptReader {
 		}
 	}
 	
+	public ObjectDeclaration readObjectDeclaration(InputStream in) throws ScriptException {
+		try {
+			return getParser(in).objectDeclaration().value;
+		} catch (Exception e) {
+			throw new ScriptException(e);
+		}
+	}
+	
 	public CompilationUnit readCompilationUnit(InputStream in) throws ScriptException {
 		try {
 			return getParser(in).compilationUnit().value;

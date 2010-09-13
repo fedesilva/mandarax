@@ -93,4 +93,9 @@ public class TestUtils {
 		InputStream in = getStream(s);
 		return new ScriptReader().readCompilationUnit(in);
 	}
+	
+	public static ObjectDeclaration readObjectDeclaration(String s) throws Exception {
+		InputStream in = getStream(s);
+		return new ScriptReader().readObjectDeclaration(in);
+	}
 }

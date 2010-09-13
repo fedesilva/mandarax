@@ -18,6 +18,7 @@ import java.util.List;
 
 import org.junit.Test;
 import org.mandarax.dsl.*;
+import org.mandarax.dsl.parser.ScriptException;
 import org.mandarax.dsl.parser.ScriptReader;
 
 import static test.org.mandarax.dsl.TestUtils.*;
@@ -71,5 +72,35 @@ public class ParserIntegrationTests extends AbstractTests{
 		
 	}
 	
+	@Test
+	public void testCompilationUnit3() throws Exception {
+		CompilationUnit cu = readCUFromFile("rules3.rel");
+		
+		assertEquals("test.org.mandarax.dsl",cu.getPackageDeclaration().getName()); 
+		assertEquals(1,cu.getImportDeclarations().size());
+		assertEquals("java.util.Date",cu.getImportDeclarations().get(0).getName()); 
+		assertEquals(1,cu.getRelationshipDefinitions().size());
+		assertEquals("Father",cu.getRelationshipDefinitions().get(0).getName());
+		
+		List<Rule> rules1 = cu.getRelationshipDefinitions().get(0).getRules();
+		assertEquals(2,rules1.size());
+		assertEquals("rule1",rules1.get(0).getId());
+		assertEquals("rule2",rules1.get(1).getId());
+		
+		List<ObjectDeclaration> objects = cu.getObjectDeclarations();
+		assertEquals(1,objects.size());
+		assertEquals("me",objects.get(0).getName());
+		assertEquals("Person",objects.get(0).getType());
+	}
+	
+	@Test (expected=ScriptException.class)
+	public void testCompilationUnit4() throws Exception {
+		readCUFromFile("rules4.rel");
+	}
 
+	@Test (expected=ScriptException.class)
+	public void testCompilationUnit5() throws Exception {
+		readCUFromFile("rules5.rel");
+	}
+	
 }

@@ -99,6 +99,14 @@ public class ExpressionStructurePrinter implements ExpressionVisitor {
 		annotate(x);
 		return true;
 	}
+	
+	@Override
+	public boolean visit(NullValue x) {
+		i();
+		out.print("null");
+		annotate(x);
+		return true;
+	}
 
 	@Override
 	public boolean visit(MemberAccess x) {
@@ -113,6 +121,16 @@ public class ExpressionStructurePrinter implements ExpressionVisitor {
 	public boolean visit(FunctionInvocation x) {
 		i();
 		out.print(x.getFunction());
+		annotate(x);
+		d();
+		return true;
+	}
+	
+	@Override
+	public boolean visit(ConstructorInvocation x) {
+		i();
+		out.print("new ");
+		out.print(x.getType());
 		annotate(x);
 		d();
 		return true;
@@ -169,6 +187,9 @@ public class ExpressionStructurePrinter implements ExpressionVisitor {
 
 	@Override
 	public void endVisit(IntLiteral x) {}
+	
+	@Override
+	public void endVisit(NullValue x) {}
 
 	@Override
 	public void endVisit(MemberAccess x) {
@@ -177,6 +198,11 @@ public class ExpressionStructurePrinter implements ExpressionVisitor {
 
 	@Override
 	public void endVisit(FunctionInvocation x) {
+		u();
+	}
+	
+	@Override
+	public void endVisit(ConstructorInvocation x) {
 		u();
 	}
 

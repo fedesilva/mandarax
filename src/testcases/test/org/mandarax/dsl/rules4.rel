@@ -1,0 +1,9 @@
+package test.org.mandarax.dsl;
+import java.util.Date;
+// violates constraint: declared objects should have unique names
+object Person me = new Person();
+object Person me = new Person();
+rel Father(MalePerson father,Person child) extends Parent queries getFather(child),isFather(father,child) {
+	rule1: Son(x,y) -> Father(y,x);
+	rule2: x.name=="Max" -> Father(me,x);
+}

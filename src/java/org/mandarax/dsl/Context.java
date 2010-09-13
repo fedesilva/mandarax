@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Used to keep track of contextual information such as namespace definitions and annotations.
+ * Used to keep track of contextual information such as namespace definitions and defined objects.
  * @author jens dietrich
  */
 
@@ -23,6 +23,8 @@ public class Context {
 	private PackageDeclaration packageDeclaration = null;
 	private List<ImportDeclaration> imports = new ArrayList<ImportDeclaration>();
 	private List<ImportDeclaration> staticImports = new ArrayList<ImportDeclaration>();
+	private List<ObjectDeclaration> objectDeclarations = new ArrayList<ObjectDeclaration>();
+	
 	public List<ImportDeclaration> getImportDeclarations() {
 		return imports;
 	}
@@ -32,9 +34,15 @@ public class Context {
 	public List<ImportDeclaration> getStaticImportDeclarations() {
 		return staticImports;
 	}
+	public List<ObjectDeclaration> getObjectDeclarations() {
+		return objectDeclarations;
+	}
 	public void add(ImportDeclaration imp) {
 		if (imp.isStaticImport()) this.staticImports.add(imp);
 		else this.imports.add(imp);
+	}
+	public void add(ObjectDeclaration decl) {
+		objectDeclarations.add(decl);
 	}
 	public void setPackageDeclaration(PackageDeclaration packageDeclaration) {
 		this.packageDeclaration = packageDeclaration;

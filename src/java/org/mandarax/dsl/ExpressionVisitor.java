@@ -27,6 +27,8 @@ public interface ExpressionVisitor {
 	public boolean visit(UnaryExpression x);
 	public boolean visit(Variable x);	
 	public boolean visit(FunctionInvocation x);
+	public boolean visit(ConstructorInvocation x);
+	public boolean visit(NullValue x);
 	public void endVisit(BinaryExpression x);
 	public void endVisit(BooleanLiteral x);
 	public void endVisit(CastExpression x);
@@ -38,4 +40,6 @@ public interface ExpressionVisitor {
 	public void endVisit(UnaryExpression x);
 	public void endVisit(Variable x);
 	public void endVisit(FunctionInvocation x);
+	public void endVisit(ConstructorInvocation x);
+	public void endVisit(NullValue x);
 }
