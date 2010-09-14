@@ -39,7 +39,7 @@ public class BinaryExpression extends Expression {
 		return right;
 	}
 	
-	public void accept(ExpressionVisitor visitor) {
+	public void accept(ASTVisitor visitor) {
 		if (visitor.visit(this)) {
 			left.accept(visitor);
 			right.accept(visitor);

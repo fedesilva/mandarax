@@ -51,7 +51,7 @@ public class MemberAccess extends Expression {
 	public boolean isMethod() {
 		return isMethod;
 	}
-	public void accept(ExpressionVisitor visitor) {
+	public void accept(ASTVisitor visitor) {
 		if (visitor.visit(this)) {
 			objectReference.accept(visitor);
 			for (Expression param:parameters) {

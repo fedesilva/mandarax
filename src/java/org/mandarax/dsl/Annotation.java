@@ -16,24 +16,22 @@ package org.mandarax.dsl;
  */
 public class Annotation extends ASTNode {
 	
+	private String key = null;
+	private String value = null;
+	
 	public Annotation(Position position, Context context, String key,String value) {
 		super(position, context);
 		this.key = key;
 		this.value = value;
 	}
 
-	private String key = null;
-	private String value = null;
-
-	@Override
-	public void accept(ExpressionVisitor visitor) {
-		
-	}
-
 	@Override
 	protected void appendTo(StringBuffer b) {
-		// TODO Auto-generated method stub
-
+		b.append('@');
+		b.append(key);
+		b.append("\"");
+		b.append(value);
+		b.append("\"");
 	}
 
 	public String getKey() {
@@ -44,4 +42,9 @@ public class Annotation extends ASTNode {
 		return value;
 	}
 
+	public void accept(ASTVisitor visitor) {
+		visitor.visit(this);
+		visitor.endVisit(this);
+	}
+	
 }

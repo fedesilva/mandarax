@@ -30,7 +30,7 @@ public class Variable extends Expression {
 		return name;
 	}
 	
-	public void accept(ExpressionVisitor visitor) {
+	public void accept(ASTVisitor visitor) {
 		visitor.visit(this);
 		visitor.endVisit(this);
 	}

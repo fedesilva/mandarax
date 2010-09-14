@@ -12,14 +12,18 @@ public class CompilationUnit extends ASTNode {
 		super(position, context);
 	}
 
-	@Override
-	public void accept(ExpressionVisitor visitor) {
-		// TODO Auto-generated method stub
+	public void accept(ASTVisitor visitor) {
+		if (visitor.visit(this)) {
+			for (ObjectDeclaration f:this.objectDeclarations) f.accept(visitor);
+			for (RelationshipDefinition v:this.relationshipDefinitions) v.accept(visitor);
+		}
+		visitor.endVisit(this);
 	}
 
 	@Override
 	protected void appendTo(StringBuffer b) {
 		// TODO Auto-generated method stub
+		b.append("a compilation unit");
 	}
 
 	public List<RelationshipDefinition> getRelationshipDefinitions() {

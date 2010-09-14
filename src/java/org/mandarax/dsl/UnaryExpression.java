@@ -37,7 +37,7 @@ public class UnaryExpression extends Expression {
 		return part;
 	}
 	
-	public void accept(ExpressionVisitor visitor) {
+	public void accept(ASTVisitor visitor) {
 		if (visitor.visit(this)) {
 			part.accept(visitor);
 		}

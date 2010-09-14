@@ -15,7 +15,7 @@ package org.mandarax.dsl;
  * Abstract visitor. The entire tree is visited.
  * @author jens dietrich
  */
-public class AbstractExpressionVisitor implements ExpressionVisitor {
+public class AbstractExpressionVisitor implements ASTVisitor {
 
 	@Override
 	public boolean visit(BinaryExpression x) {
@@ -24,7 +24,7 @@ public class AbstractExpressionVisitor implements ExpressionVisitor {
 
 	@Override
 	public boolean visit(BooleanLiteral x) {
-		return false;
+		return true;
 	}
 
 	@Override
@@ -83,6 +83,51 @@ public class AbstractExpressionVisitor implements ExpressionVisitor {
 	}
 
 	@Override
+	public boolean visit(RelationshipDefinition x) {
+		return true;
+	}
+	
+	@Override
+	public boolean visit(Rule x) {
+		return true;
+	}
+
+	@Override
+	public boolean visit(Annotation x) {
+		return true;
+	}
+
+	@Override
+	public boolean visit(FunctionDeclaration x) {
+		return true;
+	}
+
+	@Override
+	public boolean visit(ImportDeclaration x) {
+		return true;
+	}
+
+	@Override
+	public boolean visit(ObjectDeclaration x) {
+		return true;
+	}
+
+	@Override
+	public boolean visit(PackageDeclaration x) {
+		return true;
+	}
+
+	@Override
+	public boolean visit(VariableDeclaration x) {
+		return true;
+	}
+
+	@Override
+	public boolean visit(CompilationUnit x) {
+		return true;
+	}
+	
+	@Override
 	public void endVisit(BinaryExpression x) {}
 
 	@Override
@@ -120,5 +165,32 @@ public class AbstractExpressionVisitor implements ExpressionVisitor {
 
 	@Override
 	public void endVisit(NullValue x) {}
+
+	@Override
+	public void endVisit(CompilationUnit x) {}
+
+	@Override
+	public void endVisit(RelationshipDefinition x) {}
+	
+	@Override
+	public void endVisit(Rule x) {}
+
+	@Override
+	public void endVisit(Annotation x) {}
+
+	@Override
+	public void endVisit(FunctionDeclaration x) {}
+
+	@Override
+	public void endVisit(ImportDeclaration x) {}
+
+	@Override
+	public void endVisit(ObjectDeclaration x) {}
+
+	@Override
+	public void endVisit(PackageDeclaration x) {}
+
+	@Override
+	public void endVisit(VariableDeclaration x) {}
 	
 }

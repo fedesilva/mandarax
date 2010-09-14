@@ -23,11 +23,16 @@ public class NullValue extends Expression {
 		super(position,context);
 	}
 	
-	public void accept(ExpressionVisitor visitor) {
+	public void accept(ASTVisitor visitor) {
 		visitor.visit(this);
 		visitor.endVisit(this);
 	}
 	
+	@Override
+	public boolean isFlat() {
+		return true;
+	}
+
 	protected void appendTo(StringBuffer b) {
 		b.append("null");
 	}

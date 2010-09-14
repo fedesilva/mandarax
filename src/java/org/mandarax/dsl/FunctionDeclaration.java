@@ -7,7 +7,11 @@ import java.util.List;
  *
  */
 public class FunctionDeclaration extends ASTNode {
-
+	
+	private Visibility visibility;
+	private List<String> parameterNames = null;
+	private String name = null;
+	
 	public FunctionDeclaration(Position position, Context context,Visibility visibility, String name, List<String> parameterNames) {
 		super(position, context);
 		this.visibility = visibility;
@@ -15,12 +19,10 @@ public class FunctionDeclaration extends ASTNode {
 		this.name = name;
 	}
 
-	private Visibility visibility;
-	private List<String> parameterNames = null;
-	private String name = null;
-
-	@Override
-	public void accept(ExpressionVisitor visitor) {}
+	public void accept(ASTVisitor visitor) {
+		visitor.visit(this);
+		visitor.endVisit(this);
+	}
 
 	public Visibility getVisibility() {
 		return visibility;

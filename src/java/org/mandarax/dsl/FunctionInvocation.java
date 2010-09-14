@@ -40,7 +40,7 @@ public class FunctionInvocation extends Expression {
 	}
 	
 	@Override
-	public void accept(ExpressionVisitor visitor) {
+	public void accept(ASTVisitor visitor) {
 		if (visitor.visit(this)) {
 			for (Expression param:parameters) {
 				param.accept(visitor);

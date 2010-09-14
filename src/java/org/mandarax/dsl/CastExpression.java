@@ -32,7 +32,7 @@ public class CastExpression extends Expression {
 		return type;
 	}
 	
-	public void accept(ExpressionVisitor visitor) {
+	public void accept(ASTVisitor visitor) {
 		if (visitor.visit(this)) {
 			objectReference.accept(visitor);
 		}

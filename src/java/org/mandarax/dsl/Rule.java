@@ -58,10 +58,13 @@ public class Rule extends AnnotatableNode {
 		}
 	}
 
-	@Override
-	public void accept(ExpressionVisitor visitor) {
+	public void accept(ASTVisitor visitor) {
+		if (visitor.visit(this)) {
+			head.accept(visitor);
+			for (Expression e:this.body) e.accept(visitor);
+		}
+		visitor.endVisit(this);
 	}
-
 
 	public String getId() {
 		return id;

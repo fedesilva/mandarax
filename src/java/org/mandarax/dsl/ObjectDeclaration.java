@@ -64,10 +64,11 @@ public class ObjectDeclaration extends ASTNode {
 	}
 
 
-	@Override
-	public void accept(ExpressionVisitor visitor) {
-		// TODO Auto-generated method stub
-
+	public void accept(ASTVisitor visitor) {
+		if (visitor.visit(this)) {
+			defaultValueDeclaration.accept(visitor);
+		}
+		visitor.endVisit(this);
 	}
 
 	@Override

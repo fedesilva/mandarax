@@ -56,9 +56,13 @@ public class RelationshipDefinition extends AnnotatableNode {
 
 
 	
-	@Override
-	public void accept(ExpressionVisitor visitor) {
-		
+	public void accept(ASTVisitor visitor) {
+		if (visitor.visit(this)) {
+			for (FunctionDeclaration f:this.queries) f.accept(visitor);
+			for (VariableDeclaration v:this.slotDeclarations) v.accept(visitor);
+			for (Rule r:this.rules) r.accept(visitor);
+		}
+		visitor.endVisit(this);
 	}
 
 	public String getName() {

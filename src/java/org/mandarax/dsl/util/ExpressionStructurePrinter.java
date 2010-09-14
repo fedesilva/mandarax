@@ -20,7 +20,7 @@ import org.mandarax.dsl.*;
  * @author jens dietrich
  */
 
-public class ExpressionStructurePrinter implements ExpressionVisitor {
+public class ExpressionStructurePrinter implements ASTVisitor {
 
 	private PrintStream out = System.out;
 	private int indent = 0; 
@@ -216,5 +216,60 @@ public class ExpressionStructurePrinter implements ExpressionVisitor {
 
 	@Override
 	public void endVisit(Variable x) {}
+	
+	@Override
+	public boolean visit(CompilationUnit x) {
+		return false;
+	}
+	@Override
+	public boolean visit(RelationshipDefinition x) {
+		return false;
+	}
+	@Override
+	public boolean visit(Annotation x) {
+		return false;
+	}
+	@Override
+	public boolean visit(FunctionDeclaration x) {
+		return false;
+	}
+	@Override
+	public boolean visit(ImportDeclaration x) {
+		return false;
+	}
+	@Override
+	public boolean visit(ObjectDeclaration x) {
+		return false;
+	}
+	@Override
+	public boolean visit(PackageDeclaration x) {
+		return false;
+	}
+	@Override
+	public boolean visit(VariableDeclaration x) {
+		return false;
+	}
+	@Override
+	public boolean visit(Rule x) {
+		return false;
+	}
+	@Override
+	public void endVisit(CompilationUnit x) {}
+	@Override
+	public void endVisit(RelationshipDefinition x) {}
+	@Override
+	public void endVisit(Annotation x) {}
+	@Override
+	public void endVisit(FunctionDeclaration x) {}
+	@Override
+	public void endVisit(ImportDeclaration x) {}
+	@Override
+	public void endVisit(ObjectDeclaration x) {}
+	@Override
+	public void endVisit(PackageDeclaration x) {}
+	@Override
+	public void endVisit(VariableDeclaration x) {}
+	@Override
+	public void endVisit(Rule x) {}
 
 }
