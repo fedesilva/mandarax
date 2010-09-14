@@ -190,7 +190,14 @@ public class DefaultResolver implements Resolver {
 		catch (Exception x) {
 			throw new ResolverException("Cannot find method " + name,x);
 		}
-		return method;
+		
+		if (Modifier.isPublic(method.getModifiers())) {
+			return method;
+		}
+		else {
+			throw new ResolverException("Method " + method + " in "+ clazz.getName() + " is not visible");
+		}
+		
 	}
 	
 	private Method tryToLoadStaticMethod(Context context,String name,String className,Class[] paramTypes) throws ResolverException {

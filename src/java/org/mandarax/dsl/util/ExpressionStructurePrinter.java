@@ -68,7 +68,7 @@ public class ExpressionStructurePrinter implements ExpressionVisitor {
 	@Override
 	public boolean visit(CastExpression x) {
 		i();
-		out.print("cast to "+x.getType());
+		out.print("cast to "+x.getTypeName());
 		annotate(x);
 		d();
 		return true;
@@ -86,7 +86,7 @@ public class ExpressionStructurePrinter implements ExpressionVisitor {
 	@Override
 	public boolean visit(InstanceOfExpression x) {
 		i();
-		out.print("instance of "+x.getType());
+		out.print("instance of "+x.getTypeName());
 		annotate(x);
 		d();
 		return true;
@@ -130,7 +130,7 @@ public class ExpressionStructurePrinter implements ExpressionVisitor {
 	public boolean visit(ConstructorInvocation x) {
 		i();
 		out.print("new ");
-		out.print(x.getType());
+		out.print(x.getTypeName());
 		annotate(x);
 		d();
 		return true;

@@ -56,7 +56,7 @@ public class ExpressionPrinter {
 	}
 	public void print(CastExpression x) {
 		out.print('(');
-		out.print(x.getType());
+		out.print(x.getTypeName());
 		out.print(')');
 		printPart(x.getObjectReference());
 	}
@@ -70,7 +70,7 @@ public class ExpressionPrinter {
 	public void print(InstanceOfExpression x) {
 		printPart(x.getObjectReference());
 		out.print(" instanceof ");
-		out.print(x.getType());		
+		out.print(x.getTypeName());		
 	}
 	public void print(IntLiteral x) {
 		out.print(x.getValue());

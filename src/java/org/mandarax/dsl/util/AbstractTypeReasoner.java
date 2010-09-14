@@ -109,7 +109,7 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 	}
 	public Class getType (CastExpression expression,Resolver resolver) throws TypeReasoningException{
 		try {
-			return resolver.getType(expression.getContext(),expression.getType());
+			return resolver.getType(expression.getContext(),expression.getTypeName());
 		} catch (ResolverException e) {
 			failed(expression,null,e);
 		}
