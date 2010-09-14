@@ -29,7 +29,7 @@ public class ConstructorInvocation extends Expression {
 		this.parameters = parameters;
 	}
 
-	public String getType() {
+	public String getTypeName() {
 		return type;
 	}
 

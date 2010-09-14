@@ -28,7 +28,7 @@ public class CastExpression extends Expression {
 	public Expression getObjectReference() {
 		return objectReference;
 	}
-	public String getType() {
+	public String getTypeName() {
 		return type;
 	}
 	

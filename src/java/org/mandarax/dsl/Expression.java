@@ -21,19 +21,33 @@ import java.util.List;
  */
 
 public abstract class Expression extends ASTNode {
+	
+	private Class type = null;
+	private List<Variable> variables = null;
+
 	public Expression(Position position,Context context) {
 		super(position,context);
 	}
-
 	
 	public boolean isFlat() {
 		return false;
 	}
+	
+	public Class getType() {
+		return type;
+	}
+	public void setType(Class type) {
+		this.type = type;
+	}
+	
 	/**
 	 * Get all variables contained in this expression.
 	 * @return
 	 */
 	public List<Variable> getVariables() {
+		// try cached variables first
+		if (variables!=null) return variables;
+		
 		class VariableCollector extends AbstractExpressionVisitor {
 			List<Variable> variables = new ArrayList<Variable>();
 			@Override
@@ -44,8 +58,15 @@ public abstract class Expression extends ASTNode {
 		}
 		VariableCollector collector = new VariableCollector();
 		this.accept(collector);
-		return collector.variables;
+		variables = collector.variables;
+		
+		return variables;
 		
 	}
 	
+	// reset cached info
+	public void reset() {
+		this.type = null;
+		this.variables = null;
+	}
 }

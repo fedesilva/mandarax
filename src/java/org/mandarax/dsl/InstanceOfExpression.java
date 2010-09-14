@@ -28,7 +28,7 @@ public class InstanceOfExpression extends Expression{
 	public Expression getObjectReference() {
 		return objectReference;
 	}
-	public String getType() {
+	public String getTypeName() {
 		return type;
 	}
 	
