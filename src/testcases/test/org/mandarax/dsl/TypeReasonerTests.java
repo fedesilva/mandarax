@@ -18,7 +18,7 @@ import org.mandarax.dsl.Context;
 import org.mandarax.dsl.Expression;
 import org.mandarax.dsl.Variable;
 import org.mandarax.dsl.util.AbstractTypeReasoner;
-import org.mandarax.dsl.util.AbstractResolver;
+import org.mandarax.dsl.util.DefaultResolver;
 import org.mandarax.dsl.util.Resolver;
 import org.mandarax.dsl.util.ResolverException;
 import org.mandarax.dsl.util.TypeReasoner;
@@ -41,7 +41,7 @@ public class TypeReasonerTests {
 		}
 	}
 	
-	class TestResolver extends AbstractResolver {
+	class TestResolver extends DefaultResolver {
 		@Override
 		public Method getFunction(Context context,String name, String... paramTypeNames) throws ResolverException {
 			return null;

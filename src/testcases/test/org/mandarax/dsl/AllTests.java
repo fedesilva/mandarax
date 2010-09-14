@@ -39,6 +39,7 @@ import org.junit.runners.*;
 	// integration tests
 	ParserIntegrationTests.class,
 	// other
+	ResolverTests.class,
 	TypeReasonerTests.class,
 	UtilTestsExtractVariables.class
 })
