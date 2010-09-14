@@ -28,15 +28,15 @@ import org.mandarax.dsl.ImportDeclaration;
  * @author jens dietrich
  */
 
-public abstract class AbstractResolver implements Resolver {
+public class DefaultResolver implements Resolver {
 	
 	private ClassLoader classloader = null;
 
-	public AbstractResolver(ClassLoader classloader) {
+	public DefaultResolver(ClassLoader classloader) {
 		super();
 		this.classloader = classloader;
 	}
-	public AbstractResolver() {
+	public DefaultResolver() {
 		super();
 	}
 
