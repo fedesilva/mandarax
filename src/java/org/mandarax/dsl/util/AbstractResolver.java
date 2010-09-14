@@ -20,6 +20,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
 import org.mandarax.dsl.Context;
+import org.mandarax.dsl.ImportDeclaration;
 
 /**
  * Default resolver. Will try to resolve missing field references using property getters defined using the Java Beans spec.
@@ -90,12 +91,122 @@ public abstract class AbstractResolver implements Resolver {
 
 	@Override
 	public Class getType(Context context,String name) throws ResolverException {
-		// TODO try to resolve against imports
+		Class clazz = tryToLoad(name);
+		if (clazz!=null) return clazz;
+		
+		// try to load class in the package defined in the context
+		clazz = tryToLoad(""+context.getPackageDeclaration().getName()+'.'+name);
+		if (clazz!=null) return clazz;
+		
+		// try to load class from java.lang
+		clazz = tryToLoad("java.lang"+name);
+		if (clazz!=null) return clazz;
+		
+		// try to load class from imported classes
+		for (ImportDeclaration imp:context.getImportDeclarations()) {
+			if (!imp.isUsingWildcard() && imp.getName().endsWith("."+name)) {
+				clazz = tryToLoad(imp.getName());
+				if (clazz!=null) return clazz;
+			}
+		}
+
+		// try to load class from imported packages
+		for (ImportDeclaration imp:context.getImportDeclarations()) {
+			if (imp.isUsingWildcard()) {
+				clazz = tryToLoad(imp.getName()+'.'+name);
+				if (clazz!=null) return clazz;
+			}
+		}
+		
+		// nothing worked - throw exception	
+		throw new ResolverException("Cannot find class " + name);
+	}
+	
+	private Class tryToLoad(String name) {
 		try {
 			return (classloader==null)?Class.forName(name):classloader.loadClass(name);
 		} catch (ClassNotFoundException e) {
-			throw new ResolverException("Cannot find class " + name,e);
+			return null;
 		}
 	}
 
+	
+	/**
+	 * Get the function for the given name. 
+	 * A function is a static method. 
+	 * Functions are defined externally, and imported using static imports. 
+	 * <b>postcondition: The method should be static. </b>
+	 * @param context the context (that has the imports)
+	 * @param name the function name
+	 * @param paramTypeNames the array is null if this is a field reference!
+	 * @return a static method
+	 */
+	public Method getFunction(Context context,String name,String... paramTypeNames) throws ResolverException {
+		Method function = null;
+		Class clazz = null;
+		
+		Class[] paramTypes = new Class[paramTypeNames.length];
+		for (int i=0;i<paramTypeNames.length;i++) {
+			try {
+				paramTypes[i]=getType(context,paramTypeNames[i]);
+			}
+			catch (Exception x) {
+				throw new ResolverException("Cannot find method " + name + " with parameters " + paramTypeNames);
+			}
+		}
+		
+		// try to load method from imported classes
+		for (ImportDeclaration imp:context.getImportDeclarations()) {
+			if (!imp.isUsingWildcard() && imp.getName().endsWith("."+name)) {
+				String className = imp.getName().substring(0,imp.getName().lastIndexOf("name"));
+				try{
+					return tryToLoadStaticMethod(context,name,className,paramTypes);
+				}
+				catch (Exception x) {
+					// try something else
+				}
+			}
+		}
+		
+		// try to load method from imported packages
+		for (ImportDeclaration imp:context.getImportDeclarations()) {
+			if (imp.isUsingWildcard()) {
+				try{
+					return tryToLoadStaticMethod(context,name,imp.getName(),paramTypes);
+				}
+				catch (Exception x) {
+					// try something else
+				}
+			}
+		}
+		
+		throw new ResolverException("Cannot resolve static method " + name);
+	}
+	
+	private Method tryToLoadMethod(Context context,String name,String className,Class[] paramTypes) throws ResolverException {
+		Class clazz = null;
+		Method method = null;
+		try {
+			clazz = getType(context,name);
+		}
+		catch (Exception x) {
+			throw new ResolverException("Cannot find class that defines static method " + name,x);
+		}
+		try {
+			method = clazz.getMethod(name, paramTypes);
+		}
+		catch (Exception x) {
+			throw new ResolverException("Cannot find method " + name,x);
+		}
+		return method;
+	}
+	
+	private Method tryToLoadStaticMethod(Context context,String name,String className,Class[] paramTypes) throws ResolverException {
+		Method function = tryToLoadMethod(context,name,className,paramTypes);
+		if (!Modifier.isStatic(function.getModifiers())) {
+			throw new ResolverException("Imported functions should be static, but this one is not: " + name);
+		}
+		return function;
+	}
+	
 }
