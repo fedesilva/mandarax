@@ -81,4 +81,71 @@ public class ResolverTests extends AbstractTests {
 		Class clazz = resolver.getType(context,"File");
 		assertEquals("java.io.File",clazz.getName());
 	}
+	
+	
+	@Test
+	public void testResolvingFunctions1() throws Exception {
+		Resolver resolver = new DefaultResolver();
+		ImportDeclaration imp1 = readImportDeclaration("import static java.lang.System.currentTimeMillis;");
+		Context context = new Context();
+		context.add(imp1);
+		
+		Method function = resolver.getFunction(context,"currentTimeMillis", new String[]{});
+		assertEquals("currentTimeMillis",function.getName());
+	}
+	
+	@Test
+	public void testResolvingFunctions2() throws Exception {
+		Resolver resolver = new DefaultResolver();
+		ImportDeclaration imp1 = readImportDeclaration("import static java.lang.System.*;");
+		Context context = new Context();
+		context.add(imp1);
+		
+		Method function = resolver.getFunction(context,"currentTimeMillis", new String[]{});
+		assertEquals("currentTimeMillis",function.getName());
+	}
+	
+	@Test
+	public void testResolvingFunctions3() throws Exception {
+		Resolver resolver = new DefaultResolver();
+		ImportDeclaration imp1 = readImportDeclaration("import static java.lang.System.setProperty;");
+		Context context = new Context();
+		context.add(imp1);
+		
+		Method function = resolver.getFunction(context,"setProperty", new String[]{String.class.getName(),String.class.getName()});
+		assertEquals("setProperty",function.getName());
+	}
+	
+	@Test
+	public void testResolvingFunctions4() throws Exception {
+		Resolver resolver = new DefaultResolver();
+		ImportDeclaration imp1 = readImportDeclaration("import static java.lang.System.*;");
+		Context context = new Context();
+		context.add(imp1);
+		
+		Method function = resolver.getFunction(context,"setProperty", new String[]{String.class.getName(),String.class.getName()});
+		assertEquals("setProperty",function.getName());
+	}
+	
+	@Test(expected=ResolverException.class)
+	public void testResolvingFunctions5() throws Exception {
+		Resolver resolver = new DefaultResolver();
+		ImportDeclaration imp1 = readImportDeclaration("import static java.lang.System.*;");
+		Context context = new Context();
+		context.add(imp1);
+		
+		resolver.getFunction(context,"noSuchMethod", new String[]{});
+	}
+	
+	@Test(expected=ResolverException.class) // not a static method
+	public void testResolvingFunctions6() throws Exception {
+		Resolver resolver = new DefaultResolver();
+		ImportDeclaration imp1 = readImportDeclaration("import static java.lang.String.*;");
+		Context context = new Context();
+		context.add(imp1);
+		
+		resolver.getFunction(context,"length", new String[]{});
+	}
+	
+	
 }
