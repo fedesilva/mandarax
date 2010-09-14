@@ -95,11 +95,13 @@ public class DefaultResolver implements Resolver {
 		if (clazz!=null) return clazz;
 		
 		// try to load class in the package defined in the context
-		clazz = tryToLoad(""+context.getPackageDeclaration().getName()+'.'+name);
-		if (clazz!=null) return clazz;
+		if (context.getPackageDeclaration()!=null) {
+			clazz = tryToLoad(""+context.getPackageDeclaration().getName()+'.'+name);
+			if (clazz!=null) return clazz;
+		}
 		
 		// try to load class from java.lang
-		clazz = tryToLoad("java.lang"+name);
+		clazz = tryToLoad("java.lang."+name);
 		if (clazz!=null) return clazz;
 		
 		// try to load class from imported classes
@@ -156,27 +158,17 @@ public class DefaultResolver implements Resolver {
 		}
 		
 		// try to load method from imported classes
-		for (ImportDeclaration imp:context.getImportDeclarations()) {
+		for (ImportDeclaration imp:context.getStaticImportDeclarations()) {
 			if (!imp.isUsingWildcard() && imp.getName().endsWith("."+name)) {
-				String className = imp.getName().substring(0,imp.getName().lastIndexOf("name"));
-				try{
-					return tryToLoadStaticMethod(context,name,className,paramTypes);
-				}
-				catch (Exception x) {
-					// try something else
-				}
+				String className = imp.getName().substring(0,imp.getName().lastIndexOf(name)-1);
+				return tryToLoadStaticMethod(context,name,className,paramTypes);
 			}
 		}
 		
 		// try to load method from imported packages
-		for (ImportDeclaration imp:context.getImportDeclarations()) {
+		for (ImportDeclaration imp:context.getStaticImportDeclarations()) {
 			if (imp.isUsingWildcard()) {
-				try{
-					return tryToLoadStaticMethod(context,name,imp.getName(),paramTypes);
-				}
-				catch (Exception x) {
-					// try something else
-				}
+				return tryToLoadStaticMethod(context,name,imp.getName(),paramTypes);
 			}
 		}
 		
@@ -187,7 +179,7 @@ public class DefaultResolver implements Resolver {
 		Class clazz = null;
 		Method method = null;
 		try {
-			clazz = getType(context,name);
+			clazz = getType(context,className);
 		}
 		catch (Exception x) {
 			throw new ResolverException("Cannot find class that defines static method " + name,x);
