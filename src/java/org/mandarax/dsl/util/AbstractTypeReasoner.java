@@ -109,7 +109,7 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 	}
 	public Class getType (CastExpression expression,Resolver resolver) throws TypeReasoningException{
 		try {
-			return resolver.getType(expression.getType());
+			return resolver.getType(expression.getContext(),expression.getType());
 		} catch (ResolverException e) {
 			failed(expression,null,e);
 		}
@@ -151,7 +151,7 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 		Member member = null;
 		try {
 			String[] paramNames = expression.isMethod()?paramTypes.toArray(new String[paramTypes.size()]):null;
-			member = resolver.getMember(name,type.getName(),paramNames);
+			member = resolver.getMember(expression.getContext(),name,type.getName(),paramNames);
 		} catch (ResolverException e) {
 			failed(expression,null,e);
 		}
@@ -178,7 +178,7 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 		String[] paramNames = paramTypes.toArray(new String[paramTypes.size()]);
 		
 		try {
-			Method method = resolver.getFunction(name,paramNames);
+			Method method = resolver.getFunction(expression.getContext(),name,paramNames);
 			// enforce post condition
 			if (!Modifier.isStatic(method.getModifiers())) {
 				exception("Functions can only be defined by static methods, this method is not static: ",method);

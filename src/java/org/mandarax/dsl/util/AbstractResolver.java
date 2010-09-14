@@ -19,6 +19,8 @@ import java.lang.reflect.Member;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
+import org.mandarax.dsl.Context;
+
 /**
  * Default resolver. Will try to resolve missing field references using property getters defined using the Java Beans spec.
  * E.g., in obj.firstName , if there is no public field firstName, the resolver will try to find the method getFirstName().
@@ -38,8 +40,8 @@ public abstract class AbstractResolver implements Resolver {
 	}
 
 	@Override
-	public Member getMember(String name, String className,String... paramTypeNames) throws ResolverException {
-		Class clazz = getType(name);
+	public Member getMember(Context context,String name, String className,String... paramTypeNames) throws ResolverException {
+		Class clazz = getType(context,name);
 		boolean isFieldRef = paramTypeNames==null;
 		if (isFieldRef) {
 			Field field = null;
@@ -69,7 +71,7 @@ public abstract class AbstractResolver implements Resolver {
 		// method access
 		Class[] paramTypes = new Class[paramTypeNames.length];
 		for (int i=0;i<paramTypeNames.length;i++) {
-			paramTypes[i] = getType(paramTypeNames[i]);
+			paramTypes[i] = getType(context,paramTypeNames[i]);
 		}
 		
 		try {
@@ -87,7 +89,8 @@ public abstract class AbstractResolver implements Resolver {
 	}
 
 	@Override
-	public Class getType(String name) throws ResolverException {
+	public Class getType(Context context,String name) throws ResolverException {
+		// TODO try to resolve against imports
 		try {
 			return (classloader==null)?Class.forName(name):classloader.loadClass(name);
 		} catch (ClassNotFoundException e) {

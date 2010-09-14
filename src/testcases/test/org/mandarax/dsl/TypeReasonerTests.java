@@ -14,6 +14,7 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 import org.junit.Test;
+import org.mandarax.dsl.Context;
 import org.mandarax.dsl.Expression;
 import org.mandarax.dsl.Variable;
 import org.mandarax.dsl.util.AbstractTypeReasoner;
@@ -42,7 +43,7 @@ public class TypeReasonerTests {
 	
 	class TestResolver extends AbstractResolver {
 		@Override
-		public Method getFunction(String name, String... paramTypeNames) throws ResolverException {
+		public Method getFunction(Context context,String name, String... paramTypeNames) throws ResolverException {
 			return null;
 		}
 	}
