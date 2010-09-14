@@ -30,7 +30,7 @@ public class ParserTestsConstructorInvocations extends AbstractTests {
 		print(expression);
 		assertTrue(expression instanceof ConstructorInvocation);
 		ConstructorInvocation fi = (ConstructorInvocation)expression;
-		assertEquals("F",fi.getType());
+		assertEquals("F",fi.getTypeName());
 		assertEquals(1,fi.getParameters().size());
 		assertEquals("x",((Variable)fi.getParameters().get(0)).getName());
 	}
@@ -41,7 +41,7 @@ public class ParserTestsConstructorInvocations extends AbstractTests {
 		print(expression);
 		assertTrue(expression instanceof ConstructorInvocation);
 		ConstructorInvocation fi = (ConstructorInvocation)expression;
-		assertEquals("MyClassA",fi.getType());
+		assertEquals("MyClassA",fi.getTypeName());
 		assertEquals(2,fi.getParameters().size());
 		assertEquals("x",((Variable)fi.getParameters().get(0)).getName());
 		assertEquals("y",((Variable)fi.getParameters().get(1)).getName());
@@ -53,7 +53,7 @@ public class ParserTestsConstructorInvocations extends AbstractTests {
 		print(expression);
 		assertTrue(expression instanceof ConstructorInvocation);
 		ConstructorInvocation fi = (ConstructorInvocation)expression;
-		assertEquals("com.example.MyClassA",fi.getType());
+		assertEquals("com.example.MyClassA",fi.getTypeName());
 		assertEquals(2,fi.getParameters().size());
 		assertEquals("x",((Variable)fi.getParameters().get(0)).getName());
 		

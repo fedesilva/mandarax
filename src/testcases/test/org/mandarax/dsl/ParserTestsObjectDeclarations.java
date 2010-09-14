@@ -31,7 +31,7 @@ public class ParserTestsObjectDeclarations extends AbstractTests{
 		assertTrue(decl.getDefaultValueDeclaration() instanceof ConstructorInvocation);
 		
 		ConstructorInvocation ci = (ConstructorInvocation)decl.getDefaultValueDeclaration();
-		assertEquals("PersonImpl",ci.getType());
+		assertEquals("PersonImpl",ci.getTypeName());
 		assertEquals(1,ci.getParameters().size());
 		assertEquals("Klaus",((StringLiteral)ci.getParameters().get(0)).getValue());
 	}
@@ -44,7 +44,7 @@ public class ParserTestsObjectDeclarations extends AbstractTests{
 		assertTrue(decl.getDefaultValueDeclaration() instanceof ConstructorInvocation);
 		
 		ConstructorInvocation ci = (ConstructorInvocation)decl.getDefaultValueDeclaration();
-		assertEquals("com.example.PersonImpl",ci.getType());
+		assertEquals("com.example.PersonImpl",ci.getTypeName());
 		assertEquals(1,ci.getParameters().size());
 		assertEquals("Klaus",((StringLiteral)ci.getParameters().get(0)).getValue());
 	}

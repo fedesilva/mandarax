@@ -31,7 +31,7 @@ public class ParserTestsMiscExpressions extends AbstractTests{
 		assertEquals("length",x.getMember());
 		assertTrue(x.getObjectReference() instanceof CastExpression);
 		CastExpression x2 = (CastExpression)x.getObjectReference();
-		assertEquals("String",x2.getType());
+		assertEquals("String",x2.getTypeName());
 		assertTrue(x2.getObjectReference() instanceof Variable);
 		assertEquals("x",((Variable)x2.getObjectReference()).getName());
 	}
@@ -45,7 +45,7 @@ public class ParserTestsMiscExpressions extends AbstractTests{
 		assertEquals(UnOp.NOT,x.getOperator());
 		assertTrue(x.getPart() instanceof InstanceOfExpression);
 		InstanceOfExpression x2 = (InstanceOfExpression)x.getPart();
-		assertEquals("String",x2.getType());
+		assertEquals("String",x2.getTypeName());
 		assertTrue(x2.getObjectReference() instanceof Variable);
 		assertEquals("x",((Variable)x2.getObjectReference()).getName());
 	}
