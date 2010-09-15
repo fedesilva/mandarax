@@ -11,11 +11,13 @@
 
 package org.mandarax.compiler;
 
+import org.mandarax.MandaraxException;
+
 /**
  * Class used to report compiler exceptions
  * @author jens dietrich
  */
-public class CompilerException extends Exception {
+public class CompilerException extends MandaraxException {
 
 	public CompilerException() {}
 

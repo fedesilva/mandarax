@@ -11,11 +11,13 @@
 
 package org.mandarax.dsl.parser;
 
+import org.mandarax.MandaraxException;
+
 /**
  * Exception encountered when parsing scripts.
  * @author jens dietrich
  */
-public class ScriptException extends Exception {
+public class ScriptException extends MandaraxException {
 
 	public ScriptException() {}
 

@@ -9,27 +9,25 @@
  * governing permissions and limitations under the License.
  */
 
-package org.mandarax.dsl;
-
-import org.mandarax.MandaraxException;
+package org.mandarax;
 
 /**
- * Exception used to report verification problems.
+ * Top-level exception.
  * @author jens dietrich
  */
-public class VerificationException extends MandaraxException {
+public class MandaraxException extends Exception {
 
-	public VerificationException() {}
+	public MandaraxException() {}
 
-	public VerificationException(String message) {
+	public MandaraxException(String message) {
 		super(message);
 	}
 
-	public VerificationException(Throwable cause) {
+	public MandaraxException(Throwable cause) {
 		super(cause);
 	}
 
-	public VerificationException(String message, Throwable cause) {
+	public MandaraxException(String message, Throwable cause) {
 		super(message, cause);
 	}
 

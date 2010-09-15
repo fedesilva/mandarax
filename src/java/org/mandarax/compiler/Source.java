@@ -11,6 +11,7 @@
 
 package org.mandarax.compiler;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 /**
@@ -19,5 +20,5 @@ import java.io.InputStream;
  * @author jens dietrich
  */
 public interface Source {
-	public InputStream openStream(); 
+	public InputStream openStream() throws IOException ; 
 }

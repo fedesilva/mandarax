@@ -13,6 +13,8 @@ package org.mandarax.compiler;
 
 import java.io.File;
 import java.net.URL;
+
+import org.mandarax.MandaraxException;
 import org.mandarax.dsl.parser.ScriptException;
 /**
  * Compiler interface.
@@ -27,7 +29,7 @@ public interface Compiler {
 	 * @throws CompilerException
 	 * @throws ScriptException
 	 */
-	public void compile(Location target,CompilationMode mode,URL... sources) throws CompilerException,ScriptException  ; 
+	public void compile(Location target,CompilationMode mode,URL... sources) throws MandaraxException  ; 
 	
 	/**
 	 * Compile the sources.
@@ -37,7 +39,7 @@ public interface Compiler {
 	 * @throws CompilerException
 	 * @throws ScriptException
 	 */
-	public void compile(Location target,CompilationMode mode,File... sources) throws CompilerException,ScriptException  ; 
+	public void compile(Location target,CompilationMode mode,File... sources) throws MandaraxException  ; 
 	/**
 	 * Compile the sources.
 	 * @param target the location describing where the source code and byte code generated will be stored
@@ -46,6 +48,6 @@ public interface Compiler {
 	 * @throws CompilerException
 	 * @throws ScriptException
 	 */
-	public void compile(Location target,CompilationMode mode,Source... sources) throws CompilerException,ScriptException  ; 
+	public void compile(Location target,CompilationMode mode,Source... sources) throws MandaraxException  ; 
 	
 }
