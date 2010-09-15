@@ -11,15 +11,17 @@
 
 package org.mandarax.dsl;
 
-import java.util.Collection;
+import com.google.common.base.Joiner;
 
-import org.mandarax.dsl.util.Resolver;
-import org.mandarax.dsl.util.TypeReasoner;
 /**
- * Tool to check the consistency of parsed scripts. The purpose of verifiers is to enforce semantic rules
- * that are not part of the grammar.
+ * Error reporter that throws an exception immediately whenever 
  * @author jens dietrich
  */
-public interface Verifier {
-	public void verify(Collection<CompilationUnit> cus,VerificationErrorReporter errorHandler,Resolver resolver,TypeReasoner typeReasoner) throws VerificationException ;
+public class DefaultVerificationErrorReporter implements VerificationErrorReporter {
+
+	@Override
+	public void reportError(CompilationUnit cu, Object... message) throws VerificationException {
+		throw new VerificationException("Error in compilation unit " + cu + " - " + Joiner.on("").join(message));
+	}
+
 }

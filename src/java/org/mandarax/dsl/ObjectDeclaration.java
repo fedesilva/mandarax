@@ -34,29 +34,29 @@ public class ObjectDeclaration extends ASTNode {
 		this.defaultValueDeclaration = defaultValueDeclaration;
 		
 		// add to context and check whether all variables are defined
-		Collection<ObjectDeclaration> defined = Collections2.filter(context.getObjectDeclarations(),new Predicate<ObjectDeclaration>(){
-			@Override
-			public boolean apply(ObjectDeclaration decl) {
-				return name.equals(decl.name);
-			}});
-		
-		if (!defined.isEmpty()) {
-			throw new InternalScriptException("Cannot define object " + name + " at " + position + " - this name has already been used to define an object at " + defined.iterator().next().getPosition());
-		}
+//		Collection<ObjectDeclaration> defined = Collections2.filter(context.getObjectDeclarations(),new Predicate<ObjectDeclaration>(){
+//			@Override
+//			public boolean apply(ObjectDeclaration decl) {
+//				return name.equals(decl.name);
+//			}});
+//		
+//		if (!defined.isEmpty()) {
+//			throw new InternalScriptException("Cannot define object " + name + " at " + position + " - this name has already been used to define an object at " + defined.iterator().next().getPosition());
+//		}
 		
 		// check whether there are references to undefined variables
-		Collection<Variable> vars = defaultValueDeclaration.getVariables();
-		Collection<String> names = Collections2.transform(context.getObjectDeclarations(),new Function<ObjectDeclaration,String>(){
-			@Override
-			public String apply(ObjectDeclaration decl) {
-				return decl.name;
-			}});
-		
-		for (Variable var:vars) {
-			if (!names.contains(var)) {
-				throw new InternalScriptException("Cannot reference object " + var.getName() + " at " + var.getPosition() + " - this object has not yet been defined");
-			}
-		}
+//		Collection<Variable> vars = defaultValueDeclaration.getVariables();
+//		Collection<String> names = Collections2.transform(context.getObjectDeclarations(),new Function<ObjectDeclaration,String>(){
+//			@Override
+//			public String apply(ObjectDeclaration decl) {
+//				return decl.name;
+//			}});
+//		
+//		for (Variable var:vars) {
+//			if (!names.contains(var)) {
+//				throw new InternalScriptException("Cannot reference object " + var.getName() + " at " + var.getPosition() + " - this object has not yet been defined");
+//			}
+//		}
 		
 		// add to context
 		context.add(this);

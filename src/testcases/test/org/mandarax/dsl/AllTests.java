@@ -38,6 +38,9 @@ import org.junit.runners.*;
 	ParserTestsObjectDeclarations.class,
 	// integration tests
 	ParserIntegrationTests.class,
+	// verification tests
+	VerifierTestsCheckUniqueNamesInObjectDeclarations.class,
+	VerifierTestsCheckReferencesInObjectDeclarations.class,
 	// other
 	ResolverTests.class,
 	TypeReasonerTests.class,

@@ -17,6 +17,8 @@ import static org.junit.Assert.assertTrue;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import org.mandarax.dsl.*;
 import org.mandarax.dsl.parser.ScriptReader;
@@ -98,4 +100,23 @@ public class TestUtils {
 		InputStream in = getStream(s);
 		return new ScriptReader().readObjectDeclaration(in);
 	}
+	
+	public static Collection<CompilationUnit> readCUSFromCP(String... names) throws Exception {
+		Collection<CompilationUnit> cus = new ArrayList<CompilationUnit>();
+		for (String name:names) {
+			InputStream in = TestUtils.class.getResourceAsStream("/test/org/mandarax/dsl/"+name);
+			CompilationUnit cu = new ScriptReader().readCompilationUnit(in);
+			in.close();
+			cus.add(cu);
+		}
+		return cus;
+	}
+	
+	public static CompilationUnit readCUFromCP(String name) throws Exception {
+		InputStream in = TestUtils.class.getResourceAsStream("/test/org/mandarax/dsl/"+name);
+		CompilationUnit cu = new ScriptReader().readCompilationUnit(in);
+		in.close();
+		return cu;
+	}
+	
 }

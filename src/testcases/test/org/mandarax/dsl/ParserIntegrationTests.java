@@ -12,15 +12,12 @@
 package test.org.mandarax.dsl;
 
 import static org.junit.Assert.*;
-
 import java.io.InputStream;
 import java.util.List;
-
 import org.junit.Test;
 import org.mandarax.dsl.*;
 import org.mandarax.dsl.parser.ScriptException;
 import org.mandarax.dsl.parser.ScriptReader;
-
 import static test.org.mandarax.dsl.TestUtils.*;
 
 /**
@@ -29,16 +26,10 @@ import static test.org.mandarax.dsl.TestUtils.*;
  */ 
 public class ParserIntegrationTests extends AbstractTests{
 	
-	private CompilationUnit readCUFromFile(String name) throws Exception {
-		InputStream in = this.getClass().getResourceAsStream("/test/org/mandarax/dsl/"+name);
-		CompilationUnit cu = new ScriptReader().readCompilationUnit(in);
-		in.close();
-		return cu;
-	}
 	
 	@Test
 	public void testCompilationUnit1() throws Exception {
-		CompilationUnit cu = readCUFromFile("rules1.rel");
+		CompilationUnit cu = readCUFromCP("rules1.rel");
 		
 		assertEquals("test.org.mandarax.dsl",cu.getPackageDeclaration().getName()); 
 		assertEquals(1,cu.getImportDeclarations().size());
@@ -52,7 +43,7 @@ public class ParserIntegrationTests extends AbstractTests{
 	
 	@Test
 	public void testCompilationUnit2() throws Exception {
-		CompilationUnit cu = readCUFromFile("rules2.rel");
+		CompilationUnit cu = readCUFromCP("rules2.rel");
 		
 		assertEquals("test.org.mandarax.dsl",cu.getPackageDeclaration().getName()); 
 		
@@ -74,7 +65,7 @@ public class ParserIntegrationTests extends AbstractTests{
 	
 	@Test
 	public void testCompilationUnit3() throws Exception {
-		CompilationUnit cu = readCUFromFile("rules3.rel");
+		CompilationUnit cu = readCUFromCP("rules3.rel");
 		
 		assertEquals("test.org.mandarax.dsl",cu.getPackageDeclaration().getName()); 
 		assertEquals(1,cu.getImportDeclarations().size());
@@ -92,15 +83,6 @@ public class ParserIntegrationTests extends AbstractTests{
 		assertEquals("me",objects.get(0).getName());
 		assertEquals("Person",objects.get(0).getType());
 	}
-	
-	@Test (expected=ScriptException.class)
-	public void testCompilationUnit4() throws Exception {
-		readCUFromFile("rules4.rel");
-	}
 
-	@Test (expected=ScriptException.class)
-	public void testCompilationUnit5() throws Exception {
-		readCUFromFile("rules5.rel");
-	}
 	
 }
