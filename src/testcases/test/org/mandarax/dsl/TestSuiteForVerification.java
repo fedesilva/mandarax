@@ -15,38 +15,19 @@ import org.junit.runner.RunWith;
 import org.junit.runners.*;
 
 /**
- * Test suite. Used to run all tests in this package.
+ * Test suite containing all verification tests.
  * @author jens dietrich
  */
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	// syntax - expressions
-	ParserTestsArithmetic.class,
-	ParserTestsRelationalExpressions.class,
-	ParserTestsFlatExpressions.class,
-	ParserTestsMemberAccess.class,
-	ParserTestsFunctionInvocations.class,
-	ParserTestsMiscExpressions.class,
-	ParserTestsComplexExpressions.class,
-	// syntax - other elements
-	ParserTestsImportDeclarations.class,
-	ParserTestsPackageDeclarations.class,
-	ParserTestsRelationshipDefinitions.class,
-	ParserTestsAnnotations.class,
-	ParserTestsRules.class,
-	ParserTestsObjectDeclarations.class,
-	// integration tests
-	ParserIntegrationTests.class,
-	// verification tests
 	VerifierTestsCheckUniqueNamesInObjectDeclarations.class,
 	VerifierTestsCheckReferencesInObjectDeclarations.class,
 	// other
 	ResolverTests.class,
-	TypeReasonerTests.class,
-	UtilTestsExtractVariables.class
+	TypeReasonerTests.class
 })
-public class AllTests {
+public class TestSuiteForVerification {
 
 }
 
