@@ -34,13 +34,6 @@ public interface Location {
 	 */
 	public OutputStream getResourceOut(String p,String r) throws CompilerException;
 
-	/**
-	 * Get the source code file. Some tools (like Jalopy) require direct access to the file. 
-	 * An UnsupportedOperationException should be thrown if the location is not file based.
-	 * @param c a class name
-	 * @return a file
-	 */
-	public File getSrcFile(String c) throws CompilerException,UnsupportedOperationException;
 	
 	
 }

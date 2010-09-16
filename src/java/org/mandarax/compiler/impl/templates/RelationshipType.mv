@@ -1,0 +1,13 @@
+package @{context.packageDeclaration}
+
+@foreach{imp:context.importDeclarations} 
+public @{imp}
+@end{}
+	
+public class @{rel.name} {
+	@foreach{slot:rel.slotDeclarations} 
+		public @{slot.type} @{slot.name} = null; 
+	@end{}
+
+}
+

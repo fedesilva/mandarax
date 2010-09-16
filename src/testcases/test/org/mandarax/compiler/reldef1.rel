@@ -1,0 +1,5 @@
+package test.org.mandarax.dsl;
+import java.util.Date;
+rel Father(MalePerson father,Person child) extends Parent queries getFather(child),isFather(father,child) {
+	rule1: Son(x,y) -> Father(y,x);
+}

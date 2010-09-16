@@ -15,19 +15,37 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Writer;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.mandarax.MandaraxException;
 import org.mandarax.compiler.CompilationMode;
 import org.mandarax.compiler.Compiler;
 import org.mandarax.compiler.CompilerException;
 import org.mandarax.compiler.Location;
 import org.mandarax.compiler.Source;
+import org.mandarax.dsl.CompilationUnit;
+import org.mandarax.dsl.RelationshipDefinition;
+import org.mandarax.dsl.Verifier;
+import org.mandarax.dsl.VerifyAll;
+import org.mandarax.dsl.parser.ScriptReader;
+import org.mvel2.templates.CompiledTemplate;
+import org.mvel2.templates.TemplateCompiler;
+import org.mvel2.templates.TemplateRuntime;
+
+import static org.mandarax.compiler.impl.Templates.*;
+
 
 /**
  * Default compiler.
  * @author jens dietrich
  */
 public class DefaultCompiler implements Compiler {
+	
+	
 
 	@Override
 	public void compile(Location target, CompilationMode mode, URL... urls) throws MandaraxException {
@@ -69,22 +87,56 @@ public class DefaultCompiler implements Compiler {
 	@Override
 	public void compile(Location target, CompilationMode mode, Source... sources) throws MandaraxException {
 		// parse
+		List<CompilationUnit> cus = new ArrayList<CompilationUnit>();
+		ScriptReader reader = new ScriptReader();
+		Verifier verifier = new VerifyAll();
+		for (Source s:sources) {
+			InputStream in;
+			try {
+				in = s.openStream();
+				CompilationUnit cu = reader.readCompilationUnit(in);
+				// TODO verify 
+				cus.add(cu);
+				in.close();
+			} catch (IOException x) {
+				throw new CompilerException("Exception reading file from source " + s,x);
+			}
+		}
 		
-		
-		// verify 
 		
 		// delegate
 		if (mode==CompilationMode.INTERFACES_ONLY) {
-			compileInterfaces(target,sources);
+			compileInterfaces(target,cus);
 		}
 		else throw new CompilerException("Unsupported compilation mode " + mode.name());
 	}
 
-	private void compileInterfaces(Location target, Source[] sources) throws MandaraxException {
-//		for (Predicate p:getPublicPredicates()) {
-//			createReturnType(p);
-//		}
+	public void compileInterfaces(Location target, List<CompilationUnit> cus) throws MandaraxException {
 		
+		for (CompilationUnit cu:cus) {
+			for (RelationshipDefinition rel:cu.getRelationshipDefinitions()) {
+				try {
+					createRelationshipType (target,cu,rel);
+				} catch (Exception e) {
+					throw new CompilerException("Cannot generate class to represent relationship",e);
+				}
+			}
+		}
+	}
+	
+	
+	public void createRelationshipType (Location target,CompilationUnit cu,RelationshipDefinition rel) throws Exception {
+		CompiledTemplate template = getTemplate("RelationshipType");
+		Map<String,Object> bindings = new HashMap<String,Object>();
+		
+		bindings.put("context",cu.getContext());
+		bindings.put("rel",rel);
+		bindings.put("slots",rel.getSlotDeclarations());
+		String generated = (String) TemplateRuntime.execute(template, bindings);
+		
+		Writer out = target.getSrcOut(cu.getContext().getPackageDeclaration().getName() + '.' + rel.getName());
+		out.write(generated);
+		out.close();
 	}
 
 }
