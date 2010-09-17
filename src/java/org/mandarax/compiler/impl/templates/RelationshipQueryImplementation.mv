@@ -1,0 +1,44 @@
+package @{packageName};
+@foreach{imp:context.importDeclarations} 
+@{imp}
+@end{}
+/**
+ * Interface for queries for relationship <strong>@{rel.name}</strong>.
+ * @version @{timestamp} 
+ */
+public class @{className} {
+
+	// interface generated for queries
+	@foreach{query:rel.queries} 
+	public ResultSet<@{rel.name}> @{query.name} ( @foreach{param:query.parameterNames} @{rel.getTypeNameForSlot(param)} @{param} @end{", "} ) {
+		DerivationController _derivation = new DefaultDerivationController();
+		return @{query.name} ( _derivation, @foreach{param:query.parameterNames} @{param} @end{", "});
+	} 
+	@end{}
+	
+	// implementations - these methods are referenced by code generated from other rules in this package
+	// and therefore kept static 
+	@foreach{query:rel.queries} 
+	static ResultSet<@{rel.name}> @{query.name} ( DerivationController _derivation, @foreach{param:query.parameterNames} @{rel.getTypeNameForSlot(param)} @{param} @end{", "} ) {
+		final int _derivationlevel = _derivation.getDepth();
+		ResourceIterator<IsFatherOf> result = new IteratorChain<IsFatherOf>(@{rel.rules.size()}) {
+			
+			public Object getIteratorOrObject(int pos) {
+			switch (pos) {
+				@foreach{index:ruleIndices}
+				// code generated for rule: @{rel.queries.get(index)}
+                		case @{index}: {
+                			return @{query.name}_@{index}( _derivation, @foreach{param:query.parameterNames} @{param} @end{", "});
+                		}
+				@end{}
+				default: return EmptyIterator.DEFAULT;
+			}
+		}
+	} 
+	@end{}
+	
+	
+	// private methods - each methods represents the invocation of a single rule
+	// TODO
+}
+

@@ -35,7 +35,6 @@ import org.mandarax.dsl.parser.ScriptReader;
 import org.mvel2.templates.CompiledTemplate;
 import org.mvel2.templates.TemplateCompiler;
 import org.mvel2.templates.TemplateRuntime;
-
 import static org.mandarax.compiler.impl.Templates.*;
 import static org.mandarax.compiler.impl.CompilerUtils.*;
 
@@ -107,51 +106,87 @@ public class DefaultCompiler implements Compiler {
 		
 		// delegate
 		if (mode==CompilationMode.INTERFACES_ONLY) {
-			compileInterfaces(target,cus);
+			compileToInterfaces(target,cus);
 		}
 		else throw new CompilerException("Unsupported compilation mode " + mode.name());
 	}
+	
+	private void compileToClasses(Location target, List<CompilationUnit> cus) throws MandaraxException {	
+		for (CompilationUnit cu:cus) {
+			for (RelationshipDefinition rel:cu.getRelationshipDefinitions()) {
+				try {
+					createRelationshipQueryImplementation(target,cu,rel);
+				} catch (Exception e) {
+					throw new CompilerException("Cannot generate query interface for relationship " + rel.getName(),e);
+				}
+				
+			}
+		}
+	}
+	
 
-	public void compileInterfaces(Location target, List<CompilationUnit> cus) throws MandaraxException {
-		
+	private void compileToInterfaces(Location target, List<CompilationUnit> cus) throws MandaraxException {	
 		for (CompilationUnit cu:cus) {
 			for (RelationshipDefinition rel:cu.getRelationshipDefinitions()) {
 				try {
 					createRelationshipType (target,cu,rel);
 				} catch (Exception e) {
-					throw new CompilerException("Cannot generate class to represent relationship",e);
+					throw new CompilerException("Cannot generate class to represent relationship " + rel.getName(),e);
 				}
+				
+				try {
+					createRelationshipQueryInterface (target,cu,rel);
+				} catch (Exception e) {
+					throw new CompilerException("Cannot generate query interface for relationship " + rel.getName(),e);
+				}
+				
 			}
 		}
 	}
 	
-	
+	// keep public for unit testing
 	public void createRelationshipType (Location target,CompilationUnit cu,RelationshipDefinition rel) throws Exception {
-		CompiledTemplate template = getTemplate("RelationshipType");
-		Map<String,Object> bindings = new HashMap<String,Object>();
-		
-		bindings.put("context",cu.getContext());
+		Map<String,Object> bindings = createParamBindings(cu);
 		bindings.put("rel",rel);
-		bindings.put("timestamp",getTimestamp());
-		String generated = (String) TemplateRuntime.execute(template, bindings,Templates.registry);
+		String generated = (String) TemplateRuntime.execute(getTemplate("RelationshipType"), bindings,Templates.registry);	
+		printGeneratedCode(cu,target,rel.getName(),generated);
+	}
+	
+	// keep public for unit testing
+	public void createRelationshipQueryInterface (Location target,CompilationUnit cu,RelationshipDefinition rel) throws Exception {
+		Map<String,Object> bindings = createParamBindings(cu);
+		bindings.put("rel",rel);
+		String generated = (String) TemplateRuntime.execute(getTemplate("RelationshipQueryInterface"), bindings,Templates.registry);
+		printGeneratedCode(cu,target,rel.getName()+"Instances",generated);
+	}
+	
+	// keep public for unit testing
+	public void createRelationshipQueryImplementation(Location target,CompilationUnit cu, RelationshipDefinition rel) throws Exception {
+		String className = rel.getName()+"InstancesImpl";
+		String packageName = cu.getContext().getPackageDeclaration().getName()+".v"+getTimestampAsVersion();
 		
-		Writer out = target.getSrcOut(cu.getContext().getPackageDeclaration().getName() + '.' + rel.getName());
-		out.write(generated);
+		Map<String,Object> bindings = createParamBindings(cu);
+		bindings.put("rel",rel);
+		bindings.put("className",className);
+		bindings.put("packageName",packageName);
+		bindings.put("ruleIndices",getIndices(rel.getRules()));
+		
+		String generated = (String) TemplateRuntime.execute(getTemplate("RelationshipQueryImplementation"), bindings,Templates.registry);
+		printGeneratedCode(cu,target,rel.getName()+"Instances",generated);
+	}
+	
+
+	private void printGeneratedCode(CompilationUnit cu,Location target,String localClassName,String code) throws Exception {
+		Writer out = target.getSrcOut(cu.getContext().getPackageDeclaration().getName() + '.' + localClassName);
+		out.write(code);
 		out.close();
 	}
 	
-	public void createRelationshipQueryInterface (Location target,CompilationUnit cu,RelationshipDefinition rel) throws Exception {
-		CompiledTemplate template = getTemplate("RelationshipQueryInterface");
+	// bindings to be used to instantiate the templates
+	private Map<String,Object> createParamBindings(CompilationUnit cu) {
 		Map<String,Object> bindings = new HashMap<String,Object>();
-		
 		bindings.put("context",cu.getContext());
-		bindings.put("rel",rel);
-		bindings.put("timestamp",getTimestamp());
-		String generated = (String) TemplateRuntime.execute(template, bindings,Templates.registry);
-		
-		Writer out = target.getSrcOut(cu.getContext().getPackageDeclaration().getName() + '.' + rel.getName());
-		out.write(generated);
-		out.close();
+		bindings.put("timestamp",getTimestamp());		
+		return bindings;
 	}
-
 }

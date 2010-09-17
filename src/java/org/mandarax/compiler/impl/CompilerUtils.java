@@ -11,7 +11,10 @@
 
 package org.mandarax.compiler.impl;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -19,8 +22,20 @@ import java.util.Date;
  * @author jens dietrich
  */
 public class CompilerUtils {
-	public static final DateFormat TF = DateFormat.getDateTimeInstance();
+	public static final DateFormat DEFAULT_DATE_FORMAT = DateFormat.getDateTimeInstance();
+	public static final DateFormat VERSION_DATE_FORMAT = new SimpleDateFormat("yyyyMMdd_HHmmss");
+	
 	public static String getTimestamp() {
-		return TF.format(new Date());
+		return DEFAULT_DATE_FORMAT.format(new Date());
+	}
+	
+	public static String getTimestampAsVersion() {
+		return VERSION_DATE_FORMAT.format(new Date());
+	}
+	// used in templates to iterate over lists by index
+	public static List<Integer> getIndices(List list) {
+		List<Integer> indices = new ArrayList<Integer>(list.size());
+		for (int i=0;i<list.size();i++) indices.add(i);
+		return indices;
 	}
 }
