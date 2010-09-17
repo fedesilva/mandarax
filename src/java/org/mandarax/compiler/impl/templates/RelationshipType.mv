@@ -1,12 +1,16 @@
 package @{context.packageDeclaration}
-
 @foreach{imp:context.importDeclarations} 
-public @{imp}
+@{imp}
 @end{}
-	
+/**
+ * Class representing the relationship <strong>@{rel.name}</strong>.
+ * @version @{timestamp} 
+ */
 public class @{rel.name} {
+
+	// instance variables created for slots
 	@foreach{slot:rel.slotDeclarations} 
-		public @{slot.type} @{slot.name} = null; 
+	public @{slot.type} @{slot.name} = null; 
 	@end{}
 
 }

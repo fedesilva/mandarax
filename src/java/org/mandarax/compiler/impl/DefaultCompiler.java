@@ -37,6 +37,7 @@ import org.mvel2.templates.TemplateCompiler;
 import org.mvel2.templates.TemplateRuntime;
 
 import static org.mandarax.compiler.impl.Templates.*;
+import static org.mandarax.compiler.impl.CompilerUtils.*;
 
 
 /**
@@ -131,8 +132,22 @@ public class DefaultCompiler implements Compiler {
 		
 		bindings.put("context",cu.getContext());
 		bindings.put("rel",rel);
-		bindings.put("slots",rel.getSlotDeclarations());
-		String generated = (String) TemplateRuntime.execute(template, bindings);
+		bindings.put("timestamp",getTimestamp());
+		String generated = (String) TemplateRuntime.execute(template, bindings,Templates.registry);
+		
+		Writer out = target.getSrcOut(cu.getContext().getPackageDeclaration().getName() + '.' + rel.getName());
+		out.write(generated);
+		out.close();
+	}
+	
+	public void createRelationshipQueryInterface (Location target,CompilationUnit cu,RelationshipDefinition rel) throws Exception {
+		CompiledTemplate template = getTemplate("RelationshipQueryInterface");
+		Map<String,Object> bindings = new HashMap<String,Object>();
+		
+		bindings.put("context",cu.getContext());
+		bindings.put("rel",rel);
+		bindings.put("timestamp",getTimestamp());
+		String generated = (String) TemplateRuntime.execute(template, bindings,Templates.registry);
 		
 		Writer out = target.getSrcOut(cu.getContext().getPackageDeclaration().getName() + '.' + rel.getName());
 		out.write(generated);

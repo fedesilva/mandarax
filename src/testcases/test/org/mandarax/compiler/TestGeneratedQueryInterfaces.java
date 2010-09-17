@@ -19,31 +19,28 @@ import org.mandarax.dsl.RelationshipDefinition;
 import static test.org.mandarax.compiler.TestUtils.*;
 
 /**
- * Tests the generation of relationship types.
+ * Tests the generation of query interfaces.
  * @author jens dietrich
  */
-public class TestGeneratedRelationshipTypes {
-	
-
+public class TestGeneratedQueryInterfaces {
 	
 
 	@Test
-	public void testGeneratedRelationshipTypes1() throws Exception {
+	public void testGeneratedQueryInterface1() throws Exception {
 		CompilationUnit cu = readCUFromCP("reldef1.rel");
 		RelationshipDefinition rel = cu.getRelationshipDefinitions().get(0);
 		StringLocation location = new StringLocation();
 		DefaultCompiler compiler = new DefaultCompiler();
-		compiler.createRelationshipType(location, cu, rel);
+		compiler.createRelationshipQueryInterface(location, cu, rel);
 		
 		String def = location.getGeneratedCode();
 		
 		System.out.println(def);
 		
 		assertTrue(def.contains("package test.org.mandarax.dsl;"));
-		assertTrue(def.contains("public class Father"));
-		assertTrue(def.contains("public MalePerson father = null; "));
-		assertTrue(def.contains("public Person child = null;"));
+		assertTrue(def.contains("import java.util.Date;"));
+		assertTrue(def.contains("public interface FatherInstances"));
+		assertTrue(def.contains("public ResultSet<Father> getFather (  Person child  );"));
+		assertTrue(def.contains("public ResultSet<Father> isFather (  MalePerson father ,  Person child  );"));
 	}
-	
-
 }

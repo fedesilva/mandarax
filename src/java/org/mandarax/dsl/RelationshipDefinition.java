@@ -111,4 +111,11 @@ public class RelationshipDefinition extends AnnotatableNode {
 		
 		rules.add(r);
 	}
+	
+	public String getTypeNameForSlot(String slotName) {
+		for (VariableDeclaration varDecl:slotDeclarations) {
+			if (varDecl.getName().equals(slotName)) return varDecl.getType();
+		}
+		return null;
+	}
 }

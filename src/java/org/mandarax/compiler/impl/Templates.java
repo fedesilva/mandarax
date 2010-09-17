@@ -20,7 +20,9 @@ import java.util.Map;
 import org.mandarax.MandaraxException;
 import org.mandarax.compiler.CompilerException;
 import org.mvel2.templates.CompiledTemplate;
+import org.mvel2.templates.SimpleTemplateRegistry;
 import org.mvel2.templates.TemplateCompiler;
+import org.mvel2.templates.TemplateRegistry;
 
 /**
  * Utility to manage templates.
@@ -28,37 +30,35 @@ import org.mvel2.templates.TemplateCompiler;
  */
 public class Templates {
 	
-	private static Map<String,CompiledTemplate> templateCache = new HashMap<String,CompiledTemplate>();
+	static TemplateRegistry registry = new SimpleTemplateRegistry();
 	
 	public static CompiledTemplate getTemplate(String name) throws MandaraxException {
 		synchronized (Templates.class) {
-			CompiledTemplate template = templateCache.get(name);
-			if (template!=null) return template;
-			
-			try {
-				InputStream in = Templates.class.getResourceAsStream("/org/mandarax/compiler/impl/templates/"+name+".mv");
-				BufferedReader breader = new BufferedReader(new InputStreamReader(in));
-				String line = null;
-				StringBuffer buffer = new StringBuffer();
-				while ((line=breader.readLine())!=null) {
-					buffer.append(line);
-					buffer.append('\n');
-				}
-				breader.close();
-				
-				template = TemplateCompiler.compileTemplate(buffer.toString());
-				templateCache.put(name,template);
-				return template;
+			if (registry.contains(name)) {
+				return registry.getNamedTemplate(name);
 			}
-			catch (Exception x) {
-				throw new CompilerException("Cannot load template " + name,x);
+			else {
+				CompiledTemplate template = null;
+				try {
+					InputStream in = Templates.class.getResourceAsStream("/org/mandarax/compiler/impl/templates/"+name+".mv");
+					BufferedReader breader = new BufferedReader(new InputStreamReader(in));
+					String line = null;
+					StringBuffer buffer = new StringBuffer();
+					while ((line=breader.readLine())!=null) {
+						buffer.append(line);
+						buffer.append('\n');
+					}
+					breader.close();
+				
+					template = TemplateCompiler.compileTemplate(buffer.toString());
+					registry.addNamedTemplate(name,template);
+					return template;
+				}
+				catch (Exception x) {
+					throw new CompilerException("Cannot load template " + name,x);
+				}
 			}
 		}
 	}
 	
-	public static void resetCache() throws MandaraxException {
-		synchronized (Templates.class) {
-			templateCache.clear();
-		}
-	}
 }
