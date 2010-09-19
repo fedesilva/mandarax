@@ -47,6 +47,8 @@ public class ParserTestsRules extends AbstractTests{
 		List<Expression> terms = f.getParameters();
 		assertEquals(1,terms.size());
 		assertVariable(terms.get(0),"x");
+		
+		assertFalse(rule.isFact());
 	}
 	
 	@Test
@@ -73,6 +75,8 @@ public class ParserTestsRules extends AbstractTests{
 		assertEquals(2,terms.size());
 		assertVariable(terms.get(0),"x");
 		assertIntLiteral(terms.get(1),42);
+		
+		assertFalse(rule.isFact());
 	}
 	
 	@Test
@@ -105,6 +109,8 @@ public class ParserTestsRules extends AbstractTests{
 		assertEquals(2,terms.size());
 		assertVariable(terms.get(0),"x");
 		assertIntLiteral(terms.get(1),42);
+		
+		assertFalse(rule.isFact());
 	}
 	
 	@Test
@@ -139,8 +145,28 @@ public class ParserTestsRules extends AbstractTests{
 		assertEquals(2,terms.size());
 		assertVariable(terms.get(0),"x");
 		assertIntLiteral(terms.get(1),42);
+		
+		assertFalse(rule.isFact());
 	}
 	
-	
+	@Test
+	public void testFact1() throws Exception {
+		Rule rule = readRule("fact1: -> special(42);");
+		print(rule);
+		assertEquals("fact1",rule.getId());
+		
+		List<Expression> body = rule.getBody();
+		assertEquals(0,body.size());
+		assertTrue(rule.isFact());
+		
+		Expression head = rule.getHead();
+		assertTrue(head instanceof FunctionInvocation);
+		FunctionInvocation f = (FunctionInvocation)head;
+		
+		assertEquals("special",f.getFunction());
+		List<Expression> terms = f.getParameters();
+		assertEquals(1,terms.size());
+		assertEquals(new Integer(42),((IntLiteral)terms.get(0)).getValue());
+	}
 
 }

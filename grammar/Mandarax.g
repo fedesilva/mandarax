@@ -89,7 +89,7 @@ packageDeclaration returns [PackageDeclaration value]
 
 rule returns [Rule value]
     :   (a = annotationList)? id = Identifier ':' (body = conjunction )? '->' concl = functionInvocation 
-    {$value = new Rule(pos(id),context,id.getText(),body.value,(FunctionInvocation)concl.value);}
+    {$value = new Rule(pos(id),context,id.getText(),body==null?null:body.value,(FunctionInvocation)concl.value);}
     {$value.addAnnotations(a==null?new ArrayList<Annotation>():a.values);}';'
     ;
     

@@ -44,7 +44,10 @@ public class Rule extends AnnotatableNode {
 	 * @return
 	 */
 	private List<Expression> flatten(Expression expr) {
-		if (expr instanceof BinaryExpression && ((BinaryExpression)expr).getOperator()==BinOp.AND) {
+		if (expr==null) {
+			return new ArrayList<Expression>(0);
+		}
+		else if (expr instanceof BinaryExpression && ((BinaryExpression)expr).getOperator()==BinOp.AND) {
 			BinaryExpression bexpr = (BinaryExpression)expr;
 			List<Expression> list = new ArrayList<Expression>();
 			list.addAll(flatten(bexpr.getLeft()));
@@ -87,6 +90,10 @@ public class Rule extends AnnotatableNode {
 		b.append(" -> ");
 		head.appendTo(b);
 		b.append(';');
+	}
+	
+	public boolean isFact() {
+		return this.body==null || this.body.isEmpty();
 	}
 
 }

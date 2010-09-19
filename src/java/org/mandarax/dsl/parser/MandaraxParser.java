@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g 2010-09-14 09:35:01
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g 2010-09-20 11:53:06
  
 /*
  * Copyright 2010 Jens Dietrich 
@@ -738,7 +738,7 @@ public class MandaraxParser extends Parser {
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, concl.getTree());
             if ( state.backtracking==0 ) {
-              retval.value = new Rule(pos(id),context,id.getText(),body.value,(FunctionInvocation)concl.value);
+              retval.value = new Rule(pos(id),context,id.getText(),body==null?null:body.value,(FunctionInvocation)concl.value);
             }
             if ( state.backtracking==0 ) {
               retval.value.addAnnotations(a==null?new ArrayList<Annotation>():a.values);
