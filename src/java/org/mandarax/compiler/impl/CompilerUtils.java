@@ -12,10 +12,15 @@
 package org.mandarax.compiler.impl;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import org.mandarax.dsl.Variable;
+
+import com.google.common.collect.Collections2;
 
 /**
  * Utilities.
@@ -37,5 +42,14 @@ public class CompilerUtils {
 		List<Integer> indices = new ArrayList<Integer>(list.size());
 		for (int i=0;i<list.size();i++) indices.add(i);
 		return indices;
+	}
+	// get the variable names
+	// try to retain the order, but avoid duplicates
+	public static List<String> getNames(List<Variable> variables) {
+		List<String> names =  new ArrayList<String>();
+		for (Variable var:variables) {
+			if (!names.contains(var.getName())) names.add(var.getName());
+		}
+		return names;
 	}
 }

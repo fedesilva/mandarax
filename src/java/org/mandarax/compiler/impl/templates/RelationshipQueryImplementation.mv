@@ -40,5 +40,10 @@ public class @{className} {
 	
 	// private methods - each methods represents the invocation of a single rule
 	// TODO
+	@foreach{query:rel.queries}@foreach{index:ruleIndices}
+	private static @{query.name}_@{index} ( DerivationController _derivation, @foreach{param:query.parameterNames} @{rel.getTypeNameForSlot(param)} @{param} @end{", "} ) {
+	}
+	@end{}@end{}
+	
 }
 
