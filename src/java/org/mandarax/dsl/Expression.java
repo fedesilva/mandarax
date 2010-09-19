@@ -52,6 +52,13 @@ public abstract class Expression extends ASTNode {
 			List<Variable> variables = new ArrayList<Variable>();
 			@Override
 			public boolean visit(Variable x) {
+				// check whether this is a reference to object declaration 
+				// ignore those
+				for (ObjectDeclaration objDecl:getContext().getObjectDeclarations()) {
+					if (objDecl.getName().equals(x.getName())) {
+						return super.visit(x);
+					}
+				}
 				variables.add(x);
 				return super.visit(x);
 			}
