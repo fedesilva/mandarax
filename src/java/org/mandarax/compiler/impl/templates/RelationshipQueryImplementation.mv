@@ -19,16 +19,16 @@ public class @{className} {
 	// implementations - these methods are referenced by code generated from other rules in this package
 	// and therefore kept static 
 	@foreach{query:rel.queries} 
-	static ResultSet<@{rel.name}> @{query.name} ( DerivationController _derivation, @foreach{param:query.parameterNames} @{rel.getTypeNameForSlot(param)} @{param} @end{", "} ) {
+	static ResourceIterator<@{rel.name}> @{query.name} ( DerivationController _derivation, @foreach{param:query.parameterNames} @{rel.getTypeNameForSlot(param)} @{param} @end{", "} ) {
 		final int _derivationlevel = _derivation.getDepth();
-		ResourceIterator<IsFatherOf> result = new IteratorChain<IsFatherOf>(@{rel.rules.size()}) {
+		ResourceIterator<@{rel.name}> result = new IteratorChain<@{rel.name}>(@{rel.rules.size()}) {
 			
-			public Object getIteratorOrObject(int pos) {
+			public ResourceIterator<@{rel.name}> getNextIterator(int pos) {
 			switch (pos) {
 				@foreach{index:ruleIndices}
 				// code generated for rule: @{rel.queries.get(index)}
                 		case @{index}: {
-                			return @{query.name}_@{index}( _derivation, @foreach{param:query.parameterNames} @{param} @end{", "});
+                			return @{query.name}_@{index}( _derivation.reset(_derivationlevel), @foreach{param:query.parameterNames} @{param} @end{", "});
                 		}
 				@end{}
 				default: return EmptyIterator.DEFAULT;
@@ -39,9 +39,10 @@ public class @{className} {
 	
 	
 	// private methods - each methods represents the invocation of a single rule
-	// TODO
-	@foreach{query:rel.queries}@foreach{index:ruleIndices}
-	private static @{query.name}_@{index} ( DerivationController _derivation, @foreach{param:query.parameterNames} @{rel.getTypeNameForSlot(param)} @{param} @end{", "} ) {
+	@foreach{query:rel.queries}// query: @{query.name}
+	@foreach{index:ruleIndices}// rule: @{rel.rules.get(index)}
+	private static ResourceIterator< @{rel.name} > @{query.name}_@{index} ( DerivationController _derivation, @foreach{param:query.parameterNames} @{rel.getTypeNameForSlot(param)} @{param} @end{", "} ) {
+		@includeNamed{'FactInvocation'}
 	}
 	@end{}@end{}
 	

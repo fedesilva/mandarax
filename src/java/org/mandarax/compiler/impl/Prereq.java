@@ -35,5 +35,9 @@ public class Prereq {
 	public void setNewlyBoundVariables(List<String> newlyBoundVariables) {
 		this.newlyBoundVariables = newlyBoundVariables;
 	}
+	
+	public boolean bindsNewVariables() {
+		return this.newlyBoundVariables.size()>0;
+	}
 
 }

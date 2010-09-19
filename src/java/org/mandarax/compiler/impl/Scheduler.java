@@ -27,10 +27,17 @@ import static org.mandarax.compiler.impl.CompilerUtils.*;
 
 /**
  * Algorithm to organise the prerequisites in rules in order to optimse code generation. 
+ * This is a singleton.
  * @author jens dietrich
  */
 public class Scheduler {
 	
+	public static Scheduler DEFAULT = new Scheduler();
+	
+	private Scheduler() {
+		super();
+	}
+
 	/**
 	 * Rearrange the body of the rule.
 	 * @param rule

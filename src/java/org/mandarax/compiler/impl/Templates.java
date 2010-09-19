@@ -29,8 +29,26 @@ import org.mvel2.templates.TemplateRegistry;
  * @author jens dietrich
  */
 public class Templates {
+	// constants for template names
+	public final static String FACT_INVOCATION = "FactInvocation";
+	public final static String RELATIONSHIP_TYPE = "RelationshipType";
+	public final static String RELATIONSHIP_QUERY_INTERFACE = "RelationshipQueryInterface";
+	public final static String RELATIONSHIP_QUERY_IMPLEMENTATION = "RelationshipQueryImplementation";
 	
 	static TemplateRegistry registry = new SimpleTemplateRegistry();
+	
+	static {
+		try {
+			getTemplate(FACT_INVOCATION);
+			getTemplate(RELATIONSHIP_TYPE);
+			getTemplate(RELATIONSHIP_QUERY_INTERFACE);
+			getTemplate(RELATIONSHIP_QUERY_IMPLEMENTATION);
+		}
+		catch (Exception x) {
+			// TODO proper logging
+			x.printStackTrace();
+		}
+	}
 	
 	public static CompiledTemplate getTemplate(String name) throws MandaraxException {
 		synchronized (Templates.class) {

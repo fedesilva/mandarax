@@ -148,7 +148,7 @@ public class DefaultCompiler implements Compiler {
 	public void createRelationshipType (Location target,CompilationUnit cu,RelationshipDefinition rel) throws Exception {
 		Map<String,Object> bindings = createParamBindings(cu);
 		bindings.put("rel",rel);
-		String generated = (String) TemplateRuntime.execute(getTemplate("RelationshipType"), bindings,Templates.registry);	
+		String generated = (String) TemplateRuntime.execute(getTemplate(RELATIONSHIP_TYPE), bindings,Templates.registry);	
 		printGeneratedCode(cu,target,rel.getName(),generated);
 	}
 	
@@ -156,7 +156,7 @@ public class DefaultCompiler implements Compiler {
 	public void createRelationshipQueryInterface (Location target,CompilationUnit cu,RelationshipDefinition rel) throws Exception {
 		Map<String,Object> bindings = createParamBindings(cu);
 		bindings.put("rel",rel);
-		String generated = (String) TemplateRuntime.execute(getTemplate("RelationshipQueryInterface"), bindings,Templates.registry);
+		String generated = (String) TemplateRuntime.execute(getTemplate(RELATIONSHIP_QUERY_INTERFACE), bindings,Templates.registry);
 		printGeneratedCode(cu,target,rel.getName()+"Instances",generated);
 	}
 	
@@ -171,7 +171,7 @@ public class DefaultCompiler implements Compiler {
 		bindings.put("packageName",packageName);
 		bindings.put("ruleIndices",getIndices(rel.getRules()));
 		
-		String generated = (String) TemplateRuntime.execute(getTemplate("RelationshipQueryImplementation"), bindings,Templates.registry);
+		String generated = (String) TemplateRuntime.execute(getTemplate(RELATIONSHIP_QUERY_IMPLEMENTATION), bindings,Templates.registry);
 		printGeneratedCode(cu,target,rel.getName()+"Instances",generated);
 	}
 	

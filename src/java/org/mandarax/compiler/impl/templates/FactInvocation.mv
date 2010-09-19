@@ -1,0 +1,15 @@
+// TODO: fact invocation starts here
+	@code{fact=rel.getRules().get(index)}
+	
+		_derivation.log("fact1", DerivationController.FACT, son,DerivationController.NIL);
+		
+		// create new instance of relationship
+		@{rel.name} _result = new @{rel.name} ();
+		
+		// set properties bound by method parameters
+		@foreach{param:query.parameterNames}_result.@{param} = @{param};
+		@end{}
+		
+		
+		return EmptyIterator.DEFAULT;
+

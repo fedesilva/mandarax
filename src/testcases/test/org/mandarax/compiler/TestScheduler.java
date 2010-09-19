@@ -28,7 +28,7 @@ public class TestScheduler {
 	@Test
 	public void test1() throws Exception {
 		Rule rule = readRule("rule1: x>2 & p2(x,y) & y==42 -> p1(x);");
-		List<Prereq> prereqs = new Scheduler().getPrerequisites(rule);
+		List<Prereq> prereqs = Scheduler.DEFAULT.getPrerequisites(rule);
 		
 		for (Prereq prereq:prereqs) {
 			System.out.println(prereq.getExpression());
@@ -59,7 +59,7 @@ public class TestScheduler {
 	@Test
 	public void test2() throws Exception {
 		Rule rule = readRule("rule1: p2(x,y) & y==42 & x>2 -> p1(x);");
-		List<Prereq> prereqs = new Scheduler().getPrerequisites(rule);
+		List<Prereq> prereqs = Scheduler.DEFAULT.getPrerequisites(rule);
 		
 		for (Prereq prereq:prereqs) {
 			System.out.println(prereq.getExpression());
@@ -90,7 +90,7 @@ public class TestScheduler {
 	@Test
 	public void test3() throws Exception {
 		Rule rule = readRule("rule1:  y==42 & x>2 & p2(x,y) -> p1(x);");
-		List<Prereq> prereqs = new Scheduler().getPrerequisites(rule);
+		List<Prereq> prereqs = Scheduler.DEFAULT.getPrerequisites(rule);
 		
 		for (Prereq prereq:prereqs) {
 			System.out.println(prereq.getExpression());
