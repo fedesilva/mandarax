@@ -26,7 +26,7 @@ public class TestGeneratedQueryImplementations {
 	
 
 	@Test
-	public void testGeneratedQueryInterface1() throws Exception {
+	public void testGeneratedQueryImplementation1() throws Exception {
 		CompilationUnit cu = readCUFromCP("reldef1.rel");
 		RelationshipDefinition rel = cu.getRelationshipDefinitions().get(0);
 		StringLocation location = new StringLocation();
@@ -45,8 +45,27 @@ public class TestGeneratedQueryImplementations {
 	}
 	
 	@Test
-	public void testGeneratedQueryInterface2() throws Exception {
+	public void testGeneratedQueryImplementation2() throws Exception {
 		CompilationUnit cu = readCUFromCP("reldef2.rel");
+		RelationshipDefinition rel = cu.getRelationshipDefinitions().get(0);
+		StringLocation location = new StringLocation();
+		DefaultCompiler compiler = new DefaultCompiler();
+		compiler.createRelationshipQueryImplementation(location, cu, rel);
+		
+		String def = location.getGeneratedCode();
+		
+		System.out.println(def);
+		
+//		assertTrue(def.contains("package test.org.mandarax.dsl;"));
+//		assertTrue(def.contains("import java.util.Date;"));
+//		assertTrue(def.contains("public interface FatherInstances"));
+//		assertTrue(def.contains("public ResultSet<Father> getFather (  Person child  );"));
+//		assertTrue(def.contains("public ResultSet<Father> isFather (  MalePerson father ,  Person child  );"));
+	}
+	
+	@Test
+	public void testGeneratedQueryImplementation3() throws Exception {
+		CompilationUnit cu = readCUFromCP("reldef3.rel");
 		RelationshipDefinition rel = cu.getRelationshipDefinitions().get(0);
 		StringLocation location = new StringLocation();
 		DefaultCompiler compiler = new DefaultCompiler();
