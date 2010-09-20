@@ -1,0 +1,5 @@
+package test.org.mandarax.dsl;
+rel Age(String person,int age) queries getAge(person),getPerson(age),hasAge(person,age),personsByAge() {
+	fact1: -> Age("Jens",42);
+	fact2: -> Age("Max",16);
+}
