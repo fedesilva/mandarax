@@ -50,5 +50,36 @@ public class UnaryExpression extends Expression {
 		part.appendTo(b);
 		if (!part.isFlat()) b.append(')');
 	}
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((operator == null) ? 0 : operator.hashCode());
+		result = prime * result + ((part == null) ? 0 : part.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		UnaryExpression other = (UnaryExpression) obj;
+		if (operator != other.operator)
+			return false;
+		if (part == null) {
+			if (other.part != null)
+				return false;
+		} else if (!part.equals(other.part))
+			return false;
+		return true;
+	}
 	
 }

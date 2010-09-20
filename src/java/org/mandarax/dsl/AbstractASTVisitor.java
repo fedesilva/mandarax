@@ -15,7 +15,7 @@ package org.mandarax.dsl;
  * Abstract visitor. The entire tree is visited.
  * @author jens dietrich
  */
-public class AbstractExpressionVisitor implements ASTVisitor {
+public class AbstractASTVisitor implements ASTVisitor {
 
 	@Override
 	public boolean visit(BinaryExpression x) {

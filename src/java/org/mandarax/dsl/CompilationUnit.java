@@ -54,6 +54,44 @@ public class CompilationUnit extends ASTNode {
 	public List<ImportDeclaration> getStaticImportDeclarations() {
 		return this.getContext().getStaticImportDeclarations(); 
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime
+				* result
+				+ ((objectDeclarations == null) ? 0 : objectDeclarations
+						.hashCode());
+		result = prime
+				* result
+				+ ((relationshipDefinitions == null) ? 0
+						: relationshipDefinitions.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CompilationUnit other = (CompilationUnit) obj;
+		if (objectDeclarations == null) {
+			if (other.objectDeclarations != null)
+				return false;
+		} else if (!objectDeclarations.equals(other.objectDeclarations))
+			return false;
+		if (relationshipDefinitions == null) {
+			if (other.relationshipDefinitions != null)
+				return false;
+		} else if (!relationshipDefinitions
+				.equals(other.relationshipDefinitions))
+			return false;
+		return true;
+	}
 	
 	
 

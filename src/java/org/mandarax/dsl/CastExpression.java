@@ -45,5 +45,35 @@ public class CastExpression extends Expression {
 		b.append(')');
 		objectReference.appendTo(b);
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((objectReference == null) ? 0 : objectReference.hashCode());
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CastExpression other = (CastExpression) obj;
+		if (objectReference == null) {
+			if (other.objectReference != null)
+				return false;
+		} else if (!objectReference.equals(other.objectReference))
+			return false;
+		if (type == null) {
+			if (other.type != null)
+				return false;
+		} else if (!type.equals(other.type))
+			return false;
+		return true;
+	}
 	
 }

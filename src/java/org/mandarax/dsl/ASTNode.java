@@ -11,6 +11,7 @@
 
 package org.mandarax.dsl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,6 +30,8 @@ public abstract class ASTNode  implements Visitable {
 	private Position position = null;
 	// contextual information
 	private Context context = null;
+	// cached variables
+	private List<Variable> variables = null;
 
 	public void setPosition(Position position) {
 		this.position = position;
@@ -87,6 +90,33 @@ public abstract class ASTNode  implements Visitable {
 		return b.toString();
 	}
 	
+	/**
+	 * Get all variables contained in this node.
+	 * @return
+	 */
+	public List<Variable> getVariables() {
+		// try cached variables first
+		if (variables!=null) return variables;
+		
+		class VariableCollector extends AbstractASTVisitor {
+			List<Variable> variables = new ArrayList<Variable>();
+			@Override
+			public boolean visit(Variable x) {
+				if (!variables.contains(x)) variables.add(x);
+				return super.visit(x);
+			}
+		}
+		VariableCollector collector = new VariableCollector();
+		this.accept(collector);
+		variables = collector.variables;
+		
+		return variables;
+		
+	}
 	
+	// reset cached info
+	public void reset() {
+		this.variables = null;
+	}
 
 }

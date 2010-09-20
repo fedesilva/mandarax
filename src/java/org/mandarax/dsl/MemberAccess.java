@@ -69,6 +69,46 @@ public class MemberAccess extends Expression {
 			this.appendListOfNodes(parameters, b,true);
 		}
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (isMethod ? 1231 : 1237);
+		result = prime * result + ((member == null) ? 0 : member.hashCode());
+		result = prime * result
+				+ ((objectReference == null) ? 0 : objectReference.hashCode());
+		result = prime * result
+				+ ((parameters == null) ? 0 : parameters.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MemberAccess other = (MemberAccess) obj;
+		if (isMethod != other.isMethod)
+			return false;
+		if (member == null) {
+			if (other.member != null)
+				return false;
+		} else if (!member.equals(other.member))
+			return false;
+		if (objectReference == null) {
+			if (other.objectReference != null)
+				return false;
+		} else if (!objectReference.equals(other.objectReference))
+			return false;
+		if (parameters == null) {
+			if (other.parameters != null)
+				return false;
+		} else if (!parameters.equals(other.parameters))
+			return false;
+		return true;
+	}
 
 
 }

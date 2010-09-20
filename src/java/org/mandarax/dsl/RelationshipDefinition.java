@@ -127,4 +127,60 @@ public class RelationshipDefinition extends AnnotatableNode {
 		}
 		throw new IllegalArgumentException("There is no slot named " + slotName + " defined in " + this);
 	}
+
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((queries == null) ? 0 : queries.hashCode());
+		result = prime * result + ((rules == null) ? 0 : rules.hashCode());
+		result = prime
+				* result
+				+ ((slotDeclarations == null) ? 0 : slotDeclarations.hashCode());
+		result = prime * result
+				+ ((superTypes == null) ? 0 : superTypes.hashCode());
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		RelationshipDefinition other = (RelationshipDefinition) obj;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (queries == null) {
+			if (other.queries != null)
+				return false;
+		} else if (!queries.equals(other.queries))
+			return false;
+		if (rules == null) {
+			if (other.rules != null)
+				return false;
+		} else if (!rules.equals(other.rules))
+			return false;
+		if (slotDeclarations == null) {
+			if (other.slotDeclarations != null)
+				return false;
+		} else if (!slotDeclarations.equals(other.slotDeclarations))
+			return false;
+		if (superTypes == null) {
+			if (other.superTypes != null)
+				return false;
+		} else if (!superTypes.equals(other.superTypes))
+			return false;
+		return true;
+	}
 }

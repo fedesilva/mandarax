@@ -46,4 +46,40 @@ public class FunctionDeclaration extends ASTNode {
 	public boolean hasParameters() {
 		return this.parameterNames!=null && !this.parameterNames.isEmpty();
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result
+				+ ((parameterNames == null) ? 0 : parameterNames.hashCode());
+		result = prime * result
+				+ ((visibility == null) ? 0 : visibility.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		FunctionDeclaration other = (FunctionDeclaration) obj;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (parameterNames == null) {
+			if (other.parameterNames != null)
+				return false;
+		} else if (!parameterNames.equals(other.parameterNames))
+			return false;
+		if (visibility != other.visibility)
+			return false;
+		return true;
+	}
 }
