@@ -2,6 +2,8 @@ package @{packageName};
 @foreach{imp:context.importDeclarations} 
 @{imp}
 @end{}
+import org.mandarax.rt.*;
+
 /**
  * Interface for queries for relationship <strong>@{rel.name}</strong>.
  * @version @{timestamp} 
@@ -12,14 +14,14 @@ public class @{className} {
 	@foreach{query:rel.queries} 
 	public ResultSet<@{rel.name}> @{query.name} ( @foreach{param:query.parameterNames} @{rel.getTypeNameForSlot(param)} @{param} @end{", "} ) {
 		DerivationController _derivation = new DefaultDerivationController();
-		return @{query.name} ( _derivation, @foreach{param:query.parameterNames} @{param} @end{", "});
+		return @{query.name} ( _derivation @if{query.hasParameters()},@end{} @foreach{param:query.parameterNames} @{param} @end{", "});
 	} 
 	@end{}
 	
 	// implementations - these methods are referenced by code generated from other rules in this package
 	// and therefore kept static 
 	@foreach{query:rel.queries} 
-	static ResourceIterator<@{rel.name}> @{query.name} ( DerivationController _derivation, @foreach{param:query.parameterNames} @{rel.getTypeNameForSlot(param)} @{param} @end{", "} ) {
+	static ResourceIterator<@{rel.name}> @{query.name} ( DerivationController _derivation @if{query.hasParameters()},@end{} @foreach{param:query.parameterNames} @{rel.getTypeNameForSlot(param)} @{param} @end{", "} ) {
 		final int _derivationlevel = _derivation.getDepth();
 		ResourceIterator<@{rel.name}> result = new IteratorChain<@{rel.name}>(@{rel.rules.size()}) {
 			
@@ -28,7 +30,7 @@ public class @{className} {
 				@foreach{index:ruleIndices}
 				// code generated for rule: @{rel.queries.get(index)}
                 		case @{index}: {
-                			return @{query.name}_@{index}(_derivation.reset(_derivationlevel), @foreach{param:query.parameterNames} @{param} @end{", "});
+                			return @{query.name}_@{index}(_derivation.reset(_derivationlevel) @if{query.hasParameters()},@end{} @foreach{param:query.parameterNames} @{param} @end{", "});
                 		}
 				@end{}
 				default: return EmptyIterator.DEFAULT;
@@ -42,8 +44,11 @@ public class @{className} {
 	
 	@foreach{query:rel.queries}// query: @{query.name}
 	@foreach{index:ruleIndices}// rule: @{rel.rules.get(index)}
-	private static ResourceIterator<@{rel.name}> @{query.name}_@{index} (DerivationController _derivation, @foreach{param:query.parameterNames} @{rel.getTypeNameForSlot(param)} @{param} @end{", "}) {
-		@includeNamed{'FactInvocation'}
+	private static ResourceIterator<@{rel.name}> @{query.name}_@{index} (DerivationController _derivation @if{query.hasParameters()},@end{} @foreach{param:query.parameterNames} @{rel.getTypeNameForSlot(param)} @{param} @end{", "}) {
+		@code{rule=rel.getRules().get(index)}
+		@if{rule.fact}@includeNamed{'FactInvocation'}
+		@else{}@includeNamed{'RuleInvocation'}
+		@end{}
 	}
 	@end{}@end{}
 	
