@@ -31,6 +31,7 @@ import org.mvel2.templates.TemplateRegistry;
 public class Templates {
 	// constants for template names
 	public final static String FACT_INVOCATION = "FactInvocation";
+	public final static String RULE_INVOCATION = "RuleInvocation";
 	public final static String RELATIONSHIP_TYPE = "RelationshipType";
 	public final static String RELATIONSHIP_QUERY_INTERFACE = "RelationshipQueryInterface";
 	public final static String RELATIONSHIP_QUERY_IMPLEMENTATION = "RelationshipQueryImplementation";
@@ -40,6 +41,7 @@ public class Templates {
 	static {
 		try {
 			getTemplate(FACT_INVOCATION);
+			getTemplate(RULE_INVOCATION);
 			getTemplate(RELATIONSHIP_TYPE);
 			getTemplate(RELATIONSHIP_QUERY_INTERFACE);
 			getTemplate(RELATIONSHIP_QUERY_IMPLEMENTATION);

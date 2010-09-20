@@ -28,7 +28,9 @@ import org.mandarax.compiler.CompilerException;
 import org.mandarax.compiler.Location;
 import org.mandarax.compiler.Source;
 import org.mandarax.dsl.CompilationUnit;
+import org.mandarax.dsl.DefaultVerificationErrorReporter;
 import org.mandarax.dsl.RelationshipDefinition;
+import org.mandarax.dsl.VerificationErrorReporter;
 import org.mandarax.dsl.Verifier;
 import org.mandarax.dsl.VerifyAll;
 import org.mandarax.dsl.parser.ScriptReader;
@@ -45,7 +47,8 @@ import static org.mandarax.compiler.impl.CompilerUtils.*;
  */
 public class DefaultCompiler implements Compiler {
 	
-	
+	private Verifier verifier = new VerifyAll();
+	private VerificationErrorReporter verificationErrorReporter = new DefaultVerificationErrorReporter();
 
 	@Override
 	public void compile(Location target, CompilationMode mode, URL... urls) throws MandaraxException {
@@ -95,13 +98,15 @@ public class DefaultCompiler implements Compiler {
 			try {
 				in = s.openStream();
 				CompilationUnit cu = reader.readCompilationUnit(in);
-				// TODO verify 
 				cus.add(cu);
 				in.close();
 			} catch (IOException x) {
 				throw new CompilerException("Exception reading file from source " + s,x);
 			}
 		}
+		
+		// verify
+		verifier.verify(cus,verificationErrorReporter);
 		
 		
 		// delegate
