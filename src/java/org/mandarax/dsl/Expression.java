@@ -33,6 +33,10 @@ public abstract class Expression extends ASTNode {
 		return false;
 	}
 	
+	public boolean isPrimitiveLiteral() {
+		return false;
+	}
+	
 	public Class getType() {
 		return type;
 	}

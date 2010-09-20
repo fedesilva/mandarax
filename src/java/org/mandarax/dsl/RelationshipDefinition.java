@@ -118,4 +118,13 @@ public class RelationshipDefinition extends AnnotatableNode {
 		}
 		return null;
 	}
+	
+	public int getSlotPosition(String slotName) {
+		for (int i=0;i<this.slotDeclarations.size();i++) {
+			if (this.slotDeclarations.get(i).getName().equals(slotName)) {
+				return i;
+			}
+		}
+		throw new IllegalArgumentException("There is no slot named " + slotName + " defined in " + this);
+	}
 }

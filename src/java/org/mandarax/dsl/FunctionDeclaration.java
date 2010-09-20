@@ -42,4 +42,8 @@ public class FunctionDeclaration extends ASTNode {
 		b.append(name);
 		appendListOfStrings(parameterNames,b,true);
 	}
+
+	public boolean hasParameters() {
+		return this.parameterNames!=null && !this.parameterNames.isEmpty();
+	}
 }

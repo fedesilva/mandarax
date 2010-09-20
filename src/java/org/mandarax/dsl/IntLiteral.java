@@ -37,4 +37,8 @@ public class IntLiteral extends Literal<Integer> {
 		b.append(Integer.toString(value));
 	}
 	
+	public boolean isPrimitiveLiteral() {
+		return true;
+	}
+	
 }

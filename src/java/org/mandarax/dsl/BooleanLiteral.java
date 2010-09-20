@@ -37,4 +37,8 @@ public class BooleanLiteral extends Literal<Boolean> {
 	protected void appendTo(StringBuffer b) {
 		b.append(value);
 	}
+	
+	public boolean isPrimitiveLiteral() {
+		return true;
+	}
 }
