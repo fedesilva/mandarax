@@ -11,44 +11,39 @@
 
 package org.mandarax.dsl.verification;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import org.mandarax.dsl.CompilationUnit;
-import org.mandarax.dsl.ObjectDeclaration;
+import org.mandarax.dsl.RelationshipDefinition;
+import org.mandarax.dsl.Rule;
 import org.mandarax.dsl.VerificationErrorReporter;
 import org.mandarax.dsl.VerificationException;
 import org.mandarax.dsl.Verifier;
 
 /**
- * Ensure that the names used in object declarations are unique.
+ * Ensure that rule ids are unique.
  * @author jens dietrich
  */
-public class CheckUniqueNamesInObjectDeclarations implements Verifier {
+public class CheckUniqueIdsOfRules implements Verifier {
 
 	@Override
 	public void verify(Collection<CompilationUnit> cus,VerificationErrorReporter errorHandler) throws VerificationException {
 		for (CompilationUnit cu:cus) {
-			List<ObjectDeclaration> objDecls = cu.getObjectDeclarations();
-			Set<String> set = new HashSet<String>();
-			List<ObjectDeclaration> objDecls2 = new ArrayList<ObjectDeclaration>();
-			for (ObjectDeclaration objDecl:objDecls) {
-				if (!set.add(objDecl.getName())) {
-					// duplicate detected
-					// find already contained object
-					for (ObjectDeclaration objDecl2:objDecls2) {
-						if (objDecl.getName().equals(objDecl2.getName())) {
-							errorHandler.reportError(cu,"The same name " + objDecl.getName() + " is used twice at positions " + objDecl.getPosition() + " and " + objDecl2.getPosition());
-						}
+			for (RelationshipDefinition rel:cu.getRelationshipDefinitions()) {
+				Set<String> ids = new HashSet<String>();
+				for (Rule rule:rel.getRules()) {
+					String id = rule.getId();
+					if (ids.contains(id)) {
+						errorHandler.reportError(cu,"The id used by rule ",rule," at ", rule.getPosition()," has already been used within this relationship definition");
 					}
-				}
-				else {
-					objDecls2.add(objDecl);
+					else {
+						ids.add(id);
+					}
 				}
 			}
 		}
+		
 	}
 
 }

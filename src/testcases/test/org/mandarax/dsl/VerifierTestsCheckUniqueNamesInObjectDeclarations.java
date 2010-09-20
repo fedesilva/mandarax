@@ -18,7 +18,6 @@ import org.mandarax.dsl.DefaultVerificationErrorReporter;
 import org.mandarax.dsl.VerificationException;
 import org.mandarax.dsl.Verifier;
 import org.mandarax.dsl.VerifyAll;
-import org.mandarax.dsl.util.DefaultResolver;
 import org.mandarax.dsl.verification.CheckUniqueNamesInObjectDeclarations;
 import static test.org.mandarax.dsl.TestUtils.*;
 /**
@@ -33,14 +32,14 @@ public class VerifierTestsCheckUniqueNamesInObjectDeclarations {
 	public void testCompilationUnit1A() throws Exception {
 		Verifier verifier = new CheckUniqueNamesInObjectDeclarations();
 		Collection<CompilationUnit> cus = readCUSFromCP("rules4.rel");
-		verifier.verify(cus, new DefaultVerificationErrorReporter(),new DefaultResolver(),null);
+		verifier.verify(cus, new DefaultVerificationErrorReporter());
 	}
 	
 	@Test (expected=VerificationException.class)
 	public void testCompilationUnit1B() throws Exception {
 		Verifier verifier = new VerifyAll();
 		Collection<CompilationUnit> cus = readCUSFromCP("rules4.rel");
-		verifier.verify(cus, new DefaultVerificationErrorReporter(),new DefaultResolver(),null);
+		verifier.verify(cus, new DefaultVerificationErrorReporter());
 	}
 	
 }

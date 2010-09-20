@@ -21,5 +21,5 @@ import org.mandarax.dsl.util.TypeReasoner;
  * @author jens dietrich
  */
 public interface Verifier {
-	public void verify(Collection<CompilationUnit> cus,VerificationErrorReporter errorHandler,Resolver resolver,TypeReasoner typeReasoner) throws VerificationException ;
+	public void verify(Collection<CompilationUnit> cus,VerificationErrorReporter errorHandler) throws VerificationException ;
 }

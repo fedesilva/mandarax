@@ -18,25 +18,34 @@ import org.mandarax.dsl.DefaultVerificationErrorReporter;
 import org.mandarax.dsl.VerificationException;
 import org.mandarax.dsl.Verifier;
 import org.mandarax.dsl.VerifyAll;
-import org.mandarax.dsl.verification.CheckReferencesInObjectDeclarations;
+import org.mandarax.dsl.verification.CheckUniqueIdsOfRules;
 import static test.org.mandarax.dsl.TestUtils.*;
 /**
  * Test the respective verifier.
  * @author jens dietrich
  */
-public class VerifierTestsCheckReferencesInObjectDeclarations {
+public class VerifierTestsCheckUniqueIdsOfRules {
 	
-	@Test (expected=VerificationException.class)
+
+	
+	@Test
 	public void testCompilationUnit1A() throws Exception {
-		Verifier verifier = new CheckReferencesInObjectDeclarations();
+		Verifier verifier = new CheckUniqueIdsOfRules();
 		Collection<CompilationUnit> cus = readCUSFromCP("rules5.rel");
 		verifier.verify(cus, new DefaultVerificationErrorReporter());
 	}
 	
 	@Test (expected=VerificationException.class)
-	public void testCompilationUnit1B() throws Exception {
+	public void testCompilationUnit2A() throws Exception {
+		Verifier verifier = new CheckUniqueIdsOfRules();
+		Collection<CompilationUnit> cus = readCUSFromCP("rules6.rel");
+		verifier.verify(cus, new DefaultVerificationErrorReporter());
+	}
+	
+	@Test (expected=VerificationException.class)
+	public void testCompilationUnit2B() throws Exception {
 		Verifier verifier = new VerifyAll();
-		Collection<CompilationUnit> cus = readCUSFromCP("rules5.rel");
+		Collection<CompilationUnit> cus = readCUSFromCP("rules6.rel");
 		verifier.verify(cus, new DefaultVerificationErrorReporter());
 	}
 	

@@ -23,6 +23,7 @@ import org.junit.runners.*;
 @Suite.SuiteClasses({
 	VerifierTestsCheckUniqueNamesInObjectDeclarations.class,
 	VerifierTestsCheckReferencesInObjectDeclarations.class,
+	VerifierTestsCheckUniqueIdsOfRules.class,
 	// other
 	ResolverTests.class,
 	TypeReasonerTests.class

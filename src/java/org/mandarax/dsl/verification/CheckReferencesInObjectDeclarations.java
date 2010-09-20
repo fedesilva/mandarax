@@ -21,9 +21,6 @@ import org.mandarax.dsl.Variable;
 import org.mandarax.dsl.VerificationErrorReporter;
 import org.mandarax.dsl.VerificationException;
 import org.mandarax.dsl.Verifier;
-import org.mandarax.dsl.util.Resolver;
-import org.mandarax.dsl.util.TypeReasoner;
-
 import com.google.common.base.Function;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Collections2;
@@ -35,7 +32,7 @@ import com.google.common.collect.Collections2;
 public class CheckReferencesInObjectDeclarations implements Verifier {
 
 	@Override
-	public void verify(Collection<CompilationUnit> cus,VerificationErrorReporter errorHandler,Resolver resolver,TypeReasoner typeReasoner) throws VerificationException {
+	public void verify(Collection<CompilationUnit> cus,VerificationErrorReporter errorHandler) throws VerificationException {
 		for (CompilationUnit cu:cus) {
 			List<ObjectDeclaration> objDecls = cu.getObjectDeclarations();
 			for (int i=0;i<objDecls.size();i++) {
