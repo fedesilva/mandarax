@@ -11,9 +11,6 @@
 
 package org.mandarax.dsl;
 
-import java.util.ArrayList;
-import java.util.List;
-
 
 /**
  * Superclass for expression AST nodes.

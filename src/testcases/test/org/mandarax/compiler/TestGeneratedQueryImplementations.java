@@ -12,6 +12,10 @@
 package test.org.mandarax.compiler;
 
 import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 import org.mandarax.compiler.impl.DefaultCompiler;
 import org.mandarax.dsl.CompilationUnit;
@@ -31,7 +35,9 @@ public class TestGeneratedQueryImplementations {
 		RelationshipDefinition rel = cu.getRelationshipDefinitions().get(0);
 		StringLocation location = new StringLocation();
 		DefaultCompiler compiler = new DefaultCompiler();
-		compiler.createRelationshipQueryImplementation(location, cu, rel);
+		List<CompilationUnit> cus = new ArrayList<CompilationUnit>();
+		cus.add(cu);
+		compiler.createRelationshipQueryImplementation(location, cus, cu, rel);
 		
 		String def = location.getGeneratedCode();
 		
@@ -50,7 +56,9 @@ public class TestGeneratedQueryImplementations {
 		RelationshipDefinition rel = cu.getRelationshipDefinitions().get(0);
 		StringLocation location = new StringLocation();
 		DefaultCompiler compiler = new DefaultCompiler();
-		compiler.createRelationshipQueryImplementation(location, cu, rel);
+		List<CompilationUnit> cus = new ArrayList<CompilationUnit>();
+		cus.add(cu);
+		compiler.createRelationshipQueryImplementation(location,cus, cu, rel);
 		
 		String def = location.getGeneratedCode();
 		
@@ -69,7 +77,9 @@ public class TestGeneratedQueryImplementations {
 		RelationshipDefinition rel = cu.getRelationshipDefinitions().get(0);
 		StringLocation location = new StringLocation();
 		DefaultCompiler compiler = new DefaultCompiler();
-		compiler.createRelationshipQueryImplementation(location, cu, rel);
+		List<CompilationUnit> cus = new ArrayList<CompilationUnit>();
+		cus.add(cu);
+		compiler.createRelationshipQueryImplementation(location,cus, cu, rel);
 		
 		String def = location.getGeneratedCode();
 		

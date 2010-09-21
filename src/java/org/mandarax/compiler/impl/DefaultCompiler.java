@@ -11,31 +11,16 @@
 
 package org.mandarax.compiler.impl;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.Writer;
+import java.io.*;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import org.mandarax.MandaraxException;
-import org.mandarax.compiler.CompilationMode;
+import org.mandarax.compiler.*;
 import org.mandarax.compiler.Compiler;
-import org.mandarax.compiler.CompilerException;
-import org.mandarax.compiler.Location;
-import org.mandarax.compiler.Source;
-import org.mandarax.dsl.CompilationUnit;
-import org.mandarax.dsl.DefaultVerificationErrorReporter;
-import org.mandarax.dsl.RelationshipDefinition;
-import org.mandarax.dsl.VerificationErrorReporter;
-import org.mandarax.dsl.Verifier;
-import org.mandarax.dsl.VerifyAll;
+import org.mandarax.dsl.*;
 import org.mandarax.dsl.parser.ScriptReader;
-import org.mvel2.templates.CompiledTemplate;
-import org.mvel2.templates.TemplateCompiler;
+import org.mandarax.dsl.util.DefaultResolver;
+import org.mandarax.dsl.util.Resolver;
 import org.mvel2.templates.TemplateRuntime;
 import static org.mandarax.compiler.impl.Templates.*;
 import static org.mandarax.compiler.impl.CompilerUtils.*;
@@ -49,6 +34,7 @@ public class DefaultCompiler implements Compiler {
 	
 	private Verifier verifier = new VerifyAll();
 	private VerificationErrorReporter verificationErrorReporter = new DefaultVerificationErrorReporter();
+	private Resolver resolver = new DefaultResolver();
 
 	@Override
 	public void compile(Location target, CompilationMode mode, URL... urls) throws MandaraxException {
@@ -120,7 +106,7 @@ public class DefaultCompiler implements Compiler {
 		for (CompilationUnit cu:cus) {
 			for (RelationshipDefinition rel:cu.getRelationshipDefinitions()) {
 				try {
-					createRelationshipQueryImplementation(target,cu,rel);
+					createRelationshipQueryImplementation(target,cus,cu,rel);
 				} catch (Exception e) {
 					throw new CompilerException("Cannot generate query interface for relationship " + rel.getName(),e);
 				}
@@ -166,7 +152,7 @@ public class DefaultCompiler implements Compiler {
 	}
 	
 	// keep public for unit testing
-	public void createRelationshipQueryImplementation(Location target,CompilationUnit cu, RelationshipDefinition rel) throws Exception {
+	public void createRelationshipQueryImplementation(Location target,List<CompilationUnit> cus,CompilationUnit cu, RelationshipDefinition rel) throws Exception {
 		String className = rel.getName()+"InstancesImpl";
 		String packageName = cu.getContext().getPackageDeclaration().getName()+".v"+getTimestampAsVersion();
 		
@@ -194,4 +180,11 @@ public class DefaultCompiler implements Compiler {
 		bindings.put("timestamp",getTimestamp());		
 		return bindings;
 	}
+	
+	// associates expressions with type information
+	public void assignTypes (CompilationUnit cu, RelationshipDefinition rel,Rule rule) throws CompilerException {
+		
+	}
+	
+
 }

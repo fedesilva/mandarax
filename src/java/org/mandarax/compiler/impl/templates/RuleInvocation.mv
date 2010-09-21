@@ -1,2 +1,11 @@
-	// TODO: rule invocation code
+	@code{head=rule.head;hterms=head.parameters}
+		_derivation.log("@{rule.id}", DerivationController.RULE, DerivationController.NIL);
+		
+		
+		// class for variables bindings
+		class _Bindings {
+		@foreach{v:rule.variables}private @{v} = null;
+		@end{}
+		}
+		
 	
