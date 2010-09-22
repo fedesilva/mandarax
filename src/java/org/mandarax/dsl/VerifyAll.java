@@ -22,7 +22,8 @@ public class VerifyAll implements Verifier {
 	final static Verifier[] ALL = {
 		new CheckUniqueNamesInObjectDeclarations(),
 		new CheckReferencesInObjectDeclarations(),
-		new CheckUniqueIdsOfRules()
+		new CheckUniqueIdsOfRules(),
+		new CheckFreeVariablesInFacts()
 	};
 	
 	public void verify(Collection<CompilationUnit> cus,VerificationErrorReporter errorHandler) throws VerificationException {

@@ -11,11 +11,13 @@
 package test.org.mandarax.dsl;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import org.junit.Test;
 import org.mandarax.dsl.Context;
 import org.mandarax.dsl.Expression;
+import org.mandarax.dsl.RelationshipDefinition;
 import org.mandarax.dsl.Variable;
 import org.mandarax.dsl.util.AbstractTypeReasoner;
 import org.mandarax.dsl.util.DefaultResolver;
@@ -35,7 +37,7 @@ public class TypeReasonerTests {
 			this.varTypes = varTypes;
 		}
 		@Override
-		public Class getType(Variable expression, Resolver resolver) throws TypeReasoningException {
+		public Class getVarType(Variable expression, Resolver resolver) throws TypeReasoningException {
 			Class clazz = varTypes.get(expression.getName());
 			return clazz;
 		}
@@ -52,7 +54,7 @@ public class TypeReasonerTests {
 		Expression expression = readExpression(expressionDef);
 		TypeReasoner typeReasoner = new TestTypeReasoner(varTypes);
 		Resolver resolver = new TestResolver();
-		Class computedType = typeReasoner.getType(expression, resolver);
+		Class computedType = typeReasoner.getType(expression, resolver,new ArrayList<RelationshipDefinition>());
 		assertEquals(expectedType,computedType);
 	}
 	@Test
