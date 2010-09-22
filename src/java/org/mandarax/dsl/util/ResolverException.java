@@ -11,12 +11,14 @@
 
 package org.mandarax.dsl.util;
 
+import org.mandarax.compiler.CompilerException;
+
 /**
  * Exception thrown when resolving types.
  * @author jens dietrich
  */
 
-public class ResolverException extends Exception {
+public class ResolverException extends CompilerException {
 
 	public ResolverException() {
 	}
