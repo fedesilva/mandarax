@@ -19,8 +19,12 @@ import org.mandarax.compiler.*;
 import org.mandarax.compiler.Compiler;
 import org.mandarax.dsl.*;
 import org.mandarax.dsl.parser.ScriptReader;
+import org.mandarax.dsl.util.AbstractTypeReasoner;
 import org.mandarax.dsl.util.DefaultResolver;
 import org.mandarax.dsl.util.Resolver;
+import org.mandarax.dsl.util.ResolverException;
+import org.mandarax.dsl.util.TypeReasoner;
+import org.mandarax.dsl.util.TypeReasoningException;
 import org.mvel2.templates.TemplateRuntime;
 import static org.mandarax.compiler.impl.Templates.*;
 import static org.mandarax.compiler.impl.CompilerUtils.*;
@@ -108,7 +112,7 @@ public class DefaultCompiler implements Compiler {
 				try {
 					createRelationshipQueryImplementation(target,cus,cu,rel);
 				} catch (Exception e) {
-					throw new CompilerException("Cannot generate query interface for relationship " + rel.getName(),e);
+					throw new CompilerException(cu,rel.getPosition(),"Cannot generate query interface for relationship " + rel.getName(),e);
 				}
 				
 			}
@@ -122,18 +126,21 @@ public class DefaultCompiler implements Compiler {
 				try {
 					createRelationshipType (target,cu,rel);
 				} catch (Exception e) {
-					throw new CompilerException("Cannot generate class to represent relationship " + rel.getName(),e);
+					throw new CompilerException(cu,rel.getPosition(),"Cannot generate class to represent relationship " + rel.getName(),e);
 				}
 				
 				try {
 					createRelationshipQueryInterface (target,cu,rel);
 				} catch (Exception e) {
-					throw new CompilerException("Cannot generate query interface for relationship " + rel.getName(),e);
+					throw new CompilerException(cu,rel.getPosition(),"Cannot generate query interface for relationship " + rel.getName(),e);
 				}
 				
 			}
 		}
 	}
+	
+	
+	
 	
 	// keep public for unit testing
 	public void createRelationshipType (Location target,CompilationUnit cu,RelationshipDefinition rel) throws Exception {
@@ -182,8 +189,212 @@ public class DefaultCompiler implements Compiler {
 	}
 	
 	// associates expressions with type information
-	public void assignTypes (CompilationUnit cu, RelationshipDefinition rel,Rule rule) throws CompilerException {
+	// keep public for unit testing
+	public void assignTypes (Collection<CompilationUnit> cus,CompilationUnit cu, RelationshipDefinition rel,Rule rule) throws CompilerException, ResolverException {
+		// types for all variables and declared (imported) objects will be stored here
+		final Map<String,Class> objTypeMap = new HashMap<String,Class>();
+		final Map<Variable,Class> varTypeMap = new HashMap<Variable,Class>();
 		
+		// assign types for imported objects
+		for (ObjectDeclaration objDecl:cu.getObjectDeclarations()) {
+			objTypeMap.put(objDecl.getName(),resolver.getType(cu.getContext(),objDecl.getType()));
+		}
+		
+		// head
+		FunctionInvocation head = rule.getHead();
+		for (int i=0;i<head.getParameters().size();i++) {
+			Expression term = head.getParameters().get(i);
+			assert(term.isFlat());
+			if (term instanceof Variable) {
+				// try to use term from obj declaration
+				Class type = objTypeMap.get(((Variable) term).getName());
+				// else get type from slot definition
+				Class type2 = resolver.getType(cu.getContext(),rel.getSlotDeclarations().get(i).getType());
+				if (type==null) {
+					varTypeMap.put((Variable)term,type2);
+				}
+				else {
+					checkTypeConsistency(cu,rule,type,type2);
+					varTypeMap.put((Variable)term,type);
+				}
+			}
+		}
+		// body
+		for (Expression expression:rule.getBody()) {
+			
+			for (Variable var:expression.getVariables()) {
+				if (!varTypeMap.containsKey(var)) {
+					RelationshipDefinition rel2 = null;
+					int pos = -1;
+					if (expression instanceof FunctionInvocation) {
+						FunctionInvocation fi = (FunctionInvocation)expression;
+						rel2 = this.findRelationshipDefinition(cus,fi.getFunction(),fi.getParameters().size());
+						for (int i=0;i<fi.getParameters().size();i++) {
+							if (fi.getParameters().get(i)==var) pos=i;
+						}
+						if (pos==-1) throw new CompilerException(cu,var.getPosition(),"The variable " + var + " introduced in " + rule + " must be a top level term in the relationship " + rel2.getName());
+					}
+					Class type = objTypeMap.get((var).getName());
+					// else get type from slot definition
+					
+					Class type2 = resolver.getType(rel2.getContext(),rel2.getSlotDeclarations().get(pos).getType());
+					if (type==null) {
+						varTypeMap.put(var,type2);
+					}
+					else {
+						checkTypeConsistency(cu,rule,type,type2);
+						varTypeMap.put(var,type);
+					}
+				}
+			}
+		}
+		
+		// build type reasoner
+		final TypeReasoner typeReasoner = new AbstractTypeReasoner() {
+			@Override
+			public Class getType(Variable expression, Resolver resolver) throws TypeReasoningException {
+				return varTypeMap.get(expression);
+			}
+		};
+		
+		final List<TypeReasoningException> typeReasonerExceptions = new ArrayList<TypeReasoningException>();
+		
+		ASTVisitor visitor = new ASTVisitor() {
+
+			public boolean visit(Object x) {return true;}
+			
+			private void setType(Expression x)  {
+				Class c;
+				try {
+					c = typeReasoner.getType(x, resolver);
+					x.setType(c);
+				} catch (TypeReasoningException e) {
+					typeReasonerExceptions.add(e);
+				}
+				
+			}
+
+			@Override public boolean visit(Rule x) {return true;}
+			@Override public boolean visit(Annotation x) {return true;}
+			@Override public boolean visit(FunctionDeclaration x) {return true;}
+			@Override public boolean visit(ImportDeclaration x) {return true;}
+			@Override public boolean visit(ObjectDeclaration x) {return true;}
+			@Override public boolean visit(PackageDeclaration x) {return true;}
+			@Override public boolean visit(VariableDeclaration x) {return true;}
+			@Override public boolean visit(CompilationUnit x) {return true;}
+			@Override public boolean visit(RelationshipDefinition x) {return true;}
+			@Override public boolean visit(BinaryExpression x) {
+				setType(x);
+				return true;
+			}
+
+			@Override public boolean visit(BooleanLiteral x) {
+				setType(x);
+				return true;
+			}
+
+			@Override public boolean visit(CastExpression x) {
+				setType(x);
+				return true;
+			}
+
+			@Override public boolean visit(ConditionalExpression x) {
+				setType(x);
+				return true;
+			}
+
+			@Override public boolean visit(InstanceOfExpression x) {
+				setType(x);
+				return true;
+			}
+
+			@Override public boolean visit(IntLiteral x) {
+				setType(x);
+				return true;
+			}
+
+			@Override public boolean visit(MemberAccess x) {
+				setType(x);
+				return true;
+			}
+
+			@Override public boolean visit(StringLiteral x) {
+				setType(x);
+				return true;
+			}
+
+			@Override
+			public boolean visit(UnaryExpression x) {
+				setType(x);
+				return true;
+			}
+
+			@Override
+			public boolean visit(Variable x) {
+				setType(x);
+				return true;
+			}
+
+			@Override
+			public boolean visit(FunctionInvocation x) {
+				setType(x);
+				return true;
+			}
+
+			@Override
+			public boolean visit(ConstructorInvocation x) {
+				setType(x);
+				return true;
+			}
+
+			@Override
+			public boolean visit(NullValue x) {
+				setType(x);
+				return true;
+			}
+
+			@Override public void endVisit(CompilationUnit x) {}
+			@Override public void endVisit(RelationshipDefinition x) {}
+			@Override public void endVisit(Rule x) {}
+			@Override public void endVisit(Annotation x) {}
+			@Override public void endVisit(FunctionDeclaration x) { }
+			@Override public void endVisit(ImportDeclaration x) { }
+			@Override public void endVisit(ObjectDeclaration x) { }
+			@Override public void endVisit(PackageDeclaration x) { }
+			@Override public void endVisit(VariableDeclaration x) { }
+			@Override public void endVisit(BinaryExpression x) { }
+			@Override public void endVisit(BooleanLiteral x) { }
+			@Override public void endVisit(CastExpression x) { }
+			@Override public void endVisit(ConditionalExpression x) { }
+			@Override public void endVisit(InstanceOfExpression x) { }
+			@Override public void endVisit(IntLiteral x) { }
+			@Override public void endVisit(MemberAccess x) { }
+			@Override public void endVisit(StringLiteral x) { }
+			@Override public void endVisit(UnaryExpression x) { }
+			@Override public void endVisit(Variable x) { }
+			@Override public void endVisit(FunctionInvocation x) { }
+			@Override public void endVisit(ConstructorInvocation x) { }
+			@Override public void endVisit(NullValue x) { }
+			
+		};
+		
+		if (typeReasonerExceptions.size()>0) throw new CompilerException("Type reasoner exception",typeReasonerExceptions.get(0));
+		
+	}
+	
+	private void checkTypeConsistency(CompilationUnit cu, Rule rule, Class subtype, Class supertype) throws CompilerException {
+		if (!supertype.isAssignableFrom(subtype)) throw new CompilerException(cu,rule.getPosition(),"Error compiling rule: " + subtype + " is not a subtype of " + supertype);
+	}
+
+	private RelationshipDefinition findRelationshipDefinition (Collection<CompilationUnit> cus,String name,int slotCount) {
+		for (CompilationUnit cu:cus) {
+			for (RelationshipDefinition rel:cu.getRelationshipDefinitions()) {
+				if (rel.getName().equals(name) && rel.getSlotDeclarations().size()==slotCount) {
+					return rel;
+				}
+			}
+		}
+		return null;
 	}
 	
 
