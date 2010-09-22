@@ -52,6 +52,10 @@ public class DefaultCompiler implements Compiler {
 			public InputStream openStream() throws IOException {
 				return url.openStream();
 			}
+			@Override
+			public String getName() {
+				return url==null?"unknown url":url.toString();
+			}
 		}
 		Source[] sources = new Source[urls.length];
 		for (int i=0;i<sources.length;i++) sources[i] = new URLSource(urls[i]);
@@ -70,6 +74,10 @@ public class DefaultCompiler implements Compiler {
 			public InputStream openStream() throws IOException {
 				return new FileInputStream(file);
 			}
+			@Override
+			public String getName() {
+				return file==null?"unknown file":file.getAbsolutePath();
+			}
 		}
 		Source[] sources = new Source[files.length];
 		for (int i=0;i<sources.length;i++) sources[i] = new FileSource(files[i]);
@@ -82,12 +90,12 @@ public class DefaultCompiler implements Compiler {
 		// parse
 		List<CompilationUnit> cus = new ArrayList<CompilationUnit>();
 		ScriptReader reader = new ScriptReader();
-		Verifier verifier = new VerifyAll();
 		for (Source s:sources) {
 			InputStream in;
 			try {
 				in = s.openStream();
 				CompilationUnit cu = reader.readCompilationUnit(in);
+				cu.setSource(s.getName());
 				cus.add(cu);
 				in.close();
 			} catch (IOException x) {
@@ -163,6 +171,10 @@ public class DefaultCompiler implements Compiler {
 		String className = rel.getName()+"InstancesImpl";
 		String packageName = cu.getContext().getPackageDeclaration().getName()+".v"+getTimestampAsVersion();
 		
+		for (Rule rule:rel.getRules()) {
+			assignTypes (cus,cu,rel,rule);
+		}
+		
 		Map<String,Object> bindings = createParamBindings(cu);
 		bindings.put("rel",rel);
 		bindings.put("className",className);
@@ -198,6 +210,12 @@ public class DefaultCompiler implements Compiler {
 		// assign types for imported objects
 		for (ObjectDeclaration objDecl:cu.getObjectDeclarations()) {
 			objTypeMap.put(objDecl.getName(),resolver.getType(cu.getContext(),objDecl.getType()));
+		}
+		
+		// collect relationships
+		final Collection<RelationshipDefinition> rels = new HashSet<RelationshipDefinition>();
+		for (CompilationUnit cun:cus) {
+			rels.addAll(cun.getRelationshipDefinitions());
 		}
 		
 		// head
@@ -252,7 +270,7 @@ public class DefaultCompiler implements Compiler {
 		// build type reasoner
 		final TypeReasoner typeReasoner = new AbstractTypeReasoner() {
 			@Override
-			public Class getType(Variable expression, Resolver resolver) throws TypeReasoningException {
+			public Class getVarType(Variable expression, Resolver resolver) throws TypeReasoningException {
 				return varTypeMap.get(expression);
 			}
 		};
@@ -260,18 +278,15 @@ public class DefaultCompiler implements Compiler {
 		final List<TypeReasoningException> typeReasonerExceptions = new ArrayList<TypeReasoningException>();
 		
 		ASTVisitor visitor = new ASTVisitor() {
-
-			public boolean visit(Object x) {return true;}
-			
-			private void setType(Expression x)  {
+			private boolean setType(Expression x)  {
 				Class c;
 				try {
-					c = typeReasoner.getType(x, resolver);
+					c = typeReasoner.getType(x, resolver,rels);
 					x.setType(c);
 				} catch (TypeReasoningException e) {
 					typeReasonerExceptions.add(e);
 				}
-				
+				return true;
 			}
 
 			@Override public boolean visit(Rule x) {return true;}
@@ -283,76 +298,19 @@ public class DefaultCompiler implements Compiler {
 			@Override public boolean visit(VariableDeclaration x) {return true;}
 			@Override public boolean visit(CompilationUnit x) {return true;}
 			@Override public boolean visit(RelationshipDefinition x) {return true;}
-			@Override public boolean visit(BinaryExpression x) {
-				setType(x);
-				return true;
-			}
-
-			@Override public boolean visit(BooleanLiteral x) {
-				setType(x);
-				return true;
-			}
-
-			@Override public boolean visit(CastExpression x) {
-				setType(x);
-				return true;
-			}
-
-			@Override public boolean visit(ConditionalExpression x) {
-				setType(x);
-				return true;
-			}
-
-			@Override public boolean visit(InstanceOfExpression x) {
-				setType(x);
-				return true;
-			}
-
-			@Override public boolean visit(IntLiteral x) {
-				setType(x);
-				return true;
-			}
-
-			@Override public boolean visit(MemberAccess x) {
-				setType(x);
-				return true;
-			}
-
-			@Override public boolean visit(StringLiteral x) {
-				setType(x);
-				return true;
-			}
-
-			@Override
-			public boolean visit(UnaryExpression x) {
-				setType(x);
-				return true;
-			}
-
-			@Override
-			public boolean visit(Variable x) {
-				setType(x);
-				return true;
-			}
-
-			@Override
-			public boolean visit(FunctionInvocation x) {
-				setType(x);
-				return true;
-			}
-
-			@Override
-			public boolean visit(ConstructorInvocation x) {
-				setType(x);
-				return true;
-			}
-
-			@Override
-			public boolean visit(NullValue x) {
-				setType(x);
-				return true;
-			}
-
+			@Override public boolean visit(BinaryExpression x) {return setType(x);}
+			@Override public boolean visit(BooleanLiteral x) {return setType(x);}
+			@Override public boolean visit(CastExpression x) {return setType(x);}
+			@Override public boolean visit(ConditionalExpression x) {return setType(x);}
+			@Override public boolean visit(InstanceOfExpression x) {return setType(x);}
+			@Override public boolean visit(IntLiteral x) {return setType(x);}
+			@Override public boolean visit(MemberAccess x) {return setType(x);}
+			@Override public boolean visit(StringLiteral x) {return setType(x);}
+			@Override public boolean visit(UnaryExpression x) {return setType(x);}
+			@Override public boolean visit(Variable x) {return setType(x);}
+			@Override public boolean visit(FunctionInvocation x) {return setType(x);}
+			@Override public boolean visit(ConstructorInvocation x) {return setType(x);}
+			@Override public boolean visit(NullValue x) {return setType(x);}
 			@Override public void endVisit(CompilationUnit x) {}
 			@Override public void endVisit(RelationshipDefinition x) {}
 			@Override public void endVisit(Rule x) {}
@@ -377,6 +335,7 @@ public class DefaultCompiler implements Compiler {
 			@Override public void endVisit(NullValue x) { }
 			
 		};
+		rule.accept(visitor);
 		
 		if (typeReasonerExceptions.size()>0) throw new CompilerException("Type reasoner exception",typeReasonerExceptions.get(0));
 		
