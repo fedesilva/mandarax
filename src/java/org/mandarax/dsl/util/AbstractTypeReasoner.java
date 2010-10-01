@@ -16,6 +16,7 @@ import java.lang.reflect.Member;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import org.mandarax.dsl.*;
 
@@ -26,18 +27,18 @@ import org.mandarax.dsl.*;
 public abstract class AbstractTypeReasoner implements TypeReasoner {
 
 	@Override
-	public Class getType(Expression x,Resolver r) throws TypeReasoningException {
-		if (x instanceof BinaryExpression) return getType((BinaryExpression)x,r);
-		else if (x instanceof BooleanLiteral) return getType((BooleanLiteral)x,r);
-		else if (x instanceof CastExpression) return getType((CastExpression)x,r);
-		else if (x instanceof ConditionalExpression) return getType((ConditionalExpression)x,r);
-		else if (x instanceof InstanceOfExpression) return getType((InstanceOfExpression)x,r);
-		else if (x instanceof IntLiteral) return getType((IntLiteral)x,r);
-		else if (x instanceof MemberAccess) return getType((MemberAccess)x,r);
-		else if (x instanceof StringLiteral) return getType((StringLiteral)x,r);
-		else if (x instanceof UnaryExpression) return getType((UnaryExpression)x,r);
-		else if (x instanceof Variable) return getType((Variable)x,r);
-		else if (x instanceof FunctionInvocation) return getType((FunctionInvocation)x,r);
+	public Class getType(Expression x,Resolver r,Collection<RelationshipDefinition> rels) throws TypeReasoningException {
+		if (x instanceof BinaryExpression) return getType((BinaryExpression)x,r,rels);
+		else if (x instanceof BooleanLiteral) return getType((BooleanLiteral)x,r,rels);
+		else if (x instanceof CastExpression) return getType((CastExpression)x,r,rels);
+		else if (x instanceof ConditionalExpression) return getType((ConditionalExpression)x,r,rels);
+		else if (x instanceof InstanceOfExpression) return getType((InstanceOfExpression)x,r,rels);
+		else if (x instanceof IntLiteral) return getType((IntLiteral)x,r,rels);
+		else if (x instanceof MemberAccess) return getType((MemberAccess)x,r,rels);
+		else if (x instanceof StringLiteral) return getType((StringLiteral)x,r,rels);
+		else if (x instanceof UnaryExpression) return getType((UnaryExpression)x,r,rels);
+		else if (x instanceof Variable) return getVarType((Variable)x,r);
+		else if (x instanceof FunctionInvocation) return getType((FunctionInvocation)x,r,rels);
 		
 		else throw new TypeReasoningException("Unsupported expression type " + x.getClass().getName());
 	}
@@ -68,9 +69,9 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 		return x.toString();
 	}
 
-	public Class getType (BinaryExpression expression,Resolver resolver) throws TypeReasoningException{
-		Class type1 = getType(expression.getLeft(),resolver);
-		Class type2 = getType(expression.getRight(),resolver);
+	public Class getType (BinaryExpression expression,Resolver resolver,Collection<RelationshipDefinition> rels) throws TypeReasoningException{
+		Class type1 = getType(expression.getLeft(),resolver,rels);
+		Class type2 = getType(expression.getRight(),resolver,rels);
 		BinOp op = expression.getOperator();
 		
 		// boolean operators
@@ -103,10 +104,10 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 		return null; // will never reach this
 		
 	}
-	public Class getType (BooleanLiteral expression,Resolver resolver) throws TypeReasoningException{
+	public Class getType (BooleanLiteral expression,Resolver resolver,Collection<RelationshipDefinition> rels) throws TypeReasoningException{
 		return Boolean.class;
 	}
-	public Class getType (CastExpression expression,Resolver resolver) throws TypeReasoningException{
+	public Class getType (CastExpression expression,Resolver resolver,Collection<RelationshipDefinition> rels) throws TypeReasoningException{
 		try {
 			return resolver.getType(expression.getContext(),expression.getTypeName());
 		} catch (ResolverException e) {
@@ -114,12 +115,12 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 		}
 		return null; // will never reach this
 	}
-	public Class getType (ConditionalExpression expression,Resolver resolver) throws TypeReasoningException{
-		Class type1 = getType(expression.getCondition(),resolver);
+	public Class getType (ConditionalExpression expression,Resolver resolver,Collection<RelationshipDefinition> rels) throws TypeReasoningException{
+		Class type1 = getType(expression.getCondition(),resolver,rels);
 		if (type1!=Boolean.class) mismatch(expression.getCondition(),Boolean.class,type1);
 		
-		Class type2 = getType(expression.getIfTrue(),resolver);
-		Class type3 = getType(expression.getIfTrue(),resolver);
+		Class type2 = getType(expression.getIfTrue(),resolver,rels);
+		Class type3 = getType(expression.getIfTrue(),resolver,rels);
 		
 		if (type2==type3) return type2;
 		else if (type2.isAssignableFrom(type3)) return type2;
@@ -133,18 +134,18 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 		}
 		
 	}
-	public Class getType (InstanceOfExpression expression,Resolver resolver)  throws TypeReasoningException {
+	public Class getType (InstanceOfExpression expression,Resolver resolver,Collection<RelationshipDefinition> rels)  throws TypeReasoningException {
 		return Boolean.class;
 	}
-	public Class getType (IntLiteral expression,Resolver resolver)  throws TypeReasoningException {
+	public Class getType (IntLiteral expression,Resolver resolver,Collection<RelationshipDefinition> rels)  throws TypeReasoningException {
 		return Integer.class;
 	}
-	public Class getType (MemberAccess expression,Resolver resolver) throws TypeReasoningException {
+	public Class getType (MemberAccess expression,Resolver resolver,Collection<RelationshipDefinition> rels) throws TypeReasoningException {
 		String name = expression.getMember();
-		Class type = getType(expression.getObjectReference(),resolver);
+		Class type = getType(expression.getObjectReference(),resolver,rels);
 		List<String> paramTypes = new ArrayList<String>();
 		for (Expression param:expression.getParameters()) {
-			paramTypes.add(getType(param,resolver).getName());
+			paramTypes.add(getType(param,resolver,rels).getName());
 		}
 		
 		Member member = null;
@@ -168,11 +169,21 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 		
 	}
 	
-	public Class getType (FunctionInvocation expression,Resolver resolver) throws TypeReasoningException {
+	public Class getType (FunctionInvocation expression,Resolver resolver,Collection<RelationshipDefinition> rels) throws TypeReasoningException {
 		String name = expression.getFunction();
+		
+		// check whether function is a relationship reference
+		// if so, this is a predicate and the return type is boolean
+		// TODO: this will check only name and param number, not types
+		for (RelationshipDefinition rel:rels) {
+			if (rel.getName().equals(name) && rel.getSlotDeclarations().size()==expression.getParameters().size()) {
+				return Boolean.class;
+			}
+		}
+		
 		List<String> paramTypes = new ArrayList<String>();
 		for (Expression param:expression.getParameters()) {
-			paramTypes.add(getType(param,resolver).getName());
+			paramTypes.add(getType(param,resolver,rels).getName());
 		}
 		String[] paramNames = paramTypes.toArray(new String[paramTypes.size()]);
 		
@@ -192,12 +203,12 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 		
 	}
 	
-	public Class getType (StringLiteral expression,Resolver resolver)  throws TypeReasoningException {
+	public Class getType (StringLiteral expression,Resolver resolver,Collection<RelationshipDefinition> rels)  throws TypeReasoningException {
 		return String.class;
 	}
-	public Class getType (UnaryExpression expression,Resolver resolver) throws TypeReasoningException{
+	public Class getType (UnaryExpression expression,Resolver resolver,Collection<RelationshipDefinition> rels) throws TypeReasoningException{
 		UnOp op = expression.getOperator();
-		Class type = getType(expression.getPart(),resolver);
+		Class type = getType(expression.getPart(),resolver,rels);
 		if (op==UnOp.NOT) {
 			if (type==Boolean.class) return Boolean.class;
 			else mismatch(expression.getPart(),Boolean.class,type);
@@ -247,6 +258,6 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 		}
 	}
 
-	public abstract Class getType (Variable expression,Resolver resolver) throws TypeReasoningException ;
+	public abstract Class getVarType (Variable expression,Resolver resolver) throws TypeReasoningException ;
 	
 }

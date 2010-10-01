@@ -50,4 +50,16 @@ public interface Resolver {
 	 * @return a static method
 	 */
 	Method getFunction(Context context,String name,String... paramTypeNames) throws ResolverException ;
+	
+	/**
+	 * Get the function for the given name. The param types are not known, only the number of parameters. 
+	 * A function is a static method. 
+	 * Functions are defined externally, and imported using static imports. 
+	 * <b>postcondition: The method should be static. </b>
+	 * @param context the context (that has the imports)
+	 * @param name the function name
+	 * @param paramCount the number of parameters
+	 * @return a static method
+	 */
+	public Method getFunction(Context context,String name,int paramCount) throws ResolverException ;
 }	

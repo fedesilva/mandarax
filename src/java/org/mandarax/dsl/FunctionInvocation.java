@@ -11,17 +11,21 @@
 
 package org.mandarax.dsl;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Function invocation.
+ * Function invocation. A function can refer either to a relationship query or is imported.
+ * Note that this information is not set by the parser, references must be resolved (usually by the compiler) in a separate processing step. 
  * @author jens dietrich
  */
 public class FunctionInvocation extends Expression {
 
 	private String function = null;
 	private List<Expression> parameters = new ArrayList<Expression>();
+	private FunctionDeclaration query = null; // if this is a reference to a query for a relationship
+	private Method referencedMethod = null; // if this is a reference to an imported function
 	
 	public FunctionInvocation(Position position,Context context,String function,List<Expression> parameters) {
 		super(position,context);
@@ -29,6 +33,10 @@ public class FunctionInvocation extends Expression {
 		this.parameters = parameters;
 	}
 
+	public boolean isDefinedByRelationship() {
+		return query!=null;
+	}
+	
 	public String getFunction() {
 		return function;
 	}
@@ -85,6 +93,26 @@ public class FunctionInvocation extends Expression {
 		} else if (!parameters.equals(other.parameters))
 			return false;
 		return true;
+	}
+
+	public FunctionDeclaration getQuery() {
+		return query;
+	}
+
+	public void setQuery(FunctionDeclaration query) {
+		this.query = query;
+	}
+
+	public void setFunction(String function) {
+		this.function = function;
+	}
+
+	public Method getReferencedMethod() {
+		return referencedMethod;
+	}
+
+	public void setReferencedMethod(Method referencedMethod) {
+		this.referencedMethod = referencedMethod;
 	}
 
 }

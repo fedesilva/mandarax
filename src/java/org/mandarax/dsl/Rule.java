@@ -13,6 +13,7 @@ package org.mandarax.dsl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Represents a rule.
@@ -23,6 +24,13 @@ public class Rule extends AnnotatableNode {
 	private String id = null;
 	private List<Expression> body = null;
 	private FunctionInvocation head = null;
+	// variable renamings in the rule head, will be set by relationship definition e.g., in 
+	// rel Father(MalePerson father,Person child) extends Parent queries getFather(child),isFather(father,child) {
+	// rule1: Son(c,f) -> Father(f,c);}
+	// has a mapping {c->child,f->father} 
+	private Map<String,String> variableMappingsInHead = null;
+
+
 
 	public Rule(Position position, Context context,String id,Expression body,FunctionInvocation head) {
 		super(position, context);
@@ -96,6 +104,14 @@ public class Rule extends AnnotatableNode {
 		return this.body==null || this.body.isEmpty();
 	}
 
+	public Map<String, String> getVariableMappingsInHead() {
+		return variableMappingsInHead;
+	}
+
+	public void setVariableMappingsInHead(Map<String, String> variableMappingsInHead) {
+		this.variableMappingsInHead = variableMappingsInHead;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

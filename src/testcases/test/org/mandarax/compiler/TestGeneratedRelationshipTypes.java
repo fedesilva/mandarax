@@ -39,7 +39,7 @@ public class TestGeneratedRelationshipTypes {
 		
 		System.out.println(def);
 		
-		assertTrue(def.contains("package test.org.mandarax.dsl;"));
+		assertTrue(def.contains("package test.org.mandarax.compiler;"));
 		assertTrue(def.contains("public class Father"));
 		assertTrue(def.contains("public MalePerson father = null; "));
 		assertTrue(def.contains("public Person child = null;"));

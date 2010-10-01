@@ -1,4 +1,4 @@
-package test.org.mandarax.dsl;
+package test.org.mandarax.compiler;
 rel Father(String father,String child) queries getFather(child),isFather(father,child) {
 	fact1: -> Father("Jens","Max");
 	fact2: -> Father("Klaus","Jens");

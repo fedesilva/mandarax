@@ -1,11 +1,19 @@
-	@code{head=rule.head;hterms=head.parameters}
+	@code{import org.mandarax.dsl.*;import org.mandarax.compiler.impl.*;}
+	@code{head=rule.head;hterms=head.parameters;bindings=new VariableBindings(context);body=rule.body;counter=new Counter();}
+	@code{bindings.bind(head,query);}
 		_derivation.log("@{rule.id}", DerivationController.RULE, DerivationController.NIL);
-		
-		
-		// class for variables bindings
+		// utility class used to keep track of variables bindings
 		class _Bindings {
-		@foreach{v:rule.variables}private @{v} = null;
+		@foreach{v:rule.variables}	private @{v.type.getName()} @{v.name} = @{bindings.getBinding(v)};
+		@end{}}
+		_bindings = new _Bindings();
+		@foreach{prereq:body} @code{index=counter.next;}
+		@if{prereq instanceof FunctionInvocation && bindings.isBound(prereq)} 
+		final ResourceIterator<@{prereq.function}> iterator@{index} = @{prereq.function}InstancesImpl.;
+		@else{}
 		@end{}
-		}
+		@end{}
+		
+		
 		
 	

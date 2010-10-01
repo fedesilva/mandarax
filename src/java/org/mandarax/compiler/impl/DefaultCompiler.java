@@ -12,6 +12,7 @@
 package org.mandarax.compiler.impl;
 
 import java.io.*;
+import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.*;
 import org.mandarax.MandaraxException;
@@ -115,6 +116,9 @@ public class DefaultCompiler implements Compiler {
 	}
 	
 	private void compileToClasses(Location target, List<CompilationUnit> cus) throws MandaraxException {	
+		
+		resolveFunctionRefs(cus);
+		
 		for (CompilationUnit cu:cus) {
 			for (RelationshipDefinition rel:cu.getRelationshipDefinitions()) {
 				try {
@@ -355,6 +359,57 @@ public class DefaultCompiler implements Compiler {
 		}
 		return null;
 	}
-	
+	// cross ref functions in function invocations with function declarations or import statements
+	// keep public for unit testing
+	public void resolveFunctionRefs (Collection<CompilationUnit> cus) throws CompilerException {
+		// collect functions defined in queries
+		final Collection<FunctionDeclaration> declaredFunctions = new HashSet<FunctionDeclaration>();
+		class DeclaredFunctionCollector extends AbstractASTVisitor {
+			@Override
+			public boolean visit(FunctionDeclaration x) {
+				declaredFunctions.add(x);
+				return super.visit(x);
+			}
+		};
+		for (CompilationUnit cu:cus) {
+			cu.accept(new DeclaredFunctionCollector());
+		}
+		
+		// collect function references
+		final Collection<FunctionInvocation> referencedFunctions = new HashSet<FunctionInvocation>();
+		class ReferencedFunctionCollector extends AbstractASTVisitor {
+			@Override
+			public boolean visit(FunctionInvocation x) {
+				referencedFunctions.add(x);
+				return super.visit(x);
+			}
+		};
+		for (CompilationUnit cu:cus) {
+			cu.accept(new ReferencedFunctionCollector());
+		}
+		
+		// cross ref
+		for (FunctionInvocation ref:referencedFunctions) {
+			for (FunctionDeclaration decl:declaredFunctions) {
+				// TODO type check here? currently we only look for name and param number
+				if (ref.getFunction().equals(decl.getName()) && ref.getParameters().size()==decl.getParameterNames().size()) {
+					ref.setQuery(decl);
+					// TODO logging
+					break;
+				}
+			}
+			// check whether the function has been imported
+			if (ref.getQuery()==null) {
+				Method method = resolver.getFunction(ref.getContext(),ref.getFunction(),ref.getParameters().size());
+				if (method!=null) {
+					ref.setReferencedMethod(method);
+				}
+				else {
+					throw new CompilerException("Cannot resolve function invocation " + ref);
+				}
+			}
+			
+		}
+	}
 
 }

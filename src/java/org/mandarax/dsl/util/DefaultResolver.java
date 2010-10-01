@@ -174,6 +174,40 @@ public class DefaultResolver implements Resolver {
 		throw new ResolverException("Cannot resolve static method " + name);
 	}
 	
+	/**
+	 * Get the function for the given name. The param types are not known, only the number of parameters. 
+	 * A function is a static method. 
+	 * Functions are defined externally, and imported using static imports. 
+	 * <b>postcondition: The method should be static. </b>
+	 * @param context the context (that has the imports)
+	 * @param name the function name
+	 * @param paramCount the number of parameters
+	 * @return a static method
+	 */
+	public Method getFunction(Context context,String name,int paramCount) throws ResolverException {
+		Method function = null;
+		Class clazz = null;
+
+		
+		// try to load method from imported classes
+		for (ImportDeclaration imp:context.getStaticImportDeclarations()) {
+			if (!imp.isUsingWildcard() && imp.getName().endsWith("."+name)) {
+				String className = imp.getName().substring(0,imp.getName().lastIndexOf(name)-1);
+				return tryToLoadStaticMethod(context,name,className,paramCount);
+			}
+		}
+		
+		// try to load method from imported packages
+		for (ImportDeclaration imp:context.getStaticImportDeclarations()) {
+			if (imp.isUsingWildcard()) {
+				return tryToLoadStaticMethod(context,name,imp.getName(),paramCount);
+			}
+		}
+		
+		throw new ResolverException("Cannot resolve static method " + name);
+	}
+	
+	
 	private Method tryToLoadMethod(Context context,String name,String className,Class[] paramTypes) throws ResolverException {
 		Class clazz = null;
 		Method method = null;
@@ -181,7 +215,7 @@ public class DefaultResolver implements Resolver {
 			clazz = getType(context,className);
 		}
 		catch (Exception x) {
-			throw new ResolverException("Cannot find class that defines static method " + name,x);
+			throw new ResolverException("Cannot find class that defines method " + name,x);
 		}
 		try {
 			method = clazz.getMethod(name, paramTypes);
@@ -196,8 +230,37 @@ public class DefaultResolver implements Resolver {
 		else {
 			throw new ResolverException("Method " + method + " in "+ clazz.getName() + " is not visible");
 		}
-		
 	}
+	
+	private Method tryToLoadStaticMethod(Context context,String name,String className,int paramCount) throws ResolverException {
+		Class clazz = null;
+		Method method = null;
+		try {
+			clazz = getType(context,className);
+		}
+		catch (Exception x) {
+			throw new ResolverException("Cannot find class that defines method " + name,x);
+		}
+		try {
+			for (Method m:clazz.getMethods()) {
+				if (Modifier.isStatic(m.getModifiers()) && m.getName().equals(name) && m.getParameterTypes().length==paramCount) {
+					method = m;
+					break;
+				}
+			}
+		}
+		catch (Exception x) {
+			throw new ResolverException("Cannot find method " + name,x);
+		}
+		
+		if (Modifier.isPublic(method.getModifiers())) {
+			return method;
+		}
+		else {
+			throw new ResolverException("Method " + method + " in "+ clazz.getName() + " is not visible");
+		}
+	}
+	
 	
 	private Method tryToLoadStaticMethod(Context context,String name,String className,Class[] paramTypes) throws ResolverException {
 		Method function = tryToLoadMethod(context,name,className,paramTypes);
@@ -207,4 +270,5 @@ public class DefaultResolver implements Resolver {
 		return function;
 	}
 	
+
 }

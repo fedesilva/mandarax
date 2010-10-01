@@ -106,6 +106,7 @@ public class TestUtils {
 		for (String name:names) {
 			InputStream in = TestUtils.class.getResourceAsStream("/test/org/mandarax/dsl/"+name);
 			CompilationUnit cu = new ScriptReader().readCompilationUnit(in);
+			cu.setSource("/test/org/mandarax/dsl/"+name);
 			in.close();
 			cus.add(cu);
 		}
@@ -115,6 +116,7 @@ public class TestUtils {
 	public static CompilationUnit readCUFromCP(String name) throws Exception {
 		InputStream in = TestUtils.class.getResourceAsStream("/test/org/mandarax/dsl/"+name);
 		CompilationUnit cu = new ScriptReader().readCompilationUnit(in);
+		cu.setSource("/test/org/mandarax/dsl/"+name);
 		in.close();
 		return cu;
 	}
