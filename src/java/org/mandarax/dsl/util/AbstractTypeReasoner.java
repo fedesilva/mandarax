@@ -176,6 +176,13 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 		// if so, this is a predicate and the return type is boolean
 		// TODO: this will check only name and param number, not types
 		for (RelationshipDefinition rel:rels) {
+			for (FunctionDeclaration query:rel.getQueries()) {
+				if (query.getName().equals(name) && query.getParameterNames().size()==expression.getParameters().size()) {
+					return Boolean.class;
+				}
+			}
+			
+			// expressions in rule heads directly reference relationships, not queries
 			if (rel.getName().equals(name) && rel.getSlotDeclarations().size()==expression.getParameters().size()) {
 				return Boolean.class;
 			}

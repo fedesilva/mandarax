@@ -11,6 +11,7 @@ public class FunctionDeclaration extends ASTNode {
 	private Visibility visibility;
 	private List<String> parameterNames = null;
 	private String name = null;
+	private RelationshipDefinition relationship = null;
 	
 	public FunctionDeclaration(Position position, Context context,Visibility visibility, String name, List<String> parameterNames) {
 		super(position, context);
@@ -45,6 +46,15 @@ public class FunctionDeclaration extends ASTNode {
 
 	public boolean hasParameters() {
 		return this.parameterNames!=null && !this.parameterNames.isEmpty();
+	}
+
+
+	public RelationshipDefinition getRelationship() {
+		return relationship;
+	}
+
+	public void setRelationship(RelationshipDefinition relationship) {
+		this.relationship = relationship;
 	}
 
 	@Override
@@ -82,4 +92,6 @@ public class FunctionDeclaration extends ASTNode {
 			return false;
 		return true;
 	}
+
+
 }

@@ -8,8 +8,8 @@
 		@end{}}
 		_bindings = new _Bindings();
 		@foreach{prereq:body} @code{index=counter.next;}
-		@if{prereq instanceof FunctionInvocation && bindings.isBound(prereq)} 
-		final ResourceIterator<@{prereq.function}> iterator@{index} = @{prereq.function}InstancesImpl.;
+		@if{prereq instanceof FunctionInvocation && bindings.isBound(prereq) && prereq.definedByRelationship} 
+		final ResourceIterator<@{prereq.query.relationship.name}> iterator@{index} = @{prereq.function}InstancesImpl.@{prereq.function}(TODO);
 		@else{}
 		@end{}
 		@end{}

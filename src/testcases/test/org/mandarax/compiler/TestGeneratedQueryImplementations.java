@@ -37,6 +37,7 @@ public class TestGeneratedQueryImplementations {
 		DefaultCompiler compiler = new DefaultCompiler();
 		List<CompilationUnit> cus = new ArrayList<CompilationUnit>();
 		cus.add(cu);
+		compiler.resolveFunctionRefs(cus);
 		compiler.createRelationshipQueryImplementation(location, cus, cu, rel);
 		
 		String def = location.getGeneratedCode();

@@ -39,6 +39,10 @@ public class RelationshipDefinition extends AnnotatableNode {
 		this.superTypes = superTypes;
 		this.queries = queries;
 		
+		// set backreference for queries
+		for (FunctionDeclaration query:queries) {
+			query.setRelationship(this);
+		}
 		
 		// consistency check: all methodParamNames must occur in the slot declarations
 		Collection<String> definedNames = Collections2.transform(slotDeclarations,new Function<VariableDeclaration,String>(){

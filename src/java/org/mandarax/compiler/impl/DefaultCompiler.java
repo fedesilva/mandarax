@@ -377,11 +377,25 @@ public class DefaultCompiler implements Compiler {
 		
 		// collect function references
 		final Collection<FunctionInvocation> referencedFunctions = new HashSet<FunctionInvocation>();
+		// do not count rule heads!
 		class ReferencedFunctionCollector extends AbstractASTVisitor {
+			private Rule context = null;
 			@Override
 			public boolean visit(FunctionInvocation x) {
-				referencedFunctions.add(x);
+				if (context==null || context.getHead()!=x) {
+					referencedFunctions.add(x);
+				}
 				return super.visit(x);
+			}
+			@Override
+			public boolean visit(Rule r) {
+				context = r;
+				return super.visit(r);
+			}
+			@Override
+			public void endVisit(Rule r) {
+				context = null;
+				super.endVisit(r);
 			}
 		};
 		for (CompilationUnit cu:cus) {
@@ -403,6 +417,7 @@ public class DefaultCompiler implements Compiler {
 				Method method = resolver.getFunction(ref.getContext(),ref.getFunction(),ref.getParameters().size());
 				if (method!=null) {
 					ref.setReferencedMethod(method);
+					// TODO logging
 				}
 				else {
 					throw new CompilerException("Cannot resolve function invocation " + ref);
