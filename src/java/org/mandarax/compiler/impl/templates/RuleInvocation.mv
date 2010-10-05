@@ -1,18 +1,27 @@
 	@code{import org.mandarax.dsl.*;import org.mandarax.compiler.impl.*;}
-	@code{head=rule.head;hterms=head.parameters;bindings=new VariableBindings(context);body=rule.body;counter=new Counter();}
+	@code{head=rule.head;hterms=head.parameters;bindings=new VariableBindings(context);body=rule.body;counter=new Counter();prereqRel=null;prereqRelName=null;}
 	@code{bindings.bind(head,query);}
 		_derivation.log("@{rule.id}", DerivationController.RULE, DerivationController.NIL);
+		
 		// utility class used to keep track of variables bindings
 		class _Bindings {
 		@foreach{v:rule.variables}	private @{v.type.getName()} @{v.name} = @{bindings.getBinding(v)};
 		@end{}}
-		_bindings = new _Bindings();
+		final _bindings = new _Bindings();
+		
 		@foreach{prereq:body} @code{index=counter.next;}
-		@if{prereq instanceof FunctionInvocation && bindings.isBound(prereq) && prereq.definedByRelationship} 
-		final ResourceIterator<@{prereq.query.relationship.name}> iterator@{index} = @{prereq.function}InstancesImpl.@{prereq.function}(TODO);
-		@else{}
-		@end{}
-		@end{}
+		// apply prerequisite @{prereq}
+		@if{prereq instanceof FunctionInvocation && bindings.isBound(prereq) && prereq.definedByRelationship} @code{prereqRel=prereq.query.relationship;prereqRelName=prereqRel.name;}
+		final ResourceIterator<@{prereqRel.name}> iterator@{index} = @{prereqRel.name}InstancesImpl.@{prereq.function}(@{bindings.printParams(prereq.getParameters())});
+		@else{}@end{}@end{}
+		
+		// rule head	
+		return new NestedIterator<@{prereqRelName}, @{rel.name}>(iterator@{index}) {
+                public ResourceIterator<@{rel.name}> getNextIterator(@{prereqRelName} object) {
+                    return new SingletonIterator(new @{rel.name}(@{bindings.printSlots(rel.slotDeclarations)}));
+                }
+            };
+
 		
 		
 		

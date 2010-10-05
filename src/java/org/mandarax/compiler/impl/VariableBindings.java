@@ -15,14 +15,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.mandarax.dsl.Context;
 import org.mandarax.dsl.Expression;
 import org.mandarax.dsl.FunctionDeclaration;
 import org.mandarax.dsl.FunctionInvocation;
 import org.mandarax.dsl.ObjectDeclaration;
-import org.mandarax.dsl.RelationshipDefinition;
 import org.mandarax.dsl.Variable;
+import org.mandarax.dsl.VariableDeclaration;
 
 /**
  * Utility to keep track of bindings of variables.
@@ -32,6 +31,7 @@ public class VariableBindings {
 	
 	private Map<Variable,String> map = new HashMap<Variable,String>();
 	private List<ObjectDeclaration> objectDeclarations = new ArrayList<ObjectDeclaration>();
+	private FunctionInvocation ruleHead = null;
 	
 	public VariableBindings(Context c) {
 		super();
@@ -72,6 +72,7 @@ public class VariableBindings {
 	
 	
 	public void bind(FunctionInvocation ruleHead,FunctionDeclaration query) {
+		this.ruleHead = ruleHead;
 		for (int i=0;i<query.getParameterNames().size();i++) {
 			Expression x = ruleHead.getParameters().get(i);
 			if (x instanceof Variable) {
@@ -90,5 +91,41 @@ public class VariableBindings {
 		return true;
 	}
 	
-
+	public String apply(Expression expression) {
+		// TODO full recursion
+		
+		if (expression instanceof Variable) {
+			return "_bindings."+expression;
+		}
+		return expression.toString();
+	}
+	
+	public String apply(VariableDeclaration var,int pos) {
+		// detect variable term used in rule head,
+		// and then look up matching property in bindings
+		Variable v = (Variable) ruleHead.getParameters().get(pos); // TODO refactor if complex terms are supported in rule head
+		return "_bindings." + v.getName();
+	}
+ 	
+	public String printParams(List<Expression> expressions) {
+		StringBuffer buf = new StringBuffer();
+		for (Expression expr:expressions) {
+			if (buf.length()>0) buf.append(',');
+			buf.append(apply(expr));
+			
+		}
+		return buf.toString();
+	}
+	
+	public String printSlots(List<VariableDeclaration> varDecls) {
+		StringBuffer buf = new StringBuffer();
+		int i = 0;
+		for (VariableDeclaration varDecl:varDecls) {
+			if (buf.length()>0) buf.append(',');
+			buf.append(apply(varDecl,i));
+			i = i+1;
+		}
+		return buf.toString();
+	}
+	
 }
