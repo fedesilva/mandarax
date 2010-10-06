@@ -19,7 +19,10 @@ import java.util.List;
 import org.junit.Test;
 import org.mandarax.compiler.impl.DefaultCompiler;
 import org.mandarax.dsl.CompilationUnit;
+import org.mandarax.dsl.DefaultVerificationErrorReporter;
 import org.mandarax.dsl.RelationshipDefinition;
+import org.mandarax.dsl.VerifyAll;
+
 import static test.org.mandarax.compiler.TestUtils.*;
 
 /**
@@ -59,6 +62,7 @@ public class TestGeneratedQueryImplementations {
 		DefaultCompiler compiler = new DefaultCompiler();
 		List<CompilationUnit> cus = new ArrayList<CompilationUnit>();
 		cus.add(cu);
+		compiler.resolveFunctionRefs(cus);
 		compiler.createRelationshipQueryImplementation(location,cus, cu, rel);
 		
 		String def = location.getGeneratedCode();
@@ -80,7 +84,32 @@ public class TestGeneratedQueryImplementations {
 		DefaultCompiler compiler = new DefaultCompiler();
 		List<CompilationUnit> cus = new ArrayList<CompilationUnit>();
 		cus.add(cu);
+		compiler.resolveFunctionRefs(cus);
 		compiler.createRelationshipQueryImplementation(location,cus, cu, rel);
+		
+		String def = location.getGeneratedCode();
+		
+		System.out.println(def);
+		
+//		assertTrue(def.contains("package test.org.mandarax.dsl;"));
+//		assertTrue(def.contains("import java.util.Date;"));
+//		assertTrue(def.contains("public interface FatherInstances"));
+//		assertTrue(def.contains("public ResultSet<Father> getFather (  Person child  );"));
+//		assertTrue(def.contains("public ResultSet<Father> isFather (  MalePerson father ,  Person child  );"));
+	}
+	
+	@Test
+	public void testGeneratedQueryImplementation4() throws Exception {
+		CompilationUnit cu = readCUFromCP("reldef4.rel");
+		RelationshipDefinition rel = cu.getRelationshipDefinitions().get(1);
+		StringLocation location = new StringLocation();
+		DefaultCompiler compiler = new DefaultCompiler();
+		List<CompilationUnit> cus = new ArrayList<CompilationUnit>();
+		cus.add(cu);
+		new VerifyAll().verify(cus,new DefaultVerificationErrorReporter());
+		
+		compiler.resolveFunctionRefs(cus);
+		compiler.createRelationshipQueryImplementation(location, cus, cu, rel);
 		
 		String def = location.getGeneratedCode();
 		

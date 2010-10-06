@@ -32,6 +32,14 @@ public class FunctionDeclaration extends ASTNode {
 	public List<String> getParameterNames() {
 		return parameterNames;
 	}
+	// indicates which parameters are input / output slots
+	public boolean[] getSignature() {
+		boolean[] sign = new boolean[relationship.getSlotDeclarations().size()];
+		for (int i=0;i<sign.length;i++) {
+			sign[i] = parameterNames.contains(relationship.getSlotDeclarations().get(i).getName());
+		}
+		return sign;
+	}
 
 	public String getName() {
 		return name;

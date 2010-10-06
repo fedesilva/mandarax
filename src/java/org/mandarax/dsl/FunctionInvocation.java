@@ -24,7 +24,7 @@ public class FunctionInvocation extends Expression {
 
 	private String function = null;
 	private List<Expression> parameters = new ArrayList<Expression>();
-	private FunctionDeclaration query = null; // if this is a reference to a query for a relationship
+	private RelationshipDefinition relationship = null; // if this is a reference to a relationship
 	private Method referencedMethod = null; // if this is a reference to an imported function
 	
 	public FunctionInvocation(Position position,Context context,String function,List<Expression> parameters) {
@@ -34,7 +34,7 @@ public class FunctionInvocation extends Expression {
 	}
 
 	public boolean isDefinedByRelationship() {
-		return query!=null;
+		return relationship!=null;
 	}
 	
 	public String getFunction() {
@@ -95,13 +95,6 @@ public class FunctionInvocation extends Expression {
 		return true;
 	}
 
-	public FunctionDeclaration getQuery() {
-		return query;
-	}
-
-	public void setQuery(FunctionDeclaration query) {
-		this.query = query;
-	}
 
 	public void setFunction(String function) {
 		this.function = function;
@@ -113,6 +106,14 @@ public class FunctionInvocation extends Expression {
 
 	public void setReferencedMethod(Method referencedMethod) {
 		this.referencedMethod = referencedMethod;
+	}
+
+	public RelationshipDefinition getRelationship() {
+		return relationship;
+	}
+
+	public void setRelationship(RelationshipDefinition relationship) {
+		this.relationship = relationship;
 	}
 
 }

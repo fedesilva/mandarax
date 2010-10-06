@@ -22,7 +22,7 @@ public class @{className} {
 	// and therefore kept static 
 	@foreach{query:rel.queries} 
 	static ResourceIterator<@{rel.name}> @{query.name} ( DerivationController _derivation @if{query.hasParameters()},@end{} @foreach{param:query.parameterNames} @{rel.getTypeNameForSlot(param)} @{param} @end{", "} ) {
-		final int _derivationlevel = _derivation.getDepth();
+		final int _derivationlevel = _derivation.size();
 		ResourceIterator<@{rel.name}> result = new IteratorChain<@{rel.name}>(@{rel.rules.size()}) {
 			
 			public ResourceIterator<@{rel.name}> getNextIterator(int pos) {
@@ -30,7 +30,7 @@ public class @{className} {
 				@foreach{index:ruleIndices}
 				// code generated for rule: @{rel.queries.get(index)}
                 		case @{index}: {
-                			return @{query.name}_@{index}(_derivation.reset(_derivationlevel) @if{query.hasParameters()},@end{} @foreach{param:query.parameterNames} @{param} @end{", "});
+                			return @{query.name}_@{index}(_derivation.pop(_derivationlevel) @if{query.hasParameters()},@end{} @foreach{param:query.parameterNames} @{param} @end{", "});
                 		}
 				@end{}
 				default: return EmptyIterator.DEFAULT;

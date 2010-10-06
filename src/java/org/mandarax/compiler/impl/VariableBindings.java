@@ -12,14 +12,18 @@
 package org.mandarax.compiler.impl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.mandarax.compiler.CompilerException;
 import org.mandarax.dsl.Context;
 import org.mandarax.dsl.Expression;
 import org.mandarax.dsl.FunctionDeclaration;
 import org.mandarax.dsl.FunctionInvocation;
 import org.mandarax.dsl.ObjectDeclaration;
+import org.mandarax.dsl.RelationshipDefinition;
 import org.mandarax.dsl.Variable;
 import org.mandarax.dsl.VariableDeclaration;
 
@@ -81,6 +85,17 @@ public class VariableBindings {
 			}
 		}
 	}
+	
+	public void bindPrereq(FunctionInvocation ruleHead,FunctionDeclaration query) {
+		for (int i=0;i<query.getParameterNames().size();i++) {
+			Expression x = ruleHead.getParameters().get(i);
+			if (x instanceof Variable) {
+				Variable v = (Variable)x;
+				map.put(v,query.getParameterNames().get(i));
+			}
+		}
+	}
+	
 	// indicates whether bindings exist for all variables referenced in this expression
 	public boolean isBound(Expression expression) {
 		for (Variable var:expression.getVariables()) {
@@ -91,41 +106,60 @@ public class VariableBindings {
 		return true;
 	}
 	
-	public String apply(Expression expression) {
+	public String print(Expression expression,String scope) {
 		// TODO full recursion
 		
 		if (expression instanceof Variable) {
-			return "_bindings."+expression;
+			return scope + '.' + expression;
 		}
 		return expression.toString();
 	}
 	
-	public String apply(VariableDeclaration var,int pos) {
+	public String print(VariableDeclaration var,int pos,String scope) {
 		// detect variable term used in rule head,
 		// and then look up matching property in bindings
 		Variable v = (Variable) ruleHead.getParameters().get(pos); // TODO refactor if complex terms are supported in rule head
-		return "_bindings." + v.getName();
+		return scope + '.' + v.getName();
 	}
  	
-	public String printParams(List<Expression> expressions) {
+	public String printBoundParams(List<Expression> expressions,String scope,String arg) {
 		StringBuffer buf = new StringBuffer();
 		for (Expression expr:expressions) {
-			if (buf.length()>0) buf.append(',');
-			buf.append(apply(expr));
-			
+			if (this.isBound(expr)) {
+				if (buf.length()>0) buf.append(',');
+				buf.append(print(expr,scope));
+			}
 		}
+		if (buf.length()>0) buf.append(',');
+		buf.append(arg);
 		return buf.toString();
 	}
 	
-	public String printSlots(List<VariableDeclaration> varDecls) {
+	public String printSlots(List<VariableDeclaration> varDecls,String scope) {
 		StringBuffer buf = new StringBuffer();
 		int i = 0;
 		for (VariableDeclaration varDecl:varDecls) {
 			if (buf.length()>0) buf.append(',');
-			buf.append(apply(varDecl,i));
+			buf.append(print(varDecl,i,scope));
 			i = i+1;
 		}
 		return buf.toString();
+	}
+	
+	// get the query to be invoked for a function invocation that references a relationship definition
+	public FunctionDeclaration getQuery(FunctionInvocation finv) throws CompilerException {
+		RelationshipDefinition rel = finv.getRelationship();
+		boolean[] signature = new boolean[rel.getSlotDeclarations().size()];
+		for (int i=0;i<signature.length;i++) {
+			Expression term = finv.getParameters().get(i);
+			signature[i]=this.isBound(term);
+		}
+		for (FunctionDeclaration query:rel.getQueries()) {
+			if (Arrays.equals(signature,query.getSignature())) {
+				return query;
+			}
+		}
+		throw new CompilerException("Cannot find matching query for function invocation: " + finv);
 	}
 	
 }

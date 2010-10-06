@@ -363,11 +363,11 @@ public class DefaultCompiler implements Compiler {
 	// keep public for unit testing
 	public void resolveFunctionRefs (Collection<CompilationUnit> cus) throws CompilerException {
 		// collect functions defined in queries
-		final Collection<FunctionDeclaration> declaredFunctions = new HashSet<FunctionDeclaration>();
+		final Collection<RelationshipDefinition> declaredRels = new HashSet<RelationshipDefinition>();
 		class DeclaredFunctionCollector extends AbstractASTVisitor {
 			@Override
-			public boolean visit(FunctionDeclaration x) {
-				declaredFunctions.add(x);
+			public boolean visit(RelationshipDefinition x) {
+				declaredRels.add(x);
 				return super.visit(x);
 			}
 		};
@@ -404,16 +404,16 @@ public class DefaultCompiler implements Compiler {
 		
 		// cross ref
 		for (FunctionInvocation ref:referencedFunctions) {
-			for (FunctionDeclaration decl:declaredFunctions) {
+			for (RelationshipDefinition rel:declaredRels) {
 				// TODO type check here? currently we only look for name and param number
-				if (ref.getFunction().equals(decl.getName()) && ref.getParameters().size()==decl.getParameterNames().size()) {
-					ref.setQuery(decl);
+				if (ref.getFunction().equals(rel.getName()) && ref.getParameters().size()==rel.getSlotDeclarations().size()) {
+					ref.setRelationship(rel);
 					// TODO logging
 					break;
 				}
 			}
 			// check whether the function has been imported
-			if (ref.getQuery()==null) {
+			if (ref.getRelationship()==null) {
 				Method method = resolver.getFunction(ref.getContext(),ref.getFunction(),ref.getParameters().size());
 				if (method!=null) {
 					ref.setReferencedMethod(method);

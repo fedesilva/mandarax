@@ -78,6 +78,7 @@ public class RelationshipDefinition extends AnnotatableNode {
 	}
 
 	public List<FunctionDeclaration> getQueries() {
+		System.out.println(queries);
 		return queries;
 	}
 
