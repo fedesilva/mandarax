@@ -1,37 +1,41 @@
 	@code{import org.mandarax.dsl.*;import org.mandarax.compiler.impl.*;}
-	@code{head=rule.head;hterms=head.parameters;ctrl=new VariableBindings(context);body=rule.body;counter=new Counter();prereqRel=null;prereqRelName=null;ctrl.bind(head,query);}
+	@code{head=rule.head;hterms=head.parameters;ctrl=new VariableBindings(context);body=Scheduler.DEFAULT.getPrerequisites(rule,query);counter=new Counter();lastPrereq=null;ctrl.bind(head,query);}
 		_derivation.log("@{rule.id}", DerivationController.RULE, DerivationController.NIL);
 		
 		// utility class used to keep track of variables bindings
 		class _Bindings {
 		@foreach{v:rule.variables}	private @{v.type.getName()} @{v.name} = @{ctrl.getBinding(v)};
-		@end{}}
+		@end{}
 		final _bindings = new _Bindings();
 		
 		@foreach{prereq:body} @code{index=counter.next;}
-		// apply prerequisite @{prereq}
+		// apply prerequisite @{prereq.expression}
+		@if{prereq.firstRelation}final ResourceIterator<@{prereq.rel.name}> iterator@{index} = @{prereq.rel.name}InstancesImpl.@{prereq.query.name}(@{prereq.printBoundParams('_bindings','_derivation.push()')});
+		@code{lastPrereq=prereq;}
 		
-		@if{index==1 && prereq instanceof FunctionInvocation && prereq.definedByRelationship} @code{prereqRel=prereq.relationship;prereqRelName=prereqRel.name;}
-		final ResourceIterator<@{prereqRel.name}> iterator@{index} = @{prereqRel.name}InstancesImpl.@{ctrl.getQuery(prereq).name}(@{ctrl.printBoundParams(prereq.getParameters(),'_bindings','_derivation.push()')});
-		
-		@else{index>1 && prereq instanceof FunctionInvocation && prereq.definedByRelationship} @code{prereqRel=prereq.relationship;prereqRelName=prereqRel.name;}
-		final ResourceIterator<@{prereqRel.name}> iterator@{index} =  new NestedIterator<@{prereqRelName}, @{rel.name}>(iterator@{index}) {
-                	public ResourceIterator<@{rel.name}> getNextIterator(@{prereqRelName} object) {
-                			// bind parameters @code{ctrl.bindPrereq(prereq,ctrl.getQuery(prereq))};
-							@foreach{v:rule.variables}	_bindings.@{v.name} = @{ctrl.getBinding(v)};
-							@end{}}
-                    		return new SingletonIterator(new @{rel.name}(@{ctrl.printSlots(rel.slotDeclarations,'_bindings')}));
+		@else{prereq.definedByRelationship}final ResourceIterator<@{prereq.rel.name}> iterator@{index} =  new NestedIterator<@{prereq.rel.name}, @{prereq.previous.rel.name}>(iterator@{index-1}) {
+                	public ResourceIterator<@{prereq.previous.rel.name}> getNextIterator(@{prereq.rel.name} _object) {
+                				// bind parameters from @{prereq.previousRelPrereq.expression}
+						@foreach{v:prereq.previous.newlyBoundVariables}_bindings.@{v} = _object.@{prereq.previous.getSlot(v)};
+						@end{}
+                    				return new SingletonIterator(new @{prereq.previous.rel.name}(@{ctrl.printSlots(rel.slotDeclarations,'_bindings')}));
                 	}
             	};
+		@code{lastPrereq=prereq;}
+		@else{} 
+					throw new IllegalStateException("not yet implemented feature - support for prereqs not defined by relationships");
+		@end{}@end{}
 		
-		@else{}@end{}@end{}
-		
-		// rule head	
-		return new NestedIterator<@{prereqRelName}, @{rel.name}>(iterator@{index}) {
-                	public ResourceIterator<@{rel.name}> getNextIterator(@{prereqRelName} object) {
-                    		return new SingletonIterator(new @{rel.name}(@{ctrl.printSlots(rel.slotDeclarations,'_bindings')}));
+		// rule head
+		@if{lastPrereq!=null}return new NestedIterator<@{lastPrereq.rel.name}, @{rel.name}>(iterator@{index}) {
+                	public ResourceIterator<@{rel.name}> getNextIterator(@{lastPrereq.rel.name} object) {
+						// bind parameters from @{lastPrereq.expression}
+						@foreach{v:lastPrereq.newlyBoundVariables}_bindings.@{v} = _object.@{lastPrereq.getSlot(v)};
+						@end{}
+                    				return new SingletonIterator(new @{rel.name}(@{ctrl.printSlots(rel.slotDeclarations,'_bindings')}));
                 	}
-            	};
+        	};
+        @else{}@end{}
 
 		
 		

@@ -78,8 +78,37 @@ public class RelationshipDefinition extends AnnotatableNode {
 	}
 
 	public List<FunctionDeclaration> getQueries() {
-		System.out.println(queries);
 		return queries;
+	}
+	
+	public FunctionDeclaration getQuery(boolean[] signature) {
+		List<String> paramNames = new ArrayList<String>();
+		for (int i=0;i<signature.length;i++) {
+			if (signature[i]) paramNames.add(this.getSlotDeclarations().get(i).getName());
+		}
+		
+		for (FunctionDeclaration q:getQueries()) {
+			List<String> paramNames2 = q.getParameterNames();
+			boolean eq = paramNames.size()==paramNames2.size();
+			if (eq) {
+				for (int i=0;i<paramNames.size();i++) {
+					eq = eq && paramNames.get(i).equals(paramNames2.get(i));
+				}
+			}
+			if (eq) return q;
+		}
+		return null;
+	}
+	
+	private FunctionDeclaration getQuery(String name,int slotNumber) {
+		for (FunctionDeclaration q:getQueries()) {
+			if (name.equals(q.getName()) && slotNumber==q.getParameterNames().size()) return q;
+		}
+		return null;
+	}
+	
+	public FunctionDeclaration getQuery(FunctionInvocation inv) {
+		return getQuery(inv.getFunction(),inv.getParameters().size());
 	}
 
 	public List<String> getSuperTypes() {

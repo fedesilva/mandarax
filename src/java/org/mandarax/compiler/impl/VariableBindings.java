@@ -13,6 +13,7 @@ package org.mandarax.compiler.impl;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,7 +34,7 @@ import org.mandarax.dsl.VariableDeclaration;
  */
 public class VariableBindings {
 	
-	private Map<Variable,String> map = new HashMap<Variable,String>();
+	private Map<String,String> map = new HashMap<String,String>();
 	private List<ObjectDeclaration> objectDeclarations = new ArrayList<ObjectDeclaration>();
 	private FunctionInvocation ruleHead = null;
 	
@@ -81,23 +82,15 @@ public class VariableBindings {
 			Expression x = ruleHead.getParameters().get(i);
 			if (x instanceof Variable) {
 				Variable v = (Variable)x;
-				map.put(v,query.getParameterNames().get(i));
+				map.put(v.getName(),query.getParameterNames().get(i));
 			}
 		}
 	}
 	
-	public void bindPrereq(FunctionInvocation ruleHead,FunctionDeclaration query) {
-		for (int i=0;i<query.getParameterNames().size();i++) {
-			Expression x = ruleHead.getParameters().get(i);
-			if (x instanceof Variable) {
-				Variable v = (Variable)x;
-				map.put(v,query.getParameterNames().get(i));
-			}
-		}
-	}
+	
 	
 	// indicates whether bindings exist for all variables referenced in this expression
-	public boolean isBound(Expression expression) {
+	private boolean isBound(Expression expression) {
 		for (Variable var:expression.getVariables()) {
 			if (getBindingNoDefault(var)==null) {
 				return false;
@@ -147,7 +140,8 @@ public class VariableBindings {
 	}
 	
 	// get the query to be invoked for a function invocation that references a relationship definition
-	public FunctionDeclaration getQuery(FunctionInvocation finv) throws CompilerException {
+	public FunctionDeclaration getQuery(Prereq prereq) throws CompilerException {
+		FunctionInvocation finv = (FunctionInvocation)prereq.getExpression();
 		RelationshipDefinition rel = finv.getRelationship();
 		boolean[] signature = new boolean[rel.getSlotDeclarations().size()];
 		for (int i=0;i<signature.length;i++) {

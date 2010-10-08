@@ -17,12 +17,18 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import org.mandarax.compiler.CompilerException;
 import org.mandarax.dsl.Expression;
+import org.mandarax.dsl.FunctionDeclaration;
+import org.mandarax.dsl.Literal;
 import org.mandarax.dsl.ObjectDeclaration;
+import org.mandarax.dsl.RelationshipDefinition;
 import org.mandarax.dsl.Rule;
 import org.mandarax.dsl.FunctionInvocation;
+import org.mandarax.dsl.Variable;
+
 import static org.mandarax.compiler.impl.CompilerUtils.*;
 
 /**
@@ -44,9 +50,9 @@ public class Scheduler {
 	 * @return
 	 * @throws CompilerException
 	 */
-	public List<Prereq> getPrerequisites(Rule rule) throws CompilerException {
+	public List<Prereq> getPrerequisites(Rule rule,FunctionDeclaration query) throws CompilerException {
 	
-		Collection<String> variables = initVariables(rule);
+		Collection<String> variables = initVariables(rule,query);
 		
 		List<Expression> body = new ArrayList<Expression>();
 		body.addAll(rule.getBody());
@@ -59,28 +65,32 @@ public class Scheduler {
 			}});
 		
 		List<Prereq> prereqs = new ArrayList<Prereq>(rule.getBody().size());
-		
+		Prereq last = null;
 		while (!body.isEmpty()) {
-			addAllResolved(body,prereqs,variables);
-			addOneUnresolved(body,prereqs,variables);
+			last = addAllResolved(body,prereqs,variables,last);
+			last = addOneUnresolved(body,prereqs,variables,last);
 		}
 		
 		return prereqs;
 	}
 	
-	private void addOneUnresolved(List<Expression> body, List<Prereq> prereqs,Collection<String> variables) {
-		if (body.isEmpty()) return;
+	private Prereq addOneUnresolved(List<Expression> body, List<Prereq> prereqs,Collection<String> variables,Prereq last) {
+		if (body.isEmpty()) return last;
 		
 		// TODO: optimise - sort first
 		Expression selected = body.remove(0);
 		
 		Prereq prereq = new Prereq();
+		prereq.setPrevious(last);
 		prereq.setExpression(selected);
 		List<String> newVariables = getUnresolvedVariables(selected,variables);
 		prereq.setNewlyBoundVariables(newVariables);
 		variables.addAll(newVariables);
-
+		Collection<String> vars = new LinkedHashSet<String>();
+		vars.addAll(variables);
+		prereq.setBoundVariables(vars);
 		prereqs.add(prereq);
+		return prereq;
 		
 	}
 	
@@ -95,20 +105,26 @@ public class Scheduler {
 	}
 
 	// add the prereqs for which all variables are known
-	private void addAllResolved(List<Expression> body, List<Prereq> prereqs,Collection<String> variables) {
+	private Prereq addAllResolved(List<Expression> body, List<Prereq> prereqs,Collection<String> variables,Prereq last) {
 		for (Iterator<Expression> iter = body.iterator();iter.hasNext();) {
 			Expression expression = iter.next();
 			if (variables.containsAll(getNames(expression.getVariables()))) {
 				Prereq prereq = new Prereq();
+				prereq.setPrevious(last);
+				last = prereq;
 				prereq.setNewlyBoundVariables(new ArrayList<String>());
 				prereq.setExpression(expression);
 				prereqs.add(prereq);
 				iter.remove();
+				Collection<String> vars = new LinkedHashSet<String>();
+				vars.addAll(variables);
+				prereq.setBoundVariables(vars);
 			}
 		}
+		return last;
 	}
 
-	private Collection<String> initVariables(Rule rule) {
+	private Collection<String> initVariables(Rule rule,FunctionDeclaration query) throws CompilerException {
 		Collection<String> variables = new HashSet<String>();
 		
 		// add references to object declaration 
@@ -116,8 +132,23 @@ public class Scheduler {
 			variables.add(objDecl.getName());
 		}
 		
-		// add vars from rule head
-		variables.addAll(getNames(rule.getHead().getVariables()));
+		// add vars from rule head that are query parameters
+		RelationshipDefinition rel = query.getRelationship();
+		boolean[] sign = query.getSignature();
+		for (int i=0;i<sign.length;i++) {
+			Expression param = rule.getHead().getParameters().get(i);
+			if (sign[i]) {
+				if (param instanceof Variable) {
+					variables.add(((Variable) param).getName());
+				}
+				else if (param instanceof Literal) {
+					// ignore
+				}
+				else {
+					throw new CompilerException("Only flat terms are allowed in rule heads. Found term " + param + " in rule " + rule);
+				}
+			}
+		}
 		
 		return variables;
 	}
