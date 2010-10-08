@@ -56,7 +56,7 @@ public class VariableBindings {
 				return var.getName(); // can reference this as an instance variable
 			}
 		}
-		return map.get(var);
+		return map.get(var.getName());
 	}
 	
 	// utility for code generation
@@ -78,13 +78,19 @@ public class VariableBindings {
 	
 	public void bind(FunctionInvocation ruleHead,FunctionDeclaration query) {
 		this.ruleHead = ruleHead;
-		for (int i=0;i<query.getParameterNames().size();i++) {
-			Expression x = ruleHead.getParameters().get(i);
-			if (x instanceof Variable) {
-				Variable v = (Variable)x;
-				map.put(v.getName(),query.getParameterNames().get(i));
+		
+		boolean[] signature = query.getSignature();
+		for (int i=0;i<signature.length;i++) {
+			if (signature[i]) {
+				Expression x = ruleHead.getParameters().get(i);
+				if (x instanceof Variable) {
+					Variable v = (Variable)x;
+					map.put(v.getName(),query.getRelationship().getSlotDeclarations().get(i).getName());
+				}
 			}
 		}
+		
+		System.out.println(map);
 	}
 	
 	

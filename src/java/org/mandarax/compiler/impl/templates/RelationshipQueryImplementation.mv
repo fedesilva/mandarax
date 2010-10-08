@@ -44,7 +44,7 @@ public class @{className} {
 	
 	@foreach{query:rel.queries}// query: @{query.name}
 	@foreach{index:ruleIndices}// rule: @{rel.rules.get(index)}
-	private static ResourceIterator<@{rel.name}> @{query.name}_@{index} (final DerivationController _derivation @if{query.hasParameters()},@end{} @foreach{param:query.parameterNames} @{rel.getTypeNameForSlot(param)} @{param} @end{", "}) {
+	private static ResourceIterator<@{rel.name}> @{query.name}_@{index} (final DerivationController _derivation @if{query.hasParameters()},@end{} @foreach{param:query.parameterNames} final @{rel.getTypeNameForSlot(param)} @{param} @end{", "}) {
 		@code{rule=rel.getRules().get(index)}
 		@if{rule.fact}@includeNamed{'FactInvocation'}
 		@else{}@includeNamed{'RuleInvocation'}
