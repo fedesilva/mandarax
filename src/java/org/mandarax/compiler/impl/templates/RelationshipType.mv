@@ -1,4 +1,4 @@
-package @{context.packageDeclaration}
+package @{context.packageDeclaration.name};
 @foreach{imp:context.importDeclarations} 
 @{imp}
 @end{}
@@ -7,6 +7,17 @@ package @{context.packageDeclaration}
  * @version @{timestamp} 
  */
 public class @{rel.name} {
+
+	// constructors
+	public @{rel.name} () {
+		super();
+	}
+	
+	public @{rel.name} (@foreach{slot:rel.slotDeclarations} @{slot.type} @{slot.name} @end{","}) {
+		super();
+		@foreach{slot:rel.slotDeclarations}this.@{slot.name}=@{slot.name}; 
+		@end{}
+	}
 
 	// instance variables created for slots
 	@foreach{slot:rel.slotDeclarations} 

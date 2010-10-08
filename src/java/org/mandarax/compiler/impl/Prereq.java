@@ -105,14 +105,14 @@ public class Prereq {
 	
 	public String printBoundParams(String scope,String arg) {
 		StringBuffer buf = new StringBuffer();
+		buf.append(arg);
 		for (Expression expr:((FunctionInvocation)expression).getParameters()) {
 			if (isBound(expr) && !isNewlyBound(expr)) {
-				if (buf.length()>0) buf.append(',');
+				buf.append(',');
 				buf.append(print(expr,scope));
 			}
 		}
-		if (buf.length()>0) buf.append(',');
-		buf.append(arg);
+		
 		return buf.toString();
 	}
 	

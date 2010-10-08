@@ -9,22 +9,19 @@
  * governing permissions and limitations under the License.
  */
 
-package org.mandarax.compiler;
+package org.mandarax.rt;
 
-import java.io.*;
 /**
- * Interface describing how to access source code and compiled classes.
+ * Interface for derivation listener.
  * @author jens dietrich
  */
-public interface Location {
+
+public interface DerivationListener {
 	/**
-	 * Get a stream to write source code.
-	 * @param packageName the package name
-	 * @param className the class name
-	 * @return a Writer using the specified class as destination
-	 * @throws CompilerException if the Writer couldn't be created 
+	 * Notify the listener.  
+	 * @param ruleRef
+	 * @param derivationDepth
+	 * @param derivationCount
 	 */
-	public Writer getSrcOut(String packageName,String className) throws CompilerException;
-		
-	
+	public void step(String ruleRef,int derivationDepth,int derivationCount) ;
 }

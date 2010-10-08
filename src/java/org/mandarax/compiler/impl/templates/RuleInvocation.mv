@@ -5,12 +5,12 @@
 		// utility class used to keep track of variables bindings
 		class _Bindings {
 		@foreach{v:rule.variables}	private @{v.type.getName()} @{v.name} = @{ctrl.getBinding(v)};
-		@end{}
-		final _bindings = new _Bindings();
+		@end{}}
+		final _Bindings _bindings = new _Bindings();
 		
 		@foreach{prereq:body} @code{index=counter.next;}
 		// apply prerequisite @{prereq.expression}
-		@if{prereq.firstRelation}final ResourceIterator<@{prereq.rel.name}> iterator@{index} = @{prereq.rel.name}InstancesImpl.@{prereq.query.name}(@{prereq.printBoundParams('_bindings','_derivation.push()')});
+		@if{prereq.firstRelation}final ResourceIterator<@{prereq.rel.name}> iterator@{index} = @{prereq.rel.name}Instances.@{prereq.query.name}(@{prereq.printBoundParams('_bindings','_derivation.push()')});
 		@code{lastPrereq=prereq;}
 		
 		@else{prereq.definedByRelationship}final ResourceIterator<@{prereq.rel.name}> iterator@{index} =  new NestedIterator<@{prereq.rel.name}, @{prereq.previous.rel.name}>(iterator@{index-1}) {
@@ -18,7 +18,7 @@
                 				// bind parameters from @{prereq.previousRelPrereq.expression}
 						@foreach{v:prereq.previous.newlyBoundVariables}_bindings.@{v} = _object.@{prereq.previous.getSlot(v)};
 						@end{}
-                    				return new SingletonIterator(new @{prereq.previous.rel.name}(@{ctrl.printSlots(rel.slotDeclarations,'_bindings')}));
+									return @{prereq.rel.name}Instances.@{prereq.query.name}(@{prereq.printBoundParams('_bindings','_derivation.push()')});
                 	}
             	};
 		@code{lastPrereq=prereq;}
@@ -28,7 +28,7 @@
 		
 		// rule head
 		@if{lastPrereq!=null}return new NestedIterator<@{lastPrereq.rel.name}, @{rel.name}>(iterator@{index}) {
-                	public ResourceIterator<@{rel.name}> getNextIterator(@{lastPrereq.rel.name} object) {
+                	public ResourceIterator<@{rel.name}> getNextIterator(@{lastPrereq.rel.name} _object) {
 						// bind parameters from @{lastPrereq.expression}
 						@foreach{v:lastPrereq.newlyBoundVariables}_bindings.@{v} = _object.@{lastPrereq.getSlot(v)};
 						@end{}

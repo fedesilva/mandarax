@@ -9,22 +9,31 @@
  * governing permissions and limitations under the License.
  */
 
-package org.mandarax.compiler;
+package org.mandarax.rt;
 
-import java.io.*;
 /**
- * Interface describing how to access source code and compiled classes.
+ * Exceptions that can be thrown when next(), hasNext() or close() are invoked.
+ * This are runtime exceptions. The main reason for this is compatibility with java.util.Iterator. 
+ * I.e., users can work with the well know iterator interface. 
  * @author jens dietrich
  */
-public interface Location {
-	/**
-	 * Get a stream to write source code.
-	 * @param packageName the package name
-	 * @param className the class name
-	 * @return a Writer using the specified class as destination
-	 * @throws CompilerException if the Writer couldn't be created 
-	 */
-	public Writer getSrcOut(String packageName,String className) throws CompilerException;
-		
-	
+
+public class DerivationException extends RuntimeException {
+
+	public DerivationException() {
+		super();
+	}
+
+	public DerivationException(String arg0, Throwable arg1) {
+		super(arg0, arg1);
+	}
+
+	public DerivationException(String arg0) {
+		super(arg0);
+	}
+
+	public DerivationException(Throwable arg0) {
+		super(arg0);
+	}
+
 }

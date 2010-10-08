@@ -114,19 +114,7 @@ public class VariableBindings {
 		Variable v = (Variable) ruleHead.getParameters().get(pos); // TODO refactor if complex terms are supported in rule head
 		return scope + '.' + v.getName();
 	}
- 	
-	public String printBoundParams(List<Expression> expressions,String scope,String arg) {
-		StringBuffer buf = new StringBuffer();
-		for (Expression expr:expressions) {
-			if (this.isBound(expr)) {
-				if (buf.length()>0) buf.append(',');
-				buf.append(print(expr,scope));
-			}
-		}
-		if (buf.length()>0) buf.append(',');
-		buf.append(arg);
-		return buf.toString();
-	}
+ 
 	
 	public String printSlots(List<VariableDeclaration> varDecls,String scope) {
 		StringBuffer buf = new StringBuffer();

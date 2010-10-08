@@ -11,10 +11,8 @@
 
 package test.org.mandarax.compiler;
 
-import java.io.OutputStream;
 import java.io.StringWriter;
 import java.io.Writer;
-
 import org.mandarax.compiler.CompilerException;
 import org.mandarax.compiler.Location;
 
@@ -25,14 +23,10 @@ import org.mandarax.compiler.Location;
 class StringLocation implements Location {
 	private StringWriter out = new StringWriter();
 	@Override
-	public Writer getSrcOut(String c) throws CompilerException {
+	public Writer getSrcOut(String p,String c) throws CompilerException {
 		return out;
 	}
 
-	@Override
-	public OutputStream getResourceOut(String p, String r) throws CompilerException {
-		throw new UnsupportedOperationException();
-	}
 	public String getGeneratedCode() {
 		return out.toString();
 	}

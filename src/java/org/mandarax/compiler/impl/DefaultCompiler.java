@@ -112,7 +112,13 @@ public class DefaultCompiler implements Compiler {
 		if (mode==CompilationMode.INTERFACES_ONLY) {
 			compileToInterfaces(target,cus);
 		}
-		else throw new CompilerException("Unsupported compilation mode " + mode.name());
+		else if (mode==CompilationMode.CLASSES_ONLY){
+			compileToClasses(target,cus);
+		}
+			
+		else {
+			throw new CompilerException("Unsupported compilation mode " + mode.name());
+		}
 	}
 	
 	private void compileToClasses(Location target, List<CompilationUnit> cus) throws MandaraxException {	
@@ -172,8 +178,8 @@ public class DefaultCompiler implements Compiler {
 	
 	// keep public for unit testing
 	public void createRelationshipQueryImplementation(Location target,List<CompilationUnit> cus,CompilationUnit cu, RelationshipDefinition rel) throws Exception {
-		String className = rel.getName()+"InstancesImpl";
-		String packageName = cu.getContext().getPackageDeclaration().getName()+".v"+getTimestampAsVersion();
+		String className = rel.getName()+"Instances";
+		String packageName = cu.getContext().getPackageDeclaration().getName(); //+".v"+getTimestampAsVersion()
 		
 		for (Rule rule:rel.getRules()) {
 			assignTypes (cus,cu,rel,rule);
@@ -191,7 +197,7 @@ public class DefaultCompiler implements Compiler {
 	
 
 	private void printGeneratedCode(CompilationUnit cu,Location target,String localClassName,String code) throws Exception {
-		Writer out = target.getSrcOut(cu.getContext().getPackageDeclaration().getName() + '.' + localClassName);
+		Writer out = target.getSrcOut(cu.getContext().getPackageDeclaration().getName(),localClassName);
 		out.write(code);
 		out.close();
 	}

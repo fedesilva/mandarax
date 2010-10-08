@@ -1,4 +1,4 @@
-package test.org.mandarax.compiler;
+package test.org.mandarax.compiler.reldef4;
 rel Father(String father,String child) queries getFather(child),isFather(father,child),getChildren(father),getFatherAndChild() {
 	rule1: -> Father("Jens","Max");
 	rule2: -> Father("Klaus","Jens");
