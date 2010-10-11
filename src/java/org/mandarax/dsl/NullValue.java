@@ -11,6 +11,7 @@
 
 package org.mandarax.dsl;
 
+import java.util.Collection;
 import java.util.List;
 
 
@@ -42,5 +43,14 @@ public class NullValue extends Expression {
 	@Override
 	public List<Expression> getChildren() {
 		return EMPTY_LIST;
+	}
+	
+	/**
+	 * Indicates whether this expression is constructed from a list of given expressions. 
+	 * @param boundExpressions
+	 * @return
+	 */
+	public boolean isGroundWRT(Collection<Expression> boundExpressions) {
+		return true;
 	}
 }

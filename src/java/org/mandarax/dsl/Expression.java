@@ -60,7 +60,7 @@ public abstract class Expression extends ASTNode {
 	public abstract List<Expression> getChildren();
 	
 	/**
-	 * Indicates whether this expression is contructed from a list of given expressions. 
+	 * Indicates whether this expression is constructed from a list of given expressions. 
 	 * @param boundExpressions
 	 * @return
 	 */
