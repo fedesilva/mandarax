@@ -12,6 +12,7 @@
 package org.mandarax.dsl;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -57,4 +58,21 @@ public abstract class Expression extends ASTNode {
 	 * @return
 	 */
 	public abstract List<Expression> getChildren();
+	
+	/**
+	 * Indicates whether this expression is contructed from a list of given expressions. 
+	 * @param boundExpressions
+	 * @return
+	 */
+	public boolean isGroundWRT(Collection<Expression> boundExpressions) {
+		if (boundExpressions.contains(this)) return true;
+		else {
+			List<Expression> children = getChildren();
+			if (children.isEmpty()) return false;
+			for (Expression child:children) {
+				if (!isGroundWRT(boundExpressions)) return false;
+			}
+			return true;
+		}
+	}
 }
