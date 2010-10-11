@@ -87,4 +87,11 @@ public class ConstructorInvocation extends Expression {
 		return true;
 	}
 
+	@Override
+	public List<Expression> getChildren() {
+		List<Expression> children = new ArrayList<Expression>();
+		children.addAll(this.parameters);
+		return children;
+	}
+	
 }

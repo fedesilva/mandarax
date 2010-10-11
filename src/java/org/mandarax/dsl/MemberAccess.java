@@ -110,5 +110,12 @@ public class MemberAccess extends Expression {
 		return true;
 	}
 
+	@Override
+	public List<Expression> getChildren() {
+		List<Expression> children = new ArrayList<Expression>();
+		children.add(this.objectReference);
+		children.addAll(this.parameters);
+		return children;
+	}
 
 }

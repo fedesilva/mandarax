@@ -11,6 +11,9 @@
 
 package org.mandarax.dsl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * Conditional expression (cond?ifTrue:ifFalse).
@@ -105,5 +108,14 @@ public class ConditionalExpression extends Expression {
 		} else if (!ifTrue.equals(other.ifTrue))
 			return false;
 		return true;
+	}
+	
+	@Override
+	public List<Expression> getChildren() {
+		List<Expression> children = new ArrayList<Expression>(3);
+		children.add(this.condition);
+		children.add(this.ifTrue);
+		children.add(this.ifFalse);
+		return children;
 	}
 }

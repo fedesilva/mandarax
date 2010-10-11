@@ -11,6 +11,9 @@
 
 package org.mandarax.dsl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * Cast expression.
@@ -74,6 +77,13 @@ public class CastExpression extends Expression {
 		} else if (!type.equals(other.type))
 			return false;
 		return true;
+	}
+	
+	@Override
+	public List<Expression> getChildren() {
+		List<Expression> children = new ArrayList<Expression>(1);
+		children.add(objectReference);
+		return children;
 	}
 	
 }

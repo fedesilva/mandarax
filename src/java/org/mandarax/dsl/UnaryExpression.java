@@ -13,6 +13,9 @@ package org.mandarax.dsl;
 
 import static org.mandarax.dsl.Utils.nameForUnOp;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Expression using an unary operator such as ! or -.
  * @author jens dietrich
@@ -80,6 +83,13 @@ public class UnaryExpression extends Expression {
 		} else if (!part.equals(other.part))
 			return false;
 		return true;
+	}
+	
+	@Override
+	public List<Expression> getChildren() {
+		List<Expression> children = new ArrayList<Expression>(1);
+		children.add(this.part);
+		return children;
 	}
 	
 }

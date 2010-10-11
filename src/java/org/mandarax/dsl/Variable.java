@@ -13,6 +13,9 @@ package org.mandarax.dsl;
 
 import static org.mandarax.dsl.Utils.nameForUnOp;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Variable/object references by name.
  * @author jens dietrich
@@ -66,6 +69,11 @@ public class Variable extends Expression {
 	
 	protected void appendTo(StringBuffer b) {
 		b.append(name);
+	}
+	
+	@Override
+	public List<Expression> getChildren() {
+		return EMPTY_LIST;
 	}
 	
 

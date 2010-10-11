@@ -115,5 +115,12 @@ public class FunctionInvocation extends Expression {
 	public void setRelationship(RelationshipDefinition relationship) {
 		this.relationship = relationship;
 	}
+	
+	@Override
+	public List<Expression> getChildren() {
+		List<Expression> children = new ArrayList<Expression>();
+		children.addAll(this.parameters);
+		return children;
+	}
 
 }

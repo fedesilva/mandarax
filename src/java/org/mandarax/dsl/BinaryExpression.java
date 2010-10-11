@@ -13,6 +13,9 @@ package org.mandarax.dsl;
 
 import static org.mandarax.dsl.Utils.nameForBinOp;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * Represents binary expressions having two children connected by boolean or arithmetic operators.
@@ -91,5 +94,13 @@ public class BinaryExpression extends Expression {
 			return false;
 		return true;
 	}
+	@Override
+	public List<Expression> getChildren() {
+		List<Expression> children = new ArrayList<Expression>(2);
+		children.add(left);
+		children.add(right);
+		return children;
+	}
+	
 	
 }

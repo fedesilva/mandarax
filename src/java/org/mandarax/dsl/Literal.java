@@ -11,6 +11,8 @@
 
 package org.mandarax.dsl;
 
+import java.util.List;
+
 /**
  * Abstract superclass for literals.
  * @author jens dietrich
@@ -28,4 +30,8 @@ public abstract class Literal<T> extends Expression {
 		return true;
 	}
 
+	@Override
+	public List<Expression> getChildren() {
+		return EMPTY_LIST;
+	}
 }

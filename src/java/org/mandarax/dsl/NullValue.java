@@ -11,6 +11,8 @@
 
 package org.mandarax.dsl;
 
+import java.util.List;
+
 
 /**
  * Null value.
@@ -35,5 +37,10 @@ public class NullValue extends Expression {
 
 	protected void appendTo(StringBuffer b) {
 		b.append("null");
+	}
+	
+	@Override
+	public List<Expression> getChildren() {
+		return EMPTY_LIST;
 	}
 }

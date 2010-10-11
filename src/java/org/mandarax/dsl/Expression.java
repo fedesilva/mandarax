@@ -11,6 +11,10 @@
 
 package org.mandarax.dsl;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 
 /**
  * Superclass for expression AST nodes.
@@ -18,6 +22,8 @@ package org.mandarax.dsl;
  */
 
 public abstract class Expression extends ASTNode {
+	
+	final static List<Expression> EMPTY_LIST = Collections.unmodifiableList(new ArrayList<Expression>(0));
 	
 	private Class type = null;
 
@@ -46,4 +52,9 @@ public abstract class Expression extends ASTNode {
 		super.reset();
 		this.type = null;
 	}
+	/**
+	 * Get a collection of children - those are nexted expressions.
+	 * @return
+	 */
+	public abstract List<Expression> getChildren();
 }
