@@ -73,7 +73,7 @@ public abstract class Expression extends ASTNode {
 			List<Expression> children = getChildren();
 			if (children.isEmpty()) return false;
 			for (Expression child:children) {
-				if (!isGroundWRT(boundExpressions)) return false;
+				if (!child.isGroundWRT(boundExpressions)) return false;
 			}
 			return true;
 		}

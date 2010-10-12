@@ -28,20 +28,21 @@ import org.mandarax.dsl.RelationshipDefinition;
 import org.mandarax.dsl.Rule;
 import org.mandarax.dsl.FunctionInvocation;
 import org.mandarax.dsl.Variable;
+import org.mandarax.dsl.util.Resolver;
 
 import static org.mandarax.compiler.impl.CompilerUtils.*;
 
 /**
  * Algorithm to organise the prerequisites in rules in order to optimse code generation. 
- * This is a singleton.
  * @author jens dietrich
  */
 public class Scheduler {
 	
-	public static Scheduler DEFAULT = new Scheduler();
+	private Resolver resolver = null;
 	
-	private Scheduler() {
+	public Scheduler(Resolver resolver) {
 		super();
+		this.resolver = resolver;
 	}
 
 	/**
@@ -52,7 +53,7 @@ public class Scheduler {
 	 */
 	public List<Prereq> getPrerequisites(Rule rule,FunctionDeclaration query) throws CompilerException {
 	
-		Collection<String> variables = initVariables(rule,query);
+		Collection<Expression> variables = initVariables(rule,query);
 		
 		List<Expression> body = new ArrayList<Expression>();
 		body.addAll(rule.getBody());
@@ -74,7 +75,7 @@ public class Scheduler {
 		return prereqs;
 	}
 	
-	private Prereq addOneUnresolved(List<Expression> body, List<Prereq> prereqs,Collection<String> variables,Prereq last) {
+	private Prereq addOneUnresolved(List<Expression> body, List<Prereq> prereqs,Collection<Expression> boundExpressions,Prereq last) {
 		if (body.isEmpty()) return last;
 		
 		// TODO: optimise - sort first
@@ -83,73 +84,67 @@ public class Scheduler {
 		Prereq prereq = new Prereq();
 		prereq.setPrevious(last);
 		prereq.setExpression(selected);
-		List<String> newVariables = getUnresolvedVariables(selected,variables);
+		Collection<Expression> newVariables = getUnresolvedVariables(selected,boundExpressions);
 		prereq.setNewlyBoundVariables(newVariables);
-		variables.addAll(newVariables);
-		Collection<String> vars = new LinkedHashSet<String>();
-		vars.addAll(variables);
-		prereq.setBoundVariables(vars);
+		boundExpressions.addAll(newVariables);
+		Collection<Expression> bound = new LinkedHashSet<Expression>();
+		bound.addAll(boundExpressions);
+		prereq.setBoundVariables(bound);
 		prereqs.add(prereq);
 		return prereq;
 		
 	}
 	
-	private List<String> getUnresolvedVariables(Expression expression,Collection<String> resolvedVariables) {
-		List<String> varNames = new ArrayList<String>();
-		for (String varName:getNames(expression.getVariables())) {
-			if (!resolvedVariables.contains(varName)) {
-				varNames.add(varName);
+	private Collection<Expression> getUnresolvedVariables(Expression expression,Collection<Expression> resolvedVariables) {
+		Collection<Expression> unresolved = new LinkedHashSet<Expression>();
+		for (Variable var:expression.getVariables()) {
+			if (!resolvedVariables.contains(var)) {
+				unresolved.add(var);
 			}
 		}
-		return varNames;
+		return unresolved;
 	}
 
 	// add the prereqs for which all variables are known
-	private Prereq addAllResolved(List<Expression> body, List<Prereq> prereqs,Collection<String> variables,Prereq last) {
+	private Prereq addAllResolved(List<Expression> body, List<Prereq> prereqs,Collection<Expression> boundExpressions,Prereq last) {
 		for (Iterator<Expression> iter = body.iterator();iter.hasNext();) {
 			Expression expression = iter.next();
-			if (variables.containsAll(getNames(expression.getVariables()))) {
+			if (expression.isGroundWRT(boundExpressions)) {
 				Prereq prereq = new Prereq();
 				prereq.setPrevious(last);
 				last = prereq;
-				prereq.setNewlyBoundVariables(new ArrayList<String>());
+				prereq.setNewlyBoundVariables(new ArrayList<Expression>());
 				prereq.setExpression(expression);
 				prereqs.add(prereq);
 				iter.remove();
-				Collection<String> vars = new LinkedHashSet<String>();
-				vars.addAll(variables);
-				prereq.setBoundVariables(vars);
+				Collection<Expression> bound = new LinkedHashSet<Expression>();
+				bound.addAll(boundExpressions);
+				prereq.setBoundVariables(bound);
 			}
 		}
 		return last;
 	}
 
-	private Collection<String> initVariables(Rule rule,FunctionDeclaration query) throws CompilerException {
-		Collection<String> variables = new HashSet<String>();
+	private Collection<Expression> initVariables(Rule rule,FunctionDeclaration query) throws CompilerException {
+		Collection<Expression> expressions = new HashSet<Expression>();
 		
 		// add references to object declaration 
 		for (ObjectDeclaration objDecl:rule.getContext().getObjectDeclarations()) {
-			variables.add(objDecl.getName());
+			Variable v = new Variable(objDecl.getPosition(),rule.getContext(),objDecl.getName());
+			v.setType(resolver.getType(rule.getContext(),objDecl.getType()));
+			expressions.add(v);
 		}
 		
-		// add vars from rule head that are query parameters
+		// add expressions from rule head that are query parameters
 		RelationshipDefinition rel = query.getRelationship();
 		boolean[] sign = query.getSignature();
 		for (int i=0;i<sign.length;i++) {
 			Expression param = rule.getHead().getParameters().get(i);
 			if (sign[i]) {
-				if (param instanceof Variable) {
-					variables.add(((Variable) param).getName());
-				}
-				else if (param instanceof Literal) {
-					// ignore
-				}
-				else {
-					throw new CompilerException("Only flat terms are allowed in rule heads. Found term " + param + " in rule " + rule);
-				}
+				expressions.add(param);
 			}
 		}
 		
-		return variables;
+		return expressions;
 	}
 }

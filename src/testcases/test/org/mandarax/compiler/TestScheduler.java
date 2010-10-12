@@ -14,16 +14,14 @@ package test.org.mandarax.compiler;
 import static org.junit.Assert.*;
 import static test.org.mandarax.compiler.TestUtils.*;
 import static test.org.mandarax.dsl.TestUtils.readRelationshipDefinition;
-
 import java.util.List;
 import org.junit.Test;
 import org.mandarax.compiler.impl.Prereq;
 import org.mandarax.compiler.impl.Scheduler;
 import org.mandarax.dsl.Expression;
-import org.mandarax.dsl.FunctionDeclaration;
-import org.mandarax.dsl.Position;
 import org.mandarax.dsl.RelationshipDefinition;
 import org.mandarax.dsl.Rule;
+import org.mandarax.dsl.util.DefaultResolver;
 
 /**
  * Tests for scheduler.
@@ -34,7 +32,7 @@ public class TestScheduler {
 	public void test1() throws Exception {
 		RelationshipDefinition rel = readRelationshipDefinition("rel p1(int value) queries query1(value){\nrule1: x>2 & p2(x,y) & y==42 -> p1(x);\n}");
 		Rule rule = rel.getRules().get(0);
-		List<Prereq> prereqs = Scheduler.DEFAULT.getPrerequisites(rule,rel.getQueries().get(0));
+		List<Prereq> prereqs = new Scheduler(new DefaultResolver()).getPrerequisites(rule,rel.getQueries().get(0));
 		
 		for (Prereq prereq:prereqs) {
 			System.out.println(prereq.getExpression());
@@ -59,7 +57,7 @@ public class TestScheduler {
 		assertEquals(0,prereqs.get(0).getNewlyBoundVariables().size());
 		assertEquals(1,prereqs.get(1).getNewlyBoundVariables().size());
 		assertEquals(0,prereqs.get(2).getNewlyBoundVariables().size());
-		assertTrue(prereqs.get(1).getNewlyBoundVariables().contains("y"));
+		assertTrue(toStrings(prereqs.get(1).getNewlyBoundVariables()).contains("y"));
 	}
 	
 	@Test
@@ -67,7 +65,7 @@ public class TestScheduler {
 		RelationshipDefinition rel = readRelationshipDefinition("rel p1(int value) queries query1(value){\nrule1: p2(x,y) & y==42 & x>2 -> p1(x);\n}");
 		Rule rule = rel.getRules().get(0);
 		
-		List<Prereq> prereqs = Scheduler.DEFAULT.getPrerequisites(rule,rel.getQueries().get(0));
+		List<Prereq> prereqs =  new Scheduler(new DefaultResolver()).getPrerequisites(rule,rel.getQueries().get(0));
 		
 		for (Prereq prereq:prereqs) {
 			System.out.println(prereq.getExpression());
@@ -92,7 +90,7 @@ public class TestScheduler {
 		assertEquals(0,prereqs.get(0).getNewlyBoundVariables().size());
 		assertEquals(1,prereqs.get(1).getNewlyBoundVariables().size());
 		assertEquals(0,prereqs.get(2).getNewlyBoundVariables().size());
-		assertTrue(prereqs.get(1).getNewlyBoundVariables().contains("y"));
+		assertTrue(toStrings(prereqs.get(1).getNewlyBoundVariables()).contains("y"));
 	}
 	
 	@Test
@@ -101,7 +99,7 @@ public class TestScheduler {
 		RelationshipDefinition rel = readRelationshipDefinition("rel p1(int value) queries query1(value){\nrule1:  y==42 & x>2 & p2(x,y) -> p1(x);\n}");
 		Rule rule = rel.getRules().get(0);
 		
-		List<Prereq> prereqs = Scheduler.DEFAULT.getPrerequisites(rule,rel.getQueries().get(0));
+		List<Prereq> prereqs =  new Scheduler(new DefaultResolver()).getPrerequisites(rule,rel.getQueries().get(0));
 		
 		for (Prereq prereq:prereqs) {
 			System.out.println(prereq.getExpression());
@@ -126,7 +124,7 @@ public class TestScheduler {
 		assertEquals(0,prereqs.get(0).getNewlyBoundVariables().size());
 		assertEquals(1,prereqs.get(1).getNewlyBoundVariables().size());
 		assertEquals(0,prereqs.get(2).getNewlyBoundVariables().size());
-		assertTrue(prereqs.get(1).getNewlyBoundVariables().contains("y"));
+		assertTrue(toStrings(prereqs.get(1).getNewlyBoundVariables()).contains("y"));
 	}
 	
 }

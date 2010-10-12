@@ -4,7 +4,6 @@ rel Father(String father,String child) queries getFather(child),isFather(father,
 	rule2: -> Father("Jens","Xiomara");
 	rule3: -> Father("Klaus","Jens");
 	rule4: -> Father("Otto","Klaus");
-	
 }
 rel GrandFather(String grandFather,String grandChild) queries getGrandChildren(grandFather),getGrandFather(grandChild),isGrandFather(grandFather,grandChild),getAll(){
 	rule1: Father(x,y) & Father(y,z) -> GrandFather(x,z);	

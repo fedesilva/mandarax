@@ -43,6 +43,7 @@ public class GenerateCodeForTesting {
 //		}
 		
 		compile(new File("src/testcases/test/org/mandarax/compiler/reldef4.rel"));
+		compile(new File("src/testcases/test/org/mandarax/compiler/reldef5.rel"));
 	}
 
 	private static void compile(File file) throws Exception {

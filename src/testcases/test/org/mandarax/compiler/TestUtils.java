@@ -2,9 +2,15 @@ package test.org.mandarax.compiler;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.Collection;
+
 import org.mandarax.dsl.CompilationUnit;
+import org.mandarax.dsl.Expression;
 import org.mandarax.dsl.Rule;
 import org.mandarax.dsl.parser.ScriptReader;
+
+import com.google.common.base.Function;
+import com.google.common.collect.Collections2;
 
 
 /**
@@ -28,6 +34,12 @@ public class TestUtils {
 	
 	public static InputStream getStream(String s) throws Exception {
 		return new ByteArrayInputStream(s.getBytes("UTF-8"));
+	}
+	
+	public static Collection<String> toStrings(Collection<Expression> expressions) {
+		return Collections2.transform(expressions, new Function<Expression,String>() {
+			@Override
+			public String apply(Expression x) {return x.toString();}});
 	}
 	
 }

@@ -278,6 +278,8 @@ public class DefaultCompiler implements Compiler {
 		}
 		
 		// build type reasoner
+		// TODO: type reasoner should also override method to associate function invocations with types
+		// sometimes types for complex expressions are known (e.g. from referenced slots in predicates)
 		final TypeReasoner typeReasoner = new AbstractTypeReasoner() {
 			@Override
 			public Class getVarType(Variable expression, Resolver resolver) throws TypeReasoningException {

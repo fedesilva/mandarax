@@ -32,9 +32,10 @@ import static com.google.common.base.Preconditions.*;
  */
 public class Prereq {
 	private Expression expression = null;
-	private Collection<String> newlyBoundVariables = new LinkedHashSet<String>(); 
+	private Collection<Expression> newlyBoundVariables = new LinkedHashSet<Expression>(); 
 	// a collection of bound variables
-	private Collection<String> boundVariables = new LinkedHashSet<String>();
+	private Collection<Expression> boundVariables = new LinkedHashSet<Expression>();
+	
 	// the previous prerequisite
 	private Prereq previous = null;
 	
@@ -44,10 +45,10 @@ public class Prereq {
 	public void setExpression(Expression expression) {
 		this.expression = expression;
 	}
-	public Collection<String> getNewlyBoundVariables() {
+	public Collection<Expression> getNewlyBoundVariables() {
 		return newlyBoundVariables;
 	}
-	public void setNewlyBoundVariables(Collection<String> newlyBoundVariables) {
+	public void setNewlyBoundVariables(Collection<Expression> newlyBoundVariables) {
 		this.newlyBoundVariables = newlyBoundVariables;
 	}
 	
@@ -82,10 +83,10 @@ public class Prereq {
 		}
 		throw new CompilerException("Cannot find matching query for function invocation: " + finv);
 	}
-	public Collection<String> getBoundVariables() {
+	public Collection<Expression> getBoundVariables() {
 		return boundVariables;
 	}
-	public void setBoundVariables(Collection<String> boundVariables) {
+	public void setBoundVariables(Collection<Expression> boundVariables) {
 		this.boundVariables = boundVariables;
 	}
 	
