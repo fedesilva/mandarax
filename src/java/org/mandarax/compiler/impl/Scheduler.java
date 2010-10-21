@@ -19,6 +19,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
+
+import org.apache.log4j.Logger;
 import org.mandarax.compiler.CompilerException;
 import org.mandarax.dsl.Expression;
 import org.mandarax.dsl.FunctionDeclaration;
@@ -33,10 +35,12 @@ import org.mandarax.dsl.util.Resolver;
 import static org.mandarax.compiler.impl.CompilerUtils.*;
 
 /**
- * Algorithm to organise the prerequisites in rules in order to optimse code generation. 
+ * Algorithm to organise the prerequisites in rules in order to optimise code generation. 
  * @author jens dietrich
  */
 public class Scheduler {
+	
+	public static org.apache.log4j.Logger LOGGER = Logger.getLogger(Scheduler.class);
 	
 	private Resolver resolver = null;
 	
@@ -52,6 +56,8 @@ public class Scheduler {
 	 * @throws CompilerException
 	 */
 	public List<Prereq> getPrerequisites(Rule rule,FunctionDeclaration query) throws CompilerException {
+		
+		LOGGER.info("Scheduling prerequisites in " + rule);
 	
 		Collection<Expression> variables = initVariables(rule,query);
 		
@@ -91,6 +97,9 @@ public class Scheduler {
 		bound.addAll(boundExpressions);
 		prereq.setBoundVariables(bound);
 		prereqs.add(prereq);
+		
+		LOGGER.debug("Adding prerequisite " + prereq.getExpression() + ", newely bound variables: " + prereq.getNewlyBoundVariables());
+		
 		return prereq;
 		
 	}
@@ -120,6 +129,8 @@ public class Scheduler {
 				Collection<Expression> bound = new LinkedHashSet<Expression>();
 				bound.addAll(boundExpressions);
 				prereq.setBoundVariables(bound);
+				
+				LOGGER.debug("Adding prerequisite " + prereq.getExpression() + ", newely bound variables: " + prereq.getNewlyBoundVariables());
 			}
 		}
 		return last;

@@ -15,6 +15,8 @@ import java.io.*;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.*;
+
+import org.apache.log4j.Logger;
 import org.mandarax.MandaraxException;
 import org.mandarax.compiler.*;
 import org.mandarax.compiler.Compiler;
@@ -36,6 +38,8 @@ import static org.mandarax.compiler.impl.CompilerUtils.*;
  * @author jens dietrich
  */
 public class DefaultCompiler implements Compiler {
+	
+	public static org.apache.log4j.Logger LOGGER = Logger.getLogger(DefaultCompiler.class);
 	
 	private Verifier verifier = new VerifyAll();
 	private VerificationErrorReporter verificationErrorReporter = new DefaultVerificationErrorReporter();
@@ -128,8 +132,11 @@ public class DefaultCompiler implements Compiler {
 		for (CompilationUnit cu:cus) {
 			for (RelationshipDefinition rel:cu.getRelationshipDefinitions()) {
 				try {
+					LOGGER.info("Generating classes for " + rel + " defined in " + cu);
+					LOGGER.info("Output to: " + target);
 					createRelationshipQueryImplementation(target,cus,cu,rel);
 				} catch (Exception e) {
+					LOGGER.error(e);
 					throw new CompilerException(cu,rel.getPosition(),"Cannot generate query interface for relationship " + rel.getName(),e);
 				}
 				
@@ -142,8 +149,11 @@ public class DefaultCompiler implements Compiler {
 		for (CompilationUnit cu:cus) {
 			for (RelationshipDefinition rel:cu.getRelationshipDefinitions()) {
 				try {
+					LOGGER.info("Generating interfaces for " + rel + " defined in " + cu);
+					LOGGER.info("Output to: " + target);
 					createRelationshipType (target,cu,rel);
 				} catch (Exception e) {
+					LOGGER.error(e);
 					throw new CompilerException(cu,rel.getPosition(),"Cannot generate class to represent relationship " + rel.getName(),e);
 				}
 				
@@ -214,13 +224,18 @@ public class DefaultCompiler implements Compiler {
 	// associates expressions with type information
 	// keep public for unit testing
 	public void assignTypes (Collection<CompilationUnit> cus,CompilationUnit cu, RelationshipDefinition rel,Rule rule) throws CompilerException, ResolverException {
+		LOGGER.debug("Assigning types to terms in " + rule);
+		
 		// types for all variables and declared (imported) objects will be stored here
 		final Map<String,Class> objTypeMap = new HashMap<String,Class>();
-		final Map<Variable,Class> varTypeMap = new HashMap<Variable,Class>();
+		final Map<Expression,Class> varTypeMap = new HashMap<Expression,Class>();
 		
 		// assign types for imported objects
 		for (ObjectDeclaration objDecl:cu.getObjectDeclarations()) {
-			objTypeMap.put(objDecl.getName(),resolver.getType(cu.getContext(),objDecl.getType()));
+			String name = objDecl.getName();
+			Class type = resolver.getType(cu.getContext(),objDecl.getType());
+			objTypeMap.put(name,type);
+			LOGGER.debug("Adding type info from object declaration to type map: " + name + " -> " + type);
 		}
 		
 		// collect relationships
@@ -241,19 +256,20 @@ public class DefaultCompiler implements Compiler {
 				Class type2 = resolver.getType(cu.getContext(),rel.getSlotDeclarations().get(i).getType());
 				if (type==null) {
 					varTypeMap.put((Variable)term,type2);
+					LOGGER.debug("Adding type info from rule head to type map: " + term + " -> " + type2);
 				}
 				else {
 					checkTypeConsistency(cu,rule,type,type2);
 					varTypeMap.put((Variable)term,type);
+					LOGGER.debug("Adding type info from rule head to type map: " + term + " -> " + type);
 				}
 			}
 		}
 		// body
 		for (Expression expression:rule.getBody()) {
-			
+			RelationshipDefinition rel2 = null;
 			for (Variable var:expression.getVariables()) {
 				if (!varTypeMap.containsKey(var)) {
-					RelationshipDefinition rel2 = null;
 					int pos = -1;
 					if (expression instanceof FunctionInvocation) {
 						FunctionInvocation fi = (FunctionInvocation)expression;
@@ -261,21 +277,44 @@ public class DefaultCompiler implements Compiler {
 						for (int i=0;i<fi.getParameters().size();i++) {
 							if (fi.getParameters().get(i)==var) pos=i;
 						}
-						if (pos==-1) throw new CompilerException(cu,var.getPosition(),"The variable " + var + " introduced in " + rule + " must be a top level term in the relationship " + rel2.getName());
+						
 					}
-					Class type = objTypeMap.get((var).getName());
-					// else get type from slot definition
-					
-					Class type2 = resolver.getType(rel2.getContext(),rel2.getSlotDeclarations().get(pos).getType());
-					if (type==null) {
-						varTypeMap.put(var,type2);
+					if (pos==-1) {
+						// do not throw an error here - we now also support complex expressions having their types assigned by slots in rels
+						// throw new CompilerException(cu,var.getPosition(),"The variable " + var + " introduced in " + rule + " must be a top level term in the relationship " + rel2.getName());
 					}
 					else {
-						checkTypeConsistency(cu,rule,type,type2);
-						varTypeMap.put(var,type);
+						Class type = objTypeMap.get((var).getName());
+						// else get type from slot definition
+						
+						Class type2 = resolver.getType(rel2.getContext(),rel2.getSlotDeclarations().get(pos).getType());
+						if (type==null) {
+							varTypeMap.put(var,type2);
+							LOGGER.debug("Adding type info from prerequisite " + expression + " to type map: " + var + " -> " + type2);
+						}
+						else {
+							checkTypeConsistency(cu,rule,type,type2);
+							varTypeMap.put(var,type);
+							LOGGER.debug("Adding type info from prerequisite " + expression + " to type map: " + var + " -> " + type);
+						}
 					}
 				}
 			}
+			
+			// add types to complex expressions having their types assigned by slots in rels
+			if (expression instanceof FunctionInvocation) {
+				FunctionInvocation fi = (FunctionInvocation)expression;
+				rel2 = this.findRelationshipDefinition(cus,fi.getFunction(),fi.getParameters().size());
+				for (int i=0;i<fi.getParameters().size();i++) {
+					Expression part = fi.getParameters().get(i);
+					if (!(part instanceof Variable)) {
+						Class type = resolver.getType(rel2.getContext(),rel2.getSlotDeclarations().get(i).getType());
+						varTypeMap.put(part,type);
+						LOGGER.debug("Adding type info from prerequisite " + expression + " to type map: " + part + " -> " + type);
+					}
+				}
+			}
+			
 		}
 		
 		// build type reasoner
@@ -283,8 +322,14 @@ public class DefaultCompiler implements Compiler {
 		// sometimes types for complex expressions are known (e.g. from referenced slots in predicates)
 		final TypeReasoner typeReasoner = new AbstractTypeReasoner() {
 			@Override
-			public Class getVarType(Variable expression, Resolver resolver) throws TypeReasoningException {
+			protected Class doGetType(Variable expression, Resolver resolver,Collection<RelationshipDefinition> rels) throws TypeReasoningException {
 				return varTypeMap.get(expression);
+			}
+			@Override
+			public Class getType(Expression expression, Resolver resolver,Collection<RelationshipDefinition> rels) throws TypeReasoningException {
+				Class type = varTypeMap.get(expression);
+				if (type!=null) return type; // we can associate complex terms directly with types through slots 
+				else return super.getType(expression,resolver, rels);
 			}
 		};
 		

@@ -12,6 +12,7 @@ package test.org.mandarax.dsl;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import org.junit.Test;
@@ -37,7 +38,7 @@ public class TypeReasonerTests {
 			this.varTypes = varTypes;
 		}
 		@Override
-		public Class getVarType(Variable expression, Resolver resolver) throws TypeReasoningException {
+		public Class doGetType(Variable expression, Resolver resolver,Collection<RelationshipDefinition> rels) throws TypeReasoningException {
 			Class clazz = varTypes.get(expression.getName());
 			return clazz;
 		}

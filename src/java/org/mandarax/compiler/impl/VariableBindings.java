@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.mandarax.compiler.CompilerException;
 import org.mandarax.dsl.Context;
 import org.mandarax.dsl.Expression;
@@ -33,6 +34,8 @@ import org.mandarax.dsl.VariableDeclaration;
  * @author jens dietrich
  */
 public class VariableBindings {
+	
+	public static org.apache.log4j.Logger LOGGER = Logger.getLogger(VariableBindings.class);
 	
 	private Map<String,String> map = new HashMap<String,String>();
 	private List<ObjectDeclaration> objectDeclarations = new ArrayList<ObjectDeclaration>();

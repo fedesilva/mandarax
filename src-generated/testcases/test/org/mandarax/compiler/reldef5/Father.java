@@ -1,8 +1,10 @@
-package test.org.mandarax.compiler.reldef4;
+package test.org.mandarax.compiler.reldef5;
+ 
+import test.org.mandarax.compiler.Person;
 
 /**
  * Class representing the relationship <strong>Father</strong>.
- * @version Oct 22, 2010 12:55:25 PM 
+ * @version Oct 22, 2010 12:51:27 PM 
  */
 public class Father {
 

@@ -1,0 +1,13 @@
+package test.org.mandarax.compiler.reldef5;
+import test.org.mandarax.compiler.Person;
+rel Father(String father,String child) queries getFather(child),isFather(father,child),getChildren(father),getFatherAndChild() {
+	rule1: -> Father("Jens","Max");
+	rule2: -> Father("Jens","Xiomara");
+	rule3: -> Father("Klaus","Jens");
+	rule4: -> Father("Otto","Klaus");
+}
+// note that we can only support one query isGrandFather(grandFather,grandChild) 
+// we cannot bind unknown terms!
+rel GrandFather(Person grandFather,Person grandChild) queries isGrandFather(grandFather,grandChild){
+	rule1: Father(x.name,y.name) & Father(y.name,z.name) -> GrandFather(x,z);	
+}

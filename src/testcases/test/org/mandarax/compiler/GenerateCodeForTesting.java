@@ -12,6 +12,8 @@
 package test.org.mandarax.compiler;
 
 import java.io.*;
+
+import org.apache.log4j.Logger;
 import org.mandarax.compiler.CompilationMode;
 import org.mandarax.compiler.Compiler;
 import org.mandarax.compiler.CompilerException;
@@ -24,6 +26,7 @@ import org.mandarax.compiler.impl.DefaultCompiler;
  */
 public class GenerateCodeForTesting {
 
+	public static final Logger LOGGER = Logger.getLogger(GenerateCodeForTesting.class);
 
 	public static void main(String[] args) throws Exception {
 //		for (File file:new File("src/testcases/test/org/mandarax/compiler").listFiles(new FileFilter() {
@@ -37,6 +40,7 @@ public class GenerateCodeForTesting {
 //		}
 		
 		compile(new File("src/testcases/test/org/mandarax/compiler/reldef4.rel"));
+		//compile(new File("src/testcases/test/org/mandarax/compiler/reldef5.rel"));
 	}
 
 	private static void compile(File file) throws Exception {
@@ -59,7 +63,7 @@ public class GenerateCodeForTesting {
 		compiler.compile(location,CompilationMode.INTERFACES_ONLY,file);
 		compiler.compile(location,CompilationMode.CLASSES_ONLY,file);
 		
-		System.out.println("Compiled rules from " + file);
+		LOGGER.info("Compiled rules from " + file);
 	}
 
 }

@@ -14,6 +14,7 @@ package org.mandarax.compiler;
 import java.io.File;
 import java.net.URL;
 
+import org.apache.log4j.Logger;
 import org.mandarax.MandaraxException;
 import org.mandarax.dsl.parser.ScriptException;
 /**
@@ -21,6 +22,8 @@ import org.mandarax.dsl.parser.ScriptException;
  * @author jens dietrich
  */
 public interface Compiler {
+	
+	
 	/**
 	 * Compile the sources.
 	 * @param target the location describing where the source code and byte code generated will be stored
