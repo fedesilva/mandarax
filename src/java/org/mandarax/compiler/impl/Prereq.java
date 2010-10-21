@@ -92,14 +92,14 @@ public class Prereq {
 	
 	private boolean isNewlyBound(Expression expression) {
 		for (Variable var:expression.getVariables()) {
-			if (!newlyBoundVariables.contains(var.getName())) return false;
+			if (!newlyBoundVariables.contains(var)) return false;
 		}
 		return true;
 	}
 	
 	private boolean isBound(Expression expression) {
 		for (Variable var:expression.getVariables()) {
-			if (!boundVariables.contains(var.getName())) return false;
+			if (!boundVariables.contains(var)) return false;
 		}
 		return true;
 	}

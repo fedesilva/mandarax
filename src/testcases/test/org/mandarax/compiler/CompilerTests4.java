@@ -24,7 +24,7 @@ import test.org.mandarax.compiler.reldef4.GrandFatherInstances;
  */
 public class CompilerTests4 {
 	@Test
-	public void test4a() throws Exception {
+	public void test1() throws Exception {
 		ResultSet<GrandFather> rs = new GrandFatherInstances().getAll();
 		
 		GrandFather gf = rs.next();
@@ -45,7 +45,7 @@ public class CompilerTests4 {
 	}
 	
 	@Test
-	public void test4b() throws Exception {
+	public void test2() throws Exception {
 		ResultSet<GrandFather> rs = new GrandFatherInstances().getGrandChildren("Klaus");
 		
 		GrandFather gf = rs.next();
@@ -61,7 +61,7 @@ public class CompilerTests4 {
 	}
 	
 	@Test
-	public void test4c() throws Exception {
+	public void test3() throws Exception {
 		ResultSet<GrandFather> rs = new GrandFatherInstances().getGrandFather("Max");
 		
 		GrandFather gf = rs.next();
@@ -73,7 +73,7 @@ public class CompilerTests4 {
 	}
 	
 	@Test
-	public void test5c() throws Exception {
+	public void test4() throws Exception {
 		ResultSet<GrandFather> rs = new GrandFatherInstances().isGrandFather("Klaus","Max");
 		
 		GrandFather gf = rs.next();
@@ -85,7 +85,7 @@ public class CompilerTests4 {
 	}
 	
 	@Test
-	public void test5d() throws Exception {
+	public void test5() throws Exception {
 		ResultSet<GrandFather> rs = new GrandFatherInstances().isGrandFather("Klaus","Jens");
 		
 		assertFalse(rs.hasNext());

@@ -190,6 +190,7 @@ public class DefaultCompiler implements Compiler {
 		bindings.put("className",className);
 		bindings.put("packageName",packageName);
 		bindings.put("ruleIndices",getIndices(rel.getRules()));
+		bindings.put("resolver",resolver);
 		
 		String generated = (String) TemplateRuntime.execute(getTemplate(RELATIONSHIP_QUERY_IMPLEMENTATION), bindings,Templates.registry);
 		printGeneratedCode(cu,target,rel.getName()+"Instances",generated);

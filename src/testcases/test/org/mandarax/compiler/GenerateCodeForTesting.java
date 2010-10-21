@@ -11,13 +11,7 @@
 
 package test.org.mandarax.compiler;
 
-import java.io.File;
-import java.io.FileFilter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.Writer;
-
+import java.io.*;
 import org.mandarax.compiler.CompilationMode;
 import org.mandarax.compiler.Compiler;
 import org.mandarax.compiler.CompilerException;
@@ -43,7 +37,6 @@ public class GenerateCodeForTesting {
 //		}
 		
 		compile(new File("src/testcases/test/org/mandarax/compiler/reldef4.rel"));
-		compile(new File("src/testcases/test/org/mandarax/compiler/reldef5.rel"));
 	}
 
 	private static void compile(File file) throws Exception {
