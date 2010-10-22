@@ -11,6 +11,8 @@
 
 package org.mandarax.dsl;
 
+import com.google.common.base.Function;
+
 /**
  * Integer literal.
  * @author jens dietrich
@@ -33,7 +35,8 @@ public class IntLiteral extends Literal<Integer> {
 		visitor.endVisit(this);
 	}
 	
-	protected void appendTo(StringBuffer b) {
+	@Override
+	public void appendTo(StringBuffer b,Function<Variable,String> conversion) {
 		b.append(Integer.toString(value));
 	}
 	

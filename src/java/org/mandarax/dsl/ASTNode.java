@@ -14,6 +14,8 @@ package org.mandarax.dsl;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.common.base.Function;
+
 /**
  * Superclass for all AST nodes.
  * @author jens dietrich
@@ -49,20 +51,30 @@ public abstract class ASTNode  implements Visitable {
 		this.context = context;
 	}
 	// method used for toString conversion
-	protected abstract void appendTo(StringBuffer b);
-	
-	// useful utility for printing: print a list in brackets, items separated by commas
-	protected void appendListOfNodes(List<? extends ASTNode> list, StringBuffer b,boolean brackets) {
-		appendListOfNodes(list,b,brackets,",");
+	public void appendTo(StringBuffer b) {
+		appendTo(b,new Function<Variable,String>() {
+			@Override
+			public String apply(Variable x) {
+				return x.getName();
+			}});
 	}
 	
-	protected void appendListOfNodes(List<? extends ASTNode> list, StringBuffer b,boolean brackets,String sep) {
+	// method used for toString conversion
+	public abstract void appendTo(StringBuffer b,Function<Variable,String> conversion);
+	
+	
+	// useful utility for printing: print a list in brackets, items separated by commas
+	protected void appendListOfNodes(List<? extends ASTNode> list, StringBuffer b,boolean brackets,Function<Variable,String> conversion) {
+		appendListOfNodes(list,b,brackets,",",conversion);
+	}
+	
+	protected void appendListOfNodes(List<? extends ASTNode> list, StringBuffer b,boolean brackets,String sep,Function<Variable,String> conversion) {
 		if (brackets) b.append('(');
 		boolean f = true;
 		for (ASTNode n:list) {
 			if (f) f=false;
 			else b.append(sep);
-			n.appendTo(b);
+			n.appendTo(b,conversion);
 		}
 		if (brackets) b.append(')');
 	}

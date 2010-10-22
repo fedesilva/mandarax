@@ -4,10 +4,11 @@
 		
 		// utility class used to keep track of variables bindings
 		class _Bindings {
-		@foreach{v:rule.variables}	private @{v.type.getName()} @{v.name} = @{ctrl.getBinding(v)};
+		@foreach{v:rule.variables}	private @{v.typeName} @{v.name} = @{ctrl.getBinding(v)}; // term @{v}
 		@end{}}
 		final _Bindings _bindings = new _Bindings();
 		
+
 		@foreach{prereq:body} @code{index=counter.next;}
 		// apply prerequisite @{prereq.expression}
 		@if{prereq.firstRelation}final ResourceIterator<@{prereq.rel.name}> iterator@{index} = @{prereq.rel.name}Instances.@{prereq.query.name}(@{prereq.printBoundParams('_bindings','_derivation.push()')});
@@ -36,7 +37,6 @@
                 	}
         	};
         @else{}@end{}
-
 		
 		
 		

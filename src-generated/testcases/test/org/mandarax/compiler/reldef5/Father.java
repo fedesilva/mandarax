@@ -4,7 +4,7 @@ import test.org.mandarax.compiler.Person;
 
 /**
  * Class representing the relationship <strong>Father</strong>.
- * @version Oct 22, 2010 12:51:27 PM 
+ * @version Oct 22, 2010 2:27:39 PM 
  */
 public class Father {
 

@@ -14,6 +14,8 @@ package org.mandarax.dsl;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.common.base.Function;
+
 /**
  * Constructor invocation.
  * @author jens dietrich
@@ -49,10 +51,11 @@ public class ConstructorInvocation extends Expression {
 		visitor.endVisit(this);
 	}
 	
-	protected void appendTo(StringBuffer b) {
+	@Override
+	public void appendTo(StringBuffer b,Function<Variable,String> conversion) {
 		b.append("new ");
 		b.append(type);
-		appendListOfNodes(parameters, b,true);
+		appendListOfNodes(parameters, b,true,conversion);
 	}
 
 	@Override

@@ -1,6 +1,8 @@
 package org.mandarax.dsl;
 
 import java.util.List;
+
+import com.google.common.base.Function;
 /**
  * Function declarations: [public|private] name(list of parameter names)
  * @author jens dietrich
@@ -44,8 +46,8 @@ public class FunctionDeclaration extends ASTNode {
 	public String getName() {
 		return name;
 	}
-	
-	protected void appendTo(StringBuffer b) {
+	@Override
+	public void appendTo(StringBuffer b,Function<Variable,String> conversion) {
 		b.append(visibility.name());
 		b.append(' ');
 		b.append(name);

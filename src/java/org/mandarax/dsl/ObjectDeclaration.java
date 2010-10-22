@@ -11,6 +11,8 @@
 
 package org.mandarax.dsl;
 
+import com.google.common.base.Function;
+
 
 /**
  * Represents the declaration of an object. 
@@ -67,14 +69,14 @@ public class ObjectDeclaration extends ASTNode {
 	}
 
 	@Override
-	protected void appendTo(StringBuffer b) {
+	public void appendTo(StringBuffer b,Function<Variable,String> conversion) {
 		b.append("object ");
 		b.append(type);
 		b.append(' ');
 		b.append(name);
 		if (defaultValueDeclaration!=null) {
 			b.append(" = ");
-			defaultValueDeclaration.appendTo(b);
+			defaultValueDeclaration.appendTo(b,conversion);
 		}
 		b.append(";");
 	}

@@ -10,6 +10,9 @@
  */
 
 package org.mandarax.dsl;
+
+import com.google.common.base.Function;
+
 /**
  * Import declaration.
  * @author jens dietrich
@@ -46,7 +49,7 @@ public class ImportDeclaration extends ASTNode {
 		return name;
 	}
 	
-	protected void appendTo(StringBuffer b) {
+	public void appendTo(StringBuffer b,Function<Variable,String> conversion) {
 		b.append("import ");
 		if (this.staticImport) {
 			b.append("static ");

@@ -10,6 +10,9 @@
  */
 
 package org.mandarax.dsl;
+
+import com.google.common.base.Function;
+
 /**
  * Package declaration.
  * @author jens dietrich
@@ -35,8 +38,8 @@ public class PackageDeclaration extends ASTNode {
 	public String getName() {
 		return name;
 	}
-	
-	protected void appendTo(StringBuffer b) {
+	@Override
+	public void appendTo(StringBuffer b,Function<Variable,String> conversion) {
 		b.append("package ");
 		b.append(name);
 		b.append(';');

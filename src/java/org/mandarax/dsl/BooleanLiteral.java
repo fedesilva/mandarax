@@ -11,6 +11,8 @@
 
 package org.mandarax.dsl;
 
+import com.google.common.base.Function;
+
 
 /**
  * Boolean literal.
@@ -34,7 +36,8 @@ public class BooleanLiteral extends Literal<Boolean> {
 		visitor.endVisit(this);
 	}
 	
-	protected void appendTo(StringBuffer b) {
+	@Override
+	public void appendTo(StringBuffer b,Function<Variable,String> conversion) {
 		b.append(value);
 	}
 

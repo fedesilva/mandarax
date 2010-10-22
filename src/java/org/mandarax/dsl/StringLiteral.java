@@ -11,6 +11,8 @@
 
 package org.mandarax.dsl;
 
+import com.google.common.base.Function;
+
 /**
  * String literal.
  * @author jens dietrich
@@ -34,7 +36,8 @@ public class StringLiteral extends Literal<String> {
 		visitor.endVisit(this);
 	}
 	// TODO - must escape chars in string
-	protected void appendTo(StringBuffer b) {
+	@Override
+	public void appendTo(StringBuffer b,Function<Variable,String> conversion) {
 		b.append('\"');
 		b.append(value);
 		b.append('\"');

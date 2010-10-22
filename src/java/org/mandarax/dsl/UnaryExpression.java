@@ -16,6 +16,8 @@ import static org.mandarax.dsl.Utils.nameForUnOp;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.common.base.Function;
+
 /**
  * Expression using an unary operator such as ! or -.
  * @author jens dietrich
@@ -47,10 +49,11 @@ public class UnaryExpression extends Expression {
 		visitor.endVisit(this);
 	}
 	
-	protected void appendTo(StringBuffer b) {
+	@Override
+	public void appendTo(StringBuffer b,Function<Variable,String> conversion) {
 		b.append(nameForUnOp(operator));
 		if (!part.isFlat()) b.append('(');
-		part.appendTo(b);
+		part.appendTo(b,conversion);
 		if (!part.isFlat()) b.append(')');
 	}
 

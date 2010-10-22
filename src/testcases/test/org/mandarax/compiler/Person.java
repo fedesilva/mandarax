@@ -54,4 +54,9 @@ public class Person {
 			return false;
 		return true;
 	}
+	
+	@Override
+	public String toString() {
+		return "aPerson("+name+')';
+	}
 }

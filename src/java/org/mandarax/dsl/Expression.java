@@ -42,6 +42,11 @@ public abstract class Expression extends ASTNode {
 	public Class getType() {
 		return type;
 	}
+	
+	public String getTypeName() {
+		return type!=null?type.getName():null;
+	}
+	
 	public void setType(Class type) {
 		this.type = type;
 	}

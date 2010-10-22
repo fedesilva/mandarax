@@ -24,6 +24,8 @@ import org.mandarax.dsl.FunctionInvocation;
 import org.mandarax.dsl.RelationshipDefinition;
 import org.mandarax.dsl.Variable;
 
+import com.google.common.base.Function;
+
 import static com.google.common.base.Preconditions.*;
 
 /**
@@ -117,13 +119,16 @@ public class Prereq {
 		return buf.toString();
 	}
 	
-	private String print(Expression expression,String scope) {
-		// TODO full recursion
-		
-		if (expression instanceof Variable) {
-			return scope + '.' + expression;
-		}
-		return expression.toString();
+	private String print(Expression expression,final String scope) {
+		Function<Variable,String> conversion = new Function<Variable,String>() {
+			@Override
+			public String apply(Variable v) {
+				return scope + '.' + v.getName();
+			}
+		};
+		StringBuffer b = new StringBuffer();
+		expression.appendTo(b, conversion);
+		return b.toString();
 	}
 	// indicates whether this is the first prereq defined by a relation
 	public boolean isFirstRelation() {
@@ -167,7 +172,7 @@ public class Prereq {
 		
 		for (int i=0;i<fi.getParameters().size();i++) {
 			Expression param = fi.getParameters().get(i);
-			checkState(param.isFlat(),"Only flat expressions are supported here"); 
+			//checkState(param.isFlat(),"Only flat expressions are supported here"); 
 			if (param instanceof Variable && ((Variable)param).getName().equals(variableName)) {
 				return rel.getSlotDeclarations().get(i).getName();
 			}

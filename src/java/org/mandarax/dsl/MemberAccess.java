@@ -14,6 +14,8 @@ package org.mandarax.dsl;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.common.base.Function;
+
 /**
  * Member (method or field) access expression.
  * @author jens dietrich
@@ -61,12 +63,22 @@ public class MemberAccess extends Expression {
 		visitor.endVisit(this);
 	}
 	
-	protected void appendTo(StringBuffer b) {
-		this.objectReference.appendTo(b);
+	@Override
+	public void appendTo(StringBuffer b,Function<Variable,String> conversion) {
+		this.objectReference.appendTo(b,conversion);
 		b.append('.');
-		b.append(member);
 		if (this.isMethod) {
-			this.appendListOfNodes(parameters, b,true);
+			b.append(member);
+			this.appendListOfNodes(parameters, b,true,conversion);
+		}
+		else {
+			// TODO - need to support case when this is a field
+			// now we assume that this is a getter
+			// we also need to support special getter syntax such as is.. for boolean properties
+			b.append("get");
+			b.append(Character.toUpperCase(member.charAt(0)));
+			b.append(member.substring(1));
+			b.append("()");
 		}
 	}
 	@Override

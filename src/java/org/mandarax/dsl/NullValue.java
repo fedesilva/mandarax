@@ -14,6 +14,8 @@ package org.mandarax.dsl;
 import java.util.Collection;
 import java.util.List;
 
+import com.google.common.base.Function;
+
 
 /**
  * Null value.
@@ -36,7 +38,8 @@ public class NullValue extends Expression {
 		return true;
 	}
 
-	protected void appendTo(StringBuffer b) {
+	@Override
+	public void appendTo(StringBuffer b,Function<Variable,String> conversion) {
 		b.append("null");
 	}
 	

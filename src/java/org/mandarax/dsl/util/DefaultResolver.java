@@ -18,6 +18,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Member;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import org.apache.log4j.Logger;
 import org.mandarax.dsl.Context;
 import org.mandarax.dsl.ImportDeclaration;
 
@@ -30,6 +31,7 @@ import org.mandarax.dsl.ImportDeclaration;
 public class DefaultResolver implements Resolver {
 	
 	private ClassLoader classloader = null;
+	private static Logger LOGGER = Logger.getLogger(DefaultResolver.class);
 
 	public DefaultResolver(ClassLoader classloader) {
 		super();
@@ -48,9 +50,10 @@ public class DefaultResolver implements Resolver {
 			try {
 				field = clazz.getField(name);
 			} catch (Exception e) {
-				// TODO: logging
+				LOGGER.error(e);
 			}
 			if (field!=null && Modifier.isPublic(field.getModifiers())) {
+				LOGGER.debug("Resolving feature " +name + " in " + className + " with parameters " + paramTypeNames + " to " + field);
 				return field;
 			}
 			
@@ -59,7 +62,9 @@ public class DefaultResolver implements Resolver {
 				PropertyDescriptor[] properties = Introspector.getBeanInfo(clazz).getPropertyDescriptors();
 				for (PropertyDescriptor p:properties) {
 					if (p.getName().equals(name)) {
-						return p.getReadMethod();
+						Method reader = p.getReadMethod();
+						LOGGER.debug("Resolving feature " +name + " in " + className + " with parameters " + paramTypeNames + " to " + reader);
+						return reader;
 					}
 				}
 			} catch (IntrospectionException e) {
@@ -77,6 +82,7 @@ public class DefaultResolver implements Resolver {
 		try {
 			Method m =  clazz.getMethod(name,paramTypes);
 			if (Modifier.isPublic(m.getModifiers())) {
+				LOGGER.debug("Resolving feature " +name + " in " + className + " with parameters " + paramTypeNames + " to " + m);
 				return m;
 			}
 			else {
@@ -91,23 +97,35 @@ public class DefaultResolver implements Resolver {
 	@Override
 	public Class getType(Context context,String name) throws ResolverException {
 		Class clazz = tryToLoad(name);
-		if (clazz!=null) return clazz;
+		if (clazz!=null) {
+			LOGGER.debug("Resolving class name " +name + " to " + clazz);
+			return clazz;
+		}
 		
 		// try to load class in the package defined in the context
 		if (context.getPackageDeclaration()!=null) {
 			clazz = tryToLoad(""+context.getPackageDeclaration().getName()+'.'+name);
-			if (clazz!=null) return clazz;
+			if (clazz!=null) {
+				LOGGER.debug("Resolving class name " +name + " to " + clazz);
+				return clazz;
+			}
 		}
 		
 		// try to load class from java.lang
 		clazz = tryToLoad("java.lang."+name);
-		if (clazz!=null) return clazz;
+		if (clazz!=null) {
+			LOGGER.debug("Resolving class name " +name + " to " + clazz);
+			return clazz;
+		}
 		
 		// try to load class from imported classes
 		for (ImportDeclaration imp:context.getImportDeclarations()) {
 			if (!imp.isUsingWildcard() && imp.getName().endsWith("."+name)) {
 				clazz = tryToLoad(imp.getName());
-				if (clazz!=null) return clazz;
+				if (clazz!=null) {
+					LOGGER.debug("Resolving class name " +name + " to " + clazz);
+					return clazz;
+				}
 			}
 		}
 
@@ -115,11 +133,15 @@ public class DefaultResolver implements Resolver {
 		for (ImportDeclaration imp:context.getImportDeclarations()) {
 			if (imp.isUsingWildcard()) {
 				clazz = tryToLoad(imp.getName()+'.'+name);
-				if (clazz!=null) return clazz;
+				if (clazz!=null) {
+					LOGGER.debug("Resolving class name " +name + " to " + clazz);
+					return clazz;
+				}
 			}
 		}
 		
 		// nothing worked - throw exception	
+		LOGGER.warn("Cannot resolve type " +name);
 		throw new ResolverException("Cannot find class " + name);
 	}
 	

@@ -16,6 +16,8 @@ import static org.mandarax.dsl.Utils.nameForBinOp;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.common.base.Function;
+
 
 /**
  * Represents binary expressions having two children connected by boolean or arithmetic operators.
@@ -49,16 +51,16 @@ public class BinaryExpression extends Expression {
 		}
 		visitor.endVisit(this);
 	}
-	
-	protected void appendTo(StringBuffer b) {
+	@Override
+	public void appendTo(StringBuffer b,Function<Variable,String> conversion) {
 		if (!left.isFlat()) b.append('(');
-		left.appendTo(b);
+		left.appendTo(b,conversion);
 		if (!left.isFlat()) b.append(')');
 		
 		b.append(nameForBinOp(operator));
 		
 		if (!right.isFlat()) b.append('(');
-		right.appendTo(b);
+		right.appendTo(b,conversion);
 		if (!right.isFlat()) b.append(')');
 	}
 	@Override

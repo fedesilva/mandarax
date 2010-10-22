@@ -9,5 +9,5 @@ rel Father(String father,String child) queries getFather(child),isFather(father,
 // note that we can only support one query isGrandFather(grandFather,grandChild) 
 // we cannot bind unknown terms!
 rel GrandFather(Person grandFather,Person grandChild) queries isGrandFather(grandFather,grandChild){
-	rule1: Father(x.name,y.name) & Father(y.name,z.name) -> GrandFather(x,z);	
+	rule1: Father(x.name,y) & Father(y,z.name) -> GrandFather(x,z);	
 }

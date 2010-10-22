@@ -14,6 +14,8 @@ package org.mandarax.dsl;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.common.base.Function;
+
 
 /**
  * Cast expression.
@@ -41,12 +43,12 @@ public class CastExpression extends Expression {
 		}
 		visitor.endVisit(this);
 	}
-	
-	protected void appendTo(StringBuffer b) {
+	@Override
+	public void appendTo(StringBuffer b,Function<Variable,String> conversion) {
 		b.append('(');
 		b.append(type);
 		b.append(')');
-		objectReference.appendTo(b);
+		objectReference.appendTo(b,conversion);
 	}
 	@Override
 	public int hashCode() {
