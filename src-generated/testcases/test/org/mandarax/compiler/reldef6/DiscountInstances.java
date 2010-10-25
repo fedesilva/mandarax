@@ -3,10 +3,11 @@ package test.org.mandarax.compiler.reldef6;
 import test.org.mandarax.compiler.*;
 
 import org.mandarax.rt.*;
+import com.google.common.base.Predicate;
 
 /**
  * Interface for queries for relationship <strong>Discount</strong>.
- * @version Oct 25, 2010 9:56:39 PM 
+ * @version Oct 26, 2010 9:54:26 AM 
  */
 public class DiscountInstances {
 
@@ -98,12 +99,7 @@ public class DiscountInstances {
 		 
 		// apply prerequisite (c.getTurnover())>1000
 		 
-					Predicate<Object> filter = new Predicate<Object> {
-						public boolean apply(Object _o) {
-								return (c.getTurnover())>1000;
-							}
-					}
-					final ResourceIterator iterator1 =  new FilteredIterator{iterator0,filter};
+					if (!((_bindings.c.getTurnover())>1000)) return EmptyIterator.DEFAULT; 
 		
 		
 		// rule head
@@ -171,12 +167,7 @@ public class DiscountInstances {
 		 
 		// apply prerequisite (c.getPaymentMethod())=="CompanyVisa"
 		 
-					Predicate<Object> filter = new Predicate<Object> {
-						public boolean apply(Object _o) {
-								return (c.getPaymentMethod())=="CompanyVisa";
-							}
-					}
-					final ResourceIterator iterator1 =  new FilteredIterator{iterator0,filter};
+					if (!((_bindings.c.getPaymentMethod())=="CompanyVisa")) return EmptyIterator.DEFAULT; 
 		
 		
 		// rule head
@@ -207,12 +198,7 @@ public class DiscountInstances {
 		 
 		// apply prerequisite (c.getTurnover())>1000
 		 
-					Predicate<Object> filter = new Predicate<Object> {
-						public boolean apply(Object _o) {
-								return (c.getTurnover())>1000;
-							}
-					}
-					final ResourceIterator iterator1 =  new FilteredIterator{iterator0,filter};
+					if (!((_bindings.c.getTurnover())>1000)) return EmptyIterator.DEFAULT; 
 		
 		
 		// rule head
@@ -280,12 +266,7 @@ public class DiscountInstances {
 		 
 		// apply prerequisite (c.getPaymentMethod())=="CompanyVisa"
 		 
-					Predicate<Object> filter = new Predicate<Object> {
-						public boolean apply(Object _o) {
-								return (c.getPaymentMethod())=="CompanyVisa";
-							}
-					}
-					final ResourceIterator iterator1 =  new FilteredIterator{iterator0,filter};
+					if (!((_bindings.c.getPaymentMethod())=="CompanyVisa")) return EmptyIterator.DEFAULT; 
 		
 		
 		// rule head

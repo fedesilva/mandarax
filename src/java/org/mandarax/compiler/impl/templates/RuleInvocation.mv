@@ -23,13 +23,15 @@
                 	}
             	};
 		@code{lastPrereq=prereq;}
-		@else{} 
+		@else{prereq.hasPreviousRelPrereq()} 
 					Predicate<Object> _filter@{index} = new Predicate<Object>() {
 						public boolean apply(Object _o) {
-								return @{prereq.expression};
+								return @{prereq.printScoped('_bindings')};
 							}
 					};
 					final ResourceIterator iterator@{index} =  new FilteredIterator(iterator@{index-1},_filter@{index});
+		@else{} 
+					if (!(@{prereq.printScoped('_bindings')})) return EmptyIterator.DEFAULT; 
 		@end{}@end{}
 		
 		// rule head

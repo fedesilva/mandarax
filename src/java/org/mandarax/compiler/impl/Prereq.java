@@ -181,5 +181,22 @@ public class Prereq {
 		return null;
 	
 	}
+	public boolean hasPreviousRelPrereq() {
+		return this.getPreviousRelPrereq()!=null;
+	}
+	//print the expression, add scope to variable references
+	public String printScoped(final String scope) {
+		StringBuffer b = new StringBuffer();
+		Function<Variable,String> conversion = new Function<Variable,String>() {
+
+			@Override
+			public String apply(Variable v) {
+				return scope+'.'+v.getName();
+			}
+			
+		};
+		this.expression.appendTo(b,conversion);
+		return b.toString();
+	}
 	
 }

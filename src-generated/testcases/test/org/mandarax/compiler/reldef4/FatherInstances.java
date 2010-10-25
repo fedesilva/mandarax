@@ -1,10 +1,11 @@
 package test.org.mandarax.compiler.reldef4;
 
 import org.mandarax.rt.*;
+import com.google.common.base.Predicate;
 
 /**
  * Interface for queries for relationship <strong>Father</strong>.
- * @version Oct 25, 2010 9:56:38 PM 
+ * @version Oct 26, 2010 9:54:26 AM 
  */
 public class FatherInstances {
 

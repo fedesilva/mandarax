@@ -3,10 +3,11 @@ package test.org.mandarax.compiler.reldef6;
 import test.org.mandarax.compiler.*;
 
 import org.mandarax.rt.*;
+import com.google.common.base.Predicate;
 
 /**
  * Interface for queries for relationship <strong>FrequentCustomer</strong>.
- * @version Oct 25, 2010 9:56:39 PM 
+ * @version Oct 26, 2010 9:54:26 AM 
  */
 public class FrequentCustomerInstances {
 
@@ -64,12 +65,7 @@ public class FrequentCustomerInstances {
 		 
 		// apply prerequisite (c.getTransactionCount())>5
 		 
-					Predicate<Object> filter = new Predicate<Object> {
-						public boolean apply(Object _o) {
-								return (c.getTransactionCount())>5;
-							}
-					}
-					final ResourceIterator iterator1 =  new FilteredIterator{iterator0,filter};
+					if (!((_bindings.c.getTransactionCount())>5)) return EmptyIterator.DEFAULT; 
 		
 		
 		// rule head
@@ -98,21 +94,11 @@ public class FrequentCustomerInstances {
 		 
 		// apply prerequisite (c.getTransactionCount())>3
 		 
-					Predicate<Object> filter = new Predicate<Object> {
-						public boolean apply(Object _o) {
-								return (c.getTransactionCount())>3;
-							}
-					}
-					final ResourceIterator iterator1 =  new FilteredIterator{iterator0,filter};
+					if (!((_bindings.c.getTransactionCount())>3)) return EmptyIterator.DEFAULT; 
 		 
 		// apply prerequisite (c.getTurnover())>1000
 		 
-					Predicate<Object> filter = new Predicate<Object> {
-						public boolean apply(Object _o) {
-								return (c.getTurnover())>1000;
-							}
-					}
-					final ResourceIterator iterator2 =  new FilteredIterator{iterator1,filter};
+					if (!((_bindings.c.getTurnover())>1000)) return EmptyIterator.DEFAULT; 
 		
 		
 		// rule head
