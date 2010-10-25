@@ -24,7 +24,12 @@
             	};
 		@code{lastPrereq=prereq;}
 		@else{} 
-					throw new IllegalStateException("not yet implemented feature - support for prereqs not defined by relationships");
+					Predicate<Object> filter = new Predicate<Object> {
+						public boolean apply(Object _o) {
+								return @{prereq.expression};
+							}
+					}
+					final ResourceIterator iterator@{index} =  new FilteredIterator{iterator@{index-1},filter};
 		@end{}@end{}
 		
 		// rule head

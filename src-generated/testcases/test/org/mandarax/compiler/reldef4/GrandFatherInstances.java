@@ -4,11 +4,12 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>GrandFather</strong>.
- * @version Oct 22, 2010 12:55:25 PM 
+ * @version Oct 25, 2010 9:56:38 PM 
  */
 public class GrandFatherInstances {
 
 	// interface generated for queries
+	
 	 
 	public ResultSet<GrandFather> getGrandChildren (  String grandFather  ) {
 		DerivationController _derivation = new DefaultDerivationController();
@@ -41,7 +42,6 @@ public class GrandFatherInstances {
 			public ResourceIterator<GrandFather> getNextIterator(int pos) {
 			switch (pos) {
 				
-				// code generated for rule: PUBLIC getGrandChildren(grandFather)
                 		case 0: {
                 			return getGrandChildren_0(_derivation.pop(_derivationlevel) ,  grandFather );
                 		}
@@ -58,7 +58,6 @@ public class GrandFatherInstances {
 			public ResourceIterator<GrandFather> getNextIterator(int pos) {
 			switch (pos) {
 				
-				// code generated for rule: PUBLIC getGrandChildren(grandFather)
                 		case 0: {
                 			return getGrandFather_0(_derivation.pop(_derivationlevel) ,  grandChild );
                 		}
@@ -75,7 +74,6 @@ public class GrandFatherInstances {
 			public ResourceIterator<GrandFather> getNextIterator(int pos) {
 			switch (pos) {
 				
-				// code generated for rule: PUBLIC getGrandChildren(grandFather)
                 		case 0: {
                 			return isGrandFather_0(_derivation.pop(_derivationlevel) ,  grandFather ,  grandChild );
                 		}
@@ -92,7 +90,6 @@ public class GrandFatherInstances {
 			public ResourceIterator<GrandFather> getNextIterator(int pos) {
 			switch (pos) {
 				
-				// code generated for rule: PUBLIC getGrandChildren(grandFather)
                 		case 0: {
                 			return getAll_0(_derivation.pop(_derivationlevel)  );
                 		}
@@ -116,12 +113,13 @@ public class GrandFatherInstances {
 		
 		// utility class used to keep track of variables bindings
 		class _Bindings {
-			private java.lang.String x = grandFather;
-			private java.lang.String z = null;
-			private java.lang.String y = null;
+			private java.lang.String x = grandFather; // term x
+			private java.lang.String z = null; // term z
+			private java.lang.String y = null; // term y
 		}
 		final _Bindings _bindings = new _Bindings();
 		
+
 		 
 		// apply prerequisite Father(x,y)
 		final ResourceIterator<Father> iterator1 = FatherInstances.getChildren(_derivation.push(),_bindings.x);
@@ -150,7 +148,6 @@ public class GrandFatherInstances {
                 	}
         	};
         
-
 		
 		
 		
@@ -168,12 +165,13 @@ public class GrandFatherInstances {
 		
 		// utility class used to keep track of variables bindings
 		class _Bindings {
-			private java.lang.String x = null;
-			private java.lang.String z = grandChild;
-			private java.lang.String y = null;
+			private java.lang.String x = null; // term x
+			private java.lang.String z = grandChild; // term z
+			private java.lang.String y = null; // term y
 		}
 		final _Bindings _bindings = new _Bindings();
 		
+
 		 
 		// apply prerequisite Father(x,y)
 		final ResourceIterator<Father> iterator1 = FatherInstances.getFatherAndChild(_derivation.push());
@@ -202,7 +200,6 @@ public class GrandFatherInstances {
                 	}
         	};
         
-
 		
 		
 		
@@ -220,12 +217,13 @@ public class GrandFatherInstances {
 		
 		// utility class used to keep track of variables bindings
 		class _Bindings {
-			private java.lang.String x = grandFather;
-			private java.lang.String z = grandChild;
-			private java.lang.String y = null;
+			private java.lang.String x = grandFather; // term x
+			private java.lang.String z = grandChild; // term z
+			private java.lang.String y = null; // term y
 		}
 		final _Bindings _bindings = new _Bindings();
 		
+
 		 
 		// apply prerequisite Father(x,y)
 		final ResourceIterator<Father> iterator1 = FatherInstances.getChildren(_derivation.push(),_bindings.x);
@@ -253,7 +251,6 @@ public class GrandFatherInstances {
                 	}
         	};
         
-
 		
 		
 		
@@ -271,12 +268,13 @@ public class GrandFatherInstances {
 		
 		// utility class used to keep track of variables bindings
 		class _Bindings {
-			private java.lang.String x = null;
-			private java.lang.String z = null;
-			private java.lang.String y = null;
+			private java.lang.String x = null; // term x
+			private java.lang.String z = null; // term z
+			private java.lang.String y = null; // term y
 		}
 		final _Bindings _bindings = new _Bindings();
 		
+
 		 
 		// apply prerequisite Father(x,y)
 		final ResourceIterator<Father> iterator1 = FatherInstances.getFatherAndChild(_derivation.push());
@@ -306,7 +304,6 @@ public class GrandFatherInstances {
                 	}
         	};
         
-
 		
 		
 		

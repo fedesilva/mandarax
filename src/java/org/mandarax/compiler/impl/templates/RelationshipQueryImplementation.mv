@@ -11,7 +11,8 @@ import org.mandarax.rt.*;
 public class @{className} {
 
 	// interface generated for queries
-	@foreach{query:rel.queries} 
+	
+	@foreach{query:rel.getQueries()} 
 	public ResultSet<@{rel.name}> @{query.name} ( @foreach{param:query.parameterNames} @{rel.getTypeNameForSlot(param)} @{param} @end{", "} ) {
 		DerivationController _derivation = new DefaultDerivationController();
 		return new ResultSet<@{rel.name}>(@{query.name} ( _derivation @if{query.hasParameters()},@end{} @foreach{param:query.parameterNames} @{param} @end{", "}),_derivation);
@@ -20,7 +21,7 @@ public class @{className} {
 	
 	// implementations - these methods are referenced by code generated from other rules in this package
 	// and therefore kept static 
-	@foreach{query:rel.queries} 
+	@foreach{query:rel.getQueries()} 
 	static ResourceIterator<@{rel.name}> @{query.name} ( final DerivationController _derivation @if{query.hasParameters()},@end{} @foreach{param:query.parameterNames} final @{rel.getTypeNameForSlot(param)} @{param} @end{", "} ) {
 		final int _derivationlevel = _derivation.size();
 		return new IteratorChain<@{rel.name}>(@{rel.rules.size()}) {
@@ -28,7 +29,6 @@ public class @{className} {
 			public ResourceIterator<@{rel.name}> getNextIterator(int pos) {
 			switch (pos) {
 				@foreach{index:ruleIndices}
-				// code generated for rule: @{rel.queries.get(index)}
                 		case @{index}: {
                 			return @{query.name}_@{index}(_derivation.pop(_derivationlevel) @if{query.hasParameters()},@end{} @foreach{param:query.parameterNames} @{param} @end{", "});
                 		}

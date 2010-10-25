@@ -4,11 +4,12 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>Father</strong>.
- * @version Oct 22, 2010 12:55:25 PM 
+ * @version Oct 25, 2010 9:56:38 PM 
  */
 public class FatherInstances {
 
 	// interface generated for queries
+	
 	 
 	public ResultSet<Father> getFather (  String child  ) {
 		DerivationController _derivation = new DefaultDerivationController();
@@ -41,22 +42,18 @@ public class FatherInstances {
 			public ResourceIterator<Father> getNextIterator(int pos) {
 			switch (pos) {
 				
-				// code generated for rule: PUBLIC getFather(child)
                 		case 0: {
                 			return getFather_0(_derivation.pop(_derivationlevel) ,  child );
                 		}
 				
-				// code generated for rule: PUBLIC isFather(father,child)
                 		case 1: {
                 			return getFather_1(_derivation.pop(_derivationlevel) ,  child );
                 		}
 				
-				// code generated for rule: PUBLIC getChildren(father)
                 		case 2: {
                 			return getFather_2(_derivation.pop(_derivationlevel) ,  child );
                 		}
 				
-				// code generated for rule: PUBLIC getFatherAndChild()
                 		case 3: {
                 			return getFather_3(_derivation.pop(_derivationlevel) ,  child );
                 		}
@@ -73,22 +70,18 @@ public class FatherInstances {
 			public ResourceIterator<Father> getNextIterator(int pos) {
 			switch (pos) {
 				
-				// code generated for rule: PUBLIC getFather(child)
                 		case 0: {
                 			return isFather_0(_derivation.pop(_derivationlevel) ,  father ,  child );
                 		}
 				
-				// code generated for rule: PUBLIC isFather(father,child)
                 		case 1: {
                 			return isFather_1(_derivation.pop(_derivationlevel) ,  father ,  child );
                 		}
 				
-				// code generated for rule: PUBLIC getChildren(father)
                 		case 2: {
                 			return isFather_2(_derivation.pop(_derivationlevel) ,  father ,  child );
                 		}
 				
-				// code generated for rule: PUBLIC getFatherAndChild()
                 		case 3: {
                 			return isFather_3(_derivation.pop(_derivationlevel) ,  father ,  child );
                 		}
@@ -105,22 +98,18 @@ public class FatherInstances {
 			public ResourceIterator<Father> getNextIterator(int pos) {
 			switch (pos) {
 				
-				// code generated for rule: PUBLIC getFather(child)
                 		case 0: {
                 			return getChildren_0(_derivation.pop(_derivationlevel) ,  father );
                 		}
 				
-				// code generated for rule: PUBLIC isFather(father,child)
                 		case 1: {
                 			return getChildren_1(_derivation.pop(_derivationlevel) ,  father );
                 		}
 				
-				// code generated for rule: PUBLIC getChildren(father)
                 		case 2: {
                 			return getChildren_2(_derivation.pop(_derivationlevel) ,  father );
                 		}
 				
-				// code generated for rule: PUBLIC getFatherAndChild()
                 		case 3: {
                 			return getChildren_3(_derivation.pop(_derivationlevel) ,  father );
                 		}
@@ -137,22 +126,18 @@ public class FatherInstances {
 			public ResourceIterator<Father> getNextIterator(int pos) {
 			switch (pos) {
 				
-				// code generated for rule: PUBLIC getFather(child)
                 		case 0: {
                 			return getFatherAndChild_0(_derivation.pop(_derivationlevel)  );
                 		}
 				
-				// code generated for rule: PUBLIC isFather(father,child)
                 		case 1: {
                 			return getFatherAndChild_1(_derivation.pop(_derivationlevel)  );
                 		}
 				
-				// code generated for rule: PUBLIC getChildren(father)
                 		case 2: {
                 			return getFatherAndChild_2(_derivation.pop(_derivationlevel)  );
                 		}
 				
-				// code generated for rule: PUBLIC getFatherAndChild()
                 		case 3: {
                 			return getFatherAndChild_3(_derivation.pop(_derivationlevel)  );
                 		}

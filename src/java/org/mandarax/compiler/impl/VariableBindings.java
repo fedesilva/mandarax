@@ -92,8 +92,6 @@ public class VariableBindings {
 				}
 			}
 		}
-		
-		System.out.println(map);
 	}
 	
 	

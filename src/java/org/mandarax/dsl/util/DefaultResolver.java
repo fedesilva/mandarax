@@ -43,7 +43,7 @@ public class DefaultResolver implements Resolver {
 
 	@Override
 	public Member getMember(Context context,String name, String className,String... paramTypeNames) throws ResolverException {
-		Class clazz = getType(context,name);
+		Class clazz = getType(context,className);
 		boolean isFieldRef = paramTypeNames==null;
 		if (isFieldRef) {
 			Field field = null;
