@@ -22,26 +22,8 @@ public abstract class IteratorChain<T> extends AbstractIterator<T>{
 	private int cursor = -1;
 	private ResourceIterator<T> delegate = null;
 	private ResourceIterator<T>[] parts = null;
-	private class ReusableSingletonIterator extends AbstractIterator<T> {
-		T object = null;
-		public void close() {
-			object = null;
-		}
-		public boolean hasNext() {
-			return object!=null;
-		}
-		public T next() {
-			T obj = object;
-			if (obj==null)
-				throw new java.lang.IllegalStateException("ReusableSingletonIterator: object already consumed, next() should not be called");
-			object = null;
-			return obj;
-		}
-		public void remove() {
-			
-		}		
-	}
-	private ReusableSingletonIterator reusableSingletonIterator = new ReusableSingletonIterator();
+	private boolean closed = false;
+
 	
 	@SuppressWarnings("unchecked")
 	public IteratorChain(int size) {
@@ -64,7 +46,10 @@ public abstract class IteratorChain<T> extends AbstractIterator<T>{
 			delegate = null;
 		}
 	}
+	@Override 
 	public boolean hasNext() {
+		if (closed) return false;
+		
 		if (cursor==parts.length) return false;
 		else if (cursor==-1) {
 			moveCursor();
@@ -79,6 +64,8 @@ public abstract class IteratorChain<T> extends AbstractIterator<T>{
 		}
 	}
 	public T next() {
+		if (closed) throw new IteratorClosedException();
+		
 		if (hasNext()) {
 			return delegate.next();
 		}
@@ -95,11 +82,13 @@ public abstract class IteratorChain<T> extends AbstractIterator<T>{
 	/**
 	 * Close the iterator.
 	 */
+	@Override
 	public void close() {
 		for (ResourceIterator iter:this.parts) {
 			if (iter!=null)
 				iter.close();
 		}
+		closed = true;
 	}
 
 }

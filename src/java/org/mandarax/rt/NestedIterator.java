@@ -27,6 +27,7 @@ public abstract class NestedIterator<O,I> extends AbstractIterator<I>{
 	private ResourceIterator<I> innerIterator = null;
 	private List<ResourceIterator> usedIterators = null;
 	private boolean exhausted = false;
+	private boolean closed = false;
 
 	
 	public NestedIterator(ResourceIterator<O> outerIterator) {
@@ -35,7 +36,7 @@ public abstract class NestedIterator<O,I> extends AbstractIterator<I>{
 	}
 
 	public boolean hasNext() {
-		if (exhausted) 
+		if (exhausted || closed) 
 			return false;	
 		boolean hasMore = false;
 		if (this.innerIterator==null || !this.innerIterator.hasNext()) {
@@ -48,6 +49,8 @@ public abstract class NestedIterator<O,I> extends AbstractIterator<I>{
 	}
 		
 	public I next() {
+		if (closed) throw new IteratorClosedException();
+		
 		if (hasNext()) 
 			return innerIterator.next();
 		else
@@ -80,6 +83,7 @@ public abstract class NestedIterator<O,I> extends AbstractIterator<I>{
 	/**
 	 * Close the iterator.
 	 */
+	@Override
 	public void close() {
 		this.outerIterator.close();
 		if (usedIterators!=null) {
@@ -90,6 +94,7 @@ public abstract class NestedIterator<O,I> extends AbstractIterator<I>{
 		this.usedIterators = null;
 		this.innerIterator = null;
 		this.outerIterator = null;
+		closed = true;
 		
 	}
 

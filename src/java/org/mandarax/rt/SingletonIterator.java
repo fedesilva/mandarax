@@ -21,6 +21,7 @@ package org.mandarax.rt;
  */
 public class SingletonIterator<T> extends AbstractIterator<T> {
 	private T object = null;
+	private boolean closed = false;
 	
 	/**
 	 * Construct a new <code>SingletonIterator</code> indexing the provided object.
@@ -36,13 +37,14 @@ public class SingletonIterator<T> extends AbstractIterator<T> {
 	 * @see java.util.Iterator#hasNext()
 	 */
 	public boolean hasNext() {
-		return object!=null;
+		return !closed && object!=null;
 	}
 
 	/* (non-Javadoc)
 	 * @see java.util.Iterator#next()
 	 */
 	public T next() {
+		if (closed) throw new IteratorClosedException();
 		T next = object;
 		object = null;
 		return next;
@@ -52,7 +54,7 @@ public class SingletonIterator<T> extends AbstractIterator<T> {
 	 * @see org.mandarax.compiler.rt.ResourceIterator#close()
 	 */
 	public void close() {
-		// nothing to do here
+		closed = true;
 	}
 
 

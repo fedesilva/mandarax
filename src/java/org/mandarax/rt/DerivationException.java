@@ -14,7 +14,7 @@ package org.mandarax.rt;
 /**
  * Exceptions that can be thrown when next(), hasNext() or close() are invoked.
  * This are runtime exceptions. The main reason for this is compatibility with java.util.Iterator. 
- * I.e., users can work with the well know iterator interface. 
+ * I.e., users can work with the well-known iterator interface. 
  * @author jens dietrich
  */
 
@@ -24,16 +24,16 @@ public class DerivationException extends RuntimeException {
 		super();
 	}
 
-	public DerivationException(String arg0, Throwable arg1) {
-		super(arg0, arg1);
+	public DerivationException(String m, Throwable t) {
+		super(m, t);
 	}
 
-	public DerivationException(String arg0) {
-		super(arg0);
+	public DerivationException(String m) {
+		super(m);
 	}
 
-	public DerivationException(Throwable arg0) {
-		super(arg0);
+	public DerivationException(Throwable t) {
+		super(t);
 	}
 
 }

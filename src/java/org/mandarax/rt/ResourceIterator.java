@@ -18,7 +18,7 @@ import java.util.Iterator;
  * Resource iterator.
  * This is an iterator that can be closed. The close operation releases resources, e.g.
  * closes database connections.
- * Note that close(), next() and hasNext() may throw unchecked exceptions DerivationException.
+ * Note that close(), next() and hasNext() may throw unchecked exceptions IteratorClosedException.
  * @see DerivationException
  * @author jens dietrich
  */
