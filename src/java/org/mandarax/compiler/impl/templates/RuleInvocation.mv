@@ -24,12 +24,12 @@
             	};
 		@code{lastPrereq=prereq;}
 		@else{} 
-					Predicate<Object> filter = new Predicate<Object> {
+					Predicate<Object> _filter@{index} = new Predicate<Object>() {
 						public boolean apply(Object _o) {
 								return @{prereq.expression};
 							}
-					}
-					final ResourceIterator iterator@{index} =  new FilteredIterator{iterator@{index-1},filter};
+					};
+					final ResourceIterator iterator@{index} =  new FilteredIterator(iterator@{index-1},_filter@{index});
 		@end{}@end{}
 		
 		// rule head
