@@ -7,20 +7,19 @@ import com.google.common.base.Predicate;
 
 /**
  * Interface for queries for relationship <strong>FrequentCustomer</strong>.
- * @version Oct 26, 2010 9:28:37 PM 
+ * @version Oct 26, 2010 9:38:09 PM 
  */
 public class FrequentCustomerInstances {
-
- 
-public static Discount goldDiscount = new Discount(20,true);
- 
-public static Discount silverDiscount = new Discount(10,true);
- 
-public static Discount specialDiscount = new Discount(5,false);
-
-
-	// interface generated for queries
+	// object references
+	 
+	public static Discount goldDiscount = new Discount(20,true);
+	 
+	public static Discount silverDiscount = new Discount(10,true);
+	 
+	public static Discount specialDiscount = new Discount(5,false);
 	
+
+	// interface generated for queries	
 	 
 	public ResultSet<FrequentCustomer> isFrequentCustomer (  Customer customer  ) {
 		DerivationController _derivation = new DefaultDerivationController();
@@ -77,7 +76,8 @@ public static Discount specialDiscount = new Discount(5,false);
 		
 		
 		// rule head
-		
+		return new SingletonIterator(new FrequentCustomer(_bindings.c));
+        
 		
 		
 		
@@ -110,7 +110,8 @@ public static Discount specialDiscount = new Discount(5,false);
 		
 		
 		// rule head
-		
+		return new SingletonIterator(new FrequentCustomer(_bindings.c));
+        
 		
 		
 		

@@ -10,13 +10,12 @@ import com.google.common.base.Predicate;
  * @version @{timestamp} 
  */
 public class @{className} {
+	// object references
+	@foreach{obj:context.objectDeclarations} 
+	public static @{obj.type} @{obj.name} = @{obj.defaultValueDeclaration};
+	@end{}
 
-@foreach{obj:context.objectDeclarations} 
-public static @{obj.type} @{obj.name} = @{obj.defaultValueDeclaration};
-@end{}
-
-	// interface generated for queries
-	
+	// interface generated for queries	
 	@foreach{query:rel.getQueries()} 
 	public ResultSet<@{rel.name}> @{query.name} ( @foreach{param:query.parameterNames} @{rel.getTypeNameForSlot(param)} @{param} @end{", "} ) {
 		DerivationController _derivation = new DefaultDerivationController();

@@ -7,14 +7,13 @@ import com.google.common.base.Predicate;
 
 /**
  * Interface for queries for relationship <strong>Father</strong>.
- * @version Oct 26, 2010 9:28:37 PM 
+ * @version Oct 26, 2010 9:38:09 PM 
  */
 public class FatherInstances {
-
-
-
-	// interface generated for queries
+	// object references
 	
+
+	// interface generated for queries	
 	 
 	public ResultSet<Father> getFather (  String child  ) {
 		DerivationController _derivation = new DefaultDerivationController();

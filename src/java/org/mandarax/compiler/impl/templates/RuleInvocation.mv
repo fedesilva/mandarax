@@ -43,7 +43,8 @@
                     				return new SingletonIterator(new @{rel.name}(@{ctrl.printSlots(rel.slotDeclarations,'_bindings')}));
                 	}
         	};
-        @else{}@end{}
+        @else{}return new SingletonIterator(new @{rel.name}(@{ctrl.printSlots(rel.slotDeclarations,'_bindings')}));
+        @end{}
 		
 		
 		

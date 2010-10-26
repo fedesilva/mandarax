@@ -5,14 +5,13 @@ import com.google.common.base.Predicate;
 
 /**
  * Interface for queries for relationship <strong>GrandFather</strong>.
- * @version Oct 26, 2010 9:28:37 PM 
+ * @version Oct 26, 2010 9:38:09 PM 
  */
 public class GrandFatherInstances {
-
-
-
-	// interface generated for queries
+	// object references
 	
+
+	// interface generated for queries	
 	 
 	public ResultSet<GrandFather> getGrandChildren (  String grandFather  ) {
 		DerivationController _derivation = new DefaultDerivationController();
