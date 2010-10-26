@@ -7,7 +7,7 @@ import com.google.common.base.Predicate;
 
 /**
  * Interface for queries for relationship <strong>GrandFather</strong>.
- * @version Oct 26, 2010 10:03:32 PM 
+ * @version Oct 27, 2010 12:47:25 PM 
  */
 public class GrandFatherInstances {
 	// object references
@@ -50,7 +50,7 @@ public class GrandFatherInstances {
 		
 			
 	
-		_derivation.log("rule1", DerivationController.RULE, DerivationController.NIL);
+		_derivation.log("GrandFather.rule1", DerivationController.RULE, DerivationController.NIL);
 		
 		// utility class used to keep track of variables bindings
 		class _Bindings {

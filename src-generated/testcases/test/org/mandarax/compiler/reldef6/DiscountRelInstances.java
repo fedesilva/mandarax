@@ -7,7 +7,7 @@ import com.google.common.base.Predicate;
 
 /**
  * Interface for queries for relationship <strong>DiscountRel</strong>.
- * @version Oct 26, 2010 10:03:32 PM 
+ * @version Oct 27, 2010 12:47:25 PM 
  */
 public class DiscountRelInstances {
 	// object references
@@ -93,7 +93,7 @@ public class DiscountRelInstances {
 		
 			
 	
-		_derivation.log("rule1", DerivationController.RULE, DerivationController.NIL);
+		_derivation.log("DiscountRel.rule1", DerivationController.RULE, DerivationController.NIL);
 		
 		// utility class used to keep track of variables bindings
 		class _Bindings {
@@ -124,7 +124,7 @@ public class DiscountRelInstances {
 		
 			
 	
-		_derivation.log("rule2", DerivationController.RULE, DerivationController.NIL);
+		_derivation.log("DiscountRel.rule2", DerivationController.RULE, DerivationController.NIL);
 		
 		// utility class used to keep track of variables bindings
 		class _Bindings {
@@ -162,7 +162,7 @@ public class DiscountRelInstances {
 		
 			
 	
-		_derivation.log("rule3", DerivationController.RULE, DerivationController.NIL);
+		_derivation.log("DiscountRel.rule3", DerivationController.RULE, DerivationController.NIL);
 		
 		// utility class used to keep track of variables bindings
 		class _Bindings {
@@ -194,7 +194,7 @@ public class DiscountRelInstances {
 		
 			
 	
-		_derivation.log("rule1", DerivationController.RULE, DerivationController.NIL);
+		_derivation.log("DiscountRel.rule1", DerivationController.RULE, DerivationController.NIL);
 		
 		// utility class used to keep track of variables bindings
 		class _Bindings {
@@ -225,7 +225,7 @@ public class DiscountRelInstances {
 		
 			
 	
-		_derivation.log("rule2", DerivationController.RULE, DerivationController.NIL);
+		_derivation.log("DiscountRel.rule2", DerivationController.RULE, DerivationController.NIL);
 		
 		// utility class used to keep track of variables bindings
 		class _Bindings {
@@ -263,7 +263,7 @@ public class DiscountRelInstances {
 		
 			
 	
-		_derivation.log("rule3", DerivationController.RULE, DerivationController.NIL);
+		_derivation.log("DiscountRel.rule3", DerivationController.RULE, DerivationController.NIL);
 		
 		// utility class used to keep track of variables bindings
 		class _Bindings {

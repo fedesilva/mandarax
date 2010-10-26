@@ -1,5 +1,5 @@
 	@code{fact=rule.head;terms=fact.parameters}
-		_derivation.log("@{rule.id}", DerivationController.FACT, DerivationController.NIL);
+		_derivation.log("@{rel.name}.@{rule.id}", DerivationController.FACT, DerivationController.NIL);
 		
 		@if{query.parameterNames.size()>0} 
 		// check conditions	

@@ -5,7 +5,7 @@ import com.google.common.base.Predicate;
 
 /**
  * Interface for queries for relationship <strong>Father</strong>.
- * @version Oct 26, 2010 10:03:32 PM 
+ * @version Oct 27, 2010 12:47:25 PM 
  */
 public class FatherInstances {
 	// object references
@@ -158,7 +158,7 @@ public class FatherInstances {
 	private static ResourceIterator<Father> getFather_0 (final DerivationController _derivation ,  final String child ) {
 		
 			
-		_derivation.log("rule1", DerivationController.FACT, DerivationController.NIL);
+		_derivation.log("Father.rule1", DerivationController.FACT, DerivationController.NIL);
 		
 		 
 		// check conditions	
@@ -185,7 +185,7 @@ public class FatherInstances {
 	private static ResourceIterator<Father> getFather_1 (final DerivationController _derivation ,  final String child ) {
 		
 			
-		_derivation.log("rule2", DerivationController.FACT, DerivationController.NIL);
+		_derivation.log("Father.rule2", DerivationController.FACT, DerivationController.NIL);
 		
 		 
 		// check conditions	
@@ -212,7 +212,7 @@ public class FatherInstances {
 	private static ResourceIterator<Father> getFather_2 (final DerivationController _derivation ,  final String child ) {
 		
 			
-		_derivation.log("rule3", DerivationController.FACT, DerivationController.NIL);
+		_derivation.log("Father.rule3", DerivationController.FACT, DerivationController.NIL);
 		
 		 
 		// check conditions	
@@ -239,7 +239,7 @@ public class FatherInstances {
 	private static ResourceIterator<Father> getFather_3 (final DerivationController _derivation ,  final String child ) {
 		
 			
-		_derivation.log("rule4", DerivationController.FACT, DerivationController.NIL);
+		_derivation.log("Father.rule4", DerivationController.FACT, DerivationController.NIL);
 		
 		 
 		// check conditions	
@@ -267,7 +267,7 @@ public class FatherInstances {
 	private static ResourceIterator<Father> isFather_0 (final DerivationController _derivation ,  final String father ,  final String child ) {
 		
 			
-		_derivation.log("rule1", DerivationController.FACT, DerivationController.NIL);
+		_derivation.log("Father.rule1", DerivationController.FACT, DerivationController.NIL);
 		
 		 
 		// check conditions	
@@ -294,7 +294,7 @@ public class FatherInstances {
 	private static ResourceIterator<Father> isFather_1 (final DerivationController _derivation ,  final String father ,  final String child ) {
 		
 			
-		_derivation.log("rule2", DerivationController.FACT, DerivationController.NIL);
+		_derivation.log("Father.rule2", DerivationController.FACT, DerivationController.NIL);
 		
 		 
 		// check conditions	
@@ -321,7 +321,7 @@ public class FatherInstances {
 	private static ResourceIterator<Father> isFather_2 (final DerivationController _derivation ,  final String father ,  final String child ) {
 		
 			
-		_derivation.log("rule3", DerivationController.FACT, DerivationController.NIL);
+		_derivation.log("Father.rule3", DerivationController.FACT, DerivationController.NIL);
 		
 		 
 		// check conditions	
@@ -348,7 +348,7 @@ public class FatherInstances {
 	private static ResourceIterator<Father> isFather_3 (final DerivationController _derivation ,  final String father ,  final String child ) {
 		
 			
-		_derivation.log("rule4", DerivationController.FACT, DerivationController.NIL);
+		_derivation.log("Father.rule4", DerivationController.FACT, DerivationController.NIL);
 		
 		 
 		// check conditions	
@@ -376,7 +376,7 @@ public class FatherInstances {
 	private static ResourceIterator<Father> getChildren_0 (final DerivationController _derivation ,  final String father ) {
 		
 			
-		_derivation.log("rule1", DerivationController.FACT, DerivationController.NIL);
+		_derivation.log("Father.rule1", DerivationController.FACT, DerivationController.NIL);
 		
 		 
 		// check conditions	
@@ -403,7 +403,7 @@ public class FatherInstances {
 	private static ResourceIterator<Father> getChildren_1 (final DerivationController _derivation ,  final String father ) {
 		
 			
-		_derivation.log("rule2", DerivationController.FACT, DerivationController.NIL);
+		_derivation.log("Father.rule2", DerivationController.FACT, DerivationController.NIL);
 		
 		 
 		// check conditions	
@@ -430,7 +430,7 @@ public class FatherInstances {
 	private static ResourceIterator<Father> getChildren_2 (final DerivationController _derivation ,  final String father ) {
 		
 			
-		_derivation.log("rule3", DerivationController.FACT, DerivationController.NIL);
+		_derivation.log("Father.rule3", DerivationController.FACT, DerivationController.NIL);
 		
 		 
 		// check conditions	
@@ -457,7 +457,7 @@ public class FatherInstances {
 	private static ResourceIterator<Father> getChildren_3 (final DerivationController _derivation ,  final String father ) {
 		
 			
-		_derivation.log("rule4", DerivationController.FACT, DerivationController.NIL);
+		_derivation.log("Father.rule4", DerivationController.FACT, DerivationController.NIL);
 		
 		 
 		// check conditions	
@@ -485,7 +485,7 @@ public class FatherInstances {
 	private static ResourceIterator<Father> getFatherAndChild_0 (final DerivationController _derivation  ) {
 		
 			
-		_derivation.log("rule1", DerivationController.FACT, DerivationController.NIL);
+		_derivation.log("Father.rule1", DerivationController.FACT, DerivationController.NIL);
 		
 		
 		
@@ -505,7 +505,7 @@ public class FatherInstances {
 	private static ResourceIterator<Father> getFatherAndChild_1 (final DerivationController _derivation  ) {
 		
 			
-		_derivation.log("rule2", DerivationController.FACT, DerivationController.NIL);
+		_derivation.log("Father.rule2", DerivationController.FACT, DerivationController.NIL);
 		
 		
 		
@@ -525,7 +525,7 @@ public class FatherInstances {
 	private static ResourceIterator<Father> getFatherAndChild_2 (final DerivationController _derivation  ) {
 		
 			
-		_derivation.log("rule3", DerivationController.FACT, DerivationController.NIL);
+		_derivation.log("Father.rule3", DerivationController.FACT, DerivationController.NIL);
 		
 		
 		
@@ -545,7 +545,7 @@ public class FatherInstances {
 	private static ResourceIterator<Father> getFatherAndChild_3 (final DerivationController _derivation  ) {
 		
 			
-		_derivation.log("rule4", DerivationController.FACT, DerivationController.NIL);
+		_derivation.log("Father.rule4", DerivationController.FACT, DerivationController.NIL);
 		
 		
 		

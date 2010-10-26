@@ -1,6 +1,6 @@
 	@code{import org.mandarax.dsl.*;import org.mandarax.compiler.impl.*;}
 	@code{head=rule.head;hterms=head.parameters;ctrl=new VariableBindings(context,className);body=new Scheduler(resolver).getPrerequisites(rule,query);counter=new Counter();lastPrereq=null;ctrl.bind(head,query);}
-		_derivation.log("@{rule.id}", DerivationController.RULE, DerivationController.NIL);
+		_derivation.log("@{rel.name}.@{rule.id}", DerivationController.RULE, DerivationController.NIL);
 		
 		// utility class used to keep track of variables bindings
 		class _Bindings {
