@@ -6,33 +6,41 @@ import org.mandarax.rt.*;
 import com.google.common.base.Predicate;
 
 /**
- * Interface for queries for relationship <strong>Discount</strong>.
- * @version Oct 26, 2010 9:54:26 AM 
+ * Interface for queries for relationship <strong>DiscountRel</strong>.
+ * @version Oct 26, 2010 9:28:37 PM 
  */
-public class DiscountInstances {
+public class DiscountRelInstances {
+
+ 
+public static Discount goldDiscount = new Discount(20,true);
+ 
+public static Discount silverDiscount = new Discount(10,true);
+ 
+public static Discount specialDiscount = new Discount(5,false);
+
 
 	// interface generated for queries
 	
 	 
-	public ResultSet<Discount> getDiscount (  Customer customer  ) {
+	public ResultSet<DiscountRel> getDiscount (  Customer customer  ) {
 		DerivationController _derivation = new DefaultDerivationController();
-		return new ResultSet<Discount>(getDiscount ( _derivation ,  customer ),_derivation);
+		return new ResultSet<DiscountRel>(getDiscount ( _derivation ,  customer ),_derivation);
 	} 
 	 
-	public ResultSet<Discount> qualifiesForDiscount (  Customer customer ,  Discount discount  ) {
+	public ResultSet<DiscountRel> qualifiesForDiscount (  Customer customer ,  Discount discount  ) {
 		DerivationController _derivation = new DefaultDerivationController();
-		return new ResultSet<Discount>(qualifiesForDiscount ( _derivation ,  customer ,  discount ),_derivation);
+		return new ResultSet<DiscountRel>(qualifiesForDiscount ( _derivation ,  customer ,  discount ),_derivation);
 	} 
 	
 	
 	// implementations - these methods are referenced by code generated from other rules in this package
 	// and therefore kept static 
 	 
-	static ResourceIterator<Discount> getDiscount ( final DerivationController _derivation ,  final Customer customer  ) {
+	static ResourceIterator<DiscountRel> getDiscount ( final DerivationController _derivation ,  final Customer customer  ) {
 		final int _derivationlevel = _derivation.size();
-		return new IteratorChain<Discount>(3) {
+		return new IteratorChain<DiscountRel>(3) {
 			
-			public ResourceIterator<Discount> getNextIterator(int pos) {
+			public ResourceIterator<DiscountRel> getNextIterator(int pos) {
 			switch (pos) {
 				
                 		case 0: {
@@ -52,11 +60,11 @@ public class DiscountInstances {
 		};
 	} 
 	 
-	static ResourceIterator<Discount> qualifiesForDiscount ( final DerivationController _derivation ,  final Customer customer ,  final Discount discount  ) {
+	static ResourceIterator<DiscountRel> qualifiesForDiscount ( final DerivationController _derivation ,  final Customer customer ,  final Discount discount  ) {
 		final int _derivationlevel = _derivation.size();
-		return new IteratorChain<Discount>(3) {
+		return new IteratorChain<DiscountRel>(3) {
 			
-			public ResourceIterator<Discount> getNextIterator(int pos) {
+			public ResourceIterator<DiscountRel> getNextIterator(int pos) {
 			switch (pos) {
 				
                 		case 0: {
@@ -81,8 +89,8 @@ public class DiscountInstances {
 	// private methods - each method represents the invocation of a single rule for a certain query
 	
 	// query: getDiscount
-	// rule: rule1: (c.getTurnover())>1000 -> Discount(c,goldDiscount);
-	private static ResourceIterator<Discount> getDiscount_0 (final DerivationController _derivation ,  final Customer customer ) {
+	// rule: rule1: (c.getTurnover())>1000 -> DiscountRel(c,goldDiscount);
+	private static ResourceIterator<DiscountRel> getDiscount_0 (final DerivationController _derivation ,  final Customer customer ) {
 		
 			
 	
@@ -91,7 +99,7 @@ public class DiscountInstances {
 		// utility class used to keep track of variables bindings
 		class _Bindings {
 			private test.org.mandarax.compiler.Customer c = customer; // term c
-			private test.org.mandarax.compiler.reldef6.Discount goldDiscount = goldDiscount; // term goldDiscount
+			private test.org.mandarax.compiler.Discount goldDiscount = DiscountRelInstances.goldDiscount; // term goldDiscount
 		}
 		final _Bindings _bindings = new _Bindings();
 		
@@ -99,7 +107,7 @@ public class DiscountInstances {
 		 
 		// apply prerequisite (c.getTurnover())>1000
 		 
-					if (!((_bindings.c.getTurnover())>1000)) return EmptyIterator.DEFAULT; 
+					if (!((_bindings.c.getTurnover())>1000)) {return EmptyIterator.DEFAULT;} 
 		
 		
 		// rule head
@@ -111,8 +119,8 @@ public class DiscountInstances {
 
 		
 	}
-	// rule: rule2: FrequentCustomer(c) -> Discount(c,goldDiscount);
-	private static ResourceIterator<Discount> getDiscount_1 (final DerivationController _derivation ,  final Customer customer ) {
+	// rule: rule2: FrequentCustomer(c) -> DiscountRel(c,goldDiscount);
+	private static ResourceIterator<DiscountRel> getDiscount_1 (final DerivationController _derivation ,  final Customer customer ) {
 		
 			
 	
@@ -121,7 +129,7 @@ public class DiscountInstances {
 		// utility class used to keep track of variables bindings
 		class _Bindings {
 			private test.org.mandarax.compiler.Customer c = customer; // term c
-			private test.org.mandarax.compiler.reldef6.Discount goldDiscount = goldDiscount; // term goldDiscount
+			private test.org.mandarax.compiler.Discount goldDiscount = DiscountRelInstances.goldDiscount; // term goldDiscount
 		}
 		final _Bindings _bindings = new _Bindings();
 		
@@ -134,11 +142,11 @@ public class DiscountInstances {
 		
 		
 		// rule head
-		return new NestedIterator<FrequentCustomer, Discount>(iterator1) {
-                	public ResourceIterator<Discount> getNextIterator(FrequentCustomer _object) {
+		return new NestedIterator<FrequentCustomer, DiscountRel>(iterator1) {
+                	public ResourceIterator<DiscountRel> getNextIterator(FrequentCustomer _object) {
 						// bind parameters from FrequentCustomer(c)
 						
-                    				return new SingletonIterator(new Discount(_bindings.c,_bindings.goldDiscount));
+                    				return new SingletonIterator(new DiscountRel(_bindings.c,_bindings.goldDiscount));
                 	}
         	};
         
@@ -149,8 +157,8 @@ public class DiscountInstances {
 
 		
 	}
-	// rule: rule3: (c.getPaymentMethod())=="CompanyVisa" -> Discount(c,silverDiscount);
-	private static ResourceIterator<Discount> getDiscount_2 (final DerivationController _derivation ,  final Customer customer ) {
+	// rule: rule3: (c.getPaymentMethod())=="CompanyVisa" -> DiscountRel(c,silverDiscount);
+	private static ResourceIterator<DiscountRel> getDiscount_2 (final DerivationController _derivation ,  final Customer customer ) {
 		
 			
 	
@@ -159,7 +167,7 @@ public class DiscountInstances {
 		// utility class used to keep track of variables bindings
 		class _Bindings {
 			private test.org.mandarax.compiler.Customer c = customer; // term c
-			private test.org.mandarax.compiler.reldef6.Discount silverDiscount = silverDiscount; // term silverDiscount
+			private test.org.mandarax.compiler.Discount silverDiscount = DiscountRelInstances.silverDiscount; // term silverDiscount
 		}
 		final _Bindings _bindings = new _Bindings();
 		
@@ -167,7 +175,7 @@ public class DiscountInstances {
 		 
 		// apply prerequisite (c.getPaymentMethod())=="CompanyVisa"
 		 
-					if (!((_bindings.c.getPaymentMethod())=="CompanyVisa")) return EmptyIterator.DEFAULT; 
+					if (!((_bindings.c.getPaymentMethod())=="CompanyVisa")) {return EmptyIterator.DEFAULT;} 
 		
 		
 		// rule head
@@ -180,8 +188,8 @@ public class DiscountInstances {
 		
 	}
 	// query: qualifiesForDiscount
-	// rule: rule1: (c.getTurnover())>1000 -> Discount(c,goldDiscount);
-	private static ResourceIterator<Discount> qualifiesForDiscount_0 (final DerivationController _derivation ,  final Customer customer ,  final Discount discount ) {
+	// rule: rule1: (c.getTurnover())>1000 -> DiscountRel(c,goldDiscount);
+	private static ResourceIterator<DiscountRel> qualifiesForDiscount_0 (final DerivationController _derivation ,  final Customer customer ,  final Discount discount ) {
 		
 			
 	
@@ -190,7 +198,7 @@ public class DiscountInstances {
 		// utility class used to keep track of variables bindings
 		class _Bindings {
 			private test.org.mandarax.compiler.Customer c = customer; // term c
-			private test.org.mandarax.compiler.reldef6.Discount goldDiscount = goldDiscount; // term goldDiscount
+			private test.org.mandarax.compiler.Discount goldDiscount = DiscountRelInstances.goldDiscount; // term goldDiscount
 		}
 		final _Bindings _bindings = new _Bindings();
 		
@@ -198,7 +206,7 @@ public class DiscountInstances {
 		 
 		// apply prerequisite (c.getTurnover())>1000
 		 
-					if (!((_bindings.c.getTurnover())>1000)) return EmptyIterator.DEFAULT; 
+					if (!((_bindings.c.getTurnover())>1000)) {return EmptyIterator.DEFAULT;} 
 		
 		
 		// rule head
@@ -210,8 +218,8 @@ public class DiscountInstances {
 
 		
 	}
-	// rule: rule2: FrequentCustomer(c) -> Discount(c,goldDiscount);
-	private static ResourceIterator<Discount> qualifiesForDiscount_1 (final DerivationController _derivation ,  final Customer customer ,  final Discount discount ) {
+	// rule: rule2: FrequentCustomer(c) -> DiscountRel(c,goldDiscount);
+	private static ResourceIterator<DiscountRel> qualifiesForDiscount_1 (final DerivationController _derivation ,  final Customer customer ,  final Discount discount ) {
 		
 			
 	
@@ -220,7 +228,7 @@ public class DiscountInstances {
 		// utility class used to keep track of variables bindings
 		class _Bindings {
 			private test.org.mandarax.compiler.Customer c = customer; // term c
-			private test.org.mandarax.compiler.reldef6.Discount goldDiscount = goldDiscount; // term goldDiscount
+			private test.org.mandarax.compiler.Discount goldDiscount = DiscountRelInstances.goldDiscount; // term goldDiscount
 		}
 		final _Bindings _bindings = new _Bindings();
 		
@@ -233,11 +241,11 @@ public class DiscountInstances {
 		
 		
 		// rule head
-		return new NestedIterator<FrequentCustomer, Discount>(iterator1) {
-                	public ResourceIterator<Discount> getNextIterator(FrequentCustomer _object) {
+		return new NestedIterator<FrequentCustomer, DiscountRel>(iterator1) {
+                	public ResourceIterator<DiscountRel> getNextIterator(FrequentCustomer _object) {
 						// bind parameters from FrequentCustomer(c)
 						
-                    				return new SingletonIterator(new Discount(_bindings.c,_bindings.goldDiscount));
+                    				return new SingletonIterator(new DiscountRel(_bindings.c,_bindings.goldDiscount));
                 	}
         	};
         
@@ -248,8 +256,8 @@ public class DiscountInstances {
 
 		
 	}
-	// rule: rule3: (c.getPaymentMethod())=="CompanyVisa" -> Discount(c,silverDiscount);
-	private static ResourceIterator<Discount> qualifiesForDiscount_2 (final DerivationController _derivation ,  final Customer customer ,  final Discount discount ) {
+	// rule: rule3: (c.getPaymentMethod())=="CompanyVisa" -> DiscountRel(c,silverDiscount);
+	private static ResourceIterator<DiscountRel> qualifiesForDiscount_2 (final DerivationController _derivation ,  final Customer customer ,  final Discount discount ) {
 		
 			
 	
@@ -258,7 +266,7 @@ public class DiscountInstances {
 		// utility class used to keep track of variables bindings
 		class _Bindings {
 			private test.org.mandarax.compiler.Customer c = customer; // term c
-			private test.org.mandarax.compiler.reldef6.Discount silverDiscount = silverDiscount; // term silverDiscount
+			private test.org.mandarax.compiler.Discount silverDiscount = DiscountRelInstances.silverDiscount; // term silverDiscount
 		}
 		final _Bindings _bindings = new _Bindings();
 		
@@ -266,7 +274,7 @@ public class DiscountInstances {
 		 
 		// apply prerequisite (c.getPaymentMethod())=="CompanyVisa"
 		 
-					if (!((_bindings.c.getPaymentMethod())=="CompanyVisa")) return EmptyIterator.DEFAULT; 
+					if (!((_bindings.c.getPaymentMethod())=="CompanyVisa")) {return EmptyIterator.DEFAULT;} 
 		
 		
 		// rule head

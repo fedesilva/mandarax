@@ -40,10 +40,12 @@ public class VariableBindings {
 	private Map<String,String> map = new HashMap<String,String>();
 	private List<ObjectDeclaration> objectDeclarations = new ArrayList<ObjectDeclaration>();
 	private FunctionInvocation ruleHead = null;
+	private String className = null; // the name of the class that is being generated
 	
-	public VariableBindings(Context c) {
+	public VariableBindings(Context c,String className) {
 		super();
 		objectDeclarations.addAll(c.getObjectDeclarations());
+		this.className = className;
 	}
 	
 	
@@ -56,7 +58,7 @@ public class VariableBindings {
 	private String getBindingNoDefault(Variable var) {
 		for (ObjectDeclaration objDecl:objectDeclarations) {
 			if (objDecl.getName().equals(var.getName())) {
-				return var.getName(); // can reference this as an instance variable
+				return className+'.'+var.getName(); // can reference this as a static variable in the class that is being generated
 			}
 		}
 		return map.get(var.getName());

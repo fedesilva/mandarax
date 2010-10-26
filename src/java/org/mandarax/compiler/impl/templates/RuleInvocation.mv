@@ -1,5 +1,5 @@
 	@code{import org.mandarax.dsl.*;import org.mandarax.compiler.impl.*;}
-	@code{head=rule.head;hterms=head.parameters;ctrl=new VariableBindings(context);body=new Scheduler(resolver).getPrerequisites(rule,query);counter=new Counter();lastPrereq=null;ctrl.bind(head,query);}
+	@code{head=rule.head;hterms=head.parameters;ctrl=new VariableBindings(context,className);body=new Scheduler(resolver).getPrerequisites(rule,query);counter=new Counter();lastPrereq=null;ctrl.bind(head,query);}
 		_derivation.log("@{rule.id}", DerivationController.RULE, DerivationController.NIL);
 		
 		// utility class used to keep track of variables bindings
@@ -31,7 +31,7 @@
 					};
 					final ResourceIterator iterator@{index} =  new FilteredIterator(iterator@{index-1},_filter@{index});
 		@else{} 
-					if (!(@{prereq.printScoped('_bindings')})) return EmptyIterator.DEFAULT; 
+					if (!(@{prereq.printScoped('_bindings')})) {return EmptyIterator.DEFAULT;} 
 		@end{}@end{}
 		
 		// rule head

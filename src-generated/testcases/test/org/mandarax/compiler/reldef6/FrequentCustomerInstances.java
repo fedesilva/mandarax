@@ -7,9 +7,17 @@ import com.google.common.base.Predicate;
 
 /**
  * Interface for queries for relationship <strong>FrequentCustomer</strong>.
- * @version Oct 26, 2010 9:54:26 AM 
+ * @version Oct 26, 2010 9:28:37 PM 
  */
 public class FrequentCustomerInstances {
+
+ 
+public static Discount goldDiscount = new Discount(20,true);
+ 
+public static Discount silverDiscount = new Discount(10,true);
+ 
+public static Discount specialDiscount = new Discount(5,false);
+
 
 	// interface generated for queries
 	
@@ -65,7 +73,7 @@ public class FrequentCustomerInstances {
 		 
 		// apply prerequisite (c.getTransactionCount())>5
 		 
-					if (!((_bindings.c.getTransactionCount())>5)) return EmptyIterator.DEFAULT; 
+					if (!((_bindings.c.getTransactionCount())>5)) {return EmptyIterator.DEFAULT;} 
 		
 		
 		// rule head
@@ -94,11 +102,11 @@ public class FrequentCustomerInstances {
 		 
 		// apply prerequisite (c.getTransactionCount())>3
 		 
-					if (!((_bindings.c.getTransactionCount())>3)) return EmptyIterator.DEFAULT; 
+					if (!((_bindings.c.getTransactionCount())>3)) {return EmptyIterator.DEFAULT;} 
 		 
 		// apply prerequisite (c.getTurnover())>1000
 		 
-					if (!((_bindings.c.getTurnover())>1000)) return EmptyIterator.DEFAULT; 
+					if (!((_bindings.c.getTurnover())>1000)) {return EmptyIterator.DEFAULT;} 
 		
 		
 		// rule head

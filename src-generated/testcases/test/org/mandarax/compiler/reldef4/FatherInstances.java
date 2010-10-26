@@ -5,9 +5,11 @@ import com.google.common.base.Predicate;
 
 /**
  * Interface for queries for relationship <strong>Father</strong>.
- * @version Oct 26, 2010 9:54:26 AM 
+ * @version Oct 26, 2010 9:28:37 PM 
  */
 public class FatherInstances {
+
+
 
 	// interface generated for queries
 	

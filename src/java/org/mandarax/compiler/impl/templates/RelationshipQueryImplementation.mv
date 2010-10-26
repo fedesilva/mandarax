@@ -11,6 +11,10 @@ import com.google.common.base.Predicate;
  */
 public class @{className} {
 
+@foreach{obj:context.objectDeclarations} 
+public static @{obj.type} @{obj.name} = @{obj.defaultValueDeclaration};
+@end{}
+
 	// interface generated for queries
 	
 	@foreach{query:rel.getQueries()} 

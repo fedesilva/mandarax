@@ -3,17 +3,17 @@ package test.org.mandarax.compiler.reldef6;
 import test.org.mandarax.compiler.*;
 
 /**
- * Class representing the relationship <strong>Discount</strong>.
- * @version Oct 26, 2010 9:54:26 AM 
+ * Class representing the relationship <strong>DiscountRel</strong>.
+ * @version Oct 26, 2010 9:28:37 PM 
  */
-public class Discount {
+public class DiscountRel {
 
 	// constructors
-	public Discount () {
+	public DiscountRel () {
 		super();
 	}
 	
-	public Discount ( Customer customer , Discount discount ) {
+	public DiscountRel ( Customer customer , Discount discount ) {
 		super();
 		this.customer=customer; 
 		this.discount=discount; 

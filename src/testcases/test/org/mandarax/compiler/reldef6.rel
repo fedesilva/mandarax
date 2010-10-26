@@ -3,10 +3,10 @@ import test.org.mandarax.compiler.*;
 object Discount goldDiscount = new Discount(20,true);
 object Discount silverDiscount = new Discount(10,true);
 object Discount specialDiscount = new Discount(5,false);
-rel Discount(Customer customer,Discount discount) queries getDiscount(customer),qualifiesForDiscount(customer,discount) {
-	rule1: c.turnover>1000 -> Discount(c,goldDiscount);
-	rule2: FrequentCustomer(c) -> Discount(c,goldDiscount);
-	rule3: c.paymentMethod == "CompanyVisa" -> Discount(c,silverDiscount);
+rel DiscountRel(Customer customer,Discount discount) queries getDiscount(customer),qualifiesForDiscount(customer,discount) {
+	rule1: c.turnover>1000 -> DiscountRel(c,goldDiscount);
+	rule2: FrequentCustomer(c) -> DiscountRel(c,goldDiscount);
+	rule3: c.paymentMethod == "CompanyVisa" -> DiscountRel(c,silverDiscount);
 }
 rel FrequentCustomer(Customer customer) queries isFrequentCustomer(customer) {
 	rule1: c.transactionCount>5 -> FrequentCustomer(c);
