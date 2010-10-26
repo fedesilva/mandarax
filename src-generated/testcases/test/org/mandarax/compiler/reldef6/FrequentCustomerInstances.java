@@ -7,7 +7,7 @@ import com.google.common.base.Predicate;
 
 /**
  * Interface for queries for relationship <strong>FrequentCustomer</strong>.
- * @version Oct 26, 2010 9:38:09 PM 
+ * @version Oct 26, 2010 10:03:32 PM 
  */
 public class FrequentCustomerInstances {
 	// object references
@@ -85,7 +85,7 @@ public class FrequentCustomerInstances {
 
 		
 	}
-	// rule: rule2: (c.getTransactionCount())>3 & (c.getTurnover())>1000 -> FrequentCustomer(c);
+	// rule: rule2: (c.getTransactionCount())>3 & (c.getTurnover())>500 -> FrequentCustomer(c);
 	private static ResourceIterator<FrequentCustomer> isFrequentCustomer_1 (final DerivationController _derivation ,  final Customer customer ) {
 		
 			
@@ -104,9 +104,9 @@ public class FrequentCustomerInstances {
 		 
 					if (!((_bindings.c.getTransactionCount())>3)) {return EmptyIterator.DEFAULT;} 
 		 
-		// apply prerequisite (c.getTurnover())>1000
+		// apply prerequisite (c.getTurnover())>500
 		 
-					if (!((_bindings.c.getTurnover())>1000)) {return EmptyIterator.DEFAULT;} 
+					if (!((_bindings.c.getTurnover())>500)) {return EmptyIterator.DEFAULT;} 
 		
 		
 		// rule head

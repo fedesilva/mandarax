@@ -4,7 +4,7 @@ import test.org.mandarax.compiler.*;
 
 /**
  * Class representing the relationship <strong>FrequentCustomer</strong>.
- * @version Oct 26, 2010 9:38:09 PM 
+ * @version Oct 26, 2010 10:03:32 PM 
  */
 public class FrequentCustomer {
 
