@@ -14,8 +14,6 @@ package org.mandarax.dsl;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.common.base.Function;
-
 /**
  * Constructor invocation.
  * @author jens dietrich
@@ -51,13 +49,6 @@ public class ConstructorInvocation extends Expression {
 		visitor.endVisit(this);
 	}
 	
-	@Override
-	public void appendTo(StringBuffer b,Function<Variable,String> conversion) {
-		b.append("new ");
-		b.append(type);
-		appendListOfNodes(parameters, b,true,conversion);
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -10,8 +10,6 @@
  */
 package org.mandarax.dsl;
 
-import static org.mandarax.dsl.Utils.nameForUnOp;
-
 import com.google.common.base.Function;
 
 /**

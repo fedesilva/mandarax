@@ -14,8 +14,6 @@ package org.mandarax.dsl;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.common.base.Function;
-
 /**
  * InstanceOf expression.
  * @author jens dietrich
@@ -42,13 +40,6 @@ public class InstanceOfExpression extends Expression{
 			objectReference.accept(visitor);
 		}
 		visitor.endVisit(this);
-	}
-	
-	@Override
-	public void appendTo(StringBuffer b,Function<Variable,String> conversion) {
-		objectReference.appendTo(b,conversion);
-		b.append(" instanceof ");
-		b.append(type);
 	}
 
 	@Override

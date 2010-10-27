@@ -14,8 +14,6 @@ package org.mandarax.dsl;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.common.base.Function;
-
 
 /**
  * Conditional expression (cond?ifTrue:ifFalse).
@@ -61,20 +59,7 @@ public class ConditionalExpression extends Expression {
 		}
 		visitor.endVisit(this);
 	}
-	@Override
-	public void appendTo(StringBuffer b,Function<Variable,String> conversion) {
-		b.append('(');
-		condition.appendTo(b,conversion);
-		b.append(')');
-		b.append('?');
-		b.append('(');
-		ifTrue.appendTo(b,conversion);
-		b.append(')');
-		b.append(':');
-		b.append('(');
-		ifFalse.appendTo(b,conversion);
-		b.append(')');
-	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

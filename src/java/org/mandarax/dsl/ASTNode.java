@@ -14,8 +14,6 @@ package org.mandarax.dsl;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.common.base.Function;
-
 /**
  * Superclass for all AST nodes.
  * @author jens dietrich
@@ -50,56 +48,17 @@ public abstract class ASTNode  implements Visitable {
 	public void setContext(Context context) {
 		this.context = context;
 	}
-	// method used for toString conversion
-	public void appendTo(StringBuffer b) {
-		appendTo(b,new Function<Variable,String>() {
-			@Override
-			public String apply(Variable x) {
-				return x.getName();
-			}});
-	}
 	
-	// method used for toString conversion
-	public abstract void appendTo(StringBuffer b,Function<Variable,String> conversion);
-	
-	
-	// useful utility for printing: print a list in brackets, items separated by commas
-	protected void appendListOfNodes(List<? extends ASTNode> list, StringBuffer b,boolean brackets,Function<Variable,String> conversion) {
-		appendListOfNodes(list,b,brackets,",",conversion);
-	}
-	
-	protected void appendListOfNodes(List<? extends ASTNode> list, StringBuffer b,boolean brackets,String sep,Function<Variable,String> conversion) {
-		if (brackets) b.append('(');
+	// utility for recursive printing
+	protected void appendList(List<? extends Object> objs, StringBuffer b, boolean br,String sep) {
+		if (br) b.append('(');
 		boolean f = true;
-		for (ASTNode n:list) {
+		for (Object obj:objs) {
 			if (f) f=false;
 			else b.append(sep);
-			n.appendTo(b,conversion);
+			b.append(obj);
 		}
-		if (brackets) b.append(')');
-	}
-	
-	// useful utility for printing: print a list in brackets, items separated by commas
-	protected void appendListOfStrings(List<String> list, StringBuffer b,boolean brackets,String sep) {
-		if (brackets) b.append('(');
-		boolean f = true;
-		for (String n:list) {
-			if (f) f=false;
-			else b.append(sep);
-			b.append(n);
-		}
-		if (brackets) b.append(')');
-	}
-	
-	// useful utility for printing: print a list in brackets, items separated by commas
-	protected void appendListOfStrings(List<String> list, StringBuffer b,boolean brackets) {
-		appendListOfStrings(list,b,brackets,",");
-	}
-	
-	public String toString() {
-		StringBuffer b = new StringBuffer();
-		this.appendTo(b);
-		return b.toString();
+		if (br) b.append(')');
 	}
 	
 	/**

@@ -11,12 +11,8 @@
 
 package org.mandarax.dsl;
 
-import static org.mandarax.dsl.Utils.nameForUnOp;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import com.google.common.base.Function;
 
 /**
  * Expression using an unary operator such as ! or -.
@@ -49,15 +45,6 @@ public class UnaryExpression extends Expression {
 		visitor.endVisit(this);
 	}
 	
-	@Override
-	public void appendTo(StringBuffer b,Function<Variable,String> conversion) {
-		b.append(nameForUnOp(operator));
-		if (!part.isFlat()) b.append('(');
-		part.appendTo(b,conversion);
-		if (!part.isFlat()) b.append(')');
-	}
-
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -11,8 +11,6 @@
 
 package org.mandarax.dsl;
 
-import com.google.common.base.Function;
-
 /**
  * Represents annotations.
  * @author jens dietrich
@@ -29,12 +27,14 @@ public class Annotation extends ASTNode {
 	}
 
 	@Override
-	public void appendTo(StringBuffer b,Function<Variable,String> conversion) {
+	public String toString() {
+		StringBuffer b = new StringBuffer();
 		b.append('@');
 		b.append(key);
 		b.append("\"");
 		b.append(value);
 		b.append("\"");
+		return b.toString();
 	}
 
 	public String getKey() {

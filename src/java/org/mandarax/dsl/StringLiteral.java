@@ -11,7 +11,6 @@
 
 package org.mandarax.dsl;
 
-import com.google.common.base.Function;
 import static org.apache.commons.lang.StringEscapeUtils.*;
 
 /**
@@ -35,13 +34,6 @@ public class StringLiteral extends Literal<String> {
 	public void accept(ASTVisitor visitor) {
 		visitor.visit(this);
 		visitor.endVisit(this);
-	}
-	
-	@Override
-	public void appendTo(StringBuffer b,Function<Variable,String> conversion) {
-		b.append('\"');
-		b.append(escapeJava(value));
-		b.append('\"');
 	}
 
 	@Override

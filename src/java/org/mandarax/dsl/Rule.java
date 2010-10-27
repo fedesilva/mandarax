@@ -15,8 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.google.common.base.Function;
-
 /**
  * Represents a rule.
  * @author jens dietrich
@@ -94,13 +92,15 @@ public class Rule extends AnnotatableNode {
 	}
 	
 	@Override
-	public void appendTo(StringBuffer b,Function<Variable,String> conversion) {
+	public String toString() {
+		StringBuffer b = new StringBuffer();
 		b.append(id);
 		b.append(": ");
-		this.appendListOfNodes(body, b,false," & ",conversion) ; 
+		this.appendList(body, b,false," & ") ; 
 		b.append(" -> ");
-		head.appendTo(b);
+		b.append(head);
 		b.append(';');
+		return b.toString();
 	}
 	
 	public boolean isFact() {

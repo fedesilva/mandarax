@@ -15,8 +15,6 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.common.base.Function;
-
 /**
  * Function invocation. A function can refer either to a relationship query or is imported.
  * Note that this information is not set by the parser, references must be resolved (usually by the compiler) in a separate processing step. 
@@ -57,12 +55,6 @@ public class FunctionInvocation extends Expression {
 			}
 		}
 		visitor.endVisit(this);
-	}
-	
-	@Override
-	public void appendTo(StringBuffer b,Function<Variable,String> conversion) {
-		b.append(function);
-		appendListOfNodes(parameters, b,true,conversion);
 	}
 
 	@Override

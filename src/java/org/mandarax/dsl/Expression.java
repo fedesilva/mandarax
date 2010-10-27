@@ -11,6 +11,7 @@
 
 package org.mandarax.dsl;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -28,7 +29,6 @@ import com.google.common.base.Predicate;
 public abstract class Expression extends ASTNode {
 	
 	final static List<Expression> EMPTY_LIST = Collections.unmodifiableList(new ArrayList<Expression>(0));
-	
 	private Class type = null;
 
 	public Expression(Position position,Context context) {
@@ -139,6 +139,19 @@ public abstract class Expression extends ASTNode {
 		return collector.children;
 
 		
+	}
+
+	@Override
+	public String toString() {
+		StringBuffer b = new StringBuffer();
+		ExpressionPrinter printer = new ExpressionPrinter(b);
+		try {
+			printer.print(this);
+		} catch (IOException e) {
+			e.printStackTrace();
+			return super.toString();
+		}
+		return printer.getOut().toString();
 	}
 	
 	

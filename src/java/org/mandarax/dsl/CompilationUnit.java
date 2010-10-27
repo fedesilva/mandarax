@@ -14,8 +14,6 @@ package org.mandarax.dsl;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.common.base.Function;
-
 /**
  * Represents a top-level compilation unit.
  * @author jens dietrich
@@ -45,11 +43,6 @@ public class CompilationUnit extends ASTNode {
 			for (RelationshipDefinition v:this.relationshipDefinitions) v.accept(visitor);
 		}
 		visitor.endVisit(this);
-	}
-
-	@Override
-	public void appendTo(StringBuffer b,Function<Variable,String> conversion) {
-		b.append("a compilation unit");
 	}
 
 	public List<RelationshipDefinition> getRelationshipDefinitions() {

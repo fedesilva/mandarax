@@ -11,12 +11,8 @@
 
 package org.mandarax.dsl;
 
-import static org.mandarax.dsl.Utils.nameForBinOp;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import com.google.common.base.Function;
 
 
 /**
@@ -50,18 +46,6 @@ public class BinaryExpression extends Expression {
 			right.accept(visitor);
 		}
 		visitor.endVisit(this);
-	}
-	@Override
-	public void appendTo(StringBuffer b,Function<Variable,String> conversion) {
-		if (!left.isFlat()) b.append('(');
-		left.appendTo(b,conversion);
-		if (!left.isFlat()) b.append(')');
-		
-		b.append(nameForBinOp(operator));
-		
-		if (!right.isFlat()) b.append('(');
-		right.appendTo(b,conversion);
-		if (!right.isFlat()) b.append(')');
 	}
 	@Override
 	public int hashCode() {

@@ -11,12 +11,7 @@
 
 package org.mandarax.dsl;
 
-import static org.mandarax.dsl.Utils.nameForUnOp;
-
-import java.util.ArrayList;
 import java.util.List;
-
-import com.google.common.base.Function;
 
 /**
  * Variable/object references by name.
@@ -67,11 +62,6 @@ public class Variable extends Expression {
 	
 	public boolean isFlat() {
 		return true;
-	}
-	
-	@Override
-	public void appendTo(StringBuffer b,Function<Variable,String> conversion) {
-		b.append(conversion.apply(this));
 	}
 	
 	@Override

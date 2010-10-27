@@ -14,9 +14,6 @@ package org.mandarax.dsl;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.common.base.Function;
-
-
 /**
  * Cast expression.
  * @author jens dietrich
@@ -43,13 +40,7 @@ public class CastExpression extends Expression {
 		}
 		visitor.endVisit(this);
 	}
-	@Override
-	public void appendTo(StringBuffer b,Function<Variable,String> conversion) {
-		b.append('(');
-		b.append(type);
-		b.append(')');
-		objectReference.appendTo(b,conversion);
-	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -37,7 +37,7 @@ public class TestGeneratedQueryInterfaces {
 		
 		System.out.println(def);
 		
-		assertTrue(def.contains("package test.org.mandarax.dsl;"));
+		assertTrue(def.contains("package test.org.mandarax.compiler;"));
 		assertTrue(def.contains("import java.util.Date;"));
 		assertTrue(def.contains("public interface FatherInstances"));
 		assertTrue(def.contains("public ResultSet<Father> getFather (  Person child  );"));

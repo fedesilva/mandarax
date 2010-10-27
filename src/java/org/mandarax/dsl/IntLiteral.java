@@ -11,8 +11,6 @@
 
 package org.mandarax.dsl;
 
-import com.google.common.base.Function;
-
 /**
  * Integer literal.
  * @author jens dietrich
@@ -34,12 +32,6 @@ public class IntLiteral extends Literal<Integer> {
 		visitor.visit(this);
 		visitor.endVisit(this);
 	}
-	
-	@Override
-	public void appendTo(StringBuffer b,Function<Variable,String> conversion) {
-		b.append(Integer.toString(value));
-	}
-	
 
 	@Override
 	public int hashCode() {

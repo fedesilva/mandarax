@@ -7,7 +7,7 @@ import com.google.common.base.Predicate;
 
 /**
  * Interface for queries for relationship <strong>GrandFather</strong>.
- * @version Oct 27, 2010 2:11:54 PM 
+ * @version Oct 28, 2010 11:58:22 AM 
  */
 public class GrandFatherInstances {
 	// object references

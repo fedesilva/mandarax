@@ -116,16 +116,19 @@ public class RelationshipDefinition extends AnnotatableNode {
 	}
 
 	@Override
-	public void appendTo(StringBuffer b,Function<Variable,String> conversion) {
+	public String toString() {
+		StringBuffer b = new StringBuffer();
 		b.append(name);
-		appendListOfNodes(slotDeclarations, b,true,conversion);
+		appendList(slotDeclarations, b,true,",");
 		if (superTypes!=null && !superTypes.isEmpty()) {
 			b.append("extends ");
-			this.appendListOfStrings(superTypes, b,false);
+			this.appendList(superTypes, b,false,",");
 		}
 		b.append(' ');
-		appendListOfNodes(queries, b,false,conversion);
+		appendList(queries, b,false,",");
+		return b.toString();
 	}
+
 
 	public List<Rule> getRules() {
 		return rules;

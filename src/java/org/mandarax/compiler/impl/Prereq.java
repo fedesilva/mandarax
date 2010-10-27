@@ -11,6 +11,7 @@
 
 package org.mandarax.compiler.impl;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -19,6 +20,7 @@ import java.util.List;
 
 import org.mandarax.compiler.CompilerException;
 import org.mandarax.dsl.Expression;
+import org.mandarax.dsl.ExpressionPrinter;
 import org.mandarax.dsl.FunctionDeclaration;
 import org.mandarax.dsl.FunctionInvocation;
 import org.mandarax.dsl.RelationshipDefinition;
@@ -106,7 +108,7 @@ public class Prereq {
 		return true;
 	}
 	
-	public String printBoundParams(String scope,String arg) {
+	public String printBoundParams(String scope,String arg) throws IOException {
 		StringBuffer buf = new StringBuffer();
 		buf.append(arg);
 		for (Expression expr:((FunctionInvocation)expression).getParameters()) {
@@ -119,15 +121,11 @@ public class Prereq {
 		return buf.toString();
 	}
 	
-	private String print(Expression expression,final String scope) {
-		Function<Variable,String> conversion = new Function<Variable,String>() {
-			@Override
-			public String apply(Variable v) {
-				return scope + '.' + v.getName();
-			}
-		};
+	private String print(Expression expression,final String scope) throws IOException {
+		
 		StringBuffer b = new StringBuffer();
-		expression.appendTo(b, conversion);
+		ExpressionPrinter printer = getExpressionPrinter(scope,b);
+		printer.print(expression);
 		return b.toString();
 	}
 	// indicates whether this is the first prereq defined by a relation
@@ -185,18 +183,22 @@ public class Prereq {
 		return this.getPreviousRelPrereq()!=null;
 	}
 	//print the expression, add scope to variable references
-	public String printScoped(final String scope) {
+	public String printScoped(final String scope) throws IOException {
 		StringBuffer b = new StringBuffer();
-		Function<Variable,String> conversion = new Function<Variable,String>() {
-
-			@Override
-			public String apply(Variable v) {
-				return scope+'.'+v.getName();
-			}
-			
-		};
-		this.expression.appendTo(b,conversion);
+		ExpressionPrinter printer = getExpressionPrinter(scope,b);
+		printer.print(this.expression);
 		return b.toString();
 	}
 	
+	private ExpressionPrinter getExpressionPrinter(final String scope,Appendable app) {
+		ExpressionPrinter printer = new ExpressionPrinter(app) {
+			@Override
+			protected void doPrint(Variable var) throws IOException {
+				out.append(scope);
+				out.append('.');
+				out.append(var.getName());
+			}
+		};
+		return printer;
+	}
 }

@@ -14,9 +14,6 @@ package org.mandarax.dsl;
 import java.util.Collection;
 import java.util.List;
 
-import com.google.common.base.Function;
-
-
 /**
  * Null value.
  * @author jens dietrich
@@ -36,11 +33,6 @@ public class NullValue extends Expression {
 	@Override
 	public boolean isFlat() {
 		return true;
-	}
-
-	@Override
-	public void appendTo(StringBuffer b,Function<Variable,String> conversion) {
-		b.append("null");
 	}
 	
 	@Override
