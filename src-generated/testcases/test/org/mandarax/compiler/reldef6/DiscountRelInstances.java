@@ -7,7 +7,7 @@ import com.google.common.base.Predicate;
 
 /**
  * Interface for queries for relationship <strong>DiscountRel</strong>.
- * @version Oct 28, 2010 11:58:22 AM 
+ * @version Oct 28, 2010 12:17:04 PM 
  */
 public class DiscountRelInstances {
 	// object references
@@ -190,7 +190,7 @@ public class DiscountRelInstances {
 		 
 		// apply prerequisite (c.getPaymentMethod())=="CompanyVisa"
 		 
-					if (!((_bindings.c.getPaymentMethod())=="CompanyVisa")) {return EmptyIterator.DEFAULT;} 
+					if (!(org.mandarax.rt.Equals.compare(_bindings.c.getPaymentMethod(),"CompanyVisa"))) {return EmptyIterator.DEFAULT;} 
 		
 		
 		// rule head
@@ -306,7 +306,7 @@ public class DiscountRelInstances {
 		 
 		// apply prerequisite (c.getPaymentMethod())=="CompanyVisa"
 		 
-					if (!((_bindings.c.getPaymentMethod())=="CompanyVisa")) {return EmptyIterator.DEFAULT;} 
+					if (!(org.mandarax.rt.Equals.compare(_bindings.c.getPaymentMethod(),"CompanyVisa"))) {return EmptyIterator.DEFAULT;} 
 		
 		
 		// rule head

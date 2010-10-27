@@ -18,13 +18,18 @@ import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
 import org.mandarax.compiler.CompilerException;
+import org.mandarax.dsl.BinOp;
+import org.mandarax.dsl.BinaryExpression;
 import org.mandarax.dsl.Expression;
 import org.mandarax.dsl.ExpressionPrinter;
 import org.mandarax.dsl.FunctionDeclaration;
 import org.mandarax.dsl.FunctionInvocation;
 import org.mandarax.dsl.RelationshipDefinition;
 import org.mandarax.dsl.Variable;
+import org.mandarax.rt.Equals;
+
 import static com.google.common.base.Preconditions.*;
+import static org.mandarax.dsl.Utils.nameForBinOp;
 
 /**
  * Annotation description of prerequisites. 
@@ -194,6 +199,23 @@ public class Prereq {
 				out.append('.');
 				out.append(var.getName());
 			}
+			// special printing for equals
+			@Override
+			protected void doPrint(BinaryExpression x) throws IOException {
+				if (x.getOperator()==BinOp.EQ) {
+					out.append(Equals.class.getName());
+					out.append(".compare(");
+					print(x.getLeft());
+					out.append(',');
+					print(x.getRight());
+					out.append(')');
+				}
+				else {
+					super.doPrint(x);
+				}
+			}
+			
+			
 		};
 		return printer;
 	}
