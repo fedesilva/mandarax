@@ -1,4 +1,4 @@
-package test.org.mandarax.compiler.reldef6;
+package test.org.mandarax.compiler.reldef7;
  
 import test.org.mandarax.compiler.*;
 
@@ -93,7 +93,16 @@ public class DiscountRelInstances {
 		
 		
 		
-		_derivation.log("DiscountRel.rule1", DerivationController.RULE, null);
+		java.util.Properties _annotations = new java.util.Properties();
+		// relationship annotations
+		_annotations.put("author","jens");
+		_annotations.put("lastupdated","26/10/10");
+		
+		// rule annotations
+		_annotations.put("lastupdated","27/10/10");
+		_annotations.put("name","golden rule");
+		
+		_derivation.log("DiscountRel.rule1", DerivationController.RULE, _annotations);
 		
 		
 		
@@ -129,7 +138,15 @@ public class DiscountRelInstances {
 		
 		
 		
-		_derivation.log("DiscountRel.rule2", DerivationController.RULE, null);
+		java.util.Properties _annotations = new java.util.Properties();
+		// relationship annotations
+		_annotations.put("author","jens");
+		_annotations.put("lastupdated","26/10/10");
+		
+		// rule annotations
+		_annotations.put("name","\\\"silver\\\" rule");
+		
+		_derivation.log("DiscountRel.rule2", DerivationController.RULE, _annotations);
 		
 		
 		
@@ -172,7 +189,15 @@ public class DiscountRelInstances {
 		
 		
 		
-		_derivation.log("DiscountRel.rule3", DerivationController.RULE, null);
+		java.util.Properties _annotations = new java.util.Properties();
+		// relationship annotations
+		_annotations.put("author","jens");
+		_annotations.put("lastupdated","26/10/10");
+		
+		// rule annotations
+		_annotations.put("name","special rule");
+		
+		_derivation.log("DiscountRel.rule3", DerivationController.RULE, _annotations);
 		
 		
 		
@@ -209,7 +234,16 @@ public class DiscountRelInstances {
 		
 		
 		
-		_derivation.log("DiscountRel.rule1", DerivationController.RULE, null);
+		java.util.Properties _annotations = new java.util.Properties();
+		// relationship annotations
+		_annotations.put("author","jens");
+		_annotations.put("lastupdated","26/10/10");
+		
+		// rule annotations
+		_annotations.put("lastupdated","27/10/10");
+		_annotations.put("name","golden rule");
+		
+		_derivation.log("DiscountRel.rule1", DerivationController.RULE, _annotations);
 		
 		
 		
@@ -245,7 +279,15 @@ public class DiscountRelInstances {
 		
 		
 		
-		_derivation.log("DiscountRel.rule2", DerivationController.RULE, null);
+		java.util.Properties _annotations = new java.util.Properties();
+		// relationship annotations
+		_annotations.put("author","jens");
+		_annotations.put("lastupdated","26/10/10");
+		
+		// rule annotations
+		_annotations.put("name","\\\"silver\\\" rule");
+		
+		_derivation.log("DiscountRel.rule2", DerivationController.RULE, _annotations);
 		
 		
 		
@@ -288,7 +330,15 @@ public class DiscountRelInstances {
 		
 		
 		
-		_derivation.log("DiscountRel.rule3", DerivationController.RULE, null);
+		java.util.Properties _annotations = new java.util.Properties();
+		// relationship annotations
+		_annotations.put("author","jens");
+		_annotations.put("lastupdated","26/10/10");
+		
+		// rule annotations
+		_annotations.put("name","special rule");
+		
+		_derivation.log("DiscountRel.rule3", DerivationController.RULE, _annotations);
 		
 		
 		

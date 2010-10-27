@@ -14,6 +14,7 @@ package org.mandarax.rt;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 /**
  * Data structure to store the reference to elements in the knowledge base.
@@ -24,23 +25,27 @@ import java.util.List;
  */
 
 public class DefaultDerivationController  implements DerivationController {
-	private List<String> delegate = new ArrayList<String>();
-	private List<Integer> delegate2 = new ArrayList<Integer>();
+	private List<String> ids = new ArrayList<String>();
+	private List<Integer> types = new ArrayList<Integer>();
+	private List<Properties> annotations = new ArrayList<Properties>();
 	private int depth = 0;
 	private boolean cancelled = false;
 	private int derivationCount = 0;
 	private DerivationListener derivationListener = null;
+	
+	private static final Properties NO_ANNOTATIONS = new Properties();
 	/**
 	 * Log the use of a clause set
 	 * this implementation does not record the parameters
 	 */
-	public void log(String ruleRef,int kind,Object... param) {
+	public synchronized void log(String ruleRef,int kind,Properties annotations) {
 		if (cancelled) 
 			throw new DerivationCancelledException();
 		
 		// System.out.println("Log@" + depth + " : " + ruleRef);
-		this.delegate.add(depth,ruleRef);	
-		this.delegate2.add(depth,kind);
+		this.ids.add(depth,ruleRef);	
+		this.types.add(depth,kind);
+		this.annotations.add(annotations==null?NO_ANNOTATIONS:annotations);
 		this.derivationCount = this.derivationCount+1;
 		
 		if (derivationListener!=null)
@@ -50,12 +55,12 @@ public class DefaultDerivationController  implements DerivationController {
 	 * Get a copy of the derivation log. 
 	 * @return a list
 	 */
-	public List<DerivationLogEntry> getLog() {
+	public synchronized List<DerivationLogEntry> getLog() {
 		List<DerivationLogEntry> list = new ArrayList<DerivationLogEntry>();
 		for (int i=0;i<=depth;i++) {
-			String s = this.delegate.get(i);
+			String s = this.ids.get(i);
 			if (s!=null) {
-				list.add(new DerivationLogEntry(this.delegate.get(i),this.delegate2.get(i)));
+				list.add(new DerivationLogEntry(this.ids.get(i),this.types.get(i),this.annotations.get(i)));
 			}
 		}
 			
@@ -66,9 +71,9 @@ public class DefaultDerivationController  implements DerivationController {
 	 * Print the log to a print stream.
 	 * @param out a print stream 
 	 */
-	public void printLog(PrintStream out) {
+	public synchronized void printLog(PrintStream out) {
 		for (int i=0;i<=depth;i++) {
-			String s = this.delegate.get(i);
+			String s = this.ids.get(i);
 			if (s!=null) {
 				out.print(i+1);
 				out.print(". ");
@@ -79,21 +84,21 @@ public class DefaultDerivationController  implements DerivationController {
 	/**
 	 * Print the log to System.out.
 	 */
-	public void printLog() {
+	public synchronized void printLog() {
 		printLog(System.out);
 	}
 	/**
 	 * Get the derivation level.
 	 * @return
 	 */
-	public int size() {
+	public synchronized int size() {
 		return depth;
 	}
 	/**
 	 * Increase the derivation level.
 	 * @return this
 	 */
-	public DefaultDerivationController push() {
+	public synchronized DefaultDerivationController push() {
 		this.depth = depth+1;
 		return this;
 	}
@@ -102,7 +107,7 @@ public class DefaultDerivationController  implements DerivationController {
 	 * @param value
 	 * @return this
 	 */
-	public DefaultDerivationController pop(int value) {
+	public synchronized DefaultDerivationController pop(int value) {
 		assert value<=depth;
 		assert value>=0;
 		this.depth = value;
@@ -111,27 +116,27 @@ public class DefaultDerivationController  implements DerivationController {
 	/**
 	 * Cancel the derivation.
 	 */
-	public void cancel() {
+	public synchronized void cancel() {
 		this.cancelled = true;
 	}
 	/**
 	 * Whether the derivation has been cancelled.
 	 * @return the cancelled status
 	 */
-	public boolean isCancelled() {
+	public synchronized boolean isCancelled() {
 		return this.cancelled;
 	}
 	/**
 	 * Get the number of derivation steps performed so far.
 	 * @return an int
 	 */
-	public int getDerivationCount() {
+	public synchronized int getDerivationCount() {
 		return derivationCount;
 	}
-	public DerivationListener getDerivationListener() {
+	public synchronized DerivationListener getDerivationListener() {
 		return derivationListener;
 	}
-	public void setDerivationListener(DerivationListener derivationListener) {
+	public synchronized void setDerivationListener(DerivationListener derivationListener) {
 		this.derivationListener = derivationListener;
 	}
 }

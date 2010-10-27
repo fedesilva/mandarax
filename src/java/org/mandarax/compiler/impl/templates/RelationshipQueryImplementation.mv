@@ -50,6 +50,21 @@ public class @{className} {
 	@foreach{index:ruleIndices}// rule: @{rel.rules.get(index)}
 	private static ResourceIterator<@{rel.name}> @{query.name}_@{index} (final DerivationController _derivation @if{query.hasParameters()},@end{} @foreach{param:query.parameterNames} final @{rel.getTypeNameForSlot(param)} @{param} @end{", "}) {
 		@code{rule=rel.getRules().get(index)}
+		
+		@if{rel.annotated || rule.annotated}
+		_derivation.log("@{rel.name}.@{rule.id}", DerivationController.RULE, null);
+		@else{}
+		java.util.Properties _annotations = new java.util.Properties();
+		// relationship annotations
+		@foreach{annotation:rel.annotations}_annotations.put("@{org.apache.commons.lang.StringEscapeUtils.escapeJava(annotation.key)}","@{org.apache.commons.lang.StringEscapeUtils.escapeJava(annotation.value)}");
+		@end{}
+		// rule annotations
+		@foreach{annotation:rule.annotations}_annotations.put("@{org.apache.commons.lang.StringEscapeUtils.escapeJava(annotation.key)}","@{org.apache.commons.lang.StringEscapeUtils.escapeJava(annotation.value)}");
+		@end{}
+		_derivation.log("@{rel.name}.@{rule.id}", DerivationController.RULE, _annotations);
+		@end{}
+		
+		
 		@if{rule.fact}@includeNamed{'FactInvocation'}
 		@else{}@includeNamed{'RuleInvocation'}
 		@end{}

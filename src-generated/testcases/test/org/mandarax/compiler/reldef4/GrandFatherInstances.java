@@ -5,7 +5,7 @@ import com.google.common.base.Predicate;
 
 /**
  * Interface for queries for relationship <strong>GrandFather</strong>.
- * @version Oct 27, 2010 12:47:25 PM 
+ * @version Oct 27, 2010 2:11:54 PM 
  */
 public class GrandFatherInstances {
 	// object references
@@ -109,9 +109,14 @@ public class GrandFatherInstances {
 	// rule: rule1: Father(x,y) & Father(y,z) -> GrandFather(x,z);
 	private static ResourceIterator<GrandFather> getGrandChildren_0 (final DerivationController _derivation ,  final String grandFather ) {
 		
+		
+		
+		_derivation.log("GrandFather.rule1", DerivationController.RULE, null);
+		
+		
+		
 			
 	
-		_derivation.log("GrandFather.rule1", DerivationController.RULE, DerivationController.NIL);
 		
 		// utility class used to keep track of variables bindings
 		class _Bindings {
@@ -161,9 +166,14 @@ public class GrandFatherInstances {
 	// rule: rule1: Father(x,y) & Father(y,z) -> GrandFather(x,z);
 	private static ResourceIterator<GrandFather> getGrandFather_0 (final DerivationController _derivation ,  final String grandChild ) {
 		
+		
+		
+		_derivation.log("GrandFather.rule1", DerivationController.RULE, null);
+		
+		
+		
 			
 	
-		_derivation.log("GrandFather.rule1", DerivationController.RULE, DerivationController.NIL);
 		
 		// utility class used to keep track of variables bindings
 		class _Bindings {
@@ -213,9 +223,14 @@ public class GrandFatherInstances {
 	// rule: rule1: Father(x,y) & Father(y,z) -> GrandFather(x,z);
 	private static ResourceIterator<GrandFather> isGrandFather_0 (final DerivationController _derivation ,  final String grandFather ,  final String grandChild ) {
 		
+		
+		
+		_derivation.log("GrandFather.rule1", DerivationController.RULE, null);
+		
+		
+		
 			
 	
-		_derivation.log("GrandFather.rule1", DerivationController.RULE, DerivationController.NIL);
 		
 		// utility class used to keep track of variables bindings
 		class _Bindings {
@@ -264,9 +279,14 @@ public class GrandFatherInstances {
 	// rule: rule1: Father(x,y) & Father(y,z) -> GrandFather(x,z);
 	private static ResourceIterator<GrandFather> getAll_0 (final DerivationController _derivation  ) {
 		
+		
+		
+		_derivation.log("GrandFather.rule1", DerivationController.RULE, null);
+		
+		
+		
 			
 	
-		_derivation.log("GrandFather.rule1", DerivationController.RULE, DerivationController.NIL);
 		
 		// utility class used to keep track of variables bindings
 		class _Bindings {

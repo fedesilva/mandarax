@@ -33,4 +33,9 @@ public abstract class AnnotatableNode extends ASTNode {
 	public List<Annotation> getAnnotations() {
 		return annotations;
 	}
+	
+	public boolean isAnnotated() {
+		List<Annotation> annotations = getAnnotations();
+		return annotations==null || annotations.size()==0;
+	}
 }

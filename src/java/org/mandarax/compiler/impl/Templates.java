@@ -17,6 +17,8 @@ import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.apache.log4j.Logger;
 import org.mandarax.MandaraxException;
 import org.mandarax.compiler.CompilerException;
 import org.mvel2.templates.CompiledTemplate;
@@ -29,12 +31,15 @@ import org.mvel2.templates.TemplateRegistry;
  * @author jens dietrich
  */
 public class Templates {
+	public static org.apache.log4j.Logger LOGGER = Logger.getLogger(Templates.class);
+	
 	// constants for template names
 	public final static String FACT_INVOCATION = "FactInvocation";
 	public final static String RULE_INVOCATION = "RuleInvocation";
 	public final static String RELATIONSHIP_TYPE = "RelationshipType";
 	public final static String RELATIONSHIP_QUERY_INTERFACE = "RelationshipQueryInterface";
 	public final static String RELATIONSHIP_QUERY_IMPLEMENTATION = "RelationshipQueryImplementation";
+	public final static String DERIVATION_LOGGING = "DerivationLogging";
 	
 	static TemplateRegistry registry = new SimpleTemplateRegistry();
 	
@@ -45,10 +50,10 @@ public class Templates {
 			getTemplate(RELATIONSHIP_TYPE);
 			getTemplate(RELATIONSHIP_QUERY_INTERFACE);
 			getTemplate(RELATIONSHIP_QUERY_IMPLEMENTATION);
+			getTemplate(DERIVATION_LOGGING);
 		}
 		catch (Exception x) {
-			// TODO proper logging
-			x.printStackTrace();
+			LOGGER.error(x);
 		}
 	}
 	

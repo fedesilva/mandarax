@@ -11,6 +11,11 @@
 
 package org.mandarax.rt;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Properties;
+import java.util.Set;
+
 /**
  * Represents one node in the derivation.
  * Contains the name of the artefact used (can be used to look up rules in the kb),
@@ -22,10 +27,12 @@ package org.mandarax.rt;
 public class DerivationLogEntry {
 	private String name = null;
 	private int kind = 0;
-	public DerivationLogEntry(String name, int kind) {
+	private Properties annotations = null;
+	public DerivationLogEntry(String name, int kind,Properties annotations) {
 		super();
 		this.name = name;
 		this.kind = kind;
+		this.annotations = annotations;
 	}
 	public int getKind() {
 		return kind;
@@ -39,12 +46,33 @@ public class DerivationLogEntry {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public Set<Object> getAnnotationKeys() {
+		return Collections.unmodifiableSet(annotations.keySet());
+	}
+	
+	public String getAnnotation(String key) {
+		return annotations.getProperty(key);
+	}
+
+	/**
+	 * Get the type of the node as string.
+	 * @return a string
+	 */
+	public String getCategory() {
+		switch (kind) {
+			case DerivationController.RULE:return "rule";
+			case DerivationController.FACT:return "fact";
+			default: return "other";
+		}
+	}
 	@Override
 	public int hashCode() {
-		final int PRIME = 31;
+		final int prime = 31;
 		int result = 1;
-		result = PRIME * result + kind;
-		result = PRIME * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((annotations == null) ? 0 : annotations.hashCode());
+		result = prime * result + kind;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
 	@Override
@@ -55,7 +83,12 @@ public class DerivationLogEntry {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		final DerivationLogEntry other = (DerivationLogEntry) obj;
+		DerivationLogEntry other = (DerivationLogEntry) obj;
+		if (annotations == null) {
+			if (other.annotations != null)
+				return false;
+		} else if (!annotations.equals(other.annotations))
+			return false;
 		if (kind != other.kind)
 			return false;
 		if (name == null) {
@@ -64,18 +97,5 @@ public class DerivationLogEntry {
 		} else if (!name.equals(other.name))
 			return false;
 		return true;
-	}
-	/**
-	 * Get the type of the node as string.
-	 * @return a string
-	 */
-	public String getCategory() {
-		switch (kind) {
-			case DerivationController.RULE:return "rule";
-			case DerivationController.FACT:return "fact";
-			case DerivationController.BEAN_PROPERTY: return "property";
-			case DerivationController.JAVA_METHOD: return "method";
-			default: return "other";
-		}
 	}
 }

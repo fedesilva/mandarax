@@ -51,17 +51,10 @@ public class CompilerTests6 {
 		DiscountRel discount = rs.next(); // gold discount
 		assertEquals(20,discount.discount.getValue());
 		assertEquals(true,discount.discount.isRelative());
-		List<DerivationLogEntry> derivation = rs.getDerivationLog();
-		assertEquals(1,derivation.size());
-		assertEquals("DiscountRel.rule1",derivation.get(0).getName());
 		
 		discount = rs.next(); // silver
 		assertEquals(10,discount.discount.getValue());
 		assertEquals(true,discount.discount.isRelative());
-		derivation = rs.getDerivationLog();
-		assertEquals(2,derivation.size());
-		assertEquals("DiscountRel.rule2",derivation.get(0).getName());
-		assertEquals("FrequentCustomer.rule2",derivation.get(1).getName());
 		
 		assertFalse(rs.hasNext());
 	}

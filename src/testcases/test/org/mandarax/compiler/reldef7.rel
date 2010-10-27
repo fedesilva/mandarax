@@ -1,0 +1,23 @@
+// same scenario as reldef6, but uses annotations
+package test.org.mandarax.compiler.reldef7;
+import test.org.mandarax.compiler.*;
+object Discount goldDiscount = new Discount(20,true);
+object Discount silverDiscount = new Discount(10,true);
+object Discount specialDiscount = new Discount(5,false);
+@author="jens"
+@lastupdated="26/10/10"
+rel DiscountRel(Customer customer,Discount discount) queries getDiscount(customer),qualifiesForDiscount(customer,discount) {
+	@lastupdated="27/10/10"
+	@name="golden rule"
+	rule1: c.turnover>1000 -> DiscountRel(c,goldDiscount);
+	// use comma in annotation to test escape
+	@name="\"silver\" rule"
+	rule2: FrequentCustomer(c) -> DiscountRel(c,silverDiscount);
+	@name="special rule"
+	rule3: c.paymentMethod == "CompanyVisa" -> DiscountRel(c,specialDiscount);
+}
+@author="jens"
+rel FrequentCustomer(Customer customer) queries isFrequentCustomer(customer) {
+	rule1: c.transactionCount>5 -> FrequentCustomer(c);
+	rule2: c.transactionCount>3 & c.turnover>500 -> FrequentCustomer(c);
+}

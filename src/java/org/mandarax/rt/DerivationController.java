@@ -13,6 +13,7 @@ package org.mandarax.rt;
 
 import java.io.PrintStream;
 import java.util.List;
+import java.util.Properties;
 
 /**
  * Utility class to controll the derivation process.
@@ -42,19 +43,16 @@ public interface DerivationController  {
 	public static final int ANY = 0;
 	public static final int RULE = 1;
 	public static final int FACT = 2;
-	public static final int BEAN_PROPERTY = 3;
-	public static final int JAVA_METHOD = 4;
-	public static final int COMPARISON = 5;
-	public static final int EXTERNAL_FACT_SET = 6;
-	public static final int NAF = 7;
+	public static final int EXTERNAL_FACT_SET = 3;
+	public static final int NAF = 4;
 	
 	/**
 	 * Log the use of a clause set
 	 * @param ruleRef a string referencing the knowledge element (id or similar)
 	 * @param in kind what kind of knowledge this is (one of the constants RULE, FACT etc)
-	 * @param the parameter bindings used
+	 * @param the annotations used
 	 */
-	public void log(String ruleRef,int kind,Object... param) ;
+	public void log(String ruleRef,int kind,Properties annotations) ;
 	/**
 	 * Get (a copy of) the derivation log. 
 	 * May throw a runtime exception (e.g., if the derivation has been cancelled). 

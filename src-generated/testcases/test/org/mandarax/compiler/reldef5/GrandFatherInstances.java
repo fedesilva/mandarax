@@ -7,7 +7,7 @@ import com.google.common.base.Predicate;
 
 /**
  * Interface for queries for relationship <strong>GrandFather</strong>.
- * @version Oct 27, 2010 12:47:25 PM 
+ * @version Oct 27, 2010 2:11:54 PM 
  */
 public class GrandFatherInstances {
 	// object references
@@ -48,9 +48,14 @@ public class GrandFatherInstances {
 	// rule: rule1: Father(x.getName(),y) & Father(y,z.getName()) -> GrandFather(x,z);
 	private static ResourceIterator<GrandFather> isGrandFather_0 (final DerivationController _derivation ,  final Person grandFather ,  final Person grandChild ) {
 		
+		
+		
+		_derivation.log("GrandFather.rule1", DerivationController.RULE, null);
+		
+		
+		
 			
 	
-		_derivation.log("GrandFather.rule1", DerivationController.RULE, DerivationController.NIL);
 		
 		// utility class used to keep track of variables bindings
 		class _Bindings {
