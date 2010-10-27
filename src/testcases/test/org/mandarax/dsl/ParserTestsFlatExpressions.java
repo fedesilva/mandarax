@@ -32,6 +32,15 @@ public class ParserTestsFlatExpressions extends AbstractTests {
 		assertEquals("test",x.getValue());
 	}
 
+	@Test
+	public void testStringLiteral2() throws Exception {
+		Expression expression = readExpression("\"\\\"test\\\"\"");
+		print(expression);
+		assertTrue(expression instanceof StringLiteral);
+		StringLiteral x = (StringLiteral)expression;
+		System.out.println(org.apache.commons.lang.StringEscapeUtils.unescapeJava(x.getValue()));
+		assertEquals("\"test\"",x.getValue());
+	}
 	
 	@Test
 	public void testIntLiteralDec1() throws Exception {

@@ -12,6 +12,7 @@
 package org.mandarax.dsl;
 
 import com.google.common.base.Function;
+import static org.apache.commons.lang.StringEscapeUtils.*;
 
 /**
  * String literal.
@@ -23,7 +24,7 @@ public class StringLiteral extends Literal<String> {
 
 	public StringLiteral(Position position,Context context,String value) {
 		super(position,context);
-		this.value = value;
+		this.value = unescapeJava(value);
 	}
 
 	public String getValue() {
@@ -35,11 +36,11 @@ public class StringLiteral extends Literal<String> {
 		visitor.visit(this);
 		visitor.endVisit(this);
 	}
-	// TODO - must escape chars in string
+	
 	@Override
 	public void appendTo(StringBuffer b,Function<Variable,String> conversion) {
 		b.append('\"');
-		b.append(value);
+		b.append(escapeJava(value));
 		b.append('\"');
 	}
 

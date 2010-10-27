@@ -21,7 +21,6 @@ public interface DerivationListener {
 	 * Notify the listener.  
 	 * @param ruleRef
 	 * @param derivationDepth
-	 * @param derivationCount
 	 */
-	public void step(String ruleRef,int derivationDepth,int derivationCount) ;
+	public void step(String ruleRef,int derivationDepth) ;
 }

@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import com.google.common.base.Joiner;
+
 /**
  * Data structure to store the reference to elements in the knowledge base.
  * Used to record derivation trees, and can be used to cancel the inference process.
@@ -25,15 +27,16 @@ import java.util.Properties;
  */
 
 public class DefaultDerivationController  implements DerivationController {
+	
 	private List<String> ids = new ArrayList<String>();
 	private List<Integer> types = new ArrayList<Integer>();
 	private List<Properties> annotations = new ArrayList<Properties>();
 	private int depth = 0;
 	private boolean cancelled = false;
-	private int derivationCount = 0;
 	private DerivationListener derivationListener = null;
 	
 	private static final Properties NO_ANNOTATIONS = new Properties();
+	
 	/**
 	 * Log the use of a clause set
 	 * this implementation does not record the parameters
@@ -42,14 +45,14 @@ public class DefaultDerivationController  implements DerivationController {
 		if (cancelled) 
 			throw new DerivationCancelledException();
 		
-		// System.out.println("Log@" + depth + " : " + ruleRef);
+		//System.out.println("Log@" + depth + " : " + ruleRef);
 		this.ids.add(depth,ruleRef);	
 		this.types.add(depth,kind);
-		this.annotations.add(annotations==null?NO_ANNOTATIONS:annotations);
-		this.derivationCount = this.derivationCount+1;
+		this.annotations.add(depth,annotations==null?NO_ANNOTATIONS:annotations);
+		//this.depth = this.depth+1;
 		
 		if (derivationListener!=null)
-			derivationListener.step(ruleRef, depth, derivationCount);
+			derivationListener.step(ruleRef, depth);
 	}
 	/**
 	 * Get a copy of the derivation log. 
@@ -108,8 +111,8 @@ public class DefaultDerivationController  implements DerivationController {
 	 * @return this
 	 */
 	public synchronized DefaultDerivationController pop(int value) {
+		//System.out.println("Set depth=" + value);
 		assert value<=depth;
-		assert value>=0;
 		this.depth = value;
 		return this;
 	}
@@ -126,17 +129,20 @@ public class DefaultDerivationController  implements DerivationController {
 	public synchronized boolean isCancelled() {
 		return this.cancelled;
 	}
-	/**
-	 * Get the number of derivation steps performed so far.
-	 * @return an int
-	 */
-	public synchronized int getDerivationCount() {
-		return derivationCount;
-	}
+
 	public synchronized DerivationListener getDerivationListener() {
 		return derivationListener;
 	}
 	public synchronized void setDerivationListener(DerivationListener derivationListener) {
 		this.derivationListener = derivationListener;
+	}
+	@Override
+	public String toString() {
+		StringBuffer b = new StringBuffer();
+		for (int i=0;i<depth;i++) {
+			if (b.length()>0) b.append(',');
+			b.append(ids.get(i)); 
+		}
+		return b.toString();
 	}
 }

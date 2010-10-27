@@ -98,4 +98,9 @@ public class DerivationLogEntry {
 			return false;
 		return true;
 	}
+	
+	@Override 
+	public String toString() {
+		return name;
+	}
 }

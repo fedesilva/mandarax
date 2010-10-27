@@ -90,15 +90,11 @@ public interface DerivationController  {
 	 */
 	public void cancel() ;
 	/**
-	 * Whether the derivation has been cancelled. If the derivation is cancelled, the next call to log should
+	 * Whether the derivation has been canceled. If the derivation is canceled, the next call to log should
 	 * trigger a DerivationCancelledException. 
 	 * This can be used by applications to stop long running derivations.
-	 * @return the cancelled status
+	 * @return the canceled status
 	 */
 	public boolean isCancelled() ;
-	/**
-	 * Get the number of derivation steps performed so far.
-	 * @return an int
-	 */
-	public int getDerivationCount() ;
+
 }
