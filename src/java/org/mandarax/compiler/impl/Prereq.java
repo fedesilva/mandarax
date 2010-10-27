@@ -17,7 +17,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
-
 import org.mandarax.compiler.CompilerException;
 import org.mandarax.dsl.Expression;
 import org.mandarax.dsl.ExpressionPrinter;
@@ -25,9 +24,6 @@ import org.mandarax.dsl.FunctionDeclaration;
 import org.mandarax.dsl.FunctionInvocation;
 import org.mandarax.dsl.RelationshipDefinition;
 import org.mandarax.dsl.Variable;
-
-import com.google.common.base.Function;
-
 import static com.google.common.base.Preconditions.*;
 
 /**

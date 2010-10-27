@@ -17,6 +17,7 @@ import org.mandarax.MandaraxException;
  * Exception used to report verification problems.
  * @author jens dietrich
  */
+@SuppressWarnings("serial")
 public class VerificationException extends MandaraxException {
 
 	public VerificationException() {}

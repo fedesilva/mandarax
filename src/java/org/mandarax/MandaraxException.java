@@ -15,6 +15,7 @@ package org.mandarax;
  * Top-level exception.
  * @author jens dietrich
  */
+@SuppressWarnings("serial")
 public class MandaraxException extends Exception {
 
 	public MandaraxException() {}

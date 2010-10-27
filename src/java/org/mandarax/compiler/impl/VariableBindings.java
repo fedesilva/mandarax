@@ -13,11 +13,9 @@ package org.mandarax.compiler.impl;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.apache.log4j.Logger;
 import org.mandarax.compiler.CompilerException;
 import org.mandarax.dsl.Context;

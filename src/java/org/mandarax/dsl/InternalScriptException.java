@@ -16,6 +16,7 @@ package org.mandarax.dsl;
  * This is a runtime exception to minimize interference with ANTLR.
  * @author jens dietrich
  */
+@SuppressWarnings("serial")
 public class InternalScriptException extends RuntimeException {
 
 	public InternalScriptException() {}

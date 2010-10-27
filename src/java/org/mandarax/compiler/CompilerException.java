@@ -19,6 +19,8 @@ import org.mandarax.dsl.Position;
  * Class used to report compiler exceptions
  * @author jens dietrich
  */
+
+@SuppressWarnings("serial")
 public class CompilerException extends MandaraxException {
 	
 

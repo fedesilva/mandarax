@@ -19,20 +19,16 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
-
 import org.apache.log4j.Logger;
 import org.mandarax.compiler.CompilerException;
 import org.mandarax.dsl.Expression;
 import org.mandarax.dsl.FunctionDeclaration;
-import org.mandarax.dsl.Literal;
 import org.mandarax.dsl.ObjectDeclaration;
 import org.mandarax.dsl.RelationshipDefinition;
 import org.mandarax.dsl.Rule;
 import org.mandarax.dsl.FunctionInvocation;
 import org.mandarax.dsl.Variable;
 import org.mandarax.dsl.util.Resolver;
-
-import static org.mandarax.compiler.impl.CompilerUtils.*;
 
 /**
  * Algorithm to organise the prerequisites in rules in order to optimise code generation. 
