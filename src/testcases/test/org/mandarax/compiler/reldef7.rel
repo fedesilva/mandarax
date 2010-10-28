@@ -1,9 +1,9 @@
 // same scenario as reldef6, but uses annotations
 package test.org.mandarax.compiler.reldef7;
 import test.org.mandarax.compiler.*;
-object Discount goldDiscount = new Discount(20,true);
-object Discount silverDiscount = new Discount(10,true);
-object Discount specialDiscount = new Discount(5,false);
+Discount goldDiscount = new Discount(20,true);
+Discount silverDiscount = new Discount(10,true);
+Discount specialDiscount = new Discount(5,false);
 @author="jens"
 @lastupdated="26/10/10"
 rel DiscountRel(Customer customer,Discount discount) queries getDiscount(customer),qualifiesForDiscount(customer,discount) {

@@ -25,7 +25,7 @@ public class ParserTestsObjectDeclarations extends AbstractTests{
 	
 	@Test
 	public void testObjectDeclaration1() throws Exception {
-		ObjectDeclaration decl = readObjectDeclaration("object Person klaus = new PersonImpl(\"Klaus\");");
+		ObjectDeclaration decl = readObjectDeclaration("Person klaus = new PersonImpl(\"Klaus\");");
 		assertEquals("klaus",decl.getName());
 		assertEquals("Person",decl.getType());
 		assertTrue(decl.getDefaultValueDeclaration() instanceof ConstructorInvocation);
@@ -38,7 +38,7 @@ public class ParserTestsObjectDeclarations extends AbstractTests{
 	
 	@Test
 	public void testObjectDeclaration2() throws Exception {
-		ObjectDeclaration decl = readObjectDeclaration("object  com.example.Person klaus = new com.example.PersonImpl(\"Klaus\");");
+		ObjectDeclaration decl = readObjectDeclaration("com.example.Person klaus = new com.example.PersonImpl(\"Klaus\");");
 		assertEquals("klaus",decl.getName());
 		assertEquals("com.example.Person",decl.getType());
 		assertTrue(decl.getDefaultValueDeclaration() instanceof ConstructorInvocation);
@@ -51,7 +51,7 @@ public class ParserTestsObjectDeclarations extends AbstractTests{
 	
 	@Test
 	public void testObjectDeclaration3() throws Exception {
-		ObjectDeclaration decl = readObjectDeclaration("object  com.example.Person klaus = null;");
+		ObjectDeclaration decl = readObjectDeclaration("com.example.Person klaus = null;");
 		assertEquals("klaus",decl.getName());
 		assertEquals("com.example.Person",decl.getType());
 		assertTrue(decl.getDefaultValueDeclaration() instanceof NullValue);

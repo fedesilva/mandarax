@@ -98,7 +98,7 @@ annotation returns [Annotation value]
     ;  
 	
 objectDeclaration returns [ObjectDeclaration value] 
-    : ob='object' t=type i=Identifier '=' x = expression {$value = new ObjectDeclaration(pos(ob),context,t.value,i.getText(),x.value);}';'
+    : t=type i=Identifier '=' x = expression {$value = new ObjectDeclaration(pos(t.start),context,t.value,i.getText(),x.value);}';'
     ;
      
      

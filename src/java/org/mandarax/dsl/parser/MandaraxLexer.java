@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g 2010-09-20 11:53:06
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g 2010-10-28 21:15:28
  
 /*
  * Copyright 2010 Jens Dietrich 
@@ -93,7 +93,6 @@ public class MandaraxLexer extends Lexer {
     public static final int UnicodeEscape=17;
     public static final int FloatingPointLiteral=14;
     public static final int JavaIDDigit=20;
-    public static final int T__75=75;
     public static final int T__74=74;
     public static final int T__73=73;
     public static final int EscapeSequence=15;
@@ -332,10 +331,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__34;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:44:7: ( 'object' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:44:9: 'object'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:44:7: ( 'relationship' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:44:9: 'relationship'
             {
-            match("object"); 
+            match("relationship"); 
 
 
             }
@@ -353,10 +352,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__35;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:45:7: ( 'relationship' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:45:9: 'relationship'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:45:7: ( 'rel' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:45:9: 'rel'
             {
-            match("relationship"); 
+            match("rel"); 
 
 
             }
@@ -374,11 +373,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__36;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:46:7: ( 'rel' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:46:9: 'rel'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:46:7: ( '(' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:46:9: '('
             {
-            match("rel"); 
-
+            match('('); 
 
             }
 
@@ -395,10 +393,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__37;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:47:7: ( '(' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:47:9: '('
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:47:7: ( ')' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:47:9: ')'
             {
-            match('('); 
+            match(')'); 
 
             }
 
@@ -415,10 +413,11 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__38;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:48:7: ( ')' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:48:9: ')'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:48:7: ( 'extends' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:48:9: 'extends'
             {
-            match(')'); 
+            match("extends"); 
+
 
             }
 
@@ -435,10 +434,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__39;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:49:7: ( 'extends' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:49:9: 'extends'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:49:7: ( 'queries' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:49:9: 'queries'
             {
-            match("extends"); 
+            match("queries"); 
 
 
             }
@@ -456,11 +455,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__40;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:50:7: ( 'queries' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:50:9: 'queries'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:50:7: ( '{' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:50:9: '{'
             {
-            match("queries"); 
-
+            match('{'); 
 
             }
 
@@ -477,10 +475,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__41;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:51:7: ( '{' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:51:9: '{'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:51:7: ( '}' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:51:9: '}'
             {
-            match('{'); 
+            match('}'); 
 
             }
 
@@ -497,10 +495,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__42;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:52:7: ( '}' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:52:9: '}'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:52:7: ( ',' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:52:9: ','
             {
-            match('}'); 
+            match(','); 
 
             }
 
@@ -517,10 +515,11 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__43;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:53:7: ( ',' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:53:9: ','
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:53:7: ( 'public' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:53:9: 'public'
             {
-            match(','); 
+            match("public"); 
+
 
             }
 
@@ -537,10 +536,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__44;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:54:7: ( 'public' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:54:9: 'public'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:54:7: ( 'private' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:54:9: 'private'
             {
-            match("public"); 
+            match("private"); 
 
 
             }
@@ -558,11 +557,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__45;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:55:7: ( 'private' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:55:9: 'private'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:55:7: ( '[' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:55:9: '['
             {
-            match("private"); 
-
+            match('['); 
 
             }
 
@@ -579,10 +577,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__46;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:56:7: ( '[' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:56:9: '['
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:56:7: ( ']' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:56:9: ']'
             {
-            match('['); 
+            match(']'); 
 
             }
 
@@ -599,10 +597,11 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__47;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:57:7: ( ']' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:57:9: ']'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:57:7: ( 'boolean' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:57:9: 'boolean'
             {
-            match(']'); 
+            match("boolean"); 
+
 
             }
 
@@ -619,10 +618,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__48;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:58:7: ( 'boolean' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:58:9: 'boolean'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:58:7: ( 'char' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:58:9: 'char'
             {
-            match("boolean"); 
+            match("char"); 
 
 
             }
@@ -640,10 +639,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__49;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:59:7: ( 'char' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:59:9: 'char'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:59:7: ( 'byte' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:59:9: 'byte'
             {
-            match("char"); 
+            match("byte"); 
 
 
             }
@@ -661,10 +660,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__50;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:60:7: ( 'byte' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:60:9: 'byte'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:60:7: ( 'short' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:60:9: 'short'
             {
-            match("byte"); 
+            match("short"); 
 
 
             }
@@ -682,10 +681,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__51;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:61:7: ( 'short' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:61:9: 'short'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:61:7: ( 'int' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:61:9: 'int'
             {
-            match("short"); 
+            match("int"); 
 
 
             }
@@ -703,10 +702,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__52;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:62:7: ( 'int' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:62:9: 'int'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:62:7: ( 'long' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:62:9: 'long'
             {
-            match("int"); 
+            match("long"); 
 
 
             }
@@ -724,10 +723,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__53;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:63:7: ( 'long' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:63:9: 'long'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:63:7: ( 'float' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:63:9: 'float'
             {
-            match("long"); 
+            match("float"); 
 
 
             }
@@ -745,10 +744,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__54;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:64:7: ( 'float' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:64:9: 'float'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:64:7: ( 'double' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:64:9: 'double'
             {
-            match("float"); 
+            match("double"); 
 
 
             }
@@ -766,10 +765,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__55;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:65:7: ( 'double' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:65:9: 'double'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:65:7: ( 'true' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:65:9: 'true'
             {
-            match("double"); 
+            match("true"); 
 
 
             }
@@ -787,10 +786,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__56;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:66:7: ( 'true' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:66:9: 'true'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:66:7: ( 'false' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:66:9: 'false'
             {
-            match("true"); 
+            match("false"); 
 
 
             }
@@ -808,11 +807,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__57;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:67:7: ( 'false' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:67:9: 'false'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:67:7: ( '&' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:67:9: '&'
             {
-            match("false"); 
-
+            match('&'); 
 
             }
 
@@ -829,10 +827,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__58;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:68:7: ( '&' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:68:9: '&'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:68:7: ( '?' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:68:9: '?'
             {
-            match('&'); 
+            match('?'); 
 
             }
 
@@ -849,10 +847,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__59;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:69:7: ( '?' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:69:9: '?'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:69:7: ( '|' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:69:9: '|'
             {
-            match('?'); 
+            match('|'); 
 
             }
 
@@ -869,10 +867,11 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__60;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:70:7: ( '|' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:70:9: '|'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:70:7: ( '==' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:70:9: '=='
             {
-            match('|'); 
+            match("=="); 
+
 
             }
 
@@ -889,10 +888,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__61;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:71:7: ( '==' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:71:9: '=='
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:71:7: ( '!=' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:71:9: '!='
             {
-            match("=="); 
+            match("!="); 
 
 
             }
@@ -910,10 +909,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__62;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:72:7: ( '!=' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:72:9: '!='
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:72:7: ( 'instanceof' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:72:9: 'instanceof'
             {
-            match("!="); 
+            match("instanceof"); 
 
 
             }
@@ -931,10 +930,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__63;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:73:7: ( 'instanceof' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:73:9: 'instanceof'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:73:7: ( '<=' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:73:9: '<='
             {
-            match("instanceof"); 
+            match("<="); 
 
 
             }
@@ -952,10 +951,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__64;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:74:7: ( '<=' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:74:9: '<='
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:74:7: ( '>=' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:74:9: '>='
             {
-            match("<="); 
+            match(">="); 
 
 
             }
@@ -973,11 +972,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__65;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:75:7: ( '>=' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:75:9: '>='
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:75:7: ( '<' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:75:9: '<'
             {
-            match(">="); 
-
+            match('<'); 
 
             }
 
@@ -994,10 +992,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__66;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:76:7: ( '<' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:76:9: '<'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:76:7: ( '>' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:76:9: '>'
             {
-            match('<'); 
+            match('>'); 
 
             }
 
@@ -1014,10 +1012,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__67;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:77:7: ( '>' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:77:9: '>'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:77:7: ( '+' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:77:9: '+'
             {
-            match('>'); 
+            match('+'); 
 
             }
 
@@ -1034,10 +1032,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__68;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:78:7: ( '+' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:78:9: '+'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:78:7: ( '-' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:78:9: '-'
             {
-            match('+'); 
+            match('-'); 
 
             }
 
@@ -1054,10 +1052,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__69;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:79:7: ( '-' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:79:9: '-'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:79:7: ( '/' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:79:9: '/'
             {
-            match('-'); 
+            match('/'); 
 
             }
 
@@ -1074,10 +1072,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__70;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:80:7: ( '/' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:80:9: '/'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:80:7: ( '%' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:80:9: '%'
             {
-            match('/'); 
+            match('%'); 
 
             }
 
@@ -1094,10 +1092,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__71;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:81:7: ( '%' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:81:9: '%'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:81:7: ( '~' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:81:9: '~'
             {
-            match('%'); 
+            match('~'); 
 
             }
 
@@ -1114,10 +1112,10 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__72;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:82:7: ( '~' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:82:9: '~'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:82:7: ( '!' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:82:9: '!'
             {
-            match('~'); 
+            match('!'); 
 
             }
 
@@ -1134,10 +1132,11 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__73;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:83:7: ( '!' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:83:9: '!'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:83:7: ( 'null' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:83:9: 'null'
             {
-            match('!'); 
+            match("null"); 
+
 
             }
 
@@ -1154,29 +1153,8 @@ public class MandaraxLexer extends Lexer {
         try {
             int _type = T__74;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:84:7: ( 'null' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:84:9: 'null'
-            {
-            match("null"); 
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__74"
-
-    // $ANTLR start "T__75"
-    public final void mT__75() throws RecognitionException {
-        try {
-            int _type = T__75;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:85:7: ( 'new' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:85:9: 'new'
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:84:7: ( 'new' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:84:9: 'new'
             {
             match("new"); 
 
@@ -1189,7 +1167,7 @@ public class MandaraxLexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "T__75"
+    // $ANTLR end "T__74"
 
     // $ANTLR start "HexLiteral"
     public final void mHexLiteral() throws RecognitionException {
@@ -2528,8 +2506,8 @@ public class MandaraxLexer extends Lexer {
     // $ANTLR end "LINE_COMMENT"
 
     public void mTokens() throws RecognitionException {
-        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:8: ( T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | HexLiteral | DecimalLiteral | OctalLiteral | FloatingPointLiteral | CharacterLiteral | StringLiteral | Identifier | NEWLINE | WS | COMMENT | LINE_COMMENT )
-        int alt30=63;
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:8: ( T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | HexLiteral | DecimalLiteral | OctalLiteral | FloatingPointLiteral | CharacterLiteral | StringLiteral | Identifier | NEWLINE | WS | COMMENT | LINE_COMMENT )
+        int alt30=62;
         alt30 = dfa30.predict(input);
         switch (alt30) {
             case 1 :
@@ -2890,84 +2868,77 @@ public class MandaraxLexer extends Lexer {
                 }
                 break;
             case 52 :
-                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:316: T__75
-                {
-                mT__75(); 
-
-                }
-                break;
-            case 53 :
-                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:322: HexLiteral
+                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:316: HexLiteral
                 {
                 mHexLiteral(); 
 
                 }
                 break;
-            case 54 :
-                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:333: DecimalLiteral
+            case 53 :
+                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:327: DecimalLiteral
                 {
                 mDecimalLiteral(); 
 
                 }
                 break;
-            case 55 :
-                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:348: OctalLiteral
+            case 54 :
+                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:342: OctalLiteral
                 {
                 mOctalLiteral(); 
 
                 }
                 break;
-            case 56 :
-                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:361: FloatingPointLiteral
+            case 55 :
+                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:355: FloatingPointLiteral
                 {
                 mFloatingPointLiteral(); 
 
                 }
                 break;
-            case 57 :
-                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:382: CharacterLiteral
+            case 56 :
+                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:376: CharacterLiteral
                 {
                 mCharacterLiteral(); 
 
                 }
                 break;
-            case 58 :
-                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:399: StringLiteral
+            case 57 :
+                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:393: StringLiteral
                 {
                 mStringLiteral(); 
 
                 }
                 break;
-            case 59 :
-                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:413: Identifier
+            case 58 :
+                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:407: Identifier
                 {
                 mIdentifier(); 
 
                 }
                 break;
-            case 60 :
-                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:424: NEWLINE
+            case 59 :
+                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:418: NEWLINE
                 {
                 mNEWLINE(); 
 
                 }
                 break;
-            case 61 :
-                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:432: WS
+            case 60 :
+                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:426: WS
                 {
                 mWS(); 
 
                 }
                 break;
-            case 62 :
-                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:435: COMMENT
+            case 61 :
+                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:429: COMMENT
                 {
                 mCOMMENT(); 
 
                 }
                 break;
-            case 63 :
-                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:443: LINE_COMMENT
+            case 62 :
+                // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:1:437: LINE_COMMENT
                 {
                 mLINE_COMMENT(); 
 
@@ -2990,12 +2961,12 @@ public class MandaraxLexer extends Lexer {
     static final String DFA18_maxS =
         "\1\71\1\146\4\uffff";
     static final String DFA18_acceptS =
-        "\2\uffff\1\2\1\3\1\1\1\4";
+        "\2\uffff\1\2\1\1\1\4\1\3";
     static final String DFA18_specialS =
         "\6\uffff}>";
     static final String[] DFA18_transitionS = {
             "\1\2\1\uffff\12\1",
-            "\1\4\1\uffff\12\1\12\uffff\1\5\1\3\1\5\35\uffff\1\5\1\3\1\5",
+            "\1\3\1\uffff\12\1\12\uffff\1\4\1\5\1\4\35\uffff\1\4\1\5\1\4",
             "",
             "",
             "",
@@ -3036,134 +3007,132 @@ public class MandaraxLexer extends Lexer {
         }
     }
     static final String DFA30_eotS =
-        "\1\uffff\2\53\1\63\2\uffff\1\53\1\uffff\1\71\1\uffff\1\73\2\53\2"+
-        "\uffff\2\53\5\uffff\6\53\3\uffff\1\111\1\113\1\115\1\uffff\1\120"+
-        "\2\uffff\1\53\2\125\3\uffff\1\56\2\uffff\4\53\2\uffff\3\53\4\uffff"+
-        "\14\53\11\uffff\2\53\1\uffff\1\156\1\uffff\1\125\1\uffff\1\53\1"+
-        "\160\7\53\1\171\13\53\1\u0085\1\uffff\1\53\1\uffff\10\53\1\uffff"+
-        "\3\53\1\u0092\1\u0093\1\u0094\3\53\1\u0098\1\u0099\1\uffff\3\53"+
-        "\1\u009d\10\53\3\uffff\1\u00a6\1\u00a7\1\53\2\uffff\1\u00a9\1\53"+
-        "\1\u00ab\1\uffff\1\53\1\u00ad\1\53\1\u00af\4\53\2\uffff\1\u00b4"+
-        "\1\uffff\1\53\1\uffff\1\u00b6\1\uffff\1\u00b7\1\uffff\1\53\1\u00b9"+
-        "\1\u00ba\1\u00bb\1\uffff\1\53\2\uffff\1\53\3\uffff\2\53\1\u00c0"+
-        "\1\53\1\uffff\1\53\1\u00c3\1\uffff";
+        "\1\uffff\2\52\1\62\2\uffff\1\52\1\uffff\1\70\1\uffff\1\72\1\52\2"+
+        "\uffff\2\52\5\uffff\6\52\3\uffff\1\107\1\111\1\113\1\uffff\1\116"+
+        "\2\uffff\1\52\2\122\3\uffff\1\55\2\uffff\4\52\2\uffff\3\52\4\uffff"+
+        "\13\52\11\uffff\2\52\2\uffff\1\153\1\122\1\uffff\1\52\1\155\6\52"+
+        "\1\165\13\52\1\u0081\1\uffff\1\52\1\uffff\7\52\1\uffff\3\52\1\u008d"+
+        "\1\u008e\1\u008f\3\52\1\u0093\1\u0094\1\uffff\3\52\1\u0098\7\52"+
+        "\3\uffff\1\u00a0\1\u00a1\1\52\2\uffff\1\u00a3\1\52\1\u00a5\1\uffff"+
+        "\1\52\1\u00a7\5\52\2\uffff\1\u00ad\1\uffff\1\52\1\uffff\1\u00af"+
+        "\1\uffff\1\u00b0\1\52\1\u00b2\1\u00b3\1\u00b4\1\uffff\1\52\2\uffff"+
+        "\1\52\3\uffff\2\52\1\u00b9\1\52\1\uffff\1\52\1\u00bc\1\uffff";
     static final String DFA30_eofS =
-        "\u00c4\uffff";
+        "\u00bd\uffff";
     static final String DFA30_minS =
         "\1\11\1\155\1\150\1\60\2\uffff\1\141\1\uffff\1\76\1\uffff\1\75\1"+
-        "\142\1\145\2\uffff\1\170\1\165\5\uffff\1\157\1\150\1\157\1\141\1"+
-        "\157\1\162\3\uffff\3\75\1\uffff\1\52\2\uffff\1\145\2\56\3\uffff"+
-        "\1\12\2\uffff\1\160\1\163\1\141\1\157\2\uffff\1\143\1\142\1\151"+
-        "\4\uffff\1\152\1\154\1\164\1\145\1\157\1\164\1\141\1\156\1\157\1"+
-        "\154\2\165\11\uffff\1\154\1\167\1\uffff\1\56\1\uffff\1\56\1\uffff"+
-        "\1\157\1\44\2\164\1\162\1\153\1\154\1\166\1\145\1\44\1\145\1\162"+
-        "\1\154\1\145\1\162\1\147\1\141\1\163\1\142\1\145\1\154\1\44\1\uffff"+
-        "\1\162\1\uffff\1\141\1\151\1\164\1\141\1\151\1\141\1\143\1\164\1"+
-        "\uffff\1\156\1\151\1\145\3\44\1\164\1\145\1\154\2\44\1\uffff\1\164"+
-        "\1\156\1\143\1\44\1\147\1\143\2\164\1\151\1\144\1\145\1\141\3\uffff"+
-        "\2\44\1\145\2\uffff\1\44\1\143\1\44\1\uffff\1\145\1\44\1\145\1\44"+
-        "\1\157\2\163\1\156\2\uffff\1\44\1\uffff\1\145\1\uffff\1\44\1\uffff"+
-        "\1\44\1\uffff\1\156\3\44\1\uffff\1\157\2\uffff\1\163\3\uffff\1\146"+
-        "\1\150\1\44\1\151\1\uffff\1\160\1\44\1\uffff";
+        "\145\2\uffff\1\170\1\165\5\uffff\1\157\1\150\1\157\1\141\1\157\1"+
+        "\162\3\uffff\3\75\1\uffff\1\52\2\uffff\1\145\2\56\3\uffff\1\12\2"+
+        "\uffff\1\160\1\163\1\141\1\157\2\uffff\1\143\1\142\1\151\4\uffff"+
+        "\1\154\1\164\1\145\1\157\1\164\1\141\1\156\1\157\1\154\2\165\11"+
+        "\uffff\1\154\1\167\2\uffff\2\56\1\uffff\1\157\1\44\2\164\1\162\1"+
+        "\153\1\154\1\166\1\44\1\145\1\162\1\154\1\145\1\162\1\147\1\141"+
+        "\1\163\1\142\1\145\1\154\1\44\1\uffff\1\162\1\uffff\1\141\1\151"+
+        "\1\164\1\141\1\151\1\141\1\164\1\uffff\1\156\1\151\1\145\3\44\1"+
+        "\164\1\145\1\154\2\44\1\uffff\1\164\1\156\1\143\1\44\1\147\1\143"+
+        "\1\164\1\151\1\144\1\145\1\141\3\uffff\2\44\1\145\2\uffff\1\44\1"+
+        "\143\1\44\1\uffff\1\145\1\44\1\145\1\157\2\163\1\156\2\uffff\1\44"+
+        "\1\uffff\1\145\1\uffff\1\44\1\uffff\1\44\1\156\3\44\1\uffff\1\157"+
+        "\2\uffff\1\163\3\uffff\1\146\1\150\1\44\1\151\1\uffff\1\160\1\44"+
+        "\1\uffff";
     static final String DFA30_maxS =
         "\1\ufaff\1\156\1\164\1\71\2\uffff\1\165\1\uffff\1\76\1\uffff\1\75"+
-        "\1\142\1\145\2\uffff\1\170\1\165\5\uffff\1\171\1\150\1\157\1\154"+
-        "\1\157\1\162\3\uffff\3\75\1\uffff\1\57\2\uffff\1\165\1\170\1\146"+
-        "\3\uffff\1\12\2\uffff\1\160\1\164\1\141\1\157\2\uffff\1\143\1\142"+
-        "\1\151\4\uffff\1\152\1\154\1\164\1\145\1\157\1\164\1\141\1\156\1"+
-        "\157\1\154\2\165\11\uffff\1\154\1\167\1\uffff\1\146\1\uffff\1\146"+
-        "\1\uffff\1\157\1\ufaff\2\164\1\162\1\153\1\154\1\166\1\145\1\ufaff"+
-        "\1\145\1\162\1\154\1\145\1\162\1\147\1\141\1\163\1\142\1\145\1\154"+
-        "\1\ufaff\1\uffff\1\162\1\uffff\1\141\1\151\1\164\1\141\1\151\1\141"+
-        "\1\143\1\164\1\uffff\1\156\1\151\1\145\3\ufaff\1\164\1\145\1\154"+
-        "\2\ufaff\1\uffff\1\164\1\156\1\143\1\ufaff\1\147\1\143\2\164\1\151"+
-        "\1\144\1\145\1\141\3\uffff\2\ufaff\1\145\2\uffff\1\ufaff\1\143\1"+
-        "\ufaff\1\uffff\1\145\1\ufaff\1\145\1\ufaff\1\157\2\163\1\156\2\uffff"+
-        "\1\ufaff\1\uffff\1\145\1\uffff\1\ufaff\1\uffff\1\ufaff\1\uffff\1"+
-        "\156\3\ufaff\1\uffff\1\157\2\uffff\1\163\3\uffff\1\146\1\150\1\ufaff"+
-        "\1\151\1\uffff\1\160\1\ufaff\1\uffff";
+        "\1\145\2\uffff\1\170\1\165\5\uffff\1\171\1\150\1\157\1\154\1\157"+
+        "\1\162\3\uffff\3\75\1\uffff\1\57\2\uffff\1\165\1\170\1\146\3\uffff"+
+        "\1\12\2\uffff\1\160\1\164\1\141\1\157\2\uffff\1\143\1\142\1\151"+
+        "\4\uffff\1\154\1\164\1\145\1\157\1\164\1\141\1\156\1\157\1\154\2"+
+        "\165\11\uffff\1\154\1\167\2\uffff\2\146\1\uffff\1\157\1\ufaff\2"+
+        "\164\1\162\1\153\1\154\1\166\1\ufaff\1\145\1\162\1\154\1\145\1\162"+
+        "\1\147\1\141\1\163\1\142\1\145\1\154\1\ufaff\1\uffff\1\162\1\uffff"+
+        "\1\141\1\151\1\164\1\141\1\151\1\141\1\164\1\uffff\1\156\1\151\1"+
+        "\145\3\ufaff\1\164\1\145\1\154\2\ufaff\1\uffff\1\164\1\156\1\143"+
+        "\1\ufaff\1\147\1\143\1\164\1\151\1\144\1\145\1\141\3\uffff\2\ufaff"+
+        "\1\145\2\uffff\1\ufaff\1\143\1\ufaff\1\uffff\1\145\1\ufaff\1\145"+
+        "\1\157\2\163\1\156\2\uffff\1\ufaff\1\uffff\1\145\1\uffff\1\ufaff"+
+        "\1\uffff\1\ufaff\1\156\3\ufaff\1\uffff\1\157\2\uffff\1\163\3\uffff"+
+        "\1\146\1\150\1\ufaff\1\151\1\uffff\1\160\1\ufaff\1\uffff";
     static final String DFA30_acceptS =
-        "\4\uffff\1\4\1\5\1\uffff\1\7\1\uffff\1\11\3\uffff\1\16\1\17\2\uffff"+
-        "\1\22\1\23\1\24\1\27\1\30\6\uffff\1\43\1\44\1\45\3\uffff\1\55\1"+
-        "\uffff\1\60\1\61\3\uffff\1\71\1\72\1\73\1\uffff\1\74\1\75\4\uffff"+
-        "\1\3\1\70\3\uffff\1\10\1\56\1\46\1\12\14\uffff\1\47\1\62\1\51\1"+
-        "\53\1\52\1\54\1\76\1\77\1\57\2\uffff\1\65\1\uffff\1\66\1\uffff\1"+
-        "\74\26\uffff\1\67\1\uffff\1\35\10\uffff\1\15\13\uffff\1\64\14\uffff"+
-        "\1\33\1\32\1\36\3\uffff\1\41\1\63\3\uffff\1\34\10\uffff\1\37\1\42"+
-        "\1\uffff\1\1\1\uffff\1\2\1\uffff\1\25\1\uffff\1\13\4\uffff\1\40"+
-        "\1\uffff\1\6\1\26\1\uffff\1\20\1\21\1\31\4\uffff\1\50\2\uffff\1"+
-        "\14";
+        "\4\uffff\1\4\1\5\1\uffff\1\7\1\uffff\1\11\2\uffff\1\15\1\16\2\uffff"+
+        "\1\21\1\22\1\23\1\26\1\27\6\uffff\1\42\1\43\1\44\3\uffff\1\54\1"+
+        "\uffff\1\57\1\60\3\uffff\1\70\1\71\1\72\1\uffff\1\73\1\74\4\uffff"+
+        "\1\3\1\67\3\uffff\1\10\1\55\1\45\1\12\13\uffff\1\46\1\61\1\50\1"+
+        "\52\1\51\1\53\1\75\1\76\1\56\2\uffff\1\64\1\65\2\uffff\1\73\25\uffff"+
+        "\1\66\1\uffff\1\34\7\uffff\1\14\13\uffff\1\63\13\uffff\1\32\1\31"+
+        "\1\35\3\uffff\1\40\1\62\3\uffff\1\33\7\uffff\1\36\1\41\1\uffff\1"+
+        "\1\1\uffff\1\2\1\uffff\1\24\5\uffff\1\37\1\uffff\1\6\1\25\1\uffff"+
+        "\1\17\1\20\1\30\4\uffff\1\47\2\uffff\1\13";
     static final String DFA30_specialS =
-        "\u00c4\uffff}>";
+        "\u00bd\uffff}>";
     static final String[] DFA30_transitionS = {
-            "\1\56\1\55\1\uffff\1\56\1\54\22\uffff\1\56\1\37\1\52\1\uffff"+
-            "\1\53\1\44\1\34\1\51\1\15\1\16\1\4\1\42\1\23\1\10\1\3\1\43\1"+
-            "\47\11\50\1\7\1\5\1\40\1\12\1\41\1\35\1\11\32\53\1\24\1\uffff"+
-            "\1\25\1\uffff\1\53\1\uffff\1\53\1\26\1\27\1\32\1\17\1\31\2\53"+
-            "\1\1\2\53\1\30\1\53\1\46\1\13\1\6\1\20\1\14\1\2\1\33\6\53\1"+
-            "\21\1\36\1\22\1\45\101\uffff\27\53\1\uffff\37\53\1\uffff\u1f08"+
-            "\53\u1040\uffff\u0150\53\u0170\uffff\u0080\53\u0080\uffff\u092e"+
-            "\53\u10d2\uffff\u5200\53\u5900\uffff\u0200\53",
-            "\1\57\1\60",
-            "\1\62\13\uffff\1\61",
-            "\12\64",
+            "\1\55\1\54\1\uffff\1\55\1\53\22\uffff\1\55\1\36\1\51\1\uffff"+
+            "\1\52\1\43\1\33\1\50\1\14\1\15\1\4\1\41\1\22\1\10\1\3\1\42\1"+
+            "\46\11\47\1\7\1\5\1\37\1\12\1\40\1\34\1\11\32\52\1\23\1\uffff"+
+            "\1\24\1\uffff\1\52\1\uffff\1\52\1\25\1\26\1\31\1\16\1\30\2\52"+
+            "\1\1\2\52\1\27\1\52\1\45\1\52\1\6\1\17\1\13\1\2\1\32\6\52\1"+
+            "\20\1\35\1\21\1\44\101\uffff\27\52\1\uffff\37\52\1\uffff\u1f08"+
+            "\52\u1040\uffff\u0150\52\u0170\uffff\u0080\52\u0080\uffff\u092e"+
+            "\52\u10d2\uffff\u5200\52\u5900\uffff\u0200\52",
+            "\1\56\1\57",
+            "\1\61\13\uffff\1\60",
+            "\12\63",
             "",
             "",
-            "\1\65\20\uffff\1\67\2\uffff\1\66",
+            "\1\64\20\uffff\1\66\2\uffff\1\65",
             "",
-            "\1\70",
+            "\1\67",
             "",
-            "\1\72",
+            "\1\71",
+            "\1\73",
+            "",
+            "",
             "\1\74",
             "\1\75",
             "",
             "",
-            "\1\76",
-            "\1\77",
             "",
             "",
             "",
+            "\1\76\11\uffff\1\77",
+            "\1\100",
+            "\1\101",
+            "\1\103\12\uffff\1\102",
+            "\1\104",
+            "\1\105",
             "",
             "",
-            "\1\100\11\uffff\1\101",
-            "\1\102",
-            "\1\103",
-            "\1\105\12\uffff\1\104",
+            "",
             "\1\106",
-            "\1\107",
-            "",
-            "",
-            "",
             "\1\110",
             "\1\112",
-            "\1\114",
             "",
-            "\1\116\4\uffff\1\117",
-            "",
-            "",
-            "\1\122\17\uffff\1\121",
-            "\1\64\1\uffff\10\124\2\64\12\uffff\3\64\21\uffff\1\123\13\uffff"+
-            "\3\64\21\uffff\1\123",
-            "\1\64\1\uffff\12\126\12\uffff\3\64\35\uffff\3\64",
+            "\1\114\4\uffff\1\115",
             "",
             "",
+            "\1\120\17\uffff\1\117",
+            "\1\63\1\uffff\10\123\2\63\12\uffff\3\63\21\uffff\1\121\13\uffff"+
+            "\3\63\21\uffff\1\121",
+            "\1\63\1\uffff\12\124\12\uffff\3\63\35\uffff\3\63",
             "",
-            "\1\127",
             "",
             "",
-            "\1\130",
-            "\1\132\1\131",
+            "\1\125",
+            "",
+            "",
+            "\1\126",
+            "\1\130\1\127",
+            "\1\131",
+            "\1\132",
+            "",
+            "",
             "\1\133",
             "\1\134",
-            "",
-            "",
             "\1\135",
+            "",
+            "",
+            "",
+            "",
             "\1\136",
             "\1\137",
-            "",
-            "",
-            "",
-            "",
             "\1\140",
             "\1\141",
             "\1\142",
@@ -3173,41 +3142,41 @@ public class MandaraxLexer extends Lexer {
             "\1\146",
             "\1\147",
             "\1\150",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
             "\1\151",
             "\1\152",
-            "\1\153",
             "",
             "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
+            "\1\63\1\uffff\10\123\2\63\12\uffff\3\63\35\uffff\3\63",
+            "\1\63\1\uffff\12\124\12\uffff\3\63\35\uffff\3\63",
             "",
             "\1\154",
-            "\1\155",
-            "",
-            "\1\64\1\uffff\10\124\2\64\12\uffff\3\64\35\uffff\3\64",
-            "",
-            "\1\64\1\uffff\12\126\12\uffff\3\64\35\uffff\3\64",
-            "",
+            "\1\52\13\uffff\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32"+
+            "\52\105\uffff\27\52\1\uffff\37\52\1\uffff\u1f08\52\u1040\uffff"+
+            "\u0150\52\u0170\uffff\u0080\52\u0080\uffff\u092e\52\u10d2\uffff"+
+            "\u5200\52\u5900\uffff\u0200\52",
+            "\1\156",
             "\1\157",
-            "\1\53\13\uffff\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32"+
-            "\53\105\uffff\27\53\1\uffff\37\53\1\uffff\u1f08\53\u1040\uffff"+
-            "\u0150\53\u0170\uffff\u0080\53\u0080\uffff\u092e\53\u10d2\uffff"+
-            "\u5200\53\u5900\uffff\u0200\53",
+            "\1\160",
             "\1\161",
             "\1\162",
             "\1\163",
-            "\1\164",
-            "\1\165",
+            "\1\52\13\uffff\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\1\164"+
+            "\31\52\105\uffff\27\52\1\uffff\37\52\1\uffff\u1f08\52\u1040"+
+            "\uffff\u0150\52\u0170\uffff\u0080\52\u0080\uffff\u092e\52\u10d2"+
+            "\uffff\u5200\52\u5900\uffff\u0200\52",
             "\1\166",
             "\1\167",
-            "\1\53\13\uffff\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\1\170"+
-            "\31\53\105\uffff\27\53\1\uffff\37\53\1\uffff\u1f08\53\u1040"+
-            "\uffff\u0150\53\u0170\uffff\u0080\53\u0080\uffff\u092e\53\u10d2"+
-            "\uffff\u5200\53\u5900\uffff\u0200\53",
+            "\1\170",
+            "\1\171",
             "\1\172",
             "\1\173",
             "\1\174",
@@ -3215,159 +3184,148 @@ public class MandaraxLexer extends Lexer {
             "\1\176",
             "\1\177",
             "\1\u0080",
-            "\1\u0081",
+            "\1\52\13\uffff\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32"+
+            "\52\105\uffff\27\52\1\uffff\37\52\1\uffff\u1f08\52\u1040\uffff"+
+            "\u0150\52\u0170\uffff\u0080\52\u0080\uffff\u092e\52\u10d2\uffff"+
+            "\u5200\52\u5900\uffff\u0200\52",
+            "",
             "\1\u0082",
+            "",
             "\1\u0083",
             "\1\u0084",
-            "\1\53\13\uffff\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32"+
-            "\53\105\uffff\27\53\1\uffff\37\53\1\uffff\u1f08\53\u1040\uffff"+
-            "\u0150\53\u0170\uffff\u0080\53\u0080\uffff\u092e\53\u10d2\uffff"+
-            "\u5200\53\u5900\uffff\u0200\53",
-            "",
+            "\1\u0085",
             "\1\u0086",
-            "",
             "\1\u0087",
             "\1\u0088",
             "\1\u0089",
+            "",
             "\1\u008a",
             "\1\u008b",
             "\1\u008c",
-            "\1\u008d",
-            "\1\u008e",
-            "",
-            "\1\u008f",
+            "\1\52\13\uffff\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32"+
+            "\52\105\uffff\27\52\1\uffff\37\52\1\uffff\u1f08\52\u1040\uffff"+
+            "\u0150\52\u0170\uffff\u0080\52\u0080\uffff\u092e\52\u10d2\uffff"+
+            "\u5200\52\u5900\uffff\u0200\52",
+            "\1\52\13\uffff\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32"+
+            "\52\105\uffff\27\52\1\uffff\37\52\1\uffff\u1f08\52\u1040\uffff"+
+            "\u0150\52\u0170\uffff\u0080\52\u0080\uffff\u092e\52\u10d2\uffff"+
+            "\u5200\52\u5900\uffff\u0200\52",
+            "\1\52\13\uffff\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32"+
+            "\52\105\uffff\27\52\1\uffff\37\52\1\uffff\u1f08\52\u1040\uffff"+
+            "\u0150\52\u0170\uffff\u0080\52\u0080\uffff\u092e\52\u10d2\uffff"+
+            "\u5200\52\u5900\uffff\u0200\52",
             "\1\u0090",
             "\1\u0091",
-            "\1\53\13\uffff\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32"+
-            "\53\105\uffff\27\53\1\uffff\37\53\1\uffff\u1f08\53\u1040\uffff"+
-            "\u0150\53\u0170\uffff\u0080\53\u0080\uffff\u092e\53\u10d2\uffff"+
-            "\u5200\53\u5900\uffff\u0200\53",
-            "\1\53\13\uffff\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32"+
-            "\53\105\uffff\27\53\1\uffff\37\53\1\uffff\u1f08\53\u1040\uffff"+
-            "\u0150\53\u0170\uffff\u0080\53\u0080\uffff\u092e\53\u10d2\uffff"+
-            "\u5200\53\u5900\uffff\u0200\53",
-            "\1\53\13\uffff\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32"+
-            "\53\105\uffff\27\53\1\uffff\37\53\1\uffff\u1f08\53\u1040\uffff"+
-            "\u0150\53\u0170\uffff\u0080\53\u0080\uffff\u092e\53\u10d2\uffff"+
-            "\u5200\53\u5900\uffff\u0200\53",
+            "\1\u0092",
+            "\1\52\13\uffff\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32"+
+            "\52\105\uffff\27\52\1\uffff\37\52\1\uffff\u1f08\52\u1040\uffff"+
+            "\u0150\52\u0170\uffff\u0080\52\u0080\uffff\u092e\52\u10d2\uffff"+
+            "\u5200\52\u5900\uffff\u0200\52",
+            "\1\52\13\uffff\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32"+
+            "\52\105\uffff\27\52\1\uffff\37\52\1\uffff\u1f08\52\u1040\uffff"+
+            "\u0150\52\u0170\uffff\u0080\52\u0080\uffff\u092e\52\u10d2\uffff"+
+            "\u5200\52\u5900\uffff\u0200\52",
+            "",
             "\1\u0095",
             "\1\u0096",
             "\1\u0097",
-            "\1\53\13\uffff\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32"+
-            "\53\105\uffff\27\53\1\uffff\37\53\1\uffff\u1f08\53\u1040\uffff"+
-            "\u0150\53\u0170\uffff\u0080\53\u0080\uffff\u092e\53\u10d2\uffff"+
-            "\u5200\53\u5900\uffff\u0200\53",
-            "\1\53\13\uffff\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32"+
-            "\53\105\uffff\27\53\1\uffff\37\53\1\uffff\u1f08\53\u1040\uffff"+
-            "\u0150\53\u0170\uffff\u0080\53\u0080\uffff\u092e\53\u10d2\uffff"+
-            "\u5200\53\u5900\uffff\u0200\53",
-            "",
+            "\1\52\13\uffff\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32"+
+            "\52\105\uffff\27\52\1\uffff\37\52\1\uffff\u1f08\52\u1040\uffff"+
+            "\u0150\52\u0170\uffff\u0080\52\u0080\uffff\u092e\52\u10d2\uffff"+
+            "\u5200\52\u5900\uffff\u0200\52",
+            "\1\u0099",
             "\1\u009a",
             "\1\u009b",
             "\1\u009c",
-            "\1\53\13\uffff\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32"+
-            "\53\105\uffff\27\53\1\uffff\37\53\1\uffff\u1f08\53\u1040\uffff"+
-            "\u0150\53\u0170\uffff\u0080\53\u0080\uffff\u092e\53\u10d2\uffff"+
-            "\u5200\53\u5900\uffff\u0200\53",
+            "\1\u009d",
             "\1\u009e",
             "\1\u009f",
-            "\1\u00a0",
-            "\1\u00a1",
+            "",
+            "",
+            "",
+            "\1\52\13\uffff\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32"+
+            "\52\105\uffff\27\52\1\uffff\37\52\1\uffff\u1f08\52\u1040\uffff"+
+            "\u0150\52\u0170\uffff\u0080\52\u0080\uffff\u092e\52\u10d2\uffff"+
+            "\u5200\52\u5900\uffff\u0200\52",
+            "\1\52\13\uffff\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32"+
+            "\52\105\uffff\27\52\1\uffff\37\52\1\uffff\u1f08\52\u1040\uffff"+
+            "\u0150\52\u0170\uffff\u0080\52\u0080\uffff\u092e\52\u10d2\uffff"+
+            "\u5200\52\u5900\uffff\u0200\52",
             "\1\u00a2",
-            "\1\u00a3",
+            "",
+            "",
+            "\1\52\13\uffff\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32"+
+            "\52\105\uffff\27\52\1\uffff\37\52\1\uffff\u1f08\52\u1040\uffff"+
+            "\u0150\52\u0170\uffff\u0080\52\u0080\uffff\u092e\52\u10d2\uffff"+
+            "\u5200\52\u5900\uffff\u0200\52",
             "\1\u00a4",
-            "\1\u00a5",
+            "\1\52\13\uffff\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32"+
+            "\52\105\uffff\27\52\1\uffff\37\52\1\uffff\u1f08\52\u1040\uffff"+
+            "\u0150\52\u0170\uffff\u0080\52\u0080\uffff\u092e\52\u10d2\uffff"+
+            "\u5200\52\u5900\uffff\u0200\52",
             "",
-            "",
-            "",
-            "\1\53\13\uffff\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32"+
-            "\53\105\uffff\27\53\1\uffff\37\53\1\uffff\u1f08\53\u1040\uffff"+
-            "\u0150\53\u0170\uffff\u0080\53\u0080\uffff\u092e\53\u10d2\uffff"+
-            "\u5200\53\u5900\uffff\u0200\53",
-            "\1\53\13\uffff\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32"+
-            "\53\105\uffff\27\53\1\uffff\37\53\1\uffff\u1f08\53\u1040\uffff"+
-            "\u0150\53\u0170\uffff\u0080\53\u0080\uffff\u092e\53\u10d2\uffff"+
-            "\u5200\53\u5900\uffff\u0200\53",
+            "\1\u00a6",
+            "\1\52\13\uffff\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32"+
+            "\52\105\uffff\27\52\1\uffff\37\52\1\uffff\u1f08\52\u1040\uffff"+
+            "\u0150\52\u0170\uffff\u0080\52\u0080\uffff\u092e\52\u10d2\uffff"+
+            "\u5200\52\u5900\uffff\u0200\52",
             "\1\u00a8",
-            "",
-            "",
-            "\1\53\13\uffff\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32"+
-            "\53\105\uffff\27\53\1\uffff\37\53\1\uffff\u1f08\53\u1040\uffff"+
-            "\u0150\53\u0170\uffff\u0080\53\u0080\uffff\u092e\53\u10d2\uffff"+
-            "\u5200\53\u5900\uffff\u0200\53",
+            "\1\u00a9",
             "\1\u00aa",
-            "\1\53\13\uffff\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32"+
-            "\53\105\uffff\27\53\1\uffff\37\53\1\uffff\u1f08\53\u1040\uffff"+
-            "\u0150\53\u0170\uffff\u0080\53\u0080\uffff\u092e\53\u10d2\uffff"+
-            "\u5200\53\u5900\uffff\u0200\53",
-            "",
+            "\1\u00ab",
             "\1\u00ac",
-            "\1\53\13\uffff\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32"+
-            "\53\105\uffff\27\53\1\uffff\37\53\1\uffff\u1f08\53\u1040\uffff"+
-            "\u0150\53\u0170\uffff\u0080\53\u0080\uffff\u092e\53\u10d2\uffff"+
-            "\u5200\53\u5900\uffff\u0200\53",
+            "",
+            "",
+            "\1\52\13\uffff\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32"+
+            "\52\105\uffff\27\52\1\uffff\37\52\1\uffff\u1f08\52\u1040\uffff"+
+            "\u0150\52\u0170\uffff\u0080\52\u0080\uffff\u092e\52\u10d2\uffff"+
+            "\u5200\52\u5900\uffff\u0200\52",
+            "",
             "\1\u00ae",
-            "\1\53\13\uffff\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32"+
-            "\53\105\uffff\27\53\1\uffff\37\53\1\uffff\u1f08\53\u1040\uffff"+
-            "\u0150\53\u0170\uffff\u0080\53\u0080\uffff\u092e\53\u10d2\uffff"+
-            "\u5200\53\u5900\uffff\u0200\53",
-            "\1\u00b0",
+            "",
+            "\1\52\13\uffff\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32"+
+            "\52\105\uffff\27\52\1\uffff\37\52\1\uffff\u1f08\52\u1040\uffff"+
+            "\u0150\52\u0170\uffff\u0080\52\u0080\uffff\u092e\52\u10d2\uffff"+
+            "\u5200\52\u5900\uffff\u0200\52",
+            "",
+            "\1\52\13\uffff\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32"+
+            "\52\105\uffff\27\52\1\uffff\37\52\1\uffff\u1f08\52\u1040\uffff"+
+            "\u0150\52\u0170\uffff\u0080\52\u0080\uffff\u092e\52\u10d2\uffff"+
+            "\u5200\52\u5900\uffff\u0200\52",
             "\1\u00b1",
-            "\1\u00b2",
-            "\1\u00b3",
-            "",
-            "",
-            "\1\53\13\uffff\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32"+
-            "\53\105\uffff\27\53\1\uffff\37\53\1\uffff\u1f08\53\u1040\uffff"+
-            "\u0150\53\u0170\uffff\u0080\53\u0080\uffff\u092e\53\u10d2\uffff"+
-            "\u5200\53\u5900\uffff\u0200\53",
+            "\1\52\13\uffff\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32"+
+            "\52\105\uffff\27\52\1\uffff\37\52\1\uffff\u1f08\52\u1040\uffff"+
+            "\u0150\52\u0170\uffff\u0080\52\u0080\uffff\u092e\52\u10d2\uffff"+
+            "\u5200\52\u5900\uffff\u0200\52",
+            "\1\52\13\uffff\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32"+
+            "\52\105\uffff\27\52\1\uffff\37\52\1\uffff\u1f08\52\u1040\uffff"+
+            "\u0150\52\u0170\uffff\u0080\52\u0080\uffff\u092e\52\u10d2\uffff"+
+            "\u5200\52\u5900\uffff\u0200\52",
+            "\1\52\13\uffff\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32"+
+            "\52\105\uffff\27\52\1\uffff\37\52\1\uffff\u1f08\52\u1040\uffff"+
+            "\u0150\52\u0170\uffff\u0080\52\u0080\uffff\u092e\52\u10d2\uffff"+
+            "\u5200\52\u5900\uffff\u0200\52",
             "",
             "\1\u00b5",
             "",
-            "\1\53\13\uffff\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32"+
-            "\53\105\uffff\27\53\1\uffff\37\53\1\uffff\u1f08\53\u1040\uffff"+
-            "\u0150\53\u0170\uffff\u0080\53\u0080\uffff\u092e\53\u10d2\uffff"+
-            "\u5200\53\u5900\uffff\u0200\53",
             "",
-            "\1\53\13\uffff\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32"+
-            "\53\105\uffff\27\53\1\uffff\37\53\1\uffff\u1f08\53\u1040\uffff"+
-            "\u0150\53\u0170\uffff\u0080\53\u0080\uffff\u092e\53\u10d2\uffff"+
-            "\u5200\53\u5900\uffff\u0200\53",
+            "\1\u00b6",
             "",
+            "",
+            "",
+            "\1\u00b7",
             "\1\u00b8",
-            "\1\53\13\uffff\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32"+
-            "\53\105\uffff\27\53\1\uffff\37\53\1\uffff\u1f08\53\u1040\uffff"+
-            "\u0150\53\u0170\uffff\u0080\53\u0080\uffff\u092e\53\u10d2\uffff"+
-            "\u5200\53\u5900\uffff\u0200\53",
-            "\1\53\13\uffff\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32"+
-            "\53\105\uffff\27\53\1\uffff\37\53\1\uffff\u1f08\53\u1040\uffff"+
-            "\u0150\53\u0170\uffff\u0080\53\u0080\uffff\u092e\53\u10d2\uffff"+
-            "\u5200\53\u5900\uffff\u0200\53",
-            "\1\53\13\uffff\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32"+
-            "\53\105\uffff\27\53\1\uffff\37\53\1\uffff\u1f08\53\u1040\uffff"+
-            "\u0150\53\u0170\uffff\u0080\53\u0080\uffff\u092e\53\u10d2\uffff"+
-            "\u5200\53\u5900\uffff\u0200\53",
+            "\1\52\13\uffff\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32"+
+            "\52\105\uffff\27\52\1\uffff\37\52\1\uffff\u1f08\52\u1040\uffff"+
+            "\u0150\52\u0170\uffff\u0080\52\u0080\uffff\u092e\52\u10d2\uffff"+
+            "\u5200\52\u5900\uffff\u0200\52",
+            "\1\u00ba",
             "",
-            "\1\u00bc",
-            "",
-            "",
-            "\1\u00bd",
-            "",
-            "",
-            "",
-            "\1\u00be",
-            "\1\u00bf",
-            "\1\53\13\uffff\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32"+
-            "\53\105\uffff\27\53\1\uffff\37\53\1\uffff\u1f08\53\u1040\uffff"+
-            "\u0150\53\u0170\uffff\u0080\53\u0080\uffff\u092e\53\u10d2\uffff"+
-            "\u5200\53\u5900\uffff\u0200\53",
-            "\1\u00c1",
-            "",
-            "\1\u00c2",
-            "\1\53\13\uffff\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32"+
-            "\53\105\uffff\27\53\1\uffff\37\53\1\uffff\u1f08\53\u1040\uffff"+
-            "\u0150\53\u0170\uffff\u0080\53\u0080\uffff\u092e\53\u10d2\uffff"+
-            "\u5200\53\u5900\uffff\u0200\53",
+            "\1\u00bb",
+            "\1\52\13\uffff\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32"+
+            "\52\105\uffff\27\52\1\uffff\37\52\1\uffff\u1f08\52\u1040\uffff"+
+            "\u0150\52\u0170\uffff\u0080\52\u0080\uffff\u092e\52\u10d2\uffff"+
+            "\u5200\52\u5900\uffff\u0200\52",
             ""
     };
 
@@ -3401,7 +3359,7 @@ public class MandaraxLexer extends Lexer {
             this.transition = DFA30_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | HexLiteral | DecimalLiteral | OctalLiteral | FloatingPointLiteral | CharacterLiteral | StringLiteral | Identifier | NEWLINE | WS | COMMENT | LINE_COMMENT );";
+            return "1:1: Tokens : ( T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | HexLiteral | DecimalLiteral | OctalLiteral | FloatingPointLiteral | CharacterLiteral | StringLiteral | Identifier | NEWLINE | WS | COMMENT | LINE_COMMENT );";
         }
     }
  
