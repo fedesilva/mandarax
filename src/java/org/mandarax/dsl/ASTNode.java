@@ -11,8 +11,7 @@
 
 package org.mandarax.dsl;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Superclass for all AST nodes.
@@ -32,6 +31,15 @@ public abstract class ASTNode  implements Visitable {
 	private Context context = null;
 	// cached variables
 	private List<Variable> variables = null;
+	// additional properties
+	private Map<Object,Object> properties = new HashMap<Object,Object>(); 
+	
+	public void setProperty(Object key,Object value) {
+		properties.put(key, value);
+	}
+	public Object getProperty(Object key) {
+		return properties.get(key);
+	}
 
 	public void setPosition(Position position) {
 		this.position = position;
