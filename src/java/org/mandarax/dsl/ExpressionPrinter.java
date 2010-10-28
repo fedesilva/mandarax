@@ -85,12 +85,13 @@ public class ExpressionPrinter {
 		out.append('.');
 		if (x.isMethod()) {
 			out.append(x.getMember());
-			this.appendListOfNodes(x.getChildren(),true,",");
+			this.appendListOfNodes(x.getParameters(),true,",");
 		}
 		else {
-			// TODO - need to support case when this is a field
+			// we need to support case when this is a field
 			// now we assume that this is a getter
 			// we also need to support special getter syntax such as is.. for boolean properties
+			// THIS IS NOW DONE IN A SUBCLASS THAT HAS ACCESS TO THE ACTUAL (RESOLVED) MEMBER
 			out.append("get");
 			out.append(Character.toUpperCase(x.getMember().charAt(0)));
 			out.append(x.getMember().substring(1));

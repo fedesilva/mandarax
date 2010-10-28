@@ -28,18 +28,21 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 
 	@Override
 	public Class getType(Expression x,Resolver r,Collection<RelationshipDefinition> rels) throws TypeReasoningException {
-		if (x instanceof BinaryExpression) return doGetType((BinaryExpression)x,r,rels);
-		else if (x instanceof BooleanLiteral) return doGetType((BooleanLiteral)x,r,rels);
-		else if (x instanceof CastExpression) return doGetType((CastExpression)x,r,rels);
-		else if (x instanceof ConditionalExpression) return doGetType((ConditionalExpression)x,r,rels);
-		else if (x instanceof InstanceOfExpression) return doGetType((InstanceOfExpression)x,r,rels);
-		else if (x instanceof IntLiteral) return doGetType((IntLiteral)x,r,rels);
-		else if (x instanceof MemberAccess) return doGetType((MemberAccess)x,r,rels);
-		else if (x instanceof StringLiteral) return doGetType((StringLiteral)x,r,rels);
-		else if (x instanceof UnaryExpression) return doGetType((UnaryExpression)x,r,rels);
-		else if (x instanceof Variable) return doGetType((Variable)x,r,rels);
-		else if (x instanceof FunctionInvocation) return doGetType((FunctionInvocation)x,r,rels);
+		Class type = null;
+		if (x instanceof BinaryExpression) type = doGetType((BinaryExpression)x,r,rels);
+		else if (x instanceof BooleanLiteral) type = doGetType((BooleanLiteral)x,r,rels);
+		else if (x instanceof CastExpression) type = doGetType((CastExpression)x,r,rels);
+		else if (x instanceof ConditionalExpression) type = doGetType((ConditionalExpression)x,r,rels);
+		else if (x instanceof InstanceOfExpression) type = doGetType((InstanceOfExpression)x,r,rels);
+		else if (x instanceof IntLiteral) type = doGetType((IntLiteral)x,r,rels);
+		else if (x instanceof MemberAccess) type = doGetType((MemberAccess)x,r,rels);
+		else if (x instanceof StringLiteral) type = doGetType((StringLiteral)x,r,rels);
+		else if (x instanceof UnaryExpression) type = doGetType((UnaryExpression)x,r,rels);
+		else if (x instanceof Variable) type = doGetType((Variable)x,r,rels);
+		else if (x instanceof FunctionInvocation) type = doGetType((FunctionInvocation)x,r,rels);
 		else throw new TypeReasoningException("Unsupported expression type " + x.getClass().getName());
+		x.setProperty(AnnotationKeys.TYPE,type);
+		return type;
 	}
 	
 	private void exception(Object... tokens) throws TypeReasoningException {
@@ -151,6 +154,7 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 		try {
 			String[] paramNames = expression.isMethod()?paramTypes.toArray(new String[paramTypes.size()]):null;
 			member = resolver.getMember(expression.getContext(),name,type.getName(),paramNames);
+			expression.setProperty(AnnotationKeys.MEMBER, member);
 		} catch (ResolverException e) {
 			failed(expression,null,e);
 		}

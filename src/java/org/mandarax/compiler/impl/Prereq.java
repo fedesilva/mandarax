@@ -12,6 +12,9 @@
 package org.mandarax.compiler.impl;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.lang.reflect.Member;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -24,8 +27,10 @@ import org.mandarax.dsl.Expression;
 import org.mandarax.dsl.ExpressionPrinter;
 import org.mandarax.dsl.FunctionDeclaration;
 import org.mandarax.dsl.FunctionInvocation;
+import org.mandarax.dsl.MemberAccess;
 import org.mandarax.dsl.RelationshipDefinition;
 import org.mandarax.dsl.Variable;
+import org.mandarax.dsl.util.AnnotationKeys;
 import org.mandarax.rt.Equals;
 
 import static com.google.common.base.Preconditions.*;
@@ -212,6 +217,26 @@ public class Prereq {
 				}
 				else {
 					super.doPrint(x);
+				}
+			}
+			// special printing for member access 
+			@Override
+			protected void doPrint(MemberAccess x) throws IOException {
+				Member m = (Member) x.getProperty(AnnotationKeys.MEMBER);
+				if (m==null) {
+					DefaultCompiler.LOGGER.warn("Cannot find MEMBER annotation for " + x + " - will use default implementation to print code for member access");
+					super.doPrint(x);
+				}
+				else {
+					print(x.getObjectReference());
+					out.append('.');
+					if (m instanceof Method) {
+						out.append(m.getName());
+						appendListOfNodes(x.getParameters(),true,",");
+					}
+					else if (m instanceof Field) {
+						out.append(m.getName());
+					}
 				}
 			}
 			
