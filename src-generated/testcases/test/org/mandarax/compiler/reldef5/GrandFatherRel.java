@@ -4,16 +4,16 @@ import test.org.mandarax.compiler.Person;
 
 /**
  * Class representing the relationship <strong>GrandFather</strong>.
- * @version Oct 28, 2010 9:18:52 PM 
+ * @version Oct 29, 2010 9:54:59 AM 
  */
-public class GrandFather {
+public class GrandFatherRel {
 
 	// constructors
-	public GrandFather () {
+	public GrandFatherRel () {
 		super();
 	}
 	
-	public GrandFather ( Person grandFather , Person grandChild ) {
+	public GrandFatherRel ( Person grandFather , Person grandChild ) {
 		super();
 		this.grandFather=grandFather; 
 		this.grandChild=grandChild; 

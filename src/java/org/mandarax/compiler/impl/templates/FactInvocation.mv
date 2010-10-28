@@ -6,12 +6,12 @@
 		@end{}
 		
 		// create new instance of relationship
-		@{rel.name} _result = new @{rel.name}();
+		@{rel.name}@{ext} _result = new @{rel.name}@{ext}();
 		
 		// set values
 		@foreach{slot:rel.slotDeclarations}_result.@{slot.name} = @{terms.get(rel.getSlotPosition(slot.name))};
 		@end{}
-		return new SingletonIterator<@{rel.name}>(_result);
+		return new SingletonIterator<@{rel.name}@{ext}>(_result);
 		@if{query.parameterNames.size()>0}}
 			
 		// fact does not match query	

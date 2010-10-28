@@ -8,7 +8,7 @@ import org.mandarax.rt.*;
  * Interface for queries for relationship <strong>@{rel.name}</strong>.
  * @version @{timestamp} 
  */
-public class @{className} {
+public class @{rel.name}@{ext}Instances {
 	// object references
 	@foreach{obj:context.objectDeclarations} 
 	public static @{obj.type} @{obj.name} = @{obj.defaultValueDeclaration};
@@ -35,20 +35,20 @@ public class @{className} {
 
 	// interface generated for queries	
 	@foreach{query:rel.getQueries()} 
-	public ResultSet<@{rel.name}> @{query.name} ( @foreach{param:query.parameterNames} @{rel.getTypeNameForSlot(param)} @{param} @end{", "} ) {
+	public ResultSet<@{rel.name}@{ext}> @{query.name} ( @foreach{param:query.parameterNames} @{rel.getTypeNameForSlot(param)} @{param} @end{", "} ) {
 		DerivationController _derivation = new DefaultDerivationController();
-		return new ResultSet<@{rel.name}>(@{query.name} ( _derivation @if{query.hasParameters()},@end{} @foreach{param:query.parameterNames} @{param} @end{", "}),_derivation);
+		return new ResultSet<@{rel.name}@{ext}>(@{query.name} ( _derivation @if{query.hasParameters()},@end{} @foreach{param:query.parameterNames} @{param} @end{", "}),_derivation);
 	} 
 	@end{}
 	
 	// implementations - these methods are referenced by code generated from other rules in this package
 	// and therefore kept static 
 	@foreach{query:rel.getQueries()} 
-	static ResourceIterator<@{rel.name}> @{query.name} ( final DerivationController _derivation @if{query.hasParameters()},@end{} @foreach{param:query.parameterNames} final @{rel.getTypeNameForSlot(param)} @{param} @end{", "} ) {
+	static ResourceIterator<@{rel.name}@{ext}> @{query.name} ( final DerivationController _derivation @if{query.hasParameters()},@end{} @foreach{param:query.parameterNames} final @{rel.getTypeNameForSlot(param)} @{param} @end{", "} ) {
 		final int _derivationlevel = _derivation.size();
-		return new IteratorChain<@{rel.name}>(@{rel.rules.size()}) {
+		return new IteratorChain<@{rel.name}@{ext}>(@{rel.rules.size()}) {
 			
-			public ResourceIterator<@{rel.name}> getNextIterator(int pos) {
+			public ResourceIterator<@{rel.name}@{ext}> getNextIterator(int pos) {
 			switch (pos) {
 				@foreach{index:ruleIndices}
                 		case @{index}: {
@@ -65,12 +65,9 @@ public class @{className} {
 	// private methods - each method represents the invocation of a single rule for a certain query
 	@foreach{query:rel.queries}// query: @{query.name}
 	@foreach{index:ruleIndices}// rule: @{rel.rules.get(index)}
-	private static ResourceIterator<@{rel.name}> @{query.name}_@{index} (final DerivationController _derivation @if{query.hasParameters()},@end{} @foreach{param:query.parameterNames} final @{rel.getTypeNameForSlot(param)} @{param} @end{", "}) {
+	private static ResourceIterator<@{rel.name}@{ext}> @{query.name}_@{index} (final DerivationController _derivation @if{query.hasParameters()},@end{} @foreach{param:query.parameterNames} final @{rel.getTypeNameForSlot(param)} @{param} @end{", "}) {
 		@code{rule=rel.getRules().get(index)}
-
 		_derivation.log("@{rel.name}.@{rule.id}", DerivationController.RULE, _annotations_@{rule.id});
-		
-		
 		
 		@if{rule.fact}@includeNamed{'FactInvocation'}
 		@else{}@includeNamed{'RuleInvocation'}

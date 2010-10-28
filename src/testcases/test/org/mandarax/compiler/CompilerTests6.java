@@ -46,7 +46,7 @@ public class CompilerTests6 {
 		customer.setTransactionCount(5);
 		customer.setTurnover(1200);
 		
-		ResultSet<DiscountRel> rs = new DiscountRelInstances().getDiscount(customer);
+		ResultSet<test.org.mandarax.compiler.reldef6.DiscountRel> rs = new DiscountRelInstances().getDiscount(customer);
 		
 		DiscountRel discount = rs.next(); // gold discount
 		assertEquals(20,discount.discount.getValue());

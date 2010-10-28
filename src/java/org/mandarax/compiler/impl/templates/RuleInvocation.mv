@@ -1,5 +1,5 @@
 	@code{import org.mandarax.dsl.*;import org.mandarax.compiler.impl.*;}
-	@code{head=rule.head;hterms=head.parameters;ctrl=new VariableBindings(context,className);body=new Scheduler(resolver).getPrerequisites(rule,query);counter=new Counter();lastPrereq=null;ctrl.bind(head,query);}
+	@code{head=rule.head;hterms=head.parameters;ctrl=new VariableBindings(context,(rel.name)+ext+'Instances');body=new Scheduler(resolver).getPrerequisites(rule,query);counter=new Counter();lastPrereq=null;ctrl.bind(head,query);}
 		
 		// utility class used to keep track of variables bindings
 		class _Bindings {
@@ -10,15 +10,15 @@
 
 		@foreach{prereq:body} @code{index=counter.next;}
 		// apply prerequisite @{prereq.expression}
-		@if{prereq.firstRelation}final ResourceIterator<@{prereq.rel.name}> iterator@{index} = @{prereq.rel.name}Instances.@{prereq.query.name}(@{prereq.printBoundParams('_bindings','_derivation.push()')});
+		@if{prereq.firstRelation}final ResourceIterator<@{prereq.rel.name}@{ext}> iterator@{index} = @{prereq.rel.name}@{ext}Instances.@{prereq.query.name}(@{prereq.printBoundParams('_bindings','_derivation.push()')});
 		@code{lastPrereq=prereq;}
 		
-		@else{prereq.definedByRelationship}final ResourceIterator<@{prereq.rel.name}> iterator@{index} =  new NestedIterator<@{prereq.rel.name}, @{prereq.previous.rel.name}>(iterator@{index-1}) {
-                	public ResourceIterator<@{prereq.previous.rel.name}> getNextIterator(@{prereq.rel.name} _object) {
+		@else{prereq.definedByRelationship}final ResourceIterator<@{prereq.rel.name}@{ext}> iterator@{index} =  new NestedIterator<@{prereq.rel.name}@{ext}, @{prereq.previous.rel.name}@{ext}>(iterator@{index-1}) {
+                	public ResourceIterator<@{prereq.previous.rel.name}@{ext}> getNextIterator(@{prereq.rel.name}@{ext} _object) {
                 				// bind parameters from @{prereq.previousRelPrereq.expression}
 						@foreach{v:prereq.previous.newlyBoundVariables}_bindings.@{v} = _object.@{prereq.previous.getSlot(v)};
 						@end{}
-									return @{prereq.rel.name}Instances.@{prereq.query.name}(@{prereq.printBoundParams('_bindings','_derivation.push()')});
+									return @{prereq.rel.name}@{ext}Instances.@{prereq.query.name}(@{prereq.printBoundParams('_bindings','_derivation.push()')});
                 	}
             	};
 		@code{lastPrereq=prereq;}
@@ -34,15 +34,15 @@
 		@end{}@end{}
 		
 		// rule head
-		@if{lastPrereq!=null}return new NestedIterator<@{lastPrereq.rel.name}, @{rel.name}>(iterator@{index}) {
-                	public ResourceIterator<@{rel.name}> getNextIterator(@{lastPrereq.rel.name} _object) {
+		@if{lastPrereq!=null}return new NestedIterator<@{lastPrereq.rel.name}@{ext}, @{rel.name}@{ext}>(iterator@{index}) {
+                	public ResourceIterator<@{rel.name}@{ext}> getNextIterator(@{lastPrereq.rel.name}@{ext} _object) {
 						// bind parameters from @{lastPrereq.expression}
 						@foreach{v:lastPrereq.newlyBoundVariables}_bindings.@{v} = _object.@{lastPrereq.getSlot(v)};
 						@end{}
-                    				return new SingletonIterator(new @{rel.name}(@{ctrl.printSlots(rel.slotDeclarations,'_bindings')}));
+                    				return new SingletonIterator(new @{rel.name}@{ext}(@{ctrl.printSlots(rel.slotDeclarations,'_bindings')}));
                 	}
         	};
-        @else{}return new SingletonIterator(new @{rel.name}(@{ctrl.printSlots(rel.slotDeclarations,'_bindings')}));
+        @else{}return new SingletonIterator(new @{rel.name}@{ext}(@{ctrl.printSlots(rel.slotDeclarations,'_bindings')}));
         @end{}
 		
 		

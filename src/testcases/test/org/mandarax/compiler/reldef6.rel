@@ -1,12 +1,12 @@
 package test.org.mandarax.compiler.reldef6;
 import test.org.mandarax.compiler.*;
-Discount goldDiscount = new Discount(20,true);
-Discount silverDiscount = new Discount(10,true);
-Discount specialDiscount = new Discount(5,false);
-rel DiscountRel(Customer customer,Discount discount) queries getDiscount(customer),qualifiesForDiscount(customer,discount) {
-	rule1: c.turnover>1000 -> DiscountRel(c,goldDiscount);
-	rule2: FrequentCustomer(c) -> DiscountRel(c,silverDiscount);
-	rule3: c.paymentMethod == "CompanyVisa" -> DiscountRel(c,specialDiscount);
+test.org.mandarax.compiler.Discount goldDiscount = new test.org.mandarax.compiler.Discount(20,true);
+test.org.mandarax.compiler.Discount silverDiscount = new test.org.mandarax.compiler.Discount(10,true);
+test.org.mandarax.compiler.Discount specialDiscount = new test.org.mandarax.compiler.Discount(5,false);
+rel Discount(Customer customer,Discount discount) queries getDiscount(customer),qualifiesForDiscount(customer,discount) {
+	rule1: c.turnover>1000 -> Discount(c,goldDiscount);
+	rule2: FrequentCustomer(c) -> Discount(c,silverDiscount);
+	rule3: c.paymentMethod == "CompanyVisa" -> Discount(c,specialDiscount);
 }
 rel FrequentCustomer(Customer customer) queries isFrequentCustomer(customer) {
 	rule1: c.transactionCount>5 -> FrequentCustomer(c);

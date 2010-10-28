@@ -1,19 +1,19 @@
-package test.org.mandarax.compiler.reldef7;
+package test.org.mandarax.compiler.reldef6;
  
 import test.org.mandarax.compiler.*;
 
 /**
  * Class representing the relationship <strong>FrequentCustomer</strong>.
- * @version Oct 28, 2010 9:18:52 PM 
+ * @version Oct 29, 2010 9:54:59 AM 
  */
-public class FrequentCustomer {
+public class FrequentCustomerRel {
 
 	// constructors
-	public FrequentCustomer () {
+	public FrequentCustomerRel () {
 		super();
 	}
 	
-	public FrequentCustomer ( Customer customer ) {
+	public FrequentCustomerRel ( Customer customer ) {
 		super();
 		this.customer=customer; 
 		

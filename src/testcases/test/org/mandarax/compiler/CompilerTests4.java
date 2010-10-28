@@ -15,9 +15,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 import org.mandarax.rt.ResultSet;
-
-import test.org.mandarax.compiler.reldef4.GrandFather;
-import test.org.mandarax.compiler.reldef4.GrandFatherInstances;
+import test.org.mandarax.compiler.reldef4.GrandFatherRel;
+import test.org.mandarax.compiler.reldef4.GrandFatherRelInstances;
 /**
  * Test cases using generated code.
  * @author jens dietrich
@@ -25,9 +24,9 @@ import test.org.mandarax.compiler.reldef4.GrandFatherInstances;
 public class CompilerTests4 {
 	@Test
 	public void test1() throws Exception {
-		ResultSet<GrandFather> rs = new GrandFatherInstances().getAll();
+		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().getAll();
 		
-		GrandFather gf = rs.next();
+		GrandFatherRel gf = rs.next();
 		assertEquals("Max",gf.grandChild);
 		assertEquals("Klaus",gf.grandFather);
 		
@@ -46,9 +45,9 @@ public class CompilerTests4 {
 	
 	@Test
 	public void test2() throws Exception {
-		ResultSet<GrandFather> rs = new GrandFatherInstances().getGrandChildren("Klaus");
+		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().getGrandChildren("Klaus");
 		
-		GrandFather gf = rs.next();
+		GrandFatherRel gf = rs.next();
 		assertEquals("Max",gf.grandChild);
 		assertEquals("Klaus",gf.grandFather);
 		
@@ -62,9 +61,9 @@ public class CompilerTests4 {
 	
 	@Test
 	public void test3() throws Exception {
-		ResultSet<GrandFather> rs = new GrandFatherInstances().getGrandFather("Max");
+		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().getGrandFather("Max");
 		
-		GrandFather gf = rs.next();
+		GrandFatherRel gf = rs.next();
 		assertEquals("Max",gf.grandChild);
 		assertEquals("Klaus",gf.grandFather);
 		
@@ -74,9 +73,9 @@ public class CompilerTests4 {
 	
 	@Test
 	public void test4() throws Exception {
-		ResultSet<GrandFather> rs = new GrandFatherInstances().isGrandFather("Klaus","Max");
+		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().isGrandFather("Klaus","Max");
 		
-		GrandFather gf = rs.next();
+		GrandFatherRel gf = rs.next();
 		assertEquals("Max",gf.grandChild);
 		assertEquals("Klaus",gf.grandFather);
 		
@@ -86,7 +85,7 @@ public class CompilerTests4 {
 	
 	@Test
 	public void test5() throws Exception {
-		ResultSet<GrandFather> rs = new GrandFatherInstances().isGrandFather("Klaus","Jens");
+		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().isGrandFather("Klaus","Jens");
 		
 		assertFalse(rs.hasNext());
 

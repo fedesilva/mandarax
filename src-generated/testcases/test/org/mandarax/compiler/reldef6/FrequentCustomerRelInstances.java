@@ -6,16 +6,16 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>FrequentCustomer</strong>.
- * @version Oct 28, 2010 9:18:52 PM 
+ * @version Oct 29, 2010 9:54:59 AM 
  */
-public class FrequentCustomerInstances {
+public class FrequentCustomerRelInstances {
 	// object references
 	 
-	public static Discount goldDiscount = new Discount(20,true);
+	public static test.org.mandarax.compiler.Discount goldDiscount = new test.org.mandarax.compiler.Discount(20,true);
 	 
-	public static Discount silverDiscount = new Discount(10,true);
+	public static test.org.mandarax.compiler.Discount silverDiscount = new test.org.mandarax.compiler.Discount(10,true);
 	 
-	public static Discount specialDiscount = new Discount(5,false);
+	public static test.org.mandarax.compiler.Discount specialDiscount = new test.org.mandarax.compiler.Discount(5,false);
 	
 	
 	// fields representing annotations
@@ -46,20 +46,20 @@ public class FrequentCustomerInstances {
 
 	// interface generated for queries	
 	 
-	public ResultSet<FrequentCustomer> isFrequentCustomer (  Customer customer  ) {
+	public ResultSet<FrequentCustomerRel> isFrequentCustomer (  Customer customer  ) {
 		DerivationController _derivation = new DefaultDerivationController();
-		return new ResultSet<FrequentCustomer>(isFrequentCustomer ( _derivation ,  customer ),_derivation);
+		return new ResultSet<FrequentCustomerRel>(isFrequentCustomer ( _derivation ,  customer ),_derivation);
 	} 
 	
 	
 	// implementations - these methods are referenced by code generated from other rules in this package
 	// and therefore kept static 
 	 
-	static ResourceIterator<FrequentCustomer> isFrequentCustomer ( final DerivationController _derivation ,  final Customer customer  ) {
+	static ResourceIterator<FrequentCustomerRel> isFrequentCustomer ( final DerivationController _derivation ,  final Customer customer  ) {
 		final int _derivationlevel = _derivation.size();
-		return new IteratorChain<FrequentCustomer>(2) {
+		return new IteratorChain<FrequentCustomerRel>(2) {
 			
-			public ResourceIterator<FrequentCustomer> getNextIterator(int pos) {
+			public ResourceIterator<FrequentCustomerRel> getNextIterator(int pos) {
 			switch (pos) {
 				
                 		case 0: {
@@ -80,12 +80,9 @@ public class FrequentCustomerInstances {
 	// private methods - each method represents the invocation of a single rule for a certain query
 	// query: isFrequentCustomer
 	// rule: rule1: (c.getTransactionCount())>5 -> FrequentCustomer(c);
-	private static ResourceIterator<FrequentCustomer> isFrequentCustomer_0 (final DerivationController _derivation ,  final Customer customer ) {
+	private static ResourceIterator<FrequentCustomerRel> isFrequentCustomer_0 (final DerivationController _derivation ,  final Customer customer ) {
 		
-
 		_derivation.log("FrequentCustomer.rule1", DerivationController.RULE, _annotations_rule1);
-		
-		
 		
 			
 	
@@ -104,7 +101,7 @@ public class FrequentCustomerInstances {
 		
 		
 		// rule head
-		return new SingletonIterator(new FrequentCustomer(_bindings.c));
+		return new SingletonIterator(new FrequentCustomerRel(_bindings.c));
         
 		
 		
@@ -114,12 +111,9 @@ public class FrequentCustomerInstances {
 		
 	}
 	// rule: rule2: (c.getTransactionCount())>3 & (c.getTurnover())>500 -> FrequentCustomer(c);
-	private static ResourceIterator<FrequentCustomer> isFrequentCustomer_1 (final DerivationController _derivation ,  final Customer customer ) {
+	private static ResourceIterator<FrequentCustomerRel> isFrequentCustomer_1 (final DerivationController _derivation ,  final Customer customer ) {
 		
-
 		_derivation.log("FrequentCustomer.rule2", DerivationController.RULE, _annotations_rule2);
-		
-		
 		
 			
 	
@@ -142,7 +136,7 @@ public class FrequentCustomerInstances {
 		
 		
 		// rule head
-		return new SingletonIterator(new FrequentCustomer(_bindings.c));
+		return new SingletonIterator(new FrequentCustomerRel(_bindings.c));
         
 		
 		

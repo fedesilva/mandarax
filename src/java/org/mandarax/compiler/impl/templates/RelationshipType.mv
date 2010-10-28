@@ -6,14 +6,14 @@ package @{context.packageDeclaration.name};
  * Class representing the relationship <strong>@{rel.name}</strong>.
  * @version @{timestamp} 
  */
-public class @{rel.name} {
+public class @{rel.name}@{ext} {
 
 	// constructors
-	public @{rel.name} () {
+	public @{rel.name}@{ext} () {
 		super();
 	}
 	
-	public @{rel.name} (@foreach{slot:rel.slotDeclarations} @{slot.type} @{slot.name} @end{","}) {
+	public @{rel.name}@{ext} (@foreach{slot:rel.slotDeclarations} @{slot.type} @{slot.name} @end{","}) {
 		super();
 		@foreach{slot:rel.slotDeclarations}this.@{slot.name}=@{slot.name}; 
 		@end{}

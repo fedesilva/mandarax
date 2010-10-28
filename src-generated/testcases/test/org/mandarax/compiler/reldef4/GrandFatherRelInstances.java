@@ -4,9 +4,9 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>GrandFather</strong>.
- * @version Oct 28, 2010 9:18:52 PM 
+ * @version Oct 29, 2010 9:54:59 AM 
  */
-public class GrandFatherInstances {
+public class GrandFatherRelInstances {
 	// object references
 	
 	
@@ -29,35 +29,35 @@ public class GrandFatherInstances {
 
 	// interface generated for queries	
 	 
-	public ResultSet<GrandFather> getGrandChildren (  String grandFather  ) {
+	public ResultSet<GrandFatherRel> getGrandChildren (  String grandFather  ) {
 		DerivationController _derivation = new DefaultDerivationController();
-		return new ResultSet<GrandFather>(getGrandChildren ( _derivation ,  grandFather ),_derivation);
+		return new ResultSet<GrandFatherRel>(getGrandChildren ( _derivation ,  grandFather ),_derivation);
 	} 
 	 
-	public ResultSet<GrandFather> getGrandFather (  String grandChild  ) {
+	public ResultSet<GrandFatherRel> getGrandFather (  String grandChild  ) {
 		DerivationController _derivation = new DefaultDerivationController();
-		return new ResultSet<GrandFather>(getGrandFather ( _derivation ,  grandChild ),_derivation);
+		return new ResultSet<GrandFatherRel>(getGrandFather ( _derivation ,  grandChild ),_derivation);
 	} 
 	 
-	public ResultSet<GrandFather> isGrandFather (  String grandFather ,  String grandChild  ) {
+	public ResultSet<GrandFatherRel> isGrandFather (  String grandFather ,  String grandChild  ) {
 		DerivationController _derivation = new DefaultDerivationController();
-		return new ResultSet<GrandFather>(isGrandFather ( _derivation ,  grandFather ,  grandChild ),_derivation);
+		return new ResultSet<GrandFatherRel>(isGrandFather ( _derivation ,  grandFather ,  grandChild ),_derivation);
 	} 
 	 
-	public ResultSet<GrandFather> getAll (  ) {
+	public ResultSet<GrandFatherRel> getAll (  ) {
 		DerivationController _derivation = new DefaultDerivationController();
-		return new ResultSet<GrandFather>(getAll ( _derivation  ),_derivation);
+		return new ResultSet<GrandFatherRel>(getAll ( _derivation  ),_derivation);
 	} 
 	
 	
 	// implementations - these methods are referenced by code generated from other rules in this package
 	// and therefore kept static 
 	 
-	static ResourceIterator<GrandFather> getGrandChildren ( final DerivationController _derivation ,  final String grandFather  ) {
+	static ResourceIterator<GrandFatherRel> getGrandChildren ( final DerivationController _derivation ,  final String grandFather  ) {
 		final int _derivationlevel = _derivation.size();
-		return new IteratorChain<GrandFather>(1) {
+		return new IteratorChain<GrandFatherRel>(1) {
 			
-			public ResourceIterator<GrandFather> getNextIterator(int pos) {
+			public ResourceIterator<GrandFatherRel> getNextIterator(int pos) {
 			switch (pos) {
 				
                 		case 0: {
@@ -69,11 +69,11 @@ public class GrandFatherInstances {
 		};
 	} 
 	 
-	static ResourceIterator<GrandFather> getGrandFather ( final DerivationController _derivation ,  final String grandChild  ) {
+	static ResourceIterator<GrandFatherRel> getGrandFather ( final DerivationController _derivation ,  final String grandChild  ) {
 		final int _derivationlevel = _derivation.size();
-		return new IteratorChain<GrandFather>(1) {
+		return new IteratorChain<GrandFatherRel>(1) {
 			
-			public ResourceIterator<GrandFather> getNextIterator(int pos) {
+			public ResourceIterator<GrandFatherRel> getNextIterator(int pos) {
 			switch (pos) {
 				
                 		case 0: {
@@ -85,11 +85,11 @@ public class GrandFatherInstances {
 		};
 	} 
 	 
-	static ResourceIterator<GrandFather> isGrandFather ( final DerivationController _derivation ,  final String grandFather ,  final String grandChild  ) {
+	static ResourceIterator<GrandFatherRel> isGrandFather ( final DerivationController _derivation ,  final String grandFather ,  final String grandChild  ) {
 		final int _derivationlevel = _derivation.size();
-		return new IteratorChain<GrandFather>(1) {
+		return new IteratorChain<GrandFatherRel>(1) {
 			
-			public ResourceIterator<GrandFather> getNextIterator(int pos) {
+			public ResourceIterator<GrandFatherRel> getNextIterator(int pos) {
 			switch (pos) {
 				
                 		case 0: {
@@ -101,11 +101,11 @@ public class GrandFatherInstances {
 		};
 	} 
 	 
-	static ResourceIterator<GrandFather> getAll ( final DerivationController _derivation   ) {
+	static ResourceIterator<GrandFatherRel> getAll ( final DerivationController _derivation   ) {
 		final int _derivationlevel = _derivation.size();
-		return new IteratorChain<GrandFather>(1) {
+		return new IteratorChain<GrandFatherRel>(1) {
 			
-			public ResourceIterator<GrandFather> getNextIterator(int pos) {
+			public ResourceIterator<GrandFatherRel> getNextIterator(int pos) {
 			switch (pos) {
 				
                 		case 0: {
@@ -122,12 +122,9 @@ public class GrandFatherInstances {
 	// private methods - each method represents the invocation of a single rule for a certain query
 	// query: getGrandChildren
 	// rule: rule1: Father(x,y) & Father(y,z) -> GrandFather(x,z);
-	private static ResourceIterator<GrandFather> getGrandChildren_0 (final DerivationController _derivation ,  final String grandFather ) {
+	private static ResourceIterator<GrandFatherRel> getGrandChildren_0 (final DerivationController _derivation ,  final String grandFather ) {
 		
-
 		_derivation.log("GrandFather.rule1", DerivationController.RULE, _annotations_rule1);
-		
-		
 		
 			
 	
@@ -143,29 +140,29 @@ public class GrandFatherInstances {
 
 		 
 		// apply prerequisite Father(x,y)
-		final ResourceIterator<Father> iterator1 = FatherInstances.getChildren(_derivation.push(),_bindings.x);
+		final ResourceIterator<FatherRel> iterator1 = FatherRelInstances.getChildren(_derivation.push(),_bindings.x);
 		
 		
 		 
 		// apply prerequisite Father(y,z)
-		final ResourceIterator<Father> iterator2 =  new NestedIterator<Father, Father>(iterator1) {
-                	public ResourceIterator<Father> getNextIterator(Father _object) {
+		final ResourceIterator<FatherRel> iterator2 =  new NestedIterator<FatherRel, FatherRel>(iterator1) {
+                	public ResourceIterator<FatherRel> getNextIterator(FatherRel _object) {
                 				// bind parameters from Father(x,y)
 						_bindings.y = _object.child;
 						
-									return FatherInstances.getChildren(_derivation.push(),_bindings.y);
+									return FatherRelInstances.getChildren(_derivation.push(),_bindings.y);
                 	}
             	};
 		
 		
 		
 		// rule head
-		return new NestedIterator<Father, GrandFather>(iterator2) {
-                	public ResourceIterator<GrandFather> getNextIterator(Father _object) {
+		return new NestedIterator<FatherRel, GrandFatherRel>(iterator2) {
+                	public ResourceIterator<GrandFatherRel> getNextIterator(FatherRel _object) {
 						// bind parameters from Father(y,z)
 						_bindings.z = _object.child;
 						
-                    				return new SingletonIterator(new GrandFather(_bindings.x,_bindings.z));
+                    				return new SingletonIterator(new GrandFatherRel(_bindings.x,_bindings.z));
                 	}
         	};
         
@@ -178,12 +175,9 @@ public class GrandFatherInstances {
 	}
 	// query: getGrandFather
 	// rule: rule1: Father(x,y) & Father(y,z) -> GrandFather(x,z);
-	private static ResourceIterator<GrandFather> getGrandFather_0 (final DerivationController _derivation ,  final String grandChild ) {
+	private static ResourceIterator<GrandFatherRel> getGrandFather_0 (final DerivationController _derivation ,  final String grandChild ) {
 		
-
 		_derivation.log("GrandFather.rule1", DerivationController.RULE, _annotations_rule1);
-		
-		
 		
 			
 	
@@ -199,29 +193,29 @@ public class GrandFatherInstances {
 
 		 
 		// apply prerequisite Father(x,y)
-		final ResourceIterator<Father> iterator1 = FatherInstances.getFatherAndChild(_derivation.push());
+		final ResourceIterator<FatherRel> iterator1 = FatherRelInstances.getFatherAndChild(_derivation.push());
 		
 		
 		 
 		// apply prerequisite Father(y,z)
-		final ResourceIterator<Father> iterator2 =  new NestedIterator<Father, Father>(iterator1) {
-                	public ResourceIterator<Father> getNextIterator(Father _object) {
+		final ResourceIterator<FatherRel> iterator2 =  new NestedIterator<FatherRel, FatherRel>(iterator1) {
+                	public ResourceIterator<FatherRel> getNextIterator(FatherRel _object) {
                 				// bind parameters from Father(x,y)
 						_bindings.x = _object.father;
 						_bindings.y = _object.child;
 						
-									return FatherInstances.isFather(_derivation.push(),_bindings.y,_bindings.z);
+									return FatherRelInstances.isFather(_derivation.push(),_bindings.y,_bindings.z);
                 	}
             	};
 		
 		
 		
 		// rule head
-		return new NestedIterator<Father, GrandFather>(iterator2) {
-                	public ResourceIterator<GrandFather> getNextIterator(Father _object) {
+		return new NestedIterator<FatherRel, GrandFatherRel>(iterator2) {
+                	public ResourceIterator<GrandFatherRel> getNextIterator(FatherRel _object) {
 						// bind parameters from Father(y,z)
 						
-                    				return new SingletonIterator(new GrandFather(_bindings.x,_bindings.z));
+                    				return new SingletonIterator(new GrandFatherRel(_bindings.x,_bindings.z));
                 	}
         	};
         
@@ -234,12 +228,9 @@ public class GrandFatherInstances {
 	}
 	// query: isGrandFather
 	// rule: rule1: Father(x,y) & Father(y,z) -> GrandFather(x,z);
-	private static ResourceIterator<GrandFather> isGrandFather_0 (final DerivationController _derivation ,  final String grandFather ,  final String grandChild ) {
+	private static ResourceIterator<GrandFatherRel> isGrandFather_0 (final DerivationController _derivation ,  final String grandFather ,  final String grandChild ) {
 		
-
 		_derivation.log("GrandFather.rule1", DerivationController.RULE, _annotations_rule1);
-		
-		
 		
 			
 	
@@ -255,28 +246,28 @@ public class GrandFatherInstances {
 
 		 
 		// apply prerequisite Father(x,y)
-		final ResourceIterator<Father> iterator1 = FatherInstances.getChildren(_derivation.push(),_bindings.x);
+		final ResourceIterator<FatherRel> iterator1 = FatherRelInstances.getChildren(_derivation.push(),_bindings.x);
 		
 		
 		 
 		// apply prerequisite Father(y,z)
-		final ResourceIterator<Father> iterator2 =  new NestedIterator<Father, Father>(iterator1) {
-                	public ResourceIterator<Father> getNextIterator(Father _object) {
+		final ResourceIterator<FatherRel> iterator2 =  new NestedIterator<FatherRel, FatherRel>(iterator1) {
+                	public ResourceIterator<FatherRel> getNextIterator(FatherRel _object) {
                 				// bind parameters from Father(x,y)
 						_bindings.y = _object.child;
 						
-									return FatherInstances.isFather(_derivation.push(),_bindings.y,_bindings.z);
+									return FatherRelInstances.isFather(_derivation.push(),_bindings.y,_bindings.z);
                 	}
             	};
 		
 		
 		
 		// rule head
-		return new NestedIterator<Father, GrandFather>(iterator2) {
-                	public ResourceIterator<GrandFather> getNextIterator(Father _object) {
+		return new NestedIterator<FatherRel, GrandFatherRel>(iterator2) {
+                	public ResourceIterator<GrandFatherRel> getNextIterator(FatherRel _object) {
 						// bind parameters from Father(y,z)
 						
-                    				return new SingletonIterator(new GrandFather(_bindings.x,_bindings.z));
+                    				return new SingletonIterator(new GrandFatherRel(_bindings.x,_bindings.z));
                 	}
         	};
         
@@ -289,12 +280,9 @@ public class GrandFatherInstances {
 	}
 	// query: getAll
 	// rule: rule1: Father(x,y) & Father(y,z) -> GrandFather(x,z);
-	private static ResourceIterator<GrandFather> getAll_0 (final DerivationController _derivation  ) {
+	private static ResourceIterator<GrandFatherRel> getAll_0 (final DerivationController _derivation  ) {
 		
-
 		_derivation.log("GrandFather.rule1", DerivationController.RULE, _annotations_rule1);
-		
-		
 		
 			
 	
@@ -310,30 +298,30 @@ public class GrandFatherInstances {
 
 		 
 		// apply prerequisite Father(x,y)
-		final ResourceIterator<Father> iterator1 = FatherInstances.getFatherAndChild(_derivation.push());
+		final ResourceIterator<FatherRel> iterator1 = FatherRelInstances.getFatherAndChild(_derivation.push());
 		
 		
 		 
 		// apply prerequisite Father(y,z)
-		final ResourceIterator<Father> iterator2 =  new NestedIterator<Father, Father>(iterator1) {
-                	public ResourceIterator<Father> getNextIterator(Father _object) {
+		final ResourceIterator<FatherRel> iterator2 =  new NestedIterator<FatherRel, FatherRel>(iterator1) {
+                	public ResourceIterator<FatherRel> getNextIterator(FatherRel _object) {
                 				// bind parameters from Father(x,y)
 						_bindings.x = _object.father;
 						_bindings.y = _object.child;
 						
-									return FatherInstances.getChildren(_derivation.push(),_bindings.y);
+									return FatherRelInstances.getChildren(_derivation.push(),_bindings.y);
                 	}
             	};
 		
 		
 		
 		// rule head
-		return new NestedIterator<Father, GrandFather>(iterator2) {
-                	public ResourceIterator<GrandFather> getNextIterator(Father _object) {
+		return new NestedIterator<FatherRel, GrandFatherRel>(iterator2) {
+                	public ResourceIterator<GrandFatherRel> getNextIterator(FatherRel _object) {
 						// bind parameters from Father(y,z)
 						_bindings.z = _object.child;
 						
-                    				return new SingletonIterator(new GrandFather(_bindings.x,_bindings.z));
+                    				return new SingletonIterator(new GrandFatherRel(_bindings.x,_bindings.z));
                 	}
         	};
         

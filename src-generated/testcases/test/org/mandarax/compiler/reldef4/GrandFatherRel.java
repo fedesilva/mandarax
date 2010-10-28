@@ -2,16 +2,16 @@ package test.org.mandarax.compiler.reldef4;
 
 /**
  * Class representing the relationship <strong>GrandFather</strong>.
- * @version Oct 28, 2010 9:18:51 PM 
+ * @version Oct 29, 2010 9:54:59 AM 
  */
-public class GrandFather {
+public class GrandFatherRel {
 
 	// constructors
-	public GrandFather () {
+	public GrandFatherRel () {
 		super();
 	}
 	
-	public GrandFather ( String grandFather , String grandChild ) {
+	public GrandFatherRel ( String grandFather , String grandChild ) {
 		super();
 		this.grandFather=grandFather; 
 		this.grandChild=grandChild; 

@@ -12,11 +12,10 @@
 package test.org.mandarax.compiler;
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
 import org.mandarax.rt.ResultSet;
-import test.org.mandarax.compiler.reldef5.GrandFather;
-import test.org.mandarax.compiler.reldef5.GrandFatherInstances;
+import test.org.mandarax.compiler.reldef5.GrandFatherRel;
+import test.org.mandarax.compiler.reldef5.GrandFatherRelInstances;
 /**
  * Test cases using generated code.
  * @author jens dietrich
@@ -29,9 +28,9 @@ public class CompilerTests5 {
 	public void test1() throws Exception {
 		Person max = new Person("Max");
 		Person klaus = new Person("Klaus");
-		ResultSet<GrandFather> rs = new GrandFatherInstances().isGrandFather(klaus,max);
+		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().isGrandFather(klaus,max);
 		
-		GrandFather gf = rs.next();
+		GrandFatherRel gf = rs.next();
 		assertEquals(max,gf.grandChild);
 		assertEquals(klaus,gf.grandFather);
 		
@@ -40,13 +39,13 @@ public class CompilerTests5 {
 	
 	@Test
 	public void test2() throws Exception {
-		ResultSet<GrandFather> rs = new GrandFatherInstances().isGrandFather(new Person("Jens"),new Person("Max"));
+		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().isGrandFather(new Person("Jens"),new Person("Max"));
 		assertFalse(rs.hasNext());
 	}
 
 	@Test
 	public void test3() throws Exception {
-		ResultSet<GrandFather> rs = new GrandFatherInstances().isGrandFather(new Person("Klaus"),new Person("Jens"));
+		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().isGrandFather(new Person("Klaus"),new Person("Jens"));
 		assertFalse(rs.hasNext());
 	}
 	

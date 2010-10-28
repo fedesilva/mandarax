@@ -6,9 +6,9 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>GrandFather</strong>.
- * @version Oct 28, 2010 9:18:52 PM 
+ * @version Oct 29, 2010 9:54:59 AM 
  */
-public class GrandFatherInstances {
+public class GrandFatherRelInstances {
 	// object references
 	
 	
@@ -31,20 +31,20 @@ public class GrandFatherInstances {
 
 	// interface generated for queries	
 	 
-	public ResultSet<GrandFather> isGrandFather (  Person grandFather ,  Person grandChild  ) {
+	public ResultSet<GrandFatherRel> isGrandFather (  Person grandFather ,  Person grandChild  ) {
 		DerivationController _derivation = new DefaultDerivationController();
-		return new ResultSet<GrandFather>(isGrandFather ( _derivation ,  grandFather ,  grandChild ),_derivation);
+		return new ResultSet<GrandFatherRel>(isGrandFather ( _derivation ,  grandFather ,  grandChild ),_derivation);
 	} 
 	
 	
 	// implementations - these methods are referenced by code generated from other rules in this package
 	// and therefore kept static 
 	 
-	static ResourceIterator<GrandFather> isGrandFather ( final DerivationController _derivation ,  final Person grandFather ,  final Person grandChild  ) {
+	static ResourceIterator<GrandFatherRel> isGrandFather ( final DerivationController _derivation ,  final Person grandFather ,  final Person grandChild  ) {
 		final int _derivationlevel = _derivation.size();
-		return new IteratorChain<GrandFather>(1) {
+		return new IteratorChain<GrandFatherRel>(1) {
 			
-			public ResourceIterator<GrandFather> getNextIterator(int pos) {
+			public ResourceIterator<GrandFatherRel> getNextIterator(int pos) {
 			switch (pos) {
 				
                 		case 0: {
@@ -61,12 +61,9 @@ public class GrandFatherInstances {
 	// private methods - each method represents the invocation of a single rule for a certain query
 	// query: isGrandFather
 	// rule: rule1: Father(x.getName(),y) & Father(y,z.getName()) -> GrandFather(x,z);
-	private static ResourceIterator<GrandFather> isGrandFather_0 (final DerivationController _derivation ,  final Person grandFather ,  final Person grandChild ) {
+	private static ResourceIterator<GrandFatherRel> isGrandFather_0 (final DerivationController _derivation ,  final Person grandFather ,  final Person grandChild ) {
 		
-
 		_derivation.log("GrandFather.rule1", DerivationController.RULE, _annotations_rule1);
-		
-		
 		
 			
 	
@@ -82,28 +79,28 @@ public class GrandFatherInstances {
 
 		 
 		// apply prerequisite Father(x.getName(),y)
-		final ResourceIterator<Father> iterator1 = FatherInstances.getChildren(_derivation.push(),_bindings.x.getName());
+		final ResourceIterator<FatherRel> iterator1 = FatherRelInstances.getChildren(_derivation.push(),_bindings.x.getName());
 		
 		
 		 
 		// apply prerequisite Father(y,z.getName())
-		final ResourceIterator<Father> iterator2 =  new NestedIterator<Father, Father>(iterator1) {
-                	public ResourceIterator<Father> getNextIterator(Father _object) {
+		final ResourceIterator<FatherRel> iterator2 =  new NestedIterator<FatherRel, FatherRel>(iterator1) {
+                	public ResourceIterator<FatherRel> getNextIterator(FatherRel _object) {
                 				// bind parameters from Father(x.getName(),y)
 						_bindings.y = _object.child;
 						
-									return FatherInstances.isFather(_derivation.push(),_bindings.y,_bindings.z.getName());
+									return FatherRelInstances.isFather(_derivation.push(),_bindings.y,_bindings.z.getName());
                 	}
             	};
 		
 		
 		
 		// rule head
-		return new NestedIterator<Father, GrandFather>(iterator2) {
-                	public ResourceIterator<GrandFather> getNextIterator(Father _object) {
+		return new NestedIterator<FatherRel, GrandFatherRel>(iterator2) {
+                	public ResourceIterator<GrandFatherRel> getNextIterator(FatherRel _object) {
 						// bind parameters from Father(y,z.getName())
 						
-                    				return new SingletonIterator(new GrandFather(_bindings.x,_bindings.z));
+                    				return new SingletonIterator(new GrandFatherRel(_bindings.x,_bindings.z));
                 	}
         	};
         

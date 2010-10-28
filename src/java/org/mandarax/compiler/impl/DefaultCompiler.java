@@ -44,6 +44,7 @@ public class DefaultCompiler implements Compiler {
 	private Verifier verifier = new VerifyAll();
 	private VerificationErrorReporter verificationErrorReporter = new DefaultVerificationErrorReporter();
 	private Resolver resolver = new DefaultResolver();
+	public static String TYPE_EXTENSION = "Rel";
 
 	@Override
 	public void compile(Location target, CompilationMode mode, URL... urls) throws MandaraxException {
@@ -175,7 +176,7 @@ public class DefaultCompiler implements Compiler {
 		Map<String,Object> bindings = createParamBindings(cu);
 		bindings.put("rel",rel);
 		String generated = (String) TemplateRuntime.execute(getTemplate(RELATIONSHIP_TYPE), bindings,Templates.registry);	
-		printGeneratedCode(cu,target,rel.getName(),generated);
+		printGeneratedCode(cu,target,rel.getName()+TYPE_EXTENSION,generated);
 	}
 	
 	// keep public for unit testing
@@ -183,7 +184,7 @@ public class DefaultCompiler implements Compiler {
 		Map<String,Object> bindings = createParamBindings(cu);
 		bindings.put("rel",rel);
 		String generated = (String) TemplateRuntime.execute(getTemplate(RELATIONSHIP_QUERY_INTERFACE), bindings,Templates.registry);
-		printGeneratedCode(cu,target,rel.getName()+"Instances",generated);
+		printGeneratedCode(cu,target,rel.getName()+TYPE_EXTENSION+"Instances",generated);
 	}
 	
 	// keep public for unit testing
@@ -203,7 +204,7 @@ public class DefaultCompiler implements Compiler {
 		bindings.put("resolver",resolver);
 		
 		String generated = (String) TemplateRuntime.execute(getTemplate(RELATIONSHIP_QUERY_IMPLEMENTATION), bindings,Templates.registry);
-		printGeneratedCode(cu,target,rel.getName()+"Instances",generated);
+		printGeneratedCode(cu,target,rel.getName()+TYPE_EXTENSION+"Instances",generated);
 	}
 	
 
@@ -217,7 +218,8 @@ public class DefaultCompiler implements Compiler {
 	private Map<String,Object> createParamBindings(CompilationUnit cu) {
 		Map<String,Object> bindings = new HashMap<String,Object>();
 		bindings.put("context",cu.getContext());
-		bindings.put("timestamp",getTimestamp());		
+		bindings.put("timestamp",getTimestamp());	
+		bindings.put("ext",TYPE_EXTENSION);
 		return bindings;
 	}
 	
