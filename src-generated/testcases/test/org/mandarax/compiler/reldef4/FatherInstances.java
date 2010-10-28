@@ -1,14 +1,57 @@
 package test.org.mandarax.compiler.reldef4;
 
 import org.mandarax.rt.*;
-import com.google.common.base.Predicate;
 
 /**
  * Interface for queries for relationship <strong>Father</strong>.
- * @version Oct 28, 2010 12:17:04 PM 
+ * @version Oct 28, 2010 1:42:51 PM 
  */
 public class FatherInstances {
 	// object references
+	
+	
+	// fields representing annotations
+	
+	// rule: rule1:  -> Father("Jens","Max");
+	private final static java.util.Properties _annotations_rule1 = new java.util.Properties();
+	
+	// rule: rule2:  -> Father("Jens","Xiomara");
+	private final static java.util.Properties _annotations_rule2 = new java.util.Properties();
+	
+	// rule: rule3:  -> Father("Klaus","Jens");
+	private final static java.util.Properties _annotations_rule3 = new java.util.Properties();
+	
+	// rule: rule4:  -> Father("Otto","Klaus");
+	private final static java.util.Properties _annotations_rule4 = new java.util.Properties();
+	
+	
+	// initialise annotations
+	static {
+		// relationship annotations for rule  rule1:  -> Father("Jens","Max");
+		
+		// rule annotations for rule  rule1:  -> Father("Jens","Max");
+		
+		
+	
+		// relationship annotations for rule  rule2:  -> Father("Jens","Xiomara");
+		
+		// rule annotations for rule  rule2:  -> Father("Jens","Xiomara");
+		
+		
+	
+		// relationship annotations for rule  rule3:  -> Father("Klaus","Jens");
+		
+		// rule annotations for rule  rule3:  -> Father("Klaus","Jens");
+		
+		
+	
+		// relationship annotations for rule  rule4:  -> Father("Otto","Klaus");
+		
+		// rule annotations for rule  rule4:  -> Father("Otto","Klaus");
+		
+		
+	}
+		
 	
 
 	// interface generated for queries	
@@ -152,14 +195,12 @@ public class FatherInstances {
 	
 	
 	// private methods - each method represents the invocation of a single rule for a certain query
-	
 	// query: getFather
 	// rule: rule1:  -> Father("Jens","Max");
 	private static ResourceIterator<Father> getFather_0 (final DerivationController _derivation ,  final String child ) {
 		
-		
-		
-		_derivation.log("Father.rule1", DerivationController.RULE, null);
+
+		_derivation.log("Father.rule1", DerivationController.RULE, _annotations_rule1);
 		
 		
 		
@@ -189,9 +230,8 @@ public class FatherInstances {
 	// rule: rule2:  -> Father("Jens","Xiomara");
 	private static ResourceIterator<Father> getFather_1 (final DerivationController _derivation ,  final String child ) {
 		
-		
-		
-		_derivation.log("Father.rule2", DerivationController.RULE, null);
+
+		_derivation.log("Father.rule2", DerivationController.RULE, _annotations_rule2);
 		
 		
 		
@@ -221,9 +261,8 @@ public class FatherInstances {
 	// rule: rule3:  -> Father("Klaus","Jens");
 	private static ResourceIterator<Father> getFather_2 (final DerivationController _derivation ,  final String child ) {
 		
-		
-		
-		_derivation.log("Father.rule3", DerivationController.RULE, null);
+
+		_derivation.log("Father.rule3", DerivationController.RULE, _annotations_rule3);
 		
 		
 		
@@ -253,9 +292,8 @@ public class FatherInstances {
 	// rule: rule4:  -> Father("Otto","Klaus");
 	private static ResourceIterator<Father> getFather_3 (final DerivationController _derivation ,  final String child ) {
 		
-		
-		
-		_derivation.log("Father.rule4", DerivationController.RULE, null);
+
+		_derivation.log("Father.rule4", DerivationController.RULE, _annotations_rule4);
 		
 		
 		
@@ -286,9 +324,8 @@ public class FatherInstances {
 	// rule: rule1:  -> Father("Jens","Max");
 	private static ResourceIterator<Father> isFather_0 (final DerivationController _derivation ,  final String father ,  final String child ) {
 		
-		
-		
-		_derivation.log("Father.rule1", DerivationController.RULE, null);
+
+		_derivation.log("Father.rule1", DerivationController.RULE, _annotations_rule1);
 		
 		
 		
@@ -318,9 +355,8 @@ public class FatherInstances {
 	// rule: rule2:  -> Father("Jens","Xiomara");
 	private static ResourceIterator<Father> isFather_1 (final DerivationController _derivation ,  final String father ,  final String child ) {
 		
-		
-		
-		_derivation.log("Father.rule2", DerivationController.RULE, null);
+
+		_derivation.log("Father.rule2", DerivationController.RULE, _annotations_rule2);
 		
 		
 		
@@ -350,9 +386,8 @@ public class FatherInstances {
 	// rule: rule3:  -> Father("Klaus","Jens");
 	private static ResourceIterator<Father> isFather_2 (final DerivationController _derivation ,  final String father ,  final String child ) {
 		
-		
-		
-		_derivation.log("Father.rule3", DerivationController.RULE, null);
+
+		_derivation.log("Father.rule3", DerivationController.RULE, _annotations_rule3);
 		
 		
 		
@@ -382,9 +417,8 @@ public class FatherInstances {
 	// rule: rule4:  -> Father("Otto","Klaus");
 	private static ResourceIterator<Father> isFather_3 (final DerivationController _derivation ,  final String father ,  final String child ) {
 		
-		
-		
-		_derivation.log("Father.rule4", DerivationController.RULE, null);
+
+		_derivation.log("Father.rule4", DerivationController.RULE, _annotations_rule4);
 		
 		
 		
@@ -415,9 +449,8 @@ public class FatherInstances {
 	// rule: rule1:  -> Father("Jens","Max");
 	private static ResourceIterator<Father> getChildren_0 (final DerivationController _derivation ,  final String father ) {
 		
-		
-		
-		_derivation.log("Father.rule1", DerivationController.RULE, null);
+
+		_derivation.log("Father.rule1", DerivationController.RULE, _annotations_rule1);
 		
 		
 		
@@ -447,9 +480,8 @@ public class FatherInstances {
 	// rule: rule2:  -> Father("Jens","Xiomara");
 	private static ResourceIterator<Father> getChildren_1 (final DerivationController _derivation ,  final String father ) {
 		
-		
-		
-		_derivation.log("Father.rule2", DerivationController.RULE, null);
+
+		_derivation.log("Father.rule2", DerivationController.RULE, _annotations_rule2);
 		
 		
 		
@@ -479,9 +511,8 @@ public class FatherInstances {
 	// rule: rule3:  -> Father("Klaus","Jens");
 	private static ResourceIterator<Father> getChildren_2 (final DerivationController _derivation ,  final String father ) {
 		
-		
-		
-		_derivation.log("Father.rule3", DerivationController.RULE, null);
+
+		_derivation.log("Father.rule3", DerivationController.RULE, _annotations_rule3);
 		
 		
 		
@@ -511,9 +542,8 @@ public class FatherInstances {
 	// rule: rule4:  -> Father("Otto","Klaus");
 	private static ResourceIterator<Father> getChildren_3 (final DerivationController _derivation ,  final String father ) {
 		
-		
-		
-		_derivation.log("Father.rule4", DerivationController.RULE, null);
+
+		_derivation.log("Father.rule4", DerivationController.RULE, _annotations_rule4);
 		
 		
 		
@@ -544,9 +574,8 @@ public class FatherInstances {
 	// rule: rule1:  -> Father("Jens","Max");
 	private static ResourceIterator<Father> getFatherAndChild_0 (final DerivationController _derivation  ) {
 		
-		
-		
-		_derivation.log("Father.rule1", DerivationController.RULE, null);
+
+		_derivation.log("Father.rule1", DerivationController.RULE, _annotations_rule1);
 		
 		
 		
@@ -569,9 +598,8 @@ public class FatherInstances {
 	// rule: rule2:  -> Father("Jens","Xiomara");
 	private static ResourceIterator<Father> getFatherAndChild_1 (final DerivationController _derivation  ) {
 		
-		
-		
-		_derivation.log("Father.rule2", DerivationController.RULE, null);
+
+		_derivation.log("Father.rule2", DerivationController.RULE, _annotations_rule2);
 		
 		
 		
@@ -594,9 +622,8 @@ public class FatherInstances {
 	// rule: rule3:  -> Father("Klaus","Jens");
 	private static ResourceIterator<Father> getFatherAndChild_2 (final DerivationController _derivation  ) {
 		
-		
-		
-		_derivation.log("Father.rule3", DerivationController.RULE, null);
+
+		_derivation.log("Father.rule3", DerivationController.RULE, _annotations_rule3);
 		
 		
 		
@@ -619,9 +646,8 @@ public class FatherInstances {
 	// rule: rule4:  -> Father("Otto","Klaus");
 	private static ResourceIterator<Father> getFatherAndChild_3 (final DerivationController _derivation  ) {
 		
-		
-		
-		_derivation.log("Father.rule4", DerivationController.RULE, null);
+
+		_derivation.log("Father.rule4", DerivationController.RULE, _annotations_rule4);
 		
 		
 		

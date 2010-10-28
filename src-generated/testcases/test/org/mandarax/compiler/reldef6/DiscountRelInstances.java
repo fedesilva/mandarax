@@ -3,11 +3,10 @@ package test.org.mandarax.compiler.reldef6;
 import test.org.mandarax.compiler.*;
 
 import org.mandarax.rt.*;
-import com.google.common.base.Predicate;
 
 /**
  * Interface for queries for relationship <strong>DiscountRel</strong>.
- * @version Oct 28, 2010 12:17:04 PM 
+ * @version Oct 28, 2010 1:42:51 PM 
  */
 public class DiscountRelInstances {
 	// object references
@@ -17,6 +16,41 @@ public class DiscountRelInstances {
 	public static Discount silverDiscount = new Discount(10,true);
 	 
 	public static Discount specialDiscount = new Discount(5,false);
+	
+	
+	// fields representing annotations
+	
+	// rule: rule1: (c.getTurnover())>1000 -> DiscountRel(c,goldDiscount);
+	private final static java.util.Properties _annotations_rule1 = new java.util.Properties();
+	
+	// rule: rule2: FrequentCustomer(c) -> DiscountRel(c,silverDiscount);
+	private final static java.util.Properties _annotations_rule2 = new java.util.Properties();
+	
+	// rule: rule3: (c.getPaymentMethod())=="CompanyVisa" -> DiscountRel(c,specialDiscount);
+	private final static java.util.Properties _annotations_rule3 = new java.util.Properties();
+	
+	
+	// initialise annotations
+	static {
+		// relationship annotations for rule  rule1: (c.getTurnover())>1000 -> DiscountRel(c,goldDiscount);
+		
+		// rule annotations for rule  rule1: (c.getTurnover())>1000 -> DiscountRel(c,goldDiscount);
+		
+		
+	
+		// relationship annotations for rule  rule2: FrequentCustomer(c) -> DiscountRel(c,silverDiscount);
+		
+		// rule annotations for rule  rule2: FrequentCustomer(c) -> DiscountRel(c,silverDiscount);
+		
+		
+	
+		// relationship annotations for rule  rule3: (c.getPaymentMethod())=="CompanyVisa" -> DiscountRel(c,specialDiscount);
+		
+		// rule annotations for rule  rule3: (c.getPaymentMethod())=="CompanyVisa" -> DiscountRel(c,specialDiscount);
+		
+		
+	}
+		
 	
 
 	// interface generated for queries	
@@ -86,14 +120,12 @@ public class DiscountRelInstances {
 	
 	
 	// private methods - each method represents the invocation of a single rule for a certain query
-	
 	// query: getDiscount
 	// rule: rule1: (c.getTurnover())>1000 -> DiscountRel(c,goldDiscount);
 	private static ResourceIterator<DiscountRel> getDiscount_0 (final DerivationController _derivation ,  final Customer customer ) {
 		
-		
-		
-		_derivation.log("DiscountRel.rule1", DerivationController.RULE, null);
+
+		_derivation.log("DiscountRel.rule1", DerivationController.RULE, _annotations_rule1);
 		
 		
 		
@@ -127,9 +159,8 @@ public class DiscountRelInstances {
 	// rule: rule2: FrequentCustomer(c) -> DiscountRel(c,silverDiscount);
 	private static ResourceIterator<DiscountRel> getDiscount_1 (final DerivationController _derivation ,  final Customer customer ) {
 		
-		
-		
-		_derivation.log("DiscountRel.rule2", DerivationController.RULE, null);
+
+		_derivation.log("DiscountRel.rule2", DerivationController.RULE, _annotations_rule2);
 		
 		
 		
@@ -170,9 +201,8 @@ public class DiscountRelInstances {
 	// rule: rule3: (c.getPaymentMethod())=="CompanyVisa" -> DiscountRel(c,specialDiscount);
 	private static ResourceIterator<DiscountRel> getDiscount_2 (final DerivationController _derivation ,  final Customer customer ) {
 		
-		
-		
-		_derivation.log("DiscountRel.rule3", DerivationController.RULE, null);
+
+		_derivation.log("DiscountRel.rule3", DerivationController.RULE, _annotations_rule3);
 		
 		
 		
@@ -207,9 +237,8 @@ public class DiscountRelInstances {
 	// rule: rule1: (c.getTurnover())>1000 -> DiscountRel(c,goldDiscount);
 	private static ResourceIterator<DiscountRel> qualifiesForDiscount_0 (final DerivationController _derivation ,  final Customer customer ,  final Discount discount ) {
 		
-		
-		
-		_derivation.log("DiscountRel.rule1", DerivationController.RULE, null);
+
+		_derivation.log("DiscountRel.rule1", DerivationController.RULE, _annotations_rule1);
 		
 		
 		
@@ -243,9 +272,8 @@ public class DiscountRelInstances {
 	// rule: rule2: FrequentCustomer(c) -> DiscountRel(c,silverDiscount);
 	private static ResourceIterator<DiscountRel> qualifiesForDiscount_1 (final DerivationController _derivation ,  final Customer customer ,  final Discount discount ) {
 		
-		
-		
-		_derivation.log("DiscountRel.rule2", DerivationController.RULE, null);
+
+		_derivation.log("DiscountRel.rule2", DerivationController.RULE, _annotations_rule2);
 		
 		
 		
@@ -286,9 +314,8 @@ public class DiscountRelInstances {
 	// rule: rule3: (c.getPaymentMethod())=="CompanyVisa" -> DiscountRel(c,specialDiscount);
 	private static ResourceIterator<DiscountRel> qualifiesForDiscount_2 (final DerivationController _derivation ,  final Customer customer ,  final Discount discount ) {
 		
-		
-		
-		_derivation.log("DiscountRel.rule3", DerivationController.RULE, null);
+
+		_derivation.log("DiscountRel.rule3", DerivationController.RULE, _annotations_rule3);
 		
 		
 		

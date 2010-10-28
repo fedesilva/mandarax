@@ -23,7 +23,7 @@
             	};
 		@code{lastPrereq=prereq;}
 		@else{prereq.hasPreviousRelPrereq()} 
-					Predicate<Object> _filter@{index} = new Predicate<Object>() {
+					com.google.common.base.Predicate<Object> _filter@{index} = new com.google.common.base.Predicate<Object>() {
 						public boolean apply(Object _o) {
 								return @{prereq.printScoped('_bindings')};
 							}

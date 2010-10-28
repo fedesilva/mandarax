@@ -1,14 +1,30 @@
 package test.org.mandarax.compiler.reldef4;
 
 import org.mandarax.rt.*;
-import com.google.common.base.Predicate;
 
 /**
  * Interface for queries for relationship <strong>GrandFather</strong>.
- * @version Oct 28, 2010 12:17:04 PM 
+ * @version Oct 28, 2010 1:42:51 PM 
  */
 public class GrandFatherInstances {
 	// object references
+	
+	
+	// fields representing annotations
+	
+	// rule: rule1: Father(x,y) & Father(y,z) -> GrandFather(x,z);
+	private final static java.util.Properties _annotations_rule1 = new java.util.Properties();
+	
+	
+	// initialise annotations
+	static {
+		// relationship annotations for rule  rule1: Father(x,y) & Father(y,z) -> GrandFather(x,z);
+		
+		// rule annotations for rule  rule1: Father(x,y) & Father(y,z) -> GrandFather(x,z);
+		
+		
+	}
+		
 	
 
 	// interface generated for queries	
@@ -104,14 +120,12 @@ public class GrandFatherInstances {
 	
 	
 	// private methods - each method represents the invocation of a single rule for a certain query
-	
 	// query: getGrandChildren
 	// rule: rule1: Father(x,y) & Father(y,z) -> GrandFather(x,z);
 	private static ResourceIterator<GrandFather> getGrandChildren_0 (final DerivationController _derivation ,  final String grandFather ) {
 		
-		
-		
-		_derivation.log("GrandFather.rule1", DerivationController.RULE, null);
+
+		_derivation.log("GrandFather.rule1", DerivationController.RULE, _annotations_rule1);
 		
 		
 		
@@ -166,9 +180,8 @@ public class GrandFatherInstances {
 	// rule: rule1: Father(x,y) & Father(y,z) -> GrandFather(x,z);
 	private static ResourceIterator<GrandFather> getGrandFather_0 (final DerivationController _derivation ,  final String grandChild ) {
 		
-		
-		
-		_derivation.log("GrandFather.rule1", DerivationController.RULE, null);
+
+		_derivation.log("GrandFather.rule1", DerivationController.RULE, _annotations_rule1);
 		
 		
 		
@@ -223,9 +236,8 @@ public class GrandFatherInstances {
 	// rule: rule1: Father(x,y) & Father(y,z) -> GrandFather(x,z);
 	private static ResourceIterator<GrandFather> isGrandFather_0 (final DerivationController _derivation ,  final String grandFather ,  final String grandChild ) {
 		
-		
-		
-		_derivation.log("GrandFather.rule1", DerivationController.RULE, null);
+
+		_derivation.log("GrandFather.rule1", DerivationController.RULE, _annotations_rule1);
 		
 		
 		
@@ -279,9 +291,8 @@ public class GrandFatherInstances {
 	// rule: rule1: Father(x,y) & Father(y,z) -> GrandFather(x,z);
 	private static ResourceIterator<GrandFather> getAll_0 (final DerivationController _derivation  ) {
 		
-		
-		
-		_derivation.log("GrandFather.rule1", DerivationController.RULE, null);
+
+		_derivation.log("GrandFather.rule1", DerivationController.RULE, _annotations_rule1);
 		
 		
 		

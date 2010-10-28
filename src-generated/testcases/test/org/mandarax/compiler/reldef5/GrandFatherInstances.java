@@ -3,14 +3,30 @@ package test.org.mandarax.compiler.reldef5;
 import test.org.mandarax.compiler.Person;
 
 import org.mandarax.rt.*;
-import com.google.common.base.Predicate;
 
 /**
  * Interface for queries for relationship <strong>GrandFather</strong>.
- * @version Oct 28, 2010 12:17:04 PM 
+ * @version Oct 28, 2010 1:42:51 PM 
  */
 public class GrandFatherInstances {
 	// object references
+	
+	
+	// fields representing annotations
+	
+	// rule: rule1: Father(x.getName(),y) & Father(y,z.getName()) -> GrandFather(x,z);
+	private final static java.util.Properties _annotations_rule1 = new java.util.Properties();
+	
+	
+	// initialise annotations
+	static {
+		// relationship annotations for rule  rule1: Father(x.getName(),y) & Father(y,z.getName()) -> GrandFather(x,z);
+		
+		// rule annotations for rule  rule1: Father(x.getName(),y) & Father(y,z.getName()) -> GrandFather(x,z);
+		
+		
+	}
+		
 	
 
 	// interface generated for queries	
@@ -43,14 +59,12 @@ public class GrandFatherInstances {
 	
 	
 	// private methods - each method represents the invocation of a single rule for a certain query
-	
 	// query: isGrandFather
 	// rule: rule1: Father(x.getName(),y) & Father(y,z.getName()) -> GrandFather(x,z);
 	private static ResourceIterator<GrandFather> isGrandFather_0 (final DerivationController _derivation ,  final Person grandFather ,  final Person grandChild ) {
 		
-		
-		
-		_derivation.log("GrandFather.rule1", DerivationController.RULE, null);
+
+		_derivation.log("GrandFather.rule1", DerivationController.RULE, _annotations_rule1);
 		
 		
 		
