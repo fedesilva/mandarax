@@ -43,23 +43,28 @@ public class GenerateCodeForTesting {
 		compile(new File("src/testcases/test/org/mandarax/compiler/reldef5.rel"));
 		compile(new File("src/testcases/test/org/mandarax/compiler/reldef6.rel"));
 		compile(new File("src/testcases/test/org/mandarax/compiler/reldef7.rel"));
+		compile(new File("src/testcases/test/org/mandarax/compiler/reldef8.rel"));
 	}
 
 	private static void compile(File file) throws Exception {
 		Compiler compiler = new DefaultCompiler();
 		Location location = new Location() {
-
+			String file = null;
 			@Override
 			public Writer getSrcOut(String p,String c) throws CompilerException {
 				String folder = "src-generated/testcases/" + p.replace('.','/');
 				File dir = new File(folder);
 				if (!dir.exists()) dir.mkdirs();
-				String cl = folder + '/' + c + ".java";
+				file = folder + '/' + c + ".java";
 				try {
-					return new FileWriter(new File(cl));
+					return new FileWriter(new File(file));
 				} catch (IOException e) {
 					throw new CompilerException(e);
 				}
+			}
+			@Override
+			public String toString() {
+				return file;
 			}
 		};
 		compiler.compile(location,CompilationMode.INTERFACES_ONLY,file);

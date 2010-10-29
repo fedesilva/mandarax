@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>GrandFather</strong>.
- * @version Oct 29, 2010 9:54:59 AM 
+ * @version Oct 29, 2010 2:37:45 PM 
  */
 public class GrandFatherRelInstances {
 	// object references
@@ -48,6 +48,7 @@ public class GrandFatherRelInstances {
 			switch (pos) {
 				
                 		case 0: {
+                			// invoke rule1: Father(x.getName(),y) & Father(y,z.getName()) -> GrandFather(x,z);
                 			return isGrandFather_0(_derivation.pop(_derivationlevel) ,  grandFather ,  grandChild );
                 		}
 				

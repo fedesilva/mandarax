@@ -4,7 +4,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>Father</strong>.
- * @version Oct 29, 2010 9:54:59 AM 
+ * @version Oct 29, 2010 2:37:45 PM 
  */
 public class FatherRelInstances {
 	// object references
@@ -88,18 +88,22 @@ public class FatherRelInstances {
 			switch (pos) {
 				
                 		case 0: {
+                			// invoke rule1:  -> Father("Jens","Max");
                 			return getFather_0(_derivation.pop(_derivationlevel) ,  child );
                 		}
 				
                 		case 1: {
+                			// invoke rule2:  -> Father("Jens","Xiomara");
                 			return getFather_1(_derivation.pop(_derivationlevel) ,  child );
                 		}
 				
                 		case 2: {
+                			// invoke rule3:  -> Father("Klaus","Jens");
                 			return getFather_2(_derivation.pop(_derivationlevel) ,  child );
                 		}
 				
                 		case 3: {
+                			// invoke rule4:  -> Father("Otto","Klaus");
                 			return getFather_3(_derivation.pop(_derivationlevel) ,  child );
                 		}
 				
@@ -116,18 +120,22 @@ public class FatherRelInstances {
 			switch (pos) {
 				
                 		case 0: {
+                			// invoke rule1:  -> Father("Jens","Max");
                 			return isFather_0(_derivation.pop(_derivationlevel) ,  father ,  child );
                 		}
 				
                 		case 1: {
+                			// invoke rule2:  -> Father("Jens","Xiomara");
                 			return isFather_1(_derivation.pop(_derivationlevel) ,  father ,  child );
                 		}
 				
                 		case 2: {
+                			// invoke rule3:  -> Father("Klaus","Jens");
                 			return isFather_2(_derivation.pop(_derivationlevel) ,  father ,  child );
                 		}
 				
                 		case 3: {
+                			// invoke rule4:  -> Father("Otto","Klaus");
                 			return isFather_3(_derivation.pop(_derivationlevel) ,  father ,  child );
                 		}
 				
@@ -144,18 +152,22 @@ public class FatherRelInstances {
 			switch (pos) {
 				
                 		case 0: {
+                			// invoke rule1:  -> Father("Jens","Max");
                 			return getChildren_0(_derivation.pop(_derivationlevel) ,  father );
                 		}
 				
                 		case 1: {
+                			// invoke rule2:  -> Father("Jens","Xiomara");
                 			return getChildren_1(_derivation.pop(_derivationlevel) ,  father );
                 		}
 				
                 		case 2: {
+                			// invoke rule3:  -> Father("Klaus","Jens");
                 			return getChildren_2(_derivation.pop(_derivationlevel) ,  father );
                 		}
 				
                 		case 3: {
+                			// invoke rule4:  -> Father("Otto","Klaus");
                 			return getChildren_3(_derivation.pop(_derivationlevel) ,  father );
                 		}
 				
@@ -172,18 +184,22 @@ public class FatherRelInstances {
 			switch (pos) {
 				
                 		case 0: {
+                			// invoke rule1:  -> Father("Jens","Max");
                 			return getFatherAndChild_0(_derivation.pop(_derivationlevel)  );
                 		}
 				
                 		case 1: {
+                			// invoke rule2:  -> Father("Jens","Xiomara");
                 			return getFatherAndChild_1(_derivation.pop(_derivationlevel)  );
                 		}
 				
                 		case 2: {
+                			// invoke rule3:  -> Father("Klaus","Jens");
                 			return getFatherAndChild_2(_derivation.pop(_derivationlevel)  );
                 		}
 				
                 		case 3: {
+                			// invoke rule4:  -> Father("Otto","Klaus");
                 			return getFatherAndChild_3(_derivation.pop(_derivationlevel)  );
                 		}
 				

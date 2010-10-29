@@ -52,6 +52,7 @@ public class @{rel.name}@{ext}Instances {
 			switch (pos) {
 				@foreach{index:ruleIndices}
                 		case @{index}: {
+                			// invoke @{rel.getRules().get(index)}
                 			return @{query.name}_@{index}(_derivation.pop(_derivationlevel) @if{query.hasParameters()},@end{} @foreach{param:query.parameterNames} @{param} @end{", "});
                 		}
 				@end{}

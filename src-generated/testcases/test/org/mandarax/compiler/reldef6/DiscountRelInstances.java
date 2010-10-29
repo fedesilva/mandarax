@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>Discount</strong>.
- * @version Oct 29, 2010 9:54:59 AM 
+ * @version Oct 29, 2010 2:37:45 PM 
  */
 public class DiscountRelInstances {
 	// object references
@@ -77,14 +77,17 @@ public class DiscountRelInstances {
 			switch (pos) {
 				
                 		case 0: {
+                			// invoke rule1: (c.getTurnover())>1000 -> Discount(c,goldDiscount);
                 			return getDiscount_0(_derivation.pop(_derivationlevel) ,  customer );
                 		}
 				
                 		case 1: {
+                			// invoke rule2: FrequentCustomer(c) -> Discount(c,silverDiscount);
                 			return getDiscount_1(_derivation.pop(_derivationlevel) ,  customer );
                 		}
 				
                 		case 2: {
+                			// invoke rule3: (c.getPaymentMethod())=="CompanyVisa" -> Discount(c,specialDiscount);
                 			return getDiscount_2(_derivation.pop(_derivationlevel) ,  customer );
                 		}
 				
@@ -101,14 +104,17 @@ public class DiscountRelInstances {
 			switch (pos) {
 				
                 		case 0: {
+                			// invoke rule1: (c.getTurnover())>1000 -> Discount(c,goldDiscount);
                 			return qualifiesForDiscount_0(_derivation.pop(_derivationlevel) ,  customer ,  discount );
                 		}
 				
                 		case 1: {
+                			// invoke rule2: FrequentCustomer(c) -> Discount(c,silverDiscount);
                 			return qualifiesForDiscount_1(_derivation.pop(_derivationlevel) ,  customer ,  discount );
                 		}
 				
                 		case 2: {
+                			// invoke rule3: (c.getPaymentMethod())=="CompanyVisa" -> Discount(c,specialDiscount);
                 			return qualifiesForDiscount_2(_derivation.pop(_derivationlevel) ,  customer ,  discount );
                 		}
 				

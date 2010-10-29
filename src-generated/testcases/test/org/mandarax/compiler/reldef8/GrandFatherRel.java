@@ -1,4 +1,4 @@
-package test.org.mandarax.compiler.reldef4;
+package test.org.mandarax.compiler.reldef8;
 
 /**
  * Class representing the relationship <strong>GrandFather</strong>.

@@ -1,0 +1,15 @@
+// uses to test rel inheritance
+package test.org.mandarax.compiler.reldef8;
+rel Father(String father,String child) extends Related queries getFather(child),isFather(father,child),getChildren(father),getFatherAndChild() {
+	rule1: -> Father("Jens","Max");
+	rule2: -> Father("Jens","Xiomara");
+	rule3: -> Father("Klaus","Jens");
+	rule4: -> Father("Otto","Klaus");
+}
+rel GrandFather(String grandFather,String grandChild) extends Related queries getGrandChildren(grandFather),getGrandFather(grandChild),isGrandFather(grandFather,grandChild),getAll(){
+	rule1: Father(x,y) & Father(y,z) -> GrandFather(x,z);	
+}
+rel Related(String person1,String person2) queries getRelated1(person1),getRelated2(person2),isRelated(person1,person2),getAll() {
+	// one explicit fact
+	fact1: -> Related("John","Tom");
+}

@@ -1,6 +1,4 @@
-package test.org.mandarax.compiler.reldef5;
- 
-import test.org.mandarax.compiler.Person;
+package test.org.mandarax.compiler.reldef8;
 
 import org.mandarax.rt.*;
 

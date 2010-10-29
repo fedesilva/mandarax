@@ -128,6 +128,8 @@ public class DefaultCompiler implements Compiler {
 	
 	private void compileToClasses(Location target, List<CompilationUnit> cus) throws MandaraxException {	
 		
+		resolveSuperRelationships(cus);
+		
 		resolveFunctionRefs(cus);
 		
 		for (CompilationUnit cu:cus) {
@@ -145,6 +147,48 @@ public class DefaultCompiler implements Compiler {
 		}
 	}
 	
+	// create additional rules representing relationship inheritance
+	private void resolveSuperRelationships(List<CompilationUnit> cus) {
+		
+		for (CompilationUnit cu:cus) {
+			for (RelationshipDefinition rel:cu.getRelationshipDefinitions()) {
+				Set<String> ids = new HashSet<String>();
+				for (RelationshipDefinition subRel:findSubRels(cus,rel)) {
+					String id = "_"+subRel.getName()+"_extends_"+rel.getName();
+					Position pos = Position.NO_POSITION; // means not defined in script
+					Context context = rel.getContext();
+					if (ids.add(id)) {
+						// generate variables for head
+						List<Expression> terms = new ArrayList<Expression>();
+						for (int i=0;i<rel.getSlotDeclarations().size();i++) {
+							terms.add(new Variable(pos,context,"_x"+i));
+						}
+						FunctionInvocation head = new FunctionInvocation(pos,context,rel.getName(),terms);
+						FunctionInvocation body = new FunctionInvocation(pos,context,subRel.getName(),terms);
+						Rule rule = new Rule(pos,context,id,body,head);
+						rel.addRule(rule);
+						LOGGER.info("Adding inheritance rule to relationship " + rel.getName() + ": " + rule);
+					}
+					else {
+						LOGGER.warn("Attempt to add more than one rule for sub relationship " + subRel.getName() + " of " + rel.getName());
+					}
+				}
+			}
+		}
+	}
+
+	private List<RelationshipDefinition> findSubRels(List<CompilationUnit> cus, RelationshipDefinition superRel) {
+		List<RelationshipDefinition> subTypes = new ArrayList<RelationshipDefinition>();
+		for (CompilationUnit cu:cus) {
+			for (RelationshipDefinition rel:cu.getRelationshipDefinitions()) {
+				if (rel.getSuperTypes().contains(superRel.getName()) && rel.getSlotDeclarations().size()==superRel.getSlotDeclarations().size()) {
+					LOGGER.debug("Found sub relationships " + rel.getName() + " extending " + superRel.getName());
+					subTypes.add(rel);
+				}
+			}	
+		}
+		return subTypes;
+	}
 
 	private void compileToInterfaces(Location target, List<CompilationUnit> cus) throws MandaraxException {	
 		for (CompilationUnit cu:cus) {

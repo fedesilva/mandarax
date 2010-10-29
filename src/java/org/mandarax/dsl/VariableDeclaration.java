@@ -10,8 +10,6 @@
  */
 package org.mandarax.dsl;
 
-import com.google.common.base.Function;
-
 /**
  * Represents variable declarations consisting of a type (name) and a variable name.
  * @author jens dietrich
@@ -40,11 +38,13 @@ public class VariableDeclaration extends ASTNode {
 	public String getName() {
 		return name;
 	}
-	
-	public void appendTo(StringBuffer b,Function<Variable,String> conversion) {
+	@Override
+	public String toString() {
+		StringBuffer b = new StringBuffer();
 		b.append(type);
 		b.append(' ');
 		b.append(name);
+		return b.toString();
 	}
 
 }

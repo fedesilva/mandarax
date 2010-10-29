@@ -22,6 +22,8 @@ public class Position {
 		this.line = line;
 		this.charPosInLine = charPosInLine;
 	}
+	
+	public static Position NO_POSITION = new Position(-1,-1);
 	private int line = -1;
 	private int charPosInLine = -1;
 	public int getLine() {

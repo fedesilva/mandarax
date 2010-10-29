@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>FrequentCustomer</strong>.
- * @version Oct 29, 2010 9:54:59 AM 
+ * @version Oct 29, 2010 2:37:45 PM 
  */
 public class FrequentCustomerRelInstances {
 	// object references
@@ -65,10 +65,12 @@ public class FrequentCustomerRelInstances {
 			switch (pos) {
 				
                 		case 0: {
+                			// invoke rule1: (c.getTransactionCount())>5 -> FrequentCustomer(c);
                 			return isFrequentCustomer_0(_derivation.pop(_derivationlevel) ,  customer );
                 		}
 				
                 		case 1: {
+                			// invoke rule2: (c.getTransactionCount())>3 & (c.getTurnover())>500 -> FrequentCustomer(c);
                 			return isFrequentCustomer_1(_derivation.pop(_derivationlevel) ,  customer );
                 		}
 				
