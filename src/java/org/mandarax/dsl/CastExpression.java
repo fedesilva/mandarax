@@ -82,7 +82,7 @@ public class CastExpression extends Expression {
 	
 	
 	@Override
-	public Expression substitute(Map<Expression,Expression> substitutions) {
+	public Expression substitute(Map<Expression,? extends Expression> substitutions) {
 		Expression substituteThis = substitutions.get(this);
 		if (substituteThis!=null) {
 			return new CastExpression(getPosition(),getContext(),objectReference.substitute(substitutions),type);

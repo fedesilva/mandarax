@@ -115,7 +115,7 @@ public class MemberAccess extends Expression {
 	}
 	
 	@Override
-	public Expression substitute(final Map<Expression,Expression> substitutions) {
+	public Expression substitute(final Map<Expression,? extends Expression> substitutions) {
 		Expression substituteThis = substitutions.get(this);
 		if (substituteThis!=null) {
 			return new MemberAccess(getPosition(),getContext(),objectReference.substitute(substitutions),member,Lists.transform(parameters, new Function<Expression,Expression>() {

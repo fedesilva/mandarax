@@ -69,7 +69,7 @@ public abstract class Expression extends ASTNode implements Cloneable {
 	 * @param substitutions
 	 * @return
 	 */
-	public abstract Expression substitute(Map<Expression,Expression> substitutions) ;
+	public abstract Expression substitute(Map<Expression,? extends Expression> substitutions) ;
 	
 	/**
 	 * Indicates whether this expression is constructed from a list of given expressions. 
@@ -86,6 +86,14 @@ public abstract class Expression extends ASTNode implements Cloneable {
 			}
 			return true;
 		}
+	}
+	
+	/**
+	 * Indicates whether this expression is ground (does not contain variables).
+	 * @return
+	 */
+	public boolean isGround() {
+		return getVariables().isEmpty();
 	}
 	
 	/**

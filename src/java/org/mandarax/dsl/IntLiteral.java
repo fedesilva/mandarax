@@ -58,7 +58,7 @@ public class IntLiteral extends Literal<Integer> {
 	}
 	
 	@Override
-	public Expression substitute(Map<Expression,Expression> substitutions) {
+	public Expression substitute(Map<Expression,? extends Expression> substitutions) {
 		Expression substituteThis = substitutions.get(this);
 		if (substituteThis!=null) {
 			return new IntLiteral(getPosition(),getContext(),value);

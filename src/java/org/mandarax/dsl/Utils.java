@@ -27,7 +27,7 @@ import com.google.common.collect.HashBiMap;
 
 public class Utils {
 	
-	final static Map<Expression,Expression> NO_SUBTITUTIONS = Collections.unmodifiableMap(new HashMap<Expression,Expression>(0));
+	public final static Map<Expression,Expression> NO_SUBTITUTIONS = Collections.unmodifiableMap(new HashMap<Expression,Expression>(0));
 	final static List<Expression> EMPTY_LIST = Collections.unmodifiableList(new ArrayList<Expression>(0));
 	
 	private static BiMap<String,BinOp> binOps =HashBiMap.<String,BinOp>create(21);

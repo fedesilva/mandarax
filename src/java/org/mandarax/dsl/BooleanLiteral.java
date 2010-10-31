@@ -60,7 +60,7 @@ public class BooleanLiteral extends Literal<Boolean> {
 	}
 	
 	@Override
-	public Expression substitute(Map<Expression,Expression> substitutions) {
+	public Expression substitute(Map<Expression,? extends Expression> substitutions) {
 		Expression substituteThis = substitutions.get(this);
 		if (substituteThis!=null) {
 			return new BooleanLiteral(getPosition(),getContext(),value);

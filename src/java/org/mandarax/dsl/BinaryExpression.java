@@ -89,7 +89,7 @@ public class BinaryExpression extends Expression {
 		return children;
 	}
 	@Override
-	public Expression substitute(Map<Expression,Expression> substitutions) {
+	public Expression substitute(Map<Expression,? extends Expression> substitutions) {
 		Expression substituteThis = substitutions.get(this);
 		if (substituteThis!=null) {
 			return new BinaryExpression(getPosition(),getContext(),operator,left.substitute(substitutions),right.substitute(substitutions));

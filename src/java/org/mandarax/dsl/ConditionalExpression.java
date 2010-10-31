@@ -108,7 +108,7 @@ public class ConditionalExpression extends Expression {
 	}
 	
 	@Override
-	public Expression substitute(Map<Expression,Expression> substitutions) {
+	public Expression substitute(Map<Expression,? extends Expression> substitutions) {
 		Expression substituteThis = substitutions.get(this);
 		if (substituteThis!=null) {
 			return new ConditionalExpression(getPosition(),getContext(),condition.substitute(substitutions),ifTrue.substitute(substitutions),ifFalse.substitute(substitutions));

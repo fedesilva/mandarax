@@ -94,7 +94,7 @@ public class ConstructorInvocation extends Expression {
 	
 	
 	@Override
-	public Expression substitute(final Map<Expression,Expression> substitutions) {
+	public Expression substitute(final Map<Expression,? extends Expression> substitutions) {
 		Expression substituteThis = substitutions.get(this);
 		if (substituteThis!=null) {
 			return new ConstructorInvocation(getPosition(),getContext(),type,Lists.transform(parameters, new Function<Expression,Expression>() {

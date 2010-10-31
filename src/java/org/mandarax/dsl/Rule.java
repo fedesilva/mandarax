@@ -14,10 +14,8 @@ package org.mandarax.dsl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
-
 import static org.mandarax.dsl.Utils.*;
 
 /**
@@ -51,7 +49,7 @@ public class Rule extends AnnotatableNode implements Cloneable {
 		
 	}
 	
-	private Rule(Position position, Context context,String id,List<Expression> body,FunctionInvocation head) {
+	public Rule(Position position, Context context,String id,List<Expression> body,FunctionInvocation head) {
 		super(position, context);
 		this.id = id;
 		this.body = body;
