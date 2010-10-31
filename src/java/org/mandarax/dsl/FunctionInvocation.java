@@ -48,7 +48,7 @@ public class FunctionInvocation extends Expression {
 	@Override
 	public Expression substitute(final Map<Expression,? extends Expression> substitutions) {
 		Expression substituteThis = substitutions.get(this);
-		if (substituteThis!=null) {
+		if (substituteThis==null) {
 			return new FunctionInvocation(getPosition(),getContext(),function,Lists.transform(parameters, new Function<Expression,Expression>() {
 				@Override
 				public Expression apply(Expression p) {

@@ -86,7 +86,7 @@ public class UnaryExpression extends Expression {
 	@Override
 	public Expression substitute(Map<Expression,? extends Expression> substitutions) {
 		Expression substituteThis = substitutions.get(this);
-		if (substituteThis!=null) {
+		if (substituteThis==null) {
 			return new UnaryExpression(getPosition(),getContext(),operator,part.substitute(substitutions));
 		}
 		else {

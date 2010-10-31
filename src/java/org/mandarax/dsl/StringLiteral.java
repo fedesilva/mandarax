@@ -65,7 +65,7 @@ public class StringLiteral extends Literal<String> {
 	@Override
 	public Expression substitute(Map<Expression,? extends Expression> substitutions) {
 		Expression substituteThis = substitutions.get(this);
-		if (substituteThis!=null) {
+		if (substituteThis==null) {
 			return new StringLiteral(getPosition(),getContext(),value);
 		}
 		else {

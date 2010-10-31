@@ -91,7 +91,7 @@ public class BinaryExpression extends Expression {
 	@Override
 	public Expression substitute(Map<Expression,? extends Expression> substitutions) {
 		Expression substituteThis = substitutions.get(this);
-		if (substituteThis!=null) {
+		if (substituteThis==null) {
 			return new BinaryExpression(getPosition(),getContext(),operator,left.substitute(substitutions),right.substitute(substitutions));
 		}
 		else {
