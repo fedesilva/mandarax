@@ -64,7 +64,12 @@ public abstract class Expression extends ASTNode {
 	 */
 	public abstract List<Expression> getChildren();
 	
-	
+	/**
+	 * Apply term substitutions. This will replace parts of the expression tree. 
+	 * The result of this operation is a new expression - this expression will not be changed.
+	 * @param substitutions
+	 * @return
+	 */
 	public abstract Expression substitute(Map<Expression,Expression> substitutions) ;
 	
 	/**
