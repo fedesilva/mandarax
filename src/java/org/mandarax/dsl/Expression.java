@@ -12,13 +12,11 @@
 package org.mandarax.dsl;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
-
+import static org.mandarax.dsl.Utils.*;
 import com.google.common.base.Predicate;
 
 
@@ -27,10 +25,11 @@ import com.google.common.base.Predicate;
  * @author jens dietrich
  */
 
-public abstract class Expression extends ASTNode {
+public abstract class Expression extends ASTNode implements Cloneable {
 	
-	final static List<Expression> EMPTY_LIST = Collections.unmodifiableList(new ArrayList<Expression>(0));
-	private Class type = null;
+	
+	
+	private Class _type = null;
 
 	public Expression(Position position,Context context) {
 		super(position,context);
@@ -41,22 +40,22 @@ public abstract class Expression extends ASTNode {
 	}
 	
 	public Class getType() {
-		return type;
+		return _type;
 	}
 	
 	public String getTypeName() {
-		return type!=null?type.getName():null;
+		return _type!=null?_type.getName():null;
 	}
 	
 	public void setType(Class type) {
-		this.type = type;
+		this._type = type;
 	}
 	
 	
 	// reset cached info
 	public void reset() {
 		super.reset();
-		this.type = null;
+		this._type = null;
 	}
 	/**
 	 * Get a collection of children - those are nested expressions.
@@ -163,6 +162,10 @@ public abstract class Expression extends ASTNode {
 		return printer.getOut().toString();
 	}
 	
+	@Override
+	public Expression clone() {
+		return substitute(NO_SUBTITUTIONS);
+	}
 	
 	
 }

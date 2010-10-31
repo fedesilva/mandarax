@@ -14,6 +14,7 @@ package org.mandarax.dsl;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import static org.mandarax.dsl.Utils.*;
 
 /**
  * Null value.

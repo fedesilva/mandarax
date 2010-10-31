@@ -13,6 +13,7 @@ package org.mandarax.dsl;
 
 import java.util.Collection;
 import java.util.List;
+import static org.mandarax.dsl.Utils.*;
 
 /**
  * Abstract superclass for literals.

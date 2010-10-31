@@ -11,6 +11,12 @@
 
 package org.mandarax.dsl;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 
@@ -20,6 +26,9 @@ import com.google.common.collect.HashBiMap;
  */
 
 public class Utils {
+	
+	final static Map<Expression,Expression> NO_SUBTITUTIONS = Collections.unmodifiableMap(new HashMap<Expression,Expression>(0));
+	final static List<Expression> EMPTY_LIST = Collections.unmodifiableList(new ArrayList<Expression>(0));
 	
 	private static BiMap<String,BinOp> binOps =HashBiMap.<String,BinOp>create(21);
 	private static BiMap<String,UnOp> unOps =HashBiMap.<String,UnOp>create(21);

@@ -15,11 +15,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.google.common.base.Function;
+import com.google.common.collect.Lists;
+
+import static org.mandarax.dsl.Utils.*;
+
 /**
  * Represents a rule.
  * @author jens dietrich
  */
-public class Rule extends AnnotatableNode {
+public class Rule extends AnnotatableNode implements Cloneable {
 	
 	private String id = null;
 	private List<Expression> body = null;
@@ -31,7 +36,6 @@ public class Rule extends AnnotatableNode {
 	private Map<String,String> variableMappingsInHead = null;
 
 
-
 	public Rule(Position position, Context context,String id,Expression body,FunctionInvocation head) {
 		super(position, context);
 		this.id = id;
@@ -39,12 +43,22 @@ public class Rule extends AnnotatableNode {
 		this.head = head;
 		
 		// check whether head is flat
-		for (Expression term:head.getParameters()) {
-			if (!term.isFlat()) {
-				throw new InternalScriptException("Only flat terms (variables and terms) are allowed in rule heads, but this rule is violated by " + term + " " + term.getPosition());
-			}
-		}
+//		for (Expression term:head.getParameters()) {
+//			if (!term.isFlat()) {
+//				throw new InternalScriptException("Only flat terms (variables and terms) are allowed in rule heads, but this rule is violated by " + term + " " + term.getPosition());
+//			}
+//		}
+		
 	}
+	
+	private Rule(Position position, Context context,String id,List<Expression> body,FunctionInvocation head) {
+		super(position, context);
+		this.id = id;
+		this.body = body;
+		this.head = head;
+		
+	}
+
 
 	/**
 	 * Flatten a conjunction.
@@ -151,5 +165,18 @@ public class Rule extends AnnotatableNode {
 			return false;
 		return true;
 	}
+	
+	@Override
+	public Rule clone() {
+		return new Rule(getPosition(),getContext(),id,Lists.transform(body,new Function<Expression,Expression>() {
+			@Override
+			public Expression apply(Expression x) {
+				return x.substitute(NO_SUBTITUTIONS);
+			}}),
+		(FunctionInvocation)head.substitute(NO_SUBTITUTIONS));
+	}
 
+	public void addToBody(Expression expression) {
+		body.add(expression);
+	}
 }

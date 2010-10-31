@@ -13,6 +13,7 @@ package org.mandarax.dsl;
 
 import java.util.List;
 import java.util.Map;
+import static org.mandarax.dsl.Utils.*;
 
 /**
  * Variable/object references by name.
