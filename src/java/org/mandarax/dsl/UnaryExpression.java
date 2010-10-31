@@ -13,6 +13,7 @@ package org.mandarax.dsl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Expression using an unary operator such as ! or -.
@@ -80,6 +81,17 @@ public class UnaryExpression extends Expression {
 		List<Expression> children = new ArrayList<Expression>(1);
 		children.add(this.part);
 		return children;
+	}
+	
+	@Override
+	public Expression substitute(Map<Expression,Expression> substitutions) {
+		Expression substituteThis = substitutions.get(this);
+		if (substituteThis!=null) {
+			return new UnaryExpression(getPosition(),getContext(),operator,part.substitute(substitutions));
+		}
+		else {
+			return substituteThis;
+		}
 	}
 	
 }

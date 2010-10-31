@@ -12,6 +12,7 @@
 package org.mandarax.dsl;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Variable/object references by name.
@@ -67,6 +68,17 @@ public class Variable extends Expression {
 	@Override
 	public List<Expression> getChildren() {
 		return EMPTY_LIST;
+	}
+	
+	@Override
+	public Expression substitute(final Map<Expression,Expression> substitutions) {
+		Expression substituteThis = substitutions.get(this);
+		if (substituteThis!=null) {
+			return new Variable(getPosition(),getContext(),name);
+		}
+		else {
+			return substituteThis;
+		}
 	}
 	
 

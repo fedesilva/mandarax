@@ -13,6 +13,7 @@ package org.mandarax.dsl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Cast expression.
@@ -79,4 +80,15 @@ public class CastExpression extends Expression {
 		return children;
 	}
 	
+	
+	@Override
+	public Expression substitute(Map<Expression,Expression> substitutions) {
+		Expression substituteThis = substitutions.get(this);
+		if (substituteThis!=null) {
+			return new CastExpression(getPosition(),getContext(),objectReference.substitute(substitutions),type);
+		}
+		else {
+			return substituteThis;
+		}
+	}
 }

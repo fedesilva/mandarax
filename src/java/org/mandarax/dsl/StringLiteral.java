@@ -12,6 +12,7 @@
 package org.mandarax.dsl;
 
 import static org.apache.commons.lang.StringEscapeUtils.*;
+import java.util.Map;
 
 /**
  * String literal.
@@ -59,5 +60,16 @@ public class StringLiteral extends Literal<String> {
 		} else if (!value.equals(other.value))
 			return false;
 		return true;
+	}
+	
+	@Override
+	public Expression substitute(Map<Expression,Expression> substitutions) {
+		Expression substituteThis = substitutions.get(this);
+		if (substituteThis!=null) {
+			return new StringLiteral(getPosition(),getContext(),value);
+		}
+		else {
+			return substituteThis;
+		}
 	}
 }

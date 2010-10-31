@@ -11,6 +11,8 @@
 
 package org.mandarax.dsl;
 
+import java.util.Map;
+
 
 /**
  * Boolean literal.
@@ -55,5 +57,16 @@ public class BooleanLiteral extends Literal<Boolean> {
 		if (value != other.value)
 			return false;
 		return true;
+	}
+	
+	@Override
+	public Expression substitute(Map<Expression,Expression> substitutions) {
+		Expression substituteThis = substitutions.get(this);
+		if (substituteThis!=null) {
+			return new BooleanLiteral(getPosition(),getContext(),value);
+		}
+		else {
+			return substituteThis;
+		}
 	}
 }

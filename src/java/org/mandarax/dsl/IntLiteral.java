@@ -11,6 +11,8 @@
 
 package org.mandarax.dsl;
 
+import java.util.Map;
+
 /**
  * Integer literal.
  * @author jens dietrich
@@ -53,6 +55,17 @@ public class IntLiteral extends Literal<Integer> {
 		if (value != other.value)
 			return false;
 		return true;
+	}
+	
+	@Override
+	public Expression substitute(Map<Expression,Expression> substitutions) {
+		Expression substituteThis = substitutions.get(this);
+		if (substituteThis!=null) {
+			return new IntLiteral(getPosition(),getContext(),value);
+		}
+		else {
+			return substituteThis;
+		}
 	}
 	
 }

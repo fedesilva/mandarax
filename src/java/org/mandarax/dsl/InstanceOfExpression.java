@@ -13,6 +13,7 @@ package org.mandarax.dsl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * InstanceOf expression.
@@ -79,5 +80,16 @@ public class InstanceOfExpression extends Expression{
 		List<Expression> children = new ArrayList<Expression>(1);
 		children.add(this.objectReference);
 		return children;
+	}
+	
+	@Override
+	public Expression substitute(final Map<Expression,Expression> substitutions) {
+		Expression substituteThis = substitutions.get(this);
+		if (substituteThis!=null) {
+			return new InstanceOfExpression(getPosition(),getContext(),objectReference.substitute(substitutions),type);
+		}
+		else {
+			return substituteThis;
+		}
 	}
 }

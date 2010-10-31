@@ -13,6 +13,7 @@ package org.mandarax.dsl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -86,6 +87,16 @@ public class BinaryExpression extends Expression {
 		children.add(left);
 		children.add(right);
 		return children;
+	}
+	@Override
+	public Expression substitute(Map<Expression,Expression> substitutions) {
+		Expression substituteThis = substitutions.get(this);
+		if (substituteThis!=null) {
+			return new BinaryExpression(getPosition(),getContext(),operator,left.substitute(substitutions),right.substitute(substitutions));
+		}
+		else {
+			return substituteThis;
+		}
 	}
 	
 	

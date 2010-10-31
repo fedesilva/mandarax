@@ -13,6 +13,7 @@ package org.mandarax.dsl;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Null value.
@@ -47,5 +48,16 @@ public class NullValue extends Expression {
 	 */
 	public boolean isGroundWRT(Collection<Expression> boundExpressions) {
 		return true;
+	}
+	
+	@Override
+	public Expression substitute(Map<Expression,Expression> substitutions) {
+		Expression substituteThis = substitutions.get(this);
+		if (substituteThis!=null) {
+			return new NullValue(getPosition(),getContext());
+		}
+		else {
+			return substituteThis;
+		}
 	}
 }

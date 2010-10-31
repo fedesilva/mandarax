@@ -17,6 +17,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 
 import com.google.common.base.Predicate;
 
@@ -58,10 +59,13 @@ public abstract class Expression extends ASTNode {
 		this.type = null;
 	}
 	/**
-	 * Get a collection of children - those are nexted expressions.
+	 * Get a collection of children - those are nested expressions.
 	 * @return
 	 */
 	public abstract List<Expression> getChildren();
+	
+	
+	public abstract Expression substitute(Map<Expression,Expression> substitutions) ;
 	
 	/**
 	 * Indicates whether this expression is constructed from a list of given expressions. 

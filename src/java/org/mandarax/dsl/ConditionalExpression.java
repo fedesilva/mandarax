@@ -13,6 +13,7 @@ package org.mandarax.dsl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -105,4 +106,16 @@ public class ConditionalExpression extends Expression {
 		children.add(this.ifFalse);
 		return children;
 	}
+	
+	@Override
+	public Expression substitute(Map<Expression,Expression> substitutions) {
+		Expression substituteThis = substitutions.get(this);
+		if (substituteThis!=null) {
+			return new ConditionalExpression(getPosition(),getContext(),condition.substitute(substitutions),ifTrue.substitute(substitutions),ifFalse.substitute(substitutions));
+		}
+		else {
+			return substituteThis;
+		}
+	}
+	
 }

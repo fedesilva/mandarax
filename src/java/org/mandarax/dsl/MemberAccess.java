@@ -13,6 +13,10 @@ package org.mandarax.dsl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import com.google.common.base.Function;
+import com.google.common.collect.Lists;
 
 /**
  * Member (method or field) access expression.
@@ -108,6 +112,21 @@ public class MemberAccess extends Expression {
 		children.add(this.objectReference);
 		children.addAll(this.parameters);
 		return children;
+	}
+	
+	@Override
+	public Expression substitute(final Map<Expression,Expression> substitutions) {
+		Expression substituteThis = substitutions.get(this);
+		if (substituteThis!=null) {
+			return new MemberAccess(getPosition(),getContext(),objectReference.substitute(substitutions),member,Lists.transform(parameters, new Function<Expression,Expression>() {
+				@Override
+				public Expression apply(Expression p) {
+					return p.substitute(substitutions);
+				}}));
+		}
+		else {
+			return substituteThis;
+		}
 	}
 
 }

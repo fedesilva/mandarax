@@ -14,6 +14,10 @@ package org.mandarax.dsl;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import com.google.common.base.Function;
+import com.google.common.collect.Lists;
 
 /**
  * Function invocation. A function can refer either to a relationship query or is imported.
@@ -39,6 +43,21 @@ public class FunctionInvocation extends Expression {
 	
 	public String getFunction() {
 		return function;
+	}
+	
+	@Override
+	public Expression substitute(final Map<Expression,Expression> substitutions) {
+		Expression substituteThis = substitutions.get(this);
+		if (substituteThis!=null) {
+			return new FunctionInvocation(getPosition(),getContext(),function,Lists.transform(parameters, new Function<Expression,Expression>() {
+				@Override
+				public Expression apply(Expression p) {
+					return p.substitute(substitutions);
+				}}));
+		}
+		else {
+			return substituteThis;
+		}
 	}
 
 
