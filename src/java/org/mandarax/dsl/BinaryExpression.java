@@ -92,7 +92,9 @@ public class BinaryExpression extends Expression {
 	public Expression substitute(Map<Expression,? extends Expression> substitutions) {
 		Expression substituteThis = substitutions.get(this);
 		if (substituteThis==null) {
-			return new BinaryExpression(getPosition(),getContext(),operator,left.substitute(substitutions),right.substitute(substitutions));
+			BinaryExpression e = new BinaryExpression(getPosition(),getContext(),operator,left.substitute(substitutions),right.substitute(substitutions));
+			e.setType(this.getType());
+			return e;
 		}
 		else {
 			return substituteThis;

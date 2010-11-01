@@ -75,7 +75,9 @@ public class Variable extends Expression {
 	public Expression substitute(final Map<Expression,? extends Expression> substitutions) {
 		Expression substituteThis = substitutions.get(this);
 		if (substituteThis==null) {
-			return new Variable(getPosition(),getContext(),name);
+			Variable e = new Variable(getPosition(),getContext(),name);
+			e.setType(this.getType());
+			return e;
 		}
 		else {
 			return substituteThis;

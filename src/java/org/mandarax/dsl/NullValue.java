@@ -55,7 +55,9 @@ public class NullValue extends Expression {
 	public Expression substitute(Map<Expression,? extends Expression> substitutions) {
 		Expression substituteThis = substitutions.get(this);
 		if (substituteThis==null) {
-			return new NullValue(getPosition(),getContext());
+			NullValue e = new NullValue(getPosition(),getContext());
+			e.setType(this.getType());
+			return e;
 		}
 		else {
 			return substituteThis;

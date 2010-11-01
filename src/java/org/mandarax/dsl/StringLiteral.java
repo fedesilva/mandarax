@@ -66,7 +66,9 @@ public class StringLiteral extends Literal<String> {
 	public Expression substitute(Map<Expression,? extends Expression> substitutions) {
 		Expression substituteThis = substitutions.get(this);
 		if (substituteThis==null) {
-			return new StringLiteral(getPosition(),getContext(),value);
+			StringLiteral e = new StringLiteral(getPosition(),getContext(),value);
+			e.setType(this.getType());
+			return e;
 		}
 		else {
 			return substituteThis;

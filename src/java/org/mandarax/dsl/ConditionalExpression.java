@@ -111,7 +111,9 @@ public class ConditionalExpression extends Expression {
 	public Expression substitute(Map<Expression,? extends Expression> substitutions) {
 		Expression substituteThis = substitutions.get(this);
 		if (substituteThis==null) {
-			return new ConditionalExpression(getPosition(),getContext(),condition.substitute(substitutions),ifTrue.substitute(substitutions),ifFalse.substitute(substitutions));
+			ConditionalExpression e = new ConditionalExpression(getPosition(),getContext(),condition.substitute(substitutions),ifTrue.substitute(substitutions),ifFalse.substitute(substitutions));
+			e.setType(this.getType());
+			return e;
 		}
 		else {
 			return substituteThis;

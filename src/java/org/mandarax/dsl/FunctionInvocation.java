@@ -56,6 +56,7 @@ public class FunctionInvocation extends Expression {
 				}}));
 			clone.setRelationship(this.getRelationship());
 			clone.setReferencedMethod(this.getReferencedMethod());
+			clone.setType(this.getType());
 			return clone;
 		}
 		else {

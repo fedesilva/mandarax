@@ -124,6 +124,7 @@ public class MemberAccess extends Expression {
 					return p.substitute(substitutions);
 				}}));
 			m.isMethod = this.isMethod;
+			m.setType(this.getType());
 			return m;
 		}
 		else {

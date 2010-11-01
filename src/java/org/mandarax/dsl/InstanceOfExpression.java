@@ -86,7 +86,9 @@ public class InstanceOfExpression extends Expression{
 	public Expression substitute(final Map<Expression,? extends Expression> substitutions) {
 		Expression substituteThis = substitutions.get(this);
 		if (substituteThis==null) {
-			return new InstanceOfExpression(getPosition(),getContext(),objectReference.substitute(substitutions),type);
+			InstanceOfExpression e = new InstanceOfExpression(getPosition(),getContext(),objectReference.substitute(substitutions),type);
+			e.setType(this.getType());
+			return e;
 		}
 		else {
 			return substituteThis;

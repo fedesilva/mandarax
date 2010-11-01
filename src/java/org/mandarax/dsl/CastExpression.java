@@ -85,7 +85,9 @@ public class CastExpression extends Expression {
 	public Expression substitute(Map<Expression,? extends Expression> substitutions) {
 		Expression substituteThis = substitutions.get(this);
 		if (substituteThis==null) {
-			return new CastExpression(getPosition(),getContext(),objectReference.substitute(substitutions),type);
+			CastExpression e = new CastExpression(getPosition(),getContext(),objectReference.substitute(substitutions),type);
+			e.setType(this.getType());
+			return e;
 		}
 		else {
 			return substituteThis;

@@ -97,11 +97,13 @@ public class ConstructorInvocation extends Expression {
 	public Expression substitute(final Map<Expression,? extends Expression> substitutions) {
 		Expression substituteThis = substitutions.get(this);
 		if (substituteThis==null) {
-			return new ConstructorInvocation(getPosition(),getContext(),type,Lists.transform(parameters, new Function<Expression,Expression>() {
+			ConstructorInvocation e = new ConstructorInvocation(getPosition(),getContext(),type,Lists.transform(parameters, new Function<Expression,Expression>() {
 				@Override
 				public Expression apply(Expression p) {
 					return p.substitute(substitutions);
 				}}));
+			e.setType(this.getType());
+			return e;
 		}
 		else {
 			return substituteThis;

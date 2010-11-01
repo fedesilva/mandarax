@@ -63,7 +63,9 @@ public class BooleanLiteral extends Literal<Boolean> {
 	public Expression substitute(Map<Expression,? extends Expression> substitutions) {
 		Expression substituteThis = substitutions.get(this);
 		if (substituteThis==null) {
-			return new BooleanLiteral(getPosition(),getContext(),value);
+			BooleanLiteral e = new BooleanLiteral(getPosition(),getContext(),value);
+			e.setType(this.getType());
+			return e;
 		}
 		else {
 			return substituteThis;
