@@ -49,11 +49,14 @@ public class FunctionInvocation extends Expression {
 	public Expression substitute(final Map<Expression,? extends Expression> substitutions) {
 		Expression substituteThis = substitutions.get(this);
 		if (substituteThis==null) {
-			return new FunctionInvocation(getPosition(),getContext(),function,Lists.transform(parameters, new Function<Expression,Expression>() {
+			FunctionInvocation clone = new FunctionInvocation(getPosition(),getContext(),function,Lists.transform(parameters, new Function<Expression,Expression>() {
 				@Override
 				public Expression apply(Expression p) {
 					return p.substitute(substitutions);
 				}}));
+			clone.setRelationship(this.getRelationship());
+			clone.setReferencedMethod(this.getReferencedMethod());
+			return clone;
 		}
 		else {
 			return substituteThis;

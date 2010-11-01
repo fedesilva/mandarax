@@ -118,11 +118,13 @@ public class MemberAccess extends Expression {
 	public Expression substitute(final Map<Expression,? extends Expression> substitutions) {
 		Expression substituteThis = substitutions.get(this);
 		if (substituteThis==null) {
-			return new MemberAccess(getPosition(),getContext(),objectReference.substitute(substitutions),member,Lists.transform(parameters, new Function<Expression,Expression>() {
+			MemberAccess m = new MemberAccess(getPosition(),getContext(),objectReference.substitute(substitutions),member,Lists.transform(parameters, new Function<Expression,Expression>() {
 				@Override
 				public Expression apply(Expression p) {
 					return p.substitute(substitutions);
 				}}));
+			m.isMethod = this.isMethod;
+			return m;
 		}
 		else {
 			return substituteThis;
