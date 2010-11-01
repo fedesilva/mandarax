@@ -158,13 +158,8 @@ public class DefaultCompiler implements Compiler {
 					Position pos = Position.NO_POSITION; // means not defined in script
 					Context context = rel.getContext();
 					if (ids.add(id)) {
-						// generate variables for head
-						List<Expression> terms = new ArrayList<Expression>();
-						for (int i=0;i<rel.getSlotDeclarations().size();i++) {
-							terms.add(new Variable(pos,context,"_x"+i));
-						}
-						FunctionInvocation head = new FunctionInvocation(pos,context,rel.getName(),terms);
-						FunctionInvocation body = new FunctionInvocation(pos,context,subRel.getName(),terms);
+						FunctionInvocation head = new FunctionInvocation(pos,context,rel.getName(),createVariables(pos,context,rel.getSlotDeclarations().size()));
+						FunctionInvocation body = new FunctionInvocation(pos,context,subRel.getName(),createVariables(pos,context,rel.getSlotDeclarations().size()));
 						Rule rule = new Rule(pos,context,id,body,head);
 						rel.addRule(rule);
 						LOGGER.info("Adding inheritance rule to relationship " + rel.getName() + ": " + rule);
@@ -175,6 +170,14 @@ public class DefaultCompiler implements Compiler {
 				}
 			}
 		}
+	}
+	
+	private List<Expression> createVariables(Position pos,Context context,int n) {
+		List<Expression> terms = new ArrayList<Expression>();
+		for (int i=0;i<n;i++) {
+			terms.add(new Variable(pos,context,"_x"+i));
+		}
+		return terms;
 	}
 
 	private List<RelationshipDefinition> findSubRels(List<CompilationUnit> cus, RelationshipDefinition superRel) {

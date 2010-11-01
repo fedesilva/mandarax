@@ -39,11 +39,12 @@ public class GenerateCodeForTesting {
 //			compile(file);
 //		}
 		
-		compile(new File("src/testcases/test/org/mandarax/compiler/reldef4.rel"));
-		compile(new File("src/testcases/test/org/mandarax/compiler/reldef5.rel"));
-		compile(new File("src/testcases/test/org/mandarax/compiler/reldef6.rel"));
-		compile(new File("src/testcases/test/org/mandarax/compiler/reldef7.rel"));
-		compile(new File("src/testcases/test/org/mandarax/compiler/reldef8.rel"));
+//		compile(new File("src/testcases/test/org/mandarax/compiler/reldef4.rel"));
+//		compile(new File("src/testcases/test/org/mandarax/compiler/reldef5.rel"));
+//		compile(new File("src/testcases/test/org/mandarax/compiler/reldef6.rel"));
+//		compile(new File("src/testcases/test/org/mandarax/compiler/reldef7.rel"));
+//		compile(new File("src/testcases/test/org/mandarax/compiler/reldef8.rel"));
+		compile(new File("src/testcases/test/org/mandarax/compiler/reldef9.rel"));
 	}
 
 	private static void compile(File file) throws Exception {

@@ -1,0 +1,14 @@
+// see issue8/case1
+// should throw exception
+package test.org.mandarax.compiler.reldef9;
+import test.org.mandarax.compiler.*;
+rel Father(String father,String child) queries getFather(child),isFather(father,child),getChildren(father),getFatherAndChild() {
+	rule1: -> Father("Jens","Max");
+	rule2: -> Father("Jens","Xiomara");
+	rule3: -> Father("Klaus","Jens");
+	rule4: -> Father("Otto","Klaus");
+}
+rel GrandFather(MalePerson grandFather,MalePerson grandChild) queries getAll(){
+	// problem: x,y cannot be bound
+	rule1: Father(x.name,y.name) & Father(y.name,z.name) -> GrandFather(x,z); 	
+}

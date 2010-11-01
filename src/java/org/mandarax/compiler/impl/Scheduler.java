@@ -15,20 +15,28 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import org.apache.log4j.Logger;
 import org.mandarax.compiler.CompilerException;
+import org.mandarax.dsl.BinOp;
+import org.mandarax.dsl.BinaryExpression;
 import org.mandarax.dsl.Expression;
 import org.mandarax.dsl.FunctionDeclaration;
 import org.mandarax.dsl.ObjectDeclaration;
-import org.mandarax.dsl.RelationshipDefinition;
 import org.mandarax.dsl.Rule;
 import org.mandarax.dsl.FunctionInvocation;
 import org.mandarax.dsl.Variable;
 import org.mandarax.dsl.util.Resolver;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Collections2;
+
+import static org.mandarax.dsl.Position.*;
 
 /**
  * Algorithm to organise the prerequisites in rules in order to optimise code generation. 
@@ -37,25 +45,55 @@ import org.mandarax.dsl.util.Resolver;
 public class Scheduler {
 	
 	public static org.apache.log4j.Logger LOGGER = Logger.getLogger(Scheduler.class);
-	
+	public static final String ASSERTED_BY_COMPILER = "asserted_by_compiler" ;
 	private Resolver resolver = null;
+	private Rule originalRule = null;
+	private Rule rule = null;
+	private FunctionDeclaration query = null;
+	private List<Prereq> prereqs = null;
 	
-	public Scheduler(Resolver resolver) {
+	
+	// this are the expressions in the head of the rule that are not bound by query parameters,
+	// they must be bound by the query, if not, an exception must be throws 
+	// see also issue8/case1
+	private Collection<Expression> mustBeBound = new HashSet<Expression>();
+	
+	// bound variables
+	private Collection<Expression> boundVariables  = new HashSet<Expression>();
+	
+	// this map is used to store association between (complex) terms and (existing and newly introduced) variables
+	// replacing them
+	private Map<Expression,Variable> substitutions = new HashMap<Expression,Variable>();
+	
+	// the expression in the body currently investigated
+	private Expression selected = null;
+	
+	private int counter=0;
+	
+	public Scheduler(Resolver resolver,Rule rule,FunctionDeclaration query) throws CompilerException {
 		super();
 		this.resolver = resolver;
+		this.rule = rule;
+		this.originalRule = rule;
+		this.query = query;
+		this.prereqs = new ArrayList<Prereq>(rule.getBody().size());
+		
+		schedule();
 	}
 
 	/**
-	 * Rearrange the body of the rule.
-	 * @param rule
-	 * @return
+	 * Prepare the rule for computation.
 	 * @throws CompilerException
 	 */
-	public List<Prereq> getPrerequisites(Rule rule,FunctionDeclaration query) throws CompilerException {
+	private void schedule() throws CompilerException {
 		
 		LOGGER.info("Scheduling prerequisites in " + rule);
+		
+		// clone rule - we might have to add additional expressions to the body, see for instance issue8/case4 for an example
+		rule = rule.clone();
+		
+		initVariables();
 	
-		Collection<Expression> variables = initVariables(rule,query);
 		
 		List<Expression> body = new ArrayList<Expression>();
 		body.addAll(rule.getBody());
@@ -67,30 +105,44 @@ public class Scheduler {
 				return r2-r1;
 			}});
 		
-		List<Prereq> prereqs = new ArrayList<Prereq>(rule.getBody().size());
+		
 		Prereq last = null;
+		
+		// main algorithm
 		while (!body.isEmpty()) {
-			last = addAllResolved(body,prereqs,variables,last);
-			last = addOneUnresolved(body,prereqs,variables,last);
+			last = addAllResolved(body,last);
+			last = addOneUnresolved(body,last);
 		}
 		
-		return prereqs;
+		// check whether all variables in head have been bound
+		Collection<Expression> unbound = Collections2.filter(mustBeBound, new Predicate<Expression>() {
+			@Override
+			public boolean apply(Expression x) {
+				return !x.isGroundWRT(boundVariables);
+			}});
+		
+		if (!unbound.isEmpty()) {
+			throw new CompilerException("Cannot compile rule " + this.originalRule + ", the following terms in the rule head cannot be bound: " + unbound);
+			
+		}
 	}
 	
-	private Prereq addOneUnresolved(List<Expression> body, List<Prereq> prereqs,Collection<Expression> boundExpressions,Prereq last) {
+	private Prereq addOneUnresolved(List<Expression> body, Prereq last) {
 		if (body.isEmpty()) return last;
 		
 		// TODO: optimise - sort first
-		Expression selected = body.remove(0);
+		selected = body.remove(0);
+		
+		Collection<Expression> newVariables = getUnresolvedVariables(selected,body);
 		
 		Prereq prereq = new Prereq();
 		prereq.setPrevious(last);
 		prereq.setExpression(selected);
-		Collection<Expression> newVariables = getUnresolvedVariables(selected,boundExpressions);
+		
 		prereq.setNewlyBoundVariables(newVariables);
-		boundExpressions.addAll(newVariables);
+		boundVariables.addAll(newVariables);
 		Collection<Expression> bound = new LinkedHashSet<Expression>();
-		bound.addAll(boundExpressions);
+		bound.addAll(boundVariables);
 		prereq.setBoundVariables(bound);
 		prereqs.add(prereq);
 		
@@ -99,22 +151,44 @@ public class Scheduler {
 		return prereq;
 		
 	}
-	
-	private Collection<Expression> getUnresolvedVariables(Expression expression,Collection<Expression> resolvedVariables) {
+	// get the parts not yet resolved in an expression
+	private Collection<Expression> getUnresolvedVariables(Expression expression,List<Expression> body) {
 		Collection<Expression> unresolved = new LinkedHashSet<Expression>();
-		for (Variable var:expression.getVariables()) {
-			if (!resolvedVariables.contains(var)) {
-				unresolved.add(var);
+		boolean mustApplySubstitutions = false;
+		for (Expression child:expression.getChildren()) {
+			if (!child.isGroundWRT(boundVariables)) {
+				LOGGER.debug("Found unresolved term " + child + " in expression " + expression);
+				if (!(child instanceof Variable)) {
+					// unbound complex term - reuse by introduce new variable
+					Variable v = this.substitutions.get(child);
+					if (v==null) {
+						v = new Variable(NO_POSITION,child.getContext(),createVarName());
+						LOGGER.debug("Substitute term in body of rule " + rule.getId() + ": " + child + " -> " + v);
+						substitutions.put(child,v);
+						mustApplySubstitutions = true;
+						unresolved.add(v);
+						v.setProperty(ASSERTED_BY_COMPILER, true);
+					}
+				}
+				else {
+					unresolved.add(child);
+				}
 			}
 		}
+		
+		if (mustApplySubstitutions) {
+			applySubstitutions(body);
+		}
+		
 		return unresolved;
 	}
 
 	// add the prereqs for which all variables are known
-	private Prereq addAllResolved(List<Expression> body, List<Prereq> prereqs,Collection<Expression> boundExpressions,Prereq last) {
+	private Prereq addAllResolved(List<Expression> body, Prereq last) {
 		for (Iterator<Expression> iter = body.iterator();iter.hasNext();) {
 			Expression expression = iter.next();
-			if (expression.isGroundWRT(boundExpressions)) {
+			if (expression.isGroundWRT(boundVariables)) {
+				selected=expression;
 				Prereq prereq = new Prereq();
 				prereq.setPrevious(last);
 				last = prereq;
@@ -123,7 +197,7 @@ public class Scheduler {
 				prereqs.add(prereq);
 				iter.remove();
 				Collection<Expression> bound = new LinkedHashSet<Expression>();
-				bound.addAll(boundExpressions);
+				bound.addAll(boundVariables);
 				prereq.setBoundVariables(bound);
 				
 				LOGGER.debug("Adding prerequisite " + prereq.getExpression() + ", newely bound variables: " + prereq.getNewlyBoundVariables());
@@ -132,26 +206,101 @@ public class Scheduler {
 		return last;
 	}
 
-	private Collection<Expression> initVariables(Rule rule,FunctionDeclaration query) throws CompilerException {
-		Collection<Expression> expressions = new HashSet<Expression>();
+	private void initVariables() throws CompilerException {
 		
 		// add references to object declaration 
 		for (ObjectDeclaration objDecl:rule.getContext().getObjectDeclarations()) {
 			Variable v = new Variable(objDecl.getPosition(),rule.getContext(),objDecl.getName());
 			v.setType(resolver.getType(rule.getContext(),objDecl.getType()));
-			expressions.add(v);
+			boundVariables.add(v);
 		}
 		
 		// add expressions from rule head that are query parameters
-		RelationshipDefinition rel = query.getRelationship();
 		boolean[] sign = query.getSignature();
+		
 		for (int i=0;i<sign.length;i++) {
 			Expression param = rule.getHead().getParameters().get(i);
 			if (sign[i]) {
-				expressions.add(param);
+				if (param instanceof Variable) {
+					boundVariables.add(param);
+				}
+				else if (!param.isGround()) {
+					// see also issue8/case4
+					String varName = createVarName();
+					Variable var = new Variable(NO_POSITION,rule.getContext(),varName);
+					boundVariables.add(var);
+					BinaryExpression constraint = new BinaryExpression(NO_POSITION,rule.getContext(),BinOp.EQ,var,param);
+					constraint.setProperty(ASSERTED_BY_COMPILER,true);
+					LOGGER.debug("Substitute term in head of rule " + rule.getId() + ": " + param + " -> " + var);
+					LOGGER.debug("Creating new constraint in rule " + rule.getId() + ": " + constraint);
+					substitutions.put(param,var);
+					rule.addToBody(constraint);					
+				}
+				
+			}
+			else {
+				mustBeBound.add(param);				
 			}
 		}
 		
-		return expressions;
+		if (!substitutions.isEmpty()) {
+			applySubstitutions(rule.getBody());
+			// also apply to head
+			rule = new Rule(rule.getPosition(),rule.getContext(),rule.getId(),rule.getBody(),(FunctionInvocation)rule.getHead().substitute(substitutions));
+		}
+		
+		
+	}
+	
+	private String createVarName() {
+		return "__t" + (counter++);
+	}
+	
+	private void applySubstitutions(List<Expression> body) {
+//		// apply to rule
+//		List<Expression> newBody = new ArrayList<Expression>(rule.getBody().size());
+//		for (Expression b:rule.getBody()) {
+//			if (b.getProperty(ASSERTED_BY_COMPILER)==null) {
+//				newBody.add(b.substitute(substitutions));
+//			}
+//			else {
+//				newBody.add(b.clone());
+//			}
+//		}
+//		
+//		String oldRuleTxt = rule.toString();
+//		rule =  new Rule(rule.getPosition(),rule.getContext(),rule.getId(),newBody,(FunctionInvocation)rule.getHead().substitute(substitutions));
+		
+		// apply to body
+		if (body!=null) {
+			for (int i=0;i<body.size();i++) {
+				Expression b = body.get(i);
+				if (b.getProperty(ASSERTED_BY_COMPILER)==null) {
+					body.set(i,b.substitute(substitutions));
+				}
+			}
+		}
+		if (selected!=null && selected.getProperty(ASSERTED_BY_COMPILER)==null) {
+			selected=selected.substitute(substitutions);
+		}
+		
+		
+		LOGGER.debug("Applying substitution to rule " + rule);
+	}
+
+	/**
+	 * Get the list of prerequisites.
+	 * @return
+	 */
+	public List<Prereq> getPrerequisites() {
+		return prereqs;
+	}
+	/**
+	 * Get the rule optimised for code generation. 
+	 * This means that the order of clauses in the body might have changed, and that there could be additional elements in the body.
+	 * @return
+	 */
+	public Rule getRule() {
+		return rule;
 	}
 }

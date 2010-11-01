@@ -175,6 +175,11 @@ public class Rule extends AnnotatableNode implements Cloneable {
 	}
 
 	public void addToBody(Expression expression) {
-		body.add(expression);
+		// clone returns unmodifiable list!
+		List<Expression> newBody = new ArrayList<Expression>(body.size()+1);
+		newBody.addAll(body);
+		newBody.add(expression);
+		body=newBody;
+		
 	}
 }
