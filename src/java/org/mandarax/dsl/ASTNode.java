@@ -98,4 +98,9 @@ public abstract class ASTNode  implements Visitable {
 		this.variables = null;
 	}
 
+	protected void copyPropertiesTo(ASTNode node) {
+		for (Map.Entry<?,?> e:this.properties.entrySet()) {
+			node.setProperty(e.getKey(),e.getValue());
+		}
+	}
 }

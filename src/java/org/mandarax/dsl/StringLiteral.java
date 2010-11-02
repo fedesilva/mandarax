@@ -68,6 +68,7 @@ public class StringLiteral extends Literal<String> {
 		if (substituteThis==null) {
 			StringLiteral e = new StringLiteral(getPosition(),getContext(),value);
 			e.setType(this.getType());
+			copyPropertiesTo(e);
 			return e;
 		}
 		else {

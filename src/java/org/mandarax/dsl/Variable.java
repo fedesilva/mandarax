@@ -77,6 +77,7 @@ public class Variable extends Expression {
 		if (substituteThis==null) {
 			Variable e = new Variable(getPosition(),getContext(),name);
 			e.setType(this.getType());
+			copyPropertiesTo(e);
 			return e;
 		}
 		else {

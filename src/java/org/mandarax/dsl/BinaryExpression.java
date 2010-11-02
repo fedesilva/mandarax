@@ -94,6 +94,7 @@ public class BinaryExpression extends Expression {
 		if (substituteThis==null) {
 			BinaryExpression e = new BinaryExpression(getPosition(),getContext(),operator,left.substitute(substitutions),right.substitute(substitutions));
 			e.setType(this.getType());
+			copyPropertiesTo(e);
 			return e;
 		}
 		else {

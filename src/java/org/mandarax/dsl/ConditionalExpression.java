@@ -113,6 +113,7 @@ public class ConditionalExpression extends Expression {
 		if (substituteThis==null) {
 			ConditionalExpression e = new ConditionalExpression(getPosition(),getContext(),condition.substitute(substitutions),ifTrue.substitute(substitutions),ifFalse.substitute(substitutions));
 			e.setType(this.getType());
+			copyPropertiesTo(e);
 			return e;
 		}
 		else {

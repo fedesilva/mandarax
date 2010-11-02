@@ -103,6 +103,7 @@ public class ConstructorInvocation extends Expression {
 					return p.substitute(substitutions);
 				}}));
 			e.setType(this.getType());
+			copyPropertiesTo(e);
 			return e;
 		}
 		else {

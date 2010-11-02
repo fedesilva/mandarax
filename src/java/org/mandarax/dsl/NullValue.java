@@ -57,6 +57,7 @@ public class NullValue extends Expression {
 		if (substituteThis==null) {
 			NullValue e = new NullValue(getPosition(),getContext());
 			e.setType(this.getType());
+			copyPropertiesTo(e);
 			return e;
 		}
 		else {

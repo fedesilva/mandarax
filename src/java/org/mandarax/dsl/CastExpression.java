@@ -87,6 +87,7 @@ public class CastExpression extends Expression {
 		if (substituteThis==null) {
 			CastExpression e = new CastExpression(getPosition(),getContext(),objectReference.substitute(substitutions),type);
 			e.setType(this.getType());
+			copyPropertiesTo(e);
 			return e;
 		}
 		else {

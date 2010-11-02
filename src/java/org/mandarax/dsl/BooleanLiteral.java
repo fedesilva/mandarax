@@ -65,6 +65,7 @@ public class BooleanLiteral extends Literal<Boolean> {
 		if (substituteThis==null) {
 			BooleanLiteral e = new BooleanLiteral(getPosition(),getContext(),value);
 			e.setType(this.getType());
+			copyPropertiesTo(e);
 			return e;
 		}
 		else {

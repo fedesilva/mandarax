@@ -89,6 +89,7 @@ public class UnaryExpression extends Expression {
 		if (substituteThis==null) {
 			UnaryExpression e = new UnaryExpression(getPosition(),getContext(),operator,part.substitute(substitutions));
 			e.setType(this.getType());
+			copyPropertiesTo(e);
 			return e;
 		}
 		else {

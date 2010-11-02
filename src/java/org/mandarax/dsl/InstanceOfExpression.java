@@ -88,6 +88,7 @@ public class InstanceOfExpression extends Expression{
 		if (substituteThis==null) {
 			InstanceOfExpression e = new InstanceOfExpression(getPosition(),getContext(),objectReference.substitute(substitutions),type);
 			e.setType(this.getType());
+			copyPropertiesTo(e);
 			return e;
 		}
 		else {

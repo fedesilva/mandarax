@@ -125,6 +125,7 @@ public class MemberAccess extends Expression {
 				}}));
 			m.isMethod = this.isMethod;
 			m.setType(this.getType());
+			copyPropertiesTo(m);
 			return m;
 		}
 		else {

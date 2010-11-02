@@ -63,6 +63,7 @@ public class IntLiteral extends Literal<Integer> {
 		if (substituteThis==null) {
 			IntLiteral e = new IntLiteral(getPosition(),getContext(),value);
 			e.setType(this.getType());
+			copyPropertiesTo(e);
 			return e;
 		}
 		else {
