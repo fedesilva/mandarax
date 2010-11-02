@@ -244,4 +244,9 @@ public class Prereq {
 		};
 		return printer;
 	}
+	
+	@Override
+	public String toString() {
+		return this.expression==null?super.toString():this.expression.toString();
+	}
 }
