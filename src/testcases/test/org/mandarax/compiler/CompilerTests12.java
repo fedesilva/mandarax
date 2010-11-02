@@ -14,13 +14,13 @@ package test.org.mandarax.compiler;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import org.mandarax.rt.ResultSet;
-import test.org.mandarax.compiler.reldef11.*;
+import test.org.mandarax.compiler.reldef12.*;
 
 /**
  * Test cases using generated code.
  * @author jens dietrich
  */
-public class CompilerTests11 {
+public class CompilerTests12 {
 	
 //	Person jens = new Person("Jens");
 //	Person max = new Person("Max");
@@ -33,39 +33,54 @@ public class CompilerTests11 {
 //		rule3: -> Father(klaus,jens);
 //		rule4: -> Father(otto,klaus);
 //	}
-//	rel GrandFather(String grandFather,String grandChild) queries getAll(){
+//	rel GrandFather(String grandFather,String grandChild) queries getGrandChildren(grandFather){
 //		rule1: Father(x,y) & Father(y,z) -> GrandFather(x.name,z.name); 	
 //	}
 	
 	@Test
 	public void test1() throws Exception {
-		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().getAll();
-		assertTrue(contains(rs,"Klaus","Max"));	
+		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().getGrandChildren("Klaus");
+		assertTrue(contains(rs,"Max"));	
 	}
 	
 	@Test
 	public void test2() throws Exception {
-		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().getAll();
-		assertTrue(contains(rs,"Otto","Jens"));	
+		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().getGrandChildren("Klaus");
+		assertTrue(contains(rs,"Xiomara"));	
 	}
 	
 	@Test
 	public void test3() throws Exception {
-		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().getAll();
-		assertFalse(contains(rs,"Jens","Otto"));	
+		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().getGrandChildren("Otto");
+		assertTrue(contains(rs,"Jens"));	
 	}
 	
 	@Test
 	public void test4() throws Exception {
-		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().getAll();
-		assertFalse(contains(rs,"Jens","Max"));	
+		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().getGrandChildren("Jens");
+		assertFalse(contains(rs,"Otto"));	
+	}
+	
+	@Test
+	public void test5() throws Exception {
+		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().getGrandChildren("Jens");
+		
+		while (rs.hasNext()) {
+			GrandFatherRel next = rs.next();
+			System.out.print(next.grandFather);
+			System.out.print(" -> ");
+			System.out.println(next.grandChild);
+		}
+		
+		rs = new GrandFatherRelInstances().getGrandChildren("Jens");
+		assertFalse(contains(rs,"Max"));	
 	}
 	
 	
-	private boolean contains(ResultSet<GrandFatherRel> rs, String grandFather, String grandChild) {
+	private boolean contains(ResultSet<GrandFatherRel> rs, String grandchild) {
 		while (rs.hasNext()) {
 			GrandFatherRel rel = rs.next();
-			if (rel.grandFather.equals(grandFather) && rel.grandChild.equals(grandChild)) {
+			if (rel.grandChild.equals(grandchild)) {
 				rs.close();
 				return true;
 			}

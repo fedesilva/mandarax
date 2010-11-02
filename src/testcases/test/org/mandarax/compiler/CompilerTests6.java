@@ -12,11 +12,7 @@
 package test.org.mandarax.compiler;
 
 import static org.junit.Assert.*;
-
-import java.util.List;
-
 import org.junit.Test;
-import org.mandarax.rt.DerivationLogEntry;
 import org.mandarax.rt.ResultSet;
 import test.org.mandarax.compiler.reldef6.DiscountRel;
 import test.org.mandarax.compiler.reldef6.DiscountRelInstances;

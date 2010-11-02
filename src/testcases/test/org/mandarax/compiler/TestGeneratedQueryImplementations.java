@@ -11,11 +11,9 @@
 
 package test.org.mandarax.compiler;
 
-import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.Test;
 import org.mandarax.compiler.impl.DefaultCompiler;
 import org.mandarax.dsl.CompilationUnit;
