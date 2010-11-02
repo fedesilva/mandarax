@@ -1,4 +1,6 @@
-package test.org.mandarax.compiler.reldef8;
+package test.org.mandarax.compiler.reldef10;
+ 
+import test.org.mandarax.compiler.*;
 
 import org.mandarax.rt.*;
 

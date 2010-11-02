@@ -1,4 +1,6 @@
-package test.org.mandarax.compiler.reldef8;
+package test.org.mandarax.compiler.reldef11;
+ 
+import test.org.mandarax.compiler.*;
 
 import org.mandarax.rt.*;
 
@@ -8,46 +10,56 @@ import org.mandarax.rt.*;
  */
 public class FatherRelInstances {
 	// object references
+	 
+	public static Person jens = new Person("Jens");
+	 
+	public static Person max = new Person("Max");
+	 
+	public static Person klaus = new Person("Klaus");
+	 
+	public static Person otto = new Person("Otto");
+	 
+	public static Person xiomara = new Person("Xiomara");
 	
 	
 	// fields representing annotations
 	
-	// rule: rule1:  -> Father("Jens","Max");
+	// rule: rule1:  -> Father(jens,max);
 	private final static java.util.Properties _annotations_rule1 = new java.util.Properties();
 	
-	// rule: rule2:  -> Father("Jens","Xiomara");
+	// rule: rule2:  -> Father(jens,xiomara);
 	private final static java.util.Properties _annotations_rule2 = new java.util.Properties();
 	
-	// rule: rule3:  -> Father("Klaus","Jens");
+	// rule: rule3:  -> Father(klaus,jens);
 	private final static java.util.Properties _annotations_rule3 = new java.util.Properties();
 	
-	// rule: rule4:  -> Father("Otto","Klaus");
+	// rule: rule4:  -> Father(otto,klaus);
 	private final static java.util.Properties _annotations_rule4 = new java.util.Properties();
 	
 	
 	// initialise annotations
 	static {
-		// relationship annotations for rule  rule1:  -> Father("Jens","Max");
+		// relationship annotations for rule  rule1:  -> Father(jens,max);
 		
-		// rule annotations for rule  rule1:  -> Father("Jens","Max");
-		
-		
-	
-		// relationship annotations for rule  rule2:  -> Father("Jens","Xiomara");
-		
-		// rule annotations for rule  rule2:  -> Father("Jens","Xiomara");
+		// rule annotations for rule  rule1:  -> Father(jens,max);
 		
 		
 	
-		// relationship annotations for rule  rule3:  -> Father("Klaus","Jens");
+		// relationship annotations for rule  rule2:  -> Father(jens,xiomara);
 		
-		// rule annotations for rule  rule3:  -> Father("Klaus","Jens");
+		// rule annotations for rule  rule2:  -> Father(jens,xiomara);
 		
 		
 	
-		// relationship annotations for rule  rule4:  -> Father("Otto","Klaus");
+		// relationship annotations for rule  rule3:  -> Father(klaus,jens);
 		
-		// rule annotations for rule  rule4:  -> Father("Otto","Klaus");
+		// rule annotations for rule  rule3:  -> Father(klaus,jens);
+		
+		
+	
+		// relationship annotations for rule  rule4:  -> Father(otto,klaus);
+		
+		// rule annotations for rule  rule4:  -> Father(otto,klaus);
 		
 		
 	}
@@ -56,17 +68,17 @@ public class FatherRelInstances {
 
 	// interface generated for queries	
 	 
-	public ResultSet<FatherRel> getFather (  String child  ) {
+	public ResultSet<FatherRel> getFather (  Person child  ) {
 		DerivationController _derivation = new DefaultDerivationController();
 		return new ResultSet<FatherRel>(getFather ( _derivation ,  child ),_derivation);
 	} 
 	 
-	public ResultSet<FatherRel> isFather (  String father ,  String child  ) {
+	public ResultSet<FatherRel> isFather (  Person father ,  Person child  ) {
 		DerivationController _derivation = new DefaultDerivationController();
 		return new ResultSet<FatherRel>(isFather ( _derivation ,  father ,  child ),_derivation);
 	} 
 	 
-	public ResultSet<FatherRel> getChildren (  String father  ) {
+	public ResultSet<FatherRel> getChildren (  Person father  ) {
 		DerivationController _derivation = new DefaultDerivationController();
 		return new ResultSet<FatherRel>(getChildren ( _derivation ,  father ),_derivation);
 	} 
@@ -80,7 +92,7 @@ public class FatherRelInstances {
 	// implementations - these methods are referenced by code generated from other rules in this package
 	// and therefore kept static 
 	 
-	static ResourceIterator<FatherRel> getFather ( final DerivationController _derivation ,  final String child  ) {
+	static ResourceIterator<FatherRel> getFather ( final DerivationController _derivation ,  final Person child  ) {
 		final int _derivationlevel = _derivation.size();
 		return new IteratorChain<FatherRel>(4) {
 			
@@ -88,22 +100,22 @@ public class FatherRelInstances {
 			switch (pos) {
 				
                 		case 0: {
-                			// invoke rule1:  -> Father("Jens","Max");
+                			// invoke rule1:  -> Father(jens,max);
                 			return getFather_0(_derivation.pop(_derivationlevel) ,  child );
                 		}
 				
                 		case 1: {
-                			// invoke rule2:  -> Father("Jens","Xiomara");
+                			// invoke rule2:  -> Father(jens,xiomara);
                 			return getFather_1(_derivation.pop(_derivationlevel) ,  child );
                 		}
 				
                 		case 2: {
-                			// invoke rule3:  -> Father("Klaus","Jens");
+                			// invoke rule3:  -> Father(klaus,jens);
                 			return getFather_2(_derivation.pop(_derivationlevel) ,  child );
                 		}
 				
                 		case 3: {
-                			// invoke rule4:  -> Father("Otto","Klaus");
+                			// invoke rule4:  -> Father(otto,klaus);
                 			return getFather_3(_derivation.pop(_derivationlevel) ,  child );
                 		}
 				
@@ -112,7 +124,7 @@ public class FatherRelInstances {
 		};
 	} 
 	 
-	static ResourceIterator<FatherRel> isFather ( final DerivationController _derivation ,  final String father ,  final String child  ) {
+	static ResourceIterator<FatherRel> isFather ( final DerivationController _derivation ,  final Person father ,  final Person child  ) {
 		final int _derivationlevel = _derivation.size();
 		return new IteratorChain<FatherRel>(4) {
 			
@@ -120,22 +132,22 @@ public class FatherRelInstances {
 			switch (pos) {
 				
                 		case 0: {
-                			// invoke rule1:  -> Father("Jens","Max");
+                			// invoke rule1:  -> Father(jens,max);
                 			return isFather_0(_derivation.pop(_derivationlevel) ,  father ,  child );
                 		}
 				
                 		case 1: {
-                			// invoke rule2:  -> Father("Jens","Xiomara");
+                			// invoke rule2:  -> Father(jens,xiomara);
                 			return isFather_1(_derivation.pop(_derivationlevel) ,  father ,  child );
                 		}
 				
                 		case 2: {
-                			// invoke rule3:  -> Father("Klaus","Jens");
+                			// invoke rule3:  -> Father(klaus,jens);
                 			return isFather_2(_derivation.pop(_derivationlevel) ,  father ,  child );
                 		}
 				
                 		case 3: {
-                			// invoke rule4:  -> Father("Otto","Klaus");
+                			// invoke rule4:  -> Father(otto,klaus);
                 			return isFather_3(_derivation.pop(_derivationlevel) ,  father ,  child );
                 		}
 				
@@ -144,7 +156,7 @@ public class FatherRelInstances {
 		};
 	} 
 	 
-	static ResourceIterator<FatherRel> getChildren ( final DerivationController _derivation ,  final String father  ) {
+	static ResourceIterator<FatherRel> getChildren ( final DerivationController _derivation ,  final Person father  ) {
 		final int _derivationlevel = _derivation.size();
 		return new IteratorChain<FatherRel>(4) {
 			
@@ -152,22 +164,22 @@ public class FatherRelInstances {
 			switch (pos) {
 				
                 		case 0: {
-                			// invoke rule1:  -> Father("Jens","Max");
+                			// invoke rule1:  -> Father(jens,max);
                 			return getChildren_0(_derivation.pop(_derivationlevel) ,  father );
                 		}
 				
                 		case 1: {
-                			// invoke rule2:  -> Father("Jens","Xiomara");
+                			// invoke rule2:  -> Father(jens,xiomara);
                 			return getChildren_1(_derivation.pop(_derivationlevel) ,  father );
                 		}
 				
                 		case 2: {
-                			// invoke rule3:  -> Father("Klaus","Jens");
+                			// invoke rule3:  -> Father(klaus,jens);
                 			return getChildren_2(_derivation.pop(_derivationlevel) ,  father );
                 		}
 				
                 		case 3: {
-                			// invoke rule4:  -> Father("Otto","Klaus");
+                			// invoke rule4:  -> Father(otto,klaus);
                 			return getChildren_3(_derivation.pop(_derivationlevel) ,  father );
                 		}
 				
@@ -184,22 +196,22 @@ public class FatherRelInstances {
 			switch (pos) {
 				
                 		case 0: {
-                			// invoke rule1:  -> Father("Jens","Max");
+                			// invoke rule1:  -> Father(jens,max);
                 			return getFatherAndChild_0(_derivation.pop(_derivationlevel)  );
                 		}
 				
                 		case 1: {
-                			// invoke rule2:  -> Father("Jens","Xiomara");
+                			// invoke rule2:  -> Father(jens,xiomara);
                 			return getFatherAndChild_1(_derivation.pop(_derivationlevel)  );
                 		}
 				
                 		case 2: {
-                			// invoke rule3:  -> Father("Klaus","Jens");
+                			// invoke rule3:  -> Father(klaus,jens);
                 			return getFatherAndChild_2(_derivation.pop(_derivationlevel)  );
                 		}
 				
                 		case 3: {
-                			// invoke rule4:  -> Father("Otto","Klaus");
+                			// invoke rule4:  -> Father(otto,klaus);
                 			return getFatherAndChild_3(_derivation.pop(_derivationlevel)  );
                 		}
 				
@@ -212,8 +224,8 @@ public class FatherRelInstances {
 	
 	// private methods - each method represents the invocation of a single rule for a certain query
 	// query: getFather
-	// rule: rule1:  -> Father("Jens","Max");
-	private static ResourceIterator<FatherRel> getFather_0 (final DerivationController _derivation ,  final String child ) {
+	// rule: rule1:  -> Father(jens,max);
+	private static ResourceIterator<FatherRel> getFather_0 (final DerivationController _derivation ,  final Person child ) {
 		
 		_derivation.log("Father.rule1", DerivationController.RULE, _annotations_rule1);
 		
@@ -221,15 +233,15 @@ public class FatherRelInstances {
 		
 		 
 		// check conditions	
-		if (Equals.compare(child,"Max") ) {
+		if (Equals.compare(child,max) ) {
 		
 		
 		// create new instance of relationship
 		FatherRel _result = new FatherRel();
 		
 		// set values
-		_result.father = "Jens";
-		_result.child = "Max";
+		_result.father = jens;
+		_result.child = max;
 		
 		return new SingletonIterator<FatherRel>(_result);
 		}
@@ -240,8 +252,8 @@ public class FatherRelInstances {
 
 		
 	}
-	// rule: rule2:  -> Father("Jens","Xiomara");
-	private static ResourceIterator<FatherRel> getFather_1 (final DerivationController _derivation ,  final String child ) {
+	// rule: rule2:  -> Father(jens,xiomara);
+	private static ResourceIterator<FatherRel> getFather_1 (final DerivationController _derivation ,  final Person child ) {
 		
 		_derivation.log("Father.rule2", DerivationController.RULE, _annotations_rule2);
 		
@@ -249,15 +261,15 @@ public class FatherRelInstances {
 		
 		 
 		// check conditions	
-		if (Equals.compare(child,"Xiomara") ) {
+		if (Equals.compare(child,xiomara) ) {
 		
 		
 		// create new instance of relationship
 		FatherRel _result = new FatherRel();
 		
 		// set values
-		_result.father = "Jens";
-		_result.child = "Xiomara";
+		_result.father = jens;
+		_result.child = xiomara;
 		
 		return new SingletonIterator<FatherRel>(_result);
 		}
@@ -268,8 +280,8 @@ public class FatherRelInstances {
 
 		
 	}
-	// rule: rule3:  -> Father("Klaus","Jens");
-	private static ResourceIterator<FatherRel> getFather_2 (final DerivationController _derivation ,  final String child ) {
+	// rule: rule3:  -> Father(klaus,jens);
+	private static ResourceIterator<FatherRel> getFather_2 (final DerivationController _derivation ,  final Person child ) {
 		
 		_derivation.log("Father.rule3", DerivationController.RULE, _annotations_rule3);
 		
@@ -277,15 +289,15 @@ public class FatherRelInstances {
 		
 		 
 		// check conditions	
-		if (Equals.compare(child,"Jens") ) {
+		if (Equals.compare(child,jens) ) {
 		
 		
 		// create new instance of relationship
 		FatherRel _result = new FatherRel();
 		
 		// set values
-		_result.father = "Klaus";
-		_result.child = "Jens";
+		_result.father = klaus;
+		_result.child = jens;
 		
 		return new SingletonIterator<FatherRel>(_result);
 		}
@@ -296,8 +308,8 @@ public class FatherRelInstances {
 
 		
 	}
-	// rule: rule4:  -> Father("Otto","Klaus");
-	private static ResourceIterator<FatherRel> getFather_3 (final DerivationController _derivation ,  final String child ) {
+	// rule: rule4:  -> Father(otto,klaus);
+	private static ResourceIterator<FatherRel> getFather_3 (final DerivationController _derivation ,  final Person child ) {
 		
 		_derivation.log("Father.rule4", DerivationController.RULE, _annotations_rule4);
 		
@@ -305,15 +317,15 @@ public class FatherRelInstances {
 		
 		 
 		// check conditions	
-		if (Equals.compare(child,"Klaus") ) {
+		if (Equals.compare(child,klaus) ) {
 		
 		
 		// create new instance of relationship
 		FatherRel _result = new FatherRel();
 		
 		// set values
-		_result.father = "Otto";
-		_result.child = "Klaus";
+		_result.father = otto;
+		_result.child = klaus;
 		
 		return new SingletonIterator<FatherRel>(_result);
 		}
@@ -325,8 +337,8 @@ public class FatherRelInstances {
 		
 	}
 	// query: isFather
-	// rule: rule1:  -> Father("Jens","Max");
-	private static ResourceIterator<FatherRel> isFather_0 (final DerivationController _derivation ,  final String father ,  final String child ) {
+	// rule: rule1:  -> Father(jens,max);
+	private static ResourceIterator<FatherRel> isFather_0 (final DerivationController _derivation ,  final Person father ,  final Person child ) {
 		
 		_derivation.log("Father.rule1", DerivationController.RULE, _annotations_rule1);
 		
@@ -334,15 +346,15 @@ public class FatherRelInstances {
 		
 		 
 		// check conditions	
-		if (Equals.compare(father,"Jens") && Equals.compare(child,"Max") ) {
+		if (Equals.compare(father,jens) && Equals.compare(child,max) ) {
 		
 		
 		// create new instance of relationship
 		FatherRel _result = new FatherRel();
 		
 		// set values
-		_result.father = "Jens";
-		_result.child = "Max";
+		_result.father = jens;
+		_result.child = max;
 		
 		return new SingletonIterator<FatherRel>(_result);
 		}
@@ -353,8 +365,8 @@ public class FatherRelInstances {
 
 		
 	}
-	// rule: rule2:  -> Father("Jens","Xiomara");
-	private static ResourceIterator<FatherRel> isFather_1 (final DerivationController _derivation ,  final String father ,  final String child ) {
+	// rule: rule2:  -> Father(jens,xiomara);
+	private static ResourceIterator<FatherRel> isFather_1 (final DerivationController _derivation ,  final Person father ,  final Person child ) {
 		
 		_derivation.log("Father.rule2", DerivationController.RULE, _annotations_rule2);
 		
@@ -362,15 +374,15 @@ public class FatherRelInstances {
 		
 		 
 		// check conditions	
-		if (Equals.compare(father,"Jens") && Equals.compare(child,"Xiomara") ) {
+		if (Equals.compare(father,jens) && Equals.compare(child,xiomara) ) {
 		
 		
 		// create new instance of relationship
 		FatherRel _result = new FatherRel();
 		
 		// set values
-		_result.father = "Jens";
-		_result.child = "Xiomara";
+		_result.father = jens;
+		_result.child = xiomara;
 		
 		return new SingletonIterator<FatherRel>(_result);
 		}
@@ -381,8 +393,8 @@ public class FatherRelInstances {
 
 		
 	}
-	// rule: rule3:  -> Father("Klaus","Jens");
-	private static ResourceIterator<FatherRel> isFather_2 (final DerivationController _derivation ,  final String father ,  final String child ) {
+	// rule: rule3:  -> Father(klaus,jens);
+	private static ResourceIterator<FatherRel> isFather_2 (final DerivationController _derivation ,  final Person father ,  final Person child ) {
 		
 		_derivation.log("Father.rule3", DerivationController.RULE, _annotations_rule3);
 		
@@ -390,15 +402,15 @@ public class FatherRelInstances {
 		
 		 
 		// check conditions	
-		if (Equals.compare(father,"Klaus") && Equals.compare(child,"Jens") ) {
+		if (Equals.compare(father,klaus) && Equals.compare(child,jens) ) {
 		
 		
 		// create new instance of relationship
 		FatherRel _result = new FatherRel();
 		
 		// set values
-		_result.father = "Klaus";
-		_result.child = "Jens";
+		_result.father = klaus;
+		_result.child = jens;
 		
 		return new SingletonIterator<FatherRel>(_result);
 		}
@@ -409,8 +421,8 @@ public class FatherRelInstances {
 
 		
 	}
-	// rule: rule4:  -> Father("Otto","Klaus");
-	private static ResourceIterator<FatherRel> isFather_3 (final DerivationController _derivation ,  final String father ,  final String child ) {
+	// rule: rule4:  -> Father(otto,klaus);
+	private static ResourceIterator<FatherRel> isFather_3 (final DerivationController _derivation ,  final Person father ,  final Person child ) {
 		
 		_derivation.log("Father.rule4", DerivationController.RULE, _annotations_rule4);
 		
@@ -418,15 +430,15 @@ public class FatherRelInstances {
 		
 		 
 		// check conditions	
-		if (Equals.compare(father,"Otto") && Equals.compare(child,"Klaus") ) {
+		if (Equals.compare(father,otto) && Equals.compare(child,klaus) ) {
 		
 		
 		// create new instance of relationship
 		FatherRel _result = new FatherRel();
 		
 		// set values
-		_result.father = "Otto";
-		_result.child = "Klaus";
+		_result.father = otto;
+		_result.child = klaus;
 		
 		return new SingletonIterator<FatherRel>(_result);
 		}
@@ -438,8 +450,8 @@ public class FatherRelInstances {
 		
 	}
 	// query: getChildren
-	// rule: rule1:  -> Father("Jens","Max");
-	private static ResourceIterator<FatherRel> getChildren_0 (final DerivationController _derivation ,  final String father ) {
+	// rule: rule1:  -> Father(jens,max);
+	private static ResourceIterator<FatherRel> getChildren_0 (final DerivationController _derivation ,  final Person father ) {
 		
 		_derivation.log("Father.rule1", DerivationController.RULE, _annotations_rule1);
 		
@@ -447,15 +459,15 @@ public class FatherRelInstances {
 		
 		 
 		// check conditions	
-		if (Equals.compare(father,"Jens") ) {
+		if (Equals.compare(father,jens) ) {
 		
 		
 		// create new instance of relationship
 		FatherRel _result = new FatherRel();
 		
 		// set values
-		_result.father = "Jens";
-		_result.child = "Max";
+		_result.father = jens;
+		_result.child = max;
 		
 		return new SingletonIterator<FatherRel>(_result);
 		}
@@ -466,8 +478,8 @@ public class FatherRelInstances {
 
 		
 	}
-	// rule: rule2:  -> Father("Jens","Xiomara");
-	private static ResourceIterator<FatherRel> getChildren_1 (final DerivationController _derivation ,  final String father ) {
+	// rule: rule2:  -> Father(jens,xiomara);
+	private static ResourceIterator<FatherRel> getChildren_1 (final DerivationController _derivation ,  final Person father ) {
 		
 		_derivation.log("Father.rule2", DerivationController.RULE, _annotations_rule2);
 		
@@ -475,15 +487,15 @@ public class FatherRelInstances {
 		
 		 
 		// check conditions	
-		if (Equals.compare(father,"Jens") ) {
+		if (Equals.compare(father,jens) ) {
 		
 		
 		// create new instance of relationship
 		FatherRel _result = new FatherRel();
 		
 		// set values
-		_result.father = "Jens";
-		_result.child = "Xiomara";
+		_result.father = jens;
+		_result.child = xiomara;
 		
 		return new SingletonIterator<FatherRel>(_result);
 		}
@@ -494,8 +506,8 @@ public class FatherRelInstances {
 
 		
 	}
-	// rule: rule3:  -> Father("Klaus","Jens");
-	private static ResourceIterator<FatherRel> getChildren_2 (final DerivationController _derivation ,  final String father ) {
+	// rule: rule3:  -> Father(klaus,jens);
+	private static ResourceIterator<FatherRel> getChildren_2 (final DerivationController _derivation ,  final Person father ) {
 		
 		_derivation.log("Father.rule3", DerivationController.RULE, _annotations_rule3);
 		
@@ -503,15 +515,15 @@ public class FatherRelInstances {
 		
 		 
 		// check conditions	
-		if (Equals.compare(father,"Klaus") ) {
+		if (Equals.compare(father,klaus) ) {
 		
 		
 		// create new instance of relationship
 		FatherRel _result = new FatherRel();
 		
 		// set values
-		_result.father = "Klaus";
-		_result.child = "Jens";
+		_result.father = klaus;
+		_result.child = jens;
 		
 		return new SingletonIterator<FatherRel>(_result);
 		}
@@ -522,8 +534,8 @@ public class FatherRelInstances {
 
 		
 	}
-	// rule: rule4:  -> Father("Otto","Klaus");
-	private static ResourceIterator<FatherRel> getChildren_3 (final DerivationController _derivation ,  final String father ) {
+	// rule: rule4:  -> Father(otto,klaus);
+	private static ResourceIterator<FatherRel> getChildren_3 (final DerivationController _derivation ,  final Person father ) {
 		
 		_derivation.log("Father.rule4", DerivationController.RULE, _annotations_rule4);
 		
@@ -531,15 +543,15 @@ public class FatherRelInstances {
 		
 		 
 		// check conditions	
-		if (Equals.compare(father,"Otto") ) {
+		if (Equals.compare(father,otto) ) {
 		
 		
 		// create new instance of relationship
 		FatherRel _result = new FatherRel();
 		
 		// set values
-		_result.father = "Otto";
-		_result.child = "Klaus";
+		_result.father = otto;
+		_result.child = klaus;
 		
 		return new SingletonIterator<FatherRel>(_result);
 		}
@@ -551,7 +563,7 @@ public class FatherRelInstances {
 		
 	}
 	// query: getFatherAndChild
-	// rule: rule1:  -> Father("Jens","Max");
+	// rule: rule1:  -> Father(jens,max);
 	private static ResourceIterator<FatherRel> getFatherAndChild_0 (final DerivationController _derivation  ) {
 		
 		_derivation.log("Father.rule1", DerivationController.RULE, _annotations_rule1);
@@ -564,15 +576,15 @@ public class FatherRelInstances {
 		FatherRel _result = new FatherRel();
 		
 		// set values
-		_result.father = "Jens";
-		_result.child = "Max";
+		_result.father = jens;
+		_result.child = max;
 		
 		return new SingletonIterator<FatherRel>(_result);
 		
 
 		
 	}
-	// rule: rule2:  -> Father("Jens","Xiomara");
+	// rule: rule2:  -> Father(jens,xiomara);
 	private static ResourceIterator<FatherRel> getFatherAndChild_1 (final DerivationController _derivation  ) {
 		
 		_derivation.log("Father.rule2", DerivationController.RULE, _annotations_rule2);
@@ -585,15 +597,15 @@ public class FatherRelInstances {
 		FatherRel _result = new FatherRel();
 		
 		// set values
-		_result.father = "Jens";
-		_result.child = "Xiomara";
+		_result.father = jens;
+		_result.child = xiomara;
 		
 		return new SingletonIterator<FatherRel>(_result);
 		
 
 		
 	}
-	// rule: rule3:  -> Father("Klaus","Jens");
+	// rule: rule3:  -> Father(klaus,jens);
 	private static ResourceIterator<FatherRel> getFatherAndChild_2 (final DerivationController _derivation  ) {
 		
 		_derivation.log("Father.rule3", DerivationController.RULE, _annotations_rule3);
@@ -606,15 +618,15 @@ public class FatherRelInstances {
 		FatherRel _result = new FatherRel();
 		
 		// set values
-		_result.father = "Klaus";
-		_result.child = "Jens";
+		_result.father = klaus;
+		_result.child = jens;
 		
 		return new SingletonIterator<FatherRel>(_result);
 		
 
 		
 	}
-	// rule: rule4:  -> Father("Otto","Klaus");
+	// rule: rule4:  -> Father(otto,klaus);
 	private static ResourceIterator<FatherRel> getFatherAndChild_3 (final DerivationController _derivation  ) {
 		
 		_derivation.log("Father.rule4", DerivationController.RULE, _annotations_rule4);
@@ -627,8 +639,8 @@ public class FatherRelInstances {
 		FatherRel _result = new FatherRel();
 		
 		// set values
-		_result.father = "Otto";
-		_result.child = "Klaus";
+		_result.father = otto;
+		_result.child = klaus;
 		
 		return new SingletonIterator<FatherRel>(_result);
 		

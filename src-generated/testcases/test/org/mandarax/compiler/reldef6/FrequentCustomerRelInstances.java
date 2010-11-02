@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>FrequentCustomer</strong>.
- * @version Oct 29, 2010 2:37:45 PM 
+ * @version Nov 2, 2010 7:09:58 PM 
  */
 public class FrequentCustomerRelInstances {
 	// object references
@@ -91,7 +91,7 @@ public class FrequentCustomerRelInstances {
 		
 		// utility class used to keep track of variables bindings
 		class _Bindings {
-			private test.org.mandarax.compiler.Customer c = customer; // term c
+			private test.org.mandarax.compiler.Customer c = customer;
 		}
 		final _Bindings _bindings = new _Bindings();
 		
@@ -122,7 +122,7 @@ public class FrequentCustomerRelInstances {
 		
 		// utility class used to keep track of variables bindings
 		class _Bindings {
-			private test.org.mandarax.compiler.Customer c = customer; // term c
+			private test.org.mandarax.compiler.Customer c = customer;
 		}
 		final _Bindings _bindings = new _Bindings();
 		

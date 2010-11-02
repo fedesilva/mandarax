@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>Discount</strong>.
- * @version Oct 29, 2010 2:37:45 PM 
+ * @version Nov 2, 2010 7:09:58 PM 
  */
 public class DiscountRelInstances {
 	// object references
@@ -137,8 +137,8 @@ public class DiscountRelInstances {
 		
 		// utility class used to keep track of variables bindings
 		class _Bindings {
-			private test.org.mandarax.compiler.Customer c = customer; // term c
-			private test.org.mandarax.compiler.Discount goldDiscount = DiscountRelInstances.goldDiscount; // term goldDiscount
+			private test.org.mandarax.compiler.Customer c = customer;
+			private test.org.mandarax.compiler.Discount goldDiscount = DiscountRelInstances.goldDiscount;
 		}
 		final _Bindings _bindings = new _Bindings();
 		
@@ -169,8 +169,8 @@ public class DiscountRelInstances {
 		
 		// utility class used to keep track of variables bindings
 		class _Bindings {
-			private test.org.mandarax.compiler.Customer c = customer; // term c
-			private test.org.mandarax.compiler.Discount silverDiscount = DiscountRelInstances.silverDiscount; // term silverDiscount
+			private test.org.mandarax.compiler.Customer c = customer;
+			private test.org.mandarax.compiler.Discount silverDiscount = DiscountRelInstances.silverDiscount;
 		}
 		final _Bindings _bindings = new _Bindings();
 		
@@ -208,8 +208,8 @@ public class DiscountRelInstances {
 		
 		// utility class used to keep track of variables bindings
 		class _Bindings {
-			private test.org.mandarax.compiler.Customer c = customer; // term c
-			private test.org.mandarax.compiler.Discount specialDiscount = DiscountRelInstances.specialDiscount; // term specialDiscount
+			private test.org.mandarax.compiler.Customer c = customer;
+			private test.org.mandarax.compiler.Discount specialDiscount = DiscountRelInstances.specialDiscount;
 		}
 		final _Bindings _bindings = new _Bindings();
 		
@@ -241,8 +241,8 @@ public class DiscountRelInstances {
 		
 		// utility class used to keep track of variables bindings
 		class _Bindings {
-			private test.org.mandarax.compiler.Customer c = customer; // term c
-			private test.org.mandarax.compiler.Discount goldDiscount = DiscountRelInstances.goldDiscount; // term goldDiscount
+			private test.org.mandarax.compiler.Customer c = customer;
+			private test.org.mandarax.compiler.Discount goldDiscount = DiscountRelInstances.goldDiscount;
 		}
 		final _Bindings _bindings = new _Bindings();
 		
@@ -273,8 +273,8 @@ public class DiscountRelInstances {
 		
 		// utility class used to keep track of variables bindings
 		class _Bindings {
-			private test.org.mandarax.compiler.Customer c = customer; // term c
-			private test.org.mandarax.compiler.Discount silverDiscount = DiscountRelInstances.silverDiscount; // term silverDiscount
+			private test.org.mandarax.compiler.Customer c = customer;
+			private test.org.mandarax.compiler.Discount silverDiscount = DiscountRelInstances.silverDiscount;
 		}
 		final _Bindings _bindings = new _Bindings();
 		
@@ -312,8 +312,8 @@ public class DiscountRelInstances {
 		
 		// utility class used to keep track of variables bindings
 		class _Bindings {
-			private test.org.mandarax.compiler.Customer c = customer; // term c
-			private test.org.mandarax.compiler.Discount specialDiscount = DiscountRelInstances.specialDiscount; // term specialDiscount
+			private test.org.mandarax.compiler.Customer c = customer;
+			private test.org.mandarax.compiler.Discount specialDiscount = DiscountRelInstances.specialDiscount;
 		}
 		final _Bindings _bindings = new _Bindings();
 		

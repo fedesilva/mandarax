@@ -1,4 +1,6 @@
-package test.org.mandarax.compiler.reldef8;
+package test.org.mandarax.compiler.reldef11;
+ 
+import test.org.mandarax.compiler.*;
 
 /**
  * Class representing the relationship <strong>Father</strong>.
@@ -11,7 +13,7 @@ public class FatherRel {
 		super();
 	}
 	
-	public FatherRel ( String father , String child ) {
+	public FatherRel ( Person father , Person child ) {
 		super();
 		this.father=father; 
 		this.child=child; 
@@ -20,9 +22,9 @@ public class FatherRel {
 
 	// instance variables created for slots
 	 
-	public String father = null; 
+	public Person father = null; 
 	 
-	public String child = null; 
+	public Person child = null; 
 	
 
 }

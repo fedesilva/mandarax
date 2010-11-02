@@ -118,8 +118,20 @@ public class VariableBindings {
 	public String print(VariableDeclaration var,int pos,String scope) {
 		// detect variable term used in rule head,
 		// and then look up matching property in bindings
-		Variable v = (Variable) ruleHead.getParameters().get(pos); // TODO refactor if complex terms are supported in rule head
-		return scope + '.' + v.getName();
+		
+//		Variable v = (Variable) ruleHead.getParameters().get(pos); // TODO refactor if complex terms are supported in rule head
+//		return scope + '.' + v.getName();
+		
+		Expression x = ruleHead.getParameters().get(pos);
+		Map<Expression,Variable> substitutions = new HashMap<Expression,Variable>();
+		for (Variable v:x.getVariables()) {
+			Variable v2 = new Variable(v.getPosition(),v.getContext(),scope + '.'+v.getName());
+			v2.setType(v.getType());
+			substitutions.put(v,v2);
+		}
+		x = x.substitute(substitutions);
+		
+		return x.toString();
 	}
  
 	

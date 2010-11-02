@@ -4,7 +4,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>GrandFather</strong>.
- * @version Oct 29, 2010 2:37:45 PM 
+ * @version Nov 2, 2010 7:09:58 PM 
  */
 public class GrandFatherRelInstances {
 	// object references
@@ -135,9 +135,9 @@ public class GrandFatherRelInstances {
 		
 		// utility class used to keep track of variables bindings
 		class _Bindings {
-			private java.lang.String x = grandFather; // term x
-			private java.lang.String z = null; // term z
-			private java.lang.String y = null; // term y
+			private java.lang.String x = grandFather;
+			private java.lang.String z = null;
+			private java.lang.String y = null;
 		}
 		final _Bindings _bindings = new _Bindings();
 		
@@ -188,9 +188,9 @@ public class GrandFatherRelInstances {
 		
 		// utility class used to keep track of variables bindings
 		class _Bindings {
-			private java.lang.String x = null; // term x
-			private java.lang.String z = grandChild; // term z
-			private java.lang.String y = null; // term y
+			private java.lang.String x = null;
+			private java.lang.String z = grandChild;
+			private java.lang.String y = null;
 		}
 		final _Bindings _bindings = new _Bindings();
 		
@@ -241,9 +241,9 @@ public class GrandFatherRelInstances {
 		
 		// utility class used to keep track of variables bindings
 		class _Bindings {
-			private java.lang.String x = grandFather; // term x
-			private java.lang.String z = grandChild; // term z
-			private java.lang.String y = null; // term y
+			private java.lang.String x = grandFather;
+			private java.lang.String z = grandChild;
+			private java.lang.String y = null;
 		}
 		final _Bindings _bindings = new _Bindings();
 		
@@ -293,9 +293,9 @@ public class GrandFatherRelInstances {
 		
 		// utility class used to keep track of variables bindings
 		class _Bindings {
-			private java.lang.String x = null; // term x
-			private java.lang.String z = null; // term z
-			private java.lang.String y = null; // term y
+			private java.lang.String x = null;
+			private java.lang.String z = null;
+			private java.lang.String y = null;
 		}
 		final _Bindings _bindings = new _Bindings();
 		

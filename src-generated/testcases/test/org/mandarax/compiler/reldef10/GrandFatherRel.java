@@ -1,4 +1,6 @@
-package test.org.mandarax.compiler.reldef8;
+package test.org.mandarax.compiler.reldef10;
+ 
+import test.org.mandarax.compiler.*;
 
 /**
  * Class representing the relationship <strong>GrandFather</strong>.
@@ -11,7 +13,7 @@ public class GrandFatherRel {
 		super();
 	}
 	
-	public GrandFatherRel ( String grandFather , String grandChild ) {
+	public GrandFatherRel ( MalePerson grandFather , MalePerson grandChild ) {
 		super();
 		this.grandFather=grandFather; 
 		this.grandChild=grandChild; 
@@ -20,9 +22,9 @@ public class GrandFatherRel {
 
 	// instance variables created for slots
 	 
-	public String grandFather = null; 
+	public MalePerson grandFather = null; 
 	 
-	public String grandChild = null; 
+	public MalePerson grandChild = null; 
 	
 
 }

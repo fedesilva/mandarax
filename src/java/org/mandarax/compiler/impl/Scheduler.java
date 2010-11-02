@@ -33,8 +33,10 @@ import org.mandarax.dsl.FunctionInvocation;
 import org.mandarax.dsl.Variable;
 import org.mandarax.dsl.util.Resolver;
 
+import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
+import com.google.common.collect.Lists;
 
 import static org.mandarax.dsl.Position.*;
 
@@ -163,6 +165,7 @@ public class Scheduler {
 					Variable v = this.substitutions.get(child);
 					if (v==null) {
 						v = new Variable(NO_POSITION,child.getContext(),createVarName());
+						v.setType(child.getType());
 						LOGGER.debug("Substitute term in body of rule " + rule.getId() + ": " + child + " -> " + v);
 						substitutions.put(child,v);
 						mustApplySubstitutions = true;
@@ -228,6 +231,7 @@ public class Scheduler {
 					// see also issue8/case4
 					String varName = createVarName();
 					Variable var = new Variable(NO_POSITION,rule.getContext(),varName);
+					var.setType(param.getType());
 					boundVariables.add(var);
 					BinaryExpression constraint = new BinaryExpression(NO_POSITION,rule.getContext(),BinOp.EQ,var,param);
 					constraint.setProperty(ASSERTED_BY_COMPILER,true);
@@ -283,6 +287,13 @@ public class Scheduler {
 		if (selected!=null && selected.getProperty(ASSERTED_BY_COMPILER)==null) {
 			selected=selected.substitute(substitutions);
 		}
+		
+		rule =  new Rule(rule.getPosition(),rule.getContext(),rule.getId(),Lists.transform(rule.getBody(),new Function<Expression,Expression>(){
+
+			@Override
+			public Expression apply(Expression x) {
+				return x.substitute(substitutions);
+			}}),(FunctionInvocation)rule.getHead().substitute(substitutions));
 		
 		
 		LOGGER.debug("Applying substitution to rule " + rule);

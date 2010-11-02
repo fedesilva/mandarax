@@ -3,7 +3,7 @@
 		
 		// utility class used to keep track of variables bindings
 		class _Bindings {
-		@foreach{v:rule.variables}	private @{v.typeName} @{v.name} = @{ctrl.getBinding(v)}; // term @{v}
+		@foreach{v:rule.variables}	private @{v.typeName} @{v.name} = @{ctrl.getBinding(v)};
 		@end{}}
 		final _Bindings _bindings = new _Bindings();
 		
