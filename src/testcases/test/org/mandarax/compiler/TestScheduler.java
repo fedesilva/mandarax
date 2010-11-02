@@ -164,10 +164,10 @@ public class TestScheduler {
 		assertEquals(1,prereqs.get(0).getNewlyBoundVariables().size());
 		assertEquals(0,prereqs.get(1).getNewlyBoundVariables().size());
 		
-		assertTrue(x1.toString().contains("x.name"));
+		assertTrue(x1.toString().contains("x.getName()"));
 		assertTrue(x1.toString().contains("__t0"));
 		
-		assertTrue(x2.toString().contains("z.name"));
+		assertTrue(x2.toString().contains("z.getName()"));
 		assertTrue(x2.toString().contains("__t0"));
 	}
 	

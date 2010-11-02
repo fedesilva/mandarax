@@ -25,7 +25,9 @@ import org.junit.runners.*;
 	CompilerTests4.class,
 	CompilerTests5.class,
 	CompilerTests6.class,
-	CompilerTests7.class
+	CompilerTests7.class,
+	CompilerTests8.class,
+	CompilerTests10.class
 })
 public class TestSuiteForCompiler {
 
