@@ -44,10 +44,11 @@ public class GenerateCodeForTesting {
 		compile(new File("src/testcases/test/org/mandarax/compiler/reldef6.rel"));
 		compile(new File("src/testcases/test/org/mandarax/compiler/reldef7.rel"));
 		compile(new File("src/testcases/test/org/mandarax/compiler/reldef8.rel"));
-		// redef9 does not compiler (and is not supposed to), see TestScheduler
+		// redef9 does not compile (and is not supposed to), see TestScheduler
 		compile(new File("src/testcases/test/org/mandarax/compiler/reldef10.rel"));
 		compile(new File("src/testcases/test/org/mandarax/compiler/reldef11.rel"));
 		compile(new File("src/testcases/test/org/mandarax/compiler/reldef12.rel"));
+		compile(new File("src/testcases/test/org/mandarax/compiler/reldef13.rel"));
 	}
 
 	private static void compile(File file) throws Exception {

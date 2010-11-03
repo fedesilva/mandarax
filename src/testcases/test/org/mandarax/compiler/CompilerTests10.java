@@ -36,18 +36,14 @@ public class CompilerTests10 {
 	@Test
 	public void test1() throws Exception {
 		MalePerson max = new MalePerson("Max");
-		MalePerson jens = new MalePerson("Jens");
 		MalePerson klaus = new MalePerson("Klaus");
-		MalePerson otto = new MalePerson("Otto");
 		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().isGrandFather(klaus, max);
 		assertTrue(rs.hasNext());	
 	}
 	
 	@Test
 	public void test2() throws Exception {
-		MalePerson max = new MalePerson("Max");
 		MalePerson jens = new MalePerson("Jens");
-		MalePerson klaus = new MalePerson("Klaus");
 		MalePerson otto = new MalePerson("Otto");
 		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().isGrandFather(otto, jens);
 		assertTrue(rs.hasNext());	
@@ -55,9 +51,7 @@ public class CompilerTests10 {
 	
 	@Test
 	public void test3() throws Exception {
-		MalePerson max = new MalePerson("Max");
 		MalePerson jens = new MalePerson("Jens");
-		MalePerson klaus = new MalePerson("Klaus");
 		MalePerson otto = new MalePerson("Otto");
 		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().isGrandFather(jens, otto);
 		assertFalse(rs.hasNext());	
@@ -67,8 +61,6 @@ public class CompilerTests10 {
 	public void test4() throws Exception {
 		MalePerson max = new MalePerson("Max");
 		MalePerson jens = new MalePerson("Jens");
-		MalePerson klaus = new MalePerson("Klaus");
-		MalePerson otto = new MalePerson("Otto");
 		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().isGrandFather(jens, max);
 		assertFalse(rs.hasNext());	
 	}
