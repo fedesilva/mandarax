@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>GrandFather</strong>.
- * @version Nov 2, 2010 7:09:58 PM 
+ * @version Nov 3, 2010 1:08:10 PM 
  */
 public class GrandFatherRelInstances {
 	// object references
@@ -80,6 +80,8 @@ public class GrandFatherRelInstances {
 	
 		
 		// utility class used to keep track of variables bindings
+		// rule: rule1: Father(x,y) & Father(y,z) -> GrandFather(x.getName(),z.getName());
+		// prereqs: [Father(x,y), Father(y,z)]
 		class _Bindings {
 			private test.org.mandarax.compiler.Person x = null;
 			private test.org.mandarax.compiler.Person z = null;

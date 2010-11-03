@@ -76,6 +76,17 @@ public class Prereq {
 		}
 		return null;
 	}
+	// look for the last relationship defined by previous prereqs
+	public RelationshipDefinition getPreviousRel() {
+		
+		if (previous==null) return null;
+		else if (previous.isDefinedByRelationship()) {
+			return previous.getRel();
+		}
+		else {
+			return previous.getPreviousRel();
+		}
+	}
 	
 	// get the query to be invoked for a function invocation that references a relationship definition
 	public FunctionDeclaration getQuery() throws CompilerException {

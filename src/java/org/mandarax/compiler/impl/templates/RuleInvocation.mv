@@ -2,6 +2,8 @@
 	@code{ctrl=new VariableBindings(context,(rel.name)+ext+'Instances');scheduler=new Scheduler(resolver,rule,query);rule=scheduler.rule;head=rule.head;body=scheduler.prerequisites;hterms=head.parameters;counter=new Counter();lastPrereq=null;ctrl.bind(head,query);}
 		
 		// utility class used to keep track of variables bindings
+		// rule: @{rule}
+		// prereqs: @{body}
 		class _Bindings {
 		@foreach{v:rule.variables}	private @{v.typeName} @{v.name} = @{ctrl.getBinding(v)};
 		@end{}}
@@ -13,8 +15,8 @@
 		@if{prereq.firstRelation}final ResourceIterator<@{prereq.rel.name}@{ext}> iterator@{index} = @{prereq.rel.name}@{ext}Instances.@{prereq.query.name}(@{prereq.printBoundParams('_bindings','_derivation.push()')});
 		@code{lastPrereq=prereq;}
 		
-		@else{prereq.definedByRelationship}final ResourceIterator<@{prereq.rel.name}@{ext}> iterator@{index} =  new NestedIterator<@{prereq.rel.name}@{ext}, @{prereq.previous.rel.name}@{ext}>(iterator@{index-1}) {
-                	public ResourceIterator<@{prereq.previous.rel.name}@{ext}> getNextIterator(@{prereq.rel.name}@{ext} _object) {
+		@else{prereq.definedByRelationship}final ResourceIterator<@{prereq.rel.name}@{ext}> iterator@{index} =  new NestedIterator<@{prereq.rel.name}@{ext}, @{prereq.previousRelPrereq.rel.name}@{ext}>(iterator@{index-1}) {
+                	public ResourceIterator<@{prereq.previousRelPrereq.rel.name}@{ext}> getNextIterator(@{prereq.rel.name}@{ext} _object) {
                 				// bind parameters from @{prereq.previousRelPrereq.expression}
 						@foreach{v:prereq.previous.newlyBoundVariables}_bindings.@{v} = _object.@{prereq.previous.getSlot(v)};
 						@end{}
@@ -22,14 +24,17 @@
                 	}
             	};
 		@code{lastPrereq=prereq;}
-		@else{prereq.hasPreviousRelPrereq()} 
-					com.google.common.base.Predicate<Object> _filter@{index} = new com.google.common.base.Predicate<Object>() {
-						public boolean apply(Object _o) {
+		@else{prereq.hasPreviousRelPrereq()}
+					com.google.common.base.Predicate<@{prereq.previousRelPrereq.rel.name}@{ext}> _filter@{index} = new com.google.common.base.Predicate<@{prereq.previousRelPrereq.rel.name}@{ext}>() {
+						public boolean apply(@{prereq.previousRelPrereq.rel.name}@{ext} _object) {
+						        // bind parameters from @{prereq.previous.expression}
+								@foreach{v:prereq.previous.newlyBoundVariables}_bindings.@{v} = _object.@{prereq.previous.getSlot(v)};
+								@end{}
 								return @{prereq.printScoped('_bindings')};
 							}
 					};
-					final ResourceIterator iterator@{index} =  new FilteredIterator(iterator@{index-1},_filter@{index});
-		@else{} 
+					final ResourceIterator<@{prereq.previousRelPrereq.rel.name}@{ext}> iterator@{index} =  new FilteredIterator<@{prereq.previousRelPrereq.rel.name}@{ext}>(iterator@{index-1},_filter@{index});
+		@else{}
 					if (!(@{prereq.printScoped('_bindings')})) {return EmptyIterator.DEFAULT;} 
 		@end{}@end{}
 		

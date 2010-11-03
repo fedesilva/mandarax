@@ -4,7 +4,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>Related</strong>.
- * @version Nov 2, 2010 7:09:58 PM 
+ * @version Nov 3, 2010 1:08:09 PM 
  */
 public class RelatedRelInstances {
 	// object references
@@ -220,6 +220,8 @@ public class RelatedRelInstances {
 	
 		
 		// utility class used to keep track of variables bindings
+		// rule: _Father_extends_Related: Father(_x0,_x1) -> Related(_x0,_x1);
+		// prereqs: [Father(_x0,_x1)]
 		class _Bindings {
 			private java.lang.String _x0 = person1;
 			private java.lang.String _x1 = null;
@@ -260,6 +262,8 @@ public class RelatedRelInstances {
 	
 		
 		// utility class used to keep track of variables bindings
+		// rule: _GrandFather_extends_Related: GrandFather(_x0,_x1) -> Related(_x0,_x1);
+		// prereqs: [GrandFather(_x0,_x1)]
 		class _Bindings {
 			private java.lang.String _x0 = person1;
 			private java.lang.String _x1 = null;
@@ -329,6 +333,8 @@ public class RelatedRelInstances {
 	
 		
 		// utility class used to keep track of variables bindings
+		// rule: _Father_extends_Related: Father(_x0,_x1) -> Related(_x0,_x1);
+		// prereqs: [Father(_x0,_x1)]
 		class _Bindings {
 			private java.lang.String _x0 = null;
 			private java.lang.String _x1 = person2;
@@ -369,6 +375,8 @@ public class RelatedRelInstances {
 	
 		
 		// utility class used to keep track of variables bindings
+		// rule: _GrandFather_extends_Related: GrandFather(_x0,_x1) -> Related(_x0,_x1);
+		// prereqs: [GrandFather(_x0,_x1)]
 		class _Bindings {
 			private java.lang.String _x0 = null;
 			private java.lang.String _x1 = person2;
@@ -438,6 +446,8 @@ public class RelatedRelInstances {
 	
 		
 		// utility class used to keep track of variables bindings
+		// rule: _Father_extends_Related: Father(_x0,_x1) -> Related(_x0,_x1);
+		// prereqs: [Father(_x0,_x1)]
 		class _Bindings {
 			private java.lang.String _x0 = person1;
 			private java.lang.String _x1 = person2;
@@ -477,6 +487,8 @@ public class RelatedRelInstances {
 	
 		
 		// utility class used to keep track of variables bindings
+		// rule: _GrandFather_extends_Related: GrandFather(_x0,_x1) -> Related(_x0,_x1);
+		// prereqs: [GrandFather(_x0,_x1)]
 		class _Bindings {
 			private java.lang.String _x0 = person1;
 			private java.lang.String _x1 = person2;
@@ -538,6 +550,8 @@ public class RelatedRelInstances {
 	
 		
 		// utility class used to keep track of variables bindings
+		// rule: _Father_extends_Related: Father(_x0,_x1) -> Related(_x0,_x1);
+		// prereqs: [Father(_x0,_x1)]
 		class _Bindings {
 			private java.lang.String _x0 = null;
 			private java.lang.String _x1 = null;
@@ -579,6 +593,8 @@ public class RelatedRelInstances {
 	
 		
 		// utility class used to keep track of variables bindings
+		// rule: _GrandFather_extends_Related: GrandFather(_x0,_x1) -> Related(_x0,_x1);
+		// prereqs: [GrandFather(_x0,_x1)]
 		class _Bindings {
 			private java.lang.String _x0 = null;
 			private java.lang.String _x1 = null;

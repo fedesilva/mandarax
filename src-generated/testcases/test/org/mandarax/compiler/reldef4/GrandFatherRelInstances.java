@@ -4,7 +4,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>GrandFather</strong>.
- * @version Nov 2, 2010 7:09:58 PM 
+ * @version Nov 3, 2010 1:08:09 PM 
  */
 public class GrandFatherRelInstances {
 	// object references
@@ -134,6 +134,8 @@ public class GrandFatherRelInstances {
 	
 		
 		// utility class used to keep track of variables bindings
+		// rule: rule1: Father(x,y) & Father(y,z) -> GrandFather(x,z);
+		// prereqs: [Father(x,y), Father(y,z)]
 		class _Bindings {
 			private java.lang.String x = grandFather;
 			private java.lang.String z = null;
@@ -187,6 +189,8 @@ public class GrandFatherRelInstances {
 	
 		
 		// utility class used to keep track of variables bindings
+		// rule: rule1: Father(x,y) & Father(y,z) -> GrandFather(x,z);
+		// prereqs: [Father(x,y), Father(y,z)]
 		class _Bindings {
 			private java.lang.String x = null;
 			private java.lang.String z = grandChild;
@@ -240,6 +244,8 @@ public class GrandFatherRelInstances {
 	
 		
 		// utility class used to keep track of variables bindings
+		// rule: rule1: Father(x,y) & Father(y,z) -> GrandFather(x,z);
+		// prereqs: [Father(x,y), Father(y,z)]
 		class _Bindings {
 			private java.lang.String x = grandFather;
 			private java.lang.String z = grandChild;
@@ -292,6 +298,8 @@ public class GrandFatherRelInstances {
 	
 		
 		// utility class used to keep track of variables bindings
+		// rule: rule1: Father(x,y) & Father(y,z) -> GrandFather(x,z);
+		// prereqs: [Father(x,y), Father(y,z)]
 		class _Bindings {
 			private java.lang.String x = null;
 			private java.lang.String z = null;

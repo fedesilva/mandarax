@@ -4,7 +4,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>Father</strong>.
- * @version Nov 2, 2010 7:09:57 PM 
+ * @version Nov 3, 2010 1:08:09 PM 
  */
 public class FatherRelInstances {
 	// object references

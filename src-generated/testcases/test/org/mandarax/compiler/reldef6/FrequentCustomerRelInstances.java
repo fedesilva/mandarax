@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>FrequentCustomer</strong>.
- * @version Nov 2, 2010 7:09:58 PM 
+ * @version Nov 3, 2010 1:08:09 PM 
  */
 public class FrequentCustomerRelInstances {
 	// object references
@@ -90,6 +90,8 @@ public class FrequentCustomerRelInstances {
 	
 		
 		// utility class used to keep track of variables bindings
+		// rule: rule1: (c.getTransactionCount())>5 -> FrequentCustomer(c);
+		// prereqs: [(c.getTransactionCount())>5]
 		class _Bindings {
 			private test.org.mandarax.compiler.Customer c = customer;
 		}
@@ -98,7 +100,7 @@ public class FrequentCustomerRelInstances {
 
 		 
 		// apply prerequisite (c.getTransactionCount())>5
-		 
+		
 					if (!((_bindings.c.getTransactionCount())>5)) {return EmptyIterator.DEFAULT;} 
 		
 		
@@ -121,6 +123,8 @@ public class FrequentCustomerRelInstances {
 	
 		
 		// utility class used to keep track of variables bindings
+		// rule: rule2: (c.getTransactionCount())>3 & (c.getTurnover())>500 -> FrequentCustomer(c);
+		// prereqs: [(c.getTransactionCount())>3, (c.getTurnover())>500]
 		class _Bindings {
 			private test.org.mandarax.compiler.Customer c = customer;
 		}
@@ -129,11 +133,11 @@ public class FrequentCustomerRelInstances {
 
 		 
 		// apply prerequisite (c.getTransactionCount())>3
-		 
+		
 					if (!((_bindings.c.getTransactionCount())>3)) {return EmptyIterator.DEFAULT;} 
 		 
 		// apply prerequisite (c.getTurnover())>500
-		 
+		
 					if (!((_bindings.c.getTurnover())>500)) {return EmptyIterator.DEFAULT;} 
 		
 		

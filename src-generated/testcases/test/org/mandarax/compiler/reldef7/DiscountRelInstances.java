@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>Discount</strong>.
- * @version Nov 2, 2010 7:09:58 PM 
+ * @version Nov 3, 2010 1:08:09 PM 
  */
 public class DiscountRelInstances {
 	// object references
@@ -146,6 +146,8 @@ public class DiscountRelInstances {
 	
 		
 		// utility class used to keep track of variables bindings
+		// rule: rule1: (c.getTurnover())>1000 -> Discount(c,goldDiscount);
+		// prereqs: [(c.getTurnover())>1000]
 		class _Bindings {
 			private test.org.mandarax.compiler.Customer c = customer;
 			private test.org.mandarax.compiler.Discount goldDiscount = DiscountRelInstances.goldDiscount;
@@ -155,7 +157,7 @@ public class DiscountRelInstances {
 
 		 
 		// apply prerequisite (c.getTurnover())>1000
-		 
+		
 					if (!((_bindings.c.getTurnover())>1000)) {return EmptyIterator.DEFAULT;} 
 		
 		
@@ -178,6 +180,8 @@ public class DiscountRelInstances {
 	
 		
 		// utility class used to keep track of variables bindings
+		// rule: rule2: FrequentCustomer(c) -> Discount(c,silverDiscount);
+		// prereqs: [FrequentCustomer(c)]
 		class _Bindings {
 			private test.org.mandarax.compiler.Customer c = customer;
 			private test.org.mandarax.compiler.Discount silverDiscount = DiscountRelInstances.silverDiscount;
@@ -217,6 +221,8 @@ public class DiscountRelInstances {
 	
 		
 		// utility class used to keep track of variables bindings
+		// rule: rule3: (c.getPaymentMethod())=="CompanyVisa" -> Discount(c,specialDiscount);
+		// prereqs: [(c.getPaymentMethod())=="CompanyVisa"]
 		class _Bindings {
 			private test.org.mandarax.compiler.Customer c = customer;
 			private test.org.mandarax.compiler.Discount specialDiscount = DiscountRelInstances.specialDiscount;
@@ -226,7 +232,7 @@ public class DiscountRelInstances {
 
 		 
 		// apply prerequisite (c.getPaymentMethod())=="CompanyVisa"
-		 
+		
 					if (!(org.mandarax.rt.Equals.compare(_bindings.c.getPaymentMethod(),"CompanyVisa"))) {return EmptyIterator.DEFAULT;} 
 		
 		
@@ -250,6 +256,8 @@ public class DiscountRelInstances {
 	
 		
 		// utility class used to keep track of variables bindings
+		// rule: rule1: (c.getTurnover())>1000 -> Discount(c,goldDiscount);
+		// prereqs: [(c.getTurnover())>1000]
 		class _Bindings {
 			private test.org.mandarax.compiler.Customer c = customer;
 			private test.org.mandarax.compiler.Discount goldDiscount = DiscountRelInstances.goldDiscount;
@@ -259,7 +267,7 @@ public class DiscountRelInstances {
 
 		 
 		// apply prerequisite (c.getTurnover())>1000
-		 
+		
 					if (!((_bindings.c.getTurnover())>1000)) {return EmptyIterator.DEFAULT;} 
 		
 		
@@ -282,6 +290,8 @@ public class DiscountRelInstances {
 	
 		
 		// utility class used to keep track of variables bindings
+		// rule: rule2: FrequentCustomer(c) -> Discount(c,silverDiscount);
+		// prereqs: [FrequentCustomer(c)]
 		class _Bindings {
 			private test.org.mandarax.compiler.Customer c = customer;
 			private test.org.mandarax.compiler.Discount silverDiscount = DiscountRelInstances.silverDiscount;
@@ -321,6 +331,8 @@ public class DiscountRelInstances {
 	
 		
 		// utility class used to keep track of variables bindings
+		// rule: rule3: (c.getPaymentMethod())=="CompanyVisa" -> Discount(c,specialDiscount);
+		// prereqs: [(c.getPaymentMethod())=="CompanyVisa"]
 		class _Bindings {
 			private test.org.mandarax.compiler.Customer c = customer;
 			private test.org.mandarax.compiler.Discount specialDiscount = DiscountRelInstances.specialDiscount;
@@ -330,7 +342,7 @@ public class DiscountRelInstances {
 
 		 
 		// apply prerequisite (c.getPaymentMethod())=="CompanyVisa"
-		 
+		
 					if (!(org.mandarax.rt.Equals.compare(_bindings.c.getPaymentMethod(),"CompanyVisa"))) {return EmptyIterator.DEFAULT;} 
 		
 		

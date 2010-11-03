@@ -164,10 +164,7 @@ public class Scheduler {
 					// unbound complex term - reuse by introduce new variable
 					Variable v = this.substitutions.get(child);
 					if (v==null) {
-						v = new Variable(NO_POSITION,child.getContext(),createVarName());
-						v.setType(child.getType());
-						LOGGER.debug("Substitute term in body of rule " + rule.getId() + ": " + child + " -> " + v);
-						substitutions.put(child,v);
+						v = createVariable(child);
 						mustApplySubstitutions = true;
 						unresolved.add(v);
 						v.setProperty(ASSERTED_BY_COMPILER, true);
@@ -229,15 +226,13 @@ public class Scheduler {
 				}
 				else if (!param.isGround()) {
 					// see also issue8/case4
-					String varName = createVarName();
-					Variable var = new Variable(NO_POSITION,rule.getContext(),varName);
-					var.setType(param.getType());
+					Variable var = createVariable(param);
 					boundVariables.add(var);
 					BinaryExpression constraint = new BinaryExpression(NO_POSITION,rule.getContext(),BinOp.EQ,var,param);
 					constraint.setProperty(ASSERTED_BY_COMPILER,true);
+					constraint.setType(Boolean.class);
 					LOGGER.debug("Substitute term in head of rule " + rule.getId() + ": " + param + " -> " + var);
 					LOGGER.debug("Creating new constraint in rule " + rule.getId() + ": " + constraint);
-					substitutions.put(param,var);
 					rule.addToBody(constraint);					
 				}
 				
@@ -254,6 +249,13 @@ public class Scheduler {
 		}
 		
 		
+	}
+	private Variable createVariable(Expression toBeReplaced) {
+		Variable v = new Variable(NO_POSITION,toBeReplaced.getContext(),createVarName());
+		v.setType(toBeReplaced.getType());
+		LOGGER.debug("Substitute term in body of rule " + rule.getId() + ": " + toBeReplaced + " -> " + v);
+		substitutions.put(toBeReplaced,v);
+		return v;
 	}
 	
 	private String createVarName() {
@@ -292,7 +294,7 @@ public class Scheduler {
 
 			@Override
 			public Expression apply(Expression x) {
-				return x.substitute(substitutions);
+				return (x.getProperty(ASSERTED_BY_COMPILER)==null)?x.substitute(substitutions):x;
 			}}),(FunctionInvocation)rule.getHead().substitute(substitutions));
 		
 		
@@ -304,6 +306,13 @@ public class Scheduler {
 	 * @return
 	 */
 	public List<Prereq> getPrerequisites() {
+//		for (Prereq p:prereqs) {
+//			Expression x = p.getExpression();
+//			System.out.println(x + " : " + x.getTypeName());
+//			for (Expression c:x.getAllChildren()) {
+//				System.out.println(" " + c + " : " + c.getTypeName());
+//			}
+//		}
 		return prereqs;
 	}
 	/**

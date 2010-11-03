@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>GrandFather</strong>.
- * @version Nov 2, 2010 7:09:58 PM 
+ * @version Nov 3, 2010 1:08:10 PM 
  */
 public class GrandFatherRelInstances {
 	// object references
@@ -80,6 +80,8 @@ public class GrandFatherRelInstances {
 	
 		
 		// utility class used to keep track of variables bindings
+		// rule: rule1: Father(x,y) & Father(y,z) & __t0==(x.getName()) -> GrandFather(__t0,z.getName());
+		// prereqs: [Father(x,y), __t0==(x.getName()), Father(y,z)]
 		class _Bindings {
 			private java.lang.String __t0 = grandFather;
 			private test.org.mandarax.compiler.Person z = null;
@@ -90,21 +92,28 @@ public class GrandFatherRelInstances {
 		
 
 		 
-		// apply prerequisite __t0==__t0
-		 
-					if (!(org.mandarax.rt.Equals.compare(_bindings.__t0,_bindings.__t0))) {return EmptyIterator.DEFAULT;} 
-		 
 		// apply prerequisite Father(x,y)
-		final ResourceIterator<FatherRel> iterator2 = FatherRelInstances.getFatherAndChild(_derivation.push());
+		final ResourceIterator<FatherRel> iterator1 = FatherRelInstances.getFatherAndChild(_derivation.push());
 		
 		
+		 
+		// apply prerequisite __t0==(x.getName())
+		
+					com.google.common.base.Predicate<FatherRel> _filter2 = new com.google.common.base.Predicate<FatherRel>() {
+						public boolean apply(FatherRel _object) {
+						        // bind parameters from Father(x,y)
+								_bindings.x = _object.father;
+								_bindings.y = _object.child;
+								
+								return org.mandarax.rt.Equals.compare(_bindings.__t0,_bindings.x.getName());
+							}
+					};
+					final ResourceIterator<FatherRel> iterator2 =  new FilteredIterator<FatherRel>(iterator1,_filter2);
 		 
 		// apply prerequisite Father(y,z)
 		final ResourceIterator<FatherRel> iterator3 =  new NestedIterator<FatherRel, FatherRel>(iterator2) {
                 	public ResourceIterator<FatherRel> getNextIterator(FatherRel _object) {
                 				// bind parameters from Father(x,y)
-						_bindings.x = _object.father;
-						_bindings.y = _object.child;
 						
 									return FatherRelInstances.getChildren(_derivation.push(),_bindings.y);
                 	}
