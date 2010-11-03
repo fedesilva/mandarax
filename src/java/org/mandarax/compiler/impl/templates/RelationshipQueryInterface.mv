@@ -1,4 +1,4 @@
-package @{context.packageDeclaration}
+package @{packageName};
 @foreach{imp:context.importDeclarations} 
 @{imp}
 @end{}

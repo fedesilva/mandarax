@@ -230,6 +230,8 @@ public class DefaultCompiler implements Compiler {
 	public void createRelationshipQueryInterface (Location target,CompilationUnit cu,RelationshipDefinition rel) throws Exception {
 		Map<String,Object> bindings = createParamBindings(cu);
 		bindings.put("rel",rel);
+		String packageName = cu.getContext().getPackageDeclaration().getName();
+		bindings.put("packageName",packageName);
 		String generated = (String) TemplateRuntime.execute(getTemplate(RELATIONSHIP_QUERY_INTERFACE), bindings,Templates.registry);
 		printGeneratedCode(cu,target,rel.getName()+TYPE_EXTENSION+"Instances",generated);
 	}
