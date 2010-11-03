@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>FrequentCustomer</strong>.
- * @version Nov 3, 2010 1:08:09 PM 
+ * @version Nov 3, 2010 1:16:56 PM 
  */
 public class FrequentCustomerRelInstances {
 	// object references

@@ -4,7 +4,7 @@ import test.org.mandarax.compiler.Person;
 
 /**
  * Class representing the relationship <strong>GrandFather</strong>.
- * @version Nov 3, 2010 1:08:09 PM 
+ * @version Nov 3, 2010 1:16:55 PM 
  */
 public class GrandFatherRel {
 
