@@ -11,6 +11,8 @@
 
 package org.mandarax.dsl;
 
+import static org.apache.commons.lang.StringEscapeUtils.unescapeJava;
+
 /**
  * Represents annotations.
  * @author jens dietrich
@@ -23,7 +25,7 @@ public class Annotation extends ASTNode {
 	public Annotation(Position position, Context context, String key,String value) {
 		super(position, context);
 		this.key = key;
-		this.value = value;
+		this.value = unescapeJava(value);
 	}
 
 	@Override

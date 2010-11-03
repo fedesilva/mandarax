@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>Discount</strong>.
- * @version Nov 3, 2010 1:16:56 PM 
+ * @version Nov 3, 2010 2:28:52 PM 
  */
 public class DiscountRelInstances {
 	// object references
@@ -47,7 +47,7 @@ public class DiscountRelInstances {
 		_annotations_rule2.put("lastupdated","26/10/10");
 		
 		// rule annotations for rule  rule2: FrequentCustomer(c) -> Discount(c,silverDiscount);
-		_annotations_rule2.put("name","\\\"silver\\\" rule");
+		_annotations_rule2.put("name","\"silver\" rule");
 		
 		
 	
