@@ -18,6 +18,8 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Member;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+
+import org.apache.commons.lang.ClassUtils;
 import org.apache.log4j.Logger;
 import org.mandarax.dsl.Context;
 import org.mandarax.dsl.ImportDeclaration;
@@ -96,7 +98,13 @@ public class DefaultResolver implements Resolver {
 
 	@Override
 	public Class getType(Context context,String name) throws ResolverException {
-		Class clazz = tryToLoad(name);
+		Class clazz = tryToLoadPrimitive(name);
+		if (clazz!=null) {
+			LOGGER.debug("Resolving class name " +name + " to " + clazz);
+			return clazz;
+		}
+		
+		clazz = tryToLoad(name);
 		if (clazz!=null) {
 			LOGGER.debug("Resolving class name " +name + " to " + clazz);
 			return clazz;
@@ -145,6 +153,15 @@ public class DefaultResolver implements Resolver {
 		throw new ResolverException("Cannot find class " + name);
 	}
 	
+	private Class tryToLoadPrimitive(String name) throws ResolverException  {
+		//if ("int".equals(name)) return Integer.TYPE;
+		try {
+			return ClassUtils.getClass(name);
+		}
+		catch (Exception x) {
+			throw new ResolverException(x);
+		}
+	}
 	private Class tryToLoad(String name) {
 		try {
 			return (classloader==null)?Class.forName(name):classloader.loadClass(name);
