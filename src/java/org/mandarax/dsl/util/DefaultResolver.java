@@ -154,12 +154,11 @@ public class DefaultResolver implements Resolver {
 	}
 	
 	private Class tryToLoadPrimitive(String name) throws ResolverException  {
-		//if ("int".equals(name)) return Integer.TYPE;
 		try {
 			return ClassUtils.getClass(name);
 		}
 		catch (Exception x) {
-			throw new ResolverException(x);
+			return null;
 		}
 	}
 	private Class tryToLoad(String name) {
