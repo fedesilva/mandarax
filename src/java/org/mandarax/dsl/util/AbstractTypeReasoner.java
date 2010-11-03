@@ -18,6 +18,8 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
+import org.apache.log4j.Logger;
 import org.mandarax.dsl.*;
 
 /**
@@ -25,6 +27,8 @@ import org.mandarax.dsl.*;
  * @author jens dietrich
  */
 public abstract class AbstractTypeReasoner implements TypeReasoner {
+	
+	public static final Logger LOGGER = Logger.getLogger(AbstractTypeReasoner.class); 
 
 	@Override
 	public Class getType(Expression x,Resolver r,Collection<RelationshipDefinition> rels) throws TypeReasoningException {
@@ -40,7 +44,10 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 		else if (x instanceof UnaryExpression) type = doGetType((UnaryExpression)x,r,rels);
 		else if (x instanceof Variable) type = doGetType((Variable)x,r,rels);
 		else if (x instanceof FunctionInvocation) type = doGetType((FunctionInvocation)x,r,rels);
-		else throw new TypeReasoningException("Unsupported expression type " + x.getClass().getName());
+		else {
+			LOGGER.warn("Unsupported expression type " + x.getClass().getName());
+			throw new TypeReasoningException("Unsupported expression type " + x.getClass().getName());
+		}
 		x.setProperty(AnnotationKeys.TYPE,type);
 		return type;
 	}
@@ -48,11 +55,13 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 	private void exception(Object... tokens) throws TypeReasoningException {
 		StringBuffer b = new StringBuffer();
 		for (Object s:tokens) b.append(s);
+		LOGGER.error(b.toString());
 		throw new TypeReasoningException(b.toString());
 	}
 	private void exception(Exception cause,Object... tokens) throws TypeReasoningException {
 		StringBuffer b = new StringBuffer();
 		for (Object s:tokens) b.append(s);
+		LOGGER.error(b.toString(),cause);
 		throw new TypeReasoningException(b.toString(),cause);
 	}
 	private void failed(Expression expression,String reason,Exception cause) throws TypeReasoningException {
@@ -178,13 +187,7 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 		// check whether function is a relationship reference
 		// if so, this is a predicate and the return type is boolean
 		// TODO: this will check only name and param number, not types
-		for (RelationshipDefinition rel:rels) {
-			for (FunctionDeclaration query:rel.getQueries()) {
-				if (query.getName().equals(name) && query.getParameterNames().size()==expression.getParameters().size()) {
-					return Boolean.class;
-				}
-			}
-			
+		for (RelationshipDefinition rel:rels) {			
 			// expressions in rule heads directly reference relationships, not queries
 			if (rel.getName().equals(name) && rel.getSlotDeclarations().size()==expression.getParameters().size()) {
 				return Boolean.class;
@@ -245,7 +248,7 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 		return type==Integer.class || type==Long.class || type==Short.class || type==Character.class || type==Byte.class;
 	} 
 	private boolean isNumType(Class type) {
-		return type==Integer.class || type==Long.class || type==Short.class || type==Character.class || type==Byte.class || type==Double.class || type==Float.class;
+		return (type.isPrimitive() && type!=Boolean.class) || type==Integer.class || type==Long.class || type==Short.class || type==Character.class || type==Byte.class || type==Double.class || type==Float.class;
 	} 
 	
 	private boolean isComparison(BinOp op) {
