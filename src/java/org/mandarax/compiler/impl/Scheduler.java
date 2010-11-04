@@ -92,6 +92,8 @@ public class Scheduler {
 		LOGGER.info("Scheduling prerequisites in " + rule);
 		
 		// clone rule - we might have to add additional expressions to the body, see for instance issue8/case4 for an example
+		String oldRule = rule.toString();
+		
 		rule = rule.clone();
 		
 		initVariables();
@@ -115,6 +117,11 @@ public class Scheduler {
 			last = addAllResolved(body,last);
 			last = addOneUnresolved(body,last);
 		}
+		
+		
+		LOGGER.debug("Finished scheduling rule " + oldRule + " for query " + query + " / relationship " + query.getRelationship());
+		LOGGER.debug("Rule is now: " + this.rule);
+		LOGGER.debug("Prerequisites: " + this.prereqs);
 		
 		// check whether all variables in head have been bound
 		Collection<Expression> unbound = Collections2.filter(mustBeBound, new Predicate<Expression>() {
