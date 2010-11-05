@@ -481,7 +481,8 @@ public class DefaultCompiler implements Compiler {
 		}
 		
 		// collect function references
-		final Collection<FunctionInvocation> referencedFunctions = new HashSet<FunctionInvocation>();
+		// careful with duplicates here: we could get the same expressions in multiple rules
+		final Collection<FunctionInvocation> referencedFunctions = new ArrayList<FunctionInvocation>(); 
 		// do not count rule heads!
 		class ReferencedFunctionCollector extends AbstractASTVisitor {
 			private Rule context = null;
@@ -512,8 +513,8 @@ public class DefaultCompiler implements Compiler {
 			for (RelationshipDefinition rel:declaredRels) {
 				// TODO type check here? currently we only look for name and param number
 				if (ref.getFunction().equals(rel.getName()) && ref.getParameters().size()==rel.getSlotDeclarations().size()) {
+					LOGGER.debug("Mapping term " + ref + " defined at " + ref.getPosition() + " to relationship " + rel);
 					ref.setRelationship(rel);
-					// TODO logging
 					break;
 				}
 			}
