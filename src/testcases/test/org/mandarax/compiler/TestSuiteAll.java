@@ -22,7 +22,6 @@ import org.junit.runners.*;
 @Suite.SuiteClasses({
 	TestGeneratedRelationshipTypes.class,
 	TestGeneratedQueryInterfaces.class,
-	TestScheduler.class,
 	TestSuiteForCompiler.class
 })
 public class TestSuiteAll {
