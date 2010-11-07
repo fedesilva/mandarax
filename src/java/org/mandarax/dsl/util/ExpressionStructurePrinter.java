@@ -101,6 +101,14 @@ public class ExpressionStructurePrinter implements ASTVisitor {
 	}
 	
 	@Override
+	public boolean visit(DoubleLiteral x) {
+		i();
+		out.print(x.getValue());
+		annotate(x);
+		return true;
+	}
+	
+	@Override
 	public boolean visit(NullValue x) {
 		i();
 		out.print("null");
@@ -187,6 +195,9 @@ public class ExpressionStructurePrinter implements ASTVisitor {
 
 	@Override
 	public void endVisit(IntLiteral x) {}
+	
+	@Override
+	public void endVisit(DoubleLiteral x) {}
 	
 	@Override
 	public void endVisit(NullValue x) {}

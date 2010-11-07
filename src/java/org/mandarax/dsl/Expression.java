@@ -135,6 +135,8 @@ public abstract class Expression extends ASTNode implements Cloneable {
 			@Override
 			public boolean visit(IntLiteral x) {return add(x);}
 			@Override
+			public boolean visit(DoubleLiteral x) {return add(x);}
+			@Override
 			public boolean visit(MemberAccess x) {return add(x);}
 			@Override
 			public boolean visit(StringLiteral x) {return add(x);}

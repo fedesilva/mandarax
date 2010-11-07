@@ -31,6 +31,7 @@ public interface ASTVisitor {
 	public boolean visit(ConditionalExpression x);
 	public boolean visit(InstanceOfExpression x);
 	public boolean visit(IntLiteral x);
+	public boolean visit(DoubleLiteral x);
 	public boolean visit(MemberAccess x);
 	public boolean visit(StringLiteral x);
 	public boolean visit(UnaryExpression x);
@@ -54,6 +55,7 @@ public interface ASTVisitor {
 	public void endVisit(ConditionalExpression x);
 	public void endVisit(InstanceOfExpression x);
 	public void endVisit(IntLiteral x);
+	public void endVisit(DoubleLiteral x);
 	public void endVisit(MemberAccess x);
 	public void endVisit(StringLiteral x);
 	public void endVisit(UnaryExpression x);

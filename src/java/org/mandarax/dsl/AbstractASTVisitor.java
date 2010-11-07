@@ -46,6 +46,11 @@ public class AbstractASTVisitor implements ASTVisitor {
 	public boolean visit(IntLiteral x) {
 		return true;
 	}
+	
+	@Override
+	public boolean visit(DoubleLiteral x) {
+		return true;
+	}
 
 	@Override
 	public boolean visit(MemberAccess x) {
@@ -144,6 +149,9 @@ public class AbstractASTVisitor implements ASTVisitor {
 
 	@Override
 	public void endVisit(IntLiteral x) {}
+	
+	@Override
+	public void endVisit(DoubleLiteral x) {}
 
 	@Override
 	public void endVisit(MemberAccess x) {}

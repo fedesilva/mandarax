@@ -35,11 +35,12 @@ public class VerifierCheckFreeVariablesInFacts {
 		verifier.verify(cus, new DefaultVerificationErrorReporter());
 	}
 	
-	@Test (expected=VerificationException.class)
-	public void testCompilationUnit1B() throws Exception {
-		Verifier verifier = new VerifyAll();
-		Collection<CompilationUnit> cus = readCUSFromCP("rules7.rel");
-		verifier.verify(cus, new DefaultVerificationErrorReporter());
-	}
+// removed - allow free variables in rule heads	
+//	@Test (expected=VerificationException.class)
+//	public void testCompilationUnit1B() throws Exception {
+//		Verifier verifier = new VerifyAll();
+//		Collection<CompilationUnit> cus = readCUSFromCP("rules7.rel");
+//		verifier.verify(cus, new DefaultVerificationErrorReporter());
+//	}
 	
 }

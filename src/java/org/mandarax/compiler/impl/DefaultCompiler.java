@@ -431,6 +431,7 @@ public class DefaultCompiler implements Compiler {
 			@Override public boolean visit(ConditionalExpression x) {return setType(x);}
 			@Override public boolean visit(InstanceOfExpression x) {return setType(x);}
 			@Override public boolean visit(IntLiteral x) {return setType(x);}
+			@Override public boolean visit(DoubleLiteral x) {return setType(x);}
 			@Override public boolean visit(MemberAccess x) {return setType(x);}
 			@Override public boolean visit(StringLiteral x) {return setType(x);}
 			@Override public boolean visit(UnaryExpression x) {return setType(x);}
@@ -453,6 +454,7 @@ public class DefaultCompiler implements Compiler {
 			@Override public void endVisit(ConditionalExpression x) { }
 			@Override public void endVisit(InstanceOfExpression x) { }
 			@Override public void endVisit(IntLiteral x) { }
+			@Override public void endVisit(DoubleLiteral x) { }
 			@Override public void endVisit(MemberAccess x) { }
 			@Override public void endVisit(StringLiteral x) { }
 			@Override public void endVisit(UnaryExpression x) { }

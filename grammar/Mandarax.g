@@ -211,6 +211,10 @@ integerLiteral returns [Expression value]
     |   dec = DecimalLiteral {$value = new IntLiteral(pos(dec),context,Integer.parseInt(dec.getText()));}
     ;
 
+floatingPointLiteral returns [Expression value]
+    :   l = FloatingPointLiteral {$value = new DoubleLiteral(pos(l),context,Double.parseDouble(l.getText()));}
+    ;
+    
 booleanLiteral returns [Expression value]
     :   t = 'true' {$value = new BooleanLiteral(pos(t),context,true);}
     |   f = 'false' {$value = new BooleanLiteral(pos(f),context,false);}

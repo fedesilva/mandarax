@@ -39,6 +39,7 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 		else if (x instanceof ConditionalExpression) type = doGetType((ConditionalExpression)x,r,rels);
 		else if (x instanceof InstanceOfExpression) type = doGetType((InstanceOfExpression)x,r,rels);
 		else if (x instanceof IntLiteral) type = doGetType((IntLiteral)x,r,rels);
+		else if (x instanceof DoubleLiteral) type = doGetType((DoubleLiteral)x,r,rels);
 		else if (x instanceof MemberAccess) type = doGetType((MemberAccess)x,r,rels);
 		else if (x instanceof StringLiteral) type = doGetType((StringLiteral)x,r,rels);
 		else if (x instanceof UnaryExpression) type = doGetType((UnaryExpression)x,r,rels);
@@ -48,6 +49,8 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 			LOGGER.warn("Unsupported expression type " + x.getClass().getName());
 			throw new TypeReasoningException("Unsupported expression type " + x.getClass().getName());
 		}
+		
+		if (type==null) throw new TypeReasoningException("Cannot find or compute type for expression: " + x);
 		x.setProperty(AnnotationKeys.TYPE,type);
 		return type;
 	}
@@ -150,6 +153,9 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 	}
 	protected Class doGetType (IntLiteral expression,Resolver resolver,Collection<RelationshipDefinition> rels)  throws TypeReasoningException {
 		return Integer.class;
+	}
+	protected Class doGetType (DoubleLiteral expression,Resolver resolver,Collection<RelationshipDefinition> rels)  throws TypeReasoningException {
+		return Double.class;
 	}
 	protected Class doGetType (MemberAccess expression,Resolver resolver,Collection<RelationshipDefinition> rels) throws TypeReasoningException {
 		String name = expression.getMember();
