@@ -72,7 +72,7 @@ public class Prereq {
 	}
 	
 	public boolean isFilter() {
-		return !isDefinedByRelationship() || !isBindsNewVariables();
+		return !isDefinedByRelationship() || !isBindsNewVariables() || isNAF();
 	}
 	
 	public boolean isNAF() {

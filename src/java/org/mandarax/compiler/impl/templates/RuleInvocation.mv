@@ -8,7 +8,7 @@
 		@foreach{v:rule.variables}	private @{v.typeName} @{v.name} = @{ctrl.getBinding(v)};
 		@end{}}
 		final _Bindings _bindings = new _Bindings();
-		ResourceIterator _tmp = null;
+		ResourceIterator<?> _tmp = null;
 		
 		@code{index=counter.next;} @comment{sets counter to 1}
 
@@ -21,7 +21,7 @@
 		@comment{case 1 - first prerequisite defined by a relationship binding some new variables, an iterator already exists}
 		@if{!prereq.isFilter() && index==1} @code{index=counter.next;} // case 1
 		final ResourceIterator<@{relType}> _iterator@{index} = @{relType}Instances.@{prereq.query.name}(@{prereq.printBoundParams('_bindings','_derivation.push()')});
-		@code{lastPrereq=prereq;}
+		@code{lastPrereq=prereq;}@comment{this is the last prerequisite for which an iterator has been generated}
 		
 		@comment{case 2 - second+ prerequisite defined by a relationship binding some new variables}
 		@else{!prereq.isFilter() && index>1} @code{index=counter.next;} // case 2
@@ -45,7 +45,7 @@
 								@foreach{v:prereq.previous.newlyBoundVariables}_bindings.@{v} = _object.@{prereq.previous.getSlot(v)};
 								@end{}
 								@if{prereq.definedByRelationship}
-									ResourceIterator _r =  @{relType}Instances.@{prereq.query.name}(@{prereq.printBoundParams('_bindings','_derivation.push()')});
+									ResourceIterator<@{relType}> _r =  @{relType}Instances.@{prereq.query.name}(@{prereq.printBoundParams('_bindings','_derivation.push()')});
 									boolean _b = _r.hasNext();
 									_r.close();
 									@if{prereq.NAF}return !_b;@else{}return _b;@end{}
@@ -54,7 +54,6 @@
 							}
 					};
 					final ResourceIterator<@{prevRelType}> _iterator@{index} =  new FilteredIterator<@{prevRelType}>(_iterator@{index-1},_filter@{index});
-		@code{lastPrereq=prereq;}
 		
 		@comment{case 4 - prerequisite defined by an expression of a relationship not binding new variables, an iterator does not yet exist}			 
 		@else{prereq.isFilter() && index==1} // case 4
