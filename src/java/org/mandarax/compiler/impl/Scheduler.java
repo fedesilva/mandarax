@@ -32,13 +32,12 @@ import org.mandarax.dsl.Rule;
 import org.mandarax.dsl.FunctionInvocation;
 import org.mandarax.dsl.Variable;
 import org.mandarax.dsl.util.Resolver;
-
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
-import com.google.common.collect.Lists;
-
 import static org.mandarax.dsl.Position.*;
+import static org.mandarax.dsl.Utils.NO_SUBTITUTIONS;
+import static org.mandarax.dsl.Utils.*;
 
 /**
  * Algorithm to organise the prerequisites in rules in order to optimise code generation. 
@@ -89,25 +88,31 @@ public class Scheduler {
 	 */
 	private void schedule() throws CompilerException {
 		
-		LOGGER.info("Scheduling prerequisites in " + rule);
+
+		LOGGER.info("Scheduling prerequisites in " + rule + " for query " + this.query);
 		
 		// clone rule - we might have to add additional expressions to the body, see for instance issue8/case4 for an example
 		String oldRule = rule.toString();
 		
-		rule = rule.clone();
+		rule = rule.clone();	
 		
 		initVariables();
 	
-		
 		List<Expression> body = new ArrayList<Expression>();
 		body.addAll(rule.getBody());
+		
+		// order: expressions, rel references, neg rel references 
 		Collections.sort(body,new Comparator<Expression>(){
 			@Override
 			public int compare(Expression o1, Expression o2) {
-				int r1 = (o1 instanceof FunctionInvocation)?1:0;
-				int r2 = (o2 instanceof FunctionInvocation)?1:0;
-				return r2-r1;
-			}});
+				return getRank(o1)-getRank(o2);
+			}
+			private int getRank(Expression x) {
+				if (isNegRel(x)) return 2;
+				else if (isRel(x)) return 1;
+				else return 0;
+			}
+		});
 		
 		
 		Prereq last = null;
@@ -136,11 +141,23 @@ public class Scheduler {
 		}
 	}
 	
-	private Prereq addOneUnresolved(List<Expression> body, Prereq last) {
+	private Prereq addOneUnresolved(List<Expression> body, Prereq last) throws CompilerException {
 		if (body.isEmpty()) return last;
 		
+		selected = null;
 		// TODO: optimise - sort first
-		selected = body.remove(0);
+		for (Expression x:body) {
+			if (x instanceof FunctionInvocation && ((FunctionInvocation)x).isDefinedByRelationship()) {
+				selected = x;
+				break;
+			}
+		}
+		if (selected==null) {
+			throw new CompilerException("Cannot find expression in body that can be used to bind variables");
+		}
+		else {
+			body.remove(selected);
+		}
 		
 		Collection<Expression> newVariables = getUnresolvedVariables(selected,body);
 		
@@ -297,7 +314,7 @@ public class Scheduler {
 			selected=selected.substitute(substitutions);
 		}
 		
-		rule =  new Rule(rule.getPosition(),rule.getContext(),rule.getId(),Lists.transform(rule.getBody(),new Function<Expression,Expression>(){
+		rule =  new Rule(rule.getPosition(),rule.getContext(),rule.getId(),transformList(rule.getBody(),new Function<Expression,Expression>(){
 
 			@Override
 			public Expression apply(Expression x) {
@@ -330,4 +347,13 @@ public class Scheduler {
 	public Rule getRule() {
 		return rule;
 	}
+	
+	private boolean isRel(Expression x) {
+		return (x instanceof FunctionInvocation) && ((FunctionInvocation)x).isDefinedByRelationship();
+	}
+	private boolean isNegRel(Expression x) {
+		return (x instanceof FunctionInvocation && ((FunctionInvocation)x).isNaf()) ;
+	}
+	
+
 }
