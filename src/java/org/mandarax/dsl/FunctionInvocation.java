@@ -15,9 +15,8 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import com.google.common.base.Function;
-import com.google.common.collect.Lists;
+import static org.mandarax.dsl.Utils.*;
 
 /**
  * Function invocation. A function can refer either to a relationship query or is imported.
@@ -30,6 +29,7 @@ public class FunctionInvocation extends Expression {
 	private List<Expression> parameters = new ArrayList<Expression>();
 	private RelationshipDefinition relationship = null; // if this is a reference to a relationship
 	private Method referencedMethod = null; // if this is a reference to an imported function
+	private boolean naf = false; // negation as failure can only be true if relationship != null
 	
 	public FunctionInvocation(Position position,Context context,String function,List<Expression> parameters) {
 		super(position,context);
@@ -49,7 +49,7 @@ public class FunctionInvocation extends Expression {
 	public Expression substitute(final Map<Expression,? extends Expression> substitutions) {
 		Expression substituteThis = substitutions.get(this);
 		if (substituteThis==null) {
-			FunctionInvocation e = new FunctionInvocation(getPosition(),getContext(),function,Lists.transform(parameters, new Function<Expression,Expression>() {
+			FunctionInvocation e = new FunctionInvocation(getPosition(),getContext(),function,transformList(parameters, new Function<Expression,Expression>() {
 				@Override
 				public Expression apply(Expression p) {
 					return p.substitute(substitutions);
@@ -57,6 +57,7 @@ public class FunctionInvocation extends Expression {
 			e.setRelationship(this.getRelationship());
 			e.setReferencedMethod(this.getReferencedMethod());
 			e.setType(this.getType());
+			e.setNaf(this.naf);
 			copyPropertiesTo(e);
 			return e;
 		}
@@ -140,6 +141,20 @@ public class FunctionInvocation extends Expression {
 		List<Expression> children = new ArrayList<Expression>();
 		children.addAll(this.parameters);
 		return children;
+	}
+
+	public boolean isNaf() {
+		return naf;
+	}
+
+	public void setNaf(boolean naf) {
+		this.naf = naf;
+	}
+	
+	@Override
+	public String toString() {
+		if (naf) return "not " + super.toString();
+		else return super.toString();
 	}
 
 }

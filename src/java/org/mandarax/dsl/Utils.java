@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.common.base.Function;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 
@@ -85,5 +86,11 @@ public class Utils {
 		return name;
 	}
 
-	
+	public static <F,T> List<T> transformList(List<F> fromList, Function<? super F,? extends T> function) {
+		List<T> result = new ArrayList<T>(fromList.size());
+		for (F e:fromList) {
+			result.add(function.apply(e));
+		}
+		return result;
+	}
 }

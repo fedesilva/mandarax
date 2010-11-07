@@ -1,0 +1,23 @@
+package test.org.mandarax.compiler.reldef14;
+import test.org.mandarax.compiler.*;
+Person m1 = new Person("m1",25);
+Person m2 = new Person("m2",5);
+Person m3 = new Person("m3",5);
+Person f1 = new Person("f1",25);
+rel Father(Person father,Person child) queries getFather(child),isFather(father,child),getChildren(father),getFatherAndChild() {
+	rule1: -> Father(m1,m2);
+}
+rel Mother(Person mother,Person child) queries getMother(child),isMother(mother,child),getChildren(mother),getMotherAndChild() {
+}
+rel Orphan(Person person) queries isOrphan(person){
+	rule1: isYoung(p) & !Father(f,p) & !Mother(m,p)-> Orphan(p); 	
+}
+rel SemiOrphan(Person person) queries isSemiOrphan(person){
+	rule1: isYoung(p) & Father(f,p) & !Mother(m,p)-> SemiOrphan(p); 
+	rule2: isYoung(p) & !Father(f,p) & Mother(m,p)-> SemiOrphan(p); 	
+}
+
+rel isYoung(Person person) queries isYoung(person){
+	rule1: p.age<=18 -> isYoung(p); 	
+}
+

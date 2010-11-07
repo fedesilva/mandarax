@@ -14,9 +14,8 @@ package org.mandarax.dsl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import com.google.common.base.Function;
-import com.google.common.collect.Lists;
+import static org.mandarax.dsl.Utils.*;
 
 /**
  * Constructor invocation.
@@ -97,7 +96,7 @@ public class ConstructorInvocation extends Expression {
 	public Expression substitute(final Map<Expression,? extends Expression> substitutions) {
 		Expression substituteThis = substitutions.get(this);
 		if (substituteThis==null) {
-			ConstructorInvocation e = new ConstructorInvocation(getPosition(),getContext(),type,Lists.transform(parameters, new Function<Expression,Expression>() {
+			ConstructorInvocation e = new ConstructorInvocation(getPosition(),getContext(),type,transformList(parameters, new Function<Expression,Expression>() {
 				@Override
 				public Expression apply(Expression p) {
 					return p.substitute(substitutions);

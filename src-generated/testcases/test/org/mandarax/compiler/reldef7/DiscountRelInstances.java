@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>Discount</strong>.
- * @version Nov 3, 2010 2:28:52 PM 
+ * @version Nov 8, 2010 10:35:33 AM 
  */
 public class DiscountRelInstances {
 	// object references
@@ -153,12 +153,21 @@ public class DiscountRelInstances {
 			private test.org.mandarax.compiler.Discount goldDiscount = DiscountRelInstances.goldDiscount;
 		}
 		final _Bindings _bindings = new _Bindings();
+		ResourceIterator _tmp = null;
 		
+		 
 
 		 
+		
+		
+		
+		
 		// apply prerequisite (c.getTurnover())>1000
 		
+		
+		 // case 4
 					if (!((_bindings.c.getTurnover())>1000)) {return EmptyIterator.DEFAULT;} 
+					
 		
 		
 		// rule head
@@ -187,23 +196,29 @@ public class DiscountRelInstances {
 			private test.org.mandarax.compiler.Discount silverDiscount = DiscountRelInstances.silverDiscount;
 		}
 		final _Bindings _bindings = new _Bindings();
+		ResourceIterator _tmp = null;
 		
+		 
 
 		 
+		
+		
+		
+		
 		// apply prerequisite FrequentCustomer(c)
-		final ResourceIterator<FrequentCustomerRel> iterator1 = FrequentCustomerRelInstances.isFrequentCustomer(_derivation.push(),_bindings.c);
 		
 		
+		 // case 4
+					_tmp = FrequentCustomerRelInstances.isFrequentCustomer(_derivation.push(),_bindings.c);
+					if (!_tmp.hasNext()) {
+						_tmp.close();
+						return EmptyIterator.DEFAULT;
+					}
+					
 		
 		
 		// rule head
-		return new NestedIterator<FrequentCustomerRel, DiscountRel>(iterator1) {
-                	public ResourceIterator<DiscountRel> getNextIterator(FrequentCustomerRel _object) {
-						// bind parameters from FrequentCustomer(c)
-						
-                    				return new SingletonIterator(new DiscountRel(_bindings.c,_bindings.silverDiscount));
-                	}
-        	};
+		return new SingletonIterator(new DiscountRel(_bindings.c,_bindings.silverDiscount));
         
 		
 		
@@ -228,12 +243,21 @@ public class DiscountRelInstances {
 			private test.org.mandarax.compiler.Discount specialDiscount = DiscountRelInstances.specialDiscount;
 		}
 		final _Bindings _bindings = new _Bindings();
+		ResourceIterator _tmp = null;
 		
+		 
 
 		 
+		
+		
+		
+		
 		// apply prerequisite (c.getPaymentMethod())=="CompanyVisa"
 		
+		
+		 // case 4
 					if (!(org.mandarax.rt.Equals.compare(_bindings.c.getPaymentMethod(),"CompanyVisa"))) {return EmptyIterator.DEFAULT;} 
+					
 		
 		
 		// rule head
@@ -263,12 +287,21 @@ public class DiscountRelInstances {
 			private test.org.mandarax.compiler.Discount goldDiscount = DiscountRelInstances.goldDiscount;
 		}
 		final _Bindings _bindings = new _Bindings();
+		ResourceIterator _tmp = null;
 		
+		 
 
 		 
+		
+		
+		
+		
 		// apply prerequisite (c.getTurnover())>1000
 		
+		
+		 // case 4
 					if (!((_bindings.c.getTurnover())>1000)) {return EmptyIterator.DEFAULT;} 
+					
 		
 		
 		// rule head
@@ -297,23 +330,29 @@ public class DiscountRelInstances {
 			private test.org.mandarax.compiler.Discount silverDiscount = DiscountRelInstances.silverDiscount;
 		}
 		final _Bindings _bindings = new _Bindings();
+		ResourceIterator _tmp = null;
 		
+		 
 
 		 
+		
+		
+		
+		
 		// apply prerequisite FrequentCustomer(c)
-		final ResourceIterator<FrequentCustomerRel> iterator1 = FrequentCustomerRelInstances.isFrequentCustomer(_derivation.push(),_bindings.c);
 		
 		
+		 // case 4
+					_tmp = FrequentCustomerRelInstances.isFrequentCustomer(_derivation.push(),_bindings.c);
+					if (!_tmp.hasNext()) {
+						_tmp.close();
+						return EmptyIterator.DEFAULT;
+					}
+					
 		
 		
 		// rule head
-		return new NestedIterator<FrequentCustomerRel, DiscountRel>(iterator1) {
-                	public ResourceIterator<DiscountRel> getNextIterator(FrequentCustomerRel _object) {
-						// bind parameters from FrequentCustomer(c)
-						
-                    				return new SingletonIterator(new DiscountRel(_bindings.c,_bindings.silverDiscount));
-                	}
-        	};
+		return new SingletonIterator(new DiscountRel(_bindings.c,_bindings.silverDiscount));
         
 		
 		
@@ -338,12 +377,21 @@ public class DiscountRelInstances {
 			private test.org.mandarax.compiler.Discount specialDiscount = DiscountRelInstances.specialDiscount;
 		}
 		final _Bindings _bindings = new _Bindings();
+		ResourceIterator _tmp = null;
 		
+		 
 
 		 
+		
+		
+		
+		
 		// apply prerequisite (c.getPaymentMethod())=="CompanyVisa"
 		
+		
+		 // case 4
 					if (!(org.mandarax.rt.Equals.compare(_bindings.c.getPaymentMethod(),"CompanyVisa"))) {return EmptyIterator.DEFAULT;} 
+					
 		
 		
 		// rule head

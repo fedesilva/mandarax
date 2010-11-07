@@ -127,10 +127,12 @@ public class DefaultCompiler implements Compiler {
 	}
 	
 	private void compileToClasses(Location target, List<CompilationUnit> cus) throws MandaraxException {	
-		
+		// add additional rules for inheritance
 		resolveSuperRelationships(cus);
-		
+		// associate function invocation with referenced relationships
 		resolveFunctionRefs(cus);
+		// rewrite NAF (precond: we must know which function invocation ref to relationships)
+		normalizeNAF(cus);
 		
 		for (CompilationUnit cu:cus) {
 			for (RelationshipDefinition rel:cu.getRelationshipDefinitions()) {
@@ -146,7 +148,23 @@ public class DefaultCompiler implements Compiler {
 			}
 		}
 	}
-	
+
+	private void normalizeNAF(List<CompilationUnit> cus) {
+		for (CompilationUnit cu:cus) {
+			for (RelationshipDefinition rel:cu.getRelationshipDefinitions()) {
+				for (int i=0;i<rel.getRules().size();i++) {
+					Rule rule = rel.getRules().get(i);
+					Rule normalised = rel.getRules().get(i).normaliseNAF();
+					if (!rule.equals(normalised)) {
+						LOGGER.debug("Normalised rule containing NAF from " + rule + " to " + normalised);
+						rel.getRules().set(i,normalised);
+					}
+				}
+			}
+		}
+		
+	}
+
 	// create additional rules representing relationship inheritance
 	private void resolveSuperRelationships(List<CompilationUnit> cus) {
 		
@@ -326,7 +344,7 @@ public class DefaultCompiler implements Compiler {
 						FunctionInvocation fi = (FunctionInvocation)expression;
 						rel2 = this.findRelationshipDefinition(cus,fi.getFunction(),fi.getParameters().size());
 						for (int i=0;i<fi.getParameters().size();i++) {
-							if (fi.getParameters().get(i)==var) pos=i;
+							if (fi.getParameters().get(i).equals(var)) pos=i;
 						}
 						
 					}

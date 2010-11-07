@@ -46,6 +46,7 @@ public class Prereq {
 	// a collection of bound variables
 	private Collection<Expression> boundVariables = new LinkedHashSet<Expression>();
 	
+	
 	// the previous prerequisite
 	private Prereq previous = null;
 	
@@ -62,13 +63,18 @@ public class Prereq {
 		this.newlyBoundVariables = newlyBoundVariables;
 	}
 	
-	public boolean bindsNewVariables() {
+	public boolean isBindsNewVariables() {
 		return this.newlyBoundVariables.size()>0;
 	}
 
 	public boolean isDefinedByRelationship() {
 		return expression instanceof FunctionInvocation && (((FunctionInvocation)expression).isDefinedByRelationship());
 	}
+	
+	public boolean isFilter() {
+		return !isDefinedByRelationship() || !isBindsNewVariables();
+	}
+	
 	
 	public RelationshipDefinition getRel() {
 		if (expression instanceof FunctionInvocation) {
@@ -154,9 +160,7 @@ public class Prereq {
 	}
 	
 	public Prereq getPreviousRelPrereq() {
-		List<Prereq> preds = getPreds();
-		for (int i=0;i<preds.size();i++) {
-			Prereq prev = preds.get(preds.size()-(i+1));
+		for (Prereq prev:getPreds()) {
 			if (prev.isDefinedByRelationship()) return prev;
 		}
 		return null;
@@ -260,4 +264,5 @@ public class Prereq {
 	public String toString() {
 		return this.expression==null?super.toString():this.expression.toString();
 	}
+
 }

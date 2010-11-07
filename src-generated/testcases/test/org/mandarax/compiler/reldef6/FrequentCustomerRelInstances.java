@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>FrequentCustomer</strong>.
- * @version Nov 3, 2010 1:16:56 PM 
+ * @version Nov 8, 2010 10:35:33 AM 
  */
 public class FrequentCustomerRelInstances {
 	// object references
@@ -96,12 +96,21 @@ public class FrequentCustomerRelInstances {
 			private test.org.mandarax.compiler.Customer c = customer;
 		}
 		final _Bindings _bindings = new _Bindings();
+		ResourceIterator _tmp = null;
 		
+		 
 
 		 
+		
+		
+		
+		
 		// apply prerequisite (c.getTransactionCount())>5
 		
+		
+		 // case 4
 					if (!((_bindings.c.getTransactionCount())>5)) {return EmptyIterator.DEFAULT;} 
+					
 		
 		
 		// rule head
@@ -129,16 +138,32 @@ public class FrequentCustomerRelInstances {
 			private test.org.mandarax.compiler.Customer c = customer;
 		}
 		final _Bindings _bindings = new _Bindings();
+		ResourceIterator _tmp = null;
 		
+		 
 
 		 
+		
+		
+		
+		
 		// apply prerequisite (c.getTransactionCount())>3
 		
+		
+		 // case 4
 					if (!((_bindings.c.getTransactionCount())>3)) {return EmptyIterator.DEFAULT;} 
+					
 		 
+		
+		
+		
+		
 		// apply prerequisite (c.getTurnover())>500
 		
+		
+		 // case 4
 					if (!((_bindings.c.getTurnover())>500)) {return EmptyIterator.DEFAULT;} 
+					
 		
 		
 		// rule head

@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import com.google.common.base.Function;
-import com.google.common.collect.Lists;
 import static org.mandarax.dsl.Utils.*;
 
 /**
@@ -166,12 +165,14 @@ public class Rule extends AnnotatableNode implements Cloneable {
 	
 	@Override
 	public Rule clone() {
-		return new Rule(getPosition(),getContext(),id,Lists.transform(body,new Function<Expression,Expression>() {
+		Rule r = new Rule(getPosition(),getContext(),id,transformList(body,new Function<Expression,Expression>() {
 			@Override
 			public Expression apply(Expression x) {
 				return x.substitute(NO_SUBTITUTIONS);
 			}}),
 		(FunctionInvocation)head.substitute(NO_SUBTITUTIONS));
+		r.copyPropertiesTo(this);
+		return r;
 	}
 
 	public void addToBody(Expression expression) {
@@ -182,4 +183,31 @@ public class Rule extends AnnotatableNode implements Cloneable {
 		body=newBody;
 		
 	}
+	
+	
+	/**
+	 * Clone the rule, and flatten NAF expressions in the body.
+	 * If an expression is a unary expression using negation, and its part is a function invocation referencing a relationship,
+	 * it will be replaced by just the function invocation with NAF set to true.
+	 * @return
+	 */	
+	public Rule normaliseNAF () {
+		Rule r = new Rule(getPosition(),getContext(),id,transformList(body,new Function<Expression,Expression>() {
+			@Override
+			public Expression apply(Expression x) {
+				if (x instanceof UnaryExpression && ((UnaryExpression)x).getOperator()==UnOp.NOT) {
+					Expression part = ((UnaryExpression)x).getPart();
+					if (part instanceof FunctionInvocation && ((FunctionInvocation)part).isDefinedByRelationship()) {
+						FunctionInvocation newPart = (FunctionInvocation)part.clone();
+						newPart.setNaf(true);
+						return newPart;
+					}
+				}
+				return x;
+			}}),
+		(FunctionInvocation)head.substitute(NO_SUBTITUTIONS));
+		r.copyPropertiesTo(this);
+		return r;
+	}
+	
 }
