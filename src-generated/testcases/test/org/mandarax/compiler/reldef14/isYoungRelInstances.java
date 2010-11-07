@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>isYoung</strong>.
- * @version Nov 8, 2010 10:35:34 AM 
+ * @version Nov 8, 2010 11:46:00 AM 
  */
 public class isYoungRelInstances {
 	// object references
@@ -84,12 +84,11 @@ public class isYoungRelInstances {
 			private test.org.mandarax.compiler.Person p = person;
 		}
 		final _Bindings _bindings = new _Bindings();
-		ResourceIterator _tmp = null;
+		ResourceIterator<?> _tmp = null;
 		
 		 
 
 		 
-		
 		
 		
 		
@@ -102,6 +101,7 @@ public class isYoungRelInstances {
 		
 		
 		// rule head
+		
 		return new SingletonIterator(new isYoungRel(_bindings.p));
         
 		

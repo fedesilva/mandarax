@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>GrandFather</strong>.
- * @version Nov 8, 2010 10:35:34 AM 
+ * @version Nov 8, 2010 11:46:00 AM 
  */
 public class GrandFatherRelInstances {
 	// object references
@@ -88,12 +88,11 @@ public class GrandFatherRelInstances {
 			private test.org.mandarax.compiler.Person y = null;
 		}
 		final _Bindings _bindings = new _Bindings();
-		ResourceIterator _tmp = null;
+		ResourceIterator<?> _tmp = null;
 		
 		 
 
 		 
-		
 		
 		
 		
@@ -109,11 +108,11 @@ public class GrandFatherRelInstances {
 		
 		
 		
-		
 		// apply prerequisite Father(y,z)
 		
 		
 		  // case 2
+		
 		final ResourceIterator<FatherRel> _iterator3 =  new NestedIterator<FatherRel, FatherRel>(_iterator2) {
                 	public ResourceIterator<FatherRel> getNextIterator(FatherRel _object) {
                 				// bind parameters from Father(x,y)
@@ -129,6 +128,7 @@ public class GrandFatherRelInstances {
 		
 		
 		// rule head
+		
 		return new NestedIterator<FatherRel, GrandFatherRel>(_iterator3) {
                 	public ResourceIterator<GrandFatherRel> getNextIterator(FatherRel _object) {
 						// bind parameters from Father(y,z)

@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>Discount</strong>.
- * @version Nov 8, 2010 10:35:33 AM 
+ * @version Nov 8, 2010 11:46:00 AM 
  */
 public class DiscountRelInstances {
 	// object references
@@ -153,12 +153,11 @@ public class DiscountRelInstances {
 			private test.org.mandarax.compiler.Discount goldDiscount = DiscountRelInstances.goldDiscount;
 		}
 		final _Bindings _bindings = new _Bindings();
-		ResourceIterator _tmp = null;
+		ResourceIterator<?> _tmp = null;
 		
 		 
 
 		 
-		
 		
 		
 		
@@ -171,6 +170,7 @@ public class DiscountRelInstances {
 		
 		
 		// rule head
+		
 		return new SingletonIterator(new DiscountRel(_bindings.c,_bindings.goldDiscount));
         
 		
@@ -196,7 +196,7 @@ public class DiscountRelInstances {
 			private test.org.mandarax.compiler.Discount silverDiscount = DiscountRelInstances.silverDiscount;
 		}
 		final _Bindings _bindings = new _Bindings();
-		ResourceIterator _tmp = null;
+		ResourceIterator<?> _tmp = null;
 		
 		 
 
@@ -204,20 +204,23 @@ public class DiscountRelInstances {
 		
 		
 		
-		
 		// apply prerequisite FrequentCustomer(c)
 		
 		
 		 // case 4
+					
 					_tmp = FrequentCustomerRelInstances.isFrequentCustomer(_derivation.push(),_bindings.c);
+					
 					if (!_tmp.hasNext()) {
 						_tmp.close();
 						return EmptyIterator.DEFAULT;
 					}
 					
+					
 		
 		
 		// rule head
+		
 		return new SingletonIterator(new DiscountRel(_bindings.c,_bindings.silverDiscount));
         
 		
@@ -243,12 +246,11 @@ public class DiscountRelInstances {
 			private test.org.mandarax.compiler.Discount specialDiscount = DiscountRelInstances.specialDiscount;
 		}
 		final _Bindings _bindings = new _Bindings();
-		ResourceIterator _tmp = null;
+		ResourceIterator<?> _tmp = null;
 		
 		 
 
 		 
-		
 		
 		
 		
@@ -261,6 +263,7 @@ public class DiscountRelInstances {
 		
 		
 		// rule head
+		
 		return new SingletonIterator(new DiscountRel(_bindings.c,_bindings.specialDiscount));
         
 		
@@ -287,12 +290,11 @@ public class DiscountRelInstances {
 			private test.org.mandarax.compiler.Discount goldDiscount = DiscountRelInstances.goldDiscount;
 		}
 		final _Bindings _bindings = new _Bindings();
-		ResourceIterator _tmp = null;
+		ResourceIterator<?> _tmp = null;
 		
 		 
 
 		 
-		
 		
 		
 		
@@ -305,6 +307,7 @@ public class DiscountRelInstances {
 		
 		
 		// rule head
+		
 		return new SingletonIterator(new DiscountRel(_bindings.c,_bindings.goldDiscount));
         
 		
@@ -330,7 +333,7 @@ public class DiscountRelInstances {
 			private test.org.mandarax.compiler.Discount silverDiscount = DiscountRelInstances.silverDiscount;
 		}
 		final _Bindings _bindings = new _Bindings();
-		ResourceIterator _tmp = null;
+		ResourceIterator<?> _tmp = null;
 		
 		 
 
@@ -338,20 +341,23 @@ public class DiscountRelInstances {
 		
 		
 		
-		
 		// apply prerequisite FrequentCustomer(c)
 		
 		
 		 // case 4
+					
 					_tmp = FrequentCustomerRelInstances.isFrequentCustomer(_derivation.push(),_bindings.c);
+					
 					if (!_tmp.hasNext()) {
 						_tmp.close();
 						return EmptyIterator.DEFAULT;
 					}
 					
+					
 		
 		
 		// rule head
+		
 		return new SingletonIterator(new DiscountRel(_bindings.c,_bindings.silverDiscount));
         
 		
@@ -377,12 +383,11 @@ public class DiscountRelInstances {
 			private test.org.mandarax.compiler.Discount specialDiscount = DiscountRelInstances.specialDiscount;
 		}
 		final _Bindings _bindings = new _Bindings();
-		ResourceIterator _tmp = null;
+		ResourceIterator<?> _tmp = null;
 		
 		 
 
 		 
-		
 		
 		
 		
@@ -395,6 +400,7 @@ public class DiscountRelInstances {
 		
 		
 		// rule head
+		
 		return new SingletonIterator(new DiscountRel(_bindings.c,_bindings.specialDiscount));
         
 		

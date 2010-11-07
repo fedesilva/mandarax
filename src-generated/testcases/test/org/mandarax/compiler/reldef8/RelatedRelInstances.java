@@ -4,7 +4,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>Related</strong>.
- * @version Nov 8, 2010 10:35:33 AM 
+ * @version Nov 8, 2010 11:46:00 AM 
  */
 public class RelatedRelInstances {
 	// object references
@@ -227,12 +227,11 @@ public class RelatedRelInstances {
 			private java.lang.String _x1 = null;
 		}
 		final _Bindings _bindings = new _Bindings();
-		ResourceIterator _tmp = null;
+		ResourceIterator<?> _tmp = null;
 		
 		 
 
 		 
-		
 		
 		
 		
@@ -247,6 +246,7 @@ public class RelatedRelInstances {
 		
 		
 		// rule head
+		
 		return new NestedIterator<FatherRel, RelatedRel>(_iterator2) {
                 	public ResourceIterator<RelatedRel> getNextIterator(FatherRel _object) {
 						// bind parameters from Father(_x0,_x1)
@@ -279,12 +279,11 @@ public class RelatedRelInstances {
 			private java.lang.String _x1 = null;
 		}
 		final _Bindings _bindings = new _Bindings();
-		ResourceIterator _tmp = null;
+		ResourceIterator<?> _tmp = null;
 		
 		 
 
 		 
-		
 		
 		
 		
@@ -299,6 +298,7 @@ public class RelatedRelInstances {
 		
 		
 		// rule head
+		
 		return new NestedIterator<GrandFatherRel, RelatedRel>(_iterator2) {
                 	public ResourceIterator<RelatedRel> getNextIterator(GrandFatherRel _object) {
 						// bind parameters from GrandFather(_x0,_x1)
@@ -360,12 +360,11 @@ public class RelatedRelInstances {
 			private java.lang.String _x1 = person2;
 		}
 		final _Bindings _bindings = new _Bindings();
-		ResourceIterator _tmp = null;
+		ResourceIterator<?> _tmp = null;
 		
 		 
 
 		 
-		
 		
 		
 		
@@ -380,6 +379,7 @@ public class RelatedRelInstances {
 		
 		
 		// rule head
+		
 		return new NestedIterator<FatherRel, RelatedRel>(_iterator2) {
                 	public ResourceIterator<RelatedRel> getNextIterator(FatherRel _object) {
 						// bind parameters from Father(_x0,_x1)
@@ -412,12 +412,11 @@ public class RelatedRelInstances {
 			private java.lang.String _x1 = person2;
 		}
 		final _Bindings _bindings = new _Bindings();
-		ResourceIterator _tmp = null;
+		ResourceIterator<?> _tmp = null;
 		
 		 
 
 		 
-		
 		
 		
 		
@@ -432,6 +431,7 @@ public class RelatedRelInstances {
 		
 		
 		// rule head
+		
 		return new NestedIterator<GrandFatherRel, RelatedRel>(_iterator2) {
                 	public ResourceIterator<RelatedRel> getNextIterator(GrandFatherRel _object) {
 						// bind parameters from GrandFather(_x0,_x1)
@@ -493,7 +493,7 @@ public class RelatedRelInstances {
 			private java.lang.String _x1 = person2;
 		}
 		final _Bindings _bindings = new _Bindings();
-		ResourceIterator _tmp = null;
+		ResourceIterator<?> _tmp = null;
 		
 		 
 
@@ -501,20 +501,23 @@ public class RelatedRelInstances {
 		
 		
 		
-		
 		// apply prerequisite Father(_x0,_x1)
 		
 		
 		 // case 4
+					
 					_tmp = FatherRelInstances.isFather(_derivation.push(),_bindings._x0,_bindings._x1);
+					
 					if (!_tmp.hasNext()) {
 						_tmp.close();
 						return EmptyIterator.DEFAULT;
 					}
 					
+					
 		
 		
 		// rule head
+		
 		return new SingletonIterator(new RelatedRel(_bindings._x0,_bindings._x1));
         
 		
@@ -540,7 +543,7 @@ public class RelatedRelInstances {
 			private java.lang.String _x1 = person2;
 		}
 		final _Bindings _bindings = new _Bindings();
-		ResourceIterator _tmp = null;
+		ResourceIterator<?> _tmp = null;
 		
 		 
 
@@ -548,20 +551,23 @@ public class RelatedRelInstances {
 		
 		
 		
-		
 		// apply prerequisite GrandFather(_x0,_x1)
 		
 		
 		 // case 4
+					
 					_tmp = GrandFatherRelInstances.isGrandFather(_derivation.push(),_bindings._x0,_bindings._x1);
+					
 					if (!_tmp.hasNext()) {
 						_tmp.close();
 						return EmptyIterator.DEFAULT;
 					}
 					
+					
 		
 		
 		// rule head
+		
 		return new SingletonIterator(new RelatedRel(_bindings._x0,_bindings._x1));
         
 		
@@ -609,12 +615,11 @@ public class RelatedRelInstances {
 			private java.lang.String _x1 = null;
 		}
 		final _Bindings _bindings = new _Bindings();
-		ResourceIterator _tmp = null;
+		ResourceIterator<?> _tmp = null;
 		
 		 
 
 		 
-		
 		
 		
 		
@@ -629,6 +634,7 @@ public class RelatedRelInstances {
 		
 		
 		// rule head
+		
 		return new NestedIterator<FatherRel, RelatedRel>(_iterator2) {
                 	public ResourceIterator<RelatedRel> getNextIterator(FatherRel _object) {
 						// bind parameters from Father(_x0,_x1)
@@ -662,12 +668,11 @@ public class RelatedRelInstances {
 			private java.lang.String _x1 = null;
 		}
 		final _Bindings _bindings = new _Bindings();
-		ResourceIterator _tmp = null;
+		ResourceIterator<?> _tmp = null;
 		
 		 
 
 		 
-		
 		
 		
 		
@@ -682,6 +687,7 @@ public class RelatedRelInstances {
 		
 		
 		// rule head
+		
 		return new NestedIterator<GrandFatherRel, RelatedRel>(_iterator2) {
                 	public ResourceIterator<RelatedRel> getNextIterator(GrandFatherRel _object) {
 						// bind parameters from GrandFather(_x0,_x1)

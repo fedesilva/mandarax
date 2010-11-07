@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>FrequentCustomer</strong>.
- * @version Nov 8, 2010 10:35:33 AM 
+ * @version Nov 8, 2010 11:46:00 AM 
  */
 public class FrequentCustomerRelInstances {
 	// object references
@@ -98,12 +98,11 @@ public class FrequentCustomerRelInstances {
 			private test.org.mandarax.compiler.Customer c = customer;
 		}
 		final _Bindings _bindings = new _Bindings();
-		ResourceIterator _tmp = null;
+		ResourceIterator<?> _tmp = null;
 		
 		 
 
 		 
-		
 		
 		
 		
@@ -116,6 +115,7 @@ public class FrequentCustomerRelInstances {
 		
 		
 		// rule head
+		
 		return new SingletonIterator(new FrequentCustomerRel(_bindings.c));
         
 		
@@ -140,12 +140,11 @@ public class FrequentCustomerRelInstances {
 			private test.org.mandarax.compiler.Customer c = customer;
 		}
 		final _Bindings _bindings = new _Bindings();
-		ResourceIterator _tmp = null;
+		ResourceIterator<?> _tmp = null;
 		
 		 
 
 		 
-		
 		
 		
 		
@@ -159,7 +158,6 @@ public class FrequentCustomerRelInstances {
 		
 		
 		
-		
 		// apply prerequisite (c.getTurnover())>500
 		
 		
@@ -169,6 +167,7 @@ public class FrequentCustomerRelInstances {
 		
 		
 		// rule head
+		
 		return new SingletonIterator(new FrequentCustomerRel(_bindings.c));
         
 		

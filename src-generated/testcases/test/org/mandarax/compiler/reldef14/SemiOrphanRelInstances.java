@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>SemiOrphan</strong>.
- * @version Nov 8, 2010 10:35:34 AM 
+ * @version Nov 8, 2010 11:46:00 AM 
  */
 public class SemiOrphanRelInstances {
 	// object references
@@ -100,7 +100,7 @@ public class SemiOrphanRelInstances {
 			private test.org.mandarax.compiler.Person m = null;
 		}
 		final _Bindings _bindings = new _Bindings();
-		ResourceIterator _tmp = null;
+		ResourceIterator<?> _tmp = null;
 		
 		 
 
@@ -108,19 +108,20 @@ public class SemiOrphanRelInstances {
 		
 		
 		
-		
 		// apply prerequisite isYoung(p)
 		
 		
 		 // case 4
+					
 					_tmp = isYoungRelInstances.isYoung(_derivation.push(),_bindings.p);
+					
 					if (!_tmp.hasNext()) {
 						_tmp.close();
 						return EmptyIterator.DEFAULT;
 					}
 					
+					
 		 
-		
 		
 		
 		
@@ -136,29 +137,35 @@ public class SemiOrphanRelInstances {
 		
 		
 		
-		
 		// apply prerequisite not Mother(m,p)
 		
 		
-		  // case 2
-		final ResourceIterator<MotherRel> _iterator3 =  new NestedIterator<FatherRel, MotherRel>(_iterator2) {
-                	public ResourceIterator<MotherRel> getNextIterator(FatherRel _object) {
-                				// bind parameters from Father(f,p)
-						_bindings.f = _object.father;
-						
-									return MotherRelInstances.getMother(_derivation.push(),_bindings.p);
-                	}
-            	};
+		  // case 3
+					
+					com.google.common.base.Predicate<FatherRel> _filter3 = new com.google.common.base.Predicate<FatherRel>() {
+						public boolean apply(FatherRel _object) {
+						        // bind parameters from Father(f,p)
+								_bindings.f = _object.father;
+								
+								
+									ResourceIterator<MotherRel> _r =  MotherRelInstances.getMother(_derivation.push(),_bindings.p);
+									boolean _b = _r.hasNext();
+									_r.close();
+									return !_b;
+								
+							}
+					};
+					final ResourceIterator<FatherRel> _iterator3 =  new FilteredIterator<FatherRel>(_iterator2,_filter3);
 		
-		
-		
+					 
 		
 		
 		// rule head
-		return new NestedIterator<MotherRel, SemiOrphanRel>(_iterator3) {
-                	public ResourceIterator<SemiOrphanRel> getNextIterator(MotherRel _object) {
-						// bind parameters from not Mother(m,p)
-						_bindings.m = _object.mother;
+		
+		return new NestedIterator<FatherRel, SemiOrphanRel>(_iterator3) {
+                	public ResourceIterator<SemiOrphanRel> getNextIterator(FatherRel _object) {
+						// bind parameters from Father(f,p)
+						_bindings.f = _object.father;
 						
                     				return new SingletonIterator(new SemiOrphanRel(_bindings.p));
                 	}
@@ -188,7 +195,7 @@ public class SemiOrphanRelInstances {
 			private test.org.mandarax.compiler.Person m = null;
 		}
 		final _Bindings _bindings = new _Bindings();
-		ResourceIterator _tmp = null;
+		ResourceIterator<?> _tmp = null;
 		
 		 
 
@@ -196,19 +203,20 @@ public class SemiOrphanRelInstances {
 		
 		
 		
-		
 		// apply prerequisite isYoung(p)
 		
 		
 		 // case 4
+					
 					_tmp = isYoungRelInstances.isYoung(_derivation.push(),_bindings.p);
+					
 					if (!_tmp.hasNext()) {
 						_tmp.close();
 						return EmptyIterator.DEFAULT;
 					}
 					
+					
 		 
-		
 		
 		
 		
@@ -224,29 +232,35 @@ public class SemiOrphanRelInstances {
 		
 		
 		
-		
 		// apply prerequisite not Father(f,p)
 		
 		
-		  // case 2
-		final ResourceIterator<FatherRel> _iterator3 =  new NestedIterator<MotherRel, FatherRel>(_iterator2) {
-                	public ResourceIterator<FatherRel> getNextIterator(MotherRel _object) {
-                				// bind parameters from Mother(m,p)
-						_bindings.m = _object.mother;
-						
-									return FatherRelInstances.getFather(_derivation.push(),_bindings.p);
-                	}
-            	};
+		  // case 3
+					
+					com.google.common.base.Predicate<MotherRel> _filter3 = new com.google.common.base.Predicate<MotherRel>() {
+						public boolean apply(MotherRel _object) {
+						        // bind parameters from Mother(m,p)
+								_bindings.m = _object.mother;
+								
+								
+									ResourceIterator<FatherRel> _r =  FatherRelInstances.getFather(_derivation.push(),_bindings.p);
+									boolean _b = _r.hasNext();
+									_r.close();
+									return !_b;
+								
+							}
+					};
+					final ResourceIterator<MotherRel> _iterator3 =  new FilteredIterator<MotherRel>(_iterator2,_filter3);
 		
-		
-		
+					 
 		
 		
 		// rule head
-		return new NestedIterator<FatherRel, SemiOrphanRel>(_iterator3) {
-                	public ResourceIterator<SemiOrphanRel> getNextIterator(FatherRel _object) {
-						// bind parameters from not Father(f,p)
-						_bindings.f = _object.father;
+		
+		return new NestedIterator<MotherRel, SemiOrphanRel>(_iterator3) {
+                	public ResourceIterator<SemiOrphanRel> getNextIterator(MotherRel _object) {
+						// bind parameters from Mother(m,p)
+						_bindings.m = _object.mother;
 						
                     				return new SingletonIterator(new SemiOrphanRel(_bindings.p));
                 	}

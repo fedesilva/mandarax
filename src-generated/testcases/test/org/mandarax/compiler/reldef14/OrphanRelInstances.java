@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>Orphan</strong>.
- * @version Nov 8, 2010 10:35:34 AM 
+ * @version Nov 8, 2010 11:46:00 AM 
  */
 public class OrphanRelInstances {
 	// object references
@@ -86,7 +86,7 @@ public class OrphanRelInstances {
 			private test.org.mandarax.compiler.Person m = null;
 		}
 		final _Bindings _bindings = new _Bindings();
-		ResourceIterator _tmp = null;
+		ResourceIterator<?> _tmp = null;
 		
 		 
 
@@ -94,61 +94,58 @@ public class OrphanRelInstances {
 		
 		
 		
-		
 		// apply prerequisite isYoung(p)
 		
 		
 		 // case 4
+					
 					_tmp = isYoungRelInstances.isYoung(_derivation.push(),_bindings.p);
+					
 					if (!_tmp.hasNext()) {
 						_tmp.close();
 						return EmptyIterator.DEFAULT;
 					}
 					
+					
 		 
-		
 		
 		
 		
 		// apply prerequisite not Father(f,p)
 		
 		
-		  // case 1
-		final ResourceIterator<FatherRel> _iterator2 = FatherRelInstances.getFather(_derivation.push(),_bindings.p);
-		
-		
-		
+		 // case 4
+					
+					_tmp = FatherRelInstances.getFather(_derivation.push(),_bindings.p);
+					
+					if (_tmp.hasNext()) {
+						_tmp.close();
+						return EmptyIterator.DEFAULT;
+					}
+					
+					
 		 
-		
 		
 		
 		
 		// apply prerequisite not Mother(m,p)
 		
 		
-		  // case 2
-		final ResourceIterator<MotherRel> _iterator3 =  new NestedIterator<FatherRel, MotherRel>(_iterator2) {
-                	public ResourceIterator<MotherRel> getNextIterator(FatherRel _object) {
-                				// bind parameters from not Father(f,p)
-						_bindings.f = _object.father;
-						
-									return MotherRelInstances.getMother(_derivation.push(),_bindings.p);
-                	}
-            	};
-		
-		
-		
+		 // case 4
+					
+					_tmp = MotherRelInstances.getMother(_derivation.push(),_bindings.p);
+					
+					if (_tmp.hasNext()) {
+						_tmp.close();
+						return EmptyIterator.DEFAULT;
+					}
+					
+					
 		
 		
 		// rule head
-		return new NestedIterator<MotherRel, OrphanRel>(_iterator3) {
-                	public ResourceIterator<OrphanRel> getNextIterator(MotherRel _object) {
-						// bind parameters from not Mother(m,p)
-						_bindings.m = _object.mother;
-						
-                    				return new SingletonIterator(new OrphanRel(_bindings.p));
-                	}
-        	};
+		
+		return new SingletonIterator(new OrphanRel(_bindings.p));
         
 		
 		

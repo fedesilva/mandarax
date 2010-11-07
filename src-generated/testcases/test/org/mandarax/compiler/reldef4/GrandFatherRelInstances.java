@@ -4,7 +4,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>GrandFather</strong>.
- * @version Nov 8, 2010 10:35:33 AM 
+ * @version Nov 8, 2010 11:45:59 AM 
  */
 public class GrandFatherRelInstances {
 	// object references
@@ -142,12 +142,11 @@ public class GrandFatherRelInstances {
 			private java.lang.String y = null;
 		}
 		final _Bindings _bindings = new _Bindings();
-		ResourceIterator _tmp = null;
+		ResourceIterator<?> _tmp = null;
 		
 		 
 
 		 
-		
 		
 		
 		
@@ -163,11 +162,11 @@ public class GrandFatherRelInstances {
 		
 		
 		
-		
 		// apply prerequisite Father(y,z)
 		
 		
 		  // case 2
+		
 		final ResourceIterator<FatherRel> _iterator3 =  new NestedIterator<FatherRel, FatherRel>(_iterator2) {
                 	public ResourceIterator<FatherRel> getNextIterator(FatherRel _object) {
                 				// bind parameters from Father(x,y)
@@ -182,6 +181,7 @@ public class GrandFatherRelInstances {
 		
 		
 		// rule head
+		
 		return new NestedIterator<FatherRel, GrandFatherRel>(_iterator3) {
                 	public ResourceIterator<GrandFatherRel> getNextIterator(FatherRel _object) {
 						// bind parameters from Father(y,z)
@@ -216,12 +216,11 @@ public class GrandFatherRelInstances {
 			private java.lang.String y = null;
 		}
 		final _Bindings _bindings = new _Bindings();
-		ResourceIterator _tmp = null;
+		ResourceIterator<?> _tmp = null;
 		
 		 
 
 		 
-		
 		
 		
 		
@@ -237,11 +236,11 @@ public class GrandFatherRelInstances {
 		
 		
 		
-		
 		// apply prerequisite Father(y,z)
 		
 		
 		  // case 3
+					
 					com.google.common.base.Predicate<FatherRel> _filter3 = new com.google.common.base.Predicate<FatherRel>() {
 						public boolean apply(FatherRel _object) {
 						        // bind parameters from Father(x,y)
@@ -249,7 +248,7 @@ public class GrandFatherRelInstances {
 								_bindings.y = _object.child;
 								
 								
-									ResourceIterator _r =  FatherRelInstances.isFather(_derivation.push(),_bindings.y,_bindings.z);
+									ResourceIterator<FatherRel> _r =  FatherRelInstances.isFather(_derivation.push(),_bindings.y,_bindings.z);
 									boolean _b = _r.hasNext();
 									_r.close();
 									return _b;
@@ -258,14 +257,16 @@ public class GrandFatherRelInstances {
 					};
 					final ResourceIterator<FatherRel> _iterator3 =  new FilteredIterator<FatherRel>(_iterator2,_filter3);
 		
-		
 					 
 		
 		
 		// rule head
+		
 		return new NestedIterator<FatherRel, GrandFatherRel>(_iterator3) {
                 	public ResourceIterator<GrandFatherRel> getNextIterator(FatherRel _object) {
-						// bind parameters from Father(y,z)
+						// bind parameters from Father(x,y)
+						_bindings.x = _object.father;
+						_bindings.y = _object.child;
 						
                     				return new SingletonIterator(new GrandFatherRel(_bindings.x,_bindings.z));
                 	}
@@ -296,12 +297,11 @@ public class GrandFatherRelInstances {
 			private java.lang.String y = null;
 		}
 		final _Bindings _bindings = new _Bindings();
-		ResourceIterator _tmp = null;
+		ResourceIterator<?> _tmp = null;
 		
 		 
 
 		 
-		
 		
 		
 		
@@ -317,18 +317,18 @@ public class GrandFatherRelInstances {
 		
 		
 		
-		
 		// apply prerequisite Father(y,z)
 		
 		
 		  // case 3
+					
 					com.google.common.base.Predicate<FatherRel> _filter3 = new com.google.common.base.Predicate<FatherRel>() {
 						public boolean apply(FatherRel _object) {
 						        // bind parameters from Father(x,y)
 								_bindings.y = _object.child;
 								
 								
-									ResourceIterator _r =  FatherRelInstances.isFather(_derivation.push(),_bindings.y,_bindings.z);
+									ResourceIterator<FatherRel> _r =  FatherRelInstances.isFather(_derivation.push(),_bindings.y,_bindings.z);
 									boolean _b = _r.hasNext();
 									_r.close();
 									return _b;
@@ -337,14 +337,15 @@ public class GrandFatherRelInstances {
 					};
 					final ResourceIterator<FatherRel> _iterator3 =  new FilteredIterator<FatherRel>(_iterator2,_filter3);
 		
-		
 					 
 		
 		
 		// rule head
+		
 		return new NestedIterator<FatherRel, GrandFatherRel>(_iterator3) {
                 	public ResourceIterator<GrandFatherRel> getNextIterator(FatherRel _object) {
-						// bind parameters from Father(y,z)
+						// bind parameters from Father(x,y)
+						_bindings.y = _object.child;
 						
                     				return new SingletonIterator(new GrandFatherRel(_bindings.x,_bindings.z));
                 	}
@@ -375,12 +376,11 @@ public class GrandFatherRelInstances {
 			private java.lang.String y = null;
 		}
 		final _Bindings _bindings = new _Bindings();
-		ResourceIterator _tmp = null;
+		ResourceIterator<?> _tmp = null;
 		
 		 
 
 		 
-		
 		
 		
 		
@@ -396,11 +396,11 @@ public class GrandFatherRelInstances {
 		
 		
 		
-		
 		// apply prerequisite Father(y,z)
 		
 		
 		  // case 2
+		
 		final ResourceIterator<FatherRel> _iterator3 =  new NestedIterator<FatherRel, FatherRel>(_iterator2) {
                 	public ResourceIterator<FatherRel> getNextIterator(FatherRel _object) {
                 				// bind parameters from Father(x,y)
@@ -416,6 +416,7 @@ public class GrandFatherRelInstances {
 		
 		
 		// rule head
+		
 		return new NestedIterator<FatherRel, GrandFatherRel>(_iterator3) {
                 	public ResourceIterator<GrandFatherRel> getNextIterator(FatherRel _object) {
 						// bind parameters from Father(y,z)
