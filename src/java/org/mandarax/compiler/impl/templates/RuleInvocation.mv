@@ -48,7 +48,7 @@
 									ResourceIterator _r =  @{relType}Instances.@{prereq.query.name}(@{prereq.printBoundParams('_bindings','_derivation.push()')});
 									boolean _b = _r.hasNext();
 									_r.close();
-									return _b;
+									@if{prereq.NAF}return !_b;@else{}return _b;@end{}
 								@else{}return @{prereq.printScoped('_bindings')};
 								@end{}
 							}
@@ -58,11 +58,19 @@
 		
 		@comment{case 4 - prerequisite defined by an expression of a relationship not binding new variables, an iterator does not yet exist}			 
 		@else{prereq.isFilter() && index==1} // case 4
-					@if{prereq.definedByRelationship}_tmp = @{relType}Instances.@{prereq.query.name}(@{prereq.printBoundParams('_bindings','_derivation.push()')});
+					@if{prereq.definedByRelationship}
+					_tmp = @{relType}Instances.@{prereq.query.name}(@{prereq.printBoundParams('_bindings','_derivation.push()')});
+					@if{prereq.NAF}
+					if (_tmp.hasNext()) {
+						_tmp.close();
+						return EmptyIterator.DEFAULT;
+					}
+					@else{}
 					if (!_tmp.hasNext()) {
 						_tmp.close();
 						return EmptyIterator.DEFAULT;
 					}
+					@end{}
 					@else{}if (!(@{prereq.printScoped('_bindings')})) {return EmptyIterator.DEFAULT;} 
 					@end{}
 		@end{}@end{}

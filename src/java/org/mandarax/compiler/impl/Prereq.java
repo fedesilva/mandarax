@@ -75,6 +75,9 @@ public class Prereq {
 		return !isDefinedByRelationship() || !isBindsNewVariables();
 	}
 	
+	public boolean isNAF() {
+		return isDefinedByRelationship() && ((FunctionInvocation)expression).isNaf();
+	}
 	
 	public RelationshipDefinition getRel() {
 		if (expression instanceof FunctionInvocation) {
