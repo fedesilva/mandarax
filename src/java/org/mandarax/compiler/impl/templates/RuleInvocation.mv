@@ -15,7 +15,7 @@
 		@if{prereq.firstRelation}final ResourceIterator<@{prereq.rel.name}@{ext}> iterator@{index} = @{prereq.rel.name}@{ext}Instances.@{prereq.query.name}(@{prereq.printBoundParams('_bindings','_derivation.push()')});
 		@code{lastPrereq=prereq;}
 		
-		@else{prereq.definedByRelationship}final ResourceIterator<@{prereq.rel.name}@{ext}> iterator@{index} =  new NestedIterator<@{prereq.rel.name}@{ext}, @{prereq.previousRelPrereq.rel.name}@{ext}>(iterator@{index-1}) {
+		@else{prereq.definedByRelationship}final ResourceIterator<@{prereq.rel.name}@{ext}> iterator@{index} =  new NestedIterator<@{prereq.previousRelPrereq.rel.name}@{ext}, @{prereq.rel.name}@{ext}>(iterator@{index-1}) {
                 	public ResourceIterator<@{prereq.previousRelPrereq.rel.name}@{ext}> getNextIterator(@{prereq.rel.name}@{ext} _object) {
                 				// bind parameters from @{prereq.previousRelPrereq.expression}
 						@foreach{v:prereq.previous.newlyBoundVariables}_bindings.@{v} = _object.@{prereq.previous.getSlot(v)};
