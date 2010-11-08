@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>Discount</strong>.
- * @version Nov 8, 2010 3:46:53 PM 
+ * @version Nov 9, 2010 11:29:29 AM 
  */
 public class DiscountRelInstances {
 	// object references
@@ -156,6 +156,20 @@ public class DiscountRelInstances {
 		ResourceIterator<?> _tmp = null;
 		
 		 
+		
+		
+		
+		 
+		// check conditions	
+		boolean _checkfailed = false;
+		
+		
+		
+		if (_checkfailed) {
+			return EmptyIterator.DEFAULT;
+		}
+		
+		
 
 		 
 		
@@ -178,7 +192,6 @@ public class DiscountRelInstances {
 		
 	
 
-		
 	}
 	// rule: rule2: FrequentCustomer(c) -> Discount(c,silverDiscount);
 	private static ResourceIterator<DiscountRel> getDiscount_1 (final DerivationController _derivation ,  final Customer customer ) {
@@ -199,6 +212,20 @@ public class DiscountRelInstances {
 		ResourceIterator<?> _tmp = null;
 		
 		 
+		
+		
+		
+		 
+		// check conditions	
+		boolean _checkfailed = false;
+		
+		
+		
+		if (_checkfailed) {
+			return EmptyIterator.DEFAULT;
+		}
+		
+		
 
 		 
 		
@@ -228,7 +255,6 @@ public class DiscountRelInstances {
 		
 	
 
-		
 	}
 	// rule: rule3: (c.getPaymentMethod())=="CompanyVisa" -> Discount(c,specialDiscount);
 	private static ResourceIterator<DiscountRel> getDiscount_2 (final DerivationController _derivation ,  final Customer customer ) {
@@ -249,6 +275,20 @@ public class DiscountRelInstances {
 		ResourceIterator<?> _tmp = null;
 		
 		 
+		
+		
+		
+		 
+		// check conditions	
+		boolean _checkfailed = false;
+		
+		
+		
+		if (_checkfailed) {
+			return EmptyIterator.DEFAULT;
+		}
+		
+		
 
 		 
 		
@@ -271,7 +311,6 @@ public class DiscountRelInstances {
 		
 	
 
-		
 	}
 	// query: qualifiesForDiscount
 	// rule: rule1: (c.getTurnover())>1000 -> Discount(c,goldDiscount);
@@ -293,6 +332,22 @@ public class DiscountRelInstances {
 		ResourceIterator<?> _tmp = null;
 		
 		 
+		
+		
+		
+		 
+		// check conditions	
+		boolean _checkfailed = false;
+		
+		
+		
+		_checkfailed = _checkfailed || !Equals.compare(discount,goldDiscount); 
+		
+		if (_checkfailed) {
+			return EmptyIterator.DEFAULT;
+		}
+		
+		
 
 		 
 		
@@ -315,7 +370,6 @@ public class DiscountRelInstances {
 		
 	
 
-		
 	}
 	// rule: rule2: FrequentCustomer(c) -> Discount(c,silverDiscount);
 	private static ResourceIterator<DiscountRel> qualifiesForDiscount_1 (final DerivationController _derivation ,  final Customer customer ,  final Discount discount ) {
@@ -336,6 +390,22 @@ public class DiscountRelInstances {
 		ResourceIterator<?> _tmp = null;
 		
 		 
+		
+		
+		
+		 
+		// check conditions	
+		boolean _checkfailed = false;
+		
+		
+		
+		_checkfailed = _checkfailed || !Equals.compare(discount,silverDiscount); 
+		
+		if (_checkfailed) {
+			return EmptyIterator.DEFAULT;
+		}
+		
+		
 
 		 
 		
@@ -365,7 +435,6 @@ public class DiscountRelInstances {
 		
 	
 
-		
 	}
 	// rule: rule3: (c.getPaymentMethod())=="CompanyVisa" -> Discount(c,specialDiscount);
 	private static ResourceIterator<DiscountRel> qualifiesForDiscount_2 (final DerivationController _derivation ,  final Customer customer ,  final Discount discount ) {
@@ -386,6 +455,22 @@ public class DiscountRelInstances {
 		ResourceIterator<?> _tmp = null;
 		
 		 
+		
+		
+		
+		 
+		// check conditions	
+		boolean _checkfailed = false;
+		
+		
+		
+		_checkfailed = _checkfailed || !Equals.compare(discount,specialDiscount); 
+		
+		if (_checkfailed) {
+			return EmptyIterator.DEFAULT;
+		}
+		
+		
 
 		 
 		
@@ -408,7 +493,6 @@ public class DiscountRelInstances {
 		
 	
 
-		
 	}
 	
 	

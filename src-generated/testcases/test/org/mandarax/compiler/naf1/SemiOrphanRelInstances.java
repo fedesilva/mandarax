@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>SemiOrphan</strong>.
- * @version Nov 8, 2010 3:46:53 PM 
+ * @version Nov 9, 2010 11:29:30 AM 
  */
 public class SemiOrphanRelInstances {
 	// object references
@@ -103,6 +103,11 @@ public class SemiOrphanRelInstances {
 		ResourceIterator<?> _tmp = null;
 		
 		 
+		
+		
+		
+		
+		
 
 		 
 		
@@ -176,7 +181,6 @@ public class SemiOrphanRelInstances {
 		
 	
 
-		
 	}
 	// rule: rule2: isYoung(p) & not Father(f,p) & Mother(m,p) -> SemiOrphan(p);
 	private static ResourceIterator<SemiOrphanRel> isSemiOrphan_1 (final DerivationController _derivation ,  final Person person ) {
@@ -198,6 +202,11 @@ public class SemiOrphanRelInstances {
 		ResourceIterator<?> _tmp = null;
 		
 		 
+		
+		
+		
+		
+		
 
 		 
 		
@@ -271,7 +280,6 @@ public class SemiOrphanRelInstances {
 		
 	
 
-		
 	}
 	
 	

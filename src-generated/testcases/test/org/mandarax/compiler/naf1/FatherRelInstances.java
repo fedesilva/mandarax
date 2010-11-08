@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>Father</strong>.
- * @version Nov 8, 2010 3:46:53 PM 
+ * @version Nov 9, 2010 11:29:30 AM 
  */
 public class FatherRelInstances {
 	// object references
@@ -141,27 +141,45 @@ public class FatherRelInstances {
 		_derivation.log("Father.rule1", DerivationController.RULE, _annotations_rule1);
 		
 			
+	
+		
+		// utility class used to keep track of variables bindings
+		// rule: rule1:  -> Father(m1,m2);
+		// prereqs: []
+		class _Bindings {
+			private test.org.mandarax.compiler.Person m1 = FatherRelInstances.m1;
+			private test.org.mandarax.compiler.Person m2 = FatherRelInstances.m2;
+		}
+		final _Bindings _bindings = new _Bindings();
+		ResourceIterator<?> _tmp = null;
+		
+		 
+		
+		
 		
 		 
 		// check conditions	
-		if (Equals.compare(child,m2) ) {
+		boolean _checkfailed = false;
 		
+		_checkfailed = _checkfailed || !Equals.compare(child,m2); 
 		
-		// create new instance of relationship
-		FatherRel _result = new FatherRel();
-		
-		// set values
-		_result.father = m1;
-		_result.child = m2;
-		
-		return new SingletonIterator<FatherRel>(_result);
+		if (_checkfailed) {
+			return EmptyIterator.DEFAULT;
 		}
-			
-		// fact does not match query	
-		return EmptyIterator.DEFAULT;
+		
 		
 
 		
+		
+		// rule head
+		
+		return new SingletonIterator(new FatherRel(_bindings.m1,_bindings.m2));
+        
+		
+		
+		
+	
+
 	}
 	// query: isFather
 	// rule: rule1:  -> Father(m1,m2);
@@ -170,27 +188,47 @@ public class FatherRelInstances {
 		_derivation.log("Father.rule1", DerivationController.RULE, _annotations_rule1);
 		
 			
+	
+		
+		// utility class used to keep track of variables bindings
+		// rule: rule1:  -> Father(m1,m2);
+		// prereqs: []
+		class _Bindings {
+			private test.org.mandarax.compiler.Person m1 = FatherRelInstances.m1;
+			private test.org.mandarax.compiler.Person m2 = FatherRelInstances.m2;
+		}
+		final _Bindings _bindings = new _Bindings();
+		ResourceIterator<?> _tmp = null;
+		
+		 
+		
+		
 		
 		 
 		// check conditions	
-		if (Equals.compare(father,m1) && Equals.compare(child,m2) ) {
+		boolean _checkfailed = false;
 		
+		_checkfailed = _checkfailed || !Equals.compare(father,m1); 
 		
-		// create new instance of relationship
-		FatherRel _result = new FatherRel();
+		_checkfailed = _checkfailed || !Equals.compare(child,m2); 
 		
-		// set values
-		_result.father = m1;
-		_result.child = m2;
-		
-		return new SingletonIterator<FatherRel>(_result);
+		if (_checkfailed) {
+			return EmptyIterator.DEFAULT;
 		}
-			
-		// fact does not match query	
-		return EmptyIterator.DEFAULT;
+		
 		
 
 		
+		
+		// rule head
+		
+		return new SingletonIterator(new FatherRel(_bindings.m1,_bindings.m2));
+        
+		
+		
+		
+	
+
 	}
 	// query: getChildren
 	// rule: rule1:  -> Father(m1,m2);
@@ -199,27 +237,45 @@ public class FatherRelInstances {
 		_derivation.log("Father.rule1", DerivationController.RULE, _annotations_rule1);
 		
 			
+	
+		
+		// utility class used to keep track of variables bindings
+		// rule: rule1:  -> Father(m1,m2);
+		// prereqs: []
+		class _Bindings {
+			private test.org.mandarax.compiler.Person m1 = FatherRelInstances.m1;
+			private test.org.mandarax.compiler.Person m2 = FatherRelInstances.m2;
+		}
+		final _Bindings _bindings = new _Bindings();
+		ResourceIterator<?> _tmp = null;
+		
+		 
+		
+		
 		
 		 
 		// check conditions	
-		if (Equals.compare(father,m1) ) {
+		boolean _checkfailed = false;
 		
+		_checkfailed = _checkfailed || !Equals.compare(father,m1); 
 		
-		// create new instance of relationship
-		FatherRel _result = new FatherRel();
-		
-		// set values
-		_result.father = m1;
-		_result.child = m2;
-		
-		return new SingletonIterator<FatherRel>(_result);
+		if (_checkfailed) {
+			return EmptyIterator.DEFAULT;
 		}
-			
-		// fact does not match query	
-		return EmptyIterator.DEFAULT;
+		
 		
 
 		
+		
+		// rule head
+		
+		return new SingletonIterator(new FatherRel(_bindings.m1,_bindings.m2));
+        
+		
+		
+		
+	
+
 	}
 	// query: getFatherAndChild
 	// rule: rule1:  -> Father(m1,m2);
@@ -228,20 +284,36 @@ public class FatherRelInstances {
 		_derivation.log("Father.rule1", DerivationController.RULE, _annotations_rule1);
 		
 			
+	
+		
+		// utility class used to keep track of variables bindings
+		// rule: rule1:  -> Father(m1,m2);
+		// prereqs: []
+		class _Bindings {
+			private test.org.mandarax.compiler.Person m1 = FatherRelInstances.m1;
+			private test.org.mandarax.compiler.Person m2 = FatherRelInstances.m2;
+		}
+		final _Bindings _bindings = new _Bindings();
+		ResourceIterator<?> _tmp = null;
+		
+		 
 		
 		
 		
-		// create new instance of relationship
-		FatherRel _result = new FatherRel();
 		
-		// set values
-		_result.father = m1;
-		_result.child = m2;
-		
-		return new SingletonIterator<FatherRel>(_result);
 		
 
 		
+		
+		// rule head
+		
+		return new SingletonIterator(new FatherRel(_bindings.m1,_bindings.m2));
+        
+		
+		
+		
+	
+
 	}
 	
 	

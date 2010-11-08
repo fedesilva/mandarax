@@ -30,7 +30,6 @@ public class Templates {
 	public static org.apache.log4j.Logger LOGGER = Logger.getLogger(Templates.class);
 	
 	// constants for template names
-	public final static String FACT_INVOCATION = "FactInvocation";
 	public final static String RULE_INVOCATION = "RuleInvocation";
 	public final static String RELATIONSHIP_TYPE = "RelationshipType";
 	public final static String RELATIONSHIP_QUERY_INTERFACE = "RelationshipQueryInterface";
@@ -41,7 +40,6 @@ public class Templates {
 	
 	static {
 		try {
-			getTemplate(FACT_INVOCATION);
 			getTemplate(RULE_INVOCATION);
 			getTemplate(RELATIONSHIP_TYPE);
 			getTemplate(RELATIONSHIP_QUERY_INTERFACE);

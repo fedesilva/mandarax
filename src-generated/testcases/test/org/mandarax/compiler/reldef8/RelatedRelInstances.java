@@ -4,7 +4,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>Related</strong>.
- * @version Nov 8, 2010 3:46:53 PM 
+ * @version Nov 9, 2010 11:29:29 AM 
  */
 public class RelatedRelInstances {
 	// object references
@@ -189,27 +189,43 @@ public class RelatedRelInstances {
 		_derivation.log("Related.fact1", DerivationController.RULE, _annotations_fact1);
 		
 			
+	
+		
+		// utility class used to keep track of variables bindings
+		// rule: fact1:  -> Related("John","Tom");
+		// prereqs: []
+		class _Bindings {
+		}
+		final _Bindings _bindings = new _Bindings();
+		ResourceIterator<?> _tmp = null;
+		
+		 
+		
+		
 		
 		 
 		// check conditions	
-		if (Equals.compare(person1,"John") ) {
+		boolean _checkfailed = false;
 		
+		_checkfailed = _checkfailed || !Equals.compare(person1,"John"); 
 		
-		// create new instance of relationship
-		RelatedRel _result = new RelatedRel();
-		
-		// set values
-		_result.person1 = "John";
-		_result.person2 = "Tom";
-		
-		return new SingletonIterator<RelatedRel>(_result);
+		if (_checkfailed) {
+			return EmptyIterator.DEFAULT;
 		}
-			
-		// fact does not match query	
-		return EmptyIterator.DEFAULT;
+		
 		
 
 		
+		
+		// rule head
+		
+		return new SingletonIterator(new RelatedRel("John","Tom"));
+        
+		
+		
+		
+	
+
 	}
 	// rule: _Father_extends_Related: Father(_x0,_x1) -> Related(_x0,_x1);
 	private static ResourceIterator<RelatedRel> getRelated1_1 (final DerivationController _derivation ,  final String person1 ) {
@@ -230,6 +246,11 @@ public class RelatedRelInstances {
 		ResourceIterator<?> _tmp = null;
 		
 		 
+		
+		
+		
+		
+		
 
 		 
 		
@@ -261,7 +282,6 @@ public class RelatedRelInstances {
 		
 	
 
-		
 	}
 	// rule: _GrandFather_extends_Related: GrandFather(_x0,_x1) -> Related(_x0,_x1);
 	private static ResourceIterator<RelatedRel> getRelated1_2 (final DerivationController _derivation ,  final String person1 ) {
@@ -282,6 +302,11 @@ public class RelatedRelInstances {
 		ResourceIterator<?> _tmp = null;
 		
 		 
+		
+		
+		
+		
+		
 
 		 
 		
@@ -313,7 +338,6 @@ public class RelatedRelInstances {
 		
 	
 
-		
 	}
 	// query: getRelated2
 	// rule: fact1:  -> Related("John","Tom");
@@ -322,27 +346,43 @@ public class RelatedRelInstances {
 		_derivation.log("Related.fact1", DerivationController.RULE, _annotations_fact1);
 		
 			
+	
+		
+		// utility class used to keep track of variables bindings
+		// rule: fact1:  -> Related("John","Tom");
+		// prereqs: []
+		class _Bindings {
+		}
+		final _Bindings _bindings = new _Bindings();
+		ResourceIterator<?> _tmp = null;
+		
+		 
+		
+		
 		
 		 
 		// check conditions	
-		if (Equals.compare(person2,"Tom") ) {
+		boolean _checkfailed = false;
 		
+		_checkfailed = _checkfailed || !Equals.compare(person2,"Tom"); 
 		
-		// create new instance of relationship
-		RelatedRel _result = new RelatedRel();
-		
-		// set values
-		_result.person1 = "John";
-		_result.person2 = "Tom";
-		
-		return new SingletonIterator<RelatedRel>(_result);
+		if (_checkfailed) {
+			return EmptyIterator.DEFAULT;
 		}
-			
-		// fact does not match query	
-		return EmptyIterator.DEFAULT;
+		
 		
 
 		
+		
+		// rule head
+		
+		return new SingletonIterator(new RelatedRel("John","Tom"));
+        
+		
+		
+		
+	
+
 	}
 	// rule: _Father_extends_Related: Father(_x0,_x1) -> Related(_x0,_x1);
 	private static ResourceIterator<RelatedRel> getRelated2_1 (final DerivationController _derivation ,  final String person2 ) {
@@ -363,6 +403,11 @@ public class RelatedRelInstances {
 		ResourceIterator<?> _tmp = null;
 		
 		 
+		
+		
+		
+		
+		
 
 		 
 		
@@ -394,7 +439,6 @@ public class RelatedRelInstances {
 		
 	
 
-		
 	}
 	// rule: _GrandFather_extends_Related: GrandFather(_x0,_x1) -> Related(_x0,_x1);
 	private static ResourceIterator<RelatedRel> getRelated2_2 (final DerivationController _derivation ,  final String person2 ) {
@@ -415,6 +459,11 @@ public class RelatedRelInstances {
 		ResourceIterator<?> _tmp = null;
 		
 		 
+		
+		
+		
+		
+		
 
 		 
 		
@@ -446,7 +495,6 @@ public class RelatedRelInstances {
 		
 	
 
-		
 	}
 	// query: isRelated
 	// rule: fact1:  -> Related("John","Tom");
@@ -455,27 +503,45 @@ public class RelatedRelInstances {
 		_derivation.log("Related.fact1", DerivationController.RULE, _annotations_fact1);
 		
 			
+	
+		
+		// utility class used to keep track of variables bindings
+		// rule: fact1:  -> Related("John","Tom");
+		// prereqs: []
+		class _Bindings {
+		}
+		final _Bindings _bindings = new _Bindings();
+		ResourceIterator<?> _tmp = null;
+		
+		 
+		
+		
 		
 		 
 		// check conditions	
-		if (Equals.compare(person1,"John") && Equals.compare(person2,"Tom") ) {
+		boolean _checkfailed = false;
 		
+		_checkfailed = _checkfailed || !Equals.compare(person1,"John"); 
 		
-		// create new instance of relationship
-		RelatedRel _result = new RelatedRel();
+		_checkfailed = _checkfailed || !Equals.compare(person2,"Tom"); 
 		
-		// set values
-		_result.person1 = "John";
-		_result.person2 = "Tom";
-		
-		return new SingletonIterator<RelatedRel>(_result);
+		if (_checkfailed) {
+			return EmptyIterator.DEFAULT;
 		}
-			
-		// fact does not match query	
-		return EmptyIterator.DEFAULT;
+		
 		
 
 		
+		
+		// rule head
+		
+		return new SingletonIterator(new RelatedRel("John","Tom"));
+        
+		
+		
+		
+	
+
 	}
 	// rule: _Father_extends_Related: Father(_x0,_x1) -> Related(_x0,_x1);
 	private static ResourceIterator<RelatedRel> isRelated_1 (final DerivationController _derivation ,  final String person1 ,  final String person2 ) {
@@ -496,6 +562,11 @@ public class RelatedRelInstances {
 		ResourceIterator<?> _tmp = null;
 		
 		 
+		
+		
+		
+		
+		
 
 		 
 		
@@ -525,7 +596,6 @@ public class RelatedRelInstances {
 		
 	
 
-		
 	}
 	// rule: _GrandFather_extends_Related: GrandFather(_x0,_x1) -> Related(_x0,_x1);
 	private static ResourceIterator<RelatedRel> isRelated_2 (final DerivationController _derivation ,  final String person1 ,  final String person2 ) {
@@ -546,6 +616,11 @@ public class RelatedRelInstances {
 		ResourceIterator<?> _tmp = null;
 		
 		 
+		
+		
+		
+		
+		
 
 		 
 		
@@ -575,7 +650,6 @@ public class RelatedRelInstances {
 		
 	
 
-		
 	}
 	// query: getAll
 	// rule: fact1:  -> Related("John","Tom");
@@ -584,20 +658,34 @@ public class RelatedRelInstances {
 		_derivation.log("Related.fact1", DerivationController.RULE, _annotations_fact1);
 		
 			
+	
+		
+		// utility class used to keep track of variables bindings
+		// rule: fact1:  -> Related("John","Tom");
+		// prereqs: []
+		class _Bindings {
+		}
+		final _Bindings _bindings = new _Bindings();
+		ResourceIterator<?> _tmp = null;
+		
+		 
 		
 		
 		
-		// create new instance of relationship
-		RelatedRel _result = new RelatedRel();
 		
-		// set values
-		_result.person1 = "John";
-		_result.person2 = "Tom";
-		
-		return new SingletonIterator<RelatedRel>(_result);
 		
 
 		
+		
+		// rule head
+		
+		return new SingletonIterator(new RelatedRel("John","Tom"));
+        
+		
+		
+		
+	
+
 	}
 	// rule: _Father_extends_Related: Father(_x0,_x1) -> Related(_x0,_x1);
 	private static ResourceIterator<RelatedRel> getAll_1 (final DerivationController _derivation  ) {
@@ -618,6 +706,11 @@ public class RelatedRelInstances {
 		ResourceIterator<?> _tmp = null;
 		
 		 
+		
+		
+		
+		
+		
 
 		 
 		
@@ -650,7 +743,6 @@ public class RelatedRelInstances {
 		
 	
 
-		
 	}
 	// rule: _GrandFather_extends_Related: GrandFather(_x0,_x1) -> Related(_x0,_x1);
 	private static ResourceIterator<RelatedRel> getAll_2 (final DerivationController _derivation  ) {
@@ -671,6 +763,11 @@ public class RelatedRelInstances {
 		ResourceIterator<?> _tmp = null;
 		
 		 
+		
+		
+		
+		
+		
 
 		 
 		
@@ -703,7 +800,6 @@ public class RelatedRelInstances {
 		
 	
 
-		
 	}
 	
 	

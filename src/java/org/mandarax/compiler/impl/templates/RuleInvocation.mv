@@ -11,6 +11,20 @@
 		ResourceIterator<?> _tmp = null;
 		
 		@code{index=counter.next;} @comment{sets counter to 1}
+		
+		@comment{check that input slots are consistent with ground terms (in part. constants) in rule head}
+		@code{terms = rule.head.children}
+		@if{query.parameterNames.size()>0 && !rule.head.groundChildren.empty} 
+		// check conditions	
+		boolean _checkfailed = false;
+		@foreach{param:query.parameterNames}@code{term=terms.get(rel.getSlotPosition(param))}
+		@if{term.ground}_checkfailed = _checkfailed || !Equals.compare(@{param},@{term}); @end{}
+		@end{}
+		if (_checkfailed) {
+			return EmptyIterator.DEFAULT;
+		}
+		@end{}
+		
 
 		@foreach{prereq:body} 
 		

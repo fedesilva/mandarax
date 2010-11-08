@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>isYoung</strong>.
- * @version Nov 8, 2010 3:46:53 PM 
+ * @version Nov 9, 2010 11:29:30 AM 
  */
 public class isYoungRelInstances {
 	// object references
@@ -87,6 +87,11 @@ public class isYoungRelInstances {
 		ResourceIterator<?> _tmp = null;
 		
 		 
+		
+		
+		
+		
+		
 
 		 
 		
@@ -109,7 +114,6 @@ public class isYoungRelInstances {
 		
 	
 
-		
 	}
 	
 	

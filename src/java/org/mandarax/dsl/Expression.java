@@ -12,6 +12,7 @@
 package org.mandarax.dsl;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -64,6 +65,22 @@ public abstract class Expression extends ASTNode implements Cloneable {
 	public abstract List<Expression> getChildren();
 	
 	/**
+	 * Get a collection of ground children.
+	 * @return
+	 */
+	public List<Expression> getGroundChildren() {
+		List<Expression> children = getChildren();
+		List<Expression> list = new ArrayList<Expression>(children.size());
+		for (Expression child:children) {
+			if (child.isGround()) {
+				list.add(child);
+			}
+		}
+		return list;
+	}
+	
+	
+	/**
 	 * Apply term substitutions. This will replace parts of the expression tree. 
 	 * The result of this operation is a new expression - this expression will not be changed.
 	 * @param substitutions
@@ -77,7 +94,7 @@ public abstract class Expression extends ASTNode implements Cloneable {
 	 * @return
 	 */
 	public boolean isGroundWRT(Collection<Expression> boundExpressions) {
-		if (boundExpressions.contains(this)) return true;
+		if (isGround() || boundExpressions.contains(this)) return true;
 		else {
 			List<Expression> children = getChildren();
 			if (children.isEmpty()) return false;

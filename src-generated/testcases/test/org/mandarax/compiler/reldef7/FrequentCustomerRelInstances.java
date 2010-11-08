@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>FrequentCustomer</strong>.
- * @version Nov 8, 2010 3:46:53 PM 
+ * @version Nov 9, 2010 11:29:29 AM 
  */
 public class FrequentCustomerRelInstances {
 	// object references
@@ -101,6 +101,11 @@ public class FrequentCustomerRelInstances {
 		ResourceIterator<?> _tmp = null;
 		
 		 
+		
+		
+		
+		
+		
 
 		 
 		
@@ -123,7 +128,6 @@ public class FrequentCustomerRelInstances {
 		
 	
 
-		
 	}
 	// rule: rule2: (c.getTransactionCount())>3 & (c.getTurnover())>500 -> FrequentCustomer(c);
 	private static ResourceIterator<FrequentCustomerRel> isFrequentCustomer_1 (final DerivationController _derivation ,  final Customer customer ) {
@@ -143,6 +147,11 @@ public class FrequentCustomerRelInstances {
 		ResourceIterator<?> _tmp = null;
 		
 		 
+		
+		
+		
+		
+		
 
 		 
 		
@@ -175,7 +184,6 @@ public class FrequentCustomerRelInstances {
 		
 	
 
-		
 	}
 	
 	

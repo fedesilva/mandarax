@@ -2,8 +2,10 @@ package test.org.mandarax.compiler.rlist;
 
 import test.org.mandarax.compiler.*;
 
-rel Contains(RList list,Object element) queries contains(list,element) {
-	rule1: l.head==e -> Contains(l,e);
+rel Contains(RList list,Object element) queries contains(list,element),getElements(list) {
+	// the true is necessary to ensure that the rule template is used: when this is compiled as fact 
+	// the prereq for the term introduced for l.head is not generated 
+	rule1: true -> Contains(l,l.head);
 	rule2: l.tail!=null & Contains(l.tail,e) -> Contains(l,e); 
 }
 

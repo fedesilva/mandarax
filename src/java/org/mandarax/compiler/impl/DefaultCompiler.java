@@ -300,8 +300,10 @@ public class DefaultCompiler implements Compiler {
 		final Map<Expression,Class> varTypeMap = new HashMap<Expression,Class>();
 		
 		// assign types for imported objects
+		Collection<String> objDeclNames = new HashSet<String>();
 		for (ObjectDeclaration objDecl:cu.getObjectDeclarations()) {
 			String name = objDecl.getName();
+			objDeclNames.add(name);
 			Class type = resolver.getType(cu.getContext(),objDecl.getType());
 			objTypeMap.put(name,type);
 			LOGGER.debug("Adding type info from object declaration to type map: " + name + " -> " + type);
@@ -311,6 +313,11 @@ public class DefaultCompiler implements Compiler {
 		final Collection<RelationshipDefinition> rels = new HashSet<RelationshipDefinition>();
 		for (CompilationUnit cun:cus) {
 			rels.addAll(cun.getRelationshipDefinitions());
+		}
+		
+		// mark variables defined by object declarations as defined
+		for (Variable v:rule.getVariables()) {
+			v.setDefined(objDeclNames.contains(v.getName()));
 		}
 		
 		// head
@@ -329,7 +336,7 @@ public class DefaultCompiler implements Compiler {
 				}
 				else {
 					checkTypeConsistency(cu,rule,type,type2);
-					varTypeMap.put((Variable)term,type);
+					varTypeMap.put(term,type);
 					LOGGER.debug("Adding type info from rule head to type map: " + term + " -> " + type);
 				}
 			}

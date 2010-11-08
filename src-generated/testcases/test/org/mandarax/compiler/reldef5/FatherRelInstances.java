@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>Father</strong>.
- * @version Nov 8, 2010 3:46:53 PM 
+ * @version Nov 9, 2010 11:29:29 AM 
  */
 public class FatherRelInstances {
 	// object references
@@ -220,27 +220,43 @@ public class FatherRelInstances {
 		_derivation.log("Father.rule1", DerivationController.RULE, _annotations_rule1);
 		
 			
+	
+		
+		// utility class used to keep track of variables bindings
+		// rule: rule1:  -> Father("Jens","Max");
+		// prereqs: []
+		class _Bindings {
+		}
+		final _Bindings _bindings = new _Bindings();
+		ResourceIterator<?> _tmp = null;
+		
+		 
+		
+		
 		
 		 
 		// check conditions	
-		if (Equals.compare(child,"Max") ) {
+		boolean _checkfailed = false;
 		
+		_checkfailed = _checkfailed || !Equals.compare(child,"Max"); 
 		
-		// create new instance of relationship
-		FatherRel _result = new FatherRel();
-		
-		// set values
-		_result.father = "Jens";
-		_result.child = "Max";
-		
-		return new SingletonIterator<FatherRel>(_result);
+		if (_checkfailed) {
+			return EmptyIterator.DEFAULT;
 		}
-			
-		// fact does not match query	
-		return EmptyIterator.DEFAULT;
+		
 		
 
 		
+		
+		// rule head
+		
+		return new SingletonIterator(new FatherRel("Jens","Max"));
+        
+		
+		
+		
+	
+
 	}
 	// rule: rule2:  -> Father("Jens","Xiomara");
 	private static ResourceIterator<FatherRel> getFather_1 (final DerivationController _derivation ,  final String child ) {
@@ -248,27 +264,43 @@ public class FatherRelInstances {
 		_derivation.log("Father.rule2", DerivationController.RULE, _annotations_rule2);
 		
 			
+	
+		
+		// utility class used to keep track of variables bindings
+		// rule: rule2:  -> Father("Jens","Xiomara");
+		// prereqs: []
+		class _Bindings {
+		}
+		final _Bindings _bindings = new _Bindings();
+		ResourceIterator<?> _tmp = null;
+		
+		 
+		
+		
 		
 		 
 		// check conditions	
-		if (Equals.compare(child,"Xiomara") ) {
+		boolean _checkfailed = false;
 		
+		_checkfailed = _checkfailed || !Equals.compare(child,"Xiomara"); 
 		
-		// create new instance of relationship
-		FatherRel _result = new FatherRel();
-		
-		// set values
-		_result.father = "Jens";
-		_result.child = "Xiomara";
-		
-		return new SingletonIterator<FatherRel>(_result);
+		if (_checkfailed) {
+			return EmptyIterator.DEFAULT;
 		}
-			
-		// fact does not match query	
-		return EmptyIterator.DEFAULT;
+		
 		
 
 		
+		
+		// rule head
+		
+		return new SingletonIterator(new FatherRel("Jens","Xiomara"));
+        
+		
+		
+		
+	
+
 	}
 	// rule: rule3:  -> Father("Klaus","Jens");
 	private static ResourceIterator<FatherRel> getFather_2 (final DerivationController _derivation ,  final String child ) {
@@ -276,27 +308,43 @@ public class FatherRelInstances {
 		_derivation.log("Father.rule3", DerivationController.RULE, _annotations_rule3);
 		
 			
+	
+		
+		// utility class used to keep track of variables bindings
+		// rule: rule3:  -> Father("Klaus","Jens");
+		// prereqs: []
+		class _Bindings {
+		}
+		final _Bindings _bindings = new _Bindings();
+		ResourceIterator<?> _tmp = null;
+		
+		 
+		
+		
 		
 		 
 		// check conditions	
-		if (Equals.compare(child,"Jens") ) {
+		boolean _checkfailed = false;
 		
+		_checkfailed = _checkfailed || !Equals.compare(child,"Jens"); 
 		
-		// create new instance of relationship
-		FatherRel _result = new FatherRel();
-		
-		// set values
-		_result.father = "Klaus";
-		_result.child = "Jens";
-		
-		return new SingletonIterator<FatherRel>(_result);
+		if (_checkfailed) {
+			return EmptyIterator.DEFAULT;
 		}
-			
-		// fact does not match query	
-		return EmptyIterator.DEFAULT;
+		
 		
 
 		
+		
+		// rule head
+		
+		return new SingletonIterator(new FatherRel("Klaus","Jens"));
+        
+		
+		
+		
+	
+
 	}
 	// rule: rule4:  -> Father("Otto","Klaus");
 	private static ResourceIterator<FatherRel> getFather_3 (final DerivationController _derivation ,  final String child ) {
@@ -304,27 +352,43 @@ public class FatherRelInstances {
 		_derivation.log("Father.rule4", DerivationController.RULE, _annotations_rule4);
 		
 			
+	
+		
+		// utility class used to keep track of variables bindings
+		// rule: rule4:  -> Father("Otto","Klaus");
+		// prereqs: []
+		class _Bindings {
+		}
+		final _Bindings _bindings = new _Bindings();
+		ResourceIterator<?> _tmp = null;
+		
+		 
+		
+		
 		
 		 
 		// check conditions	
-		if (Equals.compare(child,"Klaus") ) {
+		boolean _checkfailed = false;
 		
+		_checkfailed = _checkfailed || !Equals.compare(child,"Klaus"); 
 		
-		// create new instance of relationship
-		FatherRel _result = new FatherRel();
-		
-		// set values
-		_result.father = "Otto";
-		_result.child = "Klaus";
-		
-		return new SingletonIterator<FatherRel>(_result);
+		if (_checkfailed) {
+			return EmptyIterator.DEFAULT;
 		}
-			
-		// fact does not match query	
-		return EmptyIterator.DEFAULT;
+		
 		
 
 		
+		
+		// rule head
+		
+		return new SingletonIterator(new FatherRel("Otto","Klaus"));
+        
+		
+		
+		
+	
+
 	}
 	// query: isFather
 	// rule: rule1:  -> Father("Jens","Max");
@@ -333,27 +397,45 @@ public class FatherRelInstances {
 		_derivation.log("Father.rule1", DerivationController.RULE, _annotations_rule1);
 		
 			
+	
+		
+		// utility class used to keep track of variables bindings
+		// rule: rule1:  -> Father("Jens","Max");
+		// prereqs: []
+		class _Bindings {
+		}
+		final _Bindings _bindings = new _Bindings();
+		ResourceIterator<?> _tmp = null;
+		
+		 
+		
+		
 		
 		 
 		// check conditions	
-		if (Equals.compare(father,"Jens") && Equals.compare(child,"Max") ) {
+		boolean _checkfailed = false;
 		
+		_checkfailed = _checkfailed || !Equals.compare(father,"Jens"); 
 		
-		// create new instance of relationship
-		FatherRel _result = new FatherRel();
+		_checkfailed = _checkfailed || !Equals.compare(child,"Max"); 
 		
-		// set values
-		_result.father = "Jens";
-		_result.child = "Max";
-		
-		return new SingletonIterator<FatherRel>(_result);
+		if (_checkfailed) {
+			return EmptyIterator.DEFAULT;
 		}
-			
-		// fact does not match query	
-		return EmptyIterator.DEFAULT;
+		
 		
 
 		
+		
+		// rule head
+		
+		return new SingletonIterator(new FatherRel("Jens","Max"));
+        
+		
+		
+		
+	
+
 	}
 	// rule: rule2:  -> Father("Jens","Xiomara");
 	private static ResourceIterator<FatherRel> isFather_1 (final DerivationController _derivation ,  final String father ,  final String child ) {
@@ -361,27 +443,45 @@ public class FatherRelInstances {
 		_derivation.log("Father.rule2", DerivationController.RULE, _annotations_rule2);
 		
 			
+	
+		
+		// utility class used to keep track of variables bindings
+		// rule: rule2:  -> Father("Jens","Xiomara");
+		// prereqs: []
+		class _Bindings {
+		}
+		final _Bindings _bindings = new _Bindings();
+		ResourceIterator<?> _tmp = null;
+		
+		 
+		
+		
 		
 		 
 		// check conditions	
-		if (Equals.compare(father,"Jens") && Equals.compare(child,"Xiomara") ) {
+		boolean _checkfailed = false;
 		
+		_checkfailed = _checkfailed || !Equals.compare(father,"Jens"); 
 		
-		// create new instance of relationship
-		FatherRel _result = new FatherRel();
+		_checkfailed = _checkfailed || !Equals.compare(child,"Xiomara"); 
 		
-		// set values
-		_result.father = "Jens";
-		_result.child = "Xiomara";
-		
-		return new SingletonIterator<FatherRel>(_result);
+		if (_checkfailed) {
+			return EmptyIterator.DEFAULT;
 		}
-			
-		// fact does not match query	
-		return EmptyIterator.DEFAULT;
+		
 		
 
 		
+		
+		// rule head
+		
+		return new SingletonIterator(new FatherRel("Jens","Xiomara"));
+        
+		
+		
+		
+	
+
 	}
 	// rule: rule3:  -> Father("Klaus","Jens");
 	private static ResourceIterator<FatherRel> isFather_2 (final DerivationController _derivation ,  final String father ,  final String child ) {
@@ -389,27 +489,45 @@ public class FatherRelInstances {
 		_derivation.log("Father.rule3", DerivationController.RULE, _annotations_rule3);
 		
 			
+	
+		
+		// utility class used to keep track of variables bindings
+		// rule: rule3:  -> Father("Klaus","Jens");
+		// prereqs: []
+		class _Bindings {
+		}
+		final _Bindings _bindings = new _Bindings();
+		ResourceIterator<?> _tmp = null;
+		
+		 
+		
+		
 		
 		 
 		// check conditions	
-		if (Equals.compare(father,"Klaus") && Equals.compare(child,"Jens") ) {
+		boolean _checkfailed = false;
 		
+		_checkfailed = _checkfailed || !Equals.compare(father,"Klaus"); 
 		
-		// create new instance of relationship
-		FatherRel _result = new FatherRel();
+		_checkfailed = _checkfailed || !Equals.compare(child,"Jens"); 
 		
-		// set values
-		_result.father = "Klaus";
-		_result.child = "Jens";
-		
-		return new SingletonIterator<FatherRel>(_result);
+		if (_checkfailed) {
+			return EmptyIterator.DEFAULT;
 		}
-			
-		// fact does not match query	
-		return EmptyIterator.DEFAULT;
+		
 		
 
 		
+		
+		// rule head
+		
+		return new SingletonIterator(new FatherRel("Klaus","Jens"));
+        
+		
+		
+		
+	
+
 	}
 	// rule: rule4:  -> Father("Otto","Klaus");
 	private static ResourceIterator<FatherRel> isFather_3 (final DerivationController _derivation ,  final String father ,  final String child ) {
@@ -417,27 +535,45 @@ public class FatherRelInstances {
 		_derivation.log("Father.rule4", DerivationController.RULE, _annotations_rule4);
 		
 			
+	
+		
+		// utility class used to keep track of variables bindings
+		// rule: rule4:  -> Father("Otto","Klaus");
+		// prereqs: []
+		class _Bindings {
+		}
+		final _Bindings _bindings = new _Bindings();
+		ResourceIterator<?> _tmp = null;
+		
+		 
+		
+		
 		
 		 
 		// check conditions	
-		if (Equals.compare(father,"Otto") && Equals.compare(child,"Klaus") ) {
+		boolean _checkfailed = false;
 		
+		_checkfailed = _checkfailed || !Equals.compare(father,"Otto"); 
 		
-		// create new instance of relationship
-		FatherRel _result = new FatherRel();
+		_checkfailed = _checkfailed || !Equals.compare(child,"Klaus"); 
 		
-		// set values
-		_result.father = "Otto";
-		_result.child = "Klaus";
-		
-		return new SingletonIterator<FatherRel>(_result);
+		if (_checkfailed) {
+			return EmptyIterator.DEFAULT;
 		}
-			
-		// fact does not match query	
-		return EmptyIterator.DEFAULT;
+		
 		
 
 		
+		
+		// rule head
+		
+		return new SingletonIterator(new FatherRel("Otto","Klaus"));
+        
+		
+		
+		
+	
+
 	}
 	// query: getChildren
 	// rule: rule1:  -> Father("Jens","Max");
@@ -446,27 +582,43 @@ public class FatherRelInstances {
 		_derivation.log("Father.rule1", DerivationController.RULE, _annotations_rule1);
 		
 			
+	
+		
+		// utility class used to keep track of variables bindings
+		// rule: rule1:  -> Father("Jens","Max");
+		// prereqs: []
+		class _Bindings {
+		}
+		final _Bindings _bindings = new _Bindings();
+		ResourceIterator<?> _tmp = null;
+		
+		 
+		
+		
 		
 		 
 		// check conditions	
-		if (Equals.compare(father,"Jens") ) {
+		boolean _checkfailed = false;
 		
+		_checkfailed = _checkfailed || !Equals.compare(father,"Jens"); 
 		
-		// create new instance of relationship
-		FatherRel _result = new FatherRel();
-		
-		// set values
-		_result.father = "Jens";
-		_result.child = "Max";
-		
-		return new SingletonIterator<FatherRel>(_result);
+		if (_checkfailed) {
+			return EmptyIterator.DEFAULT;
 		}
-			
-		// fact does not match query	
-		return EmptyIterator.DEFAULT;
+		
 		
 
 		
+		
+		// rule head
+		
+		return new SingletonIterator(new FatherRel("Jens","Max"));
+        
+		
+		
+		
+	
+
 	}
 	// rule: rule2:  -> Father("Jens","Xiomara");
 	private static ResourceIterator<FatherRel> getChildren_1 (final DerivationController _derivation ,  final String father ) {
@@ -474,27 +626,43 @@ public class FatherRelInstances {
 		_derivation.log("Father.rule2", DerivationController.RULE, _annotations_rule2);
 		
 			
+	
+		
+		// utility class used to keep track of variables bindings
+		// rule: rule2:  -> Father("Jens","Xiomara");
+		// prereqs: []
+		class _Bindings {
+		}
+		final _Bindings _bindings = new _Bindings();
+		ResourceIterator<?> _tmp = null;
+		
+		 
+		
+		
 		
 		 
 		// check conditions	
-		if (Equals.compare(father,"Jens") ) {
+		boolean _checkfailed = false;
 		
+		_checkfailed = _checkfailed || !Equals.compare(father,"Jens"); 
 		
-		// create new instance of relationship
-		FatherRel _result = new FatherRel();
-		
-		// set values
-		_result.father = "Jens";
-		_result.child = "Xiomara";
-		
-		return new SingletonIterator<FatherRel>(_result);
+		if (_checkfailed) {
+			return EmptyIterator.DEFAULT;
 		}
-			
-		// fact does not match query	
-		return EmptyIterator.DEFAULT;
+		
 		
 
 		
+		
+		// rule head
+		
+		return new SingletonIterator(new FatherRel("Jens","Xiomara"));
+        
+		
+		
+		
+	
+
 	}
 	// rule: rule3:  -> Father("Klaus","Jens");
 	private static ResourceIterator<FatherRel> getChildren_2 (final DerivationController _derivation ,  final String father ) {
@@ -502,27 +670,43 @@ public class FatherRelInstances {
 		_derivation.log("Father.rule3", DerivationController.RULE, _annotations_rule3);
 		
 			
+	
+		
+		// utility class used to keep track of variables bindings
+		// rule: rule3:  -> Father("Klaus","Jens");
+		// prereqs: []
+		class _Bindings {
+		}
+		final _Bindings _bindings = new _Bindings();
+		ResourceIterator<?> _tmp = null;
+		
+		 
+		
+		
 		
 		 
 		// check conditions	
-		if (Equals.compare(father,"Klaus") ) {
+		boolean _checkfailed = false;
 		
+		_checkfailed = _checkfailed || !Equals.compare(father,"Klaus"); 
 		
-		// create new instance of relationship
-		FatherRel _result = new FatherRel();
-		
-		// set values
-		_result.father = "Klaus";
-		_result.child = "Jens";
-		
-		return new SingletonIterator<FatherRel>(_result);
+		if (_checkfailed) {
+			return EmptyIterator.DEFAULT;
 		}
-			
-		// fact does not match query	
-		return EmptyIterator.DEFAULT;
+		
 		
 
 		
+		
+		// rule head
+		
+		return new SingletonIterator(new FatherRel("Klaus","Jens"));
+        
+		
+		
+		
+	
+
 	}
 	// rule: rule4:  -> Father("Otto","Klaus");
 	private static ResourceIterator<FatherRel> getChildren_3 (final DerivationController _derivation ,  final String father ) {
@@ -530,27 +714,43 @@ public class FatherRelInstances {
 		_derivation.log("Father.rule4", DerivationController.RULE, _annotations_rule4);
 		
 			
+	
+		
+		// utility class used to keep track of variables bindings
+		// rule: rule4:  -> Father("Otto","Klaus");
+		// prereqs: []
+		class _Bindings {
+		}
+		final _Bindings _bindings = new _Bindings();
+		ResourceIterator<?> _tmp = null;
+		
+		 
+		
+		
 		
 		 
 		// check conditions	
-		if (Equals.compare(father,"Otto") ) {
+		boolean _checkfailed = false;
 		
+		_checkfailed = _checkfailed || !Equals.compare(father,"Otto"); 
 		
-		// create new instance of relationship
-		FatherRel _result = new FatherRel();
-		
-		// set values
-		_result.father = "Otto";
-		_result.child = "Klaus";
-		
-		return new SingletonIterator<FatherRel>(_result);
+		if (_checkfailed) {
+			return EmptyIterator.DEFAULT;
 		}
-			
-		// fact does not match query	
-		return EmptyIterator.DEFAULT;
+		
 		
 
 		
+		
+		// rule head
+		
+		return new SingletonIterator(new FatherRel("Otto","Klaus"));
+        
+		
+		
+		
+	
+
 	}
 	// query: getFatherAndChild
 	// rule: rule1:  -> Father("Jens","Max");
@@ -559,20 +759,34 @@ public class FatherRelInstances {
 		_derivation.log("Father.rule1", DerivationController.RULE, _annotations_rule1);
 		
 			
+	
+		
+		// utility class used to keep track of variables bindings
+		// rule: rule1:  -> Father("Jens","Max");
+		// prereqs: []
+		class _Bindings {
+		}
+		final _Bindings _bindings = new _Bindings();
+		ResourceIterator<?> _tmp = null;
+		
+		 
 		
 		
 		
-		// create new instance of relationship
-		FatherRel _result = new FatherRel();
 		
-		// set values
-		_result.father = "Jens";
-		_result.child = "Max";
-		
-		return new SingletonIterator<FatherRel>(_result);
 		
 
 		
+		
+		// rule head
+		
+		return new SingletonIterator(new FatherRel("Jens","Max"));
+        
+		
+		
+		
+	
+
 	}
 	// rule: rule2:  -> Father("Jens","Xiomara");
 	private static ResourceIterator<FatherRel> getFatherAndChild_1 (final DerivationController _derivation  ) {
@@ -580,20 +794,34 @@ public class FatherRelInstances {
 		_derivation.log("Father.rule2", DerivationController.RULE, _annotations_rule2);
 		
 			
+	
+		
+		// utility class used to keep track of variables bindings
+		// rule: rule2:  -> Father("Jens","Xiomara");
+		// prereqs: []
+		class _Bindings {
+		}
+		final _Bindings _bindings = new _Bindings();
+		ResourceIterator<?> _tmp = null;
+		
+		 
 		
 		
 		
-		// create new instance of relationship
-		FatherRel _result = new FatherRel();
 		
-		// set values
-		_result.father = "Jens";
-		_result.child = "Xiomara";
-		
-		return new SingletonIterator<FatherRel>(_result);
 		
 
 		
+		
+		// rule head
+		
+		return new SingletonIterator(new FatherRel("Jens","Xiomara"));
+        
+		
+		
+		
+	
+
 	}
 	// rule: rule3:  -> Father("Klaus","Jens");
 	private static ResourceIterator<FatherRel> getFatherAndChild_2 (final DerivationController _derivation  ) {
@@ -601,20 +829,34 @@ public class FatherRelInstances {
 		_derivation.log("Father.rule3", DerivationController.RULE, _annotations_rule3);
 		
 			
+	
+		
+		// utility class used to keep track of variables bindings
+		// rule: rule3:  -> Father("Klaus","Jens");
+		// prereqs: []
+		class _Bindings {
+		}
+		final _Bindings _bindings = new _Bindings();
+		ResourceIterator<?> _tmp = null;
+		
+		 
 		
 		
 		
-		// create new instance of relationship
-		FatherRel _result = new FatherRel();
 		
-		// set values
-		_result.father = "Klaus";
-		_result.child = "Jens";
-		
-		return new SingletonIterator<FatherRel>(_result);
 		
 
 		
+		
+		// rule head
+		
+		return new SingletonIterator(new FatherRel("Klaus","Jens"));
+        
+		
+		
+		
+	
+
 	}
 	// rule: rule4:  -> Father("Otto","Klaus");
 	private static ResourceIterator<FatherRel> getFatherAndChild_3 (final DerivationController _derivation  ) {
@@ -622,20 +864,34 @@ public class FatherRelInstances {
 		_derivation.log("Father.rule4", DerivationController.RULE, _annotations_rule4);
 		
 			
+	
+		
+		// utility class used to keep track of variables bindings
+		// rule: rule4:  -> Father("Otto","Klaus");
+		// prereqs: []
+		class _Bindings {
+		}
+		final _Bindings _bindings = new _Bindings();
+		ResourceIterator<?> _tmp = null;
+		
+		 
 		
 		
 		
-		// create new instance of relationship
-		FatherRel _result = new FatherRel();
 		
-		// set values
-		_result.father = "Otto";
-		_result.child = "Klaus";
-		
-		return new SingletonIterator<FatherRel>(_result);
 		
 
 		
+		
+		// rule head
+		
+		return new SingletonIterator(new FatherRel("Otto","Klaus"));
+        
+		
+		
+		
+	
+
 	}
 	
 	

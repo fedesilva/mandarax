@@ -4,7 +4,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>GrandFather</strong>.
- * @version Nov 8, 2010 3:46:53 PM 
+ * @version Nov 9, 2010 11:29:29 AM 
  */
 public class GrandFatherRelInstances {
 	// object references
@@ -145,6 +145,11 @@ public class GrandFatherRelInstances {
 		ResourceIterator<?> _tmp = null;
 		
 		 
+		
+		
+		
+		
+		
 
 		 
 		
@@ -196,7 +201,6 @@ public class GrandFatherRelInstances {
 		
 	
 
-		
 	}
 	// query: getGrandFather
 	// rule: rule1: Father(x,y) & Father(y,z) -> GrandFather(x,z);
@@ -219,6 +223,11 @@ public class GrandFatherRelInstances {
 		ResourceIterator<?> _tmp = null;
 		
 		 
+		
+		
+		
+		
+		
 
 		 
 		
@@ -277,7 +286,6 @@ public class GrandFatherRelInstances {
 		
 	
 
-		
 	}
 	// query: isGrandFather
 	// rule: rule1: Father(x,y) & Father(y,z) -> GrandFather(x,z);
@@ -300,6 +308,11 @@ public class GrandFatherRelInstances {
 		ResourceIterator<?> _tmp = null;
 		
 		 
+		
+		
+		
+		
+		
 
 		 
 		
@@ -356,7 +369,6 @@ public class GrandFatherRelInstances {
 		
 	
 
-		
 	}
 	// query: getAll
 	// rule: rule1: Father(x,y) & Father(y,z) -> GrandFather(x,z);
@@ -379,6 +391,11 @@ public class GrandFatherRelInstances {
 		ResourceIterator<?> _tmp = null;
 		
 		 
+		
+		
+		
+		
+		
 
 		 
 		
@@ -431,7 +448,6 @@ public class GrandFatherRelInstances {
 		
 	
 
-		
 	}
 	
 	

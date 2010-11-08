@@ -8,6 +8,7 @@ import org.mandarax.dsl.CompilationUnit;
 import org.mandarax.dsl.Expression;
 import org.mandarax.dsl.Rule;
 import org.mandarax.dsl.parser.ScriptReader;
+import org.mandarax.rt.ResultSet;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Collections2;
@@ -40,6 +41,15 @@ public class TestUtils {
 		return Collections2.transform(expressions, new Function<Expression,String>() {
 			@Override
 			public String apply(Expression x) {return x.toString();}});
+	}
+	
+	public static int count(ResultSet<?> rs) {
+		int c=0;
+		while (rs.hasNext()) {
+			rs.next();
+			c = c+1;
+		}
+		return c;
 	}
 	
 }

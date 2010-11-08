@@ -45,11 +45,14 @@ public class DefaultDerivationController  implements DerivationController {
 		if (cancelled) 
 			throw new DerivationCancelledException();
 		
-		//System.out.println("Log@" + depth + " : " + ruleRef);
+		// enable the next blog for debugging
+//		for (int i=0;i<depth;i++) System.out.print("  ");
+//		System.out.println(ruleRef);
+		
+		
 		this.ids.add(depth,ruleRef);	
 		this.types.add(depth,kind);
 		this.annotations.add(depth,annotations==null?NO_ANNOTATIONS:annotations);
-		//this.depth = this.depth+1;
 		
 		if (derivationListener!=null)
 			derivationListener.step(ruleRef, depth);

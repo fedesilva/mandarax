@@ -70,9 +70,7 @@ public class @{rel.name}@{ext}Instances {
 		@code{rule=rel.getRules().get(index)}
 		_derivation.log("@{rel.name}.@{rule.id}", DerivationController.RULE, _annotations_@{rule.id});
 		
-		@if{rule.fact}@includeNamed{'FactInvocation'}
-		@else{}@includeNamed{'RuleInvocation'}
-		@end{}
+		@includeNamed{'RuleInvocation'}
 	}
 	@end{}@end{}
 	

@@ -16,6 +16,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import org.mandarax.rt.ResultSet;
 import test.org.mandarax.compiler.reldef4.*;
+import static test.org.mandarax.compiler.TestUtils.*;
 /**
  * Test cases using generated code.
  * @author jens dietrich
@@ -111,12 +112,7 @@ public class CompilerTests4 {
 	@Test 
 	public void test9() throws Exception {
 		ResultSet<FatherRel> rs = new FatherRelInstances().getFatherAndChild();
-		int c = 0;
-		while (rs.hasNext()) {
-			FatherRel f = rs.next();
-			c = c+1;
-			System.out.println(f);
-		}
+		int c = count(rs);
 		assertFalse(rs.hasNext());
 		assertEquals(4,c);
 	}

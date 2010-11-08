@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>Orphan</strong>.
- * @version Nov 8, 2010 3:46:53 PM 
+ * @version Nov 9, 2010 11:29:30 AM 
  */
 public class OrphanRelInstances {
 	// object references
@@ -89,6 +89,11 @@ public class OrphanRelInstances {
 		ResourceIterator<?> _tmp = null;
 		
 		 
+		
+		
+		
+		
+		
 
 		 
 		
@@ -152,7 +157,6 @@ public class OrphanRelInstances {
 		
 	
 
-		
 	}
 	
 	

@@ -4,7 +4,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>Factorial</strong>.
- * @version Nov 8, 2010 3:46:53 PM 
+ * @version Nov 9, 2010 11:29:30 AM 
  */
 public class FactorialRelInstances {
 	// object references
@@ -106,27 +106,43 @@ public class FactorialRelInstances {
 		_derivation.log("Factorial.rule1", DerivationController.RULE, _annotations_rule1);
 		
 			
+	
+		
+		// utility class used to keep track of variables bindings
+		// rule: rule1:  -> Factorial(0,1);
+		// prereqs: []
+		class _Bindings {
+		}
+		final _Bindings _bindings = new _Bindings();
+		ResourceIterator<?> _tmp = null;
+		
+		 
+		
+		
 		
 		 
 		// check conditions	
-		if (Equals.compare(i,0) ) {
+		boolean _checkfailed = false;
 		
+		_checkfailed = _checkfailed || !Equals.compare(i,0); 
 		
-		// create new instance of relationship
-		FactorialRel _result = new FactorialRel();
-		
-		// set values
-		_result.i = 0;
-		_result.f = 1;
-		
-		return new SingletonIterator<FactorialRel>(_result);
+		if (_checkfailed) {
+			return EmptyIterator.DEFAULT;
 		}
-			
-		// fact does not match query	
-		return EmptyIterator.DEFAULT;
+		
 		
 
 		
+		
+		// rule head
+		
+		return new SingletonIterator(new FactorialRel(0,1));
+        
+		
+		
+		
+	
+
 	}
 	// rule: rule2: Factorial(x-1,n) -> Factorial(x,n*x);
 	private static ResourceIterator<FactorialRel> getFactorial_1 (final DerivationController _derivation ,  final int i ) {
@@ -147,6 +163,11 @@ public class FactorialRelInstances {
 		ResourceIterator<?> _tmp = null;
 		
 		 
+		
+		
+		
+		
+		
 
 		 
 		
@@ -178,7 +199,6 @@ public class FactorialRelInstances {
 		
 	
 
-		
 	}
 	// query: isFactorial
 	// rule: rule1:  -> Factorial(0,1);
@@ -187,27 +207,45 @@ public class FactorialRelInstances {
 		_derivation.log("Factorial.rule1", DerivationController.RULE, _annotations_rule1);
 		
 			
+	
+		
+		// utility class used to keep track of variables bindings
+		// rule: rule1:  -> Factorial(0,1);
+		// prereqs: []
+		class _Bindings {
+		}
+		final _Bindings _bindings = new _Bindings();
+		ResourceIterator<?> _tmp = null;
+		
+		 
+		
+		
 		
 		 
 		// check conditions	
-		if (Equals.compare(i,0) && Equals.compare(f,1) ) {
+		boolean _checkfailed = false;
 		
+		_checkfailed = _checkfailed || !Equals.compare(i,0); 
 		
-		// create new instance of relationship
-		FactorialRel _result = new FactorialRel();
+		_checkfailed = _checkfailed || !Equals.compare(f,1); 
 		
-		// set values
-		_result.i = 0;
-		_result.f = 1;
-		
-		return new SingletonIterator<FactorialRel>(_result);
+		if (_checkfailed) {
+			return EmptyIterator.DEFAULT;
 		}
-			
-		// fact does not match query	
-		return EmptyIterator.DEFAULT;
+		
 		
 
 		
+		
+		// rule head
+		
+		return new SingletonIterator(new FactorialRel(0,1));
+        
+		
+		
+		
+	
+
 	}
 	// rule: rule2: Factorial(x-1,n) -> Factorial(x,n*x);
 	private static ResourceIterator<FactorialRel> isFactorial_1 (final DerivationController _derivation ,  final int i ,  final int f ) {
@@ -229,6 +267,11 @@ public class FactorialRelInstances {
 		ResourceIterator<?> _tmp = null;
 		
 		 
+		
+		
+		
+		
+		
 
 		 
 		
@@ -281,7 +324,6 @@ public class FactorialRelInstances {
 		
 	
 
-		
 	}
 	
 	

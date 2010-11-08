@@ -59,5 +59,15 @@ public class CompilerTestsRList {
 		assertFalse(rs.hasNext());	
 	}
 	
+	@Test
+	public void test6() throws Exception {	
+		ResultSet<ContainsRel> rs = new ContainsRelInstances().getElements(list);
+		assertEquals("one",rs.next().element);
+		assertEquals("two",rs.next().element);	
+		assertEquals("three",rs.next().element);	
+		assertEquals("four",rs.next().element);
+		assertFalse(rs.hasNext());
+	}
+	
 
 }
