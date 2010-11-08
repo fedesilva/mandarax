@@ -15,8 +15,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 import org.mandarax.rt.ResultSet;
-import test.org.mandarax.compiler.reldef4.GrandFatherRel;
-import test.org.mandarax.compiler.reldef4.GrandFatherRelInstances;
+import test.org.mandarax.compiler.reldef4.*;
 /**
  * Test cases using generated code.
  * @author jens dietrich
@@ -89,6 +88,37 @@ public class CompilerTests4 {
 		
 		assertFalse(rs.hasNext());
 
+	}
+	
+	@Test 
+	public void test6() throws Exception {
+		ResultSet<FatherRel> rs = new FatherRelInstances().isFather("Klaus","Jens");
+		assertTrue(rs.hasNext());
+	}
+	
+	@Test 
+	public void test7() throws Exception {
+		ResultSet<FatherRel> rs = new FatherRelInstances().isFather("Jens","Max");
+		assertTrue(rs.hasNext());
+	}
+	
+	@Test 
+	public void test8() throws Exception {
+		ResultSet<FatherRel> rs = new FatherRelInstances().isFather("Max","Jens");
+		assertFalse(rs.hasNext());
+	}
+	
+	@Test 
+	public void test9() throws Exception {
+		ResultSet<FatherRel> rs = new FatherRelInstances().getFatherAndChild();
+		int c = 0;
+		while (rs.hasNext()) {
+			FatherRel f = rs.next();
+			c = c+1;
+			System.out.println(f);
+		}
+		assertFalse(rs.hasNext());
+		assertEquals(4,c);
 	}
 	
 }
