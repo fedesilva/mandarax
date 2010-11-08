@@ -50,7 +50,7 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 			throw new TypeReasoningException("Unsupported expression type " + x.getClass().getName());
 		}
 		
-		if (type==null) throw new TypeReasoningException("Cannot find or compute type for expression: " + x);
+		// if (type==null) throw new TypeReasoningException("Cannot find or compute type for expression: " + x);
 		x.setProperty(AnnotationKeys.TYPE,type);
 		return type;
 	}
