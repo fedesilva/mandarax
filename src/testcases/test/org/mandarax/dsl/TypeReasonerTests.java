@@ -67,23 +67,6 @@ public class TypeReasonerTests {
 		testType(expression,Integer.class,varTypes);
 	}
 	
-	@Test(expected=TypeReasoningException.class) // wont work, y not bound
-	public void testBinaryExpressions2() throws Exception {
-		String expression = "x+y";
-		Map<String,Class> varTypes = new HashMap<String,Class>();
-		varTypes.put("x",Integer.class);
-		//varTypes.put("y",Byte.class);
-		testType(expression,Integer.class,varTypes);
-	}
-	
-	@Test(expected=TypeReasoningException.class) // wont work, x not bound
-	public void testBinaryExpressions3() throws Exception {
-		String expression = "x+y";
-		Map<String,Class> varTypes = new HashMap<String,Class>();
-		//varTypes.put("x",Integer.class);
-		varTypes.put("y",Byte.class);
-		testType(expression,Integer.class,varTypes);
-	}
 	
 	@Test
 	public void testBinaryExpressions4() throws Exception {
