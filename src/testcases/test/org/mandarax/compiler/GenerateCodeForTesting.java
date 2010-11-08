@@ -49,7 +49,7 @@ public class GenerateCodeForTesting {
 		compile(new File("src/testcases/test/org/mandarax/compiler/reldef11.rel"));
 		compile(new File("src/testcases/test/org/mandarax/compiler/reldef12.rel"));
 		compile(new File("src/testcases/test/org/mandarax/compiler/reldef13.rel"));
-		compile(new File("src/testcases/test/org/mandarax/compiler/reldef14.rel"));
+		compile(new File("src/testcases/test/org/mandarax/compiler/reldefNAF1.rel"));
 	}
 
 	private static void compile(File file) throws Exception {

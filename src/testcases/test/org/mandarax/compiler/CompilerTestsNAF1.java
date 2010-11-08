@@ -20,7 +20,7 @@ import test.org.mandarax.compiler.reldef14.*;
  * Test cases using generated code.
  * @author jens dietrich
  */
-public class CompilerTests14 {
+public class CompilerTestsNAF1 {
 	
 //	package test.org.mandarax.compiler.reldef14;
 //	import test.org.mandarax.compiler.*;
