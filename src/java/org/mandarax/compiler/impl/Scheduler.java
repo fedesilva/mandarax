@@ -36,7 +36,6 @@ import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import static org.mandarax.dsl.Position.*;
-import static org.mandarax.dsl.Utils.NO_SUBTITUTIONS;
 import static org.mandarax.dsl.Utils.*;
 
 /**

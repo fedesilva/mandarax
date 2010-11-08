@@ -1,0 +1,13 @@
+// note that we will have problems when we ask for a second solution: then the computation goes "beyond" rule1 and i becomes negative
+// this results in an infinite loop
+// what we would need is a condition like this [not yet supported]:
+// rule3: x<0 -> Factorial(x,n) throws error 
+
+package test.org.mandarax.compiler.reldef15;
+
+rel Factorial(int i,int f) queries getFactorial(i),isFactorial(i,f) {
+	rule1: -> Factorial(0,1);
+	rule2: Factorial(x-1,n) -> Factorial(x,n*x); 
+}
+
+

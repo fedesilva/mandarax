@@ -93,4 +93,33 @@ public class Utils {
 		}
 		return result;
 	}
+	
+	// utility for code generation
+	public static String getDefaultValue(Class type) {
+		if (type==null) return null;
+		else if (type==Integer.class || type==Integer.TYPE) return new Integer(0).toString();
+		else if (type==Short.class || type==Short.TYPE) return new Short((short) 0).toString();
+		else if (type==Long.class || type==Long.TYPE) return new Long(0).toString();
+		else if (type==Byte.class || type==Byte.TYPE) return new Byte((byte) 0).toString();
+		else if (type==Character.class || type==Character.TYPE) return new Character((char) 0).toString();
+		else if (type==Double.class || type==Double.TYPE) return new Double(0).toString();
+		else if (type==Float.class || type==Float.TYPE) return new Float(0).toString();
+		else if (type==Boolean.class || type==Boolean.TYPE) return Boolean.FALSE.toString();
+		return "null";
+	}
+	
+	// utility for code generation
+	public static String getDefaultValue(String n) {
+		if (Integer.class.getName().equals(n) || Integer.TYPE.getName().equals(n)) return new Integer(0).toString();
+		else if (Short.class.getName().equals(n) || Short.TYPE.getName().equals(n)) return new Short((short) 0).toString();
+		else if (Long.class.getName().equals(n) || Long.TYPE.getName().equals(n)) return new Long(0).toString();
+		else if (Byte.class.getName().equals(n) || Byte.TYPE.getName().equals(n)) return new Byte((byte) 0).toString();
+		else if (Character.class.getName().equals(n) || Character.TYPE.getName().equals(n)) return new Character((char) 0).toString();
+		else if (Double.class.getName().equals(n) || Double.TYPE.getName().equals(n)) return new Double(0).toString();
+		else if (Float.class.getName().equals(n) || Float.TYPE.getName().equals(n)) return new Float(0).toString();
+		else if (Boolean.class.getName().equals(n) || Boolean.TYPE.getName().equals(n)) return Boolean.FALSE.toString();
+		return "null";
+	}
+	
+	
 }

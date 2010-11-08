@@ -10,6 +10,7 @@
  */
 package org.mandarax.dsl;
 
+import static org.mandarax.dsl.Utils.*;
 /**
  * Represents variable declarations consisting of a type (name) and a variable name.
  * @author jens dietrich
@@ -45,6 +46,10 @@ public class VariableDeclaration extends ASTNode {
 		b.append(' ');
 		b.append(name);
 		return b.toString();
+	}
+	
+	public String getDefaultValue() {
+		return Utils.getDefaultValue(type);
 	}
 
 }

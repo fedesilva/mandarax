@@ -24,6 +24,7 @@ import org.mandarax.dsl.FunctionDeclaration;
 import org.mandarax.dsl.FunctionInvocation;
 import org.mandarax.dsl.ObjectDeclaration;
 import org.mandarax.dsl.RelationshipDefinition;
+import org.mandarax.dsl.Utils;
 import org.mandarax.dsl.Variable;
 import org.mandarax.dsl.VariableDeclaration;
 
@@ -65,19 +66,8 @@ public class VariableBindings {
 	// utility for code generation
 	public String getDefaultValue(Variable var) {
 		Class type = var.getType();
-		if (type==null) return null;
-		else if (type==Integer.class || type==Integer.TYPE) return new Integer(0).toString();
-		else if (type==Short.class || type==Short.TYPE) return new Short((short) 0).toString();
-		else if (type==Long.class || type==Long.TYPE) return new Long(0).toString();
-		else if (type==Byte.class || type==Byte.TYPE) return new Byte((byte) 0).toString();
-		else if (type==Character.class || type==Character.TYPE) return new Character((char) 0).toString();
-		else if (type==Double.class || type==Double.TYPE) return new Double(0).toString();
-		else if (type==Float.class || type==Float.TYPE) return new Float(0).toString();
-		else if (type==Boolean.class || type==Boolean.TYPE) return Boolean.FALSE.toString();
-		return "null";
+		return Utils.getDefaultValue(type);
 	}
-
-	
 	
 	public void bind(FunctionInvocation ruleHead,FunctionDeclaration query) {
 		this.ruleHead = ruleHead;

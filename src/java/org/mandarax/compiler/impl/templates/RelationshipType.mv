@@ -21,7 +21,7 @@ public class @{rel.name}@{ext} {
 
 	// instance variables created for slots
 	@foreach{slot:rel.slotDeclarations} 
-	public @{slot.type} @{slot.name} = null; 
+	public @{slot.type} @{slot.name} = @{slot.defaultValue}; 
 	@end{}
 
 }

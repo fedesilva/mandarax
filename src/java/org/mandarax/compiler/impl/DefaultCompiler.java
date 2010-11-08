@@ -317,7 +317,7 @@ public class DefaultCompiler implements Compiler {
 		FunctionInvocation head = rule.getHead();
 		for (int i=0;i<head.getParameters().size();i++) {
 			Expression term = head.getParameters().get(i);
-			assert(term.isFlat());
+
 			if (term instanceof Variable) {
 				// try to use term from obj declaration
 				Class type = objTypeMap.get(((Variable) term).getName());
@@ -332,6 +332,12 @@ public class DefaultCompiler implements Compiler {
 					varTypeMap.put((Variable)term,type);
 					LOGGER.debug("Adding type info from rule head to type map: " + term + " -> " + type);
 				}
+			}
+			else {
+				// complex term in head
+				Class type2 = resolver.getType(cu.getContext(),rel.getSlotDeclarations().get(i).getType());
+				varTypeMap.put(term,type2);
+				LOGGER.debug("Adding type info from rule head to type map: " + term + " -> " + type2);
 			}
 		}
 		// body
