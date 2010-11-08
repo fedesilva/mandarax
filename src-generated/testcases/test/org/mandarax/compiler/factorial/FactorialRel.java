@@ -1,8 +1,8 @@
-package test.org.mandarax.compiler.reldef15;
+package test.org.mandarax.compiler.factorial;
 
 /**
  * Class representing the relationship <strong>Factorial</strong>.
- * @version Nov 8, 2010 3:21:16 PM 
+ * @version Nov 8, 2010 3:46:53 PM 
  */
 public class FactorialRel {
 

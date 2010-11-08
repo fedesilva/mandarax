@@ -3,7 +3,7 @@
 // what we would need is a condition like this [not yet supported]:
 // rule3: x<0 -> Factorial(x,n) throws error 
 
-package test.org.mandarax.compiler.reldef15;
+package test.org.mandarax.compiler.factorial;
 
 rel Factorial(int i,int f) queries getFactorial(i),isFactorial(i,f) {
 	rule1: -> Factorial(0,1);

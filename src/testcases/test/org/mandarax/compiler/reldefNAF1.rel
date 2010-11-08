@@ -1,4 +1,4 @@
-package test.org.mandarax.compiler.reldef14;
+package test.org.mandarax.compiler.naf1;
 import test.org.mandarax.compiler.*;
 Person m1 = new Person("m1",25);
 Person m2 = new Person("m2",5);

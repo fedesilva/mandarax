@@ -14,54 +14,49 @@ package test.org.mandarax.compiler;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import org.mandarax.rt.ResultSet;
-import test.org.mandarax.compiler.factorial.*;
+import test.org.mandarax.compiler.rlist.*;
 
 /**
  * Test cases using generated code.
  * @author jens dietrich
  */
-public class CompilerTestsFactorial {
+public class CompilerTestsRList {
 	
 //	rel Factorial(int i,int f) queries getFactorial(i),isFactorial(i,f) {
 //		rule1: -> Factorial(0,1);
 //		rule2: Factorial(x-1,n) -> Factorial(x,n*x); 
 //	}
 
+	private RList list = new RList("one",new RList("two",new RList("three",new RList("four"))));
 	
 	@Test
-	public void test1() throws Exception {
-		ResultSet<FactorialRel> rs = new FactorialRelInstances().isFactorial(4, 24);
+	public void test1() throws Exception {	
+		ResultSet<ContainsRel> rs = new ContainsRelInstances().contains(list,"one");
 		assertTrue(rs.hasNext());	
 	}
 	
 	@Test
 	public void test2() throws Exception {
-		ResultSet<FactorialRel> rs = new FactorialRelInstances().isFactorial(5, 120);
+		ResultSet<ContainsRel> rs = new ContainsRelInstances().contains(list,"two");
 		assertTrue(rs.hasNext());	
 	}
 	
 	@Test
 	public void test3() throws Exception {
-		ResultSet<FactorialRel> rs = new FactorialRelInstances().getFactorial(0);
-		
-		assertEquals(1,rs.next().f);	
-		//assertFalse(rs.hasNext());
+		ResultSet<ContainsRel> rs = new ContainsRelInstances().contains(list,"three");
+		assertTrue(rs.hasNext());	
 	}
 	
 	@Test
 	public void test4() throws Exception {
-		ResultSet<FactorialRel> rs = new FactorialRelInstances().getFactorial(4);
-		
-		assertEquals(24,rs.next().f);	
-		//assertFalse(rs.hasNext());
+		ResultSet<ContainsRel> rs = new ContainsRelInstances().contains(list,"four");
+		assertTrue(rs.hasNext());	
 	}
 	
 	@Test
 	public void test5() throws Exception {
-		ResultSet<FactorialRel> rs = new FactorialRelInstances().getFactorial(5);
-		
-		assertEquals(120,rs.next().f);	
-		//assertFalse(rs.hasNext());
+		ResultSet<ContainsRel> rs = new ContainsRelInstances().contains(list,"five");
+		assertFalse(rs.hasNext());	
 	}
 	
 

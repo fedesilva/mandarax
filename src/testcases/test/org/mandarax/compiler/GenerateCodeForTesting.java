@@ -51,6 +51,7 @@ public class GenerateCodeForTesting {
 		compile(new File("src/testcases/test/org/mandarax/compiler/reldef13.rel"));
 		compile(new File("src/testcases/test/org/mandarax/compiler/reldefNAF1.rel"));
 		compile(new File("src/testcases/test/org/mandarax/compiler/reldefFactorial.rel"));
+		compile(new File("src/testcases/test/org/mandarax/compiler/reldefRList.rel"));
 	}
 
 	private static void compile(File file) throws Exception {

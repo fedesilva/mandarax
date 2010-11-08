@@ -1,0 +1,10 @@
+package test.org.mandarax.compiler.rlist;
+
+import test.org.mandarax.compiler.*;
+
+rel Contains(RList list,Object element) queries contains(list,element) {
+	rule1: l.head==e -> Contains(l,e);
+	rule2: l.tail!=null & Contains(l.tail,e) -> Contains(l,e); 
+}
+
+

@@ -1,4 +1,4 @@
-package test.org.mandarax.compiler.reldef14;
+package test.org.mandarax.compiler.naf1;
  
 import test.org.mandarax.compiler.*;
 
@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>SemiOrphan</strong>.
- * @version Nov 8, 2010 3:21:16 PM 
+ * @version Nov 8, 2010 3:46:53 PM 
  */
 public class SemiOrphanRelInstances {
 	// object references
