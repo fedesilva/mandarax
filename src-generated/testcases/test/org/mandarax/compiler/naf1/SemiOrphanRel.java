@@ -4,7 +4,7 @@ import test.org.mandarax.compiler.*;
 
 /**
  * Class representing the relationship <strong>SemiOrphan</strong>.
- * @version Nov 9, 2010 11:29:30 AM 
+ * @version Nov 9, 2010 3:23:58 PM 
  */
 public class SemiOrphanRel {
 

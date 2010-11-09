@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>Contains</strong>.
- * @version Nov 9, 2010 11:29:30 AM 
+ * @version Nov 9, 2010 3:23:58 PM 
  */
 public class ContainsRelInstances {
 	// object references
@@ -14,24 +14,24 @@ public class ContainsRelInstances {
 	
 	// fields representing annotations
 	
-	// rule: rule1: true -> Contains(l,l.getHead());
+	// rule: rule1:  -> Contains(_list,_list.getHead());
 	private final static java.util.Properties _annotations_rule1 = new java.util.Properties();
 	
-	// rule: rule2: (l.getTail())!=null & Contains(l.getTail(),e) -> Contains(l,e);
+	// rule: rule2: (_list.getTail())!=null & Contains(_list.getTail(),_element) -> Contains(_list,_element);
 	private final static java.util.Properties _annotations_rule2 = new java.util.Properties();
 	
 	
 	// initialise annotations
 	static {
-		// relationship annotations for rule  rule1: true -> Contains(l,l.getHead());
+		// relationship annotations for rule  rule1:  -> Contains(_list,_list.getHead());
 		
-		// rule annotations for rule  rule1: true -> Contains(l,l.getHead());
+		// rule annotations for rule  rule1:  -> Contains(_list,_list.getHead());
 		
 		
 	
-		// relationship annotations for rule  rule2: (l.getTail())!=null & Contains(l.getTail(),e) -> Contains(l,e);
+		// relationship annotations for rule  rule2: (_list.getTail())!=null & Contains(_list.getTail(),_element) -> Contains(_list,_element);
 		
-		// rule annotations for rule  rule2: (l.getTail())!=null & Contains(l.getTail(),e) -> Contains(l,e);
+		// rule annotations for rule  rule2: (_list.getTail())!=null & Contains(_list.getTail(),_element) -> Contains(_list,_element);
 		
 		
 	}
@@ -62,12 +62,12 @@ public class ContainsRelInstances {
 			switch (pos) {
 				
                 		case 0: {
-                			// invoke rule1: true -> Contains(l,l.getHead());
+                			// invoke rule1:  -> Contains(_list,_list.getHead());
                 			return contains_0(_derivation.pop(_derivationlevel) ,  list ,  element );
                 		}
 				
                 		case 1: {
-                			// invoke rule2: (l.getTail())!=null & Contains(l.getTail(),e) -> Contains(l,e);
+                			// invoke rule2: (_list.getTail())!=null & Contains(_list.getTail(),_element) -> Contains(_list,_element);
                 			return contains_1(_derivation.pop(_derivationlevel) ,  list ,  element );
                 		}
 				
@@ -84,12 +84,12 @@ public class ContainsRelInstances {
 			switch (pos) {
 				
                 		case 0: {
-                			// invoke rule1: true -> Contains(l,l.getHead());
+                			// invoke rule1:  -> Contains(_list,_list.getHead());
                 			return getElements_0(_derivation.pop(_derivationlevel) ,  list );
                 		}
 				
                 		case 1: {
-                			// invoke rule2: (l.getTail())!=null & Contains(l.getTail(),e) -> Contains(l,e);
+                			// invoke rule2: (_list.getTail())!=null & Contains(_list.getTail(),_element) -> Contains(_list,_element);
                 			return getElements_1(_derivation.pop(_derivationlevel) ,  list );
                 		}
 				
@@ -102,7 +102,7 @@ public class ContainsRelInstances {
 	
 	// private methods - each method represents the invocation of a single rule for a certain query
 	// query: contains
-	// rule: rule1: true -> Contains(l,l.getHead());
+	// rule: rule1:  -> Contains(_list,_list.getHead());
 	private static ResourceIterator<ContainsRel> contains_0 (final DerivationController _derivation ,  final RList list ,  final Object element ) {
 		
 		_derivation.log("Contains.rule1", DerivationController.RULE, _annotations_rule1);
@@ -111,10 +111,10 @@ public class ContainsRelInstances {
 	
 		
 		// utility class used to keep track of variables bindings
-		// rule: rule1: true & __t0==(l.getHead()) -> Contains(l,__t0);
-		// prereqs: [true, __t0==(l.getHead())]
+		// rule: rule1: __t0==(_list.getHead()) -> Contains(_list,__t0);
+		// prereqs: [__t0==(_list.getHead())]
 		class _Bindings {
-			private test.org.mandarax.compiler.RList l = list;
+			private test.org.mandarax.compiler.RList _list = list;
 			private java.lang.Object __t0 = element;
 		}
 		final _Bindings _bindings = new _Bindings();
@@ -131,27 +131,17 @@ public class ContainsRelInstances {
 		
 		
 		
-		// apply prerequisite true
+		// apply prerequisite __t0==(_list.getHead())
 		
 		
 		 // case 4
-					if (!(true)) {return EmptyIterator.DEFAULT;} 
-					
-		 
-		
-		
-		
-		// apply prerequisite __t0==(l.getHead())
-		
-		
-		 // case 4
-					if (!(org.mandarax.rt.Equals.compare(_bindings.__t0,_bindings.l.getHead()))) {return EmptyIterator.DEFAULT;} 
+					if (!(org.mandarax.rt.Equals.compare(_bindings.__t0,_bindings._list.getHead()))) {return EmptyIterator.DEFAULT;} 
 					
 		
 		
 		// rule head
 		
-		return new SingletonIterator(new ContainsRel(_bindings.l,_bindings.__t0));
+		return new SingletonIterator(new ContainsRel(_bindings._list,_bindings.__t0));
         
 		
 		
@@ -159,7 +149,7 @@ public class ContainsRelInstances {
 	
 
 	}
-	// rule: rule2: (l.getTail())!=null & Contains(l.getTail(),e) -> Contains(l,e);
+	// rule: rule2: (_list.getTail())!=null & Contains(_list.getTail(),_element) -> Contains(_list,_element);
 	private static ResourceIterator<ContainsRel> contains_1 (final DerivationController _derivation ,  final RList list ,  final Object element ) {
 		
 		_derivation.log("Contains.rule2", DerivationController.RULE, _annotations_rule2);
@@ -168,11 +158,11 @@ public class ContainsRelInstances {
 	
 		
 		// utility class used to keep track of variables bindings
-		// rule: rule2: (l.getTail())!=null & Contains(l.getTail(),e) -> Contains(l,e);
-		// prereqs: [(l.getTail())!=null, Contains(l.getTail(),e)]
+		// rule: rule2: (_list.getTail())!=null & Contains(_list.getTail(),_element) -> Contains(_list,_element);
+		// prereqs: [(_list.getTail())!=null, Contains(_list.getTail(),_element)]
 		class _Bindings {
-			private test.org.mandarax.compiler.RList l = list;
-			private java.lang.Object e = element;
+			private test.org.mandarax.compiler.RList _list = list;
+			private java.lang.Object _element = element;
 		}
 		final _Bindings _bindings = new _Bindings();
 		ResourceIterator<?> _tmp = null;
@@ -188,22 +178,22 @@ public class ContainsRelInstances {
 		
 		
 		
-		// apply prerequisite (l.getTail())!=null
+		// apply prerequisite (_list.getTail())!=null
 		
 		
 		 // case 4
-					if (!((_bindings.l.getTail())!=null)) {return EmptyIterator.DEFAULT;} 
+					if (!((_bindings._list.getTail())!=null)) {return EmptyIterator.DEFAULT;} 
 					
 		 
 		
 		
 		
-		// apply prerequisite Contains(l.getTail(),e)
+		// apply prerequisite Contains(_list.getTail(),_element)
 		
 		
 		 // case 4
 					
-					_tmp = ContainsRelInstances.contains(_derivation.push(),_bindings.l.getTail(),_bindings.e);
+					_tmp = ContainsRelInstances.contains(_derivation.push(),_bindings._list.getTail(),_bindings._element);
 					
 					if (!_tmp.hasNext()) {
 						_tmp.close();
@@ -215,7 +205,7 @@ public class ContainsRelInstances {
 		
 		// rule head
 		
-		return new SingletonIterator(new ContainsRel(_bindings.l,_bindings.e));
+		return new SingletonIterator(new ContainsRel(_bindings._list,_bindings._element));
         
 		
 		
@@ -224,7 +214,7 @@ public class ContainsRelInstances {
 
 	}
 	// query: getElements
-	// rule: rule1: true -> Contains(l,l.getHead());
+	// rule: rule1:  -> Contains(_list,_list.getHead());
 	private static ResourceIterator<ContainsRel> getElements_0 (final DerivationController _derivation ,  final RList list ) {
 		
 		_derivation.log("Contains.rule1", DerivationController.RULE, _annotations_rule1);
@@ -233,10 +223,10 @@ public class ContainsRelInstances {
 	
 		
 		// utility class used to keep track of variables bindings
-		// rule: rule1: true -> Contains(l,l.getHead());
-		// prereqs: [true]
+		// rule: rule1:  -> Contains(_list,_list.getHead());
+		// prereqs: []
 		class _Bindings {
-			private test.org.mandarax.compiler.RList l = list;
+			private test.org.mandarax.compiler.RList _list = list;
 		}
 		final _Bindings _bindings = new _Bindings();
 		ResourceIterator<?> _tmp = null;
@@ -248,21 +238,11 @@ public class ContainsRelInstances {
 		
 		
 
-		 
-		
-		
-		
-		// apply prerequisite true
-		
-		
-		 // case 4
-					if (!(true)) {return EmptyIterator.DEFAULT;} 
-					
 		
 		
 		// rule head
 		
-		return new SingletonIterator(new ContainsRel(_bindings.l,_bindings.l.getHead()));
+		return new SingletonIterator(new ContainsRel(_bindings._list,_bindings._list.getHead()));
         
 		
 		
@@ -270,7 +250,7 @@ public class ContainsRelInstances {
 	
 
 	}
-	// rule: rule2: (l.getTail())!=null & Contains(l.getTail(),e) -> Contains(l,e);
+	// rule: rule2: (_list.getTail())!=null & Contains(_list.getTail(),_element) -> Contains(_list,_element);
 	private static ResourceIterator<ContainsRel> getElements_1 (final DerivationController _derivation ,  final RList list ) {
 		
 		_derivation.log("Contains.rule2", DerivationController.RULE, _annotations_rule2);
@@ -279,11 +259,11 @@ public class ContainsRelInstances {
 	
 		
 		// utility class used to keep track of variables bindings
-		// rule: rule2: (l.getTail())!=null & Contains(l.getTail(),e) -> Contains(l,e);
-		// prereqs: [(l.getTail())!=null, Contains(l.getTail(),e)]
+		// rule: rule2: (_list.getTail())!=null & Contains(_list.getTail(),_element) -> Contains(_list,_element);
+		// prereqs: [(_list.getTail())!=null, Contains(_list.getTail(),_element)]
 		class _Bindings {
-			private test.org.mandarax.compiler.RList l = list;
-			private java.lang.Object e = null;
+			private test.org.mandarax.compiler.RList _list = list;
+			private java.lang.Object _element = null;
 		}
 		final _Bindings _bindings = new _Bindings();
 		ResourceIterator<?> _tmp = null;
@@ -299,21 +279,21 @@ public class ContainsRelInstances {
 		
 		
 		
-		// apply prerequisite (l.getTail())!=null
+		// apply prerequisite (_list.getTail())!=null
 		
 		
 		 // case 4
-					if (!((_bindings.l.getTail())!=null)) {return EmptyIterator.DEFAULT;} 
+					if (!((_bindings._list.getTail())!=null)) {return EmptyIterator.DEFAULT;} 
 					
 		 
 		
 		
 		
-		// apply prerequisite Contains(l.getTail(),e)
+		// apply prerequisite Contains(_list.getTail(),_element)
 		
 		
 		  // case 1
-		final ResourceIterator<ContainsRel> _iterator2 = ContainsRelInstances.getElements(_derivation.push(),_bindings.l.getTail());
+		final ResourceIterator<ContainsRel> _iterator2 = ContainsRelInstances.getElements(_derivation.push(),_bindings._list.getTail());
 		
 		
 		
@@ -323,10 +303,10 @@ public class ContainsRelInstances {
 		
 		return new NestedIterator<ContainsRel, ContainsRel>(_iterator2) {
                 	public ResourceIterator<ContainsRel> getNextIterator(ContainsRel _object) {
-						// bind parameters from Contains(l.getTail(),e)
-						_bindings.e = _object.element;
+						// bind parameters from Contains(_list.getTail(),_element)
+						_bindings._element = _object.element;
 						
-                    				return new SingletonIterator(new ContainsRel(_bindings.l,_bindings.e));
+                    				return new SingletonIterator(new ContainsRel(_bindings._list,_bindings._element));
                 	}
         	};
         

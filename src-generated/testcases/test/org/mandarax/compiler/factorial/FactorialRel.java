@@ -2,7 +2,7 @@ package test.org.mandarax.compiler.factorial;
 
 /**
  * Class representing the relationship <strong>Factorial</strong>.
- * @version Nov 9, 2010 11:29:30 AM 
+ * @version Nov 9, 2010 3:23:58 PM 
  */
 public class FactorialRel {
 

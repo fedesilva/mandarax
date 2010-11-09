@@ -4,7 +4,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>Factorial</strong>.
- * @version Nov 9, 2010 11:29:30 AM 
+ * @version Nov 9, 2010 3:23:58 PM 
  */
 public class FactorialRelInstances {
 	// object references

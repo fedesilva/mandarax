@@ -174,6 +174,17 @@ public class Rule extends AnnotatableNode implements Cloneable {
 		r.copyPropertiesTo(this);
 		return r;
 	}
+	
+	public Rule substitute(final Map<Expression,? extends Expression> substitutions) {
+		Rule r = new Rule(getPosition(),getContext(),id,transformList(body,new Function<Expression,Expression>() {
+			@Override
+			public Expression apply(Expression x) {
+				return x.substitute(substitutions);
+			}}),
+		(FunctionInvocation)head.substitute(substitutions));
+		r.copyPropertiesTo(this);
+		return r;
+	}
 
 	public void addToBody(Expression expression) {
 		// clone returns unmodifiable list!

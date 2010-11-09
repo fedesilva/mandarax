@@ -29,6 +29,8 @@ import org.mandarax.dsl.util.ResolverException;
 import org.mandarax.dsl.util.TypeReasoner;
 import org.mandarax.dsl.util.TypeReasoningException;
 import org.mvel2.templates.TemplateRuntime;
+import com.google.common.base.Function;
+import com.google.common.collect.Collections2;
 import static org.mandarax.compiler.impl.Templates.*;
 import static org.mandarax.compiler.impl.CompilerUtils.*;
 
@@ -133,6 +135,8 @@ public class DefaultCompiler implements Compiler {
 		resolveFunctionRefs(cus);
 		// rewrite NAF (precond: we must know which function invocation ref to relationships)
 		normalizeNAF(cus);
+		// normalise variables names - if variable snames are used that are also used in slots
+		normalizeVarNames(cus);
 		
 		for (CompilationUnit cu:cus) {
 			for (RelationshipDefinition rel:cu.getRelationshipDefinitions()) {
@@ -147,6 +151,43 @@ public class DefaultCompiler implements Compiler {
 				
 			}
 		}
+	}
+
+	private void normalizeVarNames(List<CompilationUnit> cus) {
+		for (CompilationUnit cu:cus) {
+			for (RelationshipDefinition rel:cu.getRelationshipDefinitions()) {
+				Collection<String> reservedNames = collectReservedNames(rel);
+				for (int i=0;i<rel.getRules().size();i++) {
+					Map<Expression,Expression> substitutions = new HashMap<Expression,Expression>();
+					Rule rule = rel.getRules().get(i);
+					Collection<Variable> vars = new HashSet<Variable>();
+					vars.addAll(rule.getHead().getVariables());
+					for (Expression s:rule.getBody()) {
+						vars.addAll(s.getVariables());
+					}
+					for (Variable var:vars) {
+						if (reservedNames.contains(var.getName())) {
+							Variable newVar = new Variable(var.getPosition(),var.getContext(),"_"+var.getName());
+							substitutions.put(var,newVar);
+						}
+					}
+					if (!substitutions.isEmpty()) {
+						rule = rule.substitute(substitutions);
+						rel.getRules().set(i,rule);
+						LOGGER.debug("Substitute variable names in rule (conflict with slot names): " + rule);
+						
+					}
+				}
+			}
+		}
+	}
+
+	private Collection<String> collectReservedNames(RelationshipDefinition rel) {
+		return Collections2.transform(rel.getSlotDeclarations(),new Function<VariableDeclaration,String>(){
+			@Override
+			public String apply(VariableDeclaration v) {
+				return v.getName();
+			}});
 	}
 
 	private void normalizeNAF(List<CompilationUnit> cus) {
