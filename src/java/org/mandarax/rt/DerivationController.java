@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Properties;
 
 /**
- * Utility class to controll the derivation process.
+ * Utility class to control the derivation process.
  * Responsibilities:
  * <ol>
  * <li>record the derivation tree, and return it to the application</li>
@@ -44,7 +44,7 @@ public interface DerivationController  {
 	public static final int RULE = 1;
 	public static final int FACT = 2;
 	public static final int EXTERNAL_FACT_SET = 3;
-	public static final int NAF = 4;
+	public static final int INDOMAIN = 4;
 	
 	/**
 	 * Log the use of a clause set

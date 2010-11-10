@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>Orphan</strong>.
- * @version Nov 9, 2010 3:23:58 PM 
+ * @version Nov 10, 2010 4:03:56 PM 
  */
 public class OrphanRelInstances {
 	// object references

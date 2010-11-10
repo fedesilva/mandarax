@@ -36,6 +36,7 @@ import org.junit.runners.*;
 	ParserTestsAnnotations.class,
 	ParserTestsRules.class,
 	ParserTestsObjectDeclarations.class,
+	ParserTestsInDomain.class,
 	// integration tests
 	ParserIntegrationTests.class
 })

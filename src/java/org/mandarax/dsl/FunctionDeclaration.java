@@ -11,6 +11,7 @@
 
 package org.mandarax.dsl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,6 +30,16 @@ public class FunctionDeclaration extends ASTNode {
 		super(position, context);
 		this.visibility = visibility;
 		this.parameterNames = parameterNames;
+		this.name = name;
+	}
+	
+	public FunctionDeclaration(Position position, Context context,Visibility visibility, String name, String... paramNames) {
+		super(position, context);
+		this.visibility = visibility;
+		this.parameterNames = new ArrayList<String>();
+		for (String n:paramNames) {
+			this.parameterNames.add(n);
+		}
 		this.name = name;
 	}
 

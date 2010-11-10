@@ -154,29 +154,27 @@ public class DefaultCompiler implements Compiler {
 	}
 
 	private void normalizeVarNames(List<CompilationUnit> cus) {
-		for (CompilationUnit cu:cus) {
-			for (RelationshipDefinition rel:cu.getRelationshipDefinitions()) {
-				Collection<String> reservedNames = collectReservedNames(rel);
-				for (int i=0;i<rel.getRules().size();i++) {
-					Map<Expression,Expression> substitutions = new HashMap<Expression,Expression>();
-					Rule rule = rel.getRules().get(i);
-					Collection<Variable> vars = new HashSet<Variable>();
-					vars.addAll(rule.getHead().getVariables());
-					for (Expression s:rule.getBody()) {
-						vars.addAll(s.getVariables());
+		for (RelationshipDefinition rel:getRels(cus,false)) {
+			Collection<String> reservedNames = collectReservedNames(rel);
+			for (int i=0;i<rel.getRules().size();i++) {
+				Map<Expression,Expression> substitutions = new HashMap<Expression,Expression>();
+				Rule rule = rel.getRules().get(i);
+				Collection<Variable> vars = new HashSet<Variable>();
+				vars.addAll(rule.getHead().getVariables());
+				for (Expression s:rule.getBody()) {
+					vars.addAll(s.getVariables());
+				}
+				for (Variable var:vars) {
+					if (reservedNames.contains(var.getName())) {
+						Variable newVar = new Variable(var.getPosition(),var.getContext(),"_"+var.getName());
+						substitutions.put(var,newVar);
 					}
-					for (Variable var:vars) {
-						if (reservedNames.contains(var.getName())) {
-							Variable newVar = new Variable(var.getPosition(),var.getContext(),"_"+var.getName());
-							substitutions.put(var,newVar);
-						}
-					}
-					if (!substitutions.isEmpty()) {
-						rule = rule.substitute(substitutions);
-						rel.getRules().set(i,rule);
-						LOGGER.debug("Substitute variable names in rule (conflict with slot names): " + rule);
-						
-					}
+				}
+				if (!substitutions.isEmpty()) {
+					rule = rule.substitute(substitutions);
+					rel.getRules().set(i,rule);
+					LOGGER.debug("Substitute variable names in rule (conflict with slot names): " + rule);
+					
 				}
 			}
 		}
@@ -191,41 +189,35 @@ public class DefaultCompiler implements Compiler {
 	}
 
 	private void normalizeNAF(List<CompilationUnit> cus) {
-		for (CompilationUnit cu:cus) {
-			for (RelationshipDefinition rel:cu.getRelationshipDefinitions()) {
-				for (int i=0;i<rel.getRules().size();i++) {
-					Rule rule = rel.getRules().get(i);
-					Rule normalised = rel.getRules().get(i).normaliseNAF();
-					if (!rule.equals(normalised)) {
-						LOGGER.debug("Normalised rule containing NAF from " + rule + " to " + normalised);
-						rel.getRules().set(i,normalised);
-					}
+		for (RelationshipDefinition rel:getRels(cus,false)) {
+			for (int i=0;i<rel.getRules().size();i++) {
+				Rule rule = rel.getRules().get(i);
+				Rule normalised = rel.getRules().get(i).normaliseNAF();
+				if (!rule.equals(normalised)) {
+					LOGGER.debug("Normalised rule containing NAF from " + rule + " to " + normalised);
+					rel.getRules().set(i,normalised);
 				}
 			}
 		}
-		
 	}
 
 	// create additional rules representing relationship inheritance
 	private void resolveSuperRelationships(List<CompilationUnit> cus) {
-		
-		for (CompilationUnit cu:cus) {
-			for (RelationshipDefinition rel:cu.getRelationshipDefinitions()) {
-				Set<String> ids = new HashSet<String>();
-				for (RelationshipDefinition subRel:findSubRels(cus,rel)) {
-					String id = "_"+subRel.getName()+"_extends_"+rel.getName();
-					Position pos = Position.NO_POSITION; // means not defined in script
-					Context context = rel.getContext();
-					if (ids.add(id)) {
-						FunctionInvocation head = new FunctionInvocation(pos,context,rel.getName(),createVariables(pos,context,rel.getSlotDeclarations().size()));
-						FunctionInvocation body = new FunctionInvocation(pos,context,subRel.getName(),createVariables(pos,context,rel.getSlotDeclarations().size()));
-						Rule rule = new Rule(pos,context,id,body,head);
-						rel.addRule(rule);
-						LOGGER.info("Adding inheritance rule to relationship " + rel.getName() + ": " + rule);
-					}
-					else {
-						LOGGER.warn("Attempt to add more than one rule for sub relationship " + subRel.getName() + " of " + rel.getName());
-					}
+		for (RelationshipDefinition rel:getRels(cus,false)) {
+			Set<String> ids = new HashSet<String>();
+			for (RelationshipDefinition subRel:findSubRels(cus,rel)) {
+				String id = "_"+subRel.getName()+"_extends_"+rel.getName();
+				Position pos = Position.NO_POSITION; // means not defined in script
+				Context context = rel.getContext();
+				if (ids.add(id)) {
+					FunctionInvocation head = new FunctionInvocation(pos,context,rel.getName(),createVariables(pos,context,rel.getSlotDeclarations().size()));
+					FunctionInvocation body = new FunctionInvocation(pos,context,subRel.getName(),createVariables(pos,context,rel.getSlotDeclarations().size()));
+					Rule rule = new Rule(pos,context,id,body,head);
+					rel.addRule(rule);
+					LOGGER.info("Adding inheritance rule to relationship " + rel.getName() + ": " + rule);
+				}
+				else {
+					LOGGER.warn("Attempt to add more than one rule for sub relationship " + subRel.getName() + " of " + rel.getName());
 				}
 			}
 		}
@@ -241,14 +233,12 @@ public class DefaultCompiler implements Compiler {
 
 	private List<RelationshipDefinition> findSubRels(List<CompilationUnit> cus, RelationshipDefinition superRel) {
 		List<RelationshipDefinition> subTypes = new ArrayList<RelationshipDefinition>();
-		for (CompilationUnit cu:cus) {
-			for (RelationshipDefinition rel:cu.getRelationshipDefinitions()) {
-				if (rel.getSuperTypes().contains(superRel.getName()) && rel.getSlotDeclarations().size()==superRel.getSlotDeclarations().size()) {
-					LOGGER.debug("Found sub relationships " + rel.getName() + " extending " + superRel.getName());
-					subTypes.add(rel);
-				}
-			}	
-		}
+		for (RelationshipDefinition rel:getRels(cus,false)) {
+			if (rel.getSuperTypes().contains(superRel.getName()) && rel.getSlotDeclarations().size()==superRel.getSlotDeclarations().size()) {
+				LOGGER.debug("Found sub relationships " + rel.getName() + " extending " + superRel.getName());
+				subTypes.add(rel);
+			}
+		}	
 		return subTypes;
 	}
 
@@ -351,10 +341,7 @@ public class DefaultCompiler implements Compiler {
 		}
 		
 		// collect relationships
-		final Collection<RelationshipDefinition> rels = new HashSet<RelationshipDefinition>();
-		for (CompilationUnit cun:cus) {
-			rels.addAll(cun.getRelationshipDefinitions());
-		}
+		final Collection<RelationshipDefinition> rels = getRels(cus,false);
 		
 		// mark variables defined by object declarations as defined
 		for (Variable v:rule.getVariables()) {
@@ -529,11 +516,9 @@ public class DefaultCompiler implements Compiler {
 	}
 
 	private RelationshipDefinition findRelationshipDefinition (Collection<CompilationUnit> cus,String name,int slotCount) {
-		for (CompilationUnit cu:cus) {
-			for (RelationshipDefinition rel:cu.getRelationshipDefinitions()) {
-				if (rel.getName().equals(name) && rel.getSlotDeclarations().size()==slotCount) {
-					return rel;
-				}
+		for (RelationshipDefinition rel:getRels(cus,true)) {
+			if (rel.getName().equals(name) && rel.getSlotDeclarations().size()==slotCount) {
+				return rel;
 			}
 		}
 		return null;
@@ -605,6 +590,21 @@ public class DefaultCompiler implements Compiler {
 			}
 			
 		}
+	}
+	
+	private Collection<RelationshipDefinition> getRels(Collection<CompilationUnit> cus,boolean addBuiltins) {
+		List<RelationshipDefinition> rels = new ArrayList<RelationshipDefinition>();
+		for (CompilationUnit cu:cus) {
+			for (RelationshipDefinition rel:cu.getRelationshipDefinitions()) {
+				rels.add(rel);
+			}
+		}
+		if (addBuiltins) {
+			for (RelationshipDefinition rel:BuiltIns.getBuiltInRels()) {
+				rels.add(rel);
+			}
+		}
+		return rels;
 	}
 
 }

@@ -30,11 +30,21 @@ public class FunctionInvocation extends Expression {
 	private RelationshipDefinition relationship = null; // if this is a reference to a relationship
 	private Method referencedMethod = null; // if this is a reference to an imported function
 	private boolean naf = false; // negation as failure can only be true if relationship != null
+	private boolean builtInPredicate = false;
 	
 	public FunctionInvocation(Position position,Context context,String function,List<Expression> parameters) {
 		super(position,context);
 		this.function = function;
 		this.parameters = parameters;
+	}
+	
+	public static FunctionInvocation createInBuildIn(Position position,Context context,Variable var,Expression container) {
+		List<Expression> parameters = new ArrayList<Expression>(2);
+		parameters.add(var);
+		parameters.add(container);
+		FunctionInvocation f = new FunctionInvocation(position,context,"_InDomain",parameters);
+		f.builtInPredicate = true;
+		return f;
 	}
 
 	public boolean isDefinedByRelationship() {
@@ -58,6 +68,7 @@ public class FunctionInvocation extends Expression {
 			e.setReferencedMethod(this.getReferencedMethod());
 			e.setType(this.getType());
 			e.setNaf(this.naf);
+			e.builtInPredicate = this.builtInPredicate;
 			copyPropertiesTo(e);
 			return e;
 		}
@@ -155,6 +166,10 @@ public class FunctionInvocation extends Expression {
 	public String toString() {
 		if (naf) return "not " + super.toString();
 		else return super.toString();
+	}
+
+	public boolean isBuiltInPredicate() {
+		return builtInPredicate;
 	}
 
 }

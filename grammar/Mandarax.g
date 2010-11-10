@@ -143,7 +143,11 @@ visibility returns [Visibility value]
 expression returns [Expression value]
     :   r=conditionalExpression {$value=r.value;}
     ;
-
+    
+indomain returns [FunctionInvocation value] 
+    :    i = Identifier 'in' x = expression {$value = FunctionInvocation.createInBuildIn(pos(i),context,new Variable(pos(i),context,i.getText()),x.value);}	    
+	;
+	
 constantDeclarator
     :   Identifier 
         ;
@@ -320,7 +324,8 @@ unaryExpression returns [Expression value]
     ;
 
 unaryExpressionNotPlusMinus returns [Expression value]
-    :   '~' r1 = unaryExpression {$value = new UnaryExpression(pos(r1.value),context,UnOp.COMPL,r1.value);}
+    :   r12 = indomain {$value = r12.value;}
+    |   '~' r1 = unaryExpression {$value = new UnaryExpression(pos(r1.value),context,UnOp.COMPL,r1.value);}
     |   '!' r2 = unaryExpression {$value = new UnaryExpression(pos(r2.value),context,UnOp.NOT,r2.value);}
     |   r3 = castExpression {$value = r3.value;}
     |   r11 = constructorInvocation {$value = r11.value;}
