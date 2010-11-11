@@ -133,15 +133,18 @@ public class Prereq {
 		}
 		return true;
 	}
-	
-	public String printBoundParams(String scope,String arg) throws IOException {
+
+	public String printBoundParams(String scope,String arg) throws IOException,CompilerException {
 		StringBuffer buf = new StringBuffer();
 		buf.append(arg);
-		for (Expression expr:((FunctionInvocation)expression).getParameters()) {
-			if (isBound(expr) && !isNewlyBound(expr)) {
+		for (String queryParameter:this.getQuery().getParameterNames()) {
+			int slotPos = this.getRel().getSlotPosition(queryParameter);
+			Expression expr = ((FunctionInvocation)expression).getParameters().get(slotPos);	
+			//if (isBound(expr) && !isNewlyBound(expr) ) {
 				buf.append(',');
 				buf.append(print(expr,scope));
-			}
+			//}
+			
 		}
 		
 		return buf.toString();

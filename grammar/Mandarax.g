@@ -143,10 +143,6 @@ visibility returns [Visibility value]
 expression returns [Expression value]
     :   r=conditionalExpression {$value=r.value;}
     ;
-    
-indomain returns [FunctionInvocation value] 
-    :    i = Identifier 'in' x = expression {$value = FunctionInvocation.createInBuildIn(pos(i),context,new Variable(pos(i),context,i.getText()),x.value);}	    
-	;
 	
 constantDeclarator
     :   Identifier 
@@ -277,6 +273,10 @@ equalityExpression returns [Expression value]
 instanceOfExpression returns [Expression value]
     :   part = relationalExpression ('instanceof' t = type)? {$value = (t==null)?part.value:new InstanceOfExpression(pos(part.value),context,part.value,t.value);}
     ;
+    
+//indomain returns [Expression value] 
+//    :    i = objectref {$value = i.value;}('in' x = expression)? {$value = x==null?$value: FunctionInvocation.createInBuildIn(pos(i.value),context,$value,x.value);}	    
+//    ;
 
 relationalExpression  returns [Expression value]
     :   part1 = shiftExpression {$value=part1.value;} ( op = relationalOp part2 = shiftExpression {$value = new BinaryExpression(pos(part1.value),context,op.value,$value,part2.value);})* 
@@ -324,10 +324,10 @@ unaryExpression returns [Expression value]
     ;
 
 unaryExpressionNotPlusMinus returns [Expression value]
-    :   r12 = indomain {$value = r12.value;}
-    |   '~' r1 = unaryExpression {$value = new UnaryExpression(pos(r1.value),context,UnOp.COMPL,r1.value);}
+    :	'~' r1 = unaryExpression {$value = new UnaryExpression(pos(r1.value),context,UnOp.COMPL,r1.value);}
     |   '!' r2 = unaryExpression {$value = new UnaryExpression(pos(r2.value),context,UnOp.NOT,r2.value);}
     |   r3 = castExpression {$value = r3.value;}
+//    |   r12 = indomain{$value = r12.value;}
     |   r11 = constructorInvocation {$value = r11.value;}
     |   r9 = functionInvocation {$value = r9.value;}
     |   r8 = methodInvocation {$value = r8.value;}

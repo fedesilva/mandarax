@@ -341,7 +341,7 @@ public class DefaultCompiler implements Compiler {
 		}
 		
 		// collect relationships
-		final Collection<RelationshipDefinition> rels = getRels(cus,false);
+		final Collection<RelationshipDefinition> rels = getRels(cus,true);
 		
 		// mark variables defined by object declarations as defined
 		for (Variable v:rule.getVariables()) {
@@ -527,17 +527,19 @@ public class DefaultCompiler implements Compiler {
 	// keep public for unit testing
 	public void resolveFunctionRefs (Collection<CompilationUnit> cus) throws CompilerException {
 		// collect functions defined in queries
-		final Collection<RelationshipDefinition> declaredRels = new HashSet<RelationshipDefinition>();
-		class DeclaredFunctionCollector extends AbstractASTVisitor {
-			@Override
-			public boolean visit(RelationshipDefinition x) {
-				declaredRels.add(x);
-				return super.visit(x);
-			}
-		};
-		for (CompilationUnit cu:cus) {
-			cu.accept(new DeclaredFunctionCollector());
-		}
+//		final Collection<RelationshipDefinition> declaredRels = new HashSet<RelationshipDefinition>();
+//		class DeclaredFunctionCollector extends AbstractASTVisitor {
+//			@Override
+//			public boolean visit(RelationshipDefinition x) {
+//				declaredRels.add(x);
+//				return super.visit(x);
+//			}
+//		};
+//		for (CompilationUnit cu:cus) {
+//			cu.accept(new DeclaredFunctionCollector());
+//		}
+		
+		final Collection<RelationshipDefinition> declaredRels = this.getRels(cus, true);
 		
 		// collect function references
 		// careful with duplicates here: we could get the same expressions in multiple rules

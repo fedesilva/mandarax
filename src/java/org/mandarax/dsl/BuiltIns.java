@@ -42,7 +42,9 @@ public class BuiltIns {
 		queries.add(q1);
 		queries.add(q2);
 		
-		return new RelationshipDefinition(Position.NO_POSITION,context,"InDomain",slots,new ArrayList<String>(0),queries);
+		RelationshipDefinition rel = new RelationshipDefinition(Position.NO_POSITION,context,"_InDomain",slots,new ArrayList<String>(0),queries);
+		rel.setTypeSafe(false);
+		return rel;
 		
 	}
 }

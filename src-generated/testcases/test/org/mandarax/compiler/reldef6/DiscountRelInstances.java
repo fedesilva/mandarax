@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>Discount</strong>.
- * @version Nov 10, 2010 4:03:55 PM 
+ * @version Nov 11, 2010 5:34:54 PM 
  */
 public class DiscountRelInstances {
 	// object references

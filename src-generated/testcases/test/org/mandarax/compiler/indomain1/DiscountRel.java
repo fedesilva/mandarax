@@ -1,4 +1,4 @@
-package test.org.mandarax.compiler.reldef7;
+package test.org.mandarax.compiler.indomain1;
  
 import test.org.mandarax.compiler.*;
 

@@ -4,7 +4,7 @@ import test.org.mandarax.compiler.*;
 
 /**
  * Class representing the relationship <strong>Contains</strong>.
- * @version Nov 10, 2010 4:03:56 PM 
+ * @version Nov 11, 2010 5:34:54 PM 
  */
 public class ContainsRel {
 

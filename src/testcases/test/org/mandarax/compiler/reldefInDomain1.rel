@@ -1,0 +1,14 @@
+
+package test.org.mandarax.compiler.indomain1;
+import test.org.mandarax.compiler.*;
+
+// list of promoted methods of payments, must be set by application before querying
+java.util.List specialCustomers = new java.util.ArrayList();
+
+test.org.mandarax.compiler.Discount specialDiscount = new test.org.mandarax.compiler.Discount(5,false);
+
+rel Discount(Customer customer,Discount discount) queries getAll(),getDiscount(customer) {
+	rule1: in(c,specialCustomers) -> Discount(c,specialDiscount);
+}
+
+

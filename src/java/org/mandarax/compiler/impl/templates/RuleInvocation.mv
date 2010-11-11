@@ -32,7 +32,7 @@
 		
 		// apply prerequisite @{prereq.expression}
 		
-		@comment{case 1 - first prerequisite defined by a relationship binding some new variables, an iterator already exists}
+		@comment{case 1 - first prerequisite defined by a relationship binding some new variables, an iterator does not yet exist}
 		@if{!prereq.isFilter() && index==1} @code{index=counter.next;} // case 1
 		final ResourceIterator<@{relType}> _iterator@{index} = @{relType}Instances.@{prereq.query.name}(@{prereq.printBoundParams('_bindings','_derivation.push()')});
 		@code{lastPrereq=prereq;}@comment{this is the last prerequisite for which an iterator has been generated}
@@ -43,7 +43,7 @@
 		final ResourceIterator<@{relType}> _iterator@{index} =  new NestedIterator<@{prevRelType}, @{relType}>(_iterator@{index-1}) {
                 	public ResourceIterator<@{relType}> getNextIterator(@{prevRelType} _object) {
                 				// bind parameters from @{prereq.previousRelPrereq.expression}
-						@foreach{v:prereq.previous.newlyBoundVariables}_bindings.@{v} = _object.@{prereq.previous.getSlot(v)};
+						@foreach{v:prereq.previous.newlyBoundVariables}_bindings.@{v} = @if{!prereq.previous.rel.typeSafe}(@{v.typeName})@end{}_object.@{prereq.previous.getSlot(v)};
 						@end{}
 									return @{relType}Instances.@{prereq.query.name}(@{prereq.printBoundParams('_bindings','_derivation.push()')});
                 	}
@@ -56,7 +56,7 @@
 					com.google.common.base.Predicate<@{prevRelType}> _filter@{index} = new com.google.common.base.Predicate<@{prevRelType}>() {
 						public boolean apply(@{prevRelType} _object) {
 						        // bind parameters from @{prereq.previous.expression}
-								@foreach{v:prereq.previous.newlyBoundVariables}_bindings.@{v} = _object.@{prereq.previous.getSlot(v)};
+								@foreach{v:prereq.previous.newlyBoundVariables}_bindings.@{v} = @if{!prereq.previous.rel.typeSafe}(@{v.typeName})@end{}_object.@{prereq.previous.getSlot(v)};
 								@end{}
 								@if{prereq.definedByRelationship}
 									ResourceIterator<@{relType}> _r =  @{relType}Instances.@{prereq.query.name}(@{prereq.printBoundParams('_bindings','_derivation.push()')});
@@ -93,7 +93,7 @@
 		@if{lastPrereq!=null}return new NestedIterator<@{lastPrereq.rel.name}@{ext}, @{relType}>(_iterator@{index}) {
                 	public ResourceIterator<@{relType}> getNextIterator(@{lastPrereq.rel.name}@{ext} _object) {
 						// bind parameters from @{lastPrereq.expression}
-						@foreach{v:lastPrereq.newlyBoundVariables}_bindings.@{v} = _object.@{lastPrereq.getSlot(v)};
+						@foreach{v:lastPrereq.newlyBoundVariables}_bindings.@{v} = @if{!lastPrereq.rel.typeSafe}(@{v.typeName})@end{}_object.@{lastPrereq.getSlot(v)};
 						@end{}
                     				return new SingletonIterator(new @{relType}(@{ctrl.printSlots(rel.slotDeclarations,'_bindings')}));
                 	}

@@ -27,6 +27,9 @@ public class RelationshipDefinition extends AnnotatableNode {
 	private List<VariableDeclaration> slotDeclarations = null;
 	private List<String> superTypes = null;
 	private List<Rule> rules = new ArrayList<Rule>();
+	// if true, slots have type information that can be used by the compiler
+	// if false, this is a generic relationship and casts must be generated
+	private boolean typeSafe = true;
 	
 	/**
 	 * Constructor.
@@ -220,5 +223,17 @@ public class RelationshipDefinition extends AnnotatableNode {
 		} else if (!superTypes.equals(other.superTypes))
 			return false;
 		return true;
+	}
+
+
+
+	public boolean isTypeSafe() {
+		return typeSafe;
+	}
+
+
+
+	public void setTypeSafe(boolean typeSafe) {
+		this.typeSafe = typeSafe;
 	}
 }

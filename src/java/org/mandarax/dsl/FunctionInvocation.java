@@ -15,6 +15,9 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import org.apache.log4j.Logger;
+
 import com.google.common.base.Function;
 import static org.mandarax.dsl.Utils.*;
 
@@ -32,20 +35,31 @@ public class FunctionInvocation extends Expression {
 	private boolean naf = false; // negation as failure can only be true if relationship != null
 	private boolean builtInPredicate = false;
 	
+	private static Logger LOGGER = Logger.getLogger(FunctionInvocation.class);
+	
 	public FunctionInvocation(Position position,Context context,String function,List<Expression> parameters) {
 		super(position,context);
 		this.function = function;
 		this.parameters = parameters;
+		
+		// special handing for built-in predicates! 
+		if (function.equals("in") && parameters.size()==2) {
+			this.function = "_InDomain";
+			this.builtInPredicate = true;
+			LOGGER.debug("Found reference to builtin relationship " + this.function + " at " + this.getPosition());
+		}
+		
+		
 	}
 	
-	public static FunctionInvocation createInBuildIn(Position position,Context context,Variable var,Expression container) {
-		List<Expression> parameters = new ArrayList<Expression>(2);
-		parameters.add(var);
-		parameters.add(container);
-		FunctionInvocation f = new FunctionInvocation(position,context,"_InDomain",parameters);
-		f.builtInPredicate = true;
-		return f;
-	}
+//	public static FunctionInvocation createInBuildIn(Position position,Context context,Expression var,Expression container) {
+//		List<Expression> parameters = new ArrayList<Expression>(2);
+//		parameters.add(var);
+//		parameters.add(container);
+//		FunctionInvocation f = new FunctionInvocation(position,context,"_InDomain",parameters);
+//		f.builtInPredicate = true;
+//		return f;
+//	}
 
 	public boolean isDefinedByRelationship() {
 		return relationship!=null;
