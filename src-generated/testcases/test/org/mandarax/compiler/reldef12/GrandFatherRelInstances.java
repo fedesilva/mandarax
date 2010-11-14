@@ -6,14 +6,14 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>GrandFather</strong>.
- * @version Nov 11, 2010 5:34:54 PM 
+ * @version Nov 15, 2010 11:28:45 AM 
  */
 public class GrandFatherRelInstances {
 	// object references
 	 
 	public static Person jens = new Person("Jens");
 	 
-	public static Person max = new Person("Max");
+	public static Person maxd = new Person("Max");
 	 
 	public static Person klaus = new Person("Klaus");
 	 

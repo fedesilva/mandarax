@@ -6,14 +6,14 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>Father</strong>.
- * @version Nov 11, 2010 5:34:54 PM 
+ * @version Nov 15, 2010 11:28:45 AM 
  */
 public class FatherRelInstances {
 	// object references
 	 
 	public static Person jens = new Person("Jens");
 	 
-	public static Person max = new Person("Max");
+	public static Person maxd = new Person("Max");
 	 
 	public static Person klaus = new Person("Klaus");
 	 
@@ -24,7 +24,7 @@ public class FatherRelInstances {
 	
 	// fields representing annotations
 	
-	// rule: rule1:  -> Father(jens,max);
+	// rule: rule1:  -> Father(jens,maxd);
 	private final static java.util.Properties _annotations_rule1 = new java.util.Properties();
 	
 	// rule: rule2:  -> Father(jens,xiomara);
@@ -39,9 +39,9 @@ public class FatherRelInstances {
 	
 	// initialise annotations
 	static {
-		// relationship annotations for rule  rule1:  -> Father(jens,max);
+		// relationship annotations for rule  rule1:  -> Father(jens,maxd);
 		
-		// rule annotations for rule  rule1:  -> Father(jens,max);
+		// rule annotations for rule  rule1:  -> Father(jens,maxd);
 		
 		
 	
@@ -100,7 +100,7 @@ public class FatherRelInstances {
 			switch (pos) {
 				
                 		case 0: {
-                			// invoke rule1:  -> Father(jens,max);
+                			// invoke rule1:  -> Father(jens,maxd);
                 			return getFather_0(_derivation.pop(_derivationlevel) ,  child );
                 		}
 				
@@ -132,7 +132,7 @@ public class FatherRelInstances {
 			switch (pos) {
 				
                 		case 0: {
-                			// invoke rule1:  -> Father(jens,max);
+                			// invoke rule1:  -> Father(jens,maxd);
                 			return isFather_0(_derivation.pop(_derivationlevel) ,  father ,  child );
                 		}
 				
@@ -164,7 +164,7 @@ public class FatherRelInstances {
 			switch (pos) {
 				
                 		case 0: {
-                			// invoke rule1:  -> Father(jens,max);
+                			// invoke rule1:  -> Father(jens,maxd);
                 			return getChildren_0(_derivation.pop(_derivationlevel) ,  father );
                 		}
 				
@@ -196,7 +196,7 @@ public class FatherRelInstances {
 			switch (pos) {
 				
                 		case 0: {
-                			// invoke rule1:  -> Father(jens,max);
+                			// invoke rule1:  -> Father(jens,maxd);
                 			return getFatherAndChild_0(_derivation.pop(_derivationlevel)  );
                 		}
 				
@@ -224,7 +224,7 @@ public class FatherRelInstances {
 	
 	// private methods - each method represents the invocation of a single rule for a certain query
 	// query: getFather
-	// rule: rule1:  -> Father(jens,max);
+	// rule: rule1:  -> Father(jens,maxd);
 	private static ResourceIterator<FatherRel> getFather_0 (final DerivationController _derivation ,  final Person child ) {
 		
 		_derivation.log("Father.rule1", DerivationController.RULE, _annotations_rule1);
@@ -233,11 +233,11 @@ public class FatherRelInstances {
 	
 		
 		// utility class used to keep track of variables bindings
-		// rule: rule1:  -> Father(jens,max);
+		// rule: rule1:  -> Father(jens,maxd);
 		// prereqs: []
 		class _Bindings {
 			private test.org.mandarax.compiler.Person jens = FatherRelInstances.jens;
-			private test.org.mandarax.compiler.Person max = FatherRelInstances.max;
+			private test.org.mandarax.compiler.Person maxd = FatherRelInstances.maxd;
 		}
 		final _Bindings _bindings = new _Bindings();
 		ResourceIterator<?> _tmp = null;
@@ -250,7 +250,7 @@ public class FatherRelInstances {
 		// check conditions	
 		boolean _checkfailed = false;
 		
-		_checkfailed = _checkfailed || !Equals.compare(child,max); 
+		_checkfailed = _checkfailed || !Equals.compare(child,maxd); 
 		
 		if (_checkfailed) {
 			return EmptyIterator.DEFAULT;
@@ -262,7 +262,7 @@ public class FatherRelInstances {
 		
 		// rule head
 		
-		return new SingletonIterator(new FatherRel(_bindings.jens,_bindings.max));
+		return new SingletonIterator(new FatherRel(_bindings.jens,_bindings.maxd));
         
 		
 		
@@ -409,7 +409,7 @@ public class FatherRelInstances {
 
 	}
 	// query: isFather
-	// rule: rule1:  -> Father(jens,max);
+	// rule: rule1:  -> Father(jens,maxd);
 	private static ResourceIterator<FatherRel> isFather_0 (final DerivationController _derivation ,  final Person father ,  final Person child ) {
 		
 		_derivation.log("Father.rule1", DerivationController.RULE, _annotations_rule1);
@@ -418,11 +418,11 @@ public class FatherRelInstances {
 	
 		
 		// utility class used to keep track of variables bindings
-		// rule: rule1:  -> Father(jens,max);
+		// rule: rule1:  -> Father(jens,maxd);
 		// prereqs: []
 		class _Bindings {
 			private test.org.mandarax.compiler.Person jens = FatherRelInstances.jens;
-			private test.org.mandarax.compiler.Person max = FatherRelInstances.max;
+			private test.org.mandarax.compiler.Person maxd = FatherRelInstances.maxd;
 		}
 		final _Bindings _bindings = new _Bindings();
 		ResourceIterator<?> _tmp = null;
@@ -437,7 +437,7 @@ public class FatherRelInstances {
 		
 		_checkfailed = _checkfailed || !Equals.compare(father,jens); 
 		
-		_checkfailed = _checkfailed || !Equals.compare(child,max); 
+		_checkfailed = _checkfailed || !Equals.compare(child,maxd); 
 		
 		if (_checkfailed) {
 			return EmptyIterator.DEFAULT;
@@ -449,7 +449,7 @@ public class FatherRelInstances {
 		
 		// rule head
 		
-		return new SingletonIterator(new FatherRel(_bindings.jens,_bindings.max));
+		return new SingletonIterator(new FatherRel(_bindings.jens,_bindings.maxd));
         
 		
 		
@@ -602,7 +602,7 @@ public class FatherRelInstances {
 
 	}
 	// query: getChildren
-	// rule: rule1:  -> Father(jens,max);
+	// rule: rule1:  -> Father(jens,maxd);
 	private static ResourceIterator<FatherRel> getChildren_0 (final DerivationController _derivation ,  final Person father ) {
 		
 		_derivation.log("Father.rule1", DerivationController.RULE, _annotations_rule1);
@@ -611,11 +611,11 @@ public class FatherRelInstances {
 	
 		
 		// utility class used to keep track of variables bindings
-		// rule: rule1:  -> Father(jens,max);
+		// rule: rule1:  -> Father(jens,maxd);
 		// prereqs: []
 		class _Bindings {
 			private test.org.mandarax.compiler.Person jens = FatherRelInstances.jens;
-			private test.org.mandarax.compiler.Person max = FatherRelInstances.max;
+			private test.org.mandarax.compiler.Person maxd = FatherRelInstances.maxd;
 		}
 		final _Bindings _bindings = new _Bindings();
 		ResourceIterator<?> _tmp = null;
@@ -640,7 +640,7 @@ public class FatherRelInstances {
 		
 		// rule head
 		
-		return new SingletonIterator(new FatherRel(_bindings.jens,_bindings.max));
+		return new SingletonIterator(new FatherRel(_bindings.jens,_bindings.maxd));
         
 		
 		
@@ -787,7 +787,7 @@ public class FatherRelInstances {
 
 	}
 	// query: getFatherAndChild
-	// rule: rule1:  -> Father(jens,max);
+	// rule: rule1:  -> Father(jens,maxd);
 	private static ResourceIterator<FatherRel> getFatherAndChild_0 (final DerivationController _derivation  ) {
 		
 		_derivation.log("Father.rule1", DerivationController.RULE, _annotations_rule1);
@@ -796,11 +796,11 @@ public class FatherRelInstances {
 	
 		
 		// utility class used to keep track of variables bindings
-		// rule: rule1:  -> Father(jens,max);
+		// rule: rule1:  -> Father(jens,maxd);
 		// prereqs: []
 		class _Bindings {
 			private test.org.mandarax.compiler.Person jens = FatherRelInstances.jens;
-			private test.org.mandarax.compiler.Person max = FatherRelInstances.max;
+			private test.org.mandarax.compiler.Person maxd = FatherRelInstances.maxd;
 		}
 		final _Bindings _bindings = new _Bindings();
 		ResourceIterator<?> _tmp = null;
@@ -816,7 +816,7 @@ public class FatherRelInstances {
 		
 		// rule head
 		
-		return new SingletonIterator(new FatherRel(_bindings.jens,_bindings.max));
+		return new SingletonIterator(new FatherRel(_bindings.jens,_bindings.maxd));
         
 		
 		

@@ -41,25 +41,16 @@ public class FunctionInvocation extends Expression {
 		super(position,context);
 		this.function = function;
 		this.parameters = parameters;
-		
-		// special handing for built-in predicates! 
-		if (function.equals("in") && parameters.size()==2) {
-			this.function = "_InDomain";
-			this.builtInPredicate = true;
-			LOGGER.debug("Found reference to builtin relationship " + this.function + " at " + this.getPosition());
-		}
-		
-		
 	}
 	
-//	public static FunctionInvocation createInBuildIn(Position position,Context context,Expression var,Expression container) {
-//		List<Expression> parameters = new ArrayList<Expression>(2);
-//		parameters.add(var);
-//		parameters.add(container);
-//		FunctionInvocation f = new FunctionInvocation(position,context,"_InDomain",parameters);
-//		f.builtInPredicate = true;
-//		return f;
-//	}
+	public static FunctionInvocation createInBuildIn(Position position,Context context,Expression var,Expression container) {
+		List<Expression> parameters = new ArrayList<Expression>(2);
+		parameters.add(var);
+		parameters.add(container);
+		FunctionInvocation f = new FunctionInvocation(position,context,"_InDomain",parameters);
+		f.builtInPredicate = true;
+		return f;
+	}
 
 	public boolean isDefinedByRelationship() {
 		return relationship!=null;

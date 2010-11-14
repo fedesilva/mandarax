@@ -45,6 +45,7 @@ public class ExpressionPrinter {
 		else if (x instanceof FunctionInvocation) doPrint((FunctionInvocation)x);
 		else if (x instanceof ConstructorInvocation) doPrint((ConstructorInvocation)x);
 		else if (x instanceof NullValue) doPrint((NullValue)x);
+		else if (x instanceof Aggregation) doPrint((Aggregation)x);
 		else throw new IOException("Unsupported expression type " + x.getClass().getName());
 	}
 
@@ -107,6 +108,13 @@ public class ExpressionPrinter {
 		print(x.getObjectReference());
 		out.append(" instanceof ");
 		out.append(x.getTypeName());
+	}
+	
+	protected void doPrint(Aggregation x) throws IOException {
+		out.append(x.getFunction().name());
+		print(x.getVariable());
+		out.append(" in ");
+		print(x.getExpression());
 	}
 
 	protected void doPrint(ConditionalExpression x) throws IOException {

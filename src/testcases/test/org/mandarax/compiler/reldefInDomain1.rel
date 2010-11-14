@@ -8,7 +8,7 @@ java.util.List specialCustomers = new java.util.ArrayList();
 test.org.mandarax.compiler.Discount specialDiscount = new test.org.mandarax.compiler.Discount(5,false);
 
 rel Discount(Customer customer,Discount discount) queries getAll(),getDiscount(customer) {
-	rule1: in(c,specialCustomers) -> Discount(c,specialDiscount);
+	rule1: c in specialCustomers -> Discount(c,specialDiscount);
 }
 
 

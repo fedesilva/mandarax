@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g 2010-11-13 23:05:06
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g 2010-11-15 11:18:49
  
 /*
  * Copyright 2010 Jens Dietrich 
@@ -34,7 +34,7 @@ import org.antlr.runtime.tree.*;
 
 public class MandaraxParser extends Parser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "NEWLINE", "Identifier", "StringLiteral", "HexLiteral", "OctalLiteral", "DecimalLiteral", "FloatingPointLiteral", "HexDigit", "IntegerTypeSuffix", "Exponent", "FloatTypeSuffix", "EscapeSequence", "CharacterLiteral", "UnicodeEscape", "OctalEscape", "Letter", "JavaIDDigit", "WS", "COMMENT", "LINE_COMMENT", "'import'", "'static'", "'.'", "'*'", "';'", "'package'", "':'", "'->'", "'@'", "'='", "'relationship'", "'rel'", "'('", "')'", "'extends'", "'queries'", "'{'", "'}'", "','", "'public'", "'private'", "'['", "']'", "'boolean'", "'char'", "'byte'", "'short'", "'int'", "'long'", "'float'", "'double'", "'true'", "'false'", "'&'", "'?'", "'|'", "'=='", "'!='", "'instanceof'", "'<='", "'>='", "'<'", "'>'", "'+'", "'-'", "'/'", "'%'", "'~'", "'!'", "'null'", "'new'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "NEWLINE", "Identifier", "StringLiteral", "HexLiteral", "OctalLiteral", "DecimalLiteral", "FloatingPointLiteral", "HexDigit", "IntegerTypeSuffix", "Exponent", "FloatTypeSuffix", "EscapeSequence", "CharacterLiteral", "UnicodeEscape", "OctalEscape", "Letter", "JavaIDDigit", "WS", "COMMENT", "LINE_COMMENT", "'import'", "'static'", "'.'", "'*'", "';'", "'package'", "':'", "'->'", "'@'", "'='", "'relationship'", "'rel'", "'('", "')'", "'extends'", "'queries'", "'{'", "'}'", "','", "'public'", "'private'", "'['", "']'", "'boolean'", "'char'", "'byte'", "'short'", "'int'", "'long'", "'float'", "'double'", "'true'", "'false'", "'&'", "'?'", "'|'", "'=='", "'!='", "'instanceof'", "'avg'", "'sum'", "'min'", "'max'", "'count'", "'in'", "'<='", "'>='", "'<'", "'>'", "'+'", "'-'", "'/'", "'%'", "'~'", "'!'", "'null'", "'new'"
     };
     public static final int T__68=68;
     public static final int T__69=69;
@@ -75,6 +75,7 @@ public class MandaraxParser extends Parser {
     public static final int T__43=43;
     public static final int T__40=40;
     public static final int T__41=41;
+    public static final int T__80=80;
     public static final int T__46=46;
     public static final int T__47=47;
     public static final int T__44=44;
@@ -103,11 +104,16 @@ public class MandaraxParser extends Parser {
     public static final int UnicodeEscape=17;
     public static final int FloatingPointLiteral=10;
     public static final int JavaIDDigit=20;
+    public static final int T__76=76;
+    public static final int T__75=75;
     public static final int T__74=74;
     public static final int Letter=19;
     public static final int OctalEscape=18;
     public static final int EscapeSequence=15;
     public static final int T__73=73;
+    public static final int T__79=79;
+    public static final int T__78=78;
+    public static final int T__77=77;
 
     // delegates
     // delegators
@@ -118,7 +124,7 @@ public class MandaraxParser extends Parser {
         }
         public MandaraxParser(TokenStream input, RecognizerSharedState state) {
             super(input, state);
-            this.state.ruleMemo = new HashMap[146+1];
+            this.state.ruleMemo = new HashMap[154+1];
              
              
         }
@@ -714,7 +720,7 @@ public class MandaraxParser extends Parser {
             int alt7=2;
             int LA7_0 = input.LA(1);
 
-            if ( ((LA7_0>=Identifier && LA7_0<=DecimalLiteral)||LA7_0==36||(LA7_0>=55 && LA7_0<=56)||LA7_0==68||(LA7_0>=71 && LA7_0<=74)) ) {
+            if ( ((LA7_0>=Identifier && LA7_0<=DecimalLiteral)||LA7_0==36||(LA7_0>=55 && LA7_0<=56)||(LA7_0>=63 && LA7_0<=67)||LA7_0==74||(LA7_0>=77 && LA7_0<=80)) ) {
                 alt7=1;
             }
             switch (alt7) {
@@ -3557,7 +3563,7 @@ public class MandaraxParser extends Parser {
             int alt31=2;
             int LA31_0 = input.LA(1);
 
-            if ( ((LA31_0>=Identifier && LA31_0<=DecimalLiteral)||LA31_0==36||(LA31_0>=55 && LA31_0<=56)||LA31_0==68||(LA31_0>=71 && LA31_0<=74)) ) {
+            if ( ((LA31_0>=Identifier && LA31_0<=DecimalLiteral)||LA31_0==36||(LA31_0>=55 && LA31_0<=56)||(LA31_0>=63 && LA31_0<=67)||LA31_0==74||(LA31_0>=77 && LA31_0<=80)) ) {
                 alt31=1;
             }
             else if ( (LA31_0==40) ) {
@@ -3665,7 +3671,7 @@ public class MandaraxParser extends Parser {
             int alt33=2;
             int LA33_0 = input.LA(1);
 
-            if ( ((LA33_0>=Identifier && LA33_0<=DecimalLiteral)||LA33_0==36||LA33_0==40||(LA33_0>=55 && LA33_0<=56)||LA33_0==68||(LA33_0>=71 && LA33_0<=74)) ) {
+            if ( ((LA33_0>=Identifier && LA33_0<=DecimalLiteral)||LA33_0==36||LA33_0==40||(LA33_0>=55 && LA33_0<=56)||(LA33_0>=63 && LA33_0<=67)||LA33_0==74||(LA33_0>=77 && LA33_0<=80)) ) {
                 alt33=1;
             }
             switch (alt33) {
@@ -3687,7 +3693,7 @@ public class MandaraxParser extends Parser {
                         if ( (LA32_0==42) ) {
                             int LA32_1 = input.LA(2);
 
-                            if ( ((LA32_1>=Identifier && LA32_1<=DecimalLiteral)||LA32_1==36||LA32_1==40||(LA32_1>=55 && LA32_1<=56)||LA32_1==68||(LA32_1>=71 && LA32_1<=74)) ) {
+                            if ( ((LA32_1>=Identifier && LA32_1<=DecimalLiteral)||LA32_1==36||LA32_1==40||(LA32_1>=55 && LA32_1<=56)||(LA32_1>=63 && LA32_1<=67)||LA32_1==74||(LA32_1>=77 && LA32_1<=80)) ) {
                                 alt32=1;
                             }
 
@@ -4094,7 +4100,11 @@ public class MandaraxParser extends Parser {
             int LA37_0 = input.LA(1);
 
             if ( (LA37_0==58) ) {
-                alt37=1;
+                int LA37_1 = input.LA(2);
+
+                if ( (synpred52_Mandarax()) ) {
+                    alt37=1;
+                }
             }
             switch (alt37) {
                 case 1 :
@@ -4200,7 +4210,13 @@ public class MandaraxParser extends Parser {
                 int LA38_0 = input.LA(1);
 
                 if ( (LA38_0==59) ) {
-                    alt38=1;
+                    int LA38_2 = input.LA(2);
+
+                    if ( (synpred53_Mandarax()) ) {
+                        alt38=1;
+                    }
+
+
                 }
 
 
@@ -4297,7 +4313,19 @@ public class MandaraxParser extends Parser {
             loop39:
             do {
                 int alt39=2;
-                alt39 = dfa39.predict(input);
+                int LA39_0 = input.LA(1);
+
+                if ( (LA39_0==57) ) {
+                    int LA39_2 = input.LA(2);
+
+                    if ( (synpred54_Mandarax()) ) {
+                        alt39=1;
+                    }
+
+
+                }
+
+
                 switch (alt39) {
             	case 1 :
             	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:266:62: '&' part= equalityExpression
@@ -4394,7 +4422,13 @@ public class MandaraxParser extends Parser {
                 int LA40_0 = input.LA(1);
 
                 if ( ((LA40_0>=60 && LA40_0<=61)) ) {
-                    alt40=1;
+                    int LA40_2 = input.LA(2);
+
+                    if ( (synpred56_Mandarax()) ) {
+                        alt40=1;
+                    }
+
+
                 }
 
 
@@ -4496,7 +4530,11 @@ public class MandaraxParser extends Parser {
             int LA41_0 = input.LA(1);
 
             if ( (LA41_0==62) ) {
-                alt41=1;
+                int LA41_1 = input.LA(2);
+
+                if ( (synpred57_Mandarax()) ) {
+                    alt41=1;
+                }
             }
             switch (alt41) {
                 case 1 :
@@ -4546,6 +4584,168 @@ public class MandaraxParser extends Parser {
     }
     // $ANTLR end "instanceOfExpression"
 
+    public static class aggregation_return extends ParserRuleReturnScope {
+        public Expression value;
+        CommonTree tree;
+        public Object getTree() { return tree; }
+    };
+
+    // $ANTLR start "aggregation"
+    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:277:1: aggregation returns [Expression value] : f= ( 'avg' | 'sum' | 'min' | 'max' | 'count' ) v= Identifier 'in' rel= relationalExpression ;
+    public final MandaraxParser.aggregation_return aggregation() throws RecognitionException {
+        MandaraxParser.aggregation_return retval = new MandaraxParser.aggregation_return();
+        retval.start = input.LT(1);
+        int aggregation_StartIndex = input.index();
+        CommonTree root_0 = null;
+
+        Token f=null;
+        Token v=null;
+        Token string_literal76=null;
+        MandaraxParser.relationalExpression_return rel = null;
+
+
+        CommonTree f_tree=null;
+        CommonTree v_tree=null;
+        CommonTree string_literal76_tree=null;
+
+        try {
+            if ( state.backtracking>0 && alreadyParsedRule(input, 41) ) { return retval; }
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:278:4: (f= ( 'avg' | 'sum' | 'min' | 'max' | 'count' ) v= Identifier 'in' rel= relationalExpression )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:278:8: f= ( 'avg' | 'sum' | 'min' | 'max' | 'count' ) v= Identifier 'in' rel= relationalExpression
+            {
+            root_0 = (CommonTree)adaptor.nil();
+
+            f=(Token)input.LT(1);
+            if ( (input.LA(1)>=63 && input.LA(1)<=67) ) {
+                input.consume();
+                if ( state.backtracking==0 ) adaptor.addChild(root_0, (CommonTree)adaptor.create(f));
+                state.errorRecovery=false;state.failed=false;
+            }
+            else {
+                if (state.backtracking>0) {state.failed=true; return retval;}
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                throw mse;
+            }
+
+            v=(Token)match(input,Identifier,FOLLOW_Identifier_in_aggregation2016); if (state.failed) return retval;
+            if ( state.backtracking==0 ) {
+            v_tree = (CommonTree)adaptor.create(v);
+            adaptor.addChild(root_0, v_tree);
+            }
+            string_literal76=(Token)match(input,68,FOLLOW_68_in_aggregation2018); if (state.failed) return retval;
+            if ( state.backtracking==0 ) {
+            string_literal76_tree = (CommonTree)adaptor.create(string_literal76);
+            adaptor.addChild(root_0, string_literal76_tree);
+            }
+            pushFollow(FOLLOW_relationalExpression_in_aggregation2022);
+            rel=relationalExpression();
+
+            state._fsp--;
+            if (state.failed) return retval;
+            if ( state.backtracking==0 ) adaptor.addChild(root_0, rel.getTree());
+            if ( state.backtracking==0 ) {
+              retval.value = new Aggregation(pos(f),context,f.getText(),v.getText(),(FunctionInvocation)rel.value);
+            }
+
+            }
+
+            retval.stop = input.LT(-1);
+
+            if ( state.backtracking==0 ) {
+
+            retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+            }
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (CommonTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+        finally {
+            if ( state.backtracking>0 ) { memoize(input, 41, aggregation_StartIndex); }
+        }
+        return retval;
+    }
+    // $ANTLR end "aggregation"
+
+    public static class indomain_return extends ParserRuleReturnScope {
+        public Expression value;
+        CommonTree tree;
+        public Object getTree() { return tree; }
+    };
+
+    // $ANTLR start "indomain"
+    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:281:1: indomain returns [Expression value] : i= objectref 'in' x= expression ;
+    public final MandaraxParser.indomain_return indomain() throws RecognitionException {
+        MandaraxParser.indomain_return retval = new MandaraxParser.indomain_return();
+        retval.start = input.LT(1);
+        int indomain_StartIndex = input.index();
+        CommonTree root_0 = null;
+
+        Token string_literal77=null;
+        MandaraxParser.objectref_return i = null;
+
+        MandaraxParser.expression_return x = null;
+
+
+        CommonTree string_literal77_tree=null;
+
+        try {
+            if ( state.backtracking>0 && alreadyParsedRule(input, 42) ) { return retval; }
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:282:5: (i= objectref 'in' x= expression )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:282:10: i= objectref 'in' x= expression
+            {
+            root_0 = (CommonTree)adaptor.nil();
+
+            pushFollow(FOLLOW_objectref_in_indomain2061);
+            i=objectref();
+
+            state._fsp--;
+            if (state.failed) return retval;
+            if ( state.backtracking==0 ) adaptor.addChild(root_0, i.getTree());
+            if ( state.backtracking==0 ) {
+              retval.value = i.value;
+            }
+            string_literal77=(Token)match(input,68,FOLLOW_68_in_indomain2065); if (state.failed) return retval;
+            if ( state.backtracking==0 ) {
+            string_literal77_tree = (CommonTree)adaptor.create(string_literal77);
+            adaptor.addChild(root_0, string_literal77_tree);
+            }
+            pushFollow(FOLLOW_expression_in_indomain2071);
+            x=expression();
+
+            state._fsp--;
+            if (state.failed) return retval;
+            if ( state.backtracking==0 ) adaptor.addChild(root_0, x.getTree());
+            if ( state.backtracking==0 ) {
+              retval.value = FunctionInvocation.createInBuildIn(pos(i.value),context,retval.value,x.value);
+            }
+
+            }
+
+            retval.stop = input.LT(-1);
+
+            if ( state.backtracking==0 ) {
+
+            retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+            }
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (CommonTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+        finally {
+            if ( state.backtracking>0 ) { memoize(input, 42, indomain_StartIndex); }
+        }
+        return retval;
+    }
+    // $ANTLR end "indomain"
+
     public static class relationalExpression_return extends ParserRuleReturnScope {
         public Expression value;
         CommonTree tree;
@@ -4553,7 +4753,7 @@ public class MandaraxParser extends Parser {
     };
 
     // $ANTLR start "relationalExpression"
-    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:281:1: relationalExpression returns [Expression value] : part1= shiftExpression (op= relationalOp part2= shiftExpression )* ;
+    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:285:1: relationalExpression returns [Expression value] : part1= shiftExpression (op= relationalOp part2= shiftExpression )* ;
     public final MandaraxParser.relationalExpression_return relationalExpression() throws RecognitionException {
         MandaraxParser.relationalExpression_return retval = new MandaraxParser.relationalExpression_return();
         retval.start = input.LT(1);
@@ -4569,13 +4769,13 @@ public class MandaraxParser extends Parser {
 
 
         try {
-            if ( state.backtracking>0 && alreadyParsedRule(input, 41) ) { return retval; }
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:282:5: (part1= shiftExpression (op= relationalOp part2= shiftExpression )* )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:282:9: part1= shiftExpression (op= relationalOp part2= shiftExpression )*
+            if ( state.backtracking>0 && alreadyParsedRule(input, 43) ) { return retval; }
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:286:5: (part1= shiftExpression (op= relationalOp part2= shiftExpression )* )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:286:9: part1= shiftExpression (op= relationalOp part2= shiftExpression )*
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            pushFollow(FOLLOW_shiftExpression_in_relationalExpression1993);
+            pushFollow(FOLLOW_shiftExpression_in_relationalExpression2106);
             part1=shiftExpression();
 
             state._fsp--;
@@ -4584,28 +4784,69 @@ public class MandaraxParser extends Parser {
             if ( state.backtracking==0 ) {
               retval.value =part1.value;
             }
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:282:55: (op= relationalOp part2= shiftExpression )*
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:286:55: (op= relationalOp part2= shiftExpression )*
             loop42:
             do {
                 int alt42=2;
-                int LA42_0 = input.LA(1);
+                switch ( input.LA(1) ) {
+                case 71:
+                    {
+                    int LA42_2 = input.LA(2);
 
-                if ( ((LA42_0>=63 && LA42_0<=66)) ) {
-                    alt42=1;
+                    if ( (synpred62_Mandarax()) ) {
+                        alt42=1;
+                    }
+
+
+                    }
+                    break;
+                case 72:
+                    {
+                    int LA42_3 = input.LA(2);
+
+                    if ( (synpred62_Mandarax()) ) {
+                        alt42=1;
+                    }
+
+
+                    }
+                    break;
+                case 69:
+                    {
+                    int LA42_4 = input.LA(2);
+
+                    if ( (synpred62_Mandarax()) ) {
+                        alt42=1;
+                    }
+
+
+                    }
+                    break;
+                case 70:
+                    {
+                    int LA42_5 = input.LA(2);
+
+                    if ( (synpred62_Mandarax()) ) {
+                        alt42=1;
+                    }
+
+
+                    }
+                    break;
+
                 }
-
 
                 switch (alt42) {
             	case 1 :
-            	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:282:57: op= relationalOp part2= shiftExpression
+            	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:286:57: op= relationalOp part2= shiftExpression
             	    {
-            	    pushFollow(FOLLOW_relationalOp_in_relationalExpression2003);
+            	    pushFollow(FOLLOW_relationalOp_in_relationalExpression2116);
             	    op=relationalOp();
 
             	    state._fsp--;
             	    if (state.failed) return retval;
             	    if ( state.backtracking==0 ) adaptor.addChild(root_0, op.getTree());
-            	    pushFollow(FOLLOW_shiftExpression_in_relationalExpression2009);
+            	    pushFollow(FOLLOW_shiftExpression_in_relationalExpression2122);
             	    part2=shiftExpression();
 
             	    state._fsp--;
@@ -4641,7 +4882,7 @@ public class MandaraxParser extends Parser {
 
         }
         finally {
-            if ( state.backtracking>0 ) { memoize(input, 41, relationalExpression_StartIndex); }
+            if ( state.backtracking>0 ) { memoize(input, 43, relationalExpression_StartIndex); }
         }
         return retval;
     }
@@ -4654,44 +4895,44 @@ public class MandaraxParser extends Parser {
     };
 
     // $ANTLR start "relationalOp"
-    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:286:1: relationalOp returns [BinOp value] : ( '<=' | '>=' | '<' | '>' );
+    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:290:1: relationalOp returns [BinOp value] : ( '<=' | '>=' | '<' | '>' );
     public final MandaraxParser.relationalOp_return relationalOp() throws RecognitionException {
         MandaraxParser.relationalOp_return retval = new MandaraxParser.relationalOp_return();
         retval.start = input.LT(1);
         int relationalOp_StartIndex = input.index();
         CommonTree root_0 = null;
 
-        Token string_literal76=null;
-        Token string_literal77=null;
-        Token char_literal78=null;
-        Token char_literal79=null;
+        Token string_literal78=null;
+        Token string_literal79=null;
+        Token char_literal80=null;
+        Token char_literal81=null;
 
-        CommonTree string_literal76_tree=null;
-        CommonTree string_literal77_tree=null;
-        CommonTree char_literal78_tree=null;
-        CommonTree char_literal79_tree=null;
+        CommonTree string_literal78_tree=null;
+        CommonTree string_literal79_tree=null;
+        CommonTree char_literal80_tree=null;
+        CommonTree char_literal81_tree=null;
 
         try {
-            if ( state.backtracking>0 && alreadyParsedRule(input, 42) ) { return retval; }
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:287:5: ( '<=' | '>=' | '<' | '>' )
+            if ( state.backtracking>0 && alreadyParsedRule(input, 44) ) { return retval; }
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:291:5: ( '<=' | '>=' | '<' | '>' )
             int alt43=4;
             switch ( input.LA(1) ) {
-            case 63:
+            case 69:
                 {
                 alt43=1;
                 }
                 break;
-            case 64:
+            case 70:
                 {
                 alt43=2;
                 }
                 break;
-            case 65:
+            case 71:
                 {
                 alt43=3;
                 }
                 break;
-            case 66:
+            case 72:
                 {
                 alt43=4;
                 }
@@ -4706,14 +4947,14 @@ public class MandaraxParser extends Parser {
 
             switch (alt43) {
                 case 1 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:287:9: '<='
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:291:9: '<='
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    string_literal76=(Token)match(input,63,FOLLOW_63_in_relationalOp2043); if (state.failed) return retval;
+                    string_literal78=(Token)match(input,69,FOLLOW_69_in_relationalOp2156); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    string_literal76_tree = (CommonTree)adaptor.create(string_literal76);
-                    adaptor.addChild(root_0, string_literal76_tree);
+                    string_literal78_tree = (CommonTree)adaptor.create(string_literal78);
+                    adaptor.addChild(root_0, string_literal78_tree);
                     }
                     if ( state.backtracking==0 ) {
                       retval.value = BinOp.LTE;
@@ -4722,14 +4963,14 @@ public class MandaraxParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:288:9: '>='
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:292:9: '>='
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    string_literal77=(Token)match(input,64,FOLLOW_64_in_relationalOp2055); if (state.failed) return retval;
+                    string_literal79=(Token)match(input,70,FOLLOW_70_in_relationalOp2168); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    string_literal77_tree = (CommonTree)adaptor.create(string_literal77);
-                    adaptor.addChild(root_0, string_literal77_tree);
+                    string_literal79_tree = (CommonTree)adaptor.create(string_literal79);
+                    adaptor.addChild(root_0, string_literal79_tree);
                     }
                     if ( state.backtracking==0 ) {
                       retval.value = BinOp.GTE;
@@ -4738,14 +4979,14 @@ public class MandaraxParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:289:7: '<'
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:293:7: '<'
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    char_literal78=(Token)match(input,65,FOLLOW_65_in_relationalOp2065); if (state.failed) return retval;
+                    char_literal80=(Token)match(input,71,FOLLOW_71_in_relationalOp2178); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    char_literal78_tree = (CommonTree)adaptor.create(char_literal78);
-                    adaptor.addChild(root_0, char_literal78_tree);
+                    char_literal80_tree = (CommonTree)adaptor.create(char_literal80);
+                    adaptor.addChild(root_0, char_literal80_tree);
                     }
                     if ( state.backtracking==0 ) {
                       retval.value = BinOp.LT;
@@ -4754,14 +4995,14 @@ public class MandaraxParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:290:9: '>'
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:294:9: '>'
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    char_literal79=(Token)match(input,66,FOLLOW_66_in_relationalOp2077); if (state.failed) return retval;
+                    char_literal81=(Token)match(input,72,FOLLOW_72_in_relationalOp2190); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    char_literal79_tree = (CommonTree)adaptor.create(char_literal79);
-                    adaptor.addChild(root_0, char_literal79_tree);
+                    char_literal81_tree = (CommonTree)adaptor.create(char_literal81);
+                    adaptor.addChild(root_0, char_literal81_tree);
                     }
                     if ( state.backtracking==0 ) {
                       retval.value = BinOp.GT;
@@ -4786,7 +5027,7 @@ public class MandaraxParser extends Parser {
 
         }
         finally {
-            if ( state.backtracking>0 ) { memoize(input, 42, relationalOp_StartIndex); }
+            if ( state.backtracking>0 ) { memoize(input, 44, relationalOp_StartIndex); }
         }
         return retval;
     }
@@ -4799,7 +5040,7 @@ public class MandaraxParser extends Parser {
     };
 
     // $ANTLR start "shiftExpression"
-    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:294:1: shiftExpression returns [Expression value] : part1= additiveExpression (op= shiftOp part= additiveExpression )? ;
+    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:298:1: shiftExpression returns [Expression value] : part1= additiveExpression (op= shiftOp part= additiveExpression )? ;
     public final MandaraxParser.shiftExpression_return shiftExpression() throws RecognitionException {
         MandaraxParser.shiftExpression_return retval = new MandaraxParser.shiftExpression_return();
         retval.start = input.LT(1);
@@ -4815,13 +5056,13 @@ public class MandaraxParser extends Parser {
 
 
         try {
-            if ( state.backtracking>0 && alreadyParsedRule(input, 43) ) { return retval; }
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:295:5: (part1= additiveExpression (op= shiftOp part= additiveExpression )? )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:295:9: part1= additiveExpression (op= shiftOp part= additiveExpression )?
+            if ( state.backtracking>0 && alreadyParsedRule(input, 45) ) { return retval; }
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:299:5: (part1= additiveExpression (op= shiftOp part= additiveExpression )? )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:299:9: part1= additiveExpression (op= shiftOp part= additiveExpression )?
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            pushFollow(FOLLOW_additiveExpression_in_shiftExpression2107);
+            pushFollow(FOLLOW_additiveExpression_in_shiftExpression2220);
             part1=additiveExpression();
 
             state._fsp--;
@@ -4830,35 +5071,35 @@ public class MandaraxParser extends Parser {
             if ( state.backtracking==0 ) {
               retval.value = part1.value;
             }
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:295:60: (op= shiftOp part= additiveExpression )?
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:299:60: (op= shiftOp part= additiveExpression )?
             int alt44=2;
             int LA44_0 = input.LA(1);
 
-            if ( (LA44_0==65) ) {
+            if ( (LA44_0==71) ) {
                 int LA44_1 = input.LA(2);
 
-                if ( (LA44_1==65) ) {
+                if ( (synpred66_Mandarax()) ) {
                     alt44=1;
                 }
             }
-            else if ( (LA44_0==66) ) {
+            else if ( (LA44_0==72) ) {
                 int LA44_2 = input.LA(2);
 
-                if ( (LA44_2==66) ) {
+                if ( (synpred66_Mandarax()) ) {
                     alt44=1;
                 }
             }
             switch (alt44) {
                 case 1 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:295:62: op= shiftOp part= additiveExpression
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:299:62: op= shiftOp part= additiveExpression
                     {
-                    pushFollow(FOLLOW_shiftOp_in_shiftExpression2117);
+                    pushFollow(FOLLOW_shiftOp_in_shiftExpression2230);
                     op=shiftOp();
 
                     state._fsp--;
                     if (state.failed) return retval;
                     if ( state.backtracking==0 ) adaptor.addChild(root_0, op.getTree());
-                    pushFollow(FOLLOW_additiveExpression_in_shiftExpression2123);
+                    pushFollow(FOLLOW_additiveExpression_in_shiftExpression2236);
                     part=additiveExpression();
 
                     state._fsp--;
@@ -4891,7 +5132,7 @@ public class MandaraxParser extends Parser {
 
         }
         finally {
-            if ( state.backtracking>0 ) { memoize(input, 43, shiftExpression_StartIndex); }
+            if ( state.backtracking>0 ) { memoize(input, 45, shiftExpression_StartIndex); }
         }
         return retval;
     }
@@ -4904,7 +5145,7 @@ public class MandaraxParser extends Parser {
     };
 
     // $ANTLR start "shiftOp"
-    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:298:1: shiftOp returns [BinOp value] : ( ( '<' '<' )=>t1= '<' t2= '<' {...}? | ( '>' '>' '>' )=>t1= '>' t2= '>' t3= '>' {...}? | ( '>' '>' )=>t1= '>' t2= '>' {...}?);
+    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:302:1: shiftOp returns [BinOp value] : ( ( '<' '<' )=>t1= '<' t2= '<' {...}? | ( '>' '>' '>' )=>t1= '>' t2= '>' t3= '>' {...}? | ( '>' '>' )=>t1= '>' t2= '>' {...}?);
     public final MandaraxParser.shiftOp_return shiftOp() throws RecognitionException {
         MandaraxParser.shiftOp_return retval = new MandaraxParser.shiftOp_return();
         retval.start = input.LT(1);
@@ -4920,22 +5161,22 @@ public class MandaraxParser extends Parser {
         CommonTree t3_tree=null;
 
         try {
-            if ( state.backtracking>0 && alreadyParsedRule(input, 44) ) { return retval; }
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:299:5: ( ( '<' '<' )=>t1= '<' t2= '<' {...}? | ( '>' '>' '>' )=>t1= '>' t2= '>' t3= '>' {...}? | ( '>' '>' )=>t1= '>' t2= '>' {...}?)
+            if ( state.backtracking>0 && alreadyParsedRule(input, 46) ) { return retval; }
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:303:5: ( ( '<' '<' )=>t1= '<' t2= '<' {...}? | ( '>' '>' '>' )=>t1= '>' t2= '>' t3= '>' {...}? | ( '>' '>' )=>t1= '>' t2= '>' {...}?)
             int alt45=3;
             alt45 = dfa45.predict(input);
             switch (alt45) {
                 case 1 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:299:9: ( '<' '<' )=>t1= '<' t2= '<' {...}?
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:303:9: ( '<' '<' )=>t1= '<' t2= '<' {...}?
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    t1=(Token)match(input,65,FOLLOW_65_in_shiftOp2160); if (state.failed) return retval;
+                    t1=(Token)match(input,71,FOLLOW_71_in_shiftOp2273); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     t1_tree = (CommonTree)adaptor.create(t1);
                     adaptor.addChild(root_0, t1_tree);
                     }
-                    t2=(Token)match(input,65,FOLLOW_65_in_shiftOp2164); if (state.failed) return retval;
+                    t2=(Token)match(input,71,FOLLOW_71_in_shiftOp2277); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     t2_tree = (CommonTree)adaptor.create(t2);
                     adaptor.addChild(root_0, t2_tree);
@@ -4952,21 +5193,21 @@ public class MandaraxParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:302:9: ( '>' '>' '>' )=>t1= '>' t2= '>' t3= '>' {...}?
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:306:9: ( '>' '>' '>' )=>t1= '>' t2= '>' t3= '>' {...}?
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    t1=(Token)match(input,66,FOLLOW_66_in_shiftOp2198); if (state.failed) return retval;
+                    t1=(Token)match(input,72,FOLLOW_72_in_shiftOp2311); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     t1_tree = (CommonTree)adaptor.create(t1);
                     adaptor.addChild(root_0, t1_tree);
                     }
-                    t2=(Token)match(input,66,FOLLOW_66_in_shiftOp2202); if (state.failed) return retval;
+                    t2=(Token)match(input,72,FOLLOW_72_in_shiftOp2315); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     t2_tree = (CommonTree)adaptor.create(t2);
                     adaptor.addChild(root_0, t2_tree);
                     }
-                    t3=(Token)match(input,66,FOLLOW_66_in_shiftOp2206); if (state.failed) return retval;
+                    t3=(Token)match(input,72,FOLLOW_72_in_shiftOp2319); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     t3_tree = (CommonTree)adaptor.create(t3);
                     adaptor.addChild(root_0, t3_tree);
@@ -4985,16 +5226,16 @@ public class MandaraxParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:307:9: ( '>' '>' )=>t1= '>' t2= '>' {...}?
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:311:9: ( '>' '>' )=>t1= '>' t2= '>' {...}?
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    t1=(Token)match(input,66,FOLLOW_66_in_shiftOp2238); if (state.failed) return retval;
+                    t1=(Token)match(input,72,FOLLOW_72_in_shiftOp2351); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     t1_tree = (CommonTree)adaptor.create(t1);
                     adaptor.addChild(root_0, t1_tree);
                     }
-                    t2=(Token)match(input,66,FOLLOW_66_in_shiftOp2242); if (state.failed) return retval;
+                    t2=(Token)match(input,72,FOLLOW_72_in_shiftOp2355); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     t2_tree = (CommonTree)adaptor.create(t2);
                     adaptor.addChild(root_0, t2_tree);
@@ -5027,7 +5268,7 @@ public class MandaraxParser extends Parser {
 
         }
         finally {
-            if ( state.backtracking>0 ) { memoize(input, 44, shiftOp_StartIndex); }
+            if ( state.backtracking>0 ) { memoize(input, 46, shiftOp_StartIndex); }
         }
         return retval;
     }
@@ -5040,7 +5281,7 @@ public class MandaraxParser extends Parser {
     };
 
     // $ANTLR start "additiveExpression"
-    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:313:1: additiveExpression returns [Expression value] : part1= multiplicativeExpression (op= ( '+' | '-' ) part= multiplicativeExpression )* ;
+    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:317:1: additiveExpression returns [Expression value] : part1= multiplicativeExpression (op= ( '+' | '-' ) part= multiplicativeExpression )* ;
     public final MandaraxParser.additiveExpression_return additiveExpression() throws RecognitionException {
         MandaraxParser.additiveExpression_return retval = new MandaraxParser.additiveExpression_return();
         retval.start = input.LT(1);
@@ -5056,13 +5297,13 @@ public class MandaraxParser extends Parser {
         CommonTree op_tree=null;
 
         try {
-            if ( state.backtracking>0 && alreadyParsedRule(input, 45) ) { return retval; }
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:314:5: (part1= multiplicativeExpression (op= ( '+' | '-' ) part= multiplicativeExpression )* )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:314:8: part1= multiplicativeExpression (op= ( '+' | '-' ) part= multiplicativeExpression )*
+            if ( state.backtracking>0 && alreadyParsedRule(input, 47) ) { return retval; }
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:318:5: (part1= multiplicativeExpression (op= ( '+' | '-' ) part= multiplicativeExpression )* )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:318:8: part1= multiplicativeExpression (op= ( '+' | '-' ) part= multiplicativeExpression )*
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            pushFollow(FOLLOW_multiplicativeExpression_in_additiveExpression2281);
+            pushFollow(FOLLOW_multiplicativeExpression_in_additiveExpression2394);
             part1=multiplicativeExpression();
 
             state._fsp--;
@@ -5071,23 +5312,29 @@ public class MandaraxParser extends Parser {
             if ( state.backtracking==0 ) {
               retval.value = part1.value;
             }
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:314:64: (op= ( '+' | '-' ) part= multiplicativeExpression )*
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:318:64: (op= ( '+' | '-' ) part= multiplicativeExpression )*
             loop46:
             do {
                 int alt46=2;
                 int LA46_0 = input.LA(1);
 
-                if ( ((LA46_0>=67 && LA46_0<=68)) ) {
-                    alt46=1;
+                if ( ((LA46_0>=73 && LA46_0<=74)) ) {
+                    int LA46_2 = input.LA(2);
+
+                    if ( (synpred71_Mandarax()) ) {
+                        alt46=1;
+                    }
+
+
                 }
 
 
                 switch (alt46) {
             	case 1 :
-            	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:314:66: op= ( '+' | '-' ) part= multiplicativeExpression
+            	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:318:66: op= ( '+' | '-' ) part= multiplicativeExpression
             	    {
             	    op=(Token)input.LT(1);
-            	    if ( (input.LA(1)>=67 && input.LA(1)<=68) ) {
+            	    if ( (input.LA(1)>=73 && input.LA(1)<=74) ) {
             	        input.consume();
             	        if ( state.backtracking==0 ) adaptor.addChild(root_0, (CommonTree)adaptor.create(op));
             	        state.errorRecovery=false;state.failed=false;
@@ -5098,7 +5345,7 @@ public class MandaraxParser extends Parser {
             	        throw mse;
             	    }
 
-            	    pushFollow(FOLLOW_multiplicativeExpression_in_additiveExpression2302);
+            	    pushFollow(FOLLOW_multiplicativeExpression_in_additiveExpression2415);
             	    part=multiplicativeExpression();
 
             	    state._fsp--;
@@ -5134,7 +5381,7 @@ public class MandaraxParser extends Parser {
 
         }
         finally {
-            if ( state.backtracking>0 ) { memoize(input, 45, additiveExpression_StartIndex); }
+            if ( state.backtracking>0 ) { memoize(input, 47, additiveExpression_StartIndex); }
         }
         return retval;
     }
@@ -5147,7 +5394,7 @@ public class MandaraxParser extends Parser {
     };
 
     // $ANTLR start "multiplicativeExpression"
-    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:317:1: multiplicativeExpression returns [Expression value] : part1= unaryExpression (op= ( '*' | '/' | '%' ) part= unaryExpression )* ;
+    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:321:1: multiplicativeExpression returns [Expression value] : part1= unaryExpression (op= ( '*' | '/' | '%' ) part= unaryExpression )* ;
     public final MandaraxParser.multiplicativeExpression_return multiplicativeExpression() throws RecognitionException {
         MandaraxParser.multiplicativeExpression_return retval = new MandaraxParser.multiplicativeExpression_return();
         retval.start = input.LT(1);
@@ -5163,13 +5410,13 @@ public class MandaraxParser extends Parser {
         CommonTree op_tree=null;
 
         try {
-            if ( state.backtracking>0 && alreadyParsedRule(input, 46) ) { return retval; }
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:318:5: (part1= unaryExpression (op= ( '*' | '/' | '%' ) part= unaryExpression )* )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:318:8: part1= unaryExpression (op= ( '*' | '/' | '%' ) part= unaryExpression )*
+            if ( state.backtracking>0 && alreadyParsedRule(input, 48) ) { return retval; }
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:322:5: (part1= unaryExpression (op= ( '*' | '/' | '%' ) part= unaryExpression )* )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:322:8: part1= unaryExpression (op= ( '*' | '/' | '%' ) part= unaryExpression )*
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            pushFollow(FOLLOW_unaryExpression_in_multiplicativeExpression2333);
+            pushFollow(FOLLOW_unaryExpression_in_multiplicativeExpression2446);
             part1=unaryExpression();
 
             state._fsp--;
@@ -5178,23 +5425,29 @@ public class MandaraxParser extends Parser {
             if ( state.backtracking==0 ) {
               retval.value = part1.value;
             }
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:318:56: (op= ( '*' | '/' | '%' ) part= unaryExpression )*
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:322:56: (op= ( '*' | '/' | '%' ) part= unaryExpression )*
             loop47:
             do {
                 int alt47=2;
                 int LA47_0 = input.LA(1);
 
-                if ( (LA47_0==27||(LA47_0>=69 && LA47_0<=70)) ) {
-                    alt47=1;
+                if ( (LA47_0==27||(LA47_0>=75 && LA47_0<=76)) ) {
+                    int LA47_2 = input.LA(2);
+
+                    if ( (synpred74_Mandarax()) ) {
+                        alt47=1;
+                    }
+
+
                 }
 
 
                 switch (alt47) {
             	case 1 :
-            	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:318:58: op= ( '*' | '/' | '%' ) part= unaryExpression
+            	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:322:58: op= ( '*' | '/' | '%' ) part= unaryExpression
             	    {
             	    op=(Token)input.LT(1);
-            	    if ( input.LA(1)==27||(input.LA(1)>=69 && input.LA(1)<=70) ) {
+            	    if ( input.LA(1)==27||(input.LA(1)>=75 && input.LA(1)<=76) ) {
             	        input.consume();
             	        if ( state.backtracking==0 ) adaptor.addChild(root_0, (CommonTree)adaptor.create(op));
             	        state.errorRecovery=false;state.failed=false;
@@ -5205,7 +5458,7 @@ public class MandaraxParser extends Parser {
             	        throw mse;
             	    }
 
-            	    pushFollow(FOLLOW_unaryExpression_in_multiplicativeExpression2360);
+            	    pushFollow(FOLLOW_unaryExpression_in_multiplicativeExpression2473);
             	    part=unaryExpression();
 
             	    state._fsp--;
@@ -5241,7 +5494,7 @@ public class MandaraxParser extends Parser {
 
         }
         finally {
-            if ( state.backtracking>0 ) { memoize(input, 46, multiplicativeExpression_StartIndex); }
+            if ( state.backtracking>0 ) { memoize(input, 48, multiplicativeExpression_StartIndex); }
         }
         return retval;
     }
@@ -5254,31 +5507,31 @@ public class MandaraxParser extends Parser {
     };
 
     // $ANTLR start "unaryExpression"
-    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:321:1: unaryExpression returns [Expression value] : ( '-' part1= unaryExpression | part2= unaryExpressionNotPlusMinus );
+    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:325:1: unaryExpression returns [Expression value] : ( '-' part1= unaryExpression | part2= unaryExpressionNotPlusMinus );
     public final MandaraxParser.unaryExpression_return unaryExpression() throws RecognitionException {
         MandaraxParser.unaryExpression_return retval = new MandaraxParser.unaryExpression_return();
         retval.start = input.LT(1);
         int unaryExpression_StartIndex = input.index();
         CommonTree root_0 = null;
 
-        Token char_literal80=null;
+        Token char_literal82=null;
         MandaraxParser.unaryExpression_return part1 = null;
 
         MandaraxParser.unaryExpressionNotPlusMinus_return part2 = null;
 
 
-        CommonTree char_literal80_tree=null;
+        CommonTree char_literal82_tree=null;
 
         try {
-            if ( state.backtracking>0 && alreadyParsedRule(input, 47) ) { return retval; }
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:322:5: ( '-' part1= unaryExpression | part2= unaryExpressionNotPlusMinus )
+            if ( state.backtracking>0 && alreadyParsedRule(input, 49) ) { return retval; }
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:326:5: ( '-' part1= unaryExpression | part2= unaryExpressionNotPlusMinus )
             int alt48=2;
             int LA48_0 = input.LA(1);
 
-            if ( (LA48_0==68) ) {
+            if ( (LA48_0==74) ) {
                 alt48=1;
             }
-            else if ( ((LA48_0>=Identifier && LA48_0<=DecimalLiteral)||LA48_0==36||(LA48_0>=55 && LA48_0<=56)||(LA48_0>=71 && LA48_0<=74)) ) {
+            else if ( ((LA48_0>=Identifier && LA48_0<=DecimalLiteral)||LA48_0==36||(LA48_0>=55 && LA48_0<=56)||(LA48_0>=63 && LA48_0<=67)||(LA48_0>=77 && LA48_0<=80)) ) {
                 alt48=2;
             }
             else {
@@ -5290,16 +5543,16 @@ public class MandaraxParser extends Parser {
             }
             switch (alt48) {
                 case 1 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:322:9: '-' part1= unaryExpression
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:326:9: '-' part1= unaryExpression
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    char_literal80=(Token)match(input,68,FOLLOW_68_in_unaryExpression2392); if (state.failed) return retval;
+                    char_literal82=(Token)match(input,74,FOLLOW_74_in_unaryExpression2505); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    char_literal80_tree = (CommonTree)adaptor.create(char_literal80);
-                    adaptor.addChild(root_0, char_literal80_tree);
+                    char_literal82_tree = (CommonTree)adaptor.create(char_literal82);
+                    adaptor.addChild(root_0, char_literal82_tree);
                     }
-                    pushFollow(FOLLOW_unaryExpression_in_unaryExpression2398);
+                    pushFollow(FOLLOW_unaryExpression_in_unaryExpression2511);
                     part1=unaryExpression();
 
                     state._fsp--;
@@ -5312,11 +5565,11 @@ public class MandaraxParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:323:9: part2= unaryExpressionNotPlusMinus
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:327:9: part2= unaryExpressionNotPlusMinus
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    pushFollow(FOLLOW_unaryExpressionNotPlusMinus_in_unaryExpression2414);
+                    pushFollow(FOLLOW_unaryExpressionNotPlusMinus_in_unaryExpression2527);
                     part2=unaryExpressionNotPlusMinus();
 
                     state._fsp--;
@@ -5345,7 +5598,7 @@ public class MandaraxParser extends Parser {
 
         }
         finally {
-            if ( state.backtracking>0 ) { memoize(input, 47, unaryExpression_StartIndex); }
+            if ( state.backtracking>0 ) { memoize(input, 49, unaryExpression_StartIndex); }
         }
         return retval;
     }
@@ -5358,18 +5611,22 @@ public class MandaraxParser extends Parser {
     };
 
     // $ANTLR start "unaryExpressionNotPlusMinus"
-    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:326:1: unaryExpressionNotPlusMinus returns [Expression value] : ( '~' r1= unaryExpression | '!' r2= unaryExpression | r3= castExpression | r11= constructorInvocation | r9= functionInvocation | r8= methodInvocation | r7= propertyAccess | r4= objectref | r5= qualifiedName | r6= parExpression | r10= nullValue );
+    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:330:1: unaryExpressionNotPlusMinus returns [Expression value] : ( '~' r1= unaryExpression | '!' r2= unaryExpression | r12= indomain | r13= aggregation | r3= castExpression | r11= constructorInvocation | r9= functionInvocation | r8= methodInvocation | r7= propertyAccess | r4= objectref | r5= qualifiedName | r6= parExpression | r10= nullValue );
     public final MandaraxParser.unaryExpressionNotPlusMinus_return unaryExpressionNotPlusMinus() throws RecognitionException {
         MandaraxParser.unaryExpressionNotPlusMinus_return retval = new MandaraxParser.unaryExpressionNotPlusMinus_return();
         retval.start = input.LT(1);
         int unaryExpressionNotPlusMinus_StartIndex = input.index();
         CommonTree root_0 = null;
 
-        Token char_literal81=null;
-        Token char_literal82=null;
+        Token char_literal83=null;
+        Token char_literal84=null;
         MandaraxParser.unaryExpression_return r1 = null;
 
         MandaraxParser.unaryExpression_return r2 = null;
+
+        MandaraxParser.indomain_return r12 = null;
+
+        MandaraxParser.aggregation_return r13 = null;
 
         MandaraxParser.castExpression_return r3 = null;
 
@@ -5390,26 +5647,26 @@ public class MandaraxParser extends Parser {
         MandaraxParser.nullValue_return r10 = null;
 
 
-        CommonTree char_literal81_tree=null;
-        CommonTree char_literal82_tree=null;
+        CommonTree char_literal83_tree=null;
+        CommonTree char_literal84_tree=null;
 
         try {
-            if ( state.backtracking>0 && alreadyParsedRule(input, 48) ) { return retval; }
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:327:5: ( '~' r1= unaryExpression | '!' r2= unaryExpression | r3= castExpression | r11= constructorInvocation | r9= functionInvocation | r8= methodInvocation | r7= propertyAccess | r4= objectref | r5= qualifiedName | r6= parExpression | r10= nullValue )
-            int alt49=11;
+            if ( state.backtracking>0 && alreadyParsedRule(input, 50) ) { return retval; }
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:331:5: ( '~' r1= unaryExpression | '!' r2= unaryExpression | r12= indomain | r13= aggregation | r3= castExpression | r11= constructorInvocation | r9= functionInvocation | r8= methodInvocation | r7= propertyAccess | r4= objectref | r5= qualifiedName | r6= parExpression | r10= nullValue )
+            int alt49=13;
             alt49 = dfa49.predict(input);
             switch (alt49) {
                 case 1 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:327:7: '~' r1= unaryExpression
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:331:7: '~' r1= unaryExpression
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    char_literal81=(Token)match(input,71,FOLLOW_71_in_unaryExpressionNotPlusMinus2437); if (state.failed) return retval;
+                    char_literal83=(Token)match(input,77,FOLLOW_77_in_unaryExpressionNotPlusMinus2550); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    char_literal81_tree = (CommonTree)adaptor.create(char_literal81);
-                    adaptor.addChild(root_0, char_literal81_tree);
+                    char_literal83_tree = (CommonTree)adaptor.create(char_literal83);
+                    adaptor.addChild(root_0, char_literal83_tree);
                     }
-                    pushFollow(FOLLOW_unaryExpression_in_unaryExpressionNotPlusMinus2443);
+                    pushFollow(FOLLOW_unaryExpression_in_unaryExpressionNotPlusMinus2556);
                     r1=unaryExpression();
 
                     state._fsp--;
@@ -5422,16 +5679,16 @@ public class MandaraxParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:328:9: '!' r2= unaryExpression
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:332:9: '!' r2= unaryExpression
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    char_literal82=(Token)match(input,72,FOLLOW_72_in_unaryExpressionNotPlusMinus2455); if (state.failed) return retval;
+                    char_literal84=(Token)match(input,78,FOLLOW_78_in_unaryExpressionNotPlusMinus2568); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    char_literal82_tree = (CommonTree)adaptor.create(char_literal82);
-                    adaptor.addChild(root_0, char_literal82_tree);
+                    char_literal84_tree = (CommonTree)adaptor.create(char_literal84);
+                    adaptor.addChild(root_0, char_literal84_tree);
                     }
-                    pushFollow(FOLLOW_unaryExpression_in_unaryExpressionNotPlusMinus2461);
+                    pushFollow(FOLLOW_unaryExpression_in_unaryExpressionNotPlusMinus2574);
                     r2=unaryExpression();
 
                     state._fsp--;
@@ -5444,11 +5701,45 @@ public class MandaraxParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:329:9: r3= castExpression
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:333:9: r12= indomain
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    pushFollow(FOLLOW_castExpression_in_unaryExpressionNotPlusMinus2477);
+                    pushFollow(FOLLOW_indomain_in_unaryExpressionNotPlusMinus2590);
+                    r12=indomain();
+
+                    state._fsp--;
+                    if (state.failed) return retval;
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, r12.getTree());
+                    if ( state.backtracking==0 ) {
+                      retval.value = r12.value;
+                    }
+
+                    }
+                    break;
+                case 4 :
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:334:9: r13= aggregation
+                    {
+                    root_0 = (CommonTree)adaptor.nil();
+
+                    pushFollow(FOLLOW_aggregation_in_unaryExpressionNotPlusMinus2605);
+                    r13=aggregation();
+
+                    state._fsp--;
+                    if (state.failed) return retval;
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, r13.getTree());
+                    if ( state.backtracking==0 ) {
+                      retval.value = r13.value;
+                    }
+
+                    }
+                    break;
+                case 5 :
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:335:9: r3= castExpression
+                    {
+                    root_0 = (CommonTree)adaptor.nil();
+
+                    pushFollow(FOLLOW_castExpression_in_unaryExpressionNotPlusMinus2620);
                     r3=castExpression();
 
                     state._fsp--;
@@ -5460,12 +5751,12 @@ public class MandaraxParser extends Parser {
 
                     }
                     break;
-                case 4 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:331:9: r11= constructorInvocation
+                case 6 :
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:336:9: r11= constructorInvocation
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    pushFollow(FOLLOW_constructorInvocation_in_unaryExpressionNotPlusMinus2494);
+                    pushFollow(FOLLOW_constructorInvocation_in_unaryExpressionNotPlusMinus2636);
                     r11=constructorInvocation();
 
                     state._fsp--;
@@ -5477,12 +5768,12 @@ public class MandaraxParser extends Parser {
 
                     }
                     break;
-                case 5 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:332:9: r9= functionInvocation
+                case 7 :
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:337:9: r9= functionInvocation
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    pushFollow(FOLLOW_functionInvocation_in_unaryExpressionNotPlusMinus2510);
+                    pushFollow(FOLLOW_functionInvocation_in_unaryExpressionNotPlusMinus2652);
                     r9=functionInvocation();
 
                     state._fsp--;
@@ -5494,12 +5785,12 @@ public class MandaraxParser extends Parser {
 
                     }
                     break;
-                case 6 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:333:9: r8= methodInvocation
+                case 8 :
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:338:9: r8= methodInvocation
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    pushFollow(FOLLOW_methodInvocation_in_unaryExpressionNotPlusMinus2526);
+                    pushFollow(FOLLOW_methodInvocation_in_unaryExpressionNotPlusMinus2668);
                     r8=methodInvocation();
 
                     state._fsp--;
@@ -5511,12 +5802,12 @@ public class MandaraxParser extends Parser {
 
                     }
                     break;
-                case 7 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:334:9: r7= propertyAccess
+                case 9 :
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:339:9: r7= propertyAccess
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    pushFollow(FOLLOW_propertyAccess_in_unaryExpressionNotPlusMinus2542);
+                    pushFollow(FOLLOW_propertyAccess_in_unaryExpressionNotPlusMinus2684);
                     r7=propertyAccess();
 
                     state._fsp--;
@@ -5528,12 +5819,12 @@ public class MandaraxParser extends Parser {
 
                     }
                     break;
-                case 8 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:335:9: r4= objectref
+                case 10 :
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:340:9: r4= objectref
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    pushFollow(FOLLOW_objectref_in_unaryExpressionNotPlusMinus2558);
+                    pushFollow(FOLLOW_objectref_in_unaryExpressionNotPlusMinus2700);
                     r4=objectref();
 
                     state._fsp--;
@@ -5545,12 +5836,12 @@ public class MandaraxParser extends Parser {
 
                     }
                     break;
-                case 9 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:336:9: r5= qualifiedName
+                case 11 :
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:341:9: r5= qualifiedName
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    pushFollow(FOLLOW_qualifiedName_in_unaryExpressionNotPlusMinus2574);
+                    pushFollow(FOLLOW_qualifiedName_in_unaryExpressionNotPlusMinus2716);
                     r5=qualifiedName();
 
                     state._fsp--;
@@ -5562,12 +5853,12 @@ public class MandaraxParser extends Parser {
 
                     }
                     break;
-                case 10 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:337:9: r6= parExpression
+                case 12 :
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:342:9: r6= parExpression
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    pushFollow(FOLLOW_parExpression_in_unaryExpressionNotPlusMinus2590);
+                    pushFollow(FOLLOW_parExpression_in_unaryExpressionNotPlusMinus2732);
                     r6=parExpression();
 
                     state._fsp--;
@@ -5579,12 +5870,12 @@ public class MandaraxParser extends Parser {
 
                     }
                     break;
-                case 11 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:338:9: r10= nullValue
+                case 13 :
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:343:9: r10= nullValue
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    pushFollow(FOLLOW_nullValue_in_unaryExpressionNotPlusMinus2606);
+                    pushFollow(FOLLOW_nullValue_in_unaryExpressionNotPlusMinus2748);
                     r10=nullValue();
 
                     state._fsp--;
@@ -5613,7 +5904,7 @@ public class MandaraxParser extends Parser {
 
         }
         finally {
-            if ( state.backtracking>0 ) { memoize(input, 48, unaryExpressionNotPlusMinus_StartIndex); }
+            if ( state.backtracking>0 ) { memoize(input, 50, unaryExpressionNotPlusMinus_StartIndex); }
         }
         return retval;
     }
@@ -5626,7 +5917,7 @@ public class MandaraxParser extends Parser {
     };
 
     // $ANTLR start "nullValue"
-    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:341:1: nullValue returns [NullValue value] : n= 'null' ;
+    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:346:1: nullValue returns [NullValue value] : n= 'null' ;
     public final MandaraxParser.nullValue_return nullValue() throws RecognitionException {
         MandaraxParser.nullValue_return retval = new MandaraxParser.nullValue_return();
         retval.start = input.LT(1);
@@ -5638,13 +5929,13 @@ public class MandaraxParser extends Parser {
         CommonTree n_tree=null;
 
         try {
-            if ( state.backtracking>0 && alreadyParsedRule(input, 49) ) { return retval; }
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:342:5: (n= 'null' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:342:8: n= 'null'
+            if ( state.backtracking>0 && alreadyParsedRule(input, 51) ) { return retval; }
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:347:5: (n= 'null' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:347:8: n= 'null'
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            n=(Token)match(input,73,FOLLOW_73_in_nullValue2635); if (state.failed) return retval;
+            n=(Token)match(input,79,FOLLOW_79_in_nullValue2777); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             n_tree = (CommonTree)adaptor.create(n);
             adaptor.addChild(root_0, n_tree);
@@ -5670,7 +5961,7 @@ public class MandaraxParser extends Parser {
 
         }
         finally {
-            if ( state.backtracking>0 ) { memoize(input, 49, nullValue_StartIndex); }
+            if ( state.backtracking>0 ) { memoize(input, 51, nullValue_StartIndex); }
         }
         return retval;
     }
@@ -5683,7 +5974,7 @@ public class MandaraxParser extends Parser {
     };
 
     // $ANTLR start "propertyAccess"
-    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:345:1: propertyAccess returns [Expression value] : o= objectref ( '.' i= Identifier )* ;
+    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:350:1: propertyAccess returns [Expression value] : o= objectref ( '.' i= Identifier )* ;
     public final MandaraxParser.propertyAccess_return propertyAccess() throws RecognitionException {
         MandaraxParser.propertyAccess_return retval = new MandaraxParser.propertyAccess_return();
         retval.start = input.LT(1);
@@ -5691,21 +5982,21 @@ public class MandaraxParser extends Parser {
         CommonTree root_0 = null;
 
         Token i=null;
-        Token char_literal83=null;
+        Token char_literal85=null;
         MandaraxParser.objectref_return o = null;
 
 
         CommonTree i_tree=null;
-        CommonTree char_literal83_tree=null;
+        CommonTree char_literal85_tree=null;
 
         try {
-            if ( state.backtracking>0 && alreadyParsedRule(input, 50) ) { return retval; }
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:346:5: (o= objectref ( '.' i= Identifier )* )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:346:9: o= objectref ( '.' i= Identifier )*
+            if ( state.backtracking>0 && alreadyParsedRule(input, 52) ) { return retval; }
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:351:5: (o= objectref ( '.' i= Identifier )* )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:351:9: o= objectref ( '.' i= Identifier )*
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            pushFollow(FOLLOW_objectref_in_propertyAccess2671);
+            pushFollow(FOLLOW_objectref_in_propertyAccess2813);
             o=objectref();
 
             state._fsp--;
@@ -5714,7 +6005,7 @@ public class MandaraxParser extends Parser {
             if ( state.backtracking==0 ) {
               retval.value = o.value;
             }
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:346:43: ( '.' i= Identifier )*
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:351:43: ( '.' i= Identifier )*
             loop50:
             do {
                 int alt50=2;
@@ -5727,14 +6018,14 @@ public class MandaraxParser extends Parser {
 
                 switch (alt50) {
             	case 1 :
-            	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:346:44: '.' i= Identifier
+            	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:351:44: '.' i= Identifier
             	    {
-            	    char_literal83=(Token)match(input,26,FOLLOW_26_in_propertyAccess2676); if (state.failed) return retval;
+            	    char_literal85=(Token)match(input,26,FOLLOW_26_in_propertyAccess2818); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
-            	    char_literal83_tree = (CommonTree)adaptor.create(char_literal83);
-            	    adaptor.addChild(root_0, char_literal83_tree);
+            	    char_literal85_tree = (CommonTree)adaptor.create(char_literal85);
+            	    adaptor.addChild(root_0, char_literal85_tree);
             	    }
-            	    i=(Token)match(input,Identifier,FOLLOW_Identifier_in_propertyAccess2681); if (state.failed) return retval;
+            	    i=(Token)match(input,Identifier,FOLLOW_Identifier_in_propertyAccess2823); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
             	    i_tree = (CommonTree)adaptor.create(i);
             	    adaptor.addChild(root_0, i_tree);
@@ -5769,7 +6060,7 @@ public class MandaraxParser extends Parser {
 
         }
         finally {
-            if ( state.backtracking>0 ) { memoize(input, 50, propertyAccess_StartIndex); }
+            if ( state.backtracking>0 ) { memoize(input, 52, propertyAccess_StartIndex); }
         }
         return retval;
     }
@@ -5782,7 +6073,7 @@ public class MandaraxParser extends Parser {
     };
 
     // $ANTLR start "methodInvocation"
-    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:349:1: methodInvocation returns [Expression value] : o= objectref ( '.' i= Identifier '(' (p= commaSeparatedExpressionList )? ')' )* ;
+    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:354:1: methodInvocation returns [Expression value] : o= objectref ( '.' i= Identifier '(' (p= commaSeparatedExpressionList )? ')' )* ;
     public final MandaraxParser.methodInvocation_return methodInvocation() throws RecognitionException {
         MandaraxParser.methodInvocation_return retval = new MandaraxParser.methodInvocation_return();
         retval.start = input.LT(1);
@@ -5790,27 +6081,27 @@ public class MandaraxParser extends Parser {
         CommonTree root_0 = null;
 
         Token i=null;
-        Token char_literal84=null;
-        Token char_literal85=null;
         Token char_literal86=null;
+        Token char_literal87=null;
+        Token char_literal88=null;
         MandaraxParser.objectref_return o = null;
 
         MandaraxParser.commaSeparatedExpressionList_return p = null;
 
 
         CommonTree i_tree=null;
-        CommonTree char_literal84_tree=null;
-        CommonTree char_literal85_tree=null;
         CommonTree char_literal86_tree=null;
+        CommonTree char_literal87_tree=null;
+        CommonTree char_literal88_tree=null;
 
         try {
-            if ( state.backtracking>0 && alreadyParsedRule(input, 51) ) { return retval; }
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:350:5: (o= objectref ( '.' i= Identifier '(' (p= commaSeparatedExpressionList )? ')' )* )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:350:9: o= objectref ( '.' i= Identifier '(' (p= commaSeparatedExpressionList )? ')' )*
+            if ( state.backtracking>0 && alreadyParsedRule(input, 53) ) { return retval; }
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:355:5: (o= objectref ( '.' i= Identifier '(' (p= commaSeparatedExpressionList )? ')' )* )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:355:9: o= objectref ( '.' i= Identifier '(' (p= commaSeparatedExpressionList )? ')' )*
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            pushFollow(FOLLOW_objectref_in_methodInvocation2714);
+            pushFollow(FOLLOW_objectref_in_methodInvocation2856);
             o=objectref();
 
             state._fsp--;
@@ -5819,7 +6110,7 @@ public class MandaraxParser extends Parser {
             if ( state.backtracking==0 ) {
               retval.value = o.value;
             }
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:350:43: ( '.' i= Identifier '(' (p= commaSeparatedExpressionList )? ')' )*
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:355:43: ( '.' i= Identifier '(' (p= commaSeparatedExpressionList )? ')' )*
             loop52:
             do {
                 int alt52=2;
@@ -5832,35 +6123,35 @@ public class MandaraxParser extends Parser {
 
                 switch (alt52) {
             	case 1 :
-            	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:350:44: '.' i= Identifier '(' (p= commaSeparatedExpressionList )? ')'
+            	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:355:44: '.' i= Identifier '(' (p= commaSeparatedExpressionList )? ')'
             	    {
-            	    char_literal84=(Token)match(input,26,FOLLOW_26_in_methodInvocation2719); if (state.failed) return retval;
+            	    char_literal86=(Token)match(input,26,FOLLOW_26_in_methodInvocation2861); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
-            	    char_literal84_tree = (CommonTree)adaptor.create(char_literal84);
-            	    adaptor.addChild(root_0, char_literal84_tree);
+            	    char_literal86_tree = (CommonTree)adaptor.create(char_literal86);
+            	    adaptor.addChild(root_0, char_literal86_tree);
             	    }
-            	    i=(Token)match(input,Identifier,FOLLOW_Identifier_in_methodInvocation2725); if (state.failed) return retval;
+            	    i=(Token)match(input,Identifier,FOLLOW_Identifier_in_methodInvocation2867); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
             	    i_tree = (CommonTree)adaptor.create(i);
             	    adaptor.addChild(root_0, i_tree);
             	    }
-            	    char_literal85=(Token)match(input,36,FOLLOW_36_in_methodInvocation2727); if (state.failed) return retval;
+            	    char_literal87=(Token)match(input,36,FOLLOW_36_in_methodInvocation2869); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
-            	    char_literal85_tree = (CommonTree)adaptor.create(char_literal85);
-            	    adaptor.addChild(root_0, char_literal85_tree);
+            	    char_literal87_tree = (CommonTree)adaptor.create(char_literal87);
+            	    adaptor.addChild(root_0, char_literal87_tree);
             	    }
-            	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:350:66: (p= commaSeparatedExpressionList )?
+            	    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:355:66: (p= commaSeparatedExpressionList )?
             	    int alt51=2;
             	    int LA51_0 = input.LA(1);
 
-            	    if ( ((LA51_0>=Identifier && LA51_0<=DecimalLiteral)||LA51_0==36||(LA51_0>=55 && LA51_0<=56)||LA51_0==68||(LA51_0>=71 && LA51_0<=74)) ) {
+            	    if ( ((LA51_0>=Identifier && LA51_0<=DecimalLiteral)||LA51_0==36||(LA51_0>=55 && LA51_0<=56)||(LA51_0>=63 && LA51_0<=67)||LA51_0==74||(LA51_0>=77 && LA51_0<=80)) ) {
             	        alt51=1;
             	    }
             	    switch (alt51) {
             	        case 1 :
-            	            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:350:67: p= commaSeparatedExpressionList
+            	            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:355:67: p= commaSeparatedExpressionList
             	            {
-            	            pushFollow(FOLLOW_commaSeparatedExpressionList_in_methodInvocation2733);
+            	            pushFollow(FOLLOW_commaSeparatedExpressionList_in_methodInvocation2875);
             	            p=commaSeparatedExpressionList();
 
             	            state._fsp--;
@@ -5872,10 +6163,10 @@ public class MandaraxParser extends Parser {
 
             	    }
 
-            	    char_literal86=(Token)match(input,37,FOLLOW_37_in_methodInvocation2737); if (state.failed) return retval;
+            	    char_literal88=(Token)match(input,37,FOLLOW_37_in_methodInvocation2879); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
-            	    char_literal86_tree = (CommonTree)adaptor.create(char_literal86);
-            	    adaptor.addChild(root_0, char_literal86_tree);
+            	    char_literal88_tree = (CommonTree)adaptor.create(char_literal88);
+            	    adaptor.addChild(root_0, char_literal88_tree);
             	    }
             	    if ( state.backtracking==0 ) {
             	      retval.value = new MemberAccess(pos(o.value),context,retval.value,i.getText(),p==null?new ArrayList<Expression>():p.values);
@@ -5907,7 +6198,7 @@ public class MandaraxParser extends Parser {
 
         }
         finally {
-            if ( state.backtracking>0 ) { memoize(input, 51, methodInvocation_StartIndex); }
+            if ( state.backtracking>0 ) { memoize(input, 53, methodInvocation_StartIndex); }
         }
         return retval;
     }
@@ -5920,7 +6211,7 @@ public class MandaraxParser extends Parser {
     };
 
     // $ANTLR start "functionInvocation"
-    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:353:1: functionInvocation returns [Expression value] : f= Identifier '(' (p= commaSeparatedExpressionList )? ')' ;
+    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:358:1: functionInvocation returns [Expression value] : f= Identifier '(' (p= commaSeparatedExpressionList )? ')' ;
     public final MandaraxParser.functionInvocation_return functionInvocation() throws RecognitionException {
         MandaraxParser.functionInvocation_return retval = new MandaraxParser.functionInvocation_return();
         retval.start = input.LT(1);
@@ -5928,44 +6219,44 @@ public class MandaraxParser extends Parser {
         CommonTree root_0 = null;
 
         Token f=null;
-        Token char_literal87=null;
-        Token char_literal88=null;
+        Token char_literal89=null;
+        Token char_literal90=null;
         MandaraxParser.commaSeparatedExpressionList_return p = null;
 
 
         CommonTree f_tree=null;
-        CommonTree char_literal87_tree=null;
-        CommonTree char_literal88_tree=null;
+        CommonTree char_literal89_tree=null;
+        CommonTree char_literal90_tree=null;
 
         try {
-            if ( state.backtracking>0 && alreadyParsedRule(input, 52) ) { return retval; }
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:354:5: (f= Identifier '(' (p= commaSeparatedExpressionList )? ')' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:354:9: f= Identifier '(' (p= commaSeparatedExpressionList )? ')'
+            if ( state.backtracking>0 && alreadyParsedRule(input, 54) ) { return retval; }
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:359:5: (f= Identifier '(' (p= commaSeparatedExpressionList )? ')' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:359:9: f= Identifier '(' (p= commaSeparatedExpressionList )? ')'
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            f=(Token)match(input,Identifier,FOLLOW_Identifier_in_functionInvocation2774); if (state.failed) return retval;
+            f=(Token)match(input,Identifier,FOLLOW_Identifier_in_functionInvocation2916); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             f_tree = (CommonTree)adaptor.create(f);
             adaptor.addChild(root_0, f_tree);
             }
-            char_literal87=(Token)match(input,36,FOLLOW_36_in_functionInvocation2777); if (state.failed) return retval;
+            char_literal89=(Token)match(input,36,FOLLOW_36_in_functionInvocation2919); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            char_literal87_tree = (CommonTree)adaptor.create(char_literal87);
-            adaptor.addChild(root_0, char_literal87_tree);
+            char_literal89_tree = (CommonTree)adaptor.create(char_literal89);
+            adaptor.addChild(root_0, char_literal89_tree);
             }
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:354:29: (p= commaSeparatedExpressionList )?
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:359:29: (p= commaSeparatedExpressionList )?
             int alt53=2;
             int LA53_0 = input.LA(1);
 
-            if ( ((LA53_0>=Identifier && LA53_0<=DecimalLiteral)||LA53_0==36||(LA53_0>=55 && LA53_0<=56)||LA53_0==68||(LA53_0>=71 && LA53_0<=74)) ) {
+            if ( ((LA53_0>=Identifier && LA53_0<=DecimalLiteral)||LA53_0==36||(LA53_0>=55 && LA53_0<=56)||(LA53_0>=63 && LA53_0<=67)||LA53_0==74||(LA53_0>=77 && LA53_0<=80)) ) {
                 alt53=1;
             }
             switch (alt53) {
                 case 1 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:354:30: p= commaSeparatedExpressionList
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:359:30: p= commaSeparatedExpressionList
                     {
-                    pushFollow(FOLLOW_commaSeparatedExpressionList_in_functionInvocation2784);
+                    pushFollow(FOLLOW_commaSeparatedExpressionList_in_functionInvocation2926);
                     p=commaSeparatedExpressionList();
 
                     state._fsp--;
@@ -5977,10 +6268,10 @@ public class MandaraxParser extends Parser {
 
             }
 
-            char_literal88=(Token)match(input,37,FOLLOW_37_in_functionInvocation2788); if (state.failed) return retval;
+            char_literal90=(Token)match(input,37,FOLLOW_37_in_functionInvocation2930); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            char_literal88_tree = (CommonTree)adaptor.create(char_literal88);
-            adaptor.addChild(root_0, char_literal88_tree);
+            char_literal90_tree = (CommonTree)adaptor.create(char_literal90);
+            adaptor.addChild(root_0, char_literal90_tree);
             }
             if ( state.backtracking==0 ) {
               retval.value = new FunctionInvocation(pos(f),context,f.getText(),p==null?new ArrayList<Expression>():p.values);
@@ -6003,7 +6294,7 @@ public class MandaraxParser extends Parser {
 
         }
         finally {
-            if ( state.backtracking>0 ) { memoize(input, 52, functionInvocation_StartIndex); }
+            if ( state.backtracking>0 ) { memoize(input, 54, functionInvocation_StartIndex); }
         }
         return retval;
     }
@@ -6016,7 +6307,7 @@ public class MandaraxParser extends Parser {
     };
 
     // $ANTLR start "constructorInvocation"
-    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:362:1: constructorInvocation returns [Expression value] : n= 'new' f= qualifiedName2 '(' (p= commaSeparatedExpressionList )? ')' ;
+    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:363:1: constructorInvocation returns [Expression value] : n= 'new' f= qualifiedName2 '(' (p= commaSeparatedExpressionList )? ')' ;
     public final MandaraxParser.constructorInvocation_return constructorInvocation() throws RecognitionException {
         MandaraxParser.constructorInvocation_return retval = new MandaraxParser.constructorInvocation_return();
         retval.start = input.LT(1);
@@ -6024,52 +6315,52 @@ public class MandaraxParser extends Parser {
         CommonTree root_0 = null;
 
         Token n=null;
-        Token char_literal89=null;
-        Token char_literal90=null;
+        Token char_literal91=null;
+        Token char_literal92=null;
         MandaraxParser.qualifiedName2_return f = null;
 
         MandaraxParser.commaSeparatedExpressionList_return p = null;
 
 
         CommonTree n_tree=null;
-        CommonTree char_literal89_tree=null;
-        CommonTree char_literal90_tree=null;
+        CommonTree char_literal91_tree=null;
+        CommonTree char_literal92_tree=null;
 
         try {
-            if ( state.backtracking>0 && alreadyParsedRule(input, 53) ) { return retval; }
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:363:5: (n= 'new' f= qualifiedName2 '(' (p= commaSeparatedExpressionList )? ')' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:363:9: n= 'new' f= qualifiedName2 '(' (p= commaSeparatedExpressionList )? ')'
+            if ( state.backtracking>0 && alreadyParsedRule(input, 55) ) { return retval; }
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:364:5: (n= 'new' f= qualifiedName2 '(' (p= commaSeparatedExpressionList )? ')' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:364:9: n= 'new' f= qualifiedName2 '(' (p= commaSeparatedExpressionList )? ')'
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            n=(Token)match(input,74,FOLLOW_74_in_constructorInvocation2836); if (state.failed) return retval;
+            n=(Token)match(input,80,FOLLOW_80_in_constructorInvocation2980); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             n_tree = (CommonTree)adaptor.create(n);
             adaptor.addChild(root_0, n_tree);
             }
-            pushFollow(FOLLOW_qualifiedName2_in_constructorInvocation2842);
+            pushFollow(FOLLOW_qualifiedName2_in_constructorInvocation2986);
             f=qualifiedName2();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, f.getTree());
-            char_literal89=(Token)match(input,36,FOLLOW_36_in_constructorInvocation2845); if (state.failed) return retval;
+            char_literal91=(Token)match(input,36,FOLLOW_36_in_constructorInvocation2989); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            char_literal89_tree = (CommonTree)adaptor.create(char_literal89);
-            adaptor.addChild(root_0, char_literal89_tree);
+            char_literal91_tree = (CommonTree)adaptor.create(char_literal91);
+            adaptor.addChild(root_0, char_literal91_tree);
             }
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:363:43: (p= commaSeparatedExpressionList )?
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:364:43: (p= commaSeparatedExpressionList )?
             int alt54=2;
             int LA54_0 = input.LA(1);
 
-            if ( ((LA54_0>=Identifier && LA54_0<=DecimalLiteral)||LA54_0==36||(LA54_0>=55 && LA54_0<=56)||LA54_0==68||(LA54_0>=71 && LA54_0<=74)) ) {
+            if ( ((LA54_0>=Identifier && LA54_0<=DecimalLiteral)||LA54_0==36||(LA54_0>=55 && LA54_0<=56)||(LA54_0>=63 && LA54_0<=67)||LA54_0==74||(LA54_0>=77 && LA54_0<=80)) ) {
                 alt54=1;
             }
             switch (alt54) {
                 case 1 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:363:44: p= commaSeparatedExpressionList
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:364:44: p= commaSeparatedExpressionList
                     {
-                    pushFollow(FOLLOW_commaSeparatedExpressionList_in_constructorInvocation2852);
+                    pushFollow(FOLLOW_commaSeparatedExpressionList_in_constructorInvocation2996);
                     p=commaSeparatedExpressionList();
 
                     state._fsp--;
@@ -6081,10 +6372,10 @@ public class MandaraxParser extends Parser {
 
             }
 
-            char_literal90=(Token)match(input,37,FOLLOW_37_in_constructorInvocation2856); if (state.failed) return retval;
+            char_literal92=(Token)match(input,37,FOLLOW_37_in_constructorInvocation3000); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            char_literal90_tree = (CommonTree)adaptor.create(char_literal90);
-            adaptor.addChild(root_0, char_literal90_tree);
+            char_literal92_tree = (CommonTree)adaptor.create(char_literal92);
+            adaptor.addChild(root_0, char_literal92_tree);
             }
             if ( state.backtracking==0 ) {
               retval.value = new ConstructorInvocation(pos(n),context,f.value,p==null?new ArrayList<Expression>():p.values);
@@ -6107,7 +6398,7 @@ public class MandaraxParser extends Parser {
 
         }
         finally {
-            if ( state.backtracking>0 ) { memoize(input, 53, constructorInvocation_StartIndex); }
+            if ( state.backtracking>0 ) { memoize(input, 55, constructorInvocation_StartIndex); }
         }
         return retval;
     }
@@ -6120,7 +6411,7 @@ public class MandaraxParser extends Parser {
     };
 
     // $ANTLR start "objectref"
-    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:366:1: objectref returns [Expression value] : (r1= Identifier | r2= literal | r3= parExpression );
+    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:367:1: objectref returns [Expression value] : (r1= Identifier | r2= literal | r3= parExpression );
     public final MandaraxParser.objectref_return objectref() throws RecognitionException {
         MandaraxParser.objectref_return retval = new MandaraxParser.objectref_return();
         retval.start = input.LT(1);
@@ -6136,8 +6427,8 @@ public class MandaraxParser extends Parser {
         CommonTree r1_tree=null;
 
         try {
-            if ( state.backtracking>0 && alreadyParsedRule(input, 54) ) { return retval; }
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:367:6: (r1= Identifier | r2= literal | r3= parExpression )
+            if ( state.backtracking>0 && alreadyParsedRule(input, 56) ) { return retval; }
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:368:6: (r1= Identifier | r2= literal | r3= parExpression )
             int alt55=3;
             switch ( input.LA(1) ) {
             case Identifier:
@@ -6170,11 +6461,11 @@ public class MandaraxParser extends Parser {
 
             switch (alt55) {
                 case 1 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:367:8: r1= Identifier
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:368:8: r1= Identifier
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    r1=(Token)match(input,Identifier,FOLLOW_Identifier_in_objectref2893); if (state.failed) return retval;
+                    r1=(Token)match(input,Identifier,FOLLOW_Identifier_in_objectref3037); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     r1_tree = (CommonTree)adaptor.create(r1);
                     adaptor.addChild(root_0, r1_tree);
@@ -6186,11 +6477,11 @@ public class MandaraxParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:368:8: r2= literal
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:369:8: r2= literal
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    pushFollow(FOLLOW_literal_in_objectref2908);
+                    pushFollow(FOLLOW_literal_in_objectref3052);
                     r2=literal();
 
                     state._fsp--;
@@ -6203,11 +6494,11 @@ public class MandaraxParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:369:8: r3= parExpression
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:370:8: r3= parExpression
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    pushFollow(FOLLOW_parExpression_in_objectref2923);
+                    pushFollow(FOLLOW_parExpression_in_objectref3067);
                     r3=parExpression();
 
                     state._fsp--;
@@ -6236,7 +6527,7 @@ public class MandaraxParser extends Parser {
 
         }
         finally {
-            if ( state.backtracking>0 ) { memoize(input, 54, objectref_StartIndex); }
+            if ( state.backtracking>0 ) { memoize(input, 56, objectref_StartIndex); }
         }
         return retval;
     }
@@ -6249,17 +6540,17 @@ public class MandaraxParser extends Parser {
     };
 
     // $ANTLR start "castExpression"
-    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:372:1: castExpression returns [Expression value] : ( '(' t1= primitiveType ')' exp1= unaryExpression | '(' t2= type ')' exp2= unaryExpressionNotPlusMinus );
+    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:373:1: castExpression returns [Expression value] : ( '(' t1= primitiveType ')' exp1= unaryExpression | '(' t2= type ')' exp2= unaryExpressionNotPlusMinus );
     public final MandaraxParser.castExpression_return castExpression() throws RecognitionException {
         MandaraxParser.castExpression_return retval = new MandaraxParser.castExpression_return();
         retval.start = input.LT(1);
         int castExpression_StartIndex = input.index();
         CommonTree root_0 = null;
 
-        Token char_literal91=null;
-        Token char_literal92=null;
         Token char_literal93=null;
         Token char_literal94=null;
+        Token char_literal95=null;
+        Token char_literal96=null;
         MandaraxParser.primitiveType_return t1 = null;
 
         MandaraxParser.unaryExpression_return exp1 = null;
@@ -6269,21 +6560,21 @@ public class MandaraxParser extends Parser {
         MandaraxParser.unaryExpressionNotPlusMinus_return exp2 = null;
 
 
-        CommonTree char_literal91_tree=null;
-        CommonTree char_literal92_tree=null;
         CommonTree char_literal93_tree=null;
         CommonTree char_literal94_tree=null;
+        CommonTree char_literal95_tree=null;
+        CommonTree char_literal96_tree=null;
 
         try {
-            if ( state.backtracking>0 && alreadyParsedRule(input, 55) ) { return retval; }
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:373:5: ( '(' t1= primitiveType ')' exp1= unaryExpression | '(' t2= type ')' exp2= unaryExpressionNotPlusMinus )
+            if ( state.backtracking>0 && alreadyParsedRule(input, 57) ) { return retval; }
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:374:5: ( '(' t1= primitiveType ')' exp1= unaryExpression | '(' t2= type ')' exp2= unaryExpressionNotPlusMinus )
             int alt56=2;
             int LA56_0 = input.LA(1);
 
             if ( (LA56_0==36) ) {
                 int LA56_1 = input.LA(2);
 
-                if ( (synpred89_Mandarax()) ) {
+                if ( (synpred95_Mandarax()) ) {
                     alt56=1;
                 }
                 else if ( (true) ) {
@@ -6306,27 +6597,27 @@ public class MandaraxParser extends Parser {
             }
             switch (alt56) {
                 case 1 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:373:8: '(' t1= primitiveType ')' exp1= unaryExpression
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:374:8: '(' t1= primitiveType ')' exp1= unaryExpression
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    char_literal91=(Token)match(input,36,FOLLOW_36_in_castExpression2956); if (state.failed) return retval;
+                    char_literal93=(Token)match(input,36,FOLLOW_36_in_castExpression3100); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    char_literal91_tree = (CommonTree)adaptor.create(char_literal91);
-                    adaptor.addChild(root_0, char_literal91_tree);
+                    char_literal93_tree = (CommonTree)adaptor.create(char_literal93);
+                    adaptor.addChild(root_0, char_literal93_tree);
                     }
-                    pushFollow(FOLLOW_primitiveType_in_castExpression2962);
+                    pushFollow(FOLLOW_primitiveType_in_castExpression3106);
                     t1=primitiveType();
 
                     state._fsp--;
                     if (state.failed) return retval;
                     if ( state.backtracking==0 ) adaptor.addChild(root_0, t1.getTree());
-                    char_literal92=(Token)match(input,37,FOLLOW_37_in_castExpression2964); if (state.failed) return retval;
+                    char_literal94=(Token)match(input,37,FOLLOW_37_in_castExpression3108); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    char_literal92_tree = (CommonTree)adaptor.create(char_literal92);
-                    adaptor.addChild(root_0, char_literal92_tree);
+                    char_literal94_tree = (CommonTree)adaptor.create(char_literal94);
+                    adaptor.addChild(root_0, char_literal94_tree);
                     }
-                    pushFollow(FOLLOW_unaryExpression_in_castExpression2970);
+                    pushFollow(FOLLOW_unaryExpression_in_castExpression3114);
                     exp1=unaryExpression();
 
                     state._fsp--;
@@ -6339,27 +6630,27 @@ public class MandaraxParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:374:8: '(' t2= type ')' exp2= unaryExpressionNotPlusMinus
+                    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:375:8: '(' t2= type ')' exp2= unaryExpressionNotPlusMinus
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    char_literal93=(Token)match(input,36,FOLLOW_36_in_castExpression2981); if (state.failed) return retval;
+                    char_literal95=(Token)match(input,36,FOLLOW_36_in_castExpression3125); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    char_literal93_tree = (CommonTree)adaptor.create(char_literal93);
-                    adaptor.addChild(root_0, char_literal93_tree);
+                    char_literal95_tree = (CommonTree)adaptor.create(char_literal95);
+                    adaptor.addChild(root_0, char_literal95_tree);
                     }
-                    pushFollow(FOLLOW_type_in_castExpression2987);
+                    pushFollow(FOLLOW_type_in_castExpression3131);
                     t2=type();
 
                     state._fsp--;
                     if (state.failed) return retval;
                     if ( state.backtracking==0 ) adaptor.addChild(root_0, t2.getTree());
-                    char_literal94=(Token)match(input,37,FOLLOW_37_in_castExpression2989); if (state.failed) return retval;
+                    char_literal96=(Token)match(input,37,FOLLOW_37_in_castExpression3133); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    char_literal94_tree = (CommonTree)adaptor.create(char_literal94);
-                    adaptor.addChild(root_0, char_literal94_tree);
+                    char_literal96_tree = (CommonTree)adaptor.create(char_literal96);
+                    adaptor.addChild(root_0, char_literal96_tree);
                     }
-                    pushFollow(FOLLOW_unaryExpressionNotPlusMinus_in_castExpression2995);
+                    pushFollow(FOLLOW_unaryExpressionNotPlusMinus_in_castExpression3139);
                     exp2=unaryExpressionNotPlusMinus();
 
                     state._fsp--;
@@ -6388,7 +6679,7 @@ public class MandaraxParser extends Parser {
 
         }
         finally {
-            if ( state.backtracking>0 ) { memoize(input, 55, castExpression_StartIndex); }
+            if ( state.backtracking>0 ) { memoize(input, 57, castExpression_StartIndex); }
         }
         return retval;
     }
@@ -6400,60 +6691,60 @@ public class MandaraxParser extends Parser {
     };
 
     // $ANTLR start "arguments"
-    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:377:1: arguments : '(' ( commaSeparatedExpressionList )? ')' ;
+    // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:378:1: arguments : '(' ( commaSeparatedExpressionList )? ')' ;
     public final MandaraxParser.arguments_return arguments() throws RecognitionException {
         MandaraxParser.arguments_return retval = new MandaraxParser.arguments_return();
         retval.start = input.LT(1);
         int arguments_StartIndex = input.index();
         CommonTree root_0 = null;
 
-        Token char_literal95=null;
         Token char_literal97=null;
-        MandaraxParser.commaSeparatedExpressionList_return commaSeparatedExpressionList96 = null;
+        Token char_literal99=null;
+        MandaraxParser.commaSeparatedExpressionList_return commaSeparatedExpressionList98 = null;
 
 
-        CommonTree char_literal95_tree=null;
         CommonTree char_literal97_tree=null;
+        CommonTree char_literal99_tree=null;
 
         try {
-            if ( state.backtracking>0 && alreadyParsedRule(input, 56) ) { return retval; }
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:378:5: ( '(' ( commaSeparatedExpressionList )? ')' )
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:378:9: '(' ( commaSeparatedExpressionList )? ')'
+            if ( state.backtracking>0 && alreadyParsedRule(input, 58) ) { return retval; }
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:379:5: ( '(' ( commaSeparatedExpressionList )? ')' )
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:379:9: '(' ( commaSeparatedExpressionList )? ')'
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            char_literal95=(Token)match(input,36,FOLLOW_36_in_arguments3017); if (state.failed) return retval;
+            char_literal97=(Token)match(input,36,FOLLOW_36_in_arguments3161); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            char_literal95_tree = (CommonTree)adaptor.create(char_literal95);
-            adaptor.addChild(root_0, char_literal95_tree);
+            char_literal97_tree = (CommonTree)adaptor.create(char_literal97);
+            adaptor.addChild(root_0, char_literal97_tree);
             }
-            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:378:13: ( commaSeparatedExpressionList )?
+            // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:379:13: ( commaSeparatedExpressionList )?
             int alt57=2;
             int LA57_0 = input.LA(1);
 
-            if ( ((LA57_0>=Identifier && LA57_0<=DecimalLiteral)||LA57_0==36||(LA57_0>=55 && LA57_0<=56)||LA57_0==68||(LA57_0>=71 && LA57_0<=74)) ) {
+            if ( ((LA57_0>=Identifier && LA57_0<=DecimalLiteral)||LA57_0==36||(LA57_0>=55 && LA57_0<=56)||(LA57_0>=63 && LA57_0<=67)||LA57_0==74||(LA57_0>=77 && LA57_0<=80)) ) {
                 alt57=1;
             }
             switch (alt57) {
                 case 1 :
                     // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:0:0: commaSeparatedExpressionList
                     {
-                    pushFollow(FOLLOW_commaSeparatedExpressionList_in_arguments3019);
-                    commaSeparatedExpressionList96=commaSeparatedExpressionList();
+                    pushFollow(FOLLOW_commaSeparatedExpressionList_in_arguments3163);
+                    commaSeparatedExpressionList98=commaSeparatedExpressionList();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, commaSeparatedExpressionList96.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, commaSeparatedExpressionList98.getTree());
 
                     }
                     break;
 
             }
 
-            char_literal97=(Token)match(input,37,FOLLOW_37_in_arguments3022); if (state.failed) return retval;
+            char_literal99=(Token)match(input,37,FOLLOW_37_in_arguments3166); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            char_literal97_tree = (CommonTree)adaptor.create(char_literal97);
-            adaptor.addChild(root_0, char_literal97_tree);
+            char_literal99_tree = (CommonTree)adaptor.create(char_literal99);
+            adaptor.addChild(root_0, char_literal99_tree);
             }
 
             }
@@ -6473,7 +6764,7 @@ public class MandaraxParser extends Parser {
 
         }
         finally {
-            if ( state.backtracking>0 ) { memoize(input, 56, arguments_StartIndex); }
+            if ( state.backtracking>0 ) { memoize(input, 58, arguments_StartIndex); }
         }
         return retval;
     }
@@ -6590,6 +6881,52 @@ public class MandaraxParser extends Parser {
     }
     // $ANTLR end synpred18_Mandarax
 
+    // $ANTLR start synpred52_Mandarax
+    public final void synpred52_Mandarax_fragment() throws RecognitionException {   
+        MandaraxParser.expression_return r2 = null;
+
+        MandaraxParser.expression_return r3 = null;
+
+
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:258:28: ( '?' r2= expression ':' r3= expression )
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:258:28: '?' r2= expression ':' r3= expression
+        {
+        match(input,58,FOLLOW_58_in_synpred52_Mandarax1754); if (state.failed) return ;
+        pushFollow(FOLLOW_expression_in_synpred52_Mandarax1760);
+        r2=expression();
+
+        state._fsp--;
+        if (state.failed) return ;
+        match(input,30,FOLLOW_30_in_synpred52_Mandarax1762); if (state.failed) return ;
+        pushFollow(FOLLOW_expression_in_synpred52_Mandarax1768);
+        r3=expression();
+
+        state._fsp--;
+        if (state.failed) return ;
+
+        }
+    }
+    // $ANTLR end synpred52_Mandarax
+
+    // $ANTLR start synpred53_Mandarax
+    public final void synpred53_Mandarax_fragment() throws RecognitionException {   
+        MandaraxParser.conjunction_return part = null;
+
+
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:262:55: ( '|' part= conjunction )
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:262:55: '|' part= conjunction
+        {
+        match(input,59,FOLLOW_59_in_synpred53_Mandarax1807); if (state.failed) return ;
+        pushFollow(FOLLOW_conjunction_in_synpred53_Mandarax1813);
+        part=conjunction();
+
+        state._fsp--;
+        if (state.failed) return ;
+
+        }
+    }
+    // $ANTLR end synpred53_Mandarax
+
     // $ANTLR start synpred54_Mandarax
     public final void synpred54_Mandarax_fragment() throws RecognitionException {   
         MandaraxParser.equalityExpression_return part = null;
@@ -6609,53 +6946,194 @@ public class MandaraxParser extends Parser {
     }
     // $ANTLR end synpred54_Mandarax
 
-    // $ANTLR start synpred63_Mandarax
-    public final void synpred63_Mandarax_fragment() throws RecognitionException {   
-        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:299:9: ( '<' '<' )
-        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:299:10: '<' '<'
+    // $ANTLR start synpred56_Mandarax
+    public final void synpred56_Mandarax_fragment() throws RecognitionException {   
+        Token op=null;
+        MandaraxParser.instanceOfExpression_return part2 = null;
+
+
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:270:62: (op= ( '==' | '!=' ) part2= instanceOfExpression )
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:270:62: op= ( '==' | '!=' ) part2= instanceOfExpression
         {
-        match(input,65,FOLLOW_65_in_synpred63_Mandarax2152); if (state.failed) return ;
-        match(input,65,FOLLOW_65_in_synpred63_Mandarax2154); if (state.failed) return ;
+        op=(Token)input.LT(1);
+        if ( (input.LA(1)>=60 && input.LA(1)<=61) ) {
+            input.consume();
+            state.errorRecovery=false;state.failed=false;
+        }
+        else {
+            if (state.backtracking>0) {state.failed=true; return ;}
+            MismatchedSetException mse = new MismatchedSetException(null,input);
+            throw mse;
+        }
+
+        pushFollow(FOLLOW_instanceOfExpression_in_synpred56_Mandarax1912);
+        part2=instanceOfExpression();
+
+        state._fsp--;
+        if (state.failed) return ;
 
         }
     }
-    // $ANTLR end synpred63_Mandarax
+    // $ANTLR end synpred56_Mandarax
 
-    // $ANTLR start synpred64_Mandarax
-    public final void synpred64_Mandarax_fragment() throws RecognitionException {   
-        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:302:9: ( '>' '>' '>' )
-        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:302:10: '>' '>' '>'
+    // $ANTLR start synpred57_Mandarax
+    public final void synpred57_Mandarax_fragment() throws RecognitionException {   
+        MandaraxParser.type_return t = null;
+
+
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:274:38: ( 'instanceof' t= type )
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:274:38: 'instanceof' t= type
         {
-        match(input,66,FOLLOW_66_in_synpred64_Mandarax2188); if (state.failed) return ;
-        match(input,66,FOLLOW_66_in_synpred64_Mandarax2190); if (state.failed) return ;
-        match(input,66,FOLLOW_66_in_synpred64_Mandarax2192); if (state.failed) return ;
+        match(input,62,FOLLOW_62_in_synpred57_Mandarax1947); if (state.failed) return ;
+        pushFollow(FOLLOW_type_in_synpred57_Mandarax1953);
+        t=type();
+
+        state._fsp--;
+        if (state.failed) return ;
 
         }
     }
-    // $ANTLR end synpred64_Mandarax
+    // $ANTLR end synpred57_Mandarax
 
-    // $ANTLR start synpred65_Mandarax
-    public final void synpred65_Mandarax_fragment() throws RecognitionException {   
-        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:307:9: ( '>' '>' )
-        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:307:10: '>' '>'
+    // $ANTLR start synpred62_Mandarax
+    public final void synpred62_Mandarax_fragment() throws RecognitionException {   
+        MandaraxParser.relationalOp_return op = null;
+
+        MandaraxParser.shiftExpression_return part2 = null;
+
+
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:286:57: (op= relationalOp part2= shiftExpression )
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:286:57: op= relationalOp part2= shiftExpression
         {
-        match(input,66,FOLLOW_66_in_synpred65_Mandarax2230); if (state.failed) return ;
-        match(input,66,FOLLOW_66_in_synpred65_Mandarax2232); if (state.failed) return ;
+        pushFollow(FOLLOW_relationalOp_in_synpred62_Mandarax2116);
+        op=relationalOp();
+
+        state._fsp--;
+        if (state.failed) return ;
+        pushFollow(FOLLOW_shiftExpression_in_synpred62_Mandarax2122);
+        part2=shiftExpression();
+
+        state._fsp--;
+        if (state.failed) return ;
 
         }
     }
-    // $ANTLR end synpred65_Mandarax
+    // $ANTLR end synpred62_Mandarax
+
+    // $ANTLR start synpred66_Mandarax
+    public final void synpred66_Mandarax_fragment() throws RecognitionException {   
+        MandaraxParser.shiftOp_return op = null;
+
+        MandaraxParser.additiveExpression_return part = null;
+
+
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:299:62: (op= shiftOp part= additiveExpression )
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:299:62: op= shiftOp part= additiveExpression
+        {
+        pushFollow(FOLLOW_shiftOp_in_synpred66_Mandarax2230);
+        op=shiftOp();
+
+        state._fsp--;
+        if (state.failed) return ;
+        pushFollow(FOLLOW_additiveExpression_in_synpred66_Mandarax2236);
+        part=additiveExpression();
+
+        state._fsp--;
+        if (state.failed) return ;
+
+        }
+    }
+    // $ANTLR end synpred66_Mandarax
+
+    // $ANTLR start synpred67_Mandarax
+    public final void synpred67_Mandarax_fragment() throws RecognitionException {   
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:303:9: ( '<' '<' )
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:303:10: '<' '<'
+        {
+        match(input,71,FOLLOW_71_in_synpred67_Mandarax2265); if (state.failed) return ;
+        match(input,71,FOLLOW_71_in_synpred67_Mandarax2267); if (state.failed) return ;
+
+        }
+    }
+    // $ANTLR end synpred67_Mandarax
+
+    // $ANTLR start synpred68_Mandarax
+    public final void synpred68_Mandarax_fragment() throws RecognitionException {   
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:306:9: ( '>' '>' '>' )
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:306:10: '>' '>' '>'
+        {
+        match(input,72,FOLLOW_72_in_synpred68_Mandarax2301); if (state.failed) return ;
+        match(input,72,FOLLOW_72_in_synpred68_Mandarax2303); if (state.failed) return ;
+        match(input,72,FOLLOW_72_in_synpred68_Mandarax2305); if (state.failed) return ;
+
+        }
+    }
+    // $ANTLR end synpred68_Mandarax
+
+    // $ANTLR start synpred69_Mandarax
+    public final void synpred69_Mandarax_fragment() throws RecognitionException {   
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:311:9: ( '>' '>' )
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:311:10: '>' '>'
+        {
+        match(input,72,FOLLOW_72_in_synpred69_Mandarax2343); if (state.failed) return ;
+        match(input,72,FOLLOW_72_in_synpred69_Mandarax2345); if (state.failed) return ;
+
+        }
+    }
+    // $ANTLR end synpred69_Mandarax
+
+    // $ANTLR start synpred71_Mandarax
+    public final void synpred71_Mandarax_fragment() throws RecognitionException {   
+        Token op=null;
+        MandaraxParser.multiplicativeExpression_return part = null;
+
+
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:318:66: (op= ( '+' | '-' ) part= multiplicativeExpression )
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:318:66: op= ( '+' | '-' ) part= multiplicativeExpression
+        {
+        op=(Token)input.LT(1);
+        if ( (input.LA(1)>=73 && input.LA(1)<=74) ) {
+            input.consume();
+            state.errorRecovery=false;state.failed=false;
+        }
+        else {
+            if (state.backtracking>0) {state.failed=true; return ;}
+            MismatchedSetException mse = new MismatchedSetException(null,input);
+            throw mse;
+        }
+
+        pushFollow(FOLLOW_multiplicativeExpression_in_synpred71_Mandarax2415);
+        part=multiplicativeExpression();
+
+        state._fsp--;
+        if (state.failed) return ;
+
+        }
+    }
+    // $ANTLR end synpred71_Mandarax
 
     // $ANTLR start synpred74_Mandarax
     public final void synpred74_Mandarax_fragment() throws RecognitionException {   
-        MandaraxParser.castExpression_return r3 = null;
+        Token op=null;
+        MandaraxParser.unaryExpression_return part = null;
 
 
-        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:329:9: (r3= castExpression )
-        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:329:9: r3= castExpression
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:322:58: (op= ( '*' | '/' | '%' ) part= unaryExpression )
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:322:58: op= ( '*' | '/' | '%' ) part= unaryExpression
         {
-        pushFollow(FOLLOW_castExpression_in_synpred74_Mandarax2477);
-        r3=castExpression();
+        op=(Token)input.LT(1);
+        if ( input.LA(1)==27||(input.LA(1)>=75 && input.LA(1)<=76) ) {
+            input.consume();
+            state.errorRecovery=false;state.failed=false;
+        }
+        else {
+            if (state.backtracking>0) {state.failed=true; return ;}
+            MismatchedSetException mse = new MismatchedSetException(null,input);
+            throw mse;
+        }
+
+        pushFollow(FOLLOW_unaryExpression_in_synpred74_Mandarax2473);
+        part=unaryExpression();
 
         state._fsp--;
         if (state.failed) return ;
@@ -6664,52 +7142,16 @@ public class MandaraxParser extends Parser {
     }
     // $ANTLR end synpred74_Mandarax
 
-    // $ANTLR start synpred76_Mandarax
-    public final void synpred76_Mandarax_fragment() throws RecognitionException {   
-        MandaraxParser.functionInvocation_return r9 = null;
-
-
-        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:332:9: (r9= functionInvocation )
-        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:332:9: r9= functionInvocation
-        {
-        pushFollow(FOLLOW_functionInvocation_in_synpred76_Mandarax2510);
-        r9=functionInvocation();
-
-        state._fsp--;
-        if (state.failed) return ;
-
-        }
-    }
-    // $ANTLR end synpred76_Mandarax
-
-    // $ANTLR start synpred77_Mandarax
-    public final void synpred77_Mandarax_fragment() throws RecognitionException {   
-        MandaraxParser.methodInvocation_return r8 = null;
-
-
-        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:333:9: (r8= methodInvocation )
-        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:333:9: r8= methodInvocation
-        {
-        pushFollow(FOLLOW_methodInvocation_in_synpred77_Mandarax2526);
-        r8=methodInvocation();
-
-        state._fsp--;
-        if (state.failed) return ;
-
-        }
-    }
-    // $ANTLR end synpred77_Mandarax
-
     // $ANTLR start synpred78_Mandarax
     public final void synpred78_Mandarax_fragment() throws RecognitionException {   
-        MandaraxParser.propertyAccess_return r7 = null;
+        MandaraxParser.indomain_return r12 = null;
 
 
-        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:334:9: (r7= propertyAccess )
-        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:334:9: r7= propertyAccess
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:333:9: (r12= indomain )
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:333:9: r12= indomain
         {
-        pushFollow(FOLLOW_propertyAccess_in_synpred78_Mandarax2542);
-        r7=propertyAccess();
+        pushFollow(FOLLOW_indomain_in_synpred78_Mandarax2590);
+        r12=indomain();
 
         state._fsp--;
         if (state.failed) return ;
@@ -6718,34 +7160,16 @@ public class MandaraxParser extends Parser {
     }
     // $ANTLR end synpred78_Mandarax
 
-    // $ANTLR start synpred79_Mandarax
-    public final void synpred79_Mandarax_fragment() throws RecognitionException {   
-        MandaraxParser.objectref_return r4 = null;
-
-
-        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:335:9: (r4= objectref )
-        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:335:9: r4= objectref
-        {
-        pushFollow(FOLLOW_objectref_in_synpred79_Mandarax2558);
-        r4=objectref();
-
-        state._fsp--;
-        if (state.failed) return ;
-
-        }
-    }
-    // $ANTLR end synpred79_Mandarax
-
     // $ANTLR start synpred80_Mandarax
     public final void synpred80_Mandarax_fragment() throws RecognitionException {   
-        MandaraxParser.qualifiedName_return r5 = null;
+        MandaraxParser.castExpression_return r3 = null;
 
 
-        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:336:9: (r5= qualifiedName )
-        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:336:9: r5= qualifiedName
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:335:9: (r3= castExpression )
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:335:9: r3= castExpression
         {
-        pushFollow(FOLLOW_qualifiedName_in_synpred80_Mandarax2574);
-        r5=qualifiedName();
+        pushFollow(FOLLOW_castExpression_in_synpred80_Mandarax2620);
+        r3=castExpression();
 
         state._fsp--;
         if (state.failed) return ;
@@ -6754,15 +7178,105 @@ public class MandaraxParser extends Parser {
     }
     // $ANTLR end synpred80_Mandarax
 
-    // $ANTLR start synpred81_Mandarax
-    public final void synpred81_Mandarax_fragment() throws RecognitionException {   
+    // $ANTLR start synpred82_Mandarax
+    public final void synpred82_Mandarax_fragment() throws RecognitionException {   
+        MandaraxParser.functionInvocation_return r9 = null;
+
+
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:337:9: (r9= functionInvocation )
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:337:9: r9= functionInvocation
+        {
+        pushFollow(FOLLOW_functionInvocation_in_synpred82_Mandarax2652);
+        r9=functionInvocation();
+
+        state._fsp--;
+        if (state.failed) return ;
+
+        }
+    }
+    // $ANTLR end synpred82_Mandarax
+
+    // $ANTLR start synpred83_Mandarax
+    public final void synpred83_Mandarax_fragment() throws RecognitionException {   
+        MandaraxParser.methodInvocation_return r8 = null;
+
+
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:338:9: (r8= methodInvocation )
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:338:9: r8= methodInvocation
+        {
+        pushFollow(FOLLOW_methodInvocation_in_synpred83_Mandarax2668);
+        r8=methodInvocation();
+
+        state._fsp--;
+        if (state.failed) return ;
+
+        }
+    }
+    // $ANTLR end synpred83_Mandarax
+
+    // $ANTLR start synpred84_Mandarax
+    public final void synpred84_Mandarax_fragment() throws RecognitionException {   
+        MandaraxParser.propertyAccess_return r7 = null;
+
+
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:339:9: (r7= propertyAccess )
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:339:9: r7= propertyAccess
+        {
+        pushFollow(FOLLOW_propertyAccess_in_synpred84_Mandarax2684);
+        r7=propertyAccess();
+
+        state._fsp--;
+        if (state.failed) return ;
+
+        }
+    }
+    // $ANTLR end synpred84_Mandarax
+
+    // $ANTLR start synpred85_Mandarax
+    public final void synpred85_Mandarax_fragment() throws RecognitionException {   
+        MandaraxParser.objectref_return r4 = null;
+
+
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:340:9: (r4= objectref )
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:340:9: r4= objectref
+        {
+        pushFollow(FOLLOW_objectref_in_synpred85_Mandarax2700);
+        r4=objectref();
+
+        state._fsp--;
+        if (state.failed) return ;
+
+        }
+    }
+    // $ANTLR end synpred85_Mandarax
+
+    // $ANTLR start synpred86_Mandarax
+    public final void synpred86_Mandarax_fragment() throws RecognitionException {   
+        MandaraxParser.qualifiedName_return r5 = null;
+
+
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:341:9: (r5= qualifiedName )
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:341:9: r5= qualifiedName
+        {
+        pushFollow(FOLLOW_qualifiedName_in_synpred86_Mandarax2716);
+        r5=qualifiedName();
+
+        state._fsp--;
+        if (state.failed) return ;
+
+        }
+    }
+    // $ANTLR end synpred86_Mandarax
+
+    // $ANTLR start synpred87_Mandarax
+    public final void synpred87_Mandarax_fragment() throws RecognitionException {   
         MandaraxParser.parExpression_return r6 = null;
 
 
-        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:337:9: (r6= parExpression )
-        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:337:9: r6= parExpression
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:342:9: (r6= parExpression )
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:342:9: r6= parExpression
         {
-        pushFollow(FOLLOW_parExpression_in_synpred81_Mandarax2590);
+        pushFollow(FOLLOW_parExpression_in_synpred87_Mandarax2732);
         r6=parExpression();
 
         state._fsp--;
@@ -6770,26 +7284,26 @@ public class MandaraxParser extends Parser {
 
         }
     }
-    // $ANTLR end synpred81_Mandarax
+    // $ANTLR end synpred87_Mandarax
 
-    // $ANTLR start synpred89_Mandarax
-    public final void synpred89_Mandarax_fragment() throws RecognitionException {   
+    // $ANTLR start synpred95_Mandarax
+    public final void synpred95_Mandarax_fragment() throws RecognitionException {   
         MandaraxParser.primitiveType_return t1 = null;
 
         MandaraxParser.unaryExpression_return exp1 = null;
 
 
-        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:373:8: ( '(' t1= primitiveType ')' exp1= unaryExpression )
-        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:373:8: '(' t1= primitiveType ')' exp1= unaryExpression
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:374:8: ( '(' t1= primitiveType ')' exp1= unaryExpression )
+        // /Users/jbdietri/development/take/workspace/mandarax/grammar/Mandarax.g:374:8: '(' t1= primitiveType ')' exp1= unaryExpression
         {
-        match(input,36,FOLLOW_36_in_synpred89_Mandarax2956); if (state.failed) return ;
-        pushFollow(FOLLOW_primitiveType_in_synpred89_Mandarax2962);
+        match(input,36,FOLLOW_36_in_synpred95_Mandarax3100); if (state.failed) return ;
+        pushFollow(FOLLOW_primitiveType_in_synpred95_Mandarax3106);
         t1=primitiveType();
 
         state._fsp--;
         if (state.failed) return ;
-        match(input,37,FOLLOW_37_in_synpred89_Mandarax2964); if (state.failed) return ;
-        pushFollow(FOLLOW_unaryExpression_in_synpred89_Mandarax2970);
+        match(input,37,FOLLOW_37_in_synpred95_Mandarax3108); if (state.failed) return ;
+        pushFollow(FOLLOW_unaryExpression_in_synpred95_Mandarax3114);
         exp1=unaryExpression();
 
         state._fsp--;
@@ -6797,15 +7311,15 @@ public class MandaraxParser extends Parser {
 
         }
     }
-    // $ANTLR end synpred89_Mandarax
+    // $ANTLR end synpred95_Mandarax
 
     // Delegated rules
 
-    public final boolean synpred76_Mandarax() {
+    public final boolean synpred80_Mandarax() {
         state.backtracking++;
         int start = input.mark();
         try {
-            synpred76_Mandarax_fragment(); // can never throw exception
+            synpred80_Mandarax_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -6815,11 +7329,11 @@ public class MandaraxParser extends Parser {
         state.failed=false;
         return success;
     }
-    public final boolean synpred80_Mandarax() {
+    public final boolean synpred68_Mandarax() {
         state.backtracking++;
         int start = input.mark();
         try {
-            synpred80_Mandarax_fragment(); // can never throw exception
+            synpred68_Mandarax_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -6857,11 +7371,11 @@ public class MandaraxParser extends Parser {
         state.failed=false;
         return success;
     }
-    public final boolean synpred64_Mandarax() {
+    public final boolean synpred57_Mandarax() {
         state.backtracking++;
         int start = input.mark();
         try {
-            synpred64_Mandarax_fragment(); // can never throw exception
+            synpred57_Mandarax_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -6871,11 +7385,11 @@ public class MandaraxParser extends Parser {
         state.failed=false;
         return success;
     }
-    public final boolean synpred17_Mandarax() {
+    public final boolean synpred71_Mandarax() {
         state.backtracking++;
         int start = input.mark();
         try {
-            synpred17_Mandarax_fragment(); // can never throw exception
+            synpred71_Mandarax_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -6885,11 +7399,11 @@ public class MandaraxParser extends Parser {
         state.failed=false;
         return success;
     }
-    public final boolean synpred9_Mandarax() {
+    public final boolean synpred84_Mandarax() {
         state.backtracking++;
         int start = input.mark();
         try {
-            synpred9_Mandarax_fragment(); // can never throw exception
+            synpred84_Mandarax_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -6899,53 +7413,11 @@ public class MandaraxParser extends Parser {
         state.failed=false;
         return success;
     }
-    public final boolean synpred63_Mandarax() {
+    public final boolean synpred87_Mandarax() {
         state.backtracking++;
         int start = input.mark();
         try {
-            synpred63_Mandarax_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
-    }
-    public final boolean synpred65_Mandarax() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred65_Mandarax_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
-    }
-    public final boolean synpred89_Mandarax() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred89_Mandarax_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
-    }
-    public final boolean synpred77_Mandarax() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred77_Mandarax_fragment(); // can never throw exception
+            synpred87_Mandarax_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -6983,20 +7455,6 @@ public class MandaraxParser extends Parser {
         state.failed=false;
         return success;
     }
-    public final boolean synpred18_Mandarax() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred18_Mandarax_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
-    }
     public final boolean synpred54_Mandarax() {
         state.backtracking++;
         int start = input.mark();
@@ -7011,11 +7469,11 @@ public class MandaraxParser extends Parser {
         state.failed=false;
         return success;
     }
-    public final boolean synpred81_Mandarax() {
+    public final boolean synpred86_Mandarax() {
         state.backtracking++;
         int start = input.mark();
         try {
-            synpred81_Mandarax_fragment(); // can never throw exception
+            synpred86_Mandarax_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -7025,11 +7483,25 @@ public class MandaraxParser extends Parser {
         state.failed=false;
         return success;
     }
-    public final boolean synpred79_Mandarax() {
+    public final boolean synpred85_Mandarax() {
         state.backtracking++;
         int start = input.mark();
         try {
-            synpred79_Mandarax_fragment(); // can never throw exception
+            synpred85_Mandarax_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred67_Mandarax() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred67_Mandarax_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -7053,6 +7525,160 @@ public class MandaraxParser extends Parser {
         state.failed=false;
         return success;
     }
+    public final boolean synpred53_Mandarax() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred53_Mandarax_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred17_Mandarax() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred17_Mandarax_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred9_Mandarax() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred9_Mandarax_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred95_Mandarax() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred95_Mandarax_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred18_Mandarax() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred18_Mandarax_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred52_Mandarax() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred52_Mandarax_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred56_Mandarax() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred56_Mandarax_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred62_Mandarax() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred62_Mandarax_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred82_Mandarax() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred82_Mandarax_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred83_Mandarax() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred83_Mandarax_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred69_Mandarax() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred69_Mandarax_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
     public final boolean synpred13_Mandarax() {
         state.backtracking++;
         int start = input.mark();
@@ -7067,115 +7693,44 @@ public class MandaraxParser extends Parser {
         state.failed=false;
         return success;
     }
+    public final boolean synpred66_Mandarax() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred66_Mandarax_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
 
 
-    protected DFA39 dfa39 = new DFA39(this);
     protected DFA45 dfa45 = new DFA45(this);
     protected DFA49 dfa49 = new DFA49(this);
-    static final String DFA39_eotS =
-        "\14\uffff";
-    static final String DFA39_eofS =
-        "\1\1\13\uffff";
-    static final String DFA39_minS =
-        "\1\34\7\uffff\1\0\3\uffff";
-    static final String DFA39_maxS =
-        "\1\73\7\uffff\1\0\3\uffff";
-    static final String DFA39_acceptS =
-        "\1\uffff\1\2\11\uffff\1\1";
-    static final String DFA39_specialS =
-        "\10\uffff\1\0\3\uffff}>";
-    static final String[] DFA39_transitionS = {
-            "\1\1\1\uffff\2\1\5\uffff\1\1\3\uffff\2\1\16\uffff\1\10\2\1",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "\1\uffff",
-            "",
-            "",
-            ""
-    };
-
-    static final short[] DFA39_eot = DFA.unpackEncodedString(DFA39_eotS);
-    static final short[] DFA39_eof = DFA.unpackEncodedString(DFA39_eofS);
-    static final char[] DFA39_min = DFA.unpackEncodedStringToUnsignedChars(DFA39_minS);
-    static final char[] DFA39_max = DFA.unpackEncodedStringToUnsignedChars(DFA39_maxS);
-    static final short[] DFA39_accept = DFA.unpackEncodedString(DFA39_acceptS);
-    static final short[] DFA39_special = DFA.unpackEncodedString(DFA39_specialS);
-    static final short[][] DFA39_transition;
-
-    static {
-        int numStates = DFA39_transitionS.length;
-        DFA39_transition = new short[numStates][];
-        for (int i=0; i<numStates; i++) {
-            DFA39_transition[i] = DFA.unpackEncodedString(DFA39_transitionS[i]);
-        }
-    }
-
-    class DFA39 extends DFA {
-
-        public DFA39(BaseRecognizer recognizer) {
-            this.recognizer = recognizer;
-            this.decisionNumber = 39;
-            this.eot = DFA39_eot;
-            this.eof = DFA39_eof;
-            this.min = DFA39_min;
-            this.max = DFA39_max;
-            this.accept = DFA39_accept;
-            this.special = DFA39_special;
-            this.transition = DFA39_transition;
-        }
-        public String getDescription() {
-            return "()* loopback of 266:60: ( '&' part= equalityExpression )*";
-        }
-        public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
-            TokenStream input = (TokenStream)_input;
-        	int _s = s;
-            switch ( s ) {
-                    case 0 : 
-                        int LA39_8 = input.LA(1);
-
-                         
-                        int index39_8 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred54_Mandarax()) ) {s = 11;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index39_8);
-                        if ( s>=0 ) return s;
-                        break;
-            }
-            if (state.backtracking>0) {state.failed=true; return -1;}
-            NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 39, _s, input);
-            error(nvae);
-            throw nvae;
-        }
-    }
     static final String DFA45_eotS =
-        "\22\uffff";
+        "\23\uffff";
     static final String DFA45_eofS =
-        "\22\uffff";
+        "\23\uffff";
     static final String DFA45_minS =
-        "\1\101\1\uffff\1\102\1\5\16\uffff";
+        "\1\107\1\uffff\1\110\1\5\17\uffff";
     static final String DFA45_maxS =
-        "\1\102\1\uffff\1\102\1\112\16\uffff";
+        "\1\110\1\uffff\1\110\1\120\17\uffff";
     static final String DFA45_acceptS =
-        "\1\uffff\1\1\2\uffff\1\2\15\3";
+        "\1\uffff\1\1\2\uffff\1\2\16\3";
     static final String DFA45_specialS =
-        "\1\1\2\uffff\1\0\16\uffff}>";
+        "\1\0\2\uffff\1\1\17\uffff}>";
     static final String[] DFA45_transitionS = {
             "\1\1\1\2",
             "",
             "\1\3",
-            "\1\12\1\16\1\13\1\14\1\15\32\uffff\1\10\22\uffff\1\17\1\20"+
-            "\11\uffff\1\4\1\uffff\1\5\2\uffff\1\6\1\7\1\21\1\11",
+            "\1\10\1\14\1\11\1\12\1\13\32\uffff\1\17\22\uffff\1\15\1\16"+
+            "\6\uffff\5\20\4\uffff\1\4\1\uffff\1\5\2\uffff\1\6\1\7\1\22\1"+
+            "\21",
+            "",
             "",
             "",
             "",
@@ -7222,64 +7777,66 @@ public class MandaraxParser extends Parser {
             this.transition = DFA45_transition;
         }
         public String getDescription() {
-            return "298:1: shiftOp returns [BinOp value] : ( ( '<' '<' )=>t1= '<' t2= '<' {...}? | ( '>' '>' '>' )=>t1= '>' t2= '>' t3= '>' {...}? | ( '>' '>' )=>t1= '>' t2= '>' {...}?);";
+            return "302:1: shiftOp returns [BinOp value] : ( ( '<' '<' )=>t1= '<' t2= '<' {...}? | ( '>' '>' '>' )=>t1= '>' t2= '>' t3= '>' {...}? | ( '>' '>' )=>t1= '>' t2= '>' {...}?);";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA45_3 = input.LA(1);
-
-                         
-                        int index45_3 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (LA45_3==66) && (synpred64_Mandarax())) {s = 4;}
-
-                        else if ( (LA45_3==68) && (synpred65_Mandarax())) {s = 5;}
-
-                        else if ( (LA45_3==71) && (synpred65_Mandarax())) {s = 6;}
-
-                        else if ( (LA45_3==72) && (synpred65_Mandarax())) {s = 7;}
-
-                        else if ( (LA45_3==36) && (synpred65_Mandarax())) {s = 8;}
-
-                        else if ( (LA45_3==74) && (synpred65_Mandarax())) {s = 9;}
-
-                        else if ( (LA45_3==Identifier) && (synpred65_Mandarax())) {s = 10;}
-
-                        else if ( (LA45_3==HexLiteral) && (synpred65_Mandarax())) {s = 11;}
-
-                        else if ( (LA45_3==OctalLiteral) && (synpred65_Mandarax())) {s = 12;}
-
-                        else if ( (LA45_3==DecimalLiteral) && (synpred65_Mandarax())) {s = 13;}
-
-                        else if ( (LA45_3==StringLiteral) && (synpred65_Mandarax())) {s = 14;}
-
-                        else if ( (LA45_3==55) && (synpred65_Mandarax())) {s = 15;}
-
-                        else if ( (LA45_3==56) && (synpred65_Mandarax())) {s = 16;}
-
-                        else if ( (LA45_3==73) && (synpred65_Mandarax())) {s = 17;}
-
-                         
-                        input.seek(index45_3);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
                         int LA45_0 = input.LA(1);
 
                          
                         int index45_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (LA45_0==65) && (synpred63_Mandarax())) {s = 1;}
+                        if ( (LA45_0==71) && (synpred67_Mandarax())) {s = 1;}
 
-                        else if ( (LA45_0==66) ) {s = 2;}
+                        else if ( (LA45_0==72) ) {s = 2;}
 
                          
                         input.seek(index45_0);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 1 : 
+                        int LA45_3 = input.LA(1);
+
+                         
+                        int index45_3 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (LA45_3==72) && (synpred68_Mandarax())) {s = 4;}
+
+                        else if ( (LA45_3==74) && (synpred69_Mandarax())) {s = 5;}
+
+                        else if ( (LA45_3==77) && (synpred69_Mandarax())) {s = 6;}
+
+                        else if ( (LA45_3==78) && (synpred69_Mandarax())) {s = 7;}
+
+                        else if ( (LA45_3==Identifier) && (synpred69_Mandarax())) {s = 8;}
+
+                        else if ( (LA45_3==HexLiteral) && (synpred69_Mandarax())) {s = 9;}
+
+                        else if ( (LA45_3==OctalLiteral) && (synpred69_Mandarax())) {s = 10;}
+
+                        else if ( (LA45_3==DecimalLiteral) && (synpred69_Mandarax())) {s = 11;}
+
+                        else if ( (LA45_3==StringLiteral) && (synpred69_Mandarax())) {s = 12;}
+
+                        else if ( (LA45_3==55) && (synpred69_Mandarax())) {s = 13;}
+
+                        else if ( (LA45_3==56) && (synpred69_Mandarax())) {s = 14;}
+
+                        else if ( (LA45_3==36) && (synpred69_Mandarax())) {s = 15;}
+
+                        else if ( ((LA45_3>=63 && LA45_3<=67)) && (synpred69_Mandarax())) {s = 16;}
+
+                        else if ( (LA45_3==80) && (synpred69_Mandarax())) {s = 17;}
+
+                        else if ( (LA45_3==79) && (synpred69_Mandarax())) {s = 18;}
+
+                         
+                        input.seek(index45_3);
                         if ( s>=0 ) return s;
                         break;
             }
@@ -7291,32 +7848,34 @@ public class MandaraxParser extends Parser {
         }
     }
     static final String DFA49_eotS =
-        "\24\uffff";
+        "\26\uffff";
     static final String DFA49_eofS =
-        "\24\uffff";
+        "\26\uffff";
     static final String DFA49_minS =
-        "\1\5\2\uffff\1\0\1\uffff\7\0\10\uffff";
+        "\1\5\2\uffff\10\0\13\uffff";
     static final String DFA49_maxS =
-        "\1\112\2\uffff\1\0\1\uffff\7\0\10\uffff";
+        "\1\120\2\uffff\10\0\13\uffff";
     static final String DFA49_acceptS =
-        "\1\uffff\1\1\1\2\1\uffff\1\4\7\uffff\1\13\1\3\1\6\1\7\1\10\1\12"+
-        "\1\5\1\11";
+        "\1\uffff\1\1\1\2\10\uffff\1\4\1\6\1\15\1\3\1\7\1\10\1\11\1\12\1"+
+        "\13\1\5\1\14";
     static final String DFA49_specialS =
-        "\3\uffff\1\0\1\uffff\1\1\1\2\1\3\1\4\1\5\1\6\1\7\10\uffff}>";
+        "\3\uffff\1\0\1\1\1\2\1\3\1\4\1\5\1\6\1\7\13\uffff}>";
     static final String[] DFA49_transitionS = {
-            "\1\5\1\11\1\6\1\7\1\10\32\uffff\1\3\22\uffff\1\12\1\13\16\uffff"+
-            "\1\1\1\2\1\14\1\4",
+            "\1\3\1\7\1\4\1\5\1\6\32\uffff\1\12\22\uffff\1\10\1\11\6\uffff"+
+            "\5\13\11\uffff\1\1\1\2\1\15\1\14",
             "",
             "",
             "\1\uffff",
+            "\1\uffff",
+            "\1\uffff",
+            "\1\uffff",
+            "\1\uffff",
+            "\1\uffff",
+            "\1\uffff",
+            "\1\uffff",
             "",
-            "\1\uffff",
-            "\1\uffff",
-            "\1\uffff",
-            "\1\uffff",
-            "\1\uffff",
-            "\1\uffff",
-            "\1\uffff",
+            "",
+            "",
             "",
             "",
             "",
@@ -7357,7 +7916,7 @@ public class MandaraxParser extends Parser {
             this.transition = DFA49_transition;
         }
         public String getDescription() {
-            return "326:1: unaryExpressionNotPlusMinus returns [Expression value] : ( '~' r1= unaryExpression | '!' r2= unaryExpression | r3= castExpression | r11= constructorInvocation | r9= functionInvocation | r8= methodInvocation | r7= propertyAccess | r4= objectref | r5= qualifiedName | r6= parExpression | r10= nullValue );";
+            return "330:1: unaryExpressionNotPlusMinus returns [Expression value] : ( '~' r1= unaryExpression | '!' r2= unaryExpression | r12= indomain | r13= aggregation | r3= castExpression | r11= constructorInvocation | r9= functionInvocation | r8= methodInvocation | r7= propertyAccess | r4= objectref | r5= qualifiedName | r6= parExpression | r10= nullValue );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
@@ -7370,141 +7929,157 @@ public class MandaraxParser extends Parser {
                         int index49_3 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred74_Mandarax()) ) {s = 13;}
+                        if ( (synpred78_Mandarax()) ) {s = 14;}
 
-                        else if ( (synpred77_Mandarax()) ) {s = 14;}
+                        else if ( (synpred82_Mandarax()) ) {s = 15;}
 
-                        else if ( (synpred78_Mandarax()) ) {s = 15;}
+                        else if ( (synpred83_Mandarax()) ) {s = 16;}
 
-                        else if ( (synpred79_Mandarax()) ) {s = 16;}
+                        else if ( (synpred84_Mandarax()) ) {s = 17;}
 
-                        else if ( (synpred81_Mandarax()) ) {s = 17;}
+                        else if ( (synpred85_Mandarax()) ) {s = 18;}
+
+                        else if ( (synpred86_Mandarax()) ) {s = 19;}
 
                          
                         input.seek(index49_3);
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
+                        int LA49_4 = input.LA(1);
+
+                         
+                        int index49_4 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred78_Mandarax()) ) {s = 14;}
+
+                        else if ( (synpred83_Mandarax()) ) {s = 16;}
+
+                        else if ( (synpred84_Mandarax()) ) {s = 17;}
+
+                        else if ( (synpred85_Mandarax()) ) {s = 18;}
+
+                         
+                        input.seek(index49_4);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
                         int LA49_5 = input.LA(1);
 
                          
                         int index49_5 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred76_Mandarax()) ) {s = 18;}
+                        if ( (synpred78_Mandarax()) ) {s = 14;}
 
-                        else if ( (synpred77_Mandarax()) ) {s = 14;}
+                        else if ( (synpred83_Mandarax()) ) {s = 16;}
 
-                        else if ( (synpred78_Mandarax()) ) {s = 15;}
+                        else if ( (synpred84_Mandarax()) ) {s = 17;}
 
-                        else if ( (synpred79_Mandarax()) ) {s = 16;}
-
-                        else if ( (synpred80_Mandarax()) ) {s = 19;}
+                        else if ( (synpred85_Mandarax()) ) {s = 18;}
 
                          
                         input.seek(index49_5);
                         if ( s>=0 ) return s;
                         break;
-                    case 2 : 
+                    case 3 : 
                         int LA49_6 = input.LA(1);
 
                          
                         int index49_6 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred77_Mandarax()) ) {s = 14;}
+                        if ( (synpred78_Mandarax()) ) {s = 14;}
 
-                        else if ( (synpred78_Mandarax()) ) {s = 15;}
+                        else if ( (synpred83_Mandarax()) ) {s = 16;}
 
-                        else if ( (synpred79_Mandarax()) ) {s = 16;}
+                        else if ( (synpred84_Mandarax()) ) {s = 17;}
+
+                        else if ( (synpred85_Mandarax()) ) {s = 18;}
 
                          
                         input.seek(index49_6);
                         if ( s>=0 ) return s;
                         break;
-                    case 3 : 
+                    case 4 : 
                         int LA49_7 = input.LA(1);
 
                          
                         int index49_7 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred77_Mandarax()) ) {s = 14;}
+                        if ( (synpred78_Mandarax()) ) {s = 14;}
 
-                        else if ( (synpred78_Mandarax()) ) {s = 15;}
+                        else if ( (synpred83_Mandarax()) ) {s = 16;}
 
-                        else if ( (synpred79_Mandarax()) ) {s = 16;}
+                        else if ( (synpred84_Mandarax()) ) {s = 17;}
+
+                        else if ( (synpred85_Mandarax()) ) {s = 18;}
 
                          
                         input.seek(index49_7);
                         if ( s>=0 ) return s;
                         break;
-                    case 4 : 
+                    case 5 : 
                         int LA49_8 = input.LA(1);
 
                          
                         int index49_8 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred77_Mandarax()) ) {s = 14;}
+                        if ( (synpred78_Mandarax()) ) {s = 14;}
 
-                        else if ( (synpred78_Mandarax()) ) {s = 15;}
+                        else if ( (synpred83_Mandarax()) ) {s = 16;}
 
-                        else if ( (synpred79_Mandarax()) ) {s = 16;}
+                        else if ( (synpred84_Mandarax()) ) {s = 17;}
+
+                        else if ( (synpred85_Mandarax()) ) {s = 18;}
 
                          
                         input.seek(index49_8);
                         if ( s>=0 ) return s;
                         break;
-                    case 5 : 
+                    case 6 : 
                         int LA49_9 = input.LA(1);
 
                          
                         int index49_9 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred77_Mandarax()) ) {s = 14;}
+                        if ( (synpred78_Mandarax()) ) {s = 14;}
 
-                        else if ( (synpred78_Mandarax()) ) {s = 15;}
+                        else if ( (synpred83_Mandarax()) ) {s = 16;}
 
-                        else if ( (synpred79_Mandarax()) ) {s = 16;}
+                        else if ( (synpred84_Mandarax()) ) {s = 17;}
+
+                        else if ( (synpred85_Mandarax()) ) {s = 18;}
 
                          
                         input.seek(index49_9);
                         if ( s>=0 ) return s;
                         break;
-                    case 6 : 
+                    case 7 : 
                         int LA49_10 = input.LA(1);
 
                          
                         int index49_10 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred77_Mandarax()) ) {s = 14;}
+                        if ( (synpred78_Mandarax()) ) {s = 14;}
 
-                        else if ( (synpred78_Mandarax()) ) {s = 15;}
+                        else if ( (synpred80_Mandarax()) ) {s = 20;}
 
-                        else if ( (synpred79_Mandarax()) ) {s = 16;}
+                        else if ( (synpred83_Mandarax()) ) {s = 16;}
+
+                        else if ( (synpred84_Mandarax()) ) {s = 17;}
+
+                        else if ( (synpred85_Mandarax()) ) {s = 18;}
+
+                        else if ( (synpred87_Mandarax()) ) {s = 21;}
 
                          
                         input.seek(index49_10);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 7 : 
-                        int LA49_11 = input.LA(1);
-
-                         
-                        int index49_11 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred77_Mandarax()) ) {s = 14;}
-
-                        else if ( (synpred78_Mandarax()) ) {s = 15;}
-
-                        else if ( (synpred79_Mandarax()) ) {s = 16;}
-
-                         
-                        input.seek(index49_11);
                         if ( s>=0 ) return s;
                         break;
             }
@@ -7536,7 +8111,7 @@ public class MandaraxParser extends Parser {
     public static final BitSet FOLLOW_28_in_packageDeclaration222 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_annotationList_in_rule258 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_Identifier_in_rule266 = new BitSet(new long[]{0x0000000040000000L});
-    public static final BitSet FOLLOW_30_in_rule268 = new BitSet(new long[]{0x01800010800003E0L,0x0000000000000790L});
+    public static final BitSet FOLLOW_30_in_rule268 = new BitSet(new long[]{0x81800010800003E0L,0x000000000001E40FL});
     public static final BitSet FOLLOW_conjunction_in_rule275 = new BitSet(new long[]{0x0000000080000000L});
     public static final BitSet FOLLOW_31_in_rule280 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_functionInvocation_in_rule286 = new BitSet(new long[]{0x0000000010000000L});
@@ -7547,7 +8122,7 @@ public class MandaraxParser extends Parser {
     public static final BitSet FOLLOW_StringLiteral_in_annotation339 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_type_in_objectDeclaration368 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_Identifier_in_objectDeclaration372 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_33_in_objectDeclaration374 = new BitSet(new long[]{0x01800010000003E0L,0x0000000000000790L});
+    public static final BitSet FOLLOW_33_in_objectDeclaration374 = new BitSet(new long[]{0x81800010000003E0L,0x000000000001E40FL});
     public static final BitSet FOLLOW_expression_in_objectDeclaration380 = new BitSet(new long[]{0x0000000010000000L});
     public static final BitSet FOLLOW_28_in_objectDeclaration383 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_NEWLINE_in_annotationList417 = new BitSet(new long[]{0x0000000100000012L});
@@ -7630,114 +8205,123 @@ public class MandaraxParser extends Parser {
     public static final BitSet FOLLOW_42_in_elementValuePairs1482 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_elementValuePair_in_elementValuePairs1484 = new BitSet(new long[]{0x0000040000000002L});
     public static final BitSet FOLLOW_Identifier_in_elementValuePair1505 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_33_in_elementValuePair1507 = new BitSet(new long[]{0x01800110000003E0L,0x0000000000000790L});
+    public static final BitSet FOLLOW_33_in_elementValuePair1507 = new BitSet(new long[]{0x81800110000003E0L,0x000000000001E40FL});
     public static final BitSet FOLLOW_elementValue_in_elementValuePair1509 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_conditionalExpression_in_elementValue1532 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_elementValueArrayInitializer_in_elementValue1542 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_elementValueArrayInitializer1565 = new BitSet(new long[]{0x01800710000003E0L,0x0000000000000790L});
+    public static final BitSet FOLLOW_40_in_elementValueArrayInitializer1565 = new BitSet(new long[]{0x81800710000003E0L,0x000000000001E40FL});
     public static final BitSet FOLLOW_elementValue_in_elementValueArrayInitializer1568 = new BitSet(new long[]{0x0000060000000000L});
-    public static final BitSet FOLLOW_42_in_elementValueArrayInitializer1571 = new BitSet(new long[]{0x01800110000003E0L,0x0000000000000790L});
+    public static final BitSet FOLLOW_42_in_elementValueArrayInitializer1571 = new BitSet(new long[]{0x81800110000003E0L,0x000000000001E40FL});
     public static final BitSet FOLLOW_elementValue_in_elementValueArrayInitializer1573 = new BitSet(new long[]{0x0000060000000000L});
     public static final BitSet FOLLOW_42_in_elementValueArrayInitializer1580 = new BitSet(new long[]{0x0000020000000000L});
     public static final BitSet FOLLOW_41_in_elementValueArrayInitializer1584 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_36_in_parExpression1613 = new BitSet(new long[]{0x01800010000003E0L,0x0000000000000790L});
+    public static final BitSet FOLLOW_36_in_parExpression1613 = new BitSet(new long[]{0x81800010000003E0L,0x000000000001E40FL});
     public static final BitSet FOLLOW_expression_in_parExpression1619 = new BitSet(new long[]{0x0000002000000000L});
     public static final BitSet FOLLOW_37_in_parExpression1621 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_expression_in_commaSeparatedExpressionList1659 = new BitSet(new long[]{0x0000040000000002L});
-    public static final BitSet FOLLOW_42_in_commaSeparatedExpressionList1664 = new BitSet(new long[]{0x01800010000003E0L,0x0000000000000790L});
+    public static final BitSet FOLLOW_42_in_commaSeparatedExpressionList1664 = new BitSet(new long[]{0x81800010000003E0L,0x000000000001E40FL});
     public static final BitSet FOLLOW_expression_in_commaSeparatedExpressionList1670 = new BitSet(new long[]{0x0000040000000002L});
     public static final BitSet FOLLOW_expression_in_andSeparatedExpressionList1707 = new BitSet(new long[]{0x0200000000000002L});
-    public static final BitSet FOLLOW_57_in_andSeparatedExpressionList1712 = new BitSet(new long[]{0x01800010000003E0L,0x0000000000000790L});
+    public static final BitSet FOLLOW_57_in_andSeparatedExpressionList1712 = new BitSet(new long[]{0x81800010000003E0L,0x000000000001E40FL});
     public static final BitSet FOLLOW_expression_in_andSeparatedExpressionList1718 = new BitSet(new long[]{0x0200000000000002L});
     public static final BitSet FOLLOW_disjunction_in_conditionalExpression1750 = new BitSet(new long[]{0x0400000000000002L});
-    public static final BitSet FOLLOW_58_in_conditionalExpression1754 = new BitSet(new long[]{0x01800010000003E0L,0x0000000000000790L});
+    public static final BitSet FOLLOW_58_in_conditionalExpression1754 = new BitSet(new long[]{0x81800010000003E0L,0x000000000001E40FL});
     public static final BitSet FOLLOW_expression_in_conditionalExpression1760 = new BitSet(new long[]{0x0000000040000000L});
-    public static final BitSet FOLLOW_30_in_conditionalExpression1762 = new BitSet(new long[]{0x01800010000003E0L,0x0000000000000790L});
+    public static final BitSet FOLLOW_30_in_conditionalExpression1762 = new BitSet(new long[]{0x81800010000003E0L,0x000000000001E40FL});
     public static final BitSet FOLLOW_expression_in_conditionalExpression1768 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_conjunction_in_disjunction1801 = new BitSet(new long[]{0x0800000000000002L});
-    public static final BitSet FOLLOW_59_in_disjunction1807 = new BitSet(new long[]{0x01800010000003E0L,0x0000000000000790L});
+    public static final BitSet FOLLOW_59_in_disjunction1807 = new BitSet(new long[]{0x81800010000003E0L,0x000000000001E40FL});
     public static final BitSet FOLLOW_conjunction_in_disjunction1813 = new BitSet(new long[]{0x0800000000000002L});
     public static final BitSet FOLLOW_equalityExpression_in_conjunction1845 = new BitSet(new long[]{0x0200000000000002L});
-    public static final BitSet FOLLOW_57_in_conjunction1851 = new BitSet(new long[]{0x01800010000003E0L,0x0000000000000790L});
+    public static final BitSet FOLLOW_57_in_conjunction1851 = new BitSet(new long[]{0x81800010000003E0L,0x000000000001E40FL});
     public static final BitSet FOLLOW_equalityExpression_in_conjunction1858 = new BitSet(new long[]{0x0200000000000002L});
     public static final BitSet FOLLOW_instanceOfExpression_in_equalityExpression1890 = new BitSet(new long[]{0x3000000000000002L});
-    public static final BitSet FOLLOW_set_in_equalityExpression1900 = new BitSet(new long[]{0x01800010000003E0L,0x0000000000000790L});
+    public static final BitSet FOLLOW_set_in_equalityExpression1900 = new BitSet(new long[]{0x81800010000003E0L,0x000000000001E40FL});
     public static final BitSet FOLLOW_instanceOfExpression_in_equalityExpression1912 = new BitSet(new long[]{0x3000000000000002L});
     public static final BitSet FOLLOW_relationalExpression_in_instanceOfExpression1944 = new BitSet(new long[]{0x4000000000000002L});
     public static final BitSet FOLLOW_62_in_instanceOfExpression1947 = new BitSet(new long[]{0x007F800000000020L});
     public static final BitSet FOLLOW_type_in_instanceOfExpression1953 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_shiftExpression_in_relationalExpression1993 = new BitSet(new long[]{0x8000000000000002L,0x0000000000000007L});
-    public static final BitSet FOLLOW_relationalOp_in_relationalExpression2003 = new BitSet(new long[]{0x01800010000003E0L,0x0000000000000790L});
-    public static final BitSet FOLLOW_shiftExpression_in_relationalExpression2009 = new BitSet(new long[]{0x8000000000000002L,0x0000000000000007L});
-    public static final BitSet FOLLOW_63_in_relationalOp2043 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_64_in_relationalOp2055 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_65_in_relationalOp2065 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_66_in_relationalOp2077 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_additiveExpression_in_shiftExpression2107 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000006L});
-    public static final BitSet FOLLOW_shiftOp_in_shiftExpression2117 = new BitSet(new long[]{0x01800010000003E0L,0x0000000000000790L});
-    public static final BitSet FOLLOW_additiveExpression_in_shiftExpression2123 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_65_in_shiftOp2160 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_65_in_shiftOp2164 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_66_in_shiftOp2198 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_66_in_shiftOp2202 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_66_in_shiftOp2206 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_66_in_shiftOp2238 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_66_in_shiftOp2242 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_multiplicativeExpression_in_additiveExpression2281 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000018L});
-    public static final BitSet FOLLOW_set_in_additiveExpression2290 = new BitSet(new long[]{0x01800010000003E0L,0x0000000000000790L});
-    public static final BitSet FOLLOW_multiplicativeExpression_in_additiveExpression2302 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000018L});
-    public static final BitSet FOLLOW_unaryExpression_in_multiplicativeExpression2333 = new BitSet(new long[]{0x0000000008000002L,0x0000000000000060L});
-    public static final BitSet FOLLOW_set_in_multiplicativeExpression2342 = new BitSet(new long[]{0x01800010000003E0L,0x0000000000000790L});
-    public static final BitSet FOLLOW_unaryExpression_in_multiplicativeExpression2360 = new BitSet(new long[]{0x0000000008000002L,0x0000000000000060L});
-    public static final BitSet FOLLOW_68_in_unaryExpression2392 = new BitSet(new long[]{0x01800010000003E0L,0x0000000000000790L});
-    public static final BitSet FOLLOW_unaryExpression_in_unaryExpression2398 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_unaryExpressionNotPlusMinus_in_unaryExpression2414 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_71_in_unaryExpressionNotPlusMinus2437 = new BitSet(new long[]{0x01800010000003E0L,0x0000000000000790L});
-    public static final BitSet FOLLOW_unaryExpression_in_unaryExpressionNotPlusMinus2443 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_72_in_unaryExpressionNotPlusMinus2455 = new BitSet(new long[]{0x01800010000003E0L,0x0000000000000790L});
-    public static final BitSet FOLLOW_unaryExpression_in_unaryExpressionNotPlusMinus2461 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_castExpression_in_unaryExpressionNotPlusMinus2477 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_constructorInvocation_in_unaryExpressionNotPlusMinus2494 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_functionInvocation_in_unaryExpressionNotPlusMinus2510 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_methodInvocation_in_unaryExpressionNotPlusMinus2526 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_propertyAccess_in_unaryExpressionNotPlusMinus2542 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_objectref_in_unaryExpressionNotPlusMinus2558 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_qualifiedName_in_unaryExpressionNotPlusMinus2574 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parExpression_in_unaryExpressionNotPlusMinus2590 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_nullValue_in_unaryExpressionNotPlusMinus2606 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_73_in_nullValue2635 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_objectref_in_propertyAccess2671 = new BitSet(new long[]{0x0000000004000002L});
-    public static final BitSet FOLLOW_26_in_propertyAccess2676 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_Identifier_in_propertyAccess2681 = new BitSet(new long[]{0x0000000004000002L});
-    public static final BitSet FOLLOW_objectref_in_methodInvocation2714 = new BitSet(new long[]{0x0000000004000002L});
-    public static final BitSet FOLLOW_26_in_methodInvocation2719 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_Identifier_in_methodInvocation2725 = new BitSet(new long[]{0x0000001000000000L});
-    public static final BitSet FOLLOW_36_in_methodInvocation2727 = new BitSet(new long[]{0x01800030000003E0L,0x0000000000000790L});
-    public static final BitSet FOLLOW_commaSeparatedExpressionList_in_methodInvocation2733 = new BitSet(new long[]{0x0000002000000000L});
-    public static final BitSet FOLLOW_37_in_methodInvocation2737 = new BitSet(new long[]{0x0000000004000002L});
-    public static final BitSet FOLLOW_Identifier_in_functionInvocation2774 = new BitSet(new long[]{0x0000001000000000L});
-    public static final BitSet FOLLOW_36_in_functionInvocation2777 = new BitSet(new long[]{0x01800030000003E0L,0x0000000000000790L});
-    public static final BitSet FOLLOW_commaSeparatedExpressionList_in_functionInvocation2784 = new BitSet(new long[]{0x0000002000000000L});
-    public static final BitSet FOLLOW_37_in_functionInvocation2788 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_74_in_constructorInvocation2836 = new BitSet(new long[]{0x0000000002000020L});
-    public static final BitSet FOLLOW_qualifiedName2_in_constructorInvocation2842 = new BitSet(new long[]{0x0000001000000000L});
-    public static final BitSet FOLLOW_36_in_constructorInvocation2845 = new BitSet(new long[]{0x01800030000003E0L,0x0000000000000790L});
-    public static final BitSet FOLLOW_commaSeparatedExpressionList_in_constructorInvocation2852 = new BitSet(new long[]{0x0000002000000000L});
-    public static final BitSet FOLLOW_37_in_constructorInvocation2856 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_Identifier_in_objectref2893 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_literal_in_objectref2908 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parExpression_in_objectref2923 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_36_in_castExpression2956 = new BitSet(new long[]{0x007F800000000020L});
-    public static final BitSet FOLLOW_primitiveType_in_castExpression2962 = new BitSet(new long[]{0x0000002000000000L});
-    public static final BitSet FOLLOW_37_in_castExpression2964 = new BitSet(new long[]{0x01800010000003E0L,0x0000000000000790L});
-    public static final BitSet FOLLOW_unaryExpression_in_castExpression2970 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_36_in_castExpression2981 = new BitSet(new long[]{0x007F800000000020L});
-    public static final BitSet FOLLOW_type_in_castExpression2987 = new BitSet(new long[]{0x0000002000000000L});
-    public static final BitSet FOLLOW_37_in_castExpression2989 = new BitSet(new long[]{0x01800010000003E0L,0x0000000000000790L});
-    public static final BitSet FOLLOW_unaryExpressionNotPlusMinus_in_castExpression2995 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_36_in_arguments3017 = new BitSet(new long[]{0x01800030000003E0L,0x0000000000000790L});
-    public static final BitSet FOLLOW_commaSeparatedExpressionList_in_arguments3019 = new BitSet(new long[]{0x0000002000000000L});
-    public static final BitSet FOLLOW_37_in_arguments3022 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_set_in_aggregation1992 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_Identifier_in_aggregation2016 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000010L});
+    public static final BitSet FOLLOW_68_in_aggregation2018 = new BitSet(new long[]{0x81800010000003E0L,0x000000000001E40FL});
+    public static final BitSet FOLLOW_relationalExpression_in_aggregation2022 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_objectref_in_indomain2061 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000010L});
+    public static final BitSet FOLLOW_68_in_indomain2065 = new BitSet(new long[]{0x81800010000003E0L,0x000000000001E40FL});
+    public static final BitSet FOLLOW_expression_in_indomain2071 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_shiftExpression_in_relationalExpression2106 = new BitSet(new long[]{0x0000000000000002L,0x00000000000001E0L});
+    public static final BitSet FOLLOW_relationalOp_in_relationalExpression2116 = new BitSet(new long[]{0x81800010000003E0L,0x000000000001E40FL});
+    public static final BitSet FOLLOW_shiftExpression_in_relationalExpression2122 = new BitSet(new long[]{0x0000000000000002L,0x00000000000001E0L});
+    public static final BitSet FOLLOW_69_in_relationalOp2156 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_70_in_relationalOp2168 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_71_in_relationalOp2178 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_72_in_relationalOp2190 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_additiveExpression_in_shiftExpression2220 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000180L});
+    public static final BitSet FOLLOW_shiftOp_in_shiftExpression2230 = new BitSet(new long[]{0x81800010000003E0L,0x000000000001E40FL});
+    public static final BitSet FOLLOW_additiveExpression_in_shiftExpression2236 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_71_in_shiftOp2273 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000080L});
+    public static final BitSet FOLLOW_71_in_shiftOp2277 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_72_in_shiftOp2311 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_72_in_shiftOp2315 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_72_in_shiftOp2319 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_72_in_shiftOp2351 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_72_in_shiftOp2355 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_multiplicativeExpression_in_additiveExpression2394 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000600L});
+    public static final BitSet FOLLOW_set_in_additiveExpression2403 = new BitSet(new long[]{0x81800010000003E0L,0x000000000001E40FL});
+    public static final BitSet FOLLOW_multiplicativeExpression_in_additiveExpression2415 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000600L});
+    public static final BitSet FOLLOW_unaryExpression_in_multiplicativeExpression2446 = new BitSet(new long[]{0x0000000008000002L,0x0000000000001800L});
+    public static final BitSet FOLLOW_set_in_multiplicativeExpression2455 = new BitSet(new long[]{0x81800010000003E0L,0x000000000001E40FL});
+    public static final BitSet FOLLOW_unaryExpression_in_multiplicativeExpression2473 = new BitSet(new long[]{0x0000000008000002L,0x0000000000001800L});
+    public static final BitSet FOLLOW_74_in_unaryExpression2505 = new BitSet(new long[]{0x81800010000003E0L,0x000000000001E40FL});
+    public static final BitSet FOLLOW_unaryExpression_in_unaryExpression2511 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_unaryExpressionNotPlusMinus_in_unaryExpression2527 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_77_in_unaryExpressionNotPlusMinus2550 = new BitSet(new long[]{0x81800010000003E0L,0x000000000001E40FL});
+    public static final BitSet FOLLOW_unaryExpression_in_unaryExpressionNotPlusMinus2556 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_78_in_unaryExpressionNotPlusMinus2568 = new BitSet(new long[]{0x81800010000003E0L,0x000000000001E40FL});
+    public static final BitSet FOLLOW_unaryExpression_in_unaryExpressionNotPlusMinus2574 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_indomain_in_unaryExpressionNotPlusMinus2590 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_aggregation_in_unaryExpressionNotPlusMinus2605 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_castExpression_in_unaryExpressionNotPlusMinus2620 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_constructorInvocation_in_unaryExpressionNotPlusMinus2636 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_functionInvocation_in_unaryExpressionNotPlusMinus2652 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_methodInvocation_in_unaryExpressionNotPlusMinus2668 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_propertyAccess_in_unaryExpressionNotPlusMinus2684 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_objectref_in_unaryExpressionNotPlusMinus2700 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_qualifiedName_in_unaryExpressionNotPlusMinus2716 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parExpression_in_unaryExpressionNotPlusMinus2732 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_nullValue_in_unaryExpressionNotPlusMinus2748 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_79_in_nullValue2777 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_objectref_in_propertyAccess2813 = new BitSet(new long[]{0x0000000004000002L});
+    public static final BitSet FOLLOW_26_in_propertyAccess2818 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_Identifier_in_propertyAccess2823 = new BitSet(new long[]{0x0000000004000002L});
+    public static final BitSet FOLLOW_objectref_in_methodInvocation2856 = new BitSet(new long[]{0x0000000004000002L});
+    public static final BitSet FOLLOW_26_in_methodInvocation2861 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_Identifier_in_methodInvocation2867 = new BitSet(new long[]{0x0000001000000000L});
+    public static final BitSet FOLLOW_36_in_methodInvocation2869 = new BitSet(new long[]{0x81800030000003E0L,0x000000000001E40FL});
+    public static final BitSet FOLLOW_commaSeparatedExpressionList_in_methodInvocation2875 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_37_in_methodInvocation2879 = new BitSet(new long[]{0x0000000004000002L});
+    public static final BitSet FOLLOW_Identifier_in_functionInvocation2916 = new BitSet(new long[]{0x0000001000000000L});
+    public static final BitSet FOLLOW_36_in_functionInvocation2919 = new BitSet(new long[]{0x81800030000003E0L,0x000000000001E40FL});
+    public static final BitSet FOLLOW_commaSeparatedExpressionList_in_functionInvocation2926 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_37_in_functionInvocation2930 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_80_in_constructorInvocation2980 = new BitSet(new long[]{0x0000000002000020L});
+    public static final BitSet FOLLOW_qualifiedName2_in_constructorInvocation2986 = new BitSet(new long[]{0x0000001000000000L});
+    public static final BitSet FOLLOW_36_in_constructorInvocation2989 = new BitSet(new long[]{0x81800030000003E0L,0x000000000001E40FL});
+    public static final BitSet FOLLOW_commaSeparatedExpressionList_in_constructorInvocation2996 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_37_in_constructorInvocation3000 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_Identifier_in_objectref3037 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_literal_in_objectref3052 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parExpression_in_objectref3067 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_36_in_castExpression3100 = new BitSet(new long[]{0x007F800000000020L});
+    public static final BitSet FOLLOW_primitiveType_in_castExpression3106 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_37_in_castExpression3108 = new BitSet(new long[]{0x81800010000003E0L,0x000000000001E40FL});
+    public static final BitSet FOLLOW_unaryExpression_in_castExpression3114 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_36_in_castExpression3125 = new BitSet(new long[]{0x007F800000000020L});
+    public static final BitSet FOLLOW_type_in_castExpression3131 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_37_in_castExpression3133 = new BitSet(new long[]{0x81800010000003E0L,0x000000000001E40FL});
+    public static final BitSet FOLLOW_unaryExpressionNotPlusMinus_in_castExpression3139 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_36_in_arguments3161 = new BitSet(new long[]{0x81800030000003E0L,0x000000000001E40FL});
+    public static final BitSet FOLLOW_commaSeparatedExpressionList_in_arguments3163 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_37_in_arguments3166 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_NEWLINE_in_synpred2_Mandarax83 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_NEWLINE_in_synpred4_Mandarax97 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_relationshipDefinition_in_synpred6_Mandarax118 = new BitSet(new long[]{0x0000000000000002L});
@@ -7745,25 +8329,44 @@ public class MandaraxParser extends Parser {
     public static final BitSet FOLLOW_annotationList_in_synpred13_Mandarax462 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_NEWLINE_in_synpred17_Mandarax534 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule_in_synpred18_Mandarax541 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_57_in_synpred54_Mandarax1851 = new BitSet(new long[]{0x01800010000003E0L,0x0000000000000790L});
+    public static final BitSet FOLLOW_58_in_synpred52_Mandarax1754 = new BitSet(new long[]{0x81800010000003E0L,0x000000000001E40FL});
+    public static final BitSet FOLLOW_expression_in_synpred52_Mandarax1760 = new BitSet(new long[]{0x0000000040000000L});
+    public static final BitSet FOLLOW_30_in_synpred52_Mandarax1762 = new BitSet(new long[]{0x81800010000003E0L,0x000000000001E40FL});
+    public static final BitSet FOLLOW_expression_in_synpred52_Mandarax1768 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_59_in_synpred53_Mandarax1807 = new BitSet(new long[]{0x81800010000003E0L,0x000000000001E40FL});
+    public static final BitSet FOLLOW_conjunction_in_synpred53_Mandarax1813 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_57_in_synpred54_Mandarax1851 = new BitSet(new long[]{0x81800010000003E0L,0x000000000001E40FL});
     public static final BitSet FOLLOW_equalityExpression_in_synpred54_Mandarax1858 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_65_in_synpred63_Mandarax2152 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_65_in_synpred63_Mandarax2154 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_66_in_synpred64_Mandarax2188 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_66_in_synpred64_Mandarax2190 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_66_in_synpred64_Mandarax2192 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_66_in_synpred65_Mandarax2230 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_66_in_synpred65_Mandarax2232 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_castExpression_in_synpred74_Mandarax2477 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_functionInvocation_in_synpred76_Mandarax2510 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_methodInvocation_in_synpred77_Mandarax2526 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_propertyAccess_in_synpred78_Mandarax2542 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_objectref_in_synpred79_Mandarax2558 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_qualifiedName_in_synpred80_Mandarax2574 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parExpression_in_synpred81_Mandarax2590 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_36_in_synpred89_Mandarax2956 = new BitSet(new long[]{0x007F800000000020L});
-    public static final BitSet FOLLOW_primitiveType_in_synpred89_Mandarax2962 = new BitSet(new long[]{0x0000002000000000L});
-    public static final BitSet FOLLOW_37_in_synpred89_Mandarax2964 = new BitSet(new long[]{0x01800010000003E0L,0x0000000000000790L});
-    public static final BitSet FOLLOW_unaryExpression_in_synpred89_Mandarax2970 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_set_in_synpred56_Mandarax1900 = new BitSet(new long[]{0x81800010000003E0L,0x000000000001E40FL});
+    public static final BitSet FOLLOW_instanceOfExpression_in_synpred56_Mandarax1912 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_62_in_synpred57_Mandarax1947 = new BitSet(new long[]{0x007F800000000020L});
+    public static final BitSet FOLLOW_type_in_synpred57_Mandarax1953 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_relationalOp_in_synpred62_Mandarax2116 = new BitSet(new long[]{0x81800010000003E0L,0x000000000001E40FL});
+    public static final BitSet FOLLOW_shiftExpression_in_synpred62_Mandarax2122 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_shiftOp_in_synpred66_Mandarax2230 = new BitSet(new long[]{0x81800010000003E0L,0x000000000001E40FL});
+    public static final BitSet FOLLOW_additiveExpression_in_synpred66_Mandarax2236 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_71_in_synpred67_Mandarax2265 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000080L});
+    public static final BitSet FOLLOW_71_in_synpred67_Mandarax2267 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_72_in_synpred68_Mandarax2301 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_72_in_synpred68_Mandarax2303 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_72_in_synpred68_Mandarax2305 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_72_in_synpred69_Mandarax2343 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_72_in_synpred69_Mandarax2345 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_set_in_synpred71_Mandarax2403 = new BitSet(new long[]{0x81800010000003E0L,0x000000000001E40FL});
+    public static final BitSet FOLLOW_multiplicativeExpression_in_synpred71_Mandarax2415 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_set_in_synpred74_Mandarax2455 = new BitSet(new long[]{0x81800010000003E0L,0x000000000001E40FL});
+    public static final BitSet FOLLOW_unaryExpression_in_synpred74_Mandarax2473 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_indomain_in_synpred78_Mandarax2590 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_castExpression_in_synpred80_Mandarax2620 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_functionInvocation_in_synpred82_Mandarax2652 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_methodInvocation_in_synpred83_Mandarax2668 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_propertyAccess_in_synpred84_Mandarax2684 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_objectref_in_synpred85_Mandarax2700 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_qualifiedName_in_synpred86_Mandarax2716 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parExpression_in_synpred87_Mandarax2732 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_36_in_synpred95_Mandarax3100 = new BitSet(new long[]{0x007F800000000020L});
+    public static final BitSet FOLLOW_primitiveType_in_synpred95_Mandarax3106 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_37_in_synpred95_Mandarax3108 = new BitSet(new long[]{0x81800010000003E0L,0x000000000001E40FL});
+    public static final BitSet FOLLOW_unaryExpression_in_synpred95_Mandarax3114 = new BitSet(new long[]{0x0000000000000002L});
 
 }

@@ -2,12 +2,13 @@
 package test.org.mandarax.compiler.reldef13;
 import test.org.mandarax.compiler.*;
 Person jens = new Person("Jens");
-Person max = new Person("Max");
+// max is a keyword used in aggregation!!
+Person maxd = new Person("Max");
 Person klaus = new Person("Klaus");
 Person otto = new Person("Otto");
 Person xiomara = new Person("Xiomara");
 rel Father(Person father,Person child) queries getFather(child),isFather(father,child),getChildren(father),getFatherAndChild() {
-	rule1: -> Father(jens,max);
+	rule1: -> Father(jens,maxd);
 	rule2: -> Father(jens,xiomara);
 	rule3: -> Father(klaus,jens);
 	rule4: -> Father(otto,klaus);

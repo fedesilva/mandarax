@@ -38,8 +38,26 @@ public class ParserTestsFlatExpressions extends AbstractTests {
 		print(expression);
 		assertTrue(expression instanceof StringLiteral);
 		StringLiteral x = (StringLiteral)expression;
-		System.out.println(org.apache.commons.lang.StringEscapeUtils.unescapeJava(x.getValue()));
+		//System.out.println(org.apache.commons.lang.StringEscapeUtils.unescapeJava(x.getValue()));
 		assertEquals("\"test\"",x.getValue());
+	}
+	// this is a keyword
+	@Test
+	public void testStringLiteral3() throws Exception {
+		Expression expression = readExpression("\"in\"");
+		print(expression);
+		assertTrue(expression instanceof StringLiteral);
+		StringLiteral x = (StringLiteral)expression;
+		assertEquals("in",x.getValue());
+	}
+	// this is a keyword
+	@Test
+	public void testStringLiteral4() throws Exception {
+		Expression expression = readExpression("\"min\"");
+		print(expression);
+		assertTrue(expression instanceof StringLiteral);
+		StringLiteral x = (StringLiteral)expression;
+		assertEquals("min",x.getValue());
 	}
 	
 	@Test

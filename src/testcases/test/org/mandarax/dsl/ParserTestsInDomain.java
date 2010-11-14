@@ -26,7 +26,7 @@ public class ParserTestsInDomain extends AbstractTests {
 	
 	@Test
 	public void testFunctionInvocation1() throws Exception {
-		Expression expression = readExpression("in(x,aSet)");
+		Expression expression = readExpression("x in aSet");
 		print(expression);
 		assertTrue(expression instanceof FunctionInvocation);
 		FunctionInvocation fi = (FunctionInvocation)expression;
