@@ -73,6 +73,15 @@ public class ExpressionStructurePrinter implements ASTVisitor {
 		d();
 		return true;
 	}
+	
+	@Override
+	public boolean visit(Aggregation x) {
+		i();
+		out.print(x.getFunction().name());
+		annotate(x);
+		d();
+		return true;
+	}
 
 	@Override
 	public boolean visit(ConditionalExpression x) {
@@ -222,6 +231,11 @@ public class ExpressionStructurePrinter implements ASTVisitor {
 
 	@Override
 	public void endVisit(UnaryExpression x) {
+		u();
+	}
+	
+	@Override
+	public void endVisit(Aggregation x) {
 		u();
 	}
 

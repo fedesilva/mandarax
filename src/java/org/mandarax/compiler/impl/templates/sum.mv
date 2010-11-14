@@ -1,0 +1,12 @@
+	static @{aggtype} _sum_{aggcounter++} (ResourceIterator<@{rel}> _rel) {
+		@{aggtype} _v = @{aggtypenull} ;
+		
+		while {_rel.hasNext()} {
+			_v = _v + _rel.@{aggfield};
+		}
+		_rel.close();
+		return _v;
+	}
+	
+	
+	

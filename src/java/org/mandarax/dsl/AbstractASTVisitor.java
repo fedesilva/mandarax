@@ -133,6 +133,11 @@ public class AbstractASTVisitor implements ASTVisitor {
 	}
 	
 	@Override
+	public boolean visit(Aggregation x) {
+		return true;
+	}
+	
+	@Override
 	public void endVisit(BinaryExpression x) {}
 
 	@Override
@@ -200,5 +205,8 @@ public class AbstractASTVisitor implements ASTVisitor {
 
 	@Override
 	public void endVisit(VariableDeclaration x) {}
+	
+	@Override
+	public void endVisit(Aggregation x) {}
 	
 }

@@ -354,6 +354,11 @@ functionInvocation returns [Expression value]
     :   f = Identifier  '(' (p = commaSeparatedExpressionList)? ')' {$value = new FunctionInvocation(pos(f),context,f.getText(),p==null?new ArrayList<Expression>():p.values);}     
     ;
     
+// TODO  integrate    
+//aggregation returns [Expression value] 
+//    :   f = ('avg' | 'sum' | 'max' | 'min' | 'count') v = Identifier 'in' rel=functionInvocation {$value = new Aggregation(pos(f),context,f.getText(),v.getText(),(FunctionInvocation)rel.value);}
+//    ; 	    
+    
 constructorInvocation returns [Expression value] 
     :   n = 'new' f = qualifiedName2  '(' (p = commaSeparatedExpressionList)? ')' {$value = new ConstructorInvocation(pos(n),context,f.value,p==null?new ArrayList<Expression>():p.values);}     
     ;

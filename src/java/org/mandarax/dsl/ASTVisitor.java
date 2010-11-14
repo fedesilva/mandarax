@@ -39,6 +39,7 @@ public interface ASTVisitor {
 	public boolean visit(FunctionInvocation x);
 	public boolean visit(ConstructorInvocation x);
 	public boolean visit(NullValue x);
+	public boolean visit(Aggregation x);
 	
 	public void endVisit(CompilationUnit x);
 	public void endVisit(RelationshipDefinition x);
@@ -63,5 +64,6 @@ public interface ASTVisitor {
 	public void endVisit(FunctionInvocation x);
 	public void endVisit(ConstructorInvocation x);
 	public void endVisit(NullValue x);
+	public void endVisit(Aggregation x);
 	
 }

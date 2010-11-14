@@ -1,0 +1,12 @@
+	static @{aggtype} _count_{aggcounter++} (ResourceIterator<@{rel}> _rel) {
+		int _v = 0 ;
+		
+		while {_rel.hasNext()} {
+			_v = _v+1;
+		}
+		_rel.close();
+		return _v;
+	}
+	
+	
+	

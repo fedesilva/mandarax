@@ -1,0 +1,14 @@
+	static @{aggtype} _min_{aggcounter++} (ResourceIterator<@{rel}> _rel) {
+		@{aggtype} _v = @{aggtypenull} ;
+		
+		while {_rel.hasNext()} {
+			@if{isNumericAggtype}if (_rel.@{aggfield} < _v) {_v = _rel.@{aggfield}};
+			@else{} if (_rel.@{aggfield}.compareTo(_v)<0) {_v = _rel.@{aggfield}}
+			@end
+		}
+		_rel.close();
+		return _v;
+	}
+	
+	
+	

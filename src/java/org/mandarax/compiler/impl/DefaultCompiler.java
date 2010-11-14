@@ -467,6 +467,7 @@ public class DefaultCompiler implements Compiler {
 			@Override public boolean visit(CompilationUnit x) {return true;}
 			@Override public boolean visit(RelationshipDefinition x) {return true;}
 			@Override public boolean visit(BinaryExpression x) {return setType(x);}
+			@Override public boolean visit(Aggregation x) {return setType(x);}
 			@Override public boolean visit(BooleanLiteral x) {return setType(x);}
 			@Override public boolean visit(CastExpression x) {return setType(x);}
 			@Override public boolean visit(ConditionalExpression x) {return setType(x);}
@@ -503,7 +504,7 @@ public class DefaultCompiler implements Compiler {
 			@Override public void endVisit(FunctionInvocation x) { }
 			@Override public void endVisit(ConstructorInvocation x) { }
 			@Override public void endVisit(NullValue x) { }
-			
+			@Override public void endVisit(Aggregation x) { }
 		};
 		rule.accept(visitor);
 		
