@@ -112,6 +112,7 @@ public class ExpressionPrinter {
 	
 	protected void doPrint(Aggregation x) throws IOException {
 		out.append(x.getFunction().name());
+		out.append(" ");
 		print(x.getVariable());
 		out.append(" in ");
 		print(x.getExpression());

@@ -12,8 +12,11 @@
 package org.mandarax.dsl;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Represents an aggregation. 
@@ -117,5 +120,17 @@ public class Aggregation extends Expression {
 		return true;
 	}
 
+	/**
+	 * Indicates whether this expression is constructed from a list of given expressions. 
+	 * @param boundExpressions
+	 * @return
+	 */
+	public boolean isGroundWRT(Collection<Expression> boundExpressions) {
+		// as we quantify over the variable in the aggregation, we can add it to bound expressions
+		Set<Expression> boundExpr = new HashSet<Expression>();
+		boundExpr.addAll(boundExpressions);
+		boundExpr.add(this.variable);
+		return this.expression.isGroundWRT(boundExpr);
+	}
 
 }

@@ -53,6 +53,7 @@ public class GenerateCodeForTesting {
 		compile(new File("src/testcases/test/org/mandarax/compiler/reldefFactorial.rel"));
 		compile(new File("src/testcases/test/org/mandarax/compiler/reldefRList.rel"));
 		compile(new File("src/testcases/test/org/mandarax/compiler/reldefInDomain1.rel"));
+		compile(new File("src/testcases/test/org/mandarax/compiler/reldefAggregation1.rel"));
 	}
 
 	private static void compile(File file) throws Exception {

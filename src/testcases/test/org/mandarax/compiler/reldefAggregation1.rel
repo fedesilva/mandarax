@@ -1,0 +1,20 @@
+package test.org.mandarax.compiler.aggregation1;
+
+import test.org.mandarax.compiler.*;
+
+rel Transaction(String customer,int value) queries getTransactions(customer),getAll() {
+	fact1: -> Transaction("Jens",42);
+	fact2: -> Transaction("Jens",80);
+	fact3: -> Transaction("Jens",99);
+	fact4: -> Transaction("Max",16);
+	fact5: -> Transaction("Max",22);
+	fact6: -> Transaction("Yadi",1200);
+}
+
+rel Discount(String customer,int discount) queries getDiscount(customer) {
+	rule1: (max d in Transaction(c,d)) > 1000 -> Discount(c,30);
+	rule2: (avg d in Transaction(c,d)) > 50 -> Discount(c,20);
+	rule3: (sum d in Transaction(c,d)) > 30 -> Discount(c,10);
+	rule4: 3< (count d in Transaction(c,d)) -> Discount(c,10);
+}
+

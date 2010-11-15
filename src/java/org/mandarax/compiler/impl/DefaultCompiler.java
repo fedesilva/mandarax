@@ -376,11 +376,28 @@ public class DefaultCompiler implements Compiler {
 			}
 		}
 		// body
+		// we can infer type information from top level function invocations when the reference rels
+		// and embedded function invocations in aggregations (also ref rels)
+		final List<Expression> expressions = new ArrayList<Expression>();
 		for (Expression expression:rule.getBody()) {
+			expressions.add(expression);
+			ASTVisitor aggregationFinder = new AbstractASTVisitor() {
+				@Override
+				public boolean visit(Aggregation x) {
+					expressions.add(x.getExpression());
+					return true; // check: do we allow that aggregations can be nested ? 
+				}
+			};
+			expression.accept(aggregationFinder);
+			
+		}
+		for (Expression expression:expressions) {
 			RelationshipDefinition rel2 = null;
 			for (Variable var:expression.getVariables()) {
 				if (!varTypeMap.containsKey(var)) {
 					int pos = -1;
+					// TODO: test with function invocations that are not based on relationships
+					// TODO: we must also infer type information for embedded references to rels - this is needed when dealing with aggregations
 					if (expression instanceof FunctionInvocation) {
 						FunctionInvocation fi = (FunctionInvocation)expression;
 						rel2 = this.findRelationshipDefinition(cus,fi.getFunction(),fi.getParameters().size());
