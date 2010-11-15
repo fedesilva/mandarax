@@ -1,5 +1,5 @@
 	@code{import org.mandarax.dsl.*;import org.mandarax.compiler.impl.*;}
-	@code{ctrl=new VariableBindings(context,(rel.name)+ext+'Instances');scheduler=new Scheduler(resolver,rule,query);rule=scheduler.rule;head=rule.head;body=scheduler.prerequisites;hterms=head.parameters;counter=new Counter();lastPrereq=null;ctrl.bind(head,query);}
+	@code{ctrl=new VariableBindings(context,(rel.name)+ext+'Instances');scheduler=new Scheduler(resolver,rule,query,aggcounter);rule=scheduler.rule;head=rule.head;body=scheduler.prerequisites;hterms=head.parameters;counter=new Counter();lastPrereq=null;ctrl.bind(head,query);}
 		
 		// utility class used to keep track of variables bindings
 		// rule: @{rule}

@@ -221,9 +221,14 @@ public class Prereq {
 		ExpressionPrinter printer = new ExpressionPrinter(app) {
 			@Override
 			protected void doPrint(Variable var) throws IOException {
-				out.append(scope);
-				out.append('.');
-				out.append(var.getName());
+				if (var.getProperty(Scheduler.TYPE_NAME)!=null && ((Boolean)var.getProperty(Scheduler.TYPE_NAME)).booleanValue()) {
+					out.append(var.getName());
+				}
+				else {
+					out.append(scope);
+					out.append('.');
+					out.append(var.getName());
+				}
 			}
 			// special printing for equals
 			@Override

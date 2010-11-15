@@ -23,11 +23,17 @@ import java.util.List;
 import java.util.Map;
 import org.apache.log4j.Logger;
 import org.mandarax.compiler.CompilerException;
+import org.mandarax.dsl.ASTVisitor;
+import org.mandarax.dsl.AbstractASTVisitor;
+import org.mandarax.dsl.Aggregation;
 import org.mandarax.dsl.BinOp;
 import org.mandarax.dsl.BinaryExpression;
 import org.mandarax.dsl.Expression;
 import org.mandarax.dsl.FunctionDeclaration;
+import org.mandarax.dsl.MemberAccess;
 import org.mandarax.dsl.ObjectDeclaration;
+import org.mandarax.dsl.Position;
+import org.mandarax.dsl.RelationshipDefinition;
 import org.mandarax.dsl.Rule;
 import org.mandarax.dsl.FunctionInvocation;
 import org.mandarax.dsl.Variable;
@@ -46,6 +52,8 @@ public class Scheduler {
 	
 	public static org.apache.log4j.Logger LOGGER = Logger.getLogger(Scheduler.class);
 	public static final String ASSERTED_BY_COMPILER = "asserted_by_compiler" ;
+	public static final String ASSERTED_BY_COMPILER_FOR_AGGREGATION = "asserted_by_compiler_for_aggregation" ;
+	public static final String TYPE_NAME = "type_name" ; // used to mark variables as type names
 	private Resolver resolver = null;
 	private Rule originalRule = null;
 	private Rule rule = null;
@@ -68,15 +76,19 @@ public class Scheduler {
 	// the expression in the body currently investigated
 	private Expression selected = null;
 	
+	// the counter generator, used to generate references to aggregation functions
+	private Counter aggCounter = null;
+	
 	private int counter=0;
 	
-	public Scheduler(Resolver resolver,Rule rule,FunctionDeclaration query) throws CompilerException {
+	public Scheduler(Resolver resolver,Rule rule,FunctionDeclaration query,Counter aggCounter) throws CompilerException {
 		super();
 		this.resolver = resolver;
 		this.rule = rule;
 		this.originalRule = rule;
 		this.query = query;
 		this.prereqs = new ArrayList<Prereq>(rule.getBody().size());
+		this.aggCounter = aggCounter;
 		
 		schedule();
 	}
@@ -207,10 +219,11 @@ public class Scheduler {
 	}
 
 	// add the prereqs for which all variables are known
-	private Prereq addAllResolved(List<Expression> body, Prereq last) {
+	private Prereq addAllResolved(List<Expression> body, Prereq last) throws CompilerException {
 		for (Iterator<Expression> iter = body.iterator();iter.hasNext();) {
 			Expression expression = iter.next();
 			if (expression.isGroundWRT(boundVariables)) {
+				expression = substituteAggregation(expression);
 				selected=expression;
 				Prereq prereq = new Prereq();
 				prereq.setPrevious(last);
@@ -352,6 +365,65 @@ public class Scheduler {
 	}
 	private boolean isNegRel(Expression x) {
 		return (x instanceof FunctionInvocation && ((FunctionInvocation)x).isNaf()) ;
+	}
+	
+	
+	private Expression substituteAggregation(Expression expression) throws CompilerException {
+		// find aggregations
+		final Collection<Aggregation> aggregations = new HashSet<Aggregation>();
+		ASTVisitor aggFinder = new AbstractASTVisitor() {
+			@Override
+			public boolean visit(Aggregation x) {
+				aggregations.add(x);
+				return super.visit(x);
+			}
+		};
+		expression.accept(aggFinder);
+		if (aggregations.isEmpty()) return expression;
+		
+		Map<Expression,Expression> substitutions = new HashMap<Expression,Expression>();
+		for (Aggregation agg:aggregations) {
+			RelationshipDefinition rel = agg.getExpression().getRelationship();
+			int aggSlot = -1;
+			boolean[] sign = new boolean[rel.getSlotDeclarations().size()];
+			List<Expression> parameters = new ArrayList<Expression>();
+			for (int i=0;i<sign.length;i++) {
+				Expression term = agg.getExpression().getParameters().get(i);
+				if (term.equals(agg.getVariable())) {
+					sign[i] = false;
+					aggSlot = i;
+				}
+				else {
+					sign[i] = term.isGroundWRT(this.boundVariables);
+					if (sign[i]) {
+						parameters.add(term);
+					}
+				}
+			}
+			if (rel==null) throw new CompilerException("Function in aggregation " + agg + " does not reference relationship");
+			
+			FunctionDeclaration query = rel.getQuery(sign);
+			
+			String relInstanceClass = rel.getName() + DefaultCompiler.TYPE_EXTENSION + "Instances";
+			Variable classRef = new Variable(Position.NO_POSITION,expression.getContext(),relInstanceClass);
+			classRef.setProperty(TYPE_NAME, true);
+			MemberAccess innerTerm = new MemberAccess(Position.NO_POSITION,expression.getContext(),classRef,query.getName(),parameters);
+			innerTerm.setProperty(ASSERTED_BY_COMPILER_FOR_AGGREGATION, true);
+			
+			List<Expression> parameters2 = new ArrayList<Expression>(1);
+			parameters2.add(innerTerm);
+			
+			// generate agg function name: 
+			String aggName = agg.getFunction().name();
+			String aggFunctName = "_" + aggName + "_" + this.aggCounter.getNext(aggName);
+			
+			
+			FunctionInvocation fi = new FunctionInvocation(Position.NO_POSITION,expression.getContext(),aggFunctName,parameters2);
+			fi.setProperty(ASSERTED_BY_COMPILER_FOR_AGGREGATION, true);
+			substitutions.put(agg, fi);
+		}
+
+		return expression.substitute(substitutions);
 	}
 	
 

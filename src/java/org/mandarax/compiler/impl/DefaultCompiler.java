@@ -46,7 +46,7 @@ public class DefaultCompiler implements Compiler {
 	private Verifier verifier = new VerifyAll();
 	private VerificationErrorReporter verificationErrorReporter = new DefaultVerificationErrorReporter();
 	private Resolver resolver = new DefaultResolver();
-	public static String TYPE_EXTENSION = "Rel";
+	static String TYPE_EXTENSION = "Rel";
 
 	@Override
 	public void compile(Location target, CompilationMode mode, URL... urls) throws MandaraxException {
@@ -300,6 +300,7 @@ public class DefaultCompiler implements Compiler {
 		bindings.put("packageName",packageName);
 		bindings.put("ruleIndices",getIndices(rel.getRules()));
 		bindings.put("resolver",resolver);
+		bindings.put("aggcounter",new Counter());
 		
 		String generated = (String) TemplateRuntime.execute(getTemplate(RELATIONSHIP_QUERY_IMPLEMENTATION), bindings,Templates.registry);
 		printGeneratedCode(cu,target,rel.getName()+TYPE_EXTENSION+"Instances",generated);
