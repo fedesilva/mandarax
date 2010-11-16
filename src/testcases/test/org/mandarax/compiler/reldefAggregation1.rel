@@ -17,5 +17,6 @@ rel Discount(String customer,int discount) queries getDiscount(customer) {
 	rule2: (avg d in Transaction(c,d)) > 50 -> Discount(c,20);
 	rule3: (sum d in Transaction(c,d)) > 30 -> Discount(c,10);
 	rule4: 2< (count d in Transaction(c,d)) -> Discount(c,5);
+	rule5: 10< (min d in Transaction(c,d)) -> Discount(c,3);
 }
 

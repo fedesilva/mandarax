@@ -2,7 +2,7 @@ package test.org.mandarax.compiler.reldef4;
 
 /**
  * Class representing the relationship <strong>GrandFather</strong>.
- * @version Nov 16, 2010 4:04:07 PM 
+ * @version Nov 16, 2010 10:05:50 PM 
  */
 public class GrandFatherRel {
 

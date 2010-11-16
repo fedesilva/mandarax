@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>Discount</strong>.
- * @version Nov 16, 2010 4:04:09 PM 
+ * @version Nov 16, 2010 10:05:51 PM 
  */
 public class DiscountRelInstances {
 	// object references
@@ -25,6 +25,9 @@ public class DiscountRelInstances {
 	
 	// rule: rule4: 2<(count d in Transaction(c,d)) -> Discount(c,5);
 	private final static java.util.Properties _annotations_rule4 = new java.util.Properties();
+	
+	// rule: rule5: 10<(min d in Transaction(c,d)) -> Discount(c,3);
+	private final static java.util.Properties _annotations_rule5 = new java.util.Properties();
 	
 	
 	// initialise annotations
@@ -52,6 +55,12 @@ public class DiscountRelInstances {
 		// rule annotations for rule  rule4: 2<(count d in Transaction(c,d)) -> Discount(c,5);
 		
 		
+	
+		// relationship annotations for rule  rule5: 10<(min d in Transaction(c,d)) -> Discount(c,3);
+		
+		// rule annotations for rule  rule5: 10<(min d in Transaction(c,d)) -> Discount(c,3);
+		
+		
 	}
 		
 	
@@ -69,7 +78,7 @@ public class DiscountRelInstances {
 	 
 	static ResourceIterator<DiscountRel> getDiscount ( final DerivationController _derivation ,  final String customer  ) {
 		final int _derivationlevel = _derivation.size();
-		return new IteratorChain<DiscountRel>(4) {
+		return new IteratorChain<DiscountRel>(5) {
 			
 			public ResourceIterator<DiscountRel> getNextIterator(int pos) {
 			switch (pos) {
@@ -92,6 +101,11 @@ public class DiscountRelInstances {
                 		case 3: {
                 			// invoke rule4: 2<(count d in Transaction(c,d)) -> Discount(c,5);
                 			return getDiscount_3(_derivation.pop(_derivationlevel) ,  customer );
+                		}
+				
+                		case 4: {
+                			// invoke rule5: 10<(min d in Transaction(c,d)) -> Discount(c,3);
+                			return getDiscount_4(_derivation.pop(_derivationlevel) ,  customer );
                 		}
 				
 				default: return EmptyIterator.DEFAULT;
@@ -327,6 +341,62 @@ public class DiscountRelInstances {
 	
 
 	}
+	// rule: rule5: 10<(min d in Transaction(c,d)) -> Discount(c,3);
+	private static ResourceIterator<DiscountRel> getDiscount_4 (final DerivationController _derivation ,  final String customer ) {
+		
+		_derivation.log("Discount.rule5", DerivationController.RULE, _annotations_rule5);
+		
+			
+	
+		
+		// utility class used to keep track of variables bindings
+		// rule: rule5: 10<(min d in Transaction(c,d)) -> Discount(c,3);
+		// prereqs: [10<(_min_0(TransactionRelInstances.getTransactions(c)))]
+		class _Bindings {
+			private java.lang.String c = customer;
+			private int d = 0;
+		}
+		final _Bindings _bindings = new _Bindings();
+		ResourceIterator<?> _tmp = null;
+		
+		 
+		
+		
+		
+		 
+		// check conditions	
+		boolean _checkfailed = false;
+		
+		
+		
+		if (_checkfailed) {
+			return EmptyIterator.DEFAULT;
+		}
+		
+		
+
+		 
+		
+		
+		
+		// apply prerequisite 10<(_min_0(TransactionRelInstances.getTransactions(c)))
+		
+		
+		 // case 4
+					if (!(10<(_min_0(TransactionRelInstances.getTransactions(_bindings.c))))) {return EmptyIterator.DEFAULT;} 
+					
+		
+		
+		// rule head
+		
+		return new SingletonIterator(new DiscountRel(_bindings.c,3));
+        
+		
+		
+		
+	
+
+	}
 	
 	
 	// methods representing aggregation functions
@@ -406,6 +476,34 @@ public class DiscountRelInstances {
 		_rel.close();
 		return _v;
 	}
+
+	
+	 
+	
+	
+	
+	// agg _min_0(TransactionRelInstances.getTransactions(c)) type is min
+	 	static int _min_0 (ResourceIterator<TransactionRel> _rel) {
+		int _v = 0 ;
+		boolean f = true;
+		while (_rel.hasNext()) {
+		    TransactionRel _c = _rel.next();
+		    if (f) {
+		    	_v = _c.value;
+		    	
+		    	f = false;
+		    }
+		    else {
+				if (_c.value < _v) {_v = _c.value;}
+				
+			}
+		}
+		_rel.close();
+		return _v;
+	}
+	
+	
+	
 
 	
 	

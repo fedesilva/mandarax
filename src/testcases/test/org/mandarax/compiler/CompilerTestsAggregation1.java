@@ -36,6 +36,7 @@ public class CompilerTestsAggregation1 {
 //		rule2: (avg d in Transaction(c,d)) > 50 -> Discount(c,20);
 //		rule3: (sum d in Transaction(c,d)) > 30 -> Discount(c,10);
 //		rule4: 2< (count d in Transaction(c,d)) -> Discount(c,5);
+//		rule5: 10< (min d in Transaction(c,d)) -> Discount(c,3);
 //	}
 	
 	@Test
@@ -48,6 +49,8 @@ public class CompilerTestsAggregation1 {
 		assertEquals(10,rs.next().discount); // rule3
 		assertTrue(rs.hasNext());
 		assertEquals(5,rs.next().discount); // rule4
+		assertTrue(rs.hasNext());
+		assertEquals(3,rs.next().discount);
 		assertFalse(rs.hasNext());
 	}
 	
@@ -72,6 +75,8 @@ public class CompilerTestsAggregation1 {
 		assertEquals(20,rs.next().discount); // rule2
 		assertTrue(rs.hasNext());
 		assertEquals(10,rs.next().discount); // rule3
+		assertTrue(rs.hasNext());
+		assertEquals(3,rs.next().discount);
 		assertFalse(rs.hasNext());
 	}
 	
