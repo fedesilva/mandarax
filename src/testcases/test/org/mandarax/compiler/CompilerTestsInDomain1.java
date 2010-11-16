@@ -63,40 +63,38 @@ public class CompilerTestsInDomain1 {
 	}
 	@Test
 	public void test1() throws Exception {		
-		DiscountRelInstances store = new DiscountRelInstances();
 		
 		// important: must set iterable
-		store.specialCustomers = specialCustomers;
+		DiscountRelInstances.specialCustomers = specialCustomers;
 
-		ResultSet<DiscountRel> rs = store.getAll();
+		ResultSet<DiscountRel> rs = DiscountRelInstances.getAll();
 		
 		DiscountRel rel = rs.next();
 		assertEquals(rel.customer,chris);
-		assertEquals(rel.discount,store.specialDiscount);
+		assertEquals(rel.discount,DiscountRelInstances.specialDiscount);
 		
 		rel = rs.next();
 		assertEquals(rel.customer,dan);
-		assertEquals(rel.discount,store.specialDiscount);
+		assertEquals(rel.discount,DiscountRelInstances.specialDiscount);
 		
 		rel = rs.next();
 		assertEquals(rel.customer,john);
-		assertEquals(rel.discount,store.specialDiscount);
+		assertEquals(rel.discount,DiscountRelInstances.specialDiscount);
 		
 		assertFalse(rs.hasNext());
 	}
 	
 	@Test
 	public void test2() throws Exception {		
-		DiscountRelInstances store = new DiscountRelInstances();
 		
 		// important: must set iterable
-		store.specialCustomers = specialCustomers;
+		DiscountRelInstances.specialCustomers = specialCustomers;
 
-		ResultSet<DiscountRel> rs = store.getDiscount(john);
+		ResultSet<DiscountRel> rs = DiscountRelInstances.getDiscount(john);
 		
 		DiscountRel rel = rs.next();
 		assertEquals(rel.customer,john);
-		assertEquals(rel.discount,store.specialDiscount);
+		assertEquals(rel.discount,DiscountRelInstances.specialDiscount);
 		
 		assertFalse(rs.hasNext());
 	}

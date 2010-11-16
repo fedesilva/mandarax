@@ -28,7 +28,7 @@ public class CompilerTests5 {
 	public void test1() throws Exception {
 		Person max = new Person("Max");
 		Person klaus = new Person("Klaus");
-		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().isGrandFather(klaus,max);
+		ResultSet<GrandFatherRel> rs = GrandFatherRelInstances.isGrandFather(klaus,max);
 		
 		GrandFatherRel gf = rs.next();
 		assertEquals(max,gf.grandChild);
@@ -39,13 +39,13 @@ public class CompilerTests5 {
 	
 	@Test
 	public void test2() throws Exception {
-		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().isGrandFather(new Person("Jens"),new Person("Max"));
+		ResultSet<GrandFatherRel> rs = GrandFatherRelInstances.isGrandFather(new Person("Jens"),new Person("Max"));
 		assertFalse(rs.hasNext());
 	}
 
 	@Test
 	public void test3() throws Exception {
-		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().isGrandFather(new Person("Klaus"),new Person("Jens"));
+		ResultSet<GrandFatherRel> rs = GrandFatherRelInstances.isGrandFather(new Person("Klaus"),new Person("Jens"));
 		assertFalse(rs.hasNext());
 	}
 	

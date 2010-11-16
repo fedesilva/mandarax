@@ -46,25 +46,25 @@ public class CompilerTests11 {
 	
 	@Test
 	public void test1() throws Exception {
-		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().getAll();
+		ResultSet<GrandFatherRel> rs = GrandFatherRelInstances.getAll();
 		assertTrue(contains(rs,"Klaus","Max"));	
 	}
 	
 	@Test
 	public void test2() throws Exception {
-		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().getAll();
+		ResultSet<GrandFatherRel> rs = GrandFatherRelInstances.getAll();
 		assertTrue(contains(rs,"Otto","Jens"));	
 	}
 	
 	@Test
 	public void test3() throws Exception {
-		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().getAll();
+		ResultSet<GrandFatherRel> rs = GrandFatherRelInstances.getAll();
 		assertFalse(contains(rs,"Jens","Otto"));	
 	}
 	
 	@Test
 	public void test4() throws Exception {
-		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().getAll();
+		ResultSet<GrandFatherRel> rs = GrandFatherRelInstances.getAll();
 		assertFalse(contains(rs,"Jens","Max"));	
 	}
 	
@@ -97,28 +97,28 @@ public class CompilerTests11 {
 
 	@Test
 	public void test5() throws Exception {
-		ResultSet<FatherRel> rs = new FatherRelInstances().getFatherAndChild();
+		ResultSet<FatherRel> rs = FatherRelInstances.getFatherAndChild();
 		assertTrue(contains(rs,jens,max));	
 	}
 	@Test
 	public void test6() throws Exception {
-		ResultSet<FatherRel> rs = new FatherRelInstances().getFatherAndChild();
+		ResultSet<FatherRel> rs = FatherRelInstances.getFatherAndChild();
 		assertTrue(contains(rs,klaus,jens));	
 	}
 	@Test
 	public void test7() throws Exception {
-		ResultSet<FatherRel> rs = new FatherRelInstances().getFatherAndChild();
+		ResultSet<FatherRel> rs = FatherRelInstances.getFatherAndChild();
 		assertFalse(contains(rs,jens,klaus));	
 	}
 	@Test
 	public void test8() throws Exception {
-		ResultSet<FatherRel> rs = new FatherRelInstances().getFatherAndChild();
+		ResultSet<FatherRel> rs = FatherRelInstances.getFatherAndChild();
 		assertFalse(contains(rs,klaus,max));	
 	}
 	
 	@Test
 	public void test9() throws Exception {
-		ResultSet<FatherRel> rs = new FatherRelInstances().getFatherAndChild();
+		ResultSet<FatherRel> rs = FatherRelInstances.getFatherAndChild();
 		int c = count(rs);
 		assertEquals(4,c);
 		assertFalse(rs.hasNext());
@@ -126,7 +126,8 @@ public class CompilerTests11 {
 	
 	@Test
 	public void test10() throws Exception {
-		ResultSet<FatherRel> rs = new FatherRelInstances().getChildren(max);
+		new FatherRelInstances();
+		ResultSet<FatherRel> rs = FatherRelInstances.getChildren(max);
 		assertFalse(rs.hasNext());
 	}
 }

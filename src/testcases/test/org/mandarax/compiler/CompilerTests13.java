@@ -40,31 +40,31 @@ public class CompilerTests13 {
 	
 	@Test
 	public void test1() throws Exception {
-		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().getGrandChildren("Klaus");
+		ResultSet<GrandFatherRel> rs = GrandFatherRelInstances.getGrandChildren("Klaus");
 		assertFalse(contains(rs,"Max"));	
 	}
 	
 	@Test
 	public void test2() throws Exception {
-		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().getGrandChildren("Klaus");
+		ResultSet<GrandFatherRel> rs = GrandFatherRelInstances.getGrandChildren("Klaus");
 		assertFalse(contains(rs,"Xiomara"));	
 	}
 	
 	@Test
 	public void test3() throws Exception {
-		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().getGrandChildren("Otto");
+		ResultSet<GrandFatherRel> rs = GrandFatherRelInstances.getGrandChildren("Otto");
 		assertTrue(contains(rs,"Jens"));	
 	}
 	
 	@Test
 	public void test4() throws Exception {
-		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().getGrandChildren("Jens");
+		ResultSet<GrandFatherRel> rs = GrandFatherRelInstances.getGrandChildren("Jens");
 		assertFalse(contains(rs,"Otto"));	
 	}
 	
 	@Test
 	public void test5() throws Exception {
-		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().getGrandChildren("Jens");
+		ResultSet<GrandFatherRel> rs = GrandFatherRelInstances.getGrandChildren("Jens");
 		
 		while (rs.hasNext()) {
 			GrandFatherRel next = rs.next();
@@ -73,7 +73,7 @@ public class CompilerTests13 {
 			System.out.println(next.grandChild);
 		}
 		
-		rs = new GrandFatherRelInstances().getGrandChildren("Jens");
+		rs = GrandFatherRelInstances.getGrandChildren("Jens");
 		assertFalse(contains(rs,"Max"));	
 	}
 	

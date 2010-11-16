@@ -53,31 +53,31 @@ public class CompilerTestsNAF1 {
 	
 	@Test
 	public void test1() throws Exception {
-		ResultSet<OrphanRel> rs = new OrphanRelInstances().isOrphan(m3);
+		ResultSet<OrphanRel> rs = OrphanRelInstances.isOrphan(m3);
 		assertTrue(rs.hasNext());	
 	}
 	
 	@Test
 	public void test2() throws Exception {
-		ResultSet<OrphanRel> rs = new OrphanRelInstances().isOrphan(m2);
+		ResultSet<OrphanRel> rs = OrphanRelInstances.isOrphan(m2);
 		assertFalse(rs.hasNext());	 // has father !
 	}
 
 	@Test
 	public void test3() throws Exception {
-		ResultSet<OrphanRel> rs = new OrphanRelInstances().isOrphan(m1);
+		ResultSet<OrphanRel> rs = OrphanRelInstances.isOrphan(m1);
 		assertFalse(rs.hasNext());	 //too old
 	}
 	
 	@Test
 	public void test4() throws Exception {
-		ResultSet<SemiOrphanRel> rs = new SemiOrphanRelInstances().isSemiOrphan(m3);
+		ResultSet<SemiOrphanRel> rs = SemiOrphanRelInstances.isSemiOrphan(m3);
 		assertFalse(rs.hasNext());	 // is full orphan
 	}
 	
 	@Test
 	public void test5() throws Exception {
-		ResultSet<SemiOrphanRel> rs = new SemiOrphanRelInstances().isSemiOrphan(m2);
+		ResultSet<SemiOrphanRel> rs = SemiOrphanRelInstances.isSemiOrphan(m2);
 		assertTrue(rs.hasNext());	
 	}
 

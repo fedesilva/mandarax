@@ -30,19 +30,19 @@ public class CompilerTestsFactorial {
 	
 	@Test
 	public void test1() throws Exception {
-		ResultSet<FactorialRel> rs = new FactorialRelInstances().isFactorial(4, 24);
+		ResultSet<FactorialRel> rs = FactorialRelInstances.isFactorial(4, 24);
 		assertTrue(rs.hasNext());	
 	}
 	
 	@Test
 	public void test2() throws Exception {
-		ResultSet<FactorialRel> rs = new FactorialRelInstances().isFactorial(5, 120);
+		ResultSet<FactorialRel> rs = FactorialRelInstances.isFactorial(5, 120);
 		assertTrue(rs.hasNext());	
 	}
 	
 	@Test
 	public void test3() throws Exception {
-		ResultSet<FactorialRel> rs = new FactorialRelInstances().getFactorial(0);
+		ResultSet<FactorialRel> rs = FactorialRelInstances.getFactorial(0);
 		
 		assertEquals(1,rs.next().f);	
 		//assertFalse(rs.hasNext());
@@ -50,7 +50,7 @@ public class CompilerTestsFactorial {
 	
 	@Test
 	public void test4() throws Exception {
-		ResultSet<FactorialRel> rs = new FactorialRelInstances().getFactorial(4);
+		ResultSet<FactorialRel> rs = FactorialRelInstances.getFactorial(4);
 		
 		assertEquals(24,rs.next().f);	
 		//assertFalse(rs.hasNext());
@@ -58,7 +58,7 @@ public class CompilerTestsFactorial {
 	
 	@Test
 	public void test5() throws Exception {
-		ResultSet<FactorialRel> rs = new FactorialRelInstances().getFactorial(5);
+		ResultSet<FactorialRel> rs = FactorialRelInstances.getFactorial(5);
 		
 		assertEquals(120,rs.next().f);	
 		//assertFalse(rs.hasNext());

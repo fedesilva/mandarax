@@ -53,7 +53,7 @@ public class CompilerTests7 {
 		customer.setTransactionCount(5);
 		customer.setTurnover(1200);
 		
-		ResultSet<DiscountRel> rs = new DiscountRelInstances().getDiscount(customer);
+		ResultSet<DiscountRel> rs = DiscountRelInstances.getDiscount(customer);
 		
 		DiscountRel discount = rs.next(); // gold discount
 		assertEquals(20,discount.discount.getValue());

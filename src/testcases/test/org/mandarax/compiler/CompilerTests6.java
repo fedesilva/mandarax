@@ -42,7 +42,7 @@ public class CompilerTests6 {
 		customer.setTransactionCount(5);
 		customer.setTurnover(1200);
 		
-		ResultSet<test.org.mandarax.compiler.reldef6.DiscountRel> rs = new DiscountRelInstances().getDiscount(customer);
+		ResultSet<test.org.mandarax.compiler.reldef6.DiscountRel> rs = DiscountRelInstances.getDiscount(customer);
 		
 		DiscountRel discount = rs.next(); // gold discount
 		assertEquals(20,discount.discount.getValue());
@@ -62,7 +62,7 @@ public class CompilerTests6 {
 		customer.setTransactionCount(6);
 		customer.setTurnover(300);
 		
-		ResultSet<DiscountRel> rs = new DiscountRelInstances().getDiscount(customer);
+		ResultSet<DiscountRel> rs = DiscountRelInstances.getDiscount(customer);
 		
 		DiscountRel discount = rs.next(); // silver
 		assertEquals(10,discount.discount.getValue());
@@ -78,7 +78,7 @@ public class CompilerTests6 {
 		customer.setTransactionCount(2);
 		customer.setTurnover(100);
 		
-		ResultSet<DiscountRel> rs = new DiscountRelInstances().getDiscount(customer);
+		ResultSet<DiscountRel> rs = DiscountRelInstances.getDiscount(customer);
 		
 		DiscountRel discount = rs.next(); // silver
 		assertEquals(5,discount.discount.getValue());
@@ -95,7 +95,7 @@ public class CompilerTests6 {
 		customer.setTransactionCount(5);
 		customer.setTurnover(1200);
 		
-		ResultSet<DiscountRel> rs = new DiscountRelInstances().getDiscount(customer);
+		ResultSet<DiscountRel> rs = DiscountRelInstances.getDiscount(customer);
 		
 		DiscountRel discount = rs.next(); // gold discount
 		assertEquals(20,discount.discount.getValue());
@@ -117,7 +117,7 @@ public class CompilerTests6 {
 		
 		Discount goldDiscount = new Discount(20,true);
 		
-		ResultSet<DiscountRel> rs = new DiscountRelInstances().qualifiesForDiscount(customer,goldDiscount);
+		ResultSet<DiscountRel> rs = DiscountRelInstances.qualifiesForDiscount(customer,goldDiscount);
 		assertTrue(rs.hasNext());
 	}
 	
@@ -130,7 +130,7 @@ public class CompilerTests6 {
 		
 		Discount silverDiscount = new Discount(10,true);
 		
-		ResultSet<DiscountRel> rs = new DiscountRelInstances().qualifiesForDiscount(customer,silverDiscount);
+		ResultSet<DiscountRel> rs = DiscountRelInstances.qualifiesForDiscount(customer,silverDiscount);
 		assertTrue(rs.hasNext());
 	}
 	
@@ -143,7 +143,7 @@ public class CompilerTests6 {
 		
 		Discount silverDiscount = new Discount(10,true);
 		
-		ResultSet<DiscountRel> rs = new DiscountRelInstances().qualifiesForDiscount(customer,silverDiscount);
+		ResultSet<DiscountRel> rs = DiscountRelInstances.qualifiesForDiscount(customer,silverDiscount);
 		assertTrue(rs.hasNext());
 	}
 	
@@ -157,7 +157,7 @@ public class CompilerTests6 {
 		
 		Discount specialDiscount = new Discount(5,false);
 		
-		ResultSet<DiscountRel> rs = new DiscountRelInstances().qualifiesForDiscount(customer,specialDiscount);
+		ResultSet<DiscountRel> rs = DiscountRelInstances.qualifiesForDiscount(customer,specialDiscount);
 		assertTrue(rs.hasNext());
 	}
 }

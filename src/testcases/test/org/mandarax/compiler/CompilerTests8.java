@@ -37,30 +37,30 @@ public class CompilerTests8 {
 	
 	@Test
 	public void test1() throws Exception {
-		ResultSet<RelatedRel> rs = new RelatedRelInstances().getAll();
+		ResultSet<RelatedRel> rs = RelatedRelInstances.getAll();
 		assertTrue(contains(rs,"John","Tom"));
 	}
 	
 	@Test
 	public void test2() throws Exception {
-		ResultSet<RelatedRel> rs = new RelatedRelInstances().getAll();
+		ResultSet<RelatedRel> rs = RelatedRelInstances.getAll();
 		assertTrue(contains(rs,"Jens","Max"));
 	}
 	
 	@Test
 	public void test3() throws Exception {
-		ResultSet<RelatedRel> rs = new RelatedRelInstances().getAll();
+		ResultSet<RelatedRel> rs = RelatedRelInstances.getAll();
 		assertTrue(contains(rs,"Klaus","Jens"));
 	}
 	
 	@Test
 	public void test4() throws Exception {
-		ResultSet<RelatedRel> rs = new RelatedRelInstances().getAll();
+		ResultSet<RelatedRel> rs = RelatedRelInstances.getAll();
 		assertTrue(contains(rs,"Klaus","Max"));
 	}
 	@Test
 	public void test5() throws Exception {
-		ResultSet<RelatedRel> rs = new RelatedRelInstances().getAll();
+		ResultSet<RelatedRel> rs = RelatedRelInstances.getAll();
 		assertTrue(contains(rs,"Otto","Jens"));
 	}
 	

@@ -24,7 +24,7 @@ import static test.org.mandarax.compiler.TestUtils.*;
 public class CompilerTests4 {
 	@Test
 	public void test1() throws Exception {
-		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().getAll();
+		ResultSet<GrandFatherRel> rs = GrandFatherRelInstances.getAll();
 		
 		GrandFatherRel gf = rs.next();
 		assertEquals("Max",gf.grandChild);
@@ -45,7 +45,7 @@ public class CompilerTests4 {
 	
 	@Test
 	public void test2() throws Exception {
-		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().getGrandChildren("Klaus");
+		ResultSet<GrandFatherRel> rs = GrandFatherRelInstances.getGrandChildren("Klaus");
 		
 		GrandFatherRel gf = rs.next();
 		assertEquals("Max",gf.grandChild);
@@ -61,7 +61,7 @@ public class CompilerTests4 {
 	
 	@Test
 	public void test3() throws Exception {
-		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().getGrandFather("Max");
+		ResultSet<GrandFatherRel> rs = GrandFatherRelInstances.getGrandFather("Max");
 		
 		GrandFatherRel gf = rs.next();
 		assertEquals("Max",gf.grandChild);
@@ -73,7 +73,7 @@ public class CompilerTests4 {
 	
 	@Test
 	public void test4() throws Exception {
-		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().isGrandFather("Klaus","Max");
+		ResultSet<GrandFatherRel> rs = GrandFatherRelInstances.isGrandFather("Klaus","Max");
 		
 		GrandFatherRel gf = rs.next();
 		assertEquals("Max",gf.grandChild);
@@ -85,7 +85,7 @@ public class CompilerTests4 {
 	
 	@Test
 	public void test5() throws Exception {
-		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().isGrandFather("Klaus","Jens");
+		ResultSet<GrandFatherRel> rs = GrandFatherRelInstances.isGrandFather("Klaus","Jens");
 		
 		assertFalse(rs.hasNext());
 
@@ -93,25 +93,25 @@ public class CompilerTests4 {
 	
 	@Test 
 	public void test6() throws Exception {
-		ResultSet<FatherRel> rs = new FatherRelInstances().isFather("Klaus","Jens");
+		ResultSet<FatherRel> rs = FatherRelInstances.isFather("Klaus","Jens");
 		assertTrue(rs.hasNext());
 	}
 	
 	@Test 
 	public void test7() throws Exception {
-		ResultSet<FatherRel> rs = new FatherRelInstances().isFather("Jens","Max");
+		ResultSet<FatherRel> rs = FatherRelInstances.isFather("Jens","Max");
 		assertTrue(rs.hasNext());
 	}
 	
 	@Test 
 	public void test8() throws Exception {
-		ResultSet<FatherRel> rs = new FatherRelInstances().isFather("Max","Jens");
+		ResultSet<FatherRel> rs = FatherRelInstances.isFather("Max","Jens");
 		assertFalse(rs.hasNext());
 	}
 	
 	@Test 
 	public void test9() throws Exception {
-		ResultSet<FatherRel> rs = new FatherRelInstances().getFatherAndChild();
+		ResultSet<FatherRel> rs = FatherRelInstances.getFatherAndChild();
 		int c = count(rs);
 		assertFalse(rs.hasNext());
 		assertEquals(4,c);

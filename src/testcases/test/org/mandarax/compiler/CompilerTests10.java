@@ -37,7 +37,7 @@ public class CompilerTests10 {
 	public void test1() throws Exception {
 		MalePerson max = new MalePerson("Max");
 		MalePerson klaus = new MalePerson("Klaus");
-		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().isGrandFather(klaus, max);
+		ResultSet<GrandFatherRel> rs = GrandFatherRelInstances.isGrandFather(klaus, max);
 		assertTrue(rs.hasNext());	
 	}
 	
@@ -45,7 +45,7 @@ public class CompilerTests10 {
 	public void test2() throws Exception {
 		MalePerson jens = new MalePerson("Jens");
 		MalePerson otto = new MalePerson("Otto");
-		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().isGrandFather(otto, jens);
+		ResultSet<GrandFatherRel> rs = GrandFatherRelInstances.isGrandFather(otto, jens);
 		assertTrue(rs.hasNext());	
 	}
 	
@@ -53,7 +53,7 @@ public class CompilerTests10 {
 	public void test3() throws Exception {
 		MalePerson jens = new MalePerson("Jens");
 		MalePerson otto = new MalePerson("Otto");
-		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().isGrandFather(jens, otto);
+		ResultSet<GrandFatherRel> rs = GrandFatherRelInstances.isGrandFather(jens, otto);
 		assertFalse(rs.hasNext());	
 	}
 	
@@ -61,7 +61,7 @@ public class CompilerTests10 {
 	public void test4() throws Exception {
 		MalePerson max = new MalePerson("Max");
 		MalePerson jens = new MalePerson("Jens");
-		ResultSet<GrandFatherRel> rs = new GrandFatherRelInstances().isGrandFather(jens, max);
+		ResultSet<GrandFatherRel> rs = GrandFatherRelInstances.isGrandFather(jens, max);
 		assertFalse(rs.hasNext());	
 	}
 

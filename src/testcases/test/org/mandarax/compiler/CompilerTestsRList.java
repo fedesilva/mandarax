@@ -31,37 +31,37 @@ public class CompilerTestsRList {
 	
 	@Test
 	public void test1() throws Exception {	
-		ResultSet<ContainsRel> rs = new ContainsRelInstances().contains(list,"one");
+		ResultSet<ContainsRel> rs = ContainsRelInstances.contains(list,"one");
 		assertTrue(rs.hasNext());	
 	}
 	
 	@Test
 	public void test2() throws Exception {
-		ResultSet<ContainsRel> rs = new ContainsRelInstances().contains(list,"two");
+		ResultSet<ContainsRel> rs = ContainsRelInstances.contains(list,"two");
 		assertTrue(rs.hasNext());	
 	}
 	
 	@Test
 	public void test3() throws Exception {
-		ResultSet<ContainsRel> rs = new ContainsRelInstances().contains(list,"three");
+		ResultSet<ContainsRel> rs = ContainsRelInstances.contains(list,"three");
 		assertTrue(rs.hasNext());	
 	}
 	
 	@Test
 	public void test4() throws Exception {
-		ResultSet<ContainsRel> rs = new ContainsRelInstances().contains(list,"four");
+		ResultSet<ContainsRel> rs = ContainsRelInstances.contains(list,"four");
 		assertTrue(rs.hasNext());	
 	}
 	
 	@Test
 	public void test5() throws Exception {
-		ResultSet<ContainsRel> rs = new ContainsRelInstances().contains(list,"five");
+		ResultSet<ContainsRel> rs = ContainsRelInstances.contains(list,"five");
 		assertFalse(rs.hasNext());	
 	}
 	
 	@Test
 	public void test6() throws Exception {	
-		ResultSet<ContainsRel> rs = new ContainsRelInstances().getElements(list);
+		ResultSet<ContainsRel> rs = ContainsRelInstances.getElements(list);
 		assertEquals("one",rs.next().element);
 		assertEquals("two",rs.next().element);	
 		assertEquals("three",rs.next().element);	
