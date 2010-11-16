@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>SemiOrphan</strong>.
- * @version Nov 15, 2010 11:28:46 AM 
+ * @version Nov 16, 2010 4:04:09 PM 
  */
 public class SemiOrphanRelInstances {
 	// object references
@@ -48,7 +48,7 @@ public class SemiOrphanRelInstances {
 
 	// interface generated for queries	
 	 
-	public ResultSet<SemiOrphanRel> isSemiOrphan (  Person person  ) {
+	public static ResultSet<SemiOrphanRel> isSemiOrphan (  Person person  ) {
 		DerivationController _derivation = new DefaultDerivationController();
 		return new ResultSet<SemiOrphanRel>(isSemiOrphan ( _derivation ,  person ),_derivation);
 	} 
@@ -283,5 +283,9 @@ public class SemiOrphanRelInstances {
 	}
 	
 	
+	// methods representing aggregation functions
+	
+	
 }
+
 

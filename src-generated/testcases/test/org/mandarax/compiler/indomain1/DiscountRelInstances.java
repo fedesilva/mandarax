@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>Discount</strong>.
- * @version Nov 15, 2010 11:28:46 AM 
+ * @version Nov 16, 2010 4:04:09 PM 
  */
 public class DiscountRelInstances {
 	// object references
@@ -35,12 +35,12 @@ public class DiscountRelInstances {
 
 	// interface generated for queries	
 	 
-	public ResultSet<DiscountRel> getAll (  ) {
+	public static ResultSet<DiscountRel> getAll (  ) {
 		DerivationController _derivation = new DefaultDerivationController();
 		return new ResultSet<DiscountRel>(getAll ( _derivation  ),_derivation);
 	} 
 	 
-	public ResultSet<DiscountRel> getDiscount (  Customer customer  ) {
+	public static ResultSet<DiscountRel> getDiscount (  Customer customer  ) {
 		DerivationController _derivation = new DefaultDerivationController();
 		return new ResultSet<DiscountRel>(getDiscount ( _derivation ,  customer ),_derivation);
 	} 
@@ -211,5 +211,9 @@ public class DiscountRelInstances {
 	}
 	
 	
+	// methods representing aggregation functions
+	
+	
 }
+
 

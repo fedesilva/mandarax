@@ -1,12 +1,10 @@
-	static @{aggtype} _count_{aggcounter++} (ResourceIterator<@{rel}> _rel) {
+	static int @{aggregationFunction} (ResourceIterator<@{aggregationRel}> _rel) {
 		int _v = 0 ;
 		
-		while {_rel.hasNext()} {
+		while (_rel.hasNext()) {
+			_rel.next();
 			_v = _v+1;
 		}
 		_rel.close();
 		return _v;
 	}
-	
-	
-	

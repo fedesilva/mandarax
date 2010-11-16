@@ -1,10 +1,11 @@
-	static @{aggtype} _max_{aggcounter++} (ResourceIterator<@{rel}> _rel) {
-		@{aggtype} _v = @{aggtypenull} ;
+	static @{aggregationType} @{aggregationFunction} (ResourceIterator<@{aggregationRel}> _rel) {
+		@{aggregationType} _v = @{aggregationNull} ;
 		
-		while {_rel.hasNext()} {
-			@if{isNumericAggtype}if (_rel.@{aggfield} > _v) {_v = _rel.@{aggfield}};
-			@else{} if (_rel.@{aggfield}.compareTo(_v)>0) {_v = _rel.@{aggfield}}
-			@end
+		while (_rel.hasNext()) {
+		    @{aggregationRel} _c = _rel.next();
+			@if{isNumericAggtype}if (_c.@{aggregationAttribute} > _v) {_v = _c.@{aggregationAttribute};}
+			@else{} if (_c.@{aggregationAttribute}.compareTo(_v)>0) {_v = _c.@{aggregationAttribute};}
+			@end{}
 		}
 		_rel.close();
 		return _v;

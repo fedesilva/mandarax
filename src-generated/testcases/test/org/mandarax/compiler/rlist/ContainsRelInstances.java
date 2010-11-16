@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>Contains</strong>.
- * @version Nov 15, 2010 11:28:46 AM 
+ * @version Nov 16, 2010 4:04:09 PM 
  */
 public class ContainsRelInstances {
 	// object references
@@ -40,12 +40,12 @@ public class ContainsRelInstances {
 
 	// interface generated for queries	
 	 
-	public ResultSet<ContainsRel> contains (  RList list ,  Object element  ) {
+	public static ResultSet<ContainsRel> contains (  RList list ,  Object element  ) {
 		DerivationController _derivation = new DefaultDerivationController();
 		return new ResultSet<ContainsRel>(contains ( _derivation ,  list ,  element ),_derivation);
 	} 
 	 
-	public ResultSet<ContainsRel> getElements (  RList list  ) {
+	public static ResultSet<ContainsRel> getElements (  RList list  ) {
 		DerivationController _derivation = new DefaultDerivationController();
 		return new ResultSet<ContainsRel>(getElements ( _derivation ,  list ),_derivation);
 	} 
@@ -318,5 +318,9 @@ public class ContainsRelInstances {
 	}
 	
 	
+	// methods representing aggregation functions
+	
+	
 }
+
 

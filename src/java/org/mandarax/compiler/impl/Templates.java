@@ -30,11 +30,17 @@ public class Templates {
 	public static org.apache.log4j.Logger LOGGER = Logger.getLogger(Templates.class);
 	
 	// constants for template names
+	
 	public final static String RULE_INVOCATION = "RuleInvocation";
 	public final static String RELATIONSHIP_TYPE = "RelationshipType";
 	public final static String RELATIONSHIP_QUERY_INTERFACE = "RelationshipQueryInterface";
 	public final static String RELATIONSHIP_QUERY_IMPLEMENTATION = "RelationshipQueryImplementation";
-	public final static String DERIVATION_LOGGING = "DerivationLogging";
+	
+	public final static String MIN = "min";
+	public final static String MAX = "max";
+	public final static String SUM = "sum";
+	public final static String COUNT = "count";
+	public final static String AVG = "avg";
 	
 	static TemplateRegistry registry = new SimpleTemplateRegistry();
 	
@@ -44,10 +50,15 @@ public class Templates {
 			getTemplate(RELATIONSHIP_TYPE);
 			getTemplate(RELATIONSHIP_QUERY_INTERFACE);
 			getTemplate(RELATIONSHIP_QUERY_IMPLEMENTATION);
-			getTemplate(DERIVATION_LOGGING);
+			
+			getTemplate(MIN);
+			getTemplate(MAX);
+			getTemplate(SUM);
+			getTemplate(COUNT);
+			getTemplate(AVG);
 		}
 		catch (Exception x) {
-			LOGGER.error(x);
+			LOGGER.error("Error parsing template", x);
 		}
 	}
 	

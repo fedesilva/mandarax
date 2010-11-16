@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>Father</strong>.
- * @version Nov 15, 2010 11:28:45 AM 
+ * @version Nov 16, 2010 4:04:08 PM 
  */
 public class FatherRelInstances {
 	// object references
@@ -68,22 +68,22 @@ public class FatherRelInstances {
 
 	// interface generated for queries	
 	 
-	public ResultSet<FatherRel> getFather (  Person child  ) {
+	public static ResultSet<FatherRel> getFather (  Person child  ) {
 		DerivationController _derivation = new DefaultDerivationController();
 		return new ResultSet<FatherRel>(getFather ( _derivation ,  child ),_derivation);
 	} 
 	 
-	public ResultSet<FatherRel> isFather (  Person father ,  Person child  ) {
+	public static ResultSet<FatherRel> isFather (  Person father ,  Person child  ) {
 		DerivationController _derivation = new DefaultDerivationController();
 		return new ResultSet<FatherRel>(isFather ( _derivation ,  father ,  child ),_derivation);
 	} 
 	 
-	public ResultSet<FatherRel> getChildren (  Person father  ) {
+	public static ResultSet<FatherRel> getChildren (  Person father  ) {
 		DerivationController _derivation = new DefaultDerivationController();
 		return new ResultSet<FatherRel>(getChildren ( _derivation ,  father ),_derivation);
 	} 
 	 
-	public ResultSet<FatherRel> getFatherAndChild (  ) {
+	public static ResultSet<FatherRel> getFatherAndChild (  ) {
 		DerivationController _derivation = new DefaultDerivationController();
 		return new ResultSet<FatherRel>(getFatherAndChild ( _derivation  ),_derivation);
 	} 
@@ -937,5 +937,9 @@ public class FatherRelInstances {
 	}
 	
 	
+	// methods representing aggregation functions
+	
+	
 }
+
 

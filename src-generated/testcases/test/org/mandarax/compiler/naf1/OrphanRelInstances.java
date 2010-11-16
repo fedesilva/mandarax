@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>Orphan</strong>.
- * @version Nov 15, 2010 11:28:46 AM 
+ * @version Nov 16, 2010 4:04:09 PM 
  */
 public class OrphanRelInstances {
 	// object references
@@ -39,7 +39,7 @@ public class OrphanRelInstances {
 
 	// interface generated for queries	
 	 
-	public ResultSet<OrphanRel> isOrphan (  Person person  ) {
+	public static ResultSet<OrphanRel> isOrphan (  Person person  ) {
 		DerivationController _derivation = new DefaultDerivationController();
 		return new ResultSet<OrphanRel>(isOrphan ( _derivation ,  person ),_derivation);
 	} 
@@ -160,5 +160,9 @@ public class OrphanRelInstances {
 	}
 	
 	
+	// methods representing aggregation functions
+	
+	
 }
+
 

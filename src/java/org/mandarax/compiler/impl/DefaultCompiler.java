@@ -294,6 +294,10 @@ public class DefaultCompiler implements Compiler {
 			assignTypes (cus,cu,rel,rule);
 		}
 		
+		// this is the list where aggregations will be collected
+		// elements are references to function invocations representing references to the method generated for each aggregation
+		List<FunctionInvocation> aggregations = new ArrayList<FunctionInvocation>();
+		
 		Map<String,Object> bindings = createParamBindings(cu);
 		bindings.put("rel",rel);
 		bindings.put("className",className);
@@ -301,11 +305,27 @@ public class DefaultCompiler implements Compiler {
 		bindings.put("ruleIndices",getIndices(rel.getRules()));
 		bindings.put("resolver",resolver);
 		bindings.put("aggcounter",new Counter());
+		bindings.put("aggregations",aggregations);
 		
 		String generated = (String) TemplateRuntime.execute(getTemplate(RELATIONSHIP_QUERY_IMPLEMENTATION), bindings,Templates.registry);
+		
+//		StringBuffer b = new StringBuffer();
+//		for (FunctionInvocation agg:aggregations) {
+//			b.append(createAggregationFunction(target,cu,rel,agg));
+//		}
+//		if (b.length()>0) {
+//			generated = generated + b;
+//		}
+//		
+//		generated = generated + "\n}"; // RELATIONSHIP_QUERY_IMPLEMENTATION template does not close class to allow aggregations to be added!
+		
 		printGeneratedCode(cu,target,rel.getName()+TYPE_EXTENSION+"Instances",generated);
 	}
 	
+
+	private String createAggregationFunction(Location target,CompilationUnit cu, RelationshipDefinition rel,FunctionInvocation agg) throws Exception {
+		return "\n// TODO: code for aggregation will go here: "+agg.toString()+"\n";
+	}
 
 	private void printGeneratedCode(CompilationUnit cu,Location target,String localClassName,String code) throws Exception {
 		Writer out = target.getSrcOut(cu.getContext().getPackageDeclaration().getName(),localClassName);

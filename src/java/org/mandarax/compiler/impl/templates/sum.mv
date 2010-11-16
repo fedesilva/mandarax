@@ -1,8 +1,8 @@
-	static @{aggtype} _sum_{aggcounter++} (ResourceIterator<@{rel}> _rel) {
-		@{aggtype} _v = @{aggtypenull} ;
+	static @{aggregationType} @{aggregationFunction} (ResourceIterator<@{aggregationRel}> _rel) {
+		@{aggregationType} _v = @{aggregationNull} ;
 		
-		while {_rel.hasNext()} {
-			_v = _v + _rel.@{aggfield};
+		while (_rel.hasNext()) {
+			_v = _v + _rel.next().@{aggregationAttribute};
 		}
 		_rel.close();
 		return _v;

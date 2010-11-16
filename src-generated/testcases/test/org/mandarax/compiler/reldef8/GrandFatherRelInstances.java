@@ -4,7 +4,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>GrandFather</strong>.
- * @version Nov 15, 2010 11:28:45 AM 
+ * @version Nov 16, 2010 4:04:07 PM 
  */
 public class GrandFatherRelInstances {
 	// object references
@@ -29,22 +29,22 @@ public class GrandFatherRelInstances {
 
 	// interface generated for queries	
 	 
-	public ResultSet<GrandFatherRel> getGrandChildren (  String grandFather  ) {
+	public static ResultSet<GrandFatherRel> getGrandChildren (  String grandFather  ) {
 		DerivationController _derivation = new DefaultDerivationController();
 		return new ResultSet<GrandFatherRel>(getGrandChildren ( _derivation ,  grandFather ),_derivation);
 	} 
 	 
-	public ResultSet<GrandFatherRel> getGrandFather (  String grandChild  ) {
+	public static ResultSet<GrandFatherRel> getGrandFather (  String grandChild  ) {
 		DerivationController _derivation = new DefaultDerivationController();
 		return new ResultSet<GrandFatherRel>(getGrandFather ( _derivation ,  grandChild ),_derivation);
 	} 
 	 
-	public ResultSet<GrandFatherRel> isGrandFather (  String grandFather ,  String grandChild  ) {
+	public static ResultSet<GrandFatherRel> isGrandFather (  String grandFather ,  String grandChild  ) {
 		DerivationController _derivation = new DefaultDerivationController();
 		return new ResultSet<GrandFatherRel>(isGrandFather ( _derivation ,  grandFather ,  grandChild ),_derivation);
 	} 
 	 
-	public ResultSet<GrandFatherRel> getAll (  ) {
+	public static ResultSet<GrandFatherRel> getAll (  ) {
 		DerivationController _derivation = new DefaultDerivationController();
 		return new ResultSet<GrandFatherRel>(getAll ( _derivation  ),_derivation);
 	} 
@@ -451,5 +451,9 @@ public class GrandFatherRelInstances {
 	}
 	
 	
+	// methods representing aggregation functions
+	
+	
 }
+
 

@@ -54,6 +54,11 @@ public class Scheduler {
 	public static final String ASSERTED_BY_COMPILER = "asserted_by_compiler" ;
 	public static final String ASSERTED_BY_COMPILER_FOR_AGGREGATION = "asserted_by_compiler_for_aggregation" ;
 	public static final String TYPE_NAME = "type_name" ; // used to mark variables as type names
+	public static final String AGGREGATION_PROPERTY = "aggregation_property_name";
+	public static final String AGGREGATION_REL_TYPE = "aggregation_rel_type";
+	public static final String AGGREGATION_RETURN_TYPE = "aggregation_return_type";
+	public static final String AGGREGATION_FUNCTION = "aggregation_function";
+	
 	private Resolver resolver = null;
 	private Rule originalRule = null;
 	private Rule rule = null;
@@ -79,9 +84,11 @@ public class Scheduler {
 	// the counter generator, used to generate references to aggregation functions
 	private Counter aggCounter = null;
 	
+	private List<FunctionInvocation> aggregationFunctions = null;
+	
 	private int counter=0;
 	
-	public Scheduler(Resolver resolver,Rule rule,FunctionDeclaration query,Counter aggCounter) throws CompilerException {
+	public Scheduler(Resolver resolver,Rule rule,FunctionDeclaration query,Counter aggCounter,List<FunctionInvocation> aggregations) throws CompilerException {
 		super();
 		this.resolver = resolver;
 		this.rule = rule;
@@ -89,6 +96,7 @@ public class Scheduler {
 		this.query = query;
 		this.prereqs = new ArrayList<Prereq>(rule.getBody().size());
 		this.aggCounter = aggCounter;
+		this.aggregationFunctions = aggregations;
 		
 		schedule();
 	}
@@ -384,14 +392,14 @@ public class Scheduler {
 		Map<Expression,Expression> substitutions = new HashMap<Expression,Expression>();
 		for (Aggregation agg:aggregations) {
 			RelationshipDefinition rel = agg.getExpression().getRelationship();
-			int aggSlot = -1;
+			String aggregationAttribute = null;
 			boolean[] sign = new boolean[rel.getSlotDeclarations().size()];
 			List<Expression> parameters = new ArrayList<Expression>();
 			for (int i=0;i<sign.length;i++) {
 				Expression term = agg.getExpression().getParameters().get(i);
 				if (term.equals(agg.getVariable())) {
 					sign[i] = false;
-					aggSlot = i;
+					aggregationAttribute = rel.getSlotDeclarations().get(i).getName();
 				}
 				else {
 					sign[i] = term.isGroundWRT(this.boundVariables);
@@ -420,7 +428,15 @@ public class Scheduler {
 			
 			FunctionInvocation fi = new FunctionInvocation(Position.NO_POSITION,expression.getContext(),aggFunctName,parameters2);
 			fi.setProperty(ASSERTED_BY_COMPILER_FOR_AGGREGATION, true);
+			fi.setProperty(AGGREGATION_PROPERTY,aggregationAttribute);
+			fi.setProperty(AGGREGATION_REL_TYPE,rel.getName());
+			fi.setProperty(AGGREGATION_FUNCTION, agg.getFunction().name());
+			fi.setProperty(AGGREGATION_RETURN_TYPE,agg.getVariable().getTypeName());
+			
 			substitutions.put(agg, fi);
+			
+			aggregationFunctions.add(fi);
+			LOGGER.debug("Code will be generated for this method representing the aggregation: " + agg + " : "+ fi);
 		}
 
 		return expression.substitute(substitutions);

@@ -4,7 +4,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>Related</strong>.
- * @version Nov 15, 2010 11:28:45 AM 
+ * @version Nov 16, 2010 4:04:07 PM 
  */
 public class RelatedRelInstances {
 	// object references
@@ -47,22 +47,22 @@ public class RelatedRelInstances {
 
 	// interface generated for queries	
 	 
-	public ResultSet<RelatedRel> getRelated1 (  String person1  ) {
+	public static ResultSet<RelatedRel> getRelated1 (  String person1  ) {
 		DerivationController _derivation = new DefaultDerivationController();
 		return new ResultSet<RelatedRel>(getRelated1 ( _derivation ,  person1 ),_derivation);
 	} 
 	 
-	public ResultSet<RelatedRel> getRelated2 (  String person2  ) {
+	public static ResultSet<RelatedRel> getRelated2 (  String person2  ) {
 		DerivationController _derivation = new DefaultDerivationController();
 		return new ResultSet<RelatedRel>(getRelated2 ( _derivation ,  person2 ),_derivation);
 	} 
 	 
-	public ResultSet<RelatedRel> isRelated (  String person1 ,  String person2  ) {
+	public static ResultSet<RelatedRel> isRelated (  String person1 ,  String person2  ) {
 		DerivationController _derivation = new DefaultDerivationController();
 		return new ResultSet<RelatedRel>(isRelated ( _derivation ,  person1 ,  person2 ),_derivation);
 	} 
 	 
-	public ResultSet<RelatedRel> getAll (  ) {
+	public static ResultSet<RelatedRel> getAll (  ) {
 		DerivationController _derivation = new DefaultDerivationController();
 		return new ResultSet<RelatedRel>(getAll ( _derivation  ),_derivation);
 	} 
@@ -803,5 +803,9 @@ public class RelatedRelInstances {
 	}
 	
 	
+	// methods representing aggregation functions
+	
+	
 }
+
 

@@ -4,7 +4,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>Factorial</strong>.
- * @version Nov 15, 2010 11:28:46 AM 
+ * @version Nov 16, 2010 4:04:09 PM 
  */
 public class FactorialRelInstances {
 	// object references
@@ -38,12 +38,12 @@ public class FactorialRelInstances {
 
 	// interface generated for queries	
 	 
-	public ResultSet<FactorialRel> getFactorial (  int i  ) {
+	public static ResultSet<FactorialRel> getFactorial (  int i  ) {
 		DerivationController _derivation = new DefaultDerivationController();
 		return new ResultSet<FactorialRel>(getFactorial ( _derivation ,  i ),_derivation);
 	} 
 	 
-	public ResultSet<FactorialRel> isFactorial (  int i ,  int f  ) {
+	public static ResultSet<FactorialRel> isFactorial (  int i ,  int f  ) {
 		DerivationController _derivation = new DefaultDerivationController();
 		return new ResultSet<FactorialRel>(isFactorial ( _derivation ,  i ,  f ),_derivation);
 	} 
@@ -327,5 +327,9 @@ public class FactorialRelInstances {
 	}
 	
 	
+	// methods representing aggregation functions
+	
+	
 }
+
 

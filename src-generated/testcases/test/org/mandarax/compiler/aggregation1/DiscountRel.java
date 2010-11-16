@@ -1,10 +1,10 @@
-package test.org.mandarax.compiler.reldef6;
+package test.org.mandarax.compiler.aggregation1;
  
 import test.org.mandarax.compiler.*;
 
 /**
  * Class representing the relationship <strong>Discount</strong>.
- * @version Nov 16, 2010 4:04:07 PM 
+ * @version Nov 16, 2010 4:04:09 PM 
  */
 public class DiscountRel {
 
@@ -13,7 +13,7 @@ public class DiscountRel {
 		super();
 	}
 	
-	public DiscountRel ( Customer customer , Discount discount ) {
+	public DiscountRel ( String customer , int discount ) {
 		super();
 		this.customer=customer; 
 		this.discount=discount; 
@@ -22,9 +22,9 @@ public class DiscountRel {
 
 	// instance variables created for slots
 	 
-	public Customer customer = null; 
+	public String customer = null; 
 	 
-	public Discount discount = null; 
+	public int discount = 0; 
 	
 
 }

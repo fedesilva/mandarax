@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>FrequentCustomer</strong>.
- * @version Nov 15, 2010 11:28:45 AM 
+ * @version Nov 16, 2010 4:04:07 PM 
  */
 public class FrequentCustomerRelInstances {
 	// object references
@@ -46,7 +46,7 @@ public class FrequentCustomerRelInstances {
 
 	// interface generated for queries	
 	 
-	public ResultSet<FrequentCustomerRel> isFrequentCustomer (  Customer customer  ) {
+	public static ResultSet<FrequentCustomerRel> isFrequentCustomer (  Customer customer  ) {
 		DerivationController _derivation = new DefaultDerivationController();
 		return new ResultSet<FrequentCustomerRel>(isFrequentCustomer ( _derivation ,  customer ),_derivation);
 	} 
@@ -185,5 +185,9 @@ public class FrequentCustomerRelInstances {
 	}
 	
 	
+	// methods representing aggregation functions
+	
+	
 }
+
 

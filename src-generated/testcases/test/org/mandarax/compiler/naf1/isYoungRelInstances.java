@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>isYoung</strong>.
- * @version Nov 15, 2010 11:28:46 AM 
+ * @version Nov 16, 2010 4:04:09 PM 
  */
 public class isYoungRelInstances {
 	// object references
@@ -39,7 +39,7 @@ public class isYoungRelInstances {
 
 	// interface generated for queries	
 	 
-	public ResultSet<isYoungRel> isYoung (  Person person  ) {
+	public static ResultSet<isYoungRel> isYoung (  Person person  ) {
 		DerivationController _derivation = new DefaultDerivationController();
 		return new ResultSet<isYoungRel>(isYoung ( _derivation ,  person ),_derivation);
 	} 
@@ -117,5 +117,9 @@ public class isYoungRelInstances {
 	}
 	
 	
+	// methods representing aggregation functions
+	
+	
 }
+
 

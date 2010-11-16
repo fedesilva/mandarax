@@ -35,7 +35,7 @@ public class @{rel.name}@{ext}Instances {
 
 	// interface generated for queries	
 	@foreach{query:rel.getQueries()} 
-	public ResultSet<@{rel.name}@{ext}> @{query.name} ( @foreach{param:query.parameterNames} @{rel.getTypeNameForSlot(param)} @{param} @end{", "} ) {
+	public static ResultSet<@{rel.name}@{ext}> @{query.name} ( @foreach{param:query.parameterNames} @{rel.getTypeNameForSlot(param)} @{param} @end{", "} ) {
 		DerivationController _derivation = new DefaultDerivationController();
 		return new ResultSet<@{rel.name}@{ext}>(@{query.name} ( _derivation @if{query.hasParameters()},@end{} @foreach{param:query.parameterNames} @{param} @end{", "}),_derivation);
 	} 
@@ -74,5 +74,20 @@ public class @{rel.name}@{ext}Instances {
 	}
 	@end{}@end{}
 	
+	// methods representing aggregation functions
+	@foreach{aggregation:aggregations} 
+	@code{aggregationKind=aggregation.getProperty('aggregation_function');aggregationType=aggregation.getProperty('aggregation_return_type');aggregationFunction=aggregation.function;}
+	@code{aggregationRel=aggregation.getProperty('aggregation_rel_type')+ext;aggregationAttribute=aggregation.getProperty('aggregation_property_name');aggregationNull='0';isNumericAggtype=true;}
+	
+	// agg @{aggregation} type is @{aggregationKind}
+	@if{aggregationKind.equals('max')} @includeNamed{'max'}
+	@else{aggregationKind.equals('min')} @includeNamed{'min'}
+	@else{aggregationKind.equals('count')} @includeNamed{'count'}
+	@else{aggregationKind.equals('sum')} @includeNamed{'sum'}
+	@else{aggregationKind.equals('avg')} @includeNamed{'avg'}
+	@end{}
+	@end{}
+	
 }
+
 

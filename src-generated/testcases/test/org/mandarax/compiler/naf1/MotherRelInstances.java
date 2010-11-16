@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>Mother</strong>.
- * @version Nov 15, 2010 11:28:46 AM 
+ * @version Nov 16, 2010 4:04:09 PM 
  */
 public class MotherRelInstances {
 	// object references
@@ -30,22 +30,22 @@ public class MotherRelInstances {
 
 	// interface generated for queries	
 	 
-	public ResultSet<MotherRel> getMother (  Person child  ) {
+	public static ResultSet<MotherRel> getMother (  Person child  ) {
 		DerivationController _derivation = new DefaultDerivationController();
 		return new ResultSet<MotherRel>(getMother ( _derivation ,  child ),_derivation);
 	} 
 	 
-	public ResultSet<MotherRel> isMother (  Person mother ,  Person child  ) {
+	public static ResultSet<MotherRel> isMother (  Person mother ,  Person child  ) {
 		DerivationController _derivation = new DefaultDerivationController();
 		return new ResultSet<MotherRel>(isMother ( _derivation ,  mother ,  child ),_derivation);
 	} 
 	 
-	public ResultSet<MotherRel> getChildren (  Person mother  ) {
+	public static ResultSet<MotherRel> getChildren (  Person mother  ) {
 		DerivationController _derivation = new DefaultDerivationController();
 		return new ResultSet<MotherRel>(getChildren ( _derivation ,  mother ),_derivation);
 	} 
 	 
-	public ResultSet<MotherRel> getMotherAndChild (  ) {
+	public static ResultSet<MotherRel> getMotherAndChild (  ) {
 		DerivationController _derivation = new DefaultDerivationController();
 		return new ResultSet<MotherRel>(getMotherAndChild ( _derivation  ),_derivation);
 	} 
@@ -111,5 +111,9 @@ public class MotherRelInstances {
 	// query: getMotherAndChild
 	
 	
+	// methods representing aggregation functions
+	
+	
 }
+
 

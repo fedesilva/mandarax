@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>GrandFather</strong>.
- * @version Nov 15, 2010 11:28:46 AM 
+ * @version Nov 16, 2010 4:04:09 PM 
  */
 public class GrandFatherRelInstances {
 	// object references
@@ -41,7 +41,7 @@ public class GrandFatherRelInstances {
 
 	// interface generated for queries	
 	 
-	public ResultSet<GrandFatherRel> getGrandChildren (  String grandFather  ) {
+	public static ResultSet<GrandFatherRel> getGrandChildren (  String grandFather  ) {
 		DerivationController _derivation = new DefaultDerivationController();
 		return new ResultSet<GrandFatherRel>(getGrandChildren ( _derivation ,  grandFather ),_derivation);
 	} 
@@ -182,5 +182,9 @@ public class GrandFatherRelInstances {
 	}
 	
 	
+	// methods representing aggregation functions
+	
+	
 }
+
 
