@@ -2,7 +2,7 @@ package test.org.mandarax.compiler.reldef8;
 
 /**
  * Class representing the relationship <strong>Father</strong>.
- * @version Nov 16, 2010 10:05:50 PM 
+ * @version Nov 17, 2010 10:34:19 AM 
  */
 public class FatherRel {
 

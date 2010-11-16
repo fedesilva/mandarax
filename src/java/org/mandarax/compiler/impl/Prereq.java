@@ -266,6 +266,26 @@ public class Prereq {
 				}
 			}
 			
+			// special printing for function invocation 
+			@Override
+			protected void doPrint(FunctionInvocation x) throws IOException {
+				if (x.isDefinedByRelationship()) {
+					super.doPrint(x);
+				}
+				Method m = (Method) x.getProperty(AnnotationKeys.MEMBER);
+				if (m==null) {
+					DefaultCompiler.LOGGER.debug("Cannot find MEMBER annotation for " + x + " - will use default implementation to print code for member access");
+					super.doPrint(x);
+				}
+				else {
+					out.append(m.getDeclaringClass().getName());
+					out.append('.');
+					out.append(m.getName());
+					appendListOfNodes(x.getParameters(),true,",");
+				}
+					
+			}
+			
 			
 		};
 		return printer;

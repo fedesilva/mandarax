@@ -219,7 +219,10 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 			if (!Modifier.isStatic(method.getModifiers())) {
 				exception("Functions can only be defined by static methods, this method is not static: ",method);
 			}
-			else return method.getReturnType();
+			else {
+				expression.setProperty(AnnotationKeys.MEMBER, method);
+				return method.getReturnType();
+			}
 		} catch (ResolverException e) {
 			failed(expression,null,e);
 		}

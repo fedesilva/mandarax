@@ -1,4 +1,4 @@
-package test.org.mandarax.compiler.factorial;
+package test.org.mandarax.compiler.reldefStaticMethods1;
 
 /**
  * Class representing the relationship <strong>Factorial</strong>.
@@ -11,18 +11,18 @@ public class FactorialRel {
 		super();
 	}
 	
-	public FactorialRel ( int i , int f ) {
+	public FactorialRel ( int n , int fact ) {
 		super();
-		this.i=i; 
-		this.f=f; 
+		this.n=n; 
+		this.fact=fact; 
 		
 	}
 
 	// instance variables created for slots
 	 
-	public int i = 0; 
+	public int n = 0; 
 	 
-	public int f = 0; 
+	public int fact = 0; 
 	
 
 }

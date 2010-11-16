@@ -1,0 +1,7 @@
+package test.org.mandarax.compiler.reldefStaticMethods2;
+import static test.org.mandarax.compiler.Functions4Testing.*;
+// tests the invocation of a static method
+// for a declarative definition of factorial, see reldefFactorial.rel
+rel Factorial(int n,int fact) queries isFactorial(n,fact) {
+	rule1: y==factorial(x) -> Factorial(x,y);
+}
