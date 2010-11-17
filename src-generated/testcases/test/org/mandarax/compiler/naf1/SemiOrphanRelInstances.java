@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>SemiOrphan</strong>.
- * @version Nov 17, 2010 10:34:20 AM 
+ * @version Nov 17, 2010 9:21:54 PM 
  */
 public class SemiOrphanRelInstances {
 	// object references

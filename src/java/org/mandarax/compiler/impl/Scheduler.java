@@ -58,6 +58,8 @@ public class Scheduler {
 	public static final String AGGREGATION_REL_TYPE = "aggregation_rel_type";
 	public static final String AGGREGATION_RETURN_TYPE = "aggregation_return_type";
 	public static final String AGGREGATION_FUNCTION = "aggregation_function";
+	public static final String AGGREGATION_INITIAL_VALUE = "aggregation_init_value";
+	public static final String AGGREGATION_IS_NUMERIC_TYPE = "aggregation_is_numeric_type";
 	
 	private Resolver resolver = null;
 	private Rule originalRule = null;
@@ -107,7 +109,6 @@ public class Scheduler {
 	 */
 	private void schedule() throws CompilerException {
 		
-
 		LOGGER.info("Scheduling prerequisites in " + rule + " for query " + this.query);
 		
 		// clone rule - we might have to add additional expressions to the body, see for instance issue8/case4 for an example
@@ -262,13 +263,29 @@ public class Scheduler {
 		// add expressions from rule head that are query parameters
 		boolean[] sign = query.getSignature();
 		
+		// mark all variables as bound
 		for (int i=0;i<sign.length;i++) {
 			Expression param = rule.getHead().getParameters().get(i);
 			if (sign[i]) {
 				if (param instanceof Variable) {
 					boundVariables.add(param);
-				}
-				else if (!param.isGround()) {
+				}			
+			}
+		}
+		
+		// replace aggregations by function invocations - this can create new complex terms
+		FunctionInvocation head = (FunctionInvocation)this.substituteAggregation(rule.getHead());
+		if (head!=rule.getHead()) {
+			Map<Expression,Expression> substitutionsMap = new HashMap<Expression,Expression>();
+			substitutionsMap.put(rule.getHead(),head);
+			rule = rule.substitute(substitutionsMap);
+		}
+		
+		// now deal with complex terms with free variables in head: replace by newly generated variables
+		for (int i=0;i<sign.length;i++) {
+			Expression param = rule.getHead().getParameters().get(i);
+			if (sign[i]) {
+				if (!(param instanceof Variable) &&  !param.isGround()) {
 					// see also issue8/case4
 					Variable var = createVariable(param);
 					boundVariables.add(var);
@@ -281,7 +298,7 @@ public class Scheduler {
 				}
 				
 			}
-			else {
+			else if (!param.isGroundWRT(this.boundVariables)) {
 				mustBeBound.add(param);				
 			}
 		}
@@ -393,30 +410,39 @@ public class Scheduler {
 		for (Aggregation agg:aggregations) {
 			RelationshipDefinition rel = agg.getExpression().getRelationship();
 			String aggregationAttribute = null;
-			boolean[] sign = new boolean[rel.getSlotDeclarations().size()];
+			boolean[] signature = new boolean[rel.getSlotDeclarations().size()];
 			List<Expression> parameters = new ArrayList<Expression>();
-			for (int i=0;i<sign.length;i++) {
+			for (int i=0;i<signature.length;i++) {
 				Expression term = agg.getExpression().getParameters().get(i);
 				if (term.equals(agg.getVariable())) {
-					sign[i] = false;
+					signature[i] = false;
 					aggregationAttribute = rel.getSlotDeclarations().get(i).getName();
 				}
 				else {
-					sign[i] = term.isGroundWRT(this.boundVariables);
-					if (sign[i]) {
+					signature[i] = term.isGroundWRT(this.boundVariables);
+					if (signature[i]) {
 						parameters.add(term);
 					}
 				}
 			}
 			if (rel==null) throw new CompilerException("Function in aggregation " + agg + " does not reference relationship");
 			
-			FunctionDeclaration query = rel.getQuery(sign);
+			FunctionDeclaration query = rel.getQuery(signature);
+			
+			if (query==null) {
+				StringBuffer msg = new StringBuffer("Cannot find suitable query for relationship " + rel + " and signature ");
+				for (boolean s:signature) msg.append(s?"i":"o");
+				throw new CompilerException(msg.toString());
+			}
 			
 			String relInstanceClass = rel.getName() + DefaultCompiler.TYPE_EXTENSION + "Instances";
-			Variable classRef = new Variable(Position.NO_POSITION,expression.getContext(),relInstanceClass);
-			classRef.setProperty(TYPE_NAME, true);
-			MemberAccess innerTerm = new MemberAccess(Position.NO_POSITION,expression.getContext(),classRef,query.getName(),parameters);
+//			Variable classRef = new Variable(Position.NO_POSITION,expression.getContext(),relInstanceClass);
+//			classRef.setProperty(TYPE_NAME, true);
+			FunctionInvocation innerTerm = new FunctionInvocation(Position.NO_POSITION,expression.getContext(),relInstanceClass+"."+query.getName(),parameters);
 			innerTerm.setProperty(ASSERTED_BY_COMPILER_FOR_AGGREGATION, true);
+			
+			// the classRef must not be bound - it is not a free variable
+			//this.boundVariables.add(classRef);
 			
 			List<Expression> parameters2 = new ArrayList<Expression>(1);
 			parameters2.add(innerTerm);
@@ -432,6 +458,8 @@ public class Scheduler {
 			fi.setProperty(AGGREGATION_REL_TYPE,rel.getName());
 			fi.setProperty(AGGREGATION_FUNCTION, agg.getFunction().name());
 			fi.setProperty(AGGREGATION_RETURN_TYPE,agg.getVariable().getTypeName());
+			fi.setProperty(AGGREGATION_INITIAL_VALUE,getDefaultValue(agg.getTypeName()));
+			fi.setProperty(AGGREGATION_IS_NUMERIC_TYPE,isNumericType(agg.getTypeName()));
 			
 			substitutions.put(agg, fi);
 			
@@ -441,6 +469,6 @@ public class Scheduler {
 
 		return expression.substitute(substitutions);
 	}
-	
+
 
 }

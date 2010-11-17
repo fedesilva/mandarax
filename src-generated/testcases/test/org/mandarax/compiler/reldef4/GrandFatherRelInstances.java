@@ -4,7 +4,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>GrandFather</strong>.
- * @version Nov 17, 2010 10:34:19 AM 
+ * @version Nov 17, 2010 9:21:53 PM 
  */
 public class GrandFatherRelInstances {
 	// object references

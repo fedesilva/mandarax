@@ -121,5 +121,14 @@ public class Utils {
 		return "null";
 	}
 	
+	// utility for code generation
+	public static boolean isNumericType(String n) {
+		return	 	Integer.class.getName().equals(n) || Integer.TYPE.getName().equals(n)
+				||	Short.class.getName().equals(n) || Short.TYPE.getName().equals(n)
+				||	Long.class.getName().equals(n) || Long.TYPE.getName().equals(n)
+				||	Double.class.getName().equals(n) || Double.TYPE.getName().equals(n)
+				||	Float.class.getName().equals(n) || Float.TYPE.getName().equals(n);
+	}
+	
 	
 }

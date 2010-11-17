@@ -1,0 +1,21 @@
+// tests aggregation with non-numerical types implementing Comparable
+
+package test.org.mandarax.compiler.aggregation2;
+import java.util.*;
+import test.org.mandarax.compiler.*;
+
+rel Meeting(String venue,Calendar time) queries getAll(),getMeetings(venue) {
+	fact1: -> Meeting("NY",new GregorianCalendar(2000,1,2));
+	fact2: -> Meeting("NY",new GregorianCalendar(2002,2,3));
+}
+
+rel LastMeeting(String venue,Calendar time) queries getLastMeeting(venue) {
+	rule1:  -> LastMeeting(v,max t in Meeting(v,t));
+}
+
+
+// rule1:  							-> LastMeeting(v,max t in Meeting(v,t))
+// replace to: 						-> LastMeeting(v,f(v));
+// add _t==f(v), becomes: 			_t==f(v) -> LastMeeting(v,t)
+
+

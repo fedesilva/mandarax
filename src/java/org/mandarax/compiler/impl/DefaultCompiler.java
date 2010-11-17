@@ -370,99 +370,37 @@ public class DefaultCompiler implements Compiler {
 		}
 		
 		// head
-		FunctionInvocation head = rule.getHead();
-		for (int i=0;i<head.getParameters().size();i++) {
-			Expression term = head.getParameters().get(i);
+//		FunctionInvocation head = rule.getHead();
+//		for (int i=0;i<head.getParameters().size();i++) {
+//			Expression term = head.getParameters().get(i);
+//
+//			if (term instanceof Variable) {
+//				// try to use term from obj declaration
+//				Class type = objTypeMap.get(((Variable) term).getName());
+//				// else get type from slot definition
+//				Class type2 = resolver.getType(cu.getContext(),rel.getSlotDeclarations().get(i).getType());
+//				if (type==null) {
+//					varTypeMap.put((Variable)term,type2);
+//					LOGGER.debug("Adding type info from rule head to type map: " + term + " -> " + type2);
+//				}
+//				else {
+//					checkTypeConsistency(type,type2);
+//					varTypeMap.put(term,type);
+//					LOGGER.debug("Adding type info from rule head to type map: " + term + " -> " + type);
+//				}
+//			}
+//			else {
+//				// complex term in head
+//				Class type2 = resolver.getType(cu.getContext(),rel.getSlotDeclarations().get(i).getType());
+//				varTypeMap.put(term,type2);
+//				LOGGER.debug("Adding type info from rule head to type map: " + term + " -> " + type2);
+//			}
+//		}
+		
+		collectTypeInfo(cus,objTypeMap,varTypeMap,rule.getHead());
 
-			if (term instanceof Variable) {
-				// try to use term from obj declaration
-				Class type = objTypeMap.get(((Variable) term).getName());
-				// else get type from slot definition
-				Class type2 = resolver.getType(cu.getContext(),rel.getSlotDeclarations().get(i).getType());
-				if (type==null) {
-					varTypeMap.put((Variable)term,type2);
-					LOGGER.debug("Adding type info from rule head to type map: " + term + " -> " + type2);
-				}
-				else {
-					checkTypeConsistency(cu,rule,type,type2);
-					varTypeMap.put(term,type);
-					LOGGER.debug("Adding type info from rule head to type map: " + term + " -> " + type);
-				}
-			}
-			else {
-				// complex term in head
-				Class type2 = resolver.getType(cu.getContext(),rel.getSlotDeclarations().get(i).getType());
-				varTypeMap.put(term,type2);
-				LOGGER.debug("Adding type info from rule head to type map: " + term + " -> " + type2);
-			}
-		}
-		// body
-		// we can infer type information from top level function invocations when the reference rels
-		// and embedded function invocations in aggregations (also ref rels)
-		final List<Expression> expressions = new ArrayList<Expression>();
 		for (Expression expression:rule.getBody()) {
-			expressions.add(expression);
-			ASTVisitor aggregationFinder = new AbstractASTVisitor() {
-				@Override
-				public boolean visit(Aggregation x) {
-					expressions.add(x.getExpression());
-					return true; // check: do we allow that aggregations can be nested ? 
-				}
-			};
-			expression.accept(aggregationFinder);
-			
-		}
-		for (Expression expression:expressions) {
-			RelationshipDefinition rel2 = null;
-			for (Variable var:expression.getVariables()) {
-				if (!varTypeMap.containsKey(var)) {
-					int pos = -1;
-					// TODO: test with function invocations that are not based on relationships
-					// TODO: we must also infer type information for embedded references to rels - this is needed when dealing with aggregations
-					if (expression instanceof FunctionInvocation) {
-						FunctionInvocation fi = (FunctionInvocation)expression;
-						rel2 = this.findRelationshipDefinition(cus,fi.getFunction(),fi.getParameters().size());
-						for (int i=0;i<fi.getParameters().size();i++) {
-							if (fi.getParameters().get(i).equals(var)) pos=i;
-						}
-						
-					}
-					if (pos==-1) {
-						// do not throw an error here - we now also support complex expressions having their types assigned by slots in rels
-						// throw new CompilerException(cu,var.getPosition(),"The variable " + var + " introduced in " + rule + " must be a top level term in the relationship " + rel2.getName());
-					}
-					else {
-						Class type = objTypeMap.get((var).getName());
-						// else get type from slot definition
-						
-						Class type2 = resolver.getType(rel2.getContext(),rel2.getSlotDeclarations().get(pos).getType());
-						if (type==null) {
-							varTypeMap.put(var,type2);
-							LOGGER.debug("Adding type info from prerequisite " + expression + " to type map: " + var + " -> " + type2);
-						}
-						else {
-							checkTypeConsistency(cu,rule,type,type2);
-							varTypeMap.put(var,type);
-							LOGGER.debug("Adding type info from prerequisite " + expression + " to type map: " + var + " -> " + type);
-						}
-					}
-				}
-			}
-			
-			// add types to complex expressions having their types assigned by slots in rels
-			if (expression instanceof FunctionInvocation) {
-				FunctionInvocation fi = (FunctionInvocation)expression;
-				rel2 = this.findRelationshipDefinition(cus,fi.getFunction(),fi.getParameters().size());
-				for (int i=0;i<fi.getParameters().size();i++) {
-					Expression part = fi.getParameters().get(i);
-					if (!(part instanceof Variable)) {
-						Class type = resolver.getType(rel2.getContext(),rel2.getSlotDeclarations().get(i).getType());
-						varTypeMap.put(part,type);
-						LOGGER.debug("Adding type info from prerequisite " + expression + " to type map: " + part + " -> " + type);
-					}
-				}
-			}
-			
+			collectTypeInfo(cus,objTypeMap,varTypeMap,expression);
 		}
 		
 		// build type reasoner
@@ -550,8 +488,78 @@ public class DefaultCompiler implements Compiler {
 		
 	}
 	
-	private void checkTypeConsistency(CompilationUnit cu, Rule rule, Class subtype, Class supertype) throws CompilerException {
-		if (!supertype.isAssignableFrom(subtype)) throw new CompilerException(cu,rule.getPosition(),"Error compiling rule: " + subtype + " is not a subtype of " + supertype);
+	
+	private void collectTypeInfo(Collection<CompilationUnit> cus,Map<String,Class> objTypeMap,Map<Expression,Class> varTypeMap,Expression expr) throws CompilerException, ResolverException {
+		
+		final List<Expression> expressions = new ArrayList<Expression>();
+		expressions.add(expr);
+		
+			
+		ASTVisitor aggregationFinder = new AbstractASTVisitor() {
+			@Override
+			public boolean visit(Aggregation x) {
+				expressions.add(x.getExpression());
+				return true; // check: do we allow that aggregations can be nested ? 
+			}
+		};
+		expr.accept(aggregationFinder);
+
+		for (Expression expression:expressions) {
+			RelationshipDefinition rel2 = null;
+			for (Variable var:expression.getVariables()) {
+				if (!varTypeMap.containsKey(var)) {
+					int pos = -1;
+					if (expression instanceof FunctionInvocation) {
+						FunctionInvocation fi = (FunctionInvocation)expression;
+						rel2 = this.findRelationshipDefinition(cus,fi.getFunction(),fi.getParameters().size());
+						for (int i=0;i<fi.getParameters().size();i++) {
+							if (fi.getParameters().get(i).equals(var)) pos=i;
+						}
+						
+					}
+					if (pos==-1) {
+						// do not throw an error here - we now also support complex expressions having their types assigned by slots in rels
+						// throw new CompilerException(cu,var.getPosition(),"The variable " + var + " introduced in " + rule + " must be a top level term in the relationship " + rel2.getName());
+					}
+					else {
+						Class type = objTypeMap.get((var).getName());
+						// else get type from slot definition
+						
+						Class type2 = resolver.getType(rel2.getContext(),rel2.getSlotDeclarations().get(pos).getType());
+						if (type==null) {
+							varTypeMap.put(var,type2);
+							LOGGER.debug("Adding type info from prerequisite " + expression + " to type map: " + var + " -> " + type2);
+						}
+						else {
+							checkTypeConsistency(type,type2);
+							varTypeMap.put(var,type);
+							LOGGER.debug("Adding type info from prerequisite " + expression + " to type map: " + var + " -> " + type);
+						}
+					}
+				}
+			}
+			
+			// add types to complex expressions having their types assigned by slots in rels
+			if (expression instanceof FunctionInvocation) {
+				FunctionInvocation fi = (FunctionInvocation)expression;
+				rel2 = this.findRelationshipDefinition(cus,fi.getFunction(),fi.getParameters().size());
+				for (int i=0;i<fi.getParameters().size();i++) {
+					Expression part = fi.getParameters().get(i);
+					if (!(part instanceof Variable)) {
+						Class type = resolver.getType(rel2.getContext(),rel2.getSlotDeclarations().get(i).getType());
+						varTypeMap.put(part,type);
+						LOGGER.debug("Adding type info from prerequisite " + expression + " to type map: " + part + " -> " + type);
+					}
+				}
+			}
+			
+		}
+		
+	}
+	
+	
+	private void checkTypeConsistency(Class subtype, Class supertype) throws CompilerException {
+		if (!supertype.isAssignableFrom(subtype)) throw new CompilerException("Error compiling rule: " + subtype + " is not a subtype of " + supertype);
 	}
 
 	private RelationshipDefinition findRelationshipDefinition (Collection<CompilationUnit> cus,String name,int slotCount) {

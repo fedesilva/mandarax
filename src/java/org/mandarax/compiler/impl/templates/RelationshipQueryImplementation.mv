@@ -77,7 +77,7 @@ public class @{rel.name}@{ext}Instances {
 	// methods representing aggregation functions
 	@foreach{aggregation:aggregations} 
 	@code{aggregationKind=aggregation.getProperty('aggregation_function');aggregationType=aggregation.getProperty('aggregation_return_type');aggregationFunction=aggregation.function;}
-	@code{aggregationRel=aggregation.getProperty('aggregation_rel_type')+ext;aggregationAttribute=aggregation.getProperty('aggregation_property_name');aggregationNull='0';isNumericAggtype=true;}
+	@code{aggregationRel=aggregation.getProperty('aggregation_rel_type')+ext;aggregationAttribute=aggregation.getProperty('aggregation_property_name');aggregationNull=aggregation.getProperty('aggregation_init_value');isNumericAggtype=aggregation.getProperty('aggregation_is_numeric_type');}
 	
 	// agg @{aggregation} type is @{aggregationKind}
 	@if{aggregationKind.equals('max')} @includeNamed{'max'}

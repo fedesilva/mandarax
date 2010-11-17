@@ -4,7 +4,7 @@ import test.org.mandarax.compiler.*;
 
 /**
  * Class representing the relationship <strong>Mother</strong>.
- * @version Nov 17, 2010 10:34:20 AM 
+ * @version Nov 17, 2010 9:21:53 PM 
  */
 public class MotherRel {
 
