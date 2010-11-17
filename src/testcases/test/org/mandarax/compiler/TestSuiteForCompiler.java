@@ -31,6 +31,7 @@ import org.junit.runners.*;
 	CompilerTests11.class,
 	CompilerTests12.class,
 	CompilerTests13.class,
+	CompilerTests14.class,
 	CompilerTestsNAF1.class,
 	CompilerTestsFactorial.class,
 	CompilerTestsRList.class,

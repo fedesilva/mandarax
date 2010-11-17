@@ -1,0 +1,7 @@
+// test complex terms in head that are ground w.r.t. variables in heads
+package test.org.mandarax.compiler.reldef14;
+import test.org.mandarax.compiler.*;
+rel HasName(Person person,String name) queries getName(person),hasName(person,name) {
+	rule1: -> HasName(p,p.name);
+}
+

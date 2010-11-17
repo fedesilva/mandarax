@@ -39,23 +39,26 @@ public class GenerateCodeForTesting {
 //			compile(file);
 //		}
 		
-		compile(new File("src/testcases/test/org/mandarax/compiler/reldef4.rel"));
-		compile(new File("src/testcases/test/org/mandarax/compiler/reldef5.rel"));
-		compile(new File("src/testcases/test/org/mandarax/compiler/reldef6.rel"));
-		compile(new File("src/testcases/test/org/mandarax/compiler/reldef7.rel"));
-		compile(new File("src/testcases/test/org/mandarax/compiler/reldef8.rel"));
-		// redef9 does not compile (and is not supposed to), see TestScheduler
-		compile(new File("src/testcases/test/org/mandarax/compiler/reldef10.rel"));
-		compile(new File("src/testcases/test/org/mandarax/compiler/reldef11.rel"));
-		compile(new File("src/testcases/test/org/mandarax/compiler/reldef12.rel"));
-		compile(new File("src/testcases/test/org/mandarax/compiler/reldef13.rel"));
-		compile(new File("src/testcases/test/org/mandarax/compiler/reldefNAF1.rel"));
-		compile(new File("src/testcases/test/org/mandarax/compiler/reldefFactorial.rel"));
-		compile(new File("src/testcases/test/org/mandarax/compiler/reldefRList.rel"));
-		compile(new File("src/testcases/test/org/mandarax/compiler/reldefInDomain1.rel"));
-		compile(new File("src/testcases/test/org/mandarax/compiler/reldefAggregation1.rel"));
-		compile(new File("src/testcases/test/org/mandarax/compiler/reldefStaticMethods1.rel"));
-		compile(new File("src/testcases/test/org/mandarax/compiler/reldefStaticMethods2.rel"));
+//		compile(new File("src/testcases/test/org/mandarax/compiler/reldef4.rel"));
+//		compile(new File("src/testcases/test/org/mandarax/compiler/reldef5.rel"));
+//		compile(new File("src/testcases/test/org/mandarax/compiler/reldef6.rel"));
+//		compile(new File("src/testcases/test/org/mandarax/compiler/reldef7.rel"));
+//		compile(new File("src/testcases/test/org/mandarax/compiler/reldef8.rel"));
+//		// redef9 does not compile (and is not supposed to), see TestScheduler
+//		compile(new File("src/testcases/test/org/mandarax/compiler/reldef10.rel"));
+//		compile(new File("src/testcases/test/org/mandarax/compiler/reldef11.rel"));
+//		compile(new File("src/testcases/test/org/mandarax/compiler/reldef12.rel"));
+//		compile(new File("src/testcases/test/org/mandarax/compiler/reldef13.rel"));
+//		compile(new File("src/testcases/test/org/mandarax/compiler/reldef14.rel"));
+//		compile(new File("src/testcases/test/org/mandarax/compiler/reldefNAF1.rel"));
+//		compile(new File("src/testcases/test/org/mandarax/compiler/reldefFactorial.rel"));
+//		compile(new File("src/testcases/test/org/mandarax/compiler/reldefRList.rel"));
+//		compile(new File("src/testcases/test/org/mandarax/compiler/reldefInDomain1.rel"));
+//		compile(new File("src/testcases/test/org/mandarax/compiler/reldefAggregation1.rel"));
+//		compile(new File("src/testcases/test/org/mandarax/compiler/reldefStaticMethods1.rel"));
+//		compile(new File("src/testcases/test/org/mandarax/compiler/reldefStaticMethods2.rel"));
+		
+		compile(new File("src/testcases/test/org/mandarax/compiler/reldefAggregation2.rel"));
 	}
 
 	private static void compile(File file) throws Exception {
