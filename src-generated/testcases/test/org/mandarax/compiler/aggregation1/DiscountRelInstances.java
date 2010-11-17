@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>Discount</strong>.
- * @version Nov 17, 2010 9:21:54 PM 
+ * @version Nov 18, 2010 9:53:05 AM 
  */
 public class DiscountRelInstances {
 	// object references
@@ -406,17 +406,17 @@ public class DiscountRelInstances {
 	
 	// agg _max_0(TransactionRelInstances.getTransactions(c)) type is max
 	 	static int _max_0 (ResourceIterator<TransactionRel> _rel) {
-		int _v = null ;
+		int _v = 0 ;
 		boolean f = true;
 		while (_rel.hasNext()) {
 		    TransactionRel _c = _rel.next();
 		    if (f) {
-		    	 _v = _c.value;
+		    	_v = _c.value;
 		    	
 		    	f = false;
 		    }
 		    else {
-				 if (_c.value.compareTo(_v)>0) {_v = _c.value;}
+				if (_c.value > _v) {_v = _c.value;}
 				
 			}
 		}
@@ -453,7 +453,7 @@ public class DiscountRelInstances {
 	
 	// agg _sum_0(TransactionRelInstances.getTransactions(c)) type is sum
 	 	static int _sum_0 (ResourceIterator<TransactionRel> _rel) {
-		int _v = null ;
+		int _v = 0 ;
 		
 		while (_rel.hasNext()) {
 			_v = _v + _rel.next().value;
@@ -489,17 +489,17 @@ public class DiscountRelInstances {
 	
 	// agg _min_0(TransactionRelInstances.getTransactions(c)) type is min
 	 	static int _min_0 (ResourceIterator<TransactionRel> _rel) {
-		int _v = null ;
+		int _v = 0 ;
 		boolean f = true;
 		while (_rel.hasNext()) {
 		    TransactionRel _c = _rel.next();
 		    if (f) {
-		    	 _v = _c.value;
+		    	_v = _c.value;
 		    	
 		    	f = false;
 		    }
 		    else {
-				 if (_c.value.compareTo(_v)<0) {_v = _c.value;}
+				if (_c.value < _v) {_v = _c.value;}
 				
 			}
 		}

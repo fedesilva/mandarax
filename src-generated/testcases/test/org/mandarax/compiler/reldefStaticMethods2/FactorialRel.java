@@ -2,7 +2,7 @@ package test.org.mandarax.compiler.reldefStaticMethods2;
 
 /**
  * Class representing the relationship <strong>Factorial</strong>.
- * @version Nov 17, 2010 9:21:54 PM 
+ * @version Nov 18, 2010 9:53:05 AM 
  */
 public class FactorialRel {
 

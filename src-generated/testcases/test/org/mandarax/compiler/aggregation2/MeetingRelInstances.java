@@ -8,7 +8,7 @@ import org.mandarax.rt.*;
 
 /**
  * Interface for queries for relationship <strong>Meeting</strong>.
- * @version Nov 17, 2010 9:21:54 PM 
+ * @version Nov 18, 2010 9:53:05 AM 
  */
 public class MeetingRelInstances {
 	// object references
@@ -22,6 +22,9 @@ public class MeetingRelInstances {
 	// rule: fact2:  -> Meeting("NY",new GregorianCalendar(2002,2,3));
 	private final static java.util.Properties _annotations_fact2 = new java.util.Properties();
 	
+	// rule: fact3:  -> Meeting("NY",new GregorianCalendar(2001,3,4));
+	private final static java.util.Properties _annotations_fact3 = new java.util.Properties();
+	
 	
 	// initialise annotations
 	static {
@@ -34,6 +37,12 @@ public class MeetingRelInstances {
 		// relationship annotations for rule  fact2:  -> Meeting("NY",new GregorianCalendar(2002,2,3));
 		
 		// rule annotations for rule  fact2:  -> Meeting("NY",new GregorianCalendar(2002,2,3));
+		
+		
+	
+		// relationship annotations for rule  fact3:  -> Meeting("NY",new GregorianCalendar(2001,3,4));
+		
+		// rule annotations for rule  fact3:  -> Meeting("NY",new GregorianCalendar(2001,3,4));
 		
 		
 	}
@@ -58,7 +67,7 @@ public class MeetingRelInstances {
 	 
 	static ResourceIterator<MeetingRel> getAll ( final DerivationController _derivation   ) {
 		final int _derivationlevel = _derivation.size();
-		return new IteratorChain<MeetingRel>(2) {
+		return new IteratorChain<MeetingRel>(3) {
 			
 			public ResourceIterator<MeetingRel> getNextIterator(int pos) {
 			switch (pos) {
@@ -73,6 +82,11 @@ public class MeetingRelInstances {
                 			return getAll_1(_derivation.pop(_derivationlevel)  );
                 		}
 				
+                		case 2: {
+                			// invoke fact3:  -> Meeting("NY",new GregorianCalendar(2001,3,4));
+                			return getAll_2(_derivation.pop(_derivationlevel)  );
+                		}
+				
 				default: return EmptyIterator.DEFAULT;
 			}}
 		};
@@ -80,7 +94,7 @@ public class MeetingRelInstances {
 	 
 	static ResourceIterator<MeetingRel> getMeetings ( final DerivationController _derivation ,  final String venue  ) {
 		final int _derivationlevel = _derivation.size();
-		return new IteratorChain<MeetingRel>(2) {
+		return new IteratorChain<MeetingRel>(3) {
 			
 			public ResourceIterator<MeetingRel> getNextIterator(int pos) {
 			switch (pos) {
@@ -93,6 +107,11 @@ public class MeetingRelInstances {
                 		case 1: {
                 			// invoke fact2:  -> Meeting("NY",new GregorianCalendar(2002,2,3));
                 			return getMeetings_1(_derivation.pop(_derivationlevel) ,  venue );
+                		}
+				
+                		case 2: {
+                			// invoke fact3:  -> Meeting("NY",new GregorianCalendar(2001,3,4));
+                			return getMeetings_2(_derivation.pop(_derivationlevel) ,  venue );
                 		}
 				
 				default: return EmptyIterator.DEFAULT;
@@ -167,6 +186,41 @@ public class MeetingRelInstances {
 		// rule head
 		
 		return new SingletonIterator(new MeetingRel("NY",new GregorianCalendar(2002,2,3)));
+        
+		
+		
+		
+	
+
+	}
+	// rule: fact3:  -> Meeting("NY",new GregorianCalendar(2001,3,4));
+	private static ResourceIterator<MeetingRel> getAll_2 (final DerivationController _derivation  ) {
+		
+		_derivation.log("Meeting.fact3", DerivationController.RULE, _annotations_fact3);
+		
+			
+	
+		
+		// utility class used to keep track of variables bindings
+		// rule: fact3:  -> Meeting("NY",new GregorianCalendar(2001,3,4));
+		// prereqs: []
+		class _Bindings {
+		}
+		final _Bindings _bindings = new _Bindings();
+		ResourceIterator<?> _tmp = null;
+		
+		 
+		
+		
+		
+		
+		
+
+		
+		
+		// rule head
+		
+		return new SingletonIterator(new MeetingRel("NY",new GregorianCalendar(2001,3,4)));
         
 		
 		
@@ -256,6 +310,50 @@ public class MeetingRelInstances {
 		// rule head
 		
 		return new SingletonIterator(new MeetingRel("NY",new GregorianCalendar(2002,2,3)));
+        
+		
+		
+		
+	
+
+	}
+	// rule: fact3:  -> Meeting("NY",new GregorianCalendar(2001,3,4));
+	private static ResourceIterator<MeetingRel> getMeetings_2 (final DerivationController _derivation ,  final String venue ) {
+		
+		_derivation.log("Meeting.fact3", DerivationController.RULE, _annotations_fact3);
+		
+			
+	
+		
+		// utility class used to keep track of variables bindings
+		// rule: fact3:  -> Meeting("NY",new GregorianCalendar(2001,3,4));
+		// prereqs: []
+		class _Bindings {
+		}
+		final _Bindings _bindings = new _Bindings();
+		ResourceIterator<?> _tmp = null;
+		
+		 
+		
+		
+		
+		 
+		// check conditions	
+		boolean _checkfailed = false;
+		
+		_checkfailed = _checkfailed || !Equals.compare(venue,"NY"); 
+		
+		if (_checkfailed) {
+			return EmptyIterator.DEFAULT;
+		}
+		
+		
+
+		
+		
+		// rule head
+		
+		return new SingletonIterator(new MeetingRel("NY",new GregorianCalendar(2001,3,4)));
         
 		
 		

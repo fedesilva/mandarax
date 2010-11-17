@@ -4,7 +4,7 @@ import test.org.mandarax.compiler.*;
 
 /**
  * Class representing the relationship <strong>Discount</strong>.
- * @version Nov 17, 2010 9:21:54 PM 
+ * @version Nov 18, 2010 9:53:05 AM 
  */
 public class DiscountRel {
 

@@ -5,17 +5,17 @@ import java.util.*;
 import test.org.mandarax.compiler.*;
 
 /**
- * Class representing the relationship <strong>Meeting</strong>.
+ * Class representing the relationship <strong>FirstMeeting</strong>.
  * @version Nov 18, 2010 9:53:05 AM 
  */
-public class MeetingRel {
+public class FirstMeetingRel {
 
 	// constructors
-	public MeetingRel () {
+	public FirstMeetingRel () {
 		super();
 	}
 	
-	public MeetingRel ( String venue , Calendar time ) {
+	public FirstMeetingRel ( String venue , Calendar time ) {
 		super();
 		this.venue=venue; 
 		this.time=time; 

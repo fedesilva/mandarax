@@ -11,32 +11,10 @@
 
 package org.mandarax.compiler.impl;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import org.apache.log4j.Logger;
 import org.mandarax.compiler.CompilerException;
-import org.mandarax.dsl.ASTVisitor;
-import org.mandarax.dsl.AbstractASTVisitor;
-import org.mandarax.dsl.Aggregation;
-import org.mandarax.dsl.BinOp;
-import org.mandarax.dsl.BinaryExpression;
-import org.mandarax.dsl.Expression;
-import org.mandarax.dsl.FunctionDeclaration;
-import org.mandarax.dsl.MemberAccess;
-import org.mandarax.dsl.ObjectDeclaration;
-import org.mandarax.dsl.Position;
-import org.mandarax.dsl.RelationshipDefinition;
-import org.mandarax.dsl.Rule;
-import org.mandarax.dsl.FunctionInvocation;
-import org.mandarax.dsl.Variable;
+import org.mandarax.dsl.*;
 import org.mandarax.dsl.util.Resolver;
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
@@ -457,9 +435,23 @@ public class Scheduler {
 			fi.setProperty(AGGREGATION_PROPERTY,aggregationAttribute);
 			fi.setProperty(AGGREGATION_REL_TYPE,rel.getName());
 			fi.setProperty(AGGREGATION_FUNCTION, agg.getFunction().name());
-			fi.setProperty(AGGREGATION_RETURN_TYPE,agg.getVariable().getTypeName());
-			fi.setProperty(AGGREGATION_INITIAL_VALUE,getDefaultValue(agg.getTypeName()));
-			fi.setProperty(AGGREGATION_IS_NUMERIC_TYPE,isNumericType(agg.getTypeName()));
+			String aggTypeName = agg.getVariable().getTypeName();
+			fi.setProperty(AGGREGATION_RETURN_TYPE,aggTypeName);
+			fi.setProperty(AGGREGATION_INITIAL_VALUE,getDefaultValue(aggTypeName));
+			fi.setProperty(AGGREGATION_IS_NUMERIC_TYPE,isNumericType(aggTypeName));
+			
+			// do some verification here - there are restrictions for non-numeric types
+			if (agg.getFunction()!=AggregationFunction.count && !isNumericType(aggTypeName)) {
+				// 1. only count, min and max are allowed for non-numeric types
+				if (agg.getFunction()!=AggregationFunction.max && agg.getFunction()!=AggregationFunction.min) {
+					throw new CompilerException("Cannot compile " + this.rule + " - only min and max aggregation functions are allowed for non numerical types");
+				}
+				// 2. if type is non-numeric, Comparable must be implemented
+				Class aggType = agg.getVariable().getType();
+				if (!Comparable.class.isAssignableFrom(aggType)) {
+					throw new CompilerException("Cannot compile " + this.rule + " - aggregation is only supported for numeric types and Comparables, but the type of " + agg.getVariable() + " does not implement comparable: " + aggType);
+				}
+			}
 			
 			substitutions.put(agg, fi);
 			

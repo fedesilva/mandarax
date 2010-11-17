@@ -308,17 +308,7 @@ public class DefaultCompiler implements Compiler {
 		bindings.put("aggregations",aggregations);
 		
 		String generated = (String) TemplateRuntime.execute(getTemplate(RELATIONSHIP_QUERY_IMPLEMENTATION), bindings,Templates.registry);
-		
-//		StringBuffer b = new StringBuffer();
-//		for (FunctionInvocation agg:aggregations) {
-//			b.append(createAggregationFunction(target,cu,rel,agg));
-//		}
-//		if (b.length()>0) {
-//			generated = generated + b;
-//		}
-//		
-//		generated = generated + "\n}"; // RELATIONSHIP_QUERY_IMPLEMENTATION template does not close class to allow aggregations to be added!
-		
+			
 		printGeneratedCode(cu,target,rel.getName()+TYPE_EXTENSION+"Instances",generated);
 	}
 	
@@ -369,34 +359,6 @@ public class DefaultCompiler implements Compiler {
 			v.setDefined(objDeclNames.contains(v.getName()));
 		}
 		
-		// head
-//		FunctionInvocation head = rule.getHead();
-//		for (int i=0;i<head.getParameters().size();i++) {
-//			Expression term = head.getParameters().get(i);
-//
-//			if (term instanceof Variable) {
-//				// try to use term from obj declaration
-//				Class type = objTypeMap.get(((Variable) term).getName());
-//				// else get type from slot definition
-//				Class type2 = resolver.getType(cu.getContext(),rel.getSlotDeclarations().get(i).getType());
-//				if (type==null) {
-//					varTypeMap.put((Variable)term,type2);
-//					LOGGER.debug("Adding type info from rule head to type map: " + term + " -> " + type2);
-//				}
-//				else {
-//					checkTypeConsistency(type,type2);
-//					varTypeMap.put(term,type);
-//					LOGGER.debug("Adding type info from rule head to type map: " + term + " -> " + type);
-//				}
-//			}
-//			else {
-//				// complex term in head
-//				Class type2 = resolver.getType(cu.getContext(),rel.getSlotDeclarations().get(i).getType());
-//				varTypeMap.put(term,type2);
-//				LOGGER.debug("Adding type info from rule head to type map: " + term + " -> " + type2);
-//			}
-//		}
-		
 		collectTypeInfo(cus,objTypeMap,varTypeMap,rule.getHead());
 
 		for (Expression expression:rule.getBody()) {
@@ -404,8 +366,6 @@ public class DefaultCompiler implements Compiler {
 		}
 		
 		// build type reasoner
-		// TODO: type reasoner should also override method to associate function invocations with types
-		// sometimes types for complex expressions are known (e.g. from referenced slots in predicates)
 		final TypeReasoner typeReasoner = new AbstractTypeReasoner() {
 			@Override
 			protected Class doGetType(Variable expression, Resolver resolver,Collection<RelationshipDefinition> rels) throws TypeReasoningException {
@@ -573,18 +533,6 @@ public class DefaultCompiler implements Compiler {
 	// cross ref functions in function invocations with function declarations or import statements
 	// keep public for unit testing
 	public void resolveFunctionRefs (Collection<CompilationUnit> cus) throws CompilerException {
-		// collect functions defined in queries
-//		final Collection<RelationshipDefinition> declaredRels = new HashSet<RelationshipDefinition>();
-//		class DeclaredFunctionCollector extends AbstractASTVisitor {
-//			@Override
-//			public boolean visit(RelationshipDefinition x) {
-//				declaredRels.add(x);
-//				return super.visit(x);
-//			}
-//		};
-//		for (CompilationUnit cu:cus) {
-//			cu.accept(new DeclaredFunctionCollector());
-//		}
 		
 		final Collection<RelationshipDefinition> declaredRels = this.getRels(cus, true);
 		
