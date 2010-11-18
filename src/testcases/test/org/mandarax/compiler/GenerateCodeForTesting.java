@@ -35,7 +35,7 @@ public class GenerateCodeForTesting {
 //				return pathname.getAbsolutePath().endsWith(".rel");
 //			}})) {
 //			
-//			System.out.println("generating code for " + file.getAbsolutePath());
+//			LOGGER.info("generating code for " + file.getAbsolutePath());
 //			compile(file);
 //		}
 		

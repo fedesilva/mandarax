@@ -19,6 +19,7 @@ import java.lang.reflect.Member;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
+import org.apache.commons.beanutils.MethodUtils;
 import org.apache.commons.lang.ClassUtils;
 import org.apache.log4j.Logger;
 import org.mandarax.dsl.Context;
@@ -82,7 +83,7 @@ public class DefaultResolver implements Resolver {
 		}
 		
 		try {
-			Method m =  clazz.getMethod(name,paramTypes);
+			Method m = MethodUtils.getMatchingAccessibleMethod(clazz,name,paramTypes);
 			if (Modifier.isPublic(m.getModifiers())) {
 				LOGGER.debug("Resolving feature " +name + " in " + className + " with parameters " + paramTypeNames + " to " + m);
 				return m;

@@ -167,6 +167,7 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 	protected Class doGetType (MemberAccess expression,Resolver resolver,Collection<RelationshipDefinition> rels) throws TypeReasoningException {
 		String name = expression.getMember();
 		Class type = getType(expression.getObjectReference(),resolver,rels);
+		if (type==null) failed(expression,"Cannot compute type for " + expression.getObjectReference());
 		List<String> paramTypes = new ArrayList<String>();
 		for (Expression param:expression.getParameters()) {
 			paramTypes.add(getType(param,resolver,rels).getName());
@@ -246,7 +247,7 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 		UnOp op = expression.getOperator();
 		Class type = getType(expression.getPart(),resolver,rels);
 		if (op==UnOp.NOT) {
-			if (type==Boolean.class) return Boolean.class;
+			if (type==Boolean.class || type==Boolean.TYPE) return Boolean.class;
 			else mismatch(expression.getPart(),Boolean.class,type);
 		}
 		else if (op==UnOp.MINUS) {

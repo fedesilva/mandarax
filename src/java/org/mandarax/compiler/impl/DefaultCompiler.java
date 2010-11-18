@@ -358,6 +358,7 @@ public class DefaultCompiler implements Compiler {
 		// mark variables defined by object declarations as defined
 		for (Variable v:rule.getVariables()) {
 			v.setDefined(objDeclNames.contains(v.getName()));
+			if (v.isDefined()) v.setType(objTypeMap.get(v.getName()));
 		}
 		
 		collectTypeInfo(cus,objTypeMap,varTypeMap,rule.getHead());
@@ -370,11 +371,15 @@ public class DefaultCompiler implements Compiler {
 		final TypeReasoner typeReasoner = new AbstractTypeReasoner() {
 			@Override
 			protected Class doGetType(Variable expression, Resolver resolver,Collection<RelationshipDefinition> rels) throws TypeReasoningException {
-				return varTypeMap.get(expression);
+				Class clazz = varTypeMap.get(expression);
+				if (clazz==null) clazz = objTypeMap.get(expression);
+				return clazz;
 			}
 			@Override
 			public Class getType(Expression expression, Resolver resolver,Collection<RelationshipDefinition> rels) throws TypeReasoningException {
-				Class type = varTypeMap.get(expression);
+				Class type = expression.getType();
+				if (type==null) type=varTypeMap.get(expression);
+				if (type==null) type=objTypeMap.get(expression);
 				if (type!=null) return type; // we can associate complex terms directly with types through slots 
 				else return super.getType(expression,resolver, rels);
 			}
