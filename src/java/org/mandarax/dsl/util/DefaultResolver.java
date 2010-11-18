@@ -53,7 +53,7 @@ public class DefaultResolver implements Resolver {
 			try {
 				field = clazz.getField(name);
 			} catch (Exception e) {
-				LOGGER.error(e);
+				// LOGGER.error(e);
 			}
 			if (field!=null && Modifier.isPublic(field.getModifiers())) {
 				LOGGER.debug("Resolving feature " +name + " in " + className + " with parameters " + paramTypeNames + " to " + field);
@@ -61,19 +61,38 @@ public class DefaultResolver implements Resolver {
 			}
 			
 			// try to use bean framework
+			Exception x = null;
 			try {
 				PropertyDescriptor[] properties = Introspector.getBeanInfo(clazz).getPropertyDescriptors();
 				for (PropertyDescriptor p:properties) {
 					if (p.getName().equals(name)) {
 						Method reader = p.getReadMethod();
-						LOGGER.debug("Resolving feature " +name + " in " + className + " with parameters " + paramTypeNames + " to " + reader);
-						return reader;
+						if (reader!=null) {
+							LOGGER.debug("Resolving feature " +name + " in " + className + " with parameters " + paramTypeNames + " to " + reader);
+							return reader;
+						}
+						else {
+							break;
+						}
 					}
 				}
 			} catch (IntrospectionException e) {
-				throw new ResolverException("Cannot introspect class " + clazz.getName(),e);
+				x = e;
 			}
-			throw new ResolverException("Cannot resolve property " + name + " in "+ clazz.getName());
+			// try to locate method with exact name: this will map property hasWife to method hasWife() instead of getHasWife()
+			try {
+				@SuppressWarnings("unchecked")
+				Method m = clazz.getMethod(name,new Class[]{});
+				if (m!=null && Modifier.isPublic(m.getModifiers())) {
+					LOGGER.debug("Resolving feature " +name + " in " + className + " with parameters " + paramTypeNames + " to " + m);
+					return m;
+				}
+			}
+			catch (Exception e2) {
+				x=e2;
+			}
+
+			throw new ResolverException("Cannot resolve property " + name + " in "+ clazz.getName(),x);
 		}
 		
 		// method access
