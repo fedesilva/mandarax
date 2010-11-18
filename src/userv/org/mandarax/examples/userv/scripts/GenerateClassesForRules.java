@@ -32,20 +32,17 @@ public class GenerateClassesForRules {
 	public static final Logger LOGGER = Logger.getLogger(GenerateCodeForTesting.class);
 
 	public static void main(String[] args) throws Exception {
-		for (File file:new File("src/userv/org/mandarax/examples/userv/rules").listFiles(new FileFilter() {
+		File[] files = new File("src/userv/org/mandarax/examples/userv/rules").listFiles(new FileFilter() {
 			@Override
 			public boolean accept(File pathname) {
 				return pathname.getAbsolutePath().endsWith(".rel");
-			}})) {
-			
-			LOGGER.info("generating code for " + file.getAbsolutePath());
-			compile(file);
-		}
+			}});
 		
+		compile(files);
 		
 	}
 
-	private static void compile(File file) throws Exception {
+	private static void compile(File[] files) throws Exception {
 		Compiler compiler = new DefaultCompiler();
 		Location location = new Location() {
 			String file = null;
@@ -66,9 +63,9 @@ public class GenerateClassesForRules {
 				return file;
 			}
 		};
-		compiler.compile(location,CompilationMode.INTERFACES_ONLY,file);
-		compiler.compile(location,CompilationMode.CLASSES_ONLY,file);
+		compiler.compile(location,CompilationMode.INTERFACES_ONLY,files);
+		compiler.compile(location,CompilationMode.CLASSES_ONLY,files);
 		
-		LOGGER.info("Compiled rules from " + file);
+		LOGGER.info("Compiled rules from " + files);
 	}
 }
