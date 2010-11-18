@@ -21,6 +21,7 @@ import org.junit.runners.*;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	TestGeneratedRelationshipTypes.class,
+	EqualsHashcodeTests.class,
 	TestGeneratedQueryInterfaces.class,
 	TestSuiteForCompiler.class
 })
