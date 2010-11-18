@@ -1,0 +1,23 @@
+package mypackage;
+
+import test.org.mandarax.compiler.*;
+
+rel Transaction(String customer,int value) queries getTransactions(customer),getAll() {
+	fact1: -> Transaction("Jens",42);
+	fact2: -> Transaction("Jens",80);
+	fact3: -> Transaction("Jens",99);
+	fact4: -> Transaction("Max",16);
+	fact5: -> Transaction("Max",20);
+	fact6: -> Transaction("Max",3);
+	fact7: -> Transaction("Yadi",1200);
+}
+
+// will not work: 3rd aggregation uses wrong agg var name
+rel Discount(String customer,int discount) queries getDiscount(customer) {
+	rule1: (max d in Transaction(c,d)) > 1000 -> Discount(c,30);
+	rule2: (avg d in Transaction(c,d)) > 50 -> Discount(c,20);
+	rule3: (sum e in Transaction(c,d)) > 30 -> Discount(c,10);
+	rule4: 2< (count d in Transaction(c,d)) -> Discount(c,5);
+	rule5: 10< (min d in Transaction(c,d)) -> Discount(c,3);
+}
+
