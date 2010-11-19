@@ -5,7 +5,7 @@ import org.mandarax.examples.userv.domain.*;
 @category="Auto Eligibility Rule Set"
 @author="Jens Dietrich"
 @lastupdated="19/11/10"
-rel AutoEligibility(Car car,String rating) queries getRating(car),hasRating(car,rating) {
+rel AutoEligibility(Car car,String eligibility) queries getRating(car),hasRating(car,eligibility) {
 	
 	@description="If the Potential Occupant Injury Rating is extremely high, then the auto eligibility is 'not eligible'"
 	AE_01: PotentialOccupantInjuryRating(car,"extremely high") -> AutoEligibility(car,"not eligible");
