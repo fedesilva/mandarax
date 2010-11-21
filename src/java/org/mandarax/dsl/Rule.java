@@ -182,7 +182,7 @@ public class Rule extends AnnotatableNode implements Cloneable {
 				return x.substitute(substitutions);
 			}}),
 		(FunctionInvocation)head.substitute(substitutions));
-		r.copyPropertiesTo(this);
+		this.copyPropertiesTo(r);
 		return r;
 	}
 
