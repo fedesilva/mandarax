@@ -2,7 +2,7 @@ package org.mandarax.examples.userv.rules.generated;
 
 import org.mandarax.examples.userv.domain.*;
 
-java.util.List highTheftProbabilityAutoList = null; 
+java.util.Collection highTheftProbabilityAutoList = null; 
  
 @category="Auto Eligibility Rule Set"
 @author="Jens Dietrich"

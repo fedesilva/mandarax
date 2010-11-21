@@ -2,7 +2,7 @@ package org.mandarax.examples.userv.rules.generated;
 
 import org.mandarax.examples.userv.domain.*;
  
-int CurrentYear = 2010; // TODO instantiate dynamically using Calendar
+int CurrentYear = 2001; //new GregorianCalendar().get(Calendar.YEAR); - not yet possible, see issue 16 TODO
 int NextYear = CurrentYear+1;
 
 @category="Auto Premiums Rule Set"
