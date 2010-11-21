@@ -32,6 +32,8 @@ public class DefaultDerivationController  implements DerivationController {
 	private int depth = 0;
 	private boolean cancelled = false;
 	private DerivationListener derivationListener = null;
+	private DerivationStepLogger logger = DerivationStepLoggerFactory.defaultInstance.createLogger();
+
 	
 	private static final Properties NO_ANNOTATIONS = new Properties();
 	
@@ -43,17 +45,17 @@ public class DefaultDerivationController  implements DerivationController {
 		if (cancelled) 
 			throw new DerivationCancelledException();
 		
-		// enable the next blog for debugging
-		for (int i=0;i<depth;i++) System.out.print("  ");
-		System.out.println(ruleRef);
-		
-		
 		this.ids.add(depth,ruleRef);	
 		this.types.add(depth,kind);
 		this.annotations.add(depth,annotations==null?NO_ANNOTATIONS:annotations);
 		
-		if (derivationListener!=null)
+		if (logger!=null) {
+			logger.print(ruleRef, kind, annotations, depth);
+		}
+		
+		if (derivationListener!=null) {
 			derivationListener.step(ruleRef, depth);
+		}
 	}
 	/**
 	 * Get a copy of the derivation log. 
