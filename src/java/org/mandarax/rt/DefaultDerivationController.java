@@ -16,8 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import com.google.common.base.Joiner;
-
 /**
  * Data structure to store the reference to elements in the knowledge base.
  * Used to record derivation trees, and can be used to cancel the inference process.
@@ -46,8 +44,8 @@ public class DefaultDerivationController  implements DerivationController {
 			throw new DerivationCancelledException();
 		
 		// enable the next blog for debugging
-//		for (int i=0;i<depth;i++) System.out.print("  ");
-//		System.out.println(ruleRef);
+		for (int i=0;i<depth;i++) System.out.print("  ");
+		System.out.println(ruleRef);
 		
 		
 		this.ids.add(depth,ruleRef);	

@@ -104,7 +104,7 @@ public class Prereq {
 		boolean[] signature = new boolean[rel.getSlotDeclarations().size()];
 		for (int i=0;i<signature.length;i++) {
 			Expression term = finv.getParameters().get(i);
-			signature[i]=isBound(term) && !isNewlyBound(term); 
+			signature[i]= term.isGround() || (isBound(term) && !isNewlyBound(term)); 
 		}
 		for (FunctionDeclaration query:rel.getQueries()) {
 			if (Arrays.equals(signature,query.getSignature())) {
