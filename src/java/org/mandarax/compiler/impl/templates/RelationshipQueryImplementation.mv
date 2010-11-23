@@ -69,7 +69,7 @@ public class @{rel.name}@{ext}Instances {
 	@foreach{index:ruleIndices}// rule: @{rel.rules.get(index)}
 	private static ResourceIterator<@{rel.name}@{ext}> @{query.name}_@{index} (final DerivationController _derivation @if{query.hasParameters()},@end{} @foreach{param:query.parameterNames} final @{rel.getTypeNameForSlot(param)} @{param} @end{", "}) {
 		@code{rule=rel.getRules().get(index)}
-		_derivation.log("@{rel.name}.@{rule.id}", DerivationController.RULE, _annotations_@{rule.id});
+		_derivation.log("@{packageName}.@{rel.name}.@{rule.id}", DerivationController.RULE, _annotations_@{rule.id});
 		
 		@includeNamed{'RuleInvocation'}
 	}

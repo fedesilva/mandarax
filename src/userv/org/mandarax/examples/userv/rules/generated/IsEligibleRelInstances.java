@@ -8,7 +8,7 @@ import org.mandarax.rt.*;
  * Interface for queries for relationship <strong>IsEligible</strong>. Generated
  * by org.mandarax.compiler.impl.DefaultCompiler.
  * 
- * @version Nov 22, 2010 2:53:26 PM
+ * @version Nov 23, 2010 11:18:36 PM
  */
 public class IsEligibleRelInstances {
 	// object references
@@ -27,6 +27,7 @@ public class IsEligibleRelInstances {
 	// DriverCategory(_driver,"young driver") -> IsEligible(_driver);
 	private final static java.util.Properties _annotations_DE_DAC06 = new java.util.Properties();
 
+	// initialise annotations
 	static {
 		// relationship annotations for rule DE_DAC03:
 		// DriverCategory(_driver,"young driver") &
@@ -62,41 +63,47 @@ public class IsEligibleRelInstances {
 		// rule annotations for rule DE_DAC06: not
 		// DriverCategory(_driver,"senior driver") & not
 		// DriverCategory(_driver,"young driver") -> IsEligible(_driver);
+
 	}
 
 	// interface generated for queries
+
 	public static ResultSet<IsEligibleRel> isEligible(Driver driver) {
 		DerivationController _derivation = new DefaultDerivationController();
-
 		return new ResultSet<IsEligibleRel>(isEligible(_derivation, driver), _derivation);
 	}
 
 	// implementations - these methods are referenced by code generated from
 	// other rules in this package
 	// and therefore kept static
+
 	static ResourceIterator<IsEligibleRel> isEligible(final DerivationController _derivation, final Driver driver) {
 		final int _derivationlevel = _derivation.size();
-
 		return new IteratorChain<IsEligibleRel>(3) {
+
 			public ResourceIterator<IsEligibleRel> getNextIterator(int pos) {
 				switch (pos) {
-				case 0:// invoke DE_DAC03:
-						// DriverCategory(_driver,"young driver") &
-						// HasTrainingCertification(_driver) ->
-						// IsEligible(_driver);
+
+				case 0: {
+					// invoke DE_DAC03: DriverCategory(_driver,"young driver") &
+					// HasTrainingCertification(_driver) -> IsEligible(_driver);
 					return isEligible_0(_derivation.pop(_derivationlevel), driver);
+				}
 
-				case 1:// invoke DE_DAC05:
-						// DriverCategory(_driver,"senior driver") &
-						// HasTrainingCertification(_driver) ->
-						// IsEligible(_driver);
+				case 1: {
+					// invoke DE_DAC05: DriverCategory(_driver,"senior driver")
+					// & HasTrainingCertification(_driver) ->
+					// IsEligible(_driver);
 					return isEligible_1(_derivation.pop(_derivationlevel), driver);
+				}
 
-				case 2:// invoke DE_DAC06: not
-						// DriverCategory(_driver,"senior driver") & not
-						// DriverCategory(_driver,"young driver") ->
-						// IsEligible(_driver);
+				case 2: {
+					// invoke DE_DAC06: not
+					// DriverCategory(_driver,"senior driver") & not
+					// DriverCategory(_driver,"young driver") ->
+					// IsEligible(_driver);
 					return isEligible_2(_derivation.pop(_derivationlevel), driver);
+				}
 
 				default:
 					return EmptyIterator.DEFAULT;
@@ -111,7 +118,8 @@ public class IsEligibleRelInstances {
 	// rule: DE_DAC03: DriverCategory(_driver,"young driver") &
 	// HasTrainingCertification(_driver) -> IsEligible(_driver);
 	private static ResourceIterator<IsEligibleRel> isEligible_0(final DerivationController _derivation, final Driver driver) {
-		_derivation.log("IsEligible.DE_DAC03", DerivationController.RULE, _annotations_DE_DAC03);
+
+		_derivation.log("org.mandarax.examples.userv.rules.generated.IsEligible.DE_DAC03", DerivationController.RULE, _annotations_DE_DAC03);
 
 		// utility class used to keep track of variables bindings
 		// rule: DE_DAC03: DriverCategory(_driver,"young driver") &
@@ -121,40 +129,42 @@ public class IsEligibleRelInstances {
 		class _Bindings {
 			private org.mandarax.examples.userv.domain.Driver _driver = driver;
 		}
-
 		final _Bindings _bindings = new _Bindings();
 		ResourceIterator<?> _tmp = null;
 
 		// apply prerequisite DriverCategory(_driver,"young driver")
 
 		// case 4
+
 		_tmp = DriverCategoryRelInstances.hasCategory(_derivation.push(), _bindings._driver, "young driver");
 
 		if (!_tmp.hasNext()) {
 			_tmp.close();
-
 			return EmptyIterator.DEFAULT;
 		}
 
 		// apply prerequisite HasTrainingCertification(_driver)
 
 		// case 4
+
 		_tmp = HasTrainingCertificationRelInstances.hasDertification(_derivation.push(), _bindings._driver);
 
 		if (!_tmp.hasNext()) {
 			_tmp.close();
-
 			return EmptyIterator.DEFAULT;
 		}
 
 		// rule head
+
 		return new SingletonIterator(new IsEligibleRel(_bindings._driver));
+
 	}
 
 	// rule: DE_DAC05: DriverCategory(_driver,"senior driver") &
 	// HasTrainingCertification(_driver) -> IsEligible(_driver);
 	private static ResourceIterator<IsEligibleRel> isEligible_1(final DerivationController _derivation, final Driver driver) {
-		_derivation.log("IsEligible.DE_DAC05", DerivationController.RULE, _annotations_DE_DAC05);
+
+		_derivation.log("org.mandarax.examples.userv.rules.generated.IsEligible.DE_DAC05", DerivationController.RULE, _annotations_DE_DAC05);
 
 		// utility class used to keep track of variables bindings
 		// rule: DE_DAC05: DriverCategory(_driver,"senior driver") &
@@ -164,40 +174,42 @@ public class IsEligibleRelInstances {
 		class _Bindings {
 			private org.mandarax.examples.userv.domain.Driver _driver = driver;
 		}
-
 		final _Bindings _bindings = new _Bindings();
 		ResourceIterator<?> _tmp = null;
 
 		// apply prerequisite DriverCategory(_driver,"senior driver")
 
 		// case 4
+
 		_tmp = DriverCategoryRelInstances.hasCategory(_derivation.push(), _bindings._driver, "senior driver");
 
 		if (!_tmp.hasNext()) {
 			_tmp.close();
-
 			return EmptyIterator.DEFAULT;
 		}
 
 		// apply prerequisite HasTrainingCertification(_driver)
 
 		// case 4
+
 		_tmp = HasTrainingCertificationRelInstances.hasDertification(_derivation.push(), _bindings._driver);
 
 		if (!_tmp.hasNext()) {
 			_tmp.close();
-
 			return EmptyIterator.DEFAULT;
 		}
 
 		// rule head
+
 		return new SingletonIterator(new IsEligibleRel(_bindings._driver));
+
 	}
 
 	// rule: DE_DAC06: not DriverCategory(_driver,"senior driver") & not
 	// DriverCategory(_driver,"young driver") -> IsEligible(_driver);
 	private static ResourceIterator<IsEligibleRel> isEligible_2(final DerivationController _derivation, final Driver driver) {
-		_derivation.log("IsEligible.DE_DAC06", DerivationController.RULE, _annotations_DE_DAC06);
+
+		_derivation.log("org.mandarax.examples.userv.rules.generated.IsEligible.DE_DAC06", DerivationController.RULE, _annotations_DE_DAC06);
 
 		// utility class used to keep track of variables bindings
 		// rule: DE_DAC06: not DriverCategory(_driver,"senior driver") & not
@@ -207,35 +219,37 @@ public class IsEligibleRelInstances {
 		class _Bindings {
 			private org.mandarax.examples.userv.domain.Driver _driver = driver;
 		}
-
 		final _Bindings _bindings = new _Bindings();
 		ResourceIterator<?> _tmp = null;
 
 		// apply prerequisite not DriverCategory(_driver,"senior driver")
 
 		// case 4
+
 		_tmp = DriverCategoryRelInstances.hasCategory(_derivation.push(), _bindings._driver, "senior driver");
 
 		if (_tmp.hasNext()) {
 			_tmp.close();
-
 			return EmptyIterator.DEFAULT;
 		}
 
 		// apply prerequisite not DriverCategory(_driver,"young driver")
 
 		// case 4
+
 		_tmp = DriverCategoryRelInstances.hasCategory(_derivation.push(), _bindings._driver, "young driver");
 
 		if (_tmp.hasNext()) {
 			_tmp.close();
-
 			return EmptyIterator.DEFAULT;
 		}
 
 		// rule head
+
 		return new SingletonIterator(new IsEligibleRel(_bindings._driver));
+
 	}
 
 	// methods representing aggregation functions
+
 }

@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
  * Interface for queries for relationship <strong>Factorial</strong>. Generated
  * by org.mandarax.compiler.impl.DefaultCompiler.
  * 
- * @version Nov 23, 2010 3:01:09 PM
+ * @version Nov 23, 2010 11:18:25 PM
  */
 public class FactorialRelInstances {
 	// object references
@@ -103,7 +103,7 @@ public class FactorialRelInstances {
 	// rule: rule1: -> Factorial(0,1);
 	private static ResourceIterator<FactorialRel> getFactorial_0(final DerivationController _derivation, final int i) {
 
-		_derivation.log("Factorial.rule1", DerivationController.RULE, _annotations_rule1);
+		_derivation.log("test.org.mandarax.compiler.factorial.Factorial.rule1", DerivationController.RULE, _annotations_rule1);
 
 		// utility class used to keep track of variables bindings
 		// rule: rule1: -> Factorial(0,1);
@@ -131,7 +131,7 @@ public class FactorialRelInstances {
 	// rule: rule2: Factorial(x-1,n) -> Factorial(x,n*x);
 	private static ResourceIterator<FactorialRel> getFactorial_1(final DerivationController _derivation, final int i) {
 
-		_derivation.log("Factorial.rule2", DerivationController.RULE, _annotations_rule2);
+		_derivation.log("test.org.mandarax.compiler.factorial.Factorial.rule2", DerivationController.RULE, _annotations_rule2);
 
 		// utility class used to keep track of variables bindings
 		// rule: rule2: Factorial(x-1,n) -> Factorial(x,n*x);
@@ -165,7 +165,7 @@ public class FactorialRelInstances {
 	// rule: rule1: -> Factorial(0,1);
 	private static ResourceIterator<FactorialRel> isFactorial_0(final DerivationController _derivation, final int i, final int f) {
 
-		_derivation.log("Factorial.rule1", DerivationController.RULE, _annotations_rule1);
+		_derivation.log("test.org.mandarax.compiler.factorial.Factorial.rule1", DerivationController.RULE, _annotations_rule1);
 
 		// utility class used to keep track of variables bindings
 		// rule: rule1: -> Factorial(0,1);
@@ -195,7 +195,7 @@ public class FactorialRelInstances {
 	// rule: rule2: Factorial(x-1,n) -> Factorial(x,n*x);
 	private static ResourceIterator<FactorialRel> isFactorial_1(final DerivationController _derivation, final int i, final int f) {
 
-		_derivation.log("Factorial.rule2", DerivationController.RULE, _annotations_rule2);
+		_derivation.log("test.org.mandarax.compiler.factorial.Factorial.rule2", DerivationController.RULE, _annotations_rule2);
 
 		// utility class used to keep track of variables bindings
 		// rule: rule2: Factorial(x-1,n) & __t0==(n*x) -> Factorial(x,__t0);

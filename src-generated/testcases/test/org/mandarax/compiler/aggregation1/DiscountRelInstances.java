@@ -8,7 +8,7 @@ import org.mandarax.rt.*;
  * Interface for queries for relationship <strong>Discount</strong>. Generated
  * by org.mandarax.compiler.impl.DefaultCompiler.
  * 
- * @version Nov 23, 2010 3:01:09 PM
+ * @version Nov 23, 2010 11:18:25 PM
  */
 public class DiscountRelInstances {
 	// object references
@@ -125,7 +125,7 @@ public class DiscountRelInstances {
 	// rule: rule1: (max d in Transaction(c,d))>1000 -> Discount(c,30);
 	private static ResourceIterator<DiscountRel> getDiscount_0(final DerivationController _derivation, final String customer) {
 
-		_derivation.log("Discount.rule1", DerivationController.RULE, _annotations_rule1);
+		_derivation.log("test.org.mandarax.compiler.aggregation1.Discount.rule1", DerivationController.RULE, _annotations_rule1);
 
 		// utility class used to keep track of variables bindings
 		// rule: rule1: (max d in Transaction(c,d))>1000 -> Discount(c,30);
@@ -161,7 +161,7 @@ public class DiscountRelInstances {
 	// rule: rule2: (avg d in Transaction(c,d))>50 -> Discount(c,20);
 	private static ResourceIterator<DiscountRel> getDiscount_1(final DerivationController _derivation, final String customer) {
 
-		_derivation.log("Discount.rule2", DerivationController.RULE, _annotations_rule2);
+		_derivation.log("test.org.mandarax.compiler.aggregation1.Discount.rule2", DerivationController.RULE, _annotations_rule2);
 
 		// utility class used to keep track of variables bindings
 		// rule: rule2: (avg d in Transaction(c,d))>50 -> Discount(c,20);
@@ -197,7 +197,7 @@ public class DiscountRelInstances {
 	// rule: rule3: (sum d in Transaction(c,d))>30 -> Discount(c,10);
 	private static ResourceIterator<DiscountRel> getDiscount_2(final DerivationController _derivation, final String customer) {
 
-		_derivation.log("Discount.rule3", DerivationController.RULE, _annotations_rule3);
+		_derivation.log("test.org.mandarax.compiler.aggregation1.Discount.rule3", DerivationController.RULE, _annotations_rule3);
 
 		// utility class used to keep track of variables bindings
 		// rule: rule3: (sum d in Transaction(c,d))>30 -> Discount(c,10);
@@ -233,7 +233,7 @@ public class DiscountRelInstances {
 	// rule: rule4: 2<(count d in Transaction(c,d)) -> Discount(c,5);
 	private static ResourceIterator<DiscountRel> getDiscount_3(final DerivationController _derivation, final String customer) {
 
-		_derivation.log("Discount.rule4", DerivationController.RULE, _annotations_rule4);
+		_derivation.log("test.org.mandarax.compiler.aggregation1.Discount.rule4", DerivationController.RULE, _annotations_rule4);
 
 		// utility class used to keep track of variables bindings
 		// rule: rule4: 2<(count d in Transaction(c,d)) -> Discount(c,5);
@@ -269,7 +269,7 @@ public class DiscountRelInstances {
 	// rule: rule5: 10<(min d in Transaction(c,d)) -> Discount(c,3);
 	private static ResourceIterator<DiscountRel> getDiscount_4(final DerivationController _derivation, final String customer) {
 
-		_derivation.log("Discount.rule5", DerivationController.RULE, _annotations_rule5);
+		_derivation.log("test.org.mandarax.compiler.aggregation1.Discount.rule5", DerivationController.RULE, _annotations_rule5);
 
 		// utility class used to keep track of variables bindings
 		// rule: rule5: 10<(min d in Transaction(c,d)) -> Discount(c,3);

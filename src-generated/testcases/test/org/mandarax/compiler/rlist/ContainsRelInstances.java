@@ -8,7 +8,7 @@ import org.mandarax.rt.*;
  * Interface for queries for relationship <strong>Contains</strong>. Generated
  * by org.mandarax.compiler.impl.DefaultCompiler.
  * 
- * @version Nov 23, 2010 3:01:09 PM
+ * @version Nov 23, 2010 11:18:25 PM
  */
 public class ContainsRelInstances {
 	// object references
@@ -111,7 +111,7 @@ public class ContainsRelInstances {
 	// rule: rule1: -> Contains(_list,_list.getHead());
 	private static ResourceIterator<ContainsRel> contains_0(final DerivationController _derivation, final RList list, final Object element) {
 
-		_derivation.log("Contains.rule1", DerivationController.RULE, _annotations_rule1);
+		_derivation.log("test.org.mandarax.compiler.rlist.Contains.rule1", DerivationController.RULE, _annotations_rule1);
 
 		// utility class used to keep track of variables bindings
 		// rule: rule1: __t0==(_list.getHead()) -> Contains(_list,__t0);
@@ -140,7 +140,7 @@ public class ContainsRelInstances {
 	// -> Contains(_list,_element);
 	private static ResourceIterator<ContainsRel> contains_1(final DerivationController _derivation, final RList list, final Object element) {
 
-		_derivation.log("Contains.rule2", DerivationController.RULE, _annotations_rule2);
+		_derivation.log("test.org.mandarax.compiler.rlist.Contains.rule2", DerivationController.RULE, _annotations_rule2);
 
 		// utility class used to keep track of variables bindings
 		// rule: rule2: (_list.getTail())!=null &
@@ -182,7 +182,7 @@ public class ContainsRelInstances {
 	// rule: rule1: -> Contains(_list,_list.getHead());
 	private static ResourceIterator<ContainsRel> getElements_0(final DerivationController _derivation, final RList list) {
 
-		_derivation.log("Contains.rule1", DerivationController.RULE, _annotations_rule1);
+		_derivation.log("test.org.mandarax.compiler.rlist.Contains.rule1", DerivationController.RULE, _annotations_rule1);
 
 		// utility class used to keep track of variables bindings
 		// rule: rule1: -> Contains(_list,_list.getHead());
@@ -203,7 +203,7 @@ public class ContainsRelInstances {
 	// -> Contains(_list,_element);
 	private static ResourceIterator<ContainsRel> getElements_1(final DerivationController _derivation, final RList list) {
 
-		_derivation.log("Contains.rule2", DerivationController.RULE, _annotations_rule2);
+		_derivation.log("test.org.mandarax.compiler.rlist.Contains.rule2", DerivationController.RULE, _annotations_rule2);
 
 		// utility class used to keep track of variables bindings
 		// rule: rule2: (_list.getTail())!=null &

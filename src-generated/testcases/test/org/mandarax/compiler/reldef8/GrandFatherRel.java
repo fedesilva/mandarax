@@ -8,7 +8,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
  * Class representing the relationship <strong>GrandFather</strong>. Generated
  * by org.mandarax.compiler.impl.DefaultCompiler.
  * 
- * @version Nov 23, 2010 3:01:09 PM
+ * @version Nov 23, 2010 11:18:23 PM
  */
 public class GrandFatherRel {
 

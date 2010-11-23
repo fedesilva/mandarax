@@ -8,7 +8,7 @@ import org.mandarax.rt.*;
  * Interface for queries for relationship <strong>Discount</strong>. Generated
  * by org.mandarax.compiler.impl.DefaultCompiler.
  * 
- * @version Nov 23, 2010 3:01:09 PM
+ * @version Nov 23, 2010 11:18:25 PM
  */
 public class DiscountRelInstances {
 	// object references
@@ -96,7 +96,7 @@ public class DiscountRelInstances {
 	// Discount(c,specialDiscount);
 	private static ResourceIterator<DiscountRel> getAll_0(final DerivationController _derivation) {
 
-		_derivation.log("Discount.rule1", DerivationController.RULE, _annotations_rule1);
+		_derivation.log("test.org.mandarax.compiler.indomain1.Discount.rule1", DerivationController.RULE, _annotations_rule1);
 
 		// utility class used to keep track of variables bindings
 		// rule: rule1: _InDomain(c,specialCustomers) ->
@@ -133,7 +133,7 @@ public class DiscountRelInstances {
 	// Discount(c,specialDiscount);
 	private static ResourceIterator<DiscountRel> getDiscount_0(final DerivationController _derivation, final Customer customer) {
 
-		_derivation.log("Discount.rule1", DerivationController.RULE, _annotations_rule1);
+		_derivation.log("test.org.mandarax.compiler.indomain1.Discount.rule1", DerivationController.RULE, _annotations_rule1);
 
 		// utility class used to keep track of variables bindings
 		// rule: rule1: _InDomain(c,specialCustomers) ->

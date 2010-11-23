@@ -8,7 +8,7 @@ import org.mandarax.rt.*;
  * Interface for queries for relationship <strong>SemiOrphan</strong>. Generated
  * by org.mandarax.compiler.impl.DefaultCompiler.
  * 
- * @version Nov 23, 2010 3:01:09 PM
+ * @version Nov 23, 2010 11:18:25 PM
  */
 public class SemiOrphanRelInstances {
 	// object references
@@ -88,7 +88,7 @@ public class SemiOrphanRelInstances {
 	// rule: rule1: isYoung(p) & Father(f,p) & not Mother(m,p) -> SemiOrphan(p);
 	private static ResourceIterator<SemiOrphanRel> isSemiOrphan_0(final DerivationController _derivation, final Person person) {
 
-		_derivation.log("SemiOrphan.rule1", DerivationController.RULE, _annotations_rule1);
+		_derivation.log("test.org.mandarax.compiler.naf1.SemiOrphan.rule1", DerivationController.RULE, _annotations_rule1);
 
 		// utility class used to keep track of variables bindings
 		// rule: rule1: isYoung(p) & Father(f,p) & not Mother(m,p) ->
@@ -152,7 +152,7 @@ public class SemiOrphanRelInstances {
 	// rule: rule2: isYoung(p) & not Father(f,p) & Mother(m,p) -> SemiOrphan(p);
 	private static ResourceIterator<SemiOrphanRel> isSemiOrphan_1(final DerivationController _derivation, final Person person) {
 
-		_derivation.log("SemiOrphan.rule2", DerivationController.RULE, _annotations_rule2);
+		_derivation.log("test.org.mandarax.compiler.naf1.SemiOrphan.rule2", DerivationController.RULE, _annotations_rule2);
 
 		// utility class used to keep track of variables bindings
 		// rule: rule2: isYoung(p) & not Father(f,p) & Mother(m,p) ->

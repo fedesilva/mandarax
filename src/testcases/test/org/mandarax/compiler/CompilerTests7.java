@@ -61,7 +61,7 @@ public class CompilerTests7 {
 		
 		List<DerivationLogEntry> derivation = rs.getDerivationLog();
 		assertEquals(1,derivation.size());
-		assertEquals("Discount.rule1",derivation.get(0).getName());
+		assertEquals("test.org.mandarax.compiler.reldef7.Discount.rule1",derivation.get(0).getName());
 		
 		assertEquals(3,derivation.get(0).getAnnotationKeys().size()); // lastupdated is overridden
 		assertEquals("golden rule",derivation.get(0).getAnnotation("name"));
@@ -74,8 +74,8 @@ public class CompilerTests7 {
 		
 		derivation = rs.getDerivationLog();
 		assertEquals(2,derivation.size());
-		assertEquals("Discount.rule2",derivation.get(0).getName());
-		assertEquals("FrequentCustomer.rule2",derivation.get(1).getName());
+		assertEquals("test.org.mandarax.compiler.reldef7.Discount.rule2",derivation.get(0).getName());
+		assertEquals("test.org.mandarax.compiler.reldef7.FrequentCustomer.rule2",derivation.get(1).getName());
 		
 		assertEquals(3,derivation.get(0).getAnnotationKeys().size()); // lastupdated is overridden
 		assertEquals("\"silver\" rule",derivation.get(0).getAnnotation("name"));

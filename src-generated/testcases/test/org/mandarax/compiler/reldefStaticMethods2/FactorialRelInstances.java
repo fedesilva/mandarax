@@ -6,7 +6,7 @@ import org.mandarax.rt.*;
  * Interface for queries for relationship <strong>Factorial</strong>. Generated
  * by org.mandarax.compiler.impl.DefaultCompiler.
  * 
- * @version Nov 23, 2010 3:01:09 PM
+ * @version Nov 23, 2010 11:18:25 PM
  */
 public class FactorialRelInstances {
 	// object references
@@ -61,7 +61,7 @@ public class FactorialRelInstances {
 	// rule: rule1: y==(factorial(x)) -> Factorial(x,y);
 	private static ResourceIterator<FactorialRel> isFactorial_0(final DerivationController _derivation, final int n, final int fact) {
 
-		_derivation.log("Factorial.rule1", DerivationController.RULE, _annotations_rule1);
+		_derivation.log("test.org.mandarax.compiler.reldefStaticMethods2.Factorial.rule1", DerivationController.RULE, _annotations_rule1);
 
 		// utility class used to keep track of variables bindings
 		// rule: rule1: y==(factorial(x)) -> Factorial(x,y);

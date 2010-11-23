@@ -8,7 +8,7 @@ import org.mandarax.rt.*;
  * Interface for queries for relationship <strong>Discount</strong>. Generated
  * by org.mandarax.compiler.impl.DefaultCompiler.
  * 
- * @version Nov 23, 2010 3:01:09 PM
+ * @version Nov 23, 2010 11:18:23 PM
  */
 public class DiscountRelInstances {
 	// object references
@@ -149,7 +149,7 @@ public class DiscountRelInstances {
 	// rule: rule1: (c.getTurnover())>1000 -> Discount(c,goldDiscount);
 	private static ResourceIterator<DiscountRel> getDiscount_0(final DerivationController _derivation, final Customer customer) {
 
-		_derivation.log("Discount.rule1", DerivationController.RULE, _annotations_rule1);
+		_derivation.log("test.org.mandarax.compiler.reldef7.Discount.rule1", DerivationController.RULE, _annotations_rule1);
 
 		// utility class used to keep track of variables bindings
 		// rule: rule1: (c.getTurnover())>1000 -> Discount(c,goldDiscount);
@@ -184,7 +184,7 @@ public class DiscountRelInstances {
 	// rule: rule2: FrequentCustomer(c) -> Discount(c,silverDiscount);
 	private static ResourceIterator<DiscountRel> getDiscount_1(final DerivationController _derivation, final Customer customer) {
 
-		_derivation.log("Discount.rule2", DerivationController.RULE, _annotations_rule2);
+		_derivation.log("test.org.mandarax.compiler.reldef7.Discount.rule2", DerivationController.RULE, _annotations_rule2);
 
 		// utility class used to keep track of variables bindings
 		// rule: rule2: FrequentCustomer(c) -> Discount(c,silverDiscount);
@@ -224,7 +224,7 @@ public class DiscountRelInstances {
 	// Discount(c,specialDiscount);
 	private static ResourceIterator<DiscountRel> getDiscount_2(final DerivationController _derivation, final Customer customer) {
 
-		_derivation.log("Discount.rule3", DerivationController.RULE, _annotations_rule3);
+		_derivation.log("test.org.mandarax.compiler.reldef7.Discount.rule3", DerivationController.RULE, _annotations_rule3);
 
 		// utility class used to keep track of variables bindings
 		// rule: rule3: (c.getPaymentMethod())=="CompanyVisa" ->
@@ -261,7 +261,7 @@ public class DiscountRelInstances {
 	// rule: rule1: (c.getTurnover())>1000 -> Discount(c,goldDiscount);
 	private static ResourceIterator<DiscountRel> qualifiesForDiscount_0(final DerivationController _derivation, final Customer customer, final Discount discount) {
 
-		_derivation.log("Discount.rule1", DerivationController.RULE, _annotations_rule1);
+		_derivation.log("test.org.mandarax.compiler.reldef7.Discount.rule1", DerivationController.RULE, _annotations_rule1);
 
 		// utility class used to keep track of variables bindings
 		// rule: rule1: (c.getTurnover())>1000 -> Discount(c,goldDiscount);
@@ -298,7 +298,7 @@ public class DiscountRelInstances {
 	// rule: rule2: FrequentCustomer(c) -> Discount(c,silverDiscount);
 	private static ResourceIterator<DiscountRel> qualifiesForDiscount_1(final DerivationController _derivation, final Customer customer, final Discount discount) {
 
-		_derivation.log("Discount.rule2", DerivationController.RULE, _annotations_rule2);
+		_derivation.log("test.org.mandarax.compiler.reldef7.Discount.rule2", DerivationController.RULE, _annotations_rule2);
 
 		// utility class used to keep track of variables bindings
 		// rule: rule2: FrequentCustomer(c) -> Discount(c,silverDiscount);
@@ -340,7 +340,7 @@ public class DiscountRelInstances {
 	// Discount(c,specialDiscount);
 	private static ResourceIterator<DiscountRel> qualifiesForDiscount_2(final DerivationController _derivation, final Customer customer, final Discount discount) {
 
-		_derivation.log("Discount.rule3", DerivationController.RULE, _annotations_rule3);
+		_derivation.log("test.org.mandarax.compiler.reldef7.Discount.rule3", DerivationController.RULE, _annotations_rule3);
 
 		// utility class used to keep track of variables bindings
 		// rule: rule3: (c.getPaymentMethod())=="CompanyVisa" ->
