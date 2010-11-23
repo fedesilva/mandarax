@@ -82,8 +82,8 @@ public class GenerateCodeForTesting {
 				return file;
 			}
 		};
-		compiler.compile(location,CompilationMode.INTERFACES_ONLY,file);
-		compiler.compile(location,CompilationMode.CLASSES_ONLY,file);
+		compiler.compile(location,CompilationMode.RELATIONSHIP_TYPES,file);
+		compiler.compile(location,CompilationMode.QUERIES,file);
 		
 		LOGGER.info("Compiled rules from " + file);
 	}

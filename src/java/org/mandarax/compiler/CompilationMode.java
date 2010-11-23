@@ -17,7 +17,7 @@ package org.mandarax.compiler;
  */
 public enum CompilationMode {
 	// only interfaces will be generated
-	INTERFACES_ONLY,
+	RELATIONSHIP_TYPES,
 	// only classes will be generated
-	CLASSES_ONLY
+	QUERIES
 }

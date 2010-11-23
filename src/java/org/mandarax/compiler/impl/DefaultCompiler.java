@@ -116,10 +116,10 @@ public class DefaultCompiler implements Compiler {
 		
 		
 		// delegate
-		if (mode==CompilationMode.INTERFACES_ONLY) {
+		if (mode==CompilationMode.RELATIONSHIP_TYPES) {
 			compileToInterfaces(target,cus);
 		}
-		else if (mode==CompilationMode.CLASSES_ONLY){
+		else if (mode==CompilationMode.QUERIES){
 			compileToClasses(target,cus);
 		}
 			
@@ -246,7 +246,7 @@ public class DefaultCompiler implements Compiler {
 		for (CompilationUnit cu:cus) {
 			for (RelationshipDefinition rel:cu.getRelationshipDefinitions()) {
 				try {
-					LOGGER.info("Generating interfaces for " + rel + " defined in " + cu);
+					LOGGER.info("Generating relationship types for " + rel + " defined in " + cu);
 					LOGGER.info("Output to: " + target);
 					createRelationshipType (target,cu,rel);
 				} catch (Exception e) {

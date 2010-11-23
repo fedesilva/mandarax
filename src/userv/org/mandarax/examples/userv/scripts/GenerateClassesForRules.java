@@ -22,6 +22,7 @@ import org.mandarax.compiler.Compiler;
 import org.mandarax.compiler.CompilerException;
 import org.mandarax.compiler.Location;
 import org.mandarax.compiler.impl.DefaultCompiler;
+
 import test.org.mandarax.compiler.GenerateCodeForTesting;
 /**
  * Utility to generate code for the userv rules.
@@ -63,8 +64,8 @@ public class GenerateClassesForRules {
 				return file;
 			}
 		};
-		compiler.compile(location,CompilationMode.INTERFACES_ONLY,files);
-		compiler.compile(location,CompilationMode.CLASSES_ONLY,files);
+		compiler.compile(location,CompilationMode.RELATIONSHIP_TYPES,files);
+		compiler.compile(location,CompilationMode.QUERIES,files);
 		
 		LOGGER.info("Compiled rules from " + files);
 	}
