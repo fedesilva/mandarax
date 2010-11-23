@@ -21,6 +21,8 @@ import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.*;
 import java.util.StringTokenizer;
 import javax.swing.*;
@@ -35,8 +37,14 @@ import javax.swing.text.StyleConstants;
  */
 
 public class ScriptViewer extends JFrame {
+	
+	static String[] ruleSets = new String[] {
+		"AdditionalDriverPremium.rel",
+		"AdditionalPremium.rel",
+		"AutoEligibility.rel"
+	};
 
-	static String[] KEYWORDS = {"var","ref","if","then","and","query","not","aggregation"};
+	static String[] KEYWORDS = {"package","import","static","&","->","queries","rel","extends","min","max","count","avg","sum"};
 	static SimpleAttributeSet PLAIN = new SimpleAttributeSet();
 	static SimpleAttributeSet KEYWORD = new SimpleAttributeSet();
 	static SimpleAttributeSet ID = new SimpleAttributeSet();
@@ -62,21 +70,19 @@ public class ScriptViewer extends JFrame {
 		    StyleConstants.setFontFamily(KEYWORD, "Helvetica");
 		    StyleConstants.setFontSize(KEYWORD, 14);
 		    StyleConstants.setBold(KEYWORD, true);
+		    
     }
 	  
 	  
 	// components
 	private JTextPane textPane = new JTextPane();;
 	
-	// models
-	private boolean showAnnotations = false;
-	private boolean showComments = true;
 	
 	public static void showScript() {
 		ScriptViewer viewer = new ScriptViewer();
 		int W=700,H=700;
 		viewer.setSize(W,H);
-		viewer.setTitle("UServ rules: rules.take");
+		viewer.setTitle("UServ rules");
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		viewer.setLocation((screen.width-W)/2,(screen.height-H)/2);
 		viewer.setVisible(true);
@@ -104,47 +110,37 @@ public class ScriptViewer extends JFrame {
 	private void init() {
 		JPanel pane = new JPanel(new BorderLayout());
 		
-		JPanel nPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		final JCheckBox checkAnn = new JCheckBox("show annotations");
-		checkAnn.setSelected(this.showAnnotations);
-		checkAnn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				showAnnotations = checkAnn.isSelected();
-				loadScript();
-			}
-		});
-		nPanel.add(checkAnn);
+		JPanel nPane =  new JPanel(new FlowLayout(FlowLayout.CENTER));
+		final JComboBox cbx = new JComboBox(ruleSets);
+		cbx.setSelectedIndex(0);
+		cbx.addItemListener(new ItemListener() {
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				loadScript(ruleSets[cbx.getSelectedIndex()]);
+			}});
+		nPane.add(new JLabel("Rule set:"));
+		nPane.add(cbx);
+		pane.add(nPane,BorderLayout.NORTH);
 		
-		final JCheckBox checkComm = new JCheckBox("show comments");
-		checkComm.setSelected(this.showComments);
-		checkComm.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				showComments = checkComm.isSelected();
-				loadScript();
-			}
-		});
-		nPanel.add(checkComm);
-		pane.add(nPanel,BorderLayout.NORTH);
-		
-		JPanel sPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		JPanel sPane = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		final JButton butExit = new JButton("close");
 		butExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 			}
 		});
-		sPanel.add(butExit);
-		pane.add(sPanel,BorderLayout.SOUTH);
+		sPane.add(butExit);
+		pane.add(sPane,BorderLayout.SOUTH);
 		
 		pane.add(new JScrollPane(textPane),BorderLayout.CENTER);
 		
 		this.setContentPane(pane);
-		loadScript();
+		loadScript(ruleSets[cbx.getSelectedIndex()]);
 	}
 	
-	private void loadScript() {
+	private void loadScript(String source) {
 		try {
-			InputStream in = this.getClass().getResourceAsStream("/example/nz/org/take/compiler/userv/rules/userv.take");
+			InputStream in = this.getClass().getResourceAsStream("/org/mandarax/examples/userv/rules/"+source);
 			java.io.LineNumberReader reader = new java.io.LineNumberReader(new java.io.InputStreamReader(in));
 			String line = null;
 			textPane.setText(""); // clear
@@ -188,17 +184,13 @@ public class ScriptViewer extends JFrame {
 
 	// whether to show a line
 	private boolean doShow(String line) {
-		if (!this.showAnnotations && isAnnotation(line))
-			return false;
-		else if (!this.showComments && isComment(line)) 
-			return false;
-		else return true;
+		return true;
 	}
 	private boolean isAnnotation(String line) {
-		return line.startsWith("@");
+		return line.trim().startsWith("@");
 	}
 	private boolean isComment(String line) {
-		return line.startsWith("//");
+		return line.trim().startsWith("//");
 	}
 	
 	private void insertText(String text, AttributeSet set) {
