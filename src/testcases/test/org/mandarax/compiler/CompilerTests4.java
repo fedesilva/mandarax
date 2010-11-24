@@ -12,7 +12,6 @@
 package test.org.mandarax.compiler;
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
 import org.mandarax.rt.ResultSet;
 import test.org.mandarax.compiler.reldef4.*;

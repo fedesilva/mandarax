@@ -105,31 +105,14 @@ public class Main extends JFrame {
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		setLocation((screen.width-W)/2,(screen.height-H)/2);
 	}
-	/** removed - requires signed lib to run with webstart
-	private void validateRules() {
-		try {
-			TestSuite suite = new TestSuite();
-			suite.addTest(new UservTestCases());
-			junit.swingui.TestRunner r = new junit.swingui.TestRunner() {
-				public void terminate() {
-					this.fFrame.setDefaultCloseOperation(fFrame.DISPOSE_ON_CLOSE);
-					this.fFrame.dispose();
-				}
-			};
-			r.start(new String[]{UservTestCases.class.getName()});
-		}
-		catch (SecurityException x) {
-			JOptionPane.showMessageDialog(this,"Validation uses the JUnit library that interacts with the local file system.\nFor security reasons, this function is only available in offline mode");
-		}
-	}
-	*/
+
 	
 	private void about() {
 		String about = 	"<html>"+
-						"UServ Implementation based on take. See <tt>http://code.google.com/p/take</tt> for details.<br>" + 
-						"&copy; Jens Dietrich, Massey University (<tt>http://www-ist.massey.ac.nz/jbdietrich</tt>) 2007. (software)<br>" + 
+						"UServ Implementation based on mandarax. See <tt>http://code.google.com/p/mandarax</tt> for details.<br>" + 
+						"&copy; Jens Dietrich, Massey University (<tt>http://www-ist.massey.ac.nz/jbdietrich</tt>) 2010. (software)<br>" + 
 						"&copy; Business Rules Forum (<tt>http://www.businessrulesforum.com</tt>) 2005. (UServ Product Derby Case Study)<br>" + 
-						"This software is licensed under the Apache License version 2.0" + 
+						"This software is licensed under the GNU AFFERO GENERAL PUBLIC LICENSE Version 3" + 
 						"</html>";
 		JOptionPane.showMessageDialog(this,about,"About UServ",JOptionPane.INFORMATION_MESSAGE);
 	}

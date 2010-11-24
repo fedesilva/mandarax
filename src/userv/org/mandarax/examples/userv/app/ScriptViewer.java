@@ -41,7 +41,20 @@ public class ScriptViewer extends JFrame {
 	static String[] ruleSets = new String[] {
 		"AdditionalDriverPremium.rel",
 		"AdditionalPremium.rel",
-		"AutoEligibility.rel"
+		"AutoEligibility.rel",
+		"BasePremium.rel",
+		"DriverCategory.rel",
+		"HasTrainingCertification.rel",
+		"InsuranceEligibility.rel",
+		"IsEligible.rel",
+		"IsHighRiskDriver.rel",
+		"IsLongTermClient.rel",
+		"IsNew.rel",
+		"IsSpecialLocation.rel",
+		"PolicyEligibilityScore.rel",
+		"PotentialOccupantInjuryRating.rel",
+		"PotentialTheftRating.rel",
+		"PremiumDiscount.rel"
 	};
 
 	static String[] KEYWORDS = {"package","import","static","&","->","queries","rel","extends","min","max","count","avg","sum"};
@@ -80,7 +93,7 @@ public class ScriptViewer extends JFrame {
 	
 	public static void showScript() {
 		ScriptViewer viewer = new ScriptViewer();
-		int W=700,H=700;
+		int W=900,H=700;
 		viewer.setSize(W,H);
 		viewer.setTitle("UServ rules");
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
@@ -134,7 +147,7 @@ public class ScriptViewer extends JFrame {
 		
 		pane.add(new JScrollPane(textPane),BorderLayout.CENTER);
 		
-		this.setContentPane(pane);
+		this.setContentPane(new JScrollPane(pane));
 		loadScript(ruleSets[cbx.getSelectedIndex()]);
 	}
 	
