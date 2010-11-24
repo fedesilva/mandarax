@@ -205,6 +205,7 @@
 	  	<zipfileset dir="src/userv" prefix="src/userv"/>
 	  	<zipfileset dir="src-generated/testcases" prefix="src-generated/testcases"/>
 	    <zipfileset dir="${qareports.dir}" prefix="qa"/>
+	  	<zipfileset file="misc/license.txt" prefix=""/>
 	  </zip>
 </target>
 	
