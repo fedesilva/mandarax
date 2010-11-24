@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<jnlp codebase="http://www-ist.massey.ac.nz/JBDietrich/userv" href="userv.jnlp">
+<jnlp codebase="http://www-ist.massey.ac.nz/JBDietrich/userv-mdrx" href="userv.jnlp">
 	<information>
 		<title>UServ</title>
 		<vendor>Jens Dietrich, Massey University New Zealand</vendor>
