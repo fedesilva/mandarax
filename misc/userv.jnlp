@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp codebase="http://www-ist.massey.ac.nz/JBDietrich/userv" href="userv.jnlp">
+	<information>
+		<title>UServ</title>
+		<vendor>Jens Dietrich, Massey University New Zealand</vendor>
+		<description>Mandarax-based implementation of the UServ Product Derby Case Study. Rules are precompiled.</description>
+		<description kind="short">Mandarax-based implementation of the UServ Product Derby Case Study</description>
+		<offline-allowed/>
+	</information>
+	<resources>
+		<j2se version="1.6"/>
+		<jar href="userv-1.0.0.jar"/>
+		<jar href="mandarax-compiler-rt-1.0.0.jar"/>
+		<jar href="commons-lang-2.5.jar"/>
+		<jar href="commons-logging-1.1.1.jar"/>
+		<jar href="guava-r06.jar"/>
+		<jar href="log4j-1.2.7.jar"/>
+	</resources>
+	<application-desc main-class="org.mandarax.examples.userv.app.Main"/>
+</jnlp>
