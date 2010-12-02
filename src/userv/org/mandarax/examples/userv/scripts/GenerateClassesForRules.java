@@ -13,15 +13,12 @@ package org.mandarax.examples.userv.scripts;
 
 import java.io.File;
 import java.io.FileFilter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
 import org.apache.log4j.Logger;
 import org.mandarax.compiler.CompilationMode;
 import org.mandarax.compiler.Compiler;
-import org.mandarax.compiler.CompilerException;
 import org.mandarax.compiler.Location;
 import org.mandarax.compiler.impl.DefaultCompiler;
+import org.mandarax.compiler.impl.FileSystemLocation;
 
 import test.org.mandarax.compiler.GenerateCodeForTesting;
 /**
@@ -45,25 +42,7 @@ public class GenerateClassesForRules {
 
 	private static void compile(File[] files) throws Exception {
 		Compiler compiler = new DefaultCompiler();
-		Location location = new Location() {
-			String file = null;
-			@Override
-			public Writer getSrcOut(String p,String c) throws CompilerException {
-				String folder = "src/userv/" + p.replace('.','/');
-				File dir = new File(folder);
-				if (!dir.exists()) dir.mkdirs();
-				file = folder + '/' + c + ".java";
-				try {
-					return new FileWriter(new File(file));
-				} catch (IOException e) {
-					throw new CompilerException(e);
-				}
-			}
-			@Override
-			public String toString() {
-				return file;
-			}
-		};
+		Location location = new FileSystemLocation(new File("src/userv/"));
 		compiler.compile(location,CompilationMode.RELATIONSHIP_TYPES,files);
 		compiler.compile(location,CompilationMode.QUERIES,files);
 		
