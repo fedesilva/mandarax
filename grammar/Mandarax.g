@@ -93,6 +93,11 @@ rule returns [Rule value]
     {$value.addAnnotations(a==null?new ArrayList<Annotation>():a.values);}';'
     ;
     
+external returns [ExternalFacts value]
+    :   (a = annotationList)? id = Identifier ':' 'from' provider = expression
+    {$value = new ExternalFacts(pos(id),context,id.getText(),provider.value);}
+    ;
+    
 annotation returns [Annotation value]
     : '@' key = qualifiedName2 '=' val = StringLiteral {$value = new Annotation(pos(key.start),context,key.value,val.getText().substring(1,val.getText().length()-1));}
     ;  
@@ -113,7 +118,7 @@ relationshipDefinition returns [RelationshipDefinition value]
     'queries' queries = functionDeclarationList
     {$value = new RelationshipDefinition(pos(q),context,ti.getText(),tp.value,supers==null?new ArrayList<String>():supers.value,queries.values);}
     {$value.addAnnotations(a==null?new ArrayList<Annotation>():a.values);}
-    NEWLINE* '{' (NEWLINE |r = rule{$value.addRule(r.value);})+ '}'
+    NEWLINE* '{' (NEWLINE |x = external{$value.addExternal(x.value);}|r = rule{$value.addRule(r.value);})+ '}'
     ;    
     
 variableDeclaration returns [VariableDeclaration value]

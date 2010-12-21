@@ -251,6 +251,10 @@ public class ExpressionStructurePrinter implements ASTVisitor {
 		return false;
 	}
 	@Override
+	public boolean visit(ExternalFacts x) {
+		return false;
+	}
+	@Override
 	public boolean visit(Annotation x) {
 		return false;
 	}
@@ -296,5 +300,7 @@ public class ExpressionStructurePrinter implements ASTVisitor {
 	public void endVisit(VariableDeclaration x) {}
 	@Override
 	public void endVisit(Rule x) {}
+	@Override
+	public void endVisit(ExternalFacts x) {}
 
 }

@@ -156,25 +156,28 @@ public class DefaultCompiler implements Compiler {
 	private void normalizeVarNames(List<CompilationUnit> cus) {
 		for (RelationshipDefinition rel:getRels(cus,false)) {
 			Collection<String> reservedNames = collectReservedNames(rel);
-			for (int i=0;i<rel.getRules().size();i++) {
-				Map<Expression,Expression> substitutions = new HashMap<Expression,Expression>();
-				Rule rule = rel.getRules().get(i);
-				Collection<Variable> vars = new HashSet<Variable>();
-				vars.addAll(rule.getHead().getVariables());
-				for (Expression s:rule.getBody()) {
-					vars.addAll(s.getVariables());
-				}
-				for (Variable var:vars) {
-					if (reservedNames.contains(var.getName())) {
-						Variable newVar = new Variable(var.getPosition(),var.getContext(),"_"+var.getName());
-						substitutions.put(var,newVar);
+			for (int i=0;i<rel.getDefinitionParts().size();i++) {
+				RelationshipDefinitionPart defPart = rel.getDefinitionParts().get(i);
+				if (defPart instanceof Rule) {
+					Rule rule = (Rule)defPart;
+					Map<Expression,Expression> substitutions = new HashMap<Expression,Expression>();
+					Collection<Variable> vars = new HashSet<Variable>();
+					vars.addAll(rule.getHead().getVariables());
+					for (Expression s:rule.getBody()) {
+						vars.addAll(s.getVariables());
 					}
-				}
-				if (!substitutions.isEmpty()) {
-					rule = rule.substitute(substitutions);
-					rel.getRules().set(i,rule);
-					LOGGER.debug("Substitute variable names in rule (conflict with slot names): " + rule);
-					
+					for (Variable var:vars) {
+						if (reservedNames.contains(var.getName())) {
+							Variable newVar = new Variable(var.getPosition(),var.getContext(),"_"+var.getName());
+							substitutions.put(var,newVar);
+						}
+					}
+					if (!substitutions.isEmpty()) {
+						rule = rule.substitute(substitutions);
+						rel.setDefinitionPart(i,rule);
+						LOGGER.debug("Substitute variable names in rule (conflict with slot names): " + rule);
+						
+					}
 				}
 			}
 		}
@@ -190,12 +193,15 @@ public class DefaultCompiler implements Compiler {
 
 	private void normalizeNAF(List<CompilationUnit> cus) {
 		for (RelationshipDefinition rel:getRels(cus,false)) {
-			for (int i=0;i<rel.getRules().size();i++) {
-				Rule rule = rel.getRules().get(i);
-				Rule normalised = rel.getRules().get(i).normaliseNAF();
-				if (!rule.equals(normalised)) {
-					LOGGER.debug("Normalised rule containing NAF from " + rule + " to " + normalised);
-					rel.getRules().set(i,normalised);
+			for (int i=0;i<rel.getDefinitionParts().size();i++) {
+				RelationshipDefinitionPart defPart = rel.getDefinitionParts().get(i);
+				if (defPart instanceof Rule) {
+					Rule rule = (Rule)defPart;
+					Rule normalised = rule.normaliseNAF();
+					if (!rule.equals(normalised)) {
+						LOGGER.debug("Normalised rule containing NAF from " + rule + " to " + normalised);
+						rel.setDefinitionPart(i,normalised);
+					}
 				}
 			}
 		}
@@ -400,6 +406,7 @@ public class DefaultCompiler implements Compiler {
 			}
 
 			@Override public boolean visit(Rule x) {return true;}
+			@Override public boolean visit(ExternalFacts x) {return true;}
 			@Override public boolean visit(Annotation x) {return true;}
 			@Override public boolean visit(FunctionDeclaration x) {return true;}
 			@Override public boolean visit(ImportDeclaration x) {return true;}
@@ -426,6 +433,7 @@ public class DefaultCompiler implements Compiler {
 			@Override public void endVisit(CompilationUnit x) {}
 			@Override public void endVisit(RelationshipDefinition x) {}
 			@Override public void endVisit(Rule x) {}
+			@Override public void endVisit(ExternalFacts x) {}
 			@Override public void endVisit(Annotation x) {}
 			@Override public void endVisit(FunctionDeclaration x) { }
 			@Override public void endVisit(ImportDeclaration x) { }

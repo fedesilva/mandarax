@@ -12,6 +12,7 @@ package org.mandarax.dsl;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import com.google.common.base.Function;
 import com.google.common.collect.Collections2;
@@ -26,7 +27,7 @@ public class RelationshipDefinition extends AnnotatableNode {
 	private List<FunctionDeclaration> queries = null;
 	private List<VariableDeclaration> slotDeclarations = null;
 	private List<String> superTypes = null;
-	private List<Rule> rules = new ArrayList<Rule>();
+	private List<RelationshipDefinitionPart> rules = new ArrayList<RelationshipDefinitionPart>();
 	// if true, slots have type information that can be used by the compiler
 	// if false, this is a generic relationship and casts must be generated
 	private boolean typeSafe = true;
@@ -67,7 +68,7 @@ public class RelationshipDefinition extends AnnotatableNode {
 		if (visitor.visit(this)) {
 			for (FunctionDeclaration f:this.queries) f.accept(visitor);
 			for (VariableDeclaration v:this.slotDeclarations) v.accept(visitor);
-			for (Rule r:this.rules) r.accept(visitor);
+			for (RelationshipDefinitionPart r:this.rules) r.accept(visitor);
 		}
 		visitor.endVisit(this);
 	}
@@ -133,9 +134,20 @@ public class RelationshipDefinition extends AnnotatableNode {
 	}
 
 
-	public List<Rule> getRules() {
-		return rules;
+	public List<RelationshipDefinitionPart> getDefinitionParts() {
+		return Collections.unmodifiableList(rules);
 	}
+	
+	public List<Rule> getRules() {
+		List<Rule> l = new ArrayList<Rule>(rules.size());
+		for (Object part:rules) {
+			if (part instanceof Rule) {
+				l.add((Rule)part);
+			}
+		}
+		return Collections.unmodifiableList(l);
+	}
+	
 	
 	public void addRule(Rule r) throws InternalScriptException {
 		FunctionInvocation f = r.getHead();
@@ -150,6 +162,10 @@ public class RelationshipDefinition extends AnnotatableNode {
 			throw new InternalScriptException("Error at " + r.getPosition() + ", the rule defines a predicate with " + f.getParameters().size() + " slots but this does not match the number of slots of the relationship that is to be defined (" + this.getSlotDeclarations().size() + ")" );
 		}
 		
+		rules.add(r);
+	}
+	
+	public void addExternal(ExternalFacts r) throws InternalScriptException {
 		rules.add(r);
 	}
 	
@@ -235,5 +251,11 @@ public class RelationshipDefinition extends AnnotatableNode {
 
 	public void setTypeSafe(boolean typeSafe) {
 		this.typeSafe = typeSafe;
+	}
+
+
+
+	public void setDefinitionPart(int i, RelationshipDefinitionPart defPart) {
+		this.rules.set(i,defPart);
 	}
 }

@@ -38,6 +38,11 @@ public class AbstractASTVisitor implements ASTVisitor {
 	}
 
 	@Override
+	public boolean visit(ExternalFacts x) {
+		return true;
+	}
+	
+	@Override
 	public boolean visit(InstanceOfExpression x) {
 		return true;
 	}
@@ -208,5 +213,8 @@ public class AbstractASTVisitor implements ASTVisitor {
 	
 	@Override
 	public void endVisit(Aggregation x) {}
+
+	@Override
+	public void endVisit(ExternalFacts x) {}
 	
 }

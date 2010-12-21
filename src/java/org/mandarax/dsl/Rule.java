@@ -21,9 +21,8 @@ import static org.mandarax.dsl.Utils.*;
  * Represents a rule.
  * @author jens dietrich
  */
-public class Rule extends AnnotatableNode implements Cloneable {
+public class Rule extends RelationshipDefinitionPart {
 	
-	private String id = null;
 	private List<Expression> body = null;
 	private FunctionInvocation head = null;
 	// variable renamings in the rule head, will be set by relationship definition e.g., in 
@@ -34,8 +33,7 @@ public class Rule extends AnnotatableNode implements Cloneable {
 
 
 	public Rule(Position position, Context context,String id,Expression body,FunctionInvocation head) {
-		super(position, context);
-		this.id = id;
+		super(position, context,id);
 		this.body = flatten(body);
 		this.head = head;
 		
@@ -49,8 +47,7 @@ public class Rule extends AnnotatableNode implements Cloneable {
 	}
 	
 	public Rule(Position position, Context context,String id,List<Expression> body,FunctionInvocation head) {
-		super(position, context);
-		this.id = id;
+		super(position, context,id);
 		this.body = body;
 		this.head = head;
 		
@@ -87,12 +84,6 @@ public class Rule extends AnnotatableNode implements Cloneable {
 		}
 		visitor.endVisit(this);
 	}
-
-	public String getId() {
-		return id;
-	}
-	
-
 
 	public List<Expression> getBody() {
 		return body;
