@@ -373,10 +373,8 @@ public class DefaultCompiler implements Compiler {
 		final Map<Expression,Class> varTypeMap = new HashMap<Expression,Class>();
 		
 		// assign types for imported objects
-		Collection<String> objDeclNames = new HashSet<String>();
 		for (ObjectDeclaration objDecl:cu.getObjectDeclarations()) {
 			String name = objDecl.getName();
-			objDeclNames.add(name);
 			Class type = resolver.getType(cu.getContext(),objDecl.getType());
 			objTypeMap.put(name,type);
 			LOGGER.debug("Adding type info from object declaration to type map: " + name + " -> " + type);
@@ -387,7 +385,7 @@ public class DefaultCompiler implements Compiler {
 		
 		// mark variables defined by object declarations as defined
 		for (Variable v:rule.getVariables()) {
-			v.setDefined(objDeclNames.contains(v.getName()));
+			v.setDefined(objTypeMap.containsKey(v.getName()));
 			if (v.isDefined()) v.setType(objTypeMap.get(v.getName()));
 		}
 		
@@ -470,6 +468,8 @@ public class DefaultCompiler implements Compiler {
 		if (typeReasonerExceptions.size()>0) throw new CompilerException("Type reasoner exception",typeReasonerExceptions.get(0));
 		
 	}
+	
+	
 	
 	
 	private void collectTypeInfo(Collection<CompilationUnit> cus,Map<String,Class> objTypeMap,Map<Expression,Class> varTypeMap,Expression expr) throws CompilerException, ResolverException {
