@@ -369,16 +369,8 @@ public class DefaultCompiler implements Compiler {
 		LOGGER.debug("Assigning types to terms in " + rule);
 		
 		// types for all variables and declared (imported) objects will be stored here
-		final Map<String,Class> objTypeMap = new HashMap<String,Class>();
+		final Map<String,Class> objTypeMap = buildTypeMapForDeclaredObjects(cu);
 		final Map<Expression,Class> varTypeMap = new HashMap<Expression,Class>();
-		
-		// assign types for imported objects
-		for (ObjectDeclaration objDecl:cu.getObjectDeclarations()) {
-			String name = objDecl.getName();
-			Class type = resolver.getType(cu.getContext(),objDecl.getType());
-			objTypeMap.put(name,type);
-			LOGGER.debug("Adding type info from object declaration to type map: " + name + " -> " + type);
-		}
 		
 		// collect relationships
 		final Collection<RelationshipDefinition> rels = getRels(cus,true);
@@ -469,7 +461,19 @@ public class DefaultCompiler implements Compiler {
 		
 	}
 	
-	
+	private Map<String,Class> buildTypeMapForDeclaredObjects(CompilationUnit cu) throws CompilerException {
+		final Map<String,Class> objTypeMap = new HashMap<String,Class>();
+		
+		// assign types for imported objects
+		for (ObjectDeclaration objDecl:cu.getObjectDeclarations()) {
+			String name = objDecl.getName();
+			Class type = resolver.getType(cu.getContext(),objDecl.getType());
+			objTypeMap.put(name,type);
+			LOGGER.debug("Adding type info from object declaration to type map: " + name + " -> " + type);
+		}
+		
+		return objTypeMap;
+	}
 	
 	
 	private void collectTypeInfo(Collection<CompilationUnit> cus,Map<String,Class> objTypeMap,Map<Expression,Class> varTypeMap,Expression expr) throws CompilerException, ResolverException {
