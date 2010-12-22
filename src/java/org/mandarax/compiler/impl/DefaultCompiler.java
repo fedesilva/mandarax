@@ -71,6 +71,87 @@ public class DefaultCompiler implements Compiler {
 			else return super.getType(expression,resolver, rels);
 		}
 	};
+	
+	
+	
+	
+	class TypeSetter implements ASTVisitor {
+		private TypeReasoner typeReasoner = null;
+		private Collection<RelationshipDefinition> rels = null;
+		private List<TypeReasoningException> typeReasonerExceptions = new ArrayList<TypeReasoningException>();
+		
+		public TypeSetter(TypeReasoner typeReasoner,
+				Collection<RelationshipDefinition> rels,
+				List<TypeReasoningException> typeReasonerExceptions) {
+			super();
+			this.typeReasoner = typeReasoner;
+			this.rels = rels;
+			this.typeReasonerExceptions = typeReasonerExceptions;
+		}
+		
+		private boolean setType(Expression x)  {
+			Class c;
+			try {
+				c = typeReasoner.getType(x, resolver,rels);
+				x.setType(c);
+			} catch (TypeReasoningException e) {
+				typeReasonerExceptions.add(e);
+			}
+			return true;
+		}
+
+		@Override public boolean visit(Rule x) {return true;}
+		@Override public boolean visit(ExternalFacts x) {return true;}
+		@Override public boolean visit(Annotation x) {return true;}
+		@Override public boolean visit(FunctionDeclaration x) {return true;}
+		@Override public boolean visit(ImportDeclaration x) {return true;}
+		@Override public boolean visit(ObjectDeclaration x) {return true;}
+		@Override public boolean visit(PackageDeclaration x) {return true;}
+		@Override public boolean visit(VariableDeclaration x) {return true;}
+		@Override public boolean visit(CompilationUnit x) {return true;}
+		@Override public boolean visit(RelationshipDefinition x) {return true;}
+		@Override public boolean visit(BinaryExpression x) {return setType(x);}
+		@Override public boolean visit(Aggregation x) {return setType(x);}
+		@Override public boolean visit(BooleanLiteral x) {return setType(x);}
+		@Override public boolean visit(CastExpression x) {return setType(x);}
+		@Override public boolean visit(ConditionalExpression x) {return setType(x);}
+		@Override public boolean visit(InstanceOfExpression x) {return setType(x);}
+		@Override public boolean visit(IntLiteral x) {return setType(x);}
+		@Override public boolean visit(DoubleLiteral x) {return setType(x);}
+		@Override public boolean visit(MemberAccess x) {return setType(x);}
+		@Override public boolean visit(StringLiteral x) {return setType(x);}
+		@Override public boolean visit(UnaryExpression x) {return setType(x);}
+		@Override public boolean visit(Variable x) {return setType(x);}
+		@Override public boolean visit(FunctionInvocation x) {return setType(x);}
+		@Override public boolean visit(ConstructorInvocation x) {return setType(x);}
+		@Override public boolean visit(NullValue x) {return setType(x);}
+		@Override public void endVisit(CompilationUnit x) {}
+		@Override public void endVisit(RelationshipDefinition x) {}
+		@Override public void endVisit(Rule x) {}
+		@Override public void endVisit(ExternalFacts x) {}
+		@Override public void endVisit(Annotation x) {}
+		@Override public void endVisit(FunctionDeclaration x) { }
+		@Override public void endVisit(ImportDeclaration x) { }
+		@Override public void endVisit(ObjectDeclaration x) { }
+		@Override public void endVisit(PackageDeclaration x) { }
+		@Override public void endVisit(VariableDeclaration x) { }
+		@Override public void endVisit(BinaryExpression x) { }
+		@Override public void endVisit(BooleanLiteral x) { }
+		@Override public void endVisit(CastExpression x) { }
+		@Override public void endVisit(ConditionalExpression x) { }
+		@Override public void endVisit(InstanceOfExpression x) { }
+		@Override public void endVisit(IntLiteral x) { }
+		@Override public void endVisit(DoubleLiteral x) { }
+		@Override public void endVisit(MemberAccess x) { }
+		@Override public void endVisit(StringLiteral x) { }
+		@Override public void endVisit(UnaryExpression x) { }
+		@Override public void endVisit(Variable x) { }
+		@Override public void endVisit(FunctionInvocation x) { }
+		@Override public void endVisit(ConstructorInvocation x) { }
+		@Override public void endVisit(NullValue x) { }
+		@Override public void endVisit(Aggregation x) { }
+	};
+	
 
 	@Override
 	public void compile(Location target, CompilationMode mode, URL... urls) throws MandaraxException {
@@ -388,73 +469,9 @@ public class DefaultCompiler implements Compiler {
 		}
 		
 		// build type reasoner
-		final TypeReasoner typeReasoner = new RelTypeReasoner(objTypeMap,varTypeMap);
-		
-		final List<TypeReasoningException> typeReasonerExceptions = new ArrayList<TypeReasoningException>();
-		
-		ASTVisitor visitor = new ASTVisitor() {
-			private boolean setType(Expression x)  {
-				Class c;
-				try {
-					c = typeReasoner.getType(x, resolver,rels);
-					x.setType(c);
-				} catch (TypeReasoningException e) {
-					typeReasonerExceptions.add(e);
-				}
-				return true;
-			}
-
-			@Override public boolean visit(Rule x) {return true;}
-			@Override public boolean visit(ExternalFacts x) {return true;}
-			@Override public boolean visit(Annotation x) {return true;}
-			@Override public boolean visit(FunctionDeclaration x) {return true;}
-			@Override public boolean visit(ImportDeclaration x) {return true;}
-			@Override public boolean visit(ObjectDeclaration x) {return true;}
-			@Override public boolean visit(PackageDeclaration x) {return true;}
-			@Override public boolean visit(VariableDeclaration x) {return true;}
-			@Override public boolean visit(CompilationUnit x) {return true;}
-			@Override public boolean visit(RelationshipDefinition x) {return true;}
-			@Override public boolean visit(BinaryExpression x) {return setType(x);}
-			@Override public boolean visit(Aggregation x) {return setType(x);}
-			@Override public boolean visit(BooleanLiteral x) {return setType(x);}
-			@Override public boolean visit(CastExpression x) {return setType(x);}
-			@Override public boolean visit(ConditionalExpression x) {return setType(x);}
-			@Override public boolean visit(InstanceOfExpression x) {return setType(x);}
-			@Override public boolean visit(IntLiteral x) {return setType(x);}
-			@Override public boolean visit(DoubleLiteral x) {return setType(x);}
-			@Override public boolean visit(MemberAccess x) {return setType(x);}
-			@Override public boolean visit(StringLiteral x) {return setType(x);}
-			@Override public boolean visit(UnaryExpression x) {return setType(x);}
-			@Override public boolean visit(Variable x) {return setType(x);}
-			@Override public boolean visit(FunctionInvocation x) {return setType(x);}
-			@Override public boolean visit(ConstructorInvocation x) {return setType(x);}
-			@Override public boolean visit(NullValue x) {return setType(x);}
-			@Override public void endVisit(CompilationUnit x) {}
-			@Override public void endVisit(RelationshipDefinition x) {}
-			@Override public void endVisit(Rule x) {}
-			@Override public void endVisit(ExternalFacts x) {}
-			@Override public void endVisit(Annotation x) {}
-			@Override public void endVisit(FunctionDeclaration x) { }
-			@Override public void endVisit(ImportDeclaration x) { }
-			@Override public void endVisit(ObjectDeclaration x) { }
-			@Override public void endVisit(PackageDeclaration x) { }
-			@Override public void endVisit(VariableDeclaration x) { }
-			@Override public void endVisit(BinaryExpression x) { }
-			@Override public void endVisit(BooleanLiteral x) { }
-			@Override public void endVisit(CastExpression x) { }
-			@Override public void endVisit(ConditionalExpression x) { }
-			@Override public void endVisit(InstanceOfExpression x) { }
-			@Override public void endVisit(IntLiteral x) { }
-			@Override public void endVisit(DoubleLiteral x) { }
-			@Override public void endVisit(MemberAccess x) { }
-			@Override public void endVisit(StringLiteral x) { }
-			@Override public void endVisit(UnaryExpression x) { }
-			@Override public void endVisit(Variable x) { }
-			@Override public void endVisit(FunctionInvocation x) { }
-			@Override public void endVisit(ConstructorInvocation x) { }
-			@Override public void endVisit(NullValue x) { }
-			@Override public void endVisit(Aggregation x) { }
-		};
+		TypeReasoner typeReasoner = new RelTypeReasoner(objTypeMap,varTypeMap);
+		List<TypeReasoningException> typeReasonerExceptions = new ArrayList<TypeReasoningException>();
+		ASTVisitor visitor = new TypeSetter(typeReasoner,rels,typeReasonerExceptions);
 		rule.accept(visitor);
 		
 		if (typeReasonerExceptions.size()>0) throw new CompilerException("Type reasoner exception",typeReasonerExceptions.get(0));
