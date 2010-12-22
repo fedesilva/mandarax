@@ -401,8 +401,16 @@ public class DefaultCompiler implements Compiler {
 		String className = rel.getName()+"Instances";
 		String packageName = cu.getContext().getPackageDeclaration().getName(); //+".v"+getTimestampAsVersion()
 		
-		for (Rule rule:rel.getRules()) {
-			assignTypes (cus,cu,rel,rule);
+		for (RelationshipDefinitionPart part:rel.getDefinitionParts()) {
+			if (part instanceof Rule) {
+				assignTypes (cus,cu,rel,(Rule)part);
+			}
+			else if (part instanceof ExternalFacts) {
+				assignTypes (cus,cu,rel,(ExternalFacts)part);
+			}
+			else {
+				throw new CompilerException("Unsupported type for relationship definition part: " + part);
+			}
 		}
 		
 		// this is the list where aggregations will be collected
@@ -477,6 +485,37 @@ public class DefaultCompiler implements Compiler {
 		if (typeReasonerExceptions.size()>0) throw new CompilerException("Type reasoner exception",typeReasonerExceptions.get(0));
 		
 	}
+	
+	// associates expressions with type information
+	// keep public for unit testing
+	public void assignTypes (Collection<CompilationUnit> cus,CompilationUnit cu, RelationshipDefinition rel,ExternalFacts facts) throws CompilerException, ResolverException {
+		LOGGER.debug("Assigning types to terms in " + facts);
+		
+		// types for all variables and declared (imported) objects will be stored here
+		final Map<String,Class> objTypeMap = buildTypeMapForDeclaredObjects(cu);
+		final Map<Expression,Class> varTypeMap = new HashMap<Expression,Class>();
+		
+		// collect relationships
+		final Collection<RelationshipDefinition> rels = getRels(cus,true);
+		
+		// mark variables defined by object declarations as defined
+		for (Variable v:facts.getIterable().getVariables()) {
+			v.setDefined(objTypeMap.containsKey(v.getName()));
+			if (v.isDefined()) v.setType(objTypeMap.get(v.getName()));
+		}
+		
+		collectTypeInfo(cus,objTypeMap,varTypeMap,facts.getIterable());
+		
+		// build type reasoner
+		TypeReasoner typeReasoner = new RelTypeReasoner(objTypeMap,varTypeMap);
+		List<TypeReasoningException> typeReasonerExceptions = new ArrayList<TypeReasoningException>();
+		ASTVisitor visitor = new TypeSetter(typeReasoner,rels,typeReasonerExceptions);
+		facts.accept(visitor);
+		
+		if (typeReasonerExceptions.size()>0) throw new CompilerException("Type reasoner exception",typeReasonerExceptions.get(0));
+		
+	}
+
 	
 	private Map<String,Class> buildTypeMapForDeclaredObjects(CompilationUnit cu) throws CompilerException {
 		final Map<String,Class> objTypeMap = new HashMap<String,Class>();
