@@ -47,6 +47,30 @@ public class DefaultCompiler implements Compiler {
 	private VerificationErrorReporter verificationErrorReporter = new DefaultVerificationErrorReporter();
 	private Resolver resolver = new DefaultResolver();
 	static String TYPE_EXTENSION = "Rel";
+	
+	class RelTypeReasoner extends AbstractTypeReasoner {
+		public RelTypeReasoner(Map<String, Class> objTypeMap,Map<Expression, Class> varTypeMap) {
+			super();
+			this.objTypeMap = objTypeMap;
+			this.varTypeMap = varTypeMap;
+		}
+		private Map<String,Class> objTypeMap = new HashMap<String,Class>();
+		private Map<Expression,Class> varTypeMap = new HashMap<Expression,Class>();
+		@Override
+		protected Class doGetType(Variable expression, Resolver resolver,Collection<RelationshipDefinition> rels) throws TypeReasoningException {
+			Class clazz = varTypeMap.get(expression);
+			if (clazz==null) clazz = objTypeMap.get(expression);
+			return clazz;
+		}
+		@Override
+		public Class getType(Expression expression, Resolver resolver,Collection<RelationshipDefinition> rels) throws TypeReasoningException {
+			Class type = expression.getType();
+			if (type==null) type=varTypeMap.get(expression);
+			if (type==null) type=objTypeMap.get(expression);
+			if (type!=null) return type; // we can associate complex terms directly with types through slots 
+			else return super.getType(expression,resolver, rels);
+		}
+	};
 
 	@Override
 	public void compile(Location target, CompilationMode mode, URL... urls) throws MandaraxException {
@@ -374,22 +398,7 @@ public class DefaultCompiler implements Compiler {
 		}
 		
 		// build type reasoner
-		final TypeReasoner typeReasoner = new AbstractTypeReasoner() {
-			@Override
-			protected Class doGetType(Variable expression, Resolver resolver,Collection<RelationshipDefinition> rels) throws TypeReasoningException {
-				Class clazz = varTypeMap.get(expression);
-				if (clazz==null) clazz = objTypeMap.get(expression);
-				return clazz;
-			}
-			@Override
-			public Class getType(Expression expression, Resolver resolver,Collection<RelationshipDefinition> rels) throws TypeReasoningException {
-				Class type = expression.getType();
-				if (type==null) type=varTypeMap.get(expression);
-				if (type==null) type=objTypeMap.get(expression);
-				if (type!=null) return type; // we can associate complex terms directly with types through slots 
-				else return super.getType(expression,resolver, rels);
-			}
-		};
+		final TypeReasoner typeReasoner = new RelTypeReasoner(objTypeMap,varTypeMap);
 		
 		final List<TypeReasoningException> typeReasonerExceptions = new ArrayList<TypeReasoningException>();
 		
