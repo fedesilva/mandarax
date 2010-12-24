@@ -1,0 +1,6 @@
+package test.org.mandarax.compiler;
+import java.util.Date;
+String obj1 = "test";
+rel Father(MalePerson father,Person child) queries getFather(child),isFather(father,child) {
+	facts1: include new FactStore(obj1,obj2);
+}

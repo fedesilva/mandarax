@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 /home/jens/eclipse-workspace/mandarax/grammar/Mandarax.g 2010-12-24 14:20:44
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 /home/jens/eclipse-workspace/mandarax/grammar/Mandarax.g 2010-12-24 14:50:10
  
 /*
  * Copyright 2010 Jens Dietrich 

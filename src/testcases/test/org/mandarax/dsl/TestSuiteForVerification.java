@@ -25,6 +25,7 @@ import org.junit.runners.*;
 	VerifierTestsCheckReferencesInObjectDeclarations.class,
 	VerifierTestsCheckUniqueIdsOfRules.class,
 	VerifierCheckFreeVariablesInFacts.class,
+	VerifierCheckFreeVariablesInExternalFacts.class,
 	// other
 	ResolverTests.class,
 	TypeReasonerTests.class

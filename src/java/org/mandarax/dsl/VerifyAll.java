@@ -23,7 +23,8 @@ public class VerifyAll implements Verifier {
 		new CheckUniqueNamesInObjectDeclarations(),
 		new CheckReferencesInObjectDeclarations(),
 		new CheckUniqueIdsOfRules(),
-		new CheckAggregation()
+		new CheckAggregation(),
+		new CheckFreeVariablesInExternalFacts()
 		//new CheckFreeVariablesInFacts()
 	};
 	

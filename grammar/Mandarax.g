@@ -94,7 +94,7 @@ rule returns [Rule value]
     ;
     
 external returns [ExternalFacts value]
-    :   (a = annotationList)? id = Identifier ':' 'include' provider = expression
+    :   (a = annotationList)? id = Identifier ':' 'include' provider = expression ';'
     {$value = new ExternalFacts(pos(id),context,id.getText(),provider.value);}
     ;
     
