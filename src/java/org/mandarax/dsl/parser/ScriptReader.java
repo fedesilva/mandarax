@@ -70,6 +70,14 @@ public class ScriptReader {
 		}
 	}
 	
+	public ExternalFacts readExternalFacts(InputStream in) throws ScriptException {
+		try {
+			return getParser(in).external().value;
+		} catch (Exception e) {
+			throw new ScriptException(e);
+		}
+	}
+	
 	public Annotation readAnnotation(InputStream in) throws ScriptException {
 		try {
 			return getParser(in).annotation().value;

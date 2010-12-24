@@ -84,7 +84,7 @@ LINE_COMMENT=23
 'package'=29
 ':'=30
 '->'=31
-'from'=32
+'include'=32
 '@'=33
 '='=34
 'relationship'=35

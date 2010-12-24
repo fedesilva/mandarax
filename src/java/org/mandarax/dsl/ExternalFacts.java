@@ -45,7 +45,7 @@ public class ExternalFacts extends RelationshipDefinitionPart {
 	public String toString() {
 		StringBuffer b = new StringBuffer();
 		b.append(id);
-		b.append(": from ");
+		b.append(": include ");
 		b.append(iterable.toString());
 		return b.toString();
 	}

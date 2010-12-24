@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 /home/jens/eclipse-workspace/mandarax/grammar/Mandarax.g 2010-12-19 12:30:22
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 /home/jens/eclipse-workspace/mandarax/grammar/Mandarax.g 2010-12-24 14:20:41
  
 /*
  * Copyright 2010 Jens Dietrich 
@@ -34,7 +34,7 @@ import org.antlr.runtime.tree.*;
 
 public class MandaraxParser extends Parser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "NEWLINE", "Identifier", "StringLiteral", "HexLiteral", "OctalLiteral", "DecimalLiteral", "FloatingPointLiteral", "HexDigit", "IntegerTypeSuffix", "Exponent", "FloatTypeSuffix", "EscapeSequence", "CharacterLiteral", "UnicodeEscape", "OctalEscape", "Letter", "JavaIDDigit", "WS", "COMMENT", "LINE_COMMENT", "'import'", "'static'", "'.'", "'*'", "';'", "'package'", "':'", "'->'", "'from'", "'@'", "'='", "'relationship'", "'rel'", "'('", "')'", "'extends'", "'queries'", "'{'", "'}'", "','", "'public'", "'private'", "'['", "']'", "'boolean'", "'char'", "'byte'", "'short'", "'int'", "'long'", "'float'", "'double'", "'true'", "'false'", "'&'", "'?'", "'|'", "'=='", "'!='", "'instanceof'", "'avg'", "'sum'", "'min'", "'max'", "'count'", "'in'", "'<='", "'>='", "'<'", "'>'", "'+'", "'-'", "'/'", "'%'", "'~'", "'!'", "'null'", "'new'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "NEWLINE", "Identifier", "StringLiteral", "HexLiteral", "OctalLiteral", "DecimalLiteral", "FloatingPointLiteral", "HexDigit", "IntegerTypeSuffix", "Exponent", "FloatTypeSuffix", "EscapeSequence", "CharacterLiteral", "UnicodeEscape", "OctalEscape", "Letter", "JavaIDDigit", "WS", "COMMENT", "LINE_COMMENT", "'import'", "'static'", "'.'", "'*'", "';'", "'package'", "':'", "'->'", "'include'", "'@'", "'='", "'relationship'", "'rel'", "'('", "')'", "'extends'", "'queries'", "'{'", "'}'", "','", "'public'", "'private'", "'['", "']'", "'boolean'", "'char'", "'byte'", "'short'", "'int'", "'long'", "'float'", "'double'", "'true'", "'false'", "'&'", "'?'", "'|'", "'=='", "'!='", "'instanceof'", "'avg'", "'sum'", "'min'", "'max'", "'count'", "'in'", "'<='", "'>='", "'<'", "'>'", "'+'", "'-'", "'/'", "'%'", "'~'", "'!'", "'null'", "'new'"
     };
     public static final int EOF=-1;
     public static final int T__24=24;
@@ -793,7 +793,7 @@ public class MandaraxParser extends Parser {
     };
 
     // $ANTLR start "external"
-    // /home/jens/eclipse-workspace/mandarax/grammar/Mandarax.g:96:1: external returns [ExternalFacts value] : (a= annotationList )? id= Identifier ':' 'from' provider= expression ;
+    // /home/jens/eclipse-workspace/mandarax/grammar/Mandarax.g:96:1: external returns [ExternalFacts value] : (a= annotationList )? id= Identifier ':' 'include' provider= expression ;
     public final MandaraxParser.external_return external() throws RecognitionException {
         MandaraxParser.external_return retval = new MandaraxParser.external_return();
         retval.start = input.LT(1);
@@ -814,8 +814,8 @@ public class MandaraxParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 5) ) { return retval; }
-            // /home/jens/eclipse-workspace/mandarax/grammar/Mandarax.g:97:5: ( (a= annotationList )? id= Identifier ':' 'from' provider= expression )
-            // /home/jens/eclipse-workspace/mandarax/grammar/Mandarax.g:97:9: (a= annotationList )? id= Identifier ':' 'from' provider= expression
+            // /home/jens/eclipse-workspace/mandarax/grammar/Mandarax.g:97:5: ( (a= annotationList )? id= Identifier ':' 'include' provider= expression )
+            // /home/jens/eclipse-workspace/mandarax/grammar/Mandarax.g:97:9: (a= annotationList )? id= Identifier ':' 'include' provider= expression
             {
             root_0 = (CommonTree)adaptor.nil();
 

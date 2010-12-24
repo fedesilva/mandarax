@@ -86,6 +86,11 @@ public class TestUtils {
 		return new ScriptReader().readRule(in);
 	}
 	
+	public static ExternalFacts readExternalFacts(String s) throws Exception {
+		InputStream in = getStream(s);
+		return new ScriptReader().readExternalFacts(in);
+	}
+	
 	public static Annotation readAnnotation(String s) throws Exception {
 		InputStream in = getStream(s);
 		return new ScriptReader().readAnnotation(in);

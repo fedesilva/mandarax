@@ -16,6 +16,7 @@ import java.util.HashSet;
 import java.util.Set;
 import org.mandarax.dsl.CompilationUnit;
 import org.mandarax.dsl.RelationshipDefinition;
+import org.mandarax.dsl.RelationshipDefinitionPart;
 import org.mandarax.dsl.Rule;
 import org.mandarax.dsl.VerificationErrorReporter;
 import org.mandarax.dsl.VerificationException;
@@ -32,10 +33,10 @@ public class CheckUniqueIdsOfRules implements Verifier {
 		for (CompilationUnit cu:cus) {
 			for (RelationshipDefinition rel:cu.getRelationshipDefinitions()) {
 				Set<String> ids = new HashSet<String>();
-				for (Rule rule:rel.getRules()) {
-					String id = rule.getId();
+				for (RelationshipDefinitionPart defPart:rel.getDefinitionParts()) {
+					String id = defPart.getId();
 					if (ids.contains(id)) {
-						errorHandler.reportError(cu,"The id used by rule ",rule," at ", rule.getPosition()," has already been used within this relationship definition");
+						errorHandler.reportError(cu,"The id used by rule ",defPart," at ", defPart.getPosition()," has already been used within this relationship definition");
 					}
 					else {
 						ids.add(id);
