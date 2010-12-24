@@ -16,7 +16,7 @@ public class @{rel.name}@{ext}Instances {
 	@end{}
 	
 	// fields representing annotations
-	@foreach{rule:rel.rules}
+	@foreach{rule:rel.definitionParts}
 	// rule: @{rule}
 	private final static java.util.Properties _annotations_@{rule.id} = new java.util.Properties();
 	@end{}
@@ -47,13 +47,13 @@ public class @{rel.name}@{ext}Instances {
 	@foreach{query:rel.getQueries()} 
 	static ResourceIterator<@{rel.name}@{ext}> @{query.name} ( final DerivationController _derivation @if{query.hasParameters()},@end{} @foreach{param:query.parameterNames} final @{rel.getTypeNameForSlot(param)} @{param} @end{", "} ) {
 		final int _derivationlevel = _derivation.size();
-		return new IteratorChain<@{rel.name}@{ext}>(@{rel.rules.size()}) {
+		return new IteratorChain<@{rel.name}@{ext}>(@{rel.definitionParts.size()}) {
 			
 			public ResourceIterator<@{rel.name}@{ext}> getNextIterator(int pos) {
 			switch (pos) {
 				@foreach{index:ruleIndices}
                 		case @{index}: {
-                			// invoke @{rel.getRules().get(index)}
+                			// invoke @{rel.getDefinitionParts().get(index)}
                 			return @{query.name}_@{index}(_derivation.pop(_derivationlevel) @if{query.hasParameters()},@end{} @foreach{param:query.parameterNames} @{param} @end{", "});
                 		}
 				@end{}
@@ -66,12 +66,16 @@ public class @{rel.name}@{ext}Instances {
 	
 	// private methods - each method represents the invocation of a single rule for a certain query
 	@foreach{query:rel.queries}// query: @{query.name}
-	@foreach{index:ruleIndices}// rule: @{rel.rules.get(index)}
+	@foreach{index:ruleIndices}// rule: @{rel.definitionParts.get(index)}
 	private static ResourceIterator<@{rel.name}@{ext}> @{query.name}_@{index} (final DerivationController _derivation @if{query.hasParameters()},@end{} @foreach{param:query.parameterNames} final @{rel.getTypeNameForSlot(param)} @{param} @end{", "}) {
-		@code{rule=rel.getRules().get(index)}
-		_derivation.log("@{packageName}.@{rel.name}.@{rule.id}", DerivationController.RULE, _annotations_@{rule.id});
-		
-		@includeNamed{'RuleInvocation'}
+		@code{rule=rel.getDefinitionParts().get(index)}
+		@if{rule instanceof org.mandarax.dsl.Rule}
+			_derivation.log("@{packageName}.@{rel.name}.@{rule.id}", DerivationController.RULE, _annotations_@{rule.id});		
+			@includeNamed{'RuleInvocation'}
+		@else{rule instanceof org.mandarax.dsl.ExternalFacts}
+			_derivation.log("@{packageName}.@{rel.name}.@{rule.id}", DerivationController.EXTERNAL, _annotations_@{rule.id});		
+			@includeNamed{'ExternalFactsInvocation'}
+		@end{}
 	}
 	@end{}@end{}
 	

@@ -32,6 +32,7 @@ public class Templates {
 	// constants for template names
 	
 	public final static String RULE_INVOCATION = "RuleInvocation";
+	public final static String EXTERNAL_FACTS_INVOCATION = "ExternalFactsInvocation";
 	public final static String RELATIONSHIP_TYPE = "RelationshipType";
 	public final static String RELATIONSHIP_QUERY_INTERFACE = "RelationshipQueryInterface";
 	public final static String RELATIONSHIP_QUERY_IMPLEMENTATION = "RelationshipQueryImplementation";
@@ -47,6 +48,7 @@ public class Templates {
 	static {
 		try {
 			getTemplate(RULE_INVOCATION);
+			getTemplate(EXTERNAL_FACTS_INVOCATION);
 			getTemplate(RELATIONSHIP_TYPE);
 			getTemplate(RELATIONSHIP_QUERY_INTERFACE);
 			getTemplate(RELATIONSHIP_QUERY_IMPLEMENTATION);

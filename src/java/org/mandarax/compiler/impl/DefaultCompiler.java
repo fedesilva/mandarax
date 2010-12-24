@@ -421,7 +421,7 @@ public class DefaultCompiler implements Compiler {
 		bindings.put("rel",rel);
 		bindings.put("className",className);
 		bindings.put("packageName",packageName);
-		bindings.put("ruleIndices",getIndices(rel.getRules()));
+		bindings.put("ruleIndices",getIndices(rel.getDefinitionParts()));
 		bindings.put("resolver",resolver);
 		bindings.put("aggcounter",new Counter());
 		bindings.put("aggregations",aggregations);

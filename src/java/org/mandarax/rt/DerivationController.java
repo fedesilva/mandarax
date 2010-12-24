@@ -43,7 +43,7 @@ public interface DerivationController  {
 	public static final int ANY = 0;
 	public static final int RULE = 1;
 	public static final int FACT = 2;
-	public static final int EXTERNAL_FACT_SET = 3;
+	public static final int EXTERNAL = 3;
 	public static final int INDOMAIN = 4;
 	
 	/**

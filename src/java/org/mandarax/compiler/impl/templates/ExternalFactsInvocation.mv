@@ -1,0 +1,8 @@
+	@code{xtype=rule.getIterable().getType();}
+	java.util.Iterator<@{rel.name}@{ext}> _iter = @{rule.iterable}.iterator();
+	org.mandarax.rt.ResourceIterator<@{rel.name}@{ext}> _resIter = (_iter instanceof org.mandarax.rt.ResourceIterator)?(org.mandarax.rt.ResourceIterator<@{rel.name}@{ext}>)_iter:new org.mandarax.rt.NonClosableResourceIterator<@{rel.name}@{ext}>(_iter);  
+	return _resIter; // TODO: filtering
+			
+		
+		
+	
