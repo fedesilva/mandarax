@@ -22,7 +22,7 @@ public class @{rel.name}@{ext}Instances {
 	@end{}
 	
 	// initialise annotations
-	static {@foreach{rule:rel.rules}
+	static {@foreach{rule:rel.definitionParts}
 		// relationship annotations for rule  @{rule}
 		@foreach{annotation:rel.annotations}_annotations_@{rule.id}.put("@{org.apache.commons.lang.StringEscapeUtils.escapeJava(annotation.key)}","@{org.apache.commons.lang.StringEscapeUtils.escapeJava(annotation.value)}");
 		@end{}

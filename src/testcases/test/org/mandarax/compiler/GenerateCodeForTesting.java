@@ -60,6 +60,7 @@ public class GenerateCodeForTesting {
 		compile(new File("src/testcases/test/org/mandarax/compiler/reldefStaticMethods2.rel"));
 		
 		compile(new File("src/testcases/test/org/mandarax/compiler/reldefAggregation2.rel"));
+		compile(new File("src/testcases/test/org/mandarax/compiler/reldefExternalFacts1.rel"));
 	}
 
 	private static void compile(File file) throws Exception {
