@@ -14,7 +14,7 @@ package test.org.mandarax.compiler;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import test.org.mandarax.compiler.externalfacts.FatherRel;
+import test.org.mandarax.compiler.externalfacts1.FatherRel;
 
 /**
  * External fact set used in test cases.

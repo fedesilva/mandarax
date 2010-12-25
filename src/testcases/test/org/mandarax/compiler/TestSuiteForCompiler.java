@@ -39,7 +39,8 @@ import org.junit.runners.*;
 	CompilerTestsStaticMethods1.class,
 	CompilerTestsStaticMethods2.class,
 	CompilerTestsAggregation1.class,
-	CompilerTestsAggregation2.class
+	CompilerTestsAggregation2.class,
+	CompilerTestsExternalFacts1.class
 })
 public class TestSuiteForCompiler {
 
