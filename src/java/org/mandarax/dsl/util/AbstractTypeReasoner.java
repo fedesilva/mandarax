@@ -47,6 +47,7 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 		else if (x instanceof FunctionInvocation) type = doGetType((FunctionInvocation)x,r,rels);
 		else if (x instanceof NullValue) type = doGetType((NullValue)x,r,rels);
 		else if (x instanceof Aggregation) type = doGetType((Aggregation)x,r,rels);
+		else if (x instanceof ConstructorInvocation) type = doGetType((ConstructorInvocation)x,r,rels);
 		else {
 			LOGGER.warn("Unsupported expression type " + x.getClass().getName());
 			throw new TypeReasoningException("Unsupported expression type " + x.getClass().getName());
@@ -230,6 +231,17 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 		
 		failed(expression);
 		return null; // will never reach this
+		
+	}
+	
+	protected Class doGetType (ConstructorInvocation expression,Resolver resolver,Collection<RelationshipDefinition> rels) throws TypeReasoningException {
+		String name = expression.getTypeName();
+		try {
+			return resolver.getType(expression.getContext(), name);
+		} catch (ResolverException e) {
+			failed(expression,null,e);
+			return null;
+		}
 		
 	}
 	

@@ -258,4 +258,6 @@ public class RelationshipDefinition extends AnnotatableNode {
 	public void setDefinitionPart(int i, RelationshipDefinitionPart defPart) {
 		this.rules.set(i,defPart);
 	}
+	
+
 }

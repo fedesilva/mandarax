@@ -1,4 +1,5 @@
-	@code{xtype=rule.getIterable().getType();}
+	@code{xtype=rule.getIterable().getType();java.lang.reflect.Method method = org.mandarax.compiler.impl.CompilerUtils.findQueryMethod(query,xtype,resolver);}
+	@if{method==null}
 	java.util.Iterator<@{rel.name}@{ext}> _iter = @{rule.iterable}.iterator();
 	org.mandarax.rt.ResourceIterator<@{rel.name}@{ext}> _resIter = (_iter instanceof org.mandarax.rt.ResourceIterator)?(org.mandarax.rt.ResourceIterator<@{rel.name}@{ext}>)_iter:new org.mandarax.rt.NonClosableResourceIterator<@{rel.name}@{ext}>(_iter);  
 	
@@ -11,8 +12,13 @@
 			return _t;
 		}
 	};
-	
 	return new org.mandarax.rt.FilteredIterator(_resIter,_filter);
+	@else{}
+	// optimised code: invoke method @{method} 
+	java.util.Iterator<@{rel.name}@{ext}> _iter = @{rule.iterable}.@{method.name} (@foreach{param:query.parameterNames}@{param}@end{','});
+	org.mandarax.rt.ResourceIterator<@{rel.name}@{ext}> _resIter = (_iter instanceof org.mandarax.rt.ResourceIterator)?(org.mandarax.rt.ResourceIterator<@{rel.name}@{ext}>)_iter:new org.mandarax.rt.NonClosableResourceIterator<@{rel.name}@{ext}>(_iter);
+	return _resIter;
+	@end{}
 			
 		
 		

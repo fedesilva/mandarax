@@ -13,10 +13,14 @@ package org.mandarax.compiler.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.lang.reflect.Method;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import org.mandarax.dsl.FunctionDeclaration;
+import org.mandarax.dsl.RelationshipDefinition;
 import org.mandarax.dsl.Variable;
+import org.mandarax.dsl.util.Resolver;
 
 
 /**
@@ -48,5 +52,23 @@ public class CompilerUtils {
 			if (!names.contains(var.getName())) names.add(var.getName());
 		}
 		return names;
+	}
+	// method used in template for external facts to fins matching method for query 
+	public static Method findQueryMethod(FunctionDeclaration query,Class<?> iterableType,Resolver resolver) throws Exception {
+		@SuppressWarnings("rawtypes")
+		RelationshipDefinition rel = query.getRelationship();
+		Class[] paramTypes = new Class[query.getParameterNames().size()];
+		for (int i=0;i<paramTypes.length;i++) {
+			paramTypes[i] = resolver.getType(query.getContext(),rel.getTypeNameForSlot(query.getParameterNames().get(i)));
+		}
+		try {
+			Method m = iterableType.getMethod(query.getName(), paramTypes);
+			DefaultCompiler.LOGGER.warn("Found method to optimize access to external fact set: "  + m);
+			return m;
+		}
+		catch (Exception x) {
+			DefaultCompiler.LOGGER.warn("Cannot found method to optimize access to external fact set, will use iterator() and apply filter - "  + x.getClass().getName() + ": " + x.getMessage());
+			return null;
+		}
 	}
 }

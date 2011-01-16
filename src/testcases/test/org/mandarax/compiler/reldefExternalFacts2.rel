@@ -1,6 +1,6 @@
-package test.org.mandarax.compiler.externalfacts1;
+package test.org.mandarax.compiler.externalfacts2;
 rel Father(String father,String child) queries getFather(child),isFather(father,child),getChildren(father),getFatherAndChild() {
-	factset1: include new test.org.mandarax.compiler.FatherRelRecords1();
+	factset1: include new test.org.mandarax.compiler.FatherRelRecords2();
 }
 rel GrandFather(String grandFather,String grandChild) queries getGrandChildren(grandFather),getGrandFather(grandChild),isGrandFather(grandFather,grandChild),getAll(){
 	rule1: Father(x,y) & Father(y,z) -> GrandFather(x,z);	

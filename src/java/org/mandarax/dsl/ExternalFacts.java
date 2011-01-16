@@ -33,7 +33,9 @@ public class ExternalFacts extends RelationshipDefinitionPart {
 	
 	
 	public void accept(ASTVisitor visitor) {
-		visitor.visit(this);
+		if (visitor.visit(this)) {
+			this.iterable.accept(visitor);
+		}
 		visitor.endVisit(this);
 	}
 

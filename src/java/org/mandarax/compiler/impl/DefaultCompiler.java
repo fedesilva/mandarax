@@ -449,6 +449,7 @@ public class DefaultCompiler implements Compiler {
 		bindings.put("timestamp",getTimestamp());	
 		bindings.put("ext",TYPE_EXTENSION);
 		bindings.put("compiler",this.getClass().getName());
+		bindings.put("resolver",resolver);
 		return bindings;
 	}
 	

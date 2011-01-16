@@ -21,10 +21,10 @@ import test.org.mandarax.compiler.externalfacts1.FatherRel;
  * @author jens dietrich
  */
 
-public class FatherRelRecords implements Iterable<FatherRel>{
+public class FatherRelRecords1 implements Iterable<FatherRel>{
 	private List<FatherRel> data = null;
 
-	public FatherRelRecords() {
+	public FatherRelRecords1() {
 		super();
 		data = new ArrayList<FatherRel>();
 		data.add(new FatherRel("Jens","Max"));
