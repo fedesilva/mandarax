@@ -32,9 +32,7 @@ import org.mandarax.dsl.RelationshipDefinition;
 import org.mandarax.dsl.Variable;
 import org.mandarax.dsl.util.AnnotationKeys;
 import org.mandarax.rt.Equals;
-
 import static com.google.common.base.Preconditions.*;
-import static org.mandarax.dsl.Utils.nameForBinOp;
 
 /**
  * Annotation description of prerequisites. 
