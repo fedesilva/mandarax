@@ -50,7 +50,7 @@
             	};
 		@code{lastPrereq=prereq;}
 		
-		@comment{case 3 - prerequisite defined by an expression of a relationship not binding new variables, an iterator already exists}
+		@comment{case 3 - prerequisite defined by an expression or a relationship not binding new variables, an iterator already exists}
 		@else{prereq.isFilter() && index>1} @code{index=counter.next;} // case 3
 					@code{prevRelType=(prereq.previousRelPrereq.rel.name)+ext}
 					com.google.common.base.Predicate<@{prevRelType}> _filter@{index} = new com.google.common.base.Predicate<@{prevRelType}>() {
