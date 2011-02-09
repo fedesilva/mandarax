@@ -310,7 +310,9 @@ public class DefaultResolver implements Resolver {
 		catch (Exception x) {
 			throw new ResolverException("Cannot find method " + name,x);
 		}
-		
+		if (method==null) {
+			return null;
+		}
 		if (Modifier.isPublic(method.getModifiers())) {
 			return method;
 		}

@@ -111,7 +111,7 @@ public abstract class AbstractTypeReasoner implements TypeReasoner {
 			return String.class;
 		} 
 		// arithmetic
-		else if (op==BinOp.PLUS || op==BinOp.TIMES || op==BinOp.DIV || op==BinOp.MOD) {
+		else if (op==BinOp.PLUS || op==BinOp.MINUS || op==BinOp.TIMES || op==BinOp.DIV || op==BinOp.MOD) {
 			if (isNumType(type1) && isNumType(type2)) {
 				return getNumericCompositionType(type1,type2);
 			}
